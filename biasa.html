@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الْحَاسُوبُ — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #5a5343;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #b9b3a4;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ====== SATU-SATUNYA SECTION: ISI ====== */
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 860px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 1.3rem + 4vw, 3.2rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  /* satu segmen = 1 baris Arab + 1 baris Indonesia */
+  .ayat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 0;
+  }
+
+  .ayat .ar {
+    direction: rtl;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2rem);
+    color: var(--ar-color);
+  }
+
+  .ayat .id {
+    direction: ltr;
+    text-align: left;
+    font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem);
+    color: var(--id-color);
+  }
+
+  .soal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.75rem, 5vw, 2.75rem) 0 0.25rem;
+  }
+
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الْحَاسُوبُ</h1>
+    <p class="isi__ket">Teks Arab tentang Komputer &middot; 201 kata &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia (7 kata per baris)</p>
+
+    <div class="ayat">
+      <p class="ar">الْحَاسُوبُ جِهَازٌ إِلِكْتْرُونِيٌّ مُتَطَوِّرٌ يُسَاعِدُ الْإِنْسَانَ فِي</p>
+      <p class="id">Komputer adalah perangkat elektronik canggih yang membantu manusia dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِنْجَازِ أَعْمَالِهِ الْيَوْمِيَّةِ بِسُرْعَةٍ وَدِقَّةٍ عَالِيَةٍ جِدًّا</p>
+      <p class="id">menyelesaikan pekerjaan sehari-harinya dengan cepat dan sangat teliti.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيَتَكَوَّنُ الْحَاسُوبُ مِنْ أَجْزَاءٍ مَادِّيَّةٍ تُسَمَّى الْعَتَادَ</p>
+      <p class="id">Komputer terdiri dari bagian-bagian fisik yang disebut perangkat keras,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَجْزَاءٍ بَرْمَجِيَّةٍ تُسَمَّى الْبَرْمَجِيَّاتِ وَكِلَاهُمَا ضَرُورِيٌّ لِلْعَمَلِ</p>
+      <p class="id">dan bagian-bagian program yang disebut perangkat lunak; keduanya penting agar ia bekerja.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَالشَّاشَةُ تَعْرِضُ الصُّوَرَ وَالنُّصُوصَ وَلَوْحَةُ الْمَفَاتِيحِ تُسْتَخْدَمُ</p>
+      <p class="id">Layar menampilkan gambar dan teks, sedangkan papan ketik digunakan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لِإِدْخَالِ الْحُرُوفِ وَالْأَرْقَامِ أَمَّا الْفَأْرَةُ فَتُحَرِّكُ الْمُؤَشِّرَ</p>
+      <p class="id">untuk memasukkan huruf dan angka; adapun mouse menggerakkan penunjuk (kursor)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عَلَى الشَّاشَةِ وَتَخْتَارُ الْأَوَامِرَ بِسُهُولَةٍ وَيُسْرٍ تَامٍّ</p>
+      <p class="id">di atas layar dan memilih perintah dengan sangat mudah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَفِي دَاخِلِ الْحَاسُوبِ وَحْدَةُ مُعَالَجَةٍ مَرْكَزِيَّةٌ تُعْتَبَرُ</p>
+      <p class="id">Di dalam komputer terdapat unit pemrosesan pusat yang dianggap</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عَقْلَ الْجِهَازِ الْحَقِيقِيَّ لِأَنَّهَا تُنَفِّذُ جَمِيعَ الْعَمَلِيَّاتِ</p>
+      <p class="id">sebagai otak sesungguhnya dari perangkat itu, karena ia menjalankan semua operasi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الْحِسَابِيَّةِ وَالْمَنْطِقِيَّةِ بِسُرْعَةٍ مَذْهِلَةٍ تُقَاسُ بِمَلَايِينِ الْعَمَلِيَّاتِ</p>
+      <p class="id">hitung dan logika dengan kecepatan menakjubkan yang diukur dalam jutaan operasi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فِي الثَّانِيَةِ الْوَاحِدَةِ وَهُنَاكَ أَيْضًا ذَاكِرَةٌ مُؤَقَّتَةٌ</p>
+      <p class="id">dalam satu detik. Ada pula memori sementara</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تَحْفَظُ الْبَيَانَاتِ أَثْنَاءَ التَّشْغِيلِ ثُمَّ تُفْقَدُ عِنْدَ</p>
+      <p class="id">yang menyimpan data selama komputer menyala, lalu hilang ketika</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِطْفَاءِ الْجِهَازِ بَيْنَمَا الْقُرْصُ الصَّلْبُ يَحْفَظُ الْمَلَفَّاتِ</p>
+      <p class="id">perangkat dimatikan, sedangkan hard disk menyimpan berkas-berkas</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بِشَكْلٍ دَائِمٍ حَتَّى بَعْدَ انْقِطَاعِ الْكَهْرَبَاءِ عَنْهُ</p>
+      <p class="id">secara permanen, bahkan setelah listrik terputus darinya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيَسْتَطِيعُ الْمُسْتَخْدِمُ تَثْبِيتَ بَرَامِجَ كَثِيرَةٍ عَلَى حَاسُوبِهِ</p>
+      <p class="id">Pengguna dapat memasang banyak program pada komputernya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مِثْلَ بَرَامِجِ الْكِتَابَةِ وَالرَّسْمِ وَالْحِسَابِ وَتَحْرِيرِ الصُّوَرِ</p>
+      <p class="id">seperti program menulis, menggambar, berhitung, dan menyunting gambar,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمُشَاهَدَةِ الْأَفْلَامِ وَالِاسْتِمَاعِ إِلَى الْمُوسِيقَى وَلَعِبِ الْأَلْعَابِ</p>
+      <p class="id">menonton film, mendengarkan musik, dan bermain permainan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَدْ أَصْبَحَ الْحَاسُوبُ وَسِيلَةً مُهِمَّةً لِلتَّعَلُّمِ وَالْبَحْثِ</p>
+      <p class="id">Komputer telah menjadi sarana penting untuk belajar dan mencari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عَنِ الْمَعْلُومَاتِ فِي جَمِيعِ الْمَجَالَاتِ الْعِلْمِيَّةِ وَالْأَدَبِيَّةِ</p>
+      <p class="id">informasi di semua bidang, baik ilmiah maupun sastra.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَعِنْدَمَا يَتَّصِلُ الْحَاسُوبُ بِالْإِنْتَرْنِتْ يَفْتَحُ لِلْمُسْتَخْدِمِ نَوَافِذَ</p>
+      <p class="id">Ketika komputer terhubung ke internet, ia membuka bagi pengguna jendela-jendela</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَاسِعَةً عَلَى الْعَالَمِ كُلِّهِ فَيُمْكِنُهُ إِرْسَالُ الرَّسَائِلِ</p>
+      <p class="id">yang luas ke seluruh dunia, sehingga ia bisa mengirim pesan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَبَادُلُ الْمَعْرِفَةِ مَعَ أَصْدِقَاءَ مِنْ دُوَلٍ بَعِيدَةٍ</p>
+      <p class="id">dan bertukar pengetahuan dengan teman-teman dari negara-negara yang jauh.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَلَكِنْ يَجِبُ عَلَى الْمُسْتَخْدِمِ أَنْ يَحْذَرَ مِنْ</p>
+      <p class="id">Akan tetapi, pengguna wajib berhati-hati terhadap</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الْمَوَاقِعِ الضَّارَّةِ وَأَنْ يَحْمِيَ جِهَازَهُ بِبَرَامِجِ الْحِمَايَةِ</p>
+      <p class="id">situs-situs berbahaya dan melindungi perangkatnya dengan program proteksi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مِنَ الْفَيْرُوسَاتِ الَّتِي قَدْ تُتْلِفُ الْمَلَفَّاتِ الْمُهِمَّةَ</p>
+      <p class="id">dari virus yang dapat merusak berkas-berkas penting.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيَنْبَغِي أَيْضًا أَنْ يَجْلِسَ الْمُسْتَخْدِمُ بِطَرِيقَةٍ صَحِيحَةٍ</p>
+      <p class="id">Sepatutnya pula pengguna duduk dengan cara yang benar</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَنْ يُرِيحَ عَيْنَيْهِ كُلَّ فَتْرَةٍ حَتَّى لَا</p>
+      <p class="id">dan mengistirahatkan matanya setiap selang waktu agar tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُصَابَ بِالتَّعَبِ أَوِ الصُّدَاعِ فَالْحَاسُوبُ خَادِمٌ مُفِيدٌ</p>
+      <p class="id">terkena kelelahan atau sakit kepala. Komputer adalah pelayan yang bermanfaat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِذَا أَحْسَنَ الْإِنْسَانُ اسْتِخْدَامَهُ دَائِمًا</p>
+      <p class="id">jika manusia selalu menggunakannya dengan baik.</p>
+    </div>
+
+    <h2 class="soal__judul">الْأَسْئِلَةُ</h2>
+
+    <div class="ayat">
+      <p class="ar">مَا هُوَ الْحَاسُوبُ وَمَا فَائِدَتُهُ لِلْإِنْسَانِ؟</p>
+      <p class="id">Apa itu komputer dan apa manfaatnya bagi manusia?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مِمَّ يَتَكَوَّنُ الْحَاسُوبُ وَمَا وَظِيفَةُ الشَّاشَةِ؟</p>
+      <p class="id">Terdiri dari apa komputer, dan apa fungsi layar?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَاذَا يَجِبُ عَلَى الْمُسْتَخْدِمِ أَنْ يَحْذَرَهُ؟</p>
+      <p class="id">Apa yang wajib diwaspadai oleh pengguna?</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

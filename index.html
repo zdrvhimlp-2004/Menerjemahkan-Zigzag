@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الْحَاسُوب — Terjemah Zigzag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #b0632a;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+    --rule: #e6dfcc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #e0995f;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+      --rule: #33363a;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ====== SATU-SATUNYA SECTION: ISI ====== */
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 1.3rem + 4vw, 3.2rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .teks {
+    direction: rtl;
+  }
+
+  /* satu baris = 7 kata Arab + terjemahannya */
+  .baris {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.2em 0.75em;
+    padding: 1em 0 3.4em;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .baris:last-child { border-bottom: none; padding-bottom: 2.4em; }
+
+  /* pasangan kata: Arab di atas, arti Indonesia miring (zigzag) di bawah */
+  .kata {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.1em;
+  }
+
+  .kata .ar {
+    display: block;
+    white-space: nowrap;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 1rem + 1.9vw, 1.9rem);
+    color: var(--ar-color);
+  }
+
+  .kata .id {
+    position: absolute;
+    top: 88%;
+    right: 0.3em;
+    transform: rotate(-18deg);
+    transform-origin: top right;
+    direction: ltr;
+    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.6rem, 0.5rem + 0.9vw, 0.8rem);
+    letter-spacing: 0.01em;
+    color: var(--id-color);
+  }
+
+  .soal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+  }
+
+  .baris.soal { align-items: center; }
+
+  .baris.soal .no {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.5rem);
+    color: var(--id-color);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 1.9em;
+    height: 1.9em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+
+  @media (max-width: 480px) {
+    .baris { gap: 0.15em 0.55em; padding-bottom: 3em; }
+    .kata .id { transform: rotate(-16deg); }
+  }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الْحَاسُوبُ</h1>
+    <p class="isi__ket">Teks Arab tentang Komputer &middot; 201 kata &middot; Terjemah zigzag ke Bahasa Indonesia &middot; 7 kata per baris</p>
+
+    <div class="teks">
+
+      <div class="baris">
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">Komputer</span></span>
+        <span class="kata"><span class="ar">جِهَازٌ</span><span class="id">alat</span></span>
+        <span class="kata"><span class="ar">إِلِكْتْرُونِيٌّ</span><span class="id">elektronik</span></span>
+        <span class="kata"><span class="ar">مُتَطَوِّرٌ</span><span class="id">canggih</span></span>
+        <span class="kata"><span class="ar">يُسَاعِدُ</span><span class="id">membantu</span></span>
+        <span class="kata"><span class="ar">الْإِنْسَانَ</span><span class="id">manusia</span></span>
+        <span class="kata"><span class="ar">فِي</span><span class="id">dalam</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">إِنْجَازِ</span><span class="id">menyelesaikan</span></span>
+        <span class="kata"><span class="ar">أَعْمَالِهِ</span><span class="id">pekerjaannya</span></span>
+        <span class="kata"><span class="ar">الْيَوْمِيَّةِ</span><span class="id">sehari-hari</span></span>
+        <span class="kata"><span class="ar">بِسُرْعَةٍ</span><span class="id">dengan cepat</span></span>
+        <span class="kata"><span class="ar">وَدِقَّةٍ</span><span class="id">dan teliti</span></span>
+        <span class="kata"><span class="ar">عَالِيَةٍ</span><span class="id">tinggi</span></span>
+        <span class="kata"><span class="ar">جِدًّا</span><span class="id">sekali</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَيَتَكَوَّنُ</span><span class="id">dan tersusun</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
+        <span class="kata"><span class="ar">أَجْزَاءٍ</span><span class="id">bagian-bagian</span></span>
+        <span class="kata"><span class="ar">مَادِّيَّةٍ</span><span class="id">fisik</span></span>
+        <span class="kata"><span class="ar">تُسَمَّى</span><span class="id">disebut</span></span>
+        <span class="kata"><span class="ar">الْعَتَادَ</span><span class="id">perangkat keras</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَأَجْزَاءٍ</span><span class="id">dan bagian</span></span>
+        <span class="kata"><span class="ar">بَرْمَجِيَّةٍ</span><span class="id">program</span></span>
+        <span class="kata"><span class="ar">تُسَمَّى</span><span class="id">disebut</span></span>
+        <span class="kata"><span class="ar">الْبَرْمَجِيَّاتِ</span><span class="id">perangkat lunak</span></span>
+        <span class="kata"><span class="ar">وَكِلَاهُمَا</span><span class="id">dan keduanya</span></span>
+        <span class="kata"><span class="ar">ضَرُورِيٌّ</span><span class="id">penting</span></span>
+        <span class="kata"><span class="ar">لِلْعَمَلِ</span><span class="id">untuk kerja</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">فَالشَّاشَةُ</span><span class="id">maka layar</span></span>
+        <span class="kata"><span class="ar">تَعْرِضُ</span><span class="id">menampilkan</span></span>
+        <span class="kata"><span class="ar">الصُّوَرَ</span><span class="id">gambar</span></span>
+        <span class="kata"><span class="ar">وَالنُّصُوصَ</span><span class="id">dan teks</span></span>
+        <span class="kata"><span class="ar">وَلَوْحَةُ</span><span class="id">dan papan</span></span>
+        <span class="kata"><span class="ar">الْمَفَاتِيحِ</span><span class="id">tombol</span></span>
+        <span class="kata"><span class="ar">تُسْتَخْدَمُ</span><span class="id">dipakai</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">لِإِدْخَالِ</span><span class="id">untuk memasukkan</span></span>
+        <span class="kata"><span class="ar">الْحُرُوفِ</span><span class="id">huruf</span></span>
+        <span class="kata"><span class="ar">وَالْأَرْقَامِ</span><span class="id">dan angka</span></span>
+        <span class="kata"><span class="ar">أَمَّا</span><span class="id">adapun</span></span>
+        <span class="kata"><span class="ar">الْفَأْرَةُ</span><span class="id">mouse</span></span>
+        <span class="kata"><span class="ar">فَتُحَرِّكُ</span><span class="id">maka menggerakkan</span></span>
+        <span class="kata"><span class="ar">الْمُؤَشِّرَ</span><span class="id">kursor</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">عَلَى</span><span class="id">di atas</span></span>
+        <span class="kata"><span class="ar">الشَّاشَةِ</span><span class="id">layar</span></span>
+        <span class="kata"><span class="ar">وَتَخْتَارُ</span><span class="id">dan memilih</span></span>
+        <span class="kata"><span class="ar">الْأَوَامِرَ</span><span class="id">perintah</span></span>
+        <span class="kata"><span class="ar">بِسُهُولَةٍ</span><span class="id">dengan mudah</span></span>
+        <span class="kata"><span class="ar">وَيُسْرٍ</span><span class="id">dan lancar</span></span>
+        <span class="kata"><span class="ar">تَامٍّ</span><span class="id">sempurna</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَفِي</span><span class="id">dan di</span></span>
+        <span class="kata"><span class="ar">دَاخِلِ</span><span class="id">dalam</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبِ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">وَحْدَةُ</span><span class="id">unit</span></span>
+        <span class="kata"><span class="ar">مُعَالَجَةٍ</span><span class="id">pemroses</span></span>
+        <span class="kata"><span class="ar">مَرْكَزِيَّةٌ</span><span class="id">pusat</span></span>
+        <span class="kata"><span class="ar">تُعْتَبَرُ</span><span class="id">dianggap</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">عَقْلَ</span><span class="id">otak</span></span>
+        <span class="kata"><span class="ar">الْجِهَازِ</span><span class="id">perangkat</span></span>
+        <span class="kata"><span class="ar">الْحَقِيقِيَّ</span><span class="id">sejati</span></span>
+        <span class="kata"><span class="ar">لِأَنَّهَا</span><span class="id">karena ia</span></span>
+        <span class="kata"><span class="ar">تُنَفِّذُ</span><span class="id">menjalankan</span></span>
+        <span class="kata"><span class="ar">جَمِيعَ</span><span class="id">semua</span></span>
+        <span class="kata"><span class="ar">الْعَمَلِيَّاتِ</span><span class="id">operasi</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">الْحِسَابِيَّةِ</span><span class="id">hitung</span></span>
+        <span class="kata"><span class="ar">وَالْمَنْطِقِيَّةِ</span><span class="id">dan logika</span></span>
+        <span class="kata"><span class="ar">بِسُرْعَةٍ</span><span class="id">dengan kecepatan</span></span>
+        <span class="kata"><span class="ar">مَذْهِلَةٍ</span><span class="id">menakjubkan</span></span>
+        <span class="kata"><span class="ar">تُقَاسُ</span><span class="id">diukur</span></span>
+        <span class="kata"><span class="ar">بِمَلَايِينِ</span><span class="id">jutaan</span></span>
+        <span class="kata"><span class="ar">الْعَمَلِيَّاتِ</span><span class="id">operasi</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">فِي</span><span class="id">dalam</span></span>
+        <span class="kata"><span class="ar">الثَّانِيَةِ</span><span class="id">detik</span></span>
+        <span class="kata"><span class="ar">الْوَاحِدَةِ</span><span class="id">satu</span></span>
+        <span class="kata"><span class="ar">وَهُنَاكَ</span><span class="id">dan ada</span></span>
+        <span class="kata"><span class="ar">أَيْضًا</span><span class="id">juga</span></span>
+        <span class="kata"><span class="ar">ذَاكِرَةٌ</span><span class="id">memori</span></span>
+        <span class="kata"><span class="ar">مُؤَقَّتَةٌ</span><span class="id">sementara</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">تَحْفَظُ</span><span class="id">menyimpan</span></span>
+        <span class="kata"><span class="ar">الْبَيَانَاتِ</span><span class="id">data</span></span>
+        <span class="kata"><span class="ar">أَثْنَاءَ</span><span class="id">selama</span></span>
+        <span class="kata"><span class="ar">التَّشْغِيلِ</span><span class="id">dijalankan</span></span>
+        <span class="kata"><span class="ar">ثُمَّ</span><span class="id">kemudian</span></span>
+        <span class="kata"><span class="ar">تُفْقَدُ</span><span class="id">hilang</span></span>
+        <span class="kata"><span class="ar">عِنْدَ</span><span class="id">ketika</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">إِطْفَاءِ</span><span class="id">mematikan</span></span>
+        <span class="kata"><span class="ar">الْجِهَازِ</span><span class="id">perangkat</span></span>
+        <span class="kata"><span class="ar">بَيْنَمَا</span><span class="id">sedangkan</span></span>
+        <span class="kata"><span class="ar">الْقُرْصُ</span><span class="id">cakram</span></span>
+        <span class="kata"><span class="ar">الصَّلْبُ</span><span class="id">keras</span></span>
+        <span class="kata"><span class="ar">يَحْفَظُ</span><span class="id">menyimpan</span></span>
+        <span class="kata"><span class="ar">الْمَلَفَّاتِ</span><span class="id">berkas</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">بِشَكْلٍ</span><span class="id">secara</span></span>
+        <span class="kata"><span class="ar">دَائِمٍ</span><span class="id">permanen</span></span>
+        <span class="kata"><span class="ar">حَتَّى</span><span class="id">bahkan</span></span>
+        <span class="kata"><span class="ar">بَعْدَ</span><span class="id">setelah</span></span>
+        <span class="kata"><span class="ar">انْقِطَاعِ</span><span class="id">terputusnya</span></span>
+        <span class="kata"><span class="ar">الْكَهْرَبَاءِ</span><span class="id">listrik</span></span>
+        <span class="kata"><span class="ar">عَنْهُ</span><span class="id">darinya</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَيَسْتَطِيعُ</span><span class="id">dan mampu</span></span>
+        <span class="kata"><span class="ar">الْمُسْتَخْدِمُ</span><span class="id">pengguna</span></span>
+        <span class="kata"><span class="ar">تَثْبِيتَ</span><span class="id">memasang</span></span>
+        <span class="kata"><span class="ar">بَرَامِجَ</span><span class="id">program</span></span>
+        <span class="kata"><span class="ar">كَثِيرَةٍ</span><span class="id">banyak</span></span>
+        <span class="kata"><span class="ar">عَلَى</span><span class="id">pada</span></span>
+        <span class="kata"><span class="ar">حَاسُوبِهِ</span><span class="id">komputernya</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">مِثْلَ</span><span class="id">seperti</span></span>
+        <span class="kata"><span class="ar">بَرَامِجِ</span><span class="id">program</span></span>
+        <span class="kata"><span class="ar">الْكِتَابَةِ</span><span class="id">menulis</span></span>
+        <span class="kata"><span class="ar">وَالرَّسْمِ</span><span class="id">dan menggambar</span></span>
+        <span class="kata"><span class="ar">وَالْحِسَابِ</span><span class="id">dan hitung</span></span>
+        <span class="kata"><span class="ar">وَتَحْرِيرِ</span><span class="id">dan edit</span></span>
+        <span class="kata"><span class="ar">الصُّوَرِ</span><span class="id">gambar</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَمُشَاهَدَةِ</span><span class="id">dan menonton</span></span>
+        <span class="kata"><span class="ar">الْأَفْلَامِ</span><span class="id">film</span></span>
+        <span class="kata"><span class="ar">وَالِاسْتِمَاعِ</span><span class="id">dan mendengar</span></span>
+        <span class="kata"><span class="ar">إِلَى</span><span class="id">kepada</span></span>
+        <span class="kata"><span class="ar">الْمُوسِيقَى</span><span class="id">musik</span></span>
+        <span class="kata"><span class="ar">وَلَعِبِ</span><span class="id">dan main</span></span>
+        <span class="kata"><span class="ar">الْأَلْعَابِ</span><span class="id">permainan</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَقَدْ</span><span class="id">dan sungguh</span></span>
+        <span class="kata"><span class="ar">أَصْبَحَ</span><span class="id">telah jadi</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">وَسِيلَةً</span><span class="id">sarana</span></span>
+        <span class="kata"><span class="ar">مُهِمَّةً</span><span class="id">penting</span></span>
+        <span class="kata"><span class="ar">لِلتَّعَلُّمِ</span><span class="id">untuk belajar</span></span>
+        <span class="kata"><span class="ar">وَالْبَحْثِ</span><span class="id">dan meneliti</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">عَنِ</span><span class="id">tentang</span></span>
+        <span class="kata"><span class="ar">الْمَعْلُومَاتِ</span><span class="id">informasi</span></span>
+        <span class="kata"><span class="ar">فِي</span><span class="id">di</span></span>
+        <span class="kata"><span class="ar">جَمِيعِ</span><span class="id">semua</span></span>
+        <span class="kata"><span class="ar">الْمَجَالَاتِ</span><span class="id">bidang</span></span>
+        <span class="kata"><span class="ar">الْعِلْمِيَّةِ</span><span class="id">ilmiah</span></span>
+        <span class="kata"><span class="ar">وَالْأَدَبِيَّةِ</span><span class="id">dan sastra</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَعِنْدَمَا</span><span class="id">dan ketika</span></span>
+        <span class="kata"><span class="ar">يَتَّصِلُ</span><span class="id">terhubung</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">بِالْإِنْتَرْنِتْ</span><span class="id">ke internet</span></span>
+        <span class="kata"><span class="ar">يَفْتَحُ</span><span class="id">ia membuka</span></span>
+        <span class="kata"><span class="ar">لِلْمُسْتَخْدِمِ</span><span class="id">bagi pengguna</span></span>
+        <span class="kata"><span class="ar">نَوَافِذَ</span><span class="id">jendela</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَاسِعَةً</span><span class="id">luas</span></span>
+        <span class="kata"><span class="ar">عَلَى</span><span class="id">ke</span></span>
+        <span class="kata"><span class="ar">الْعَالَمِ</span><span class="id">dunia</span></span>
+        <span class="kata"><span class="ar">كُلِّهِ</span><span class="id">seluruhnya</span></span>
+        <span class="kata"><span class="ar">فَيُمْكِنُهُ</span><span class="id">maka ia bisa</span></span>
+        <span class="kata"><span class="ar">إِرْسَالُ</span><span class="id">mengirim</span></span>
+        <span class="kata"><span class="ar">الرَّسَائِلِ</span><span class="id">pesan</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَتَبَادُلُ</span><span class="id">dan bertukar</span></span>
+        <span class="kata"><span class="ar">الْمَعْرِفَةِ</span><span class="id">pengetahuan</span></span>
+        <span class="kata"><span class="ar">مَعَ</span><span class="id">dengan</span></span>
+        <span class="kata"><span class="ar">أَصْدِقَاءَ</span><span class="id">teman-teman</span></span>
+        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
+        <span class="kata"><span class="ar">دُوَلٍ</span><span class="id">negara</span></span>
+        <span class="kata"><span class="ar">بَعِيدَةٍ</span><span class="id">jauh</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَلَكِنْ</span><span class="id">akan tetapi</span></span>
+        <span class="kata"><span class="ar">يَجِبُ</span><span class="id">wajib</span></span>
+        <span class="kata"><span class="ar">عَلَى</span><span class="id">atas</span></span>
+        <span class="kata"><span class="ar">الْمُسْتَخْدِمِ</span><span class="id">pengguna</span></span>
+        <span class="kata"><span class="ar">أَنْ</span><span class="id">untuk</span></span>
+        <span class="kata"><span class="ar">يَحْذَرَ</span><span class="id">berhati-hati</span></span>
+        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">الْمَوَاقِعِ</span><span class="id">situs-situs</span></span>
+        <span class="kata"><span class="ar">الضَّارَّةِ</span><span class="id">berbahaya</span></span>
+        <span class="kata"><span class="ar">وَأَنْ</span><span class="id">dan agar</span></span>
+        <span class="kata"><span class="ar">يَحْمِيَ</span><span class="id">melindungi</span></span>
+        <span class="kata"><span class="ar">جِهَازَهُ</span><span class="id">perangkatnya</span></span>
+        <span class="kata"><span class="ar">بِبَرَامِجِ</span><span class="id">dengan program</span></span>
+        <span class="kata"><span class="ar">الْحِمَايَةِ</span><span class="id">proteksi</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">مِنَ</span><span class="id">dari</span></span>
+        <span class="kata"><span class="ar">الْفَيْرُوسَاتِ</span><span class="id">virus</span></span>
+        <span class="kata"><span class="ar">الَّتِي</span><span class="id">yang</span></span>
+        <span class="kata"><span class="ar">قَدْ</span><span class="id">terkadang</span></span>
+        <span class="kata"><span class="ar">تُتْلِفُ</span><span class="id">merusak</span></span>
+        <span class="kata"><span class="ar">الْمَلَفَّاتِ</span><span class="id">berkas</span></span>
+        <span class="kata"><span class="ar">الْمُهِمَّةَ</span><span class="id">penting</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَيَنْبَغِي</span><span class="id">dan sepatutnya</span></span>
+        <span class="kata"><span class="ar">أَيْضًا</span><span class="id">juga</span></span>
+        <span class="kata"><span class="ar">أَنْ</span><span class="id">agar</span></span>
+        <span class="kata"><span class="ar">يَجْلِسَ</span><span class="id">duduk</span></span>
+        <span class="kata"><span class="ar">الْمُسْتَخْدِمُ</span><span class="id">pengguna</span></span>
+        <span class="kata"><span class="ar">بِطَرِيقَةٍ</span><span class="id">dengan cara</span></span>
+        <span class="kata"><span class="ar">صَحِيحَةٍ</span><span class="id">benar</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">وَأَنْ</span><span class="id">dan agar</span></span>
+        <span class="kata"><span class="ar">يُرِيحَ</span><span class="id">mengistirahatkan</span></span>
+        <span class="kata"><span class="ar">عَيْنَيْهِ</span><span class="id">matanya</span></span>
+        <span class="kata"><span class="ar">كُلَّ</span><span class="id">setiap</span></span>
+        <span class="kata"><span class="ar">فَتْرَةٍ</span><span class="id">selang waktu</span></span>
+        <span class="kata"><span class="ar">حَتَّى</span><span class="id">supaya</span></span>
+        <span class="kata"><span class="ar">لَا</span><span class="id">tidak</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">يُصَابَ</span><span class="id">terkena</span></span>
+        <span class="kata"><span class="ar">بِالتَّعَبِ</span><span class="id">kelelahan</span></span>
+        <span class="kata"><span class="ar">أَوِ</span><span class="id">atau</span></span>
+        <span class="kata"><span class="ar">الصُّدَاعِ</span><span class="id">sakit kepala</span></span>
+        <span class="kata"><span class="ar">فَالْحَاسُوبُ</span><span class="id">maka komputer</span></span>
+        <span class="kata"><span class="ar">خَادِمٌ</span><span class="id">pelayan</span></span>
+        <span class="kata"><span class="ar">مُفِيدٌ</span><span class="id">bermanfaat</span></span>
+      </div>
+
+      <div class="baris">
+        <span class="kata"><span class="ar">إِذَا</span><span class="id">jika</span></span>
+        <span class="kata"><span class="ar">أَحْسَنَ</span><span class="id">memperbaiki</span></span>
+        <span class="kata"><span class="ar">الْإِنْسَانُ</span><span class="id">manusia</span></span>
+        <span class="kata"><span class="ar">اسْتِخْدَامَهُ</span><span class="id">penggunaannya</span></span>
+        <span class="kata"><span class="ar">دَائِمًا</span><span class="id">selalu</span></span>
+      </div>
+
+      <h2 class="soal__judul">الْأَسْئِلَةُ</h2>
+
+      <div class="baris soal">
+        <span class="no">١</span>
+        <span class="kata"><span class="ar">مَا</span><span class="id">apa</span></span>
+        <span class="kata"><span class="ar">هُوَ</span><span class="id">itu</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">وَمَا</span><span class="id">dan apa</span></span>
+        <span class="kata"><span class="ar">فَائِدَتُهُ</span><span class="id">manfaatnya</span></span>
+        <span class="kata"><span class="ar">لِلْإِنْسَانِ؟</span><span class="id">bagi manusia?</span></span>
+      </div>
+
+      <div class="baris soal">
+        <span class="no">٢</span>
+        <span class="kata"><span class="ar">مِمَّ</span><span class="id">dari apa</span></span>
+        <span class="kata"><span class="ar">يَتَكَوَّنُ</span><span class="id">tersusun</span></span>
+        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
+        <span class="kata"><span class="ar">وَمَا</span><span class="id">dan apa</span></span>
+        <span class="kata"><span class="ar">وَظِيفَةُ</span><span class="id">fungsi</span></span>
+        <span class="kata"><span class="ar">الشَّاشَةِ؟</span><span class="id">layar?</span></span>
+      </div>
+
+      <div class="baris soal">
+        <span class="no">٣</span>
+        <span class="kata"><span class="ar">مَاذَا</span><span class="id">apa</span></span>
+        <span class="kata"><span class="ar">يَجِبُ</span><span class="id">wajib</span></span>
+        <span class="kata"><span class="ar">عَلَى</span><span class="id">atas</span></span>
+        <span class="kata"><span class="ar">الْمُسْتَخْدِمِ</span><span class="id">pengguna</span></span>
+        <span class="kata"><span class="ar">أَنْ</span><span class="id">untuk</span></span>
+        <span class="kata"><span class="ar">يَحْذَرَهُ؟</span><span class="id">mewaspadainya?</span></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

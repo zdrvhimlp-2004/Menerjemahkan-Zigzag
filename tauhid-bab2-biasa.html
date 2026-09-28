@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>براهين وحدانية الله — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #5a5343;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+    --quran: #8a5a15;
+    --quran-bg: #f7f0e0;
+    --pasal-bg: #eef2ea;
+    --poem-color: #5a4a7a;
+    --poem-bg: #f1eef7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #b9b3a4;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+      --quran: #d9a54a;
+      --quran-bg: #2a2418;
+      --pasal-bg: #1c2420;
+      --poem-color: #b9a6e0;
+      --poem-bg: #251f30;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 860px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.05rem + 2.4vw, 2.2rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .ayat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 0;
+  }
+
+  .ayat .ar {
+    direction: rtl;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2rem);
+    color: var(--ar-color);
+  }
+
+  .ayat .id {
+    direction: ltr;
+    text-align: left;
+    font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem);
+    color: var(--id-color);
+  }
+
+  .ayat.quran {
+    background: var(--quran-bg);
+    border-radius: 10px;
+    padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.6rem, 2vw, 0.9rem);
+    border-right: 3px solid var(--quran);
+  }
+  .ayat.quran .ar,
+  .ayat.quran .id {
+    color: var(--quran);
+  }
+
+  .ayat.footnote-row {
+    opacity: 0.75;
+  }
+  .ayat.footnote-row .ar { font-size: clamp(1rem, 0.85rem + 1vw, 1.3rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.72rem, 0.66rem + 0.4vw, 0.85rem); }
+
+  .ayat.list-item {
+    padding-inline-end: 1.4rem;
+    position: relative;
+  }
+  .ayat.list-item .ar::before {
+    content: "\2022";
+    color: var(--heading);
+    margin-inline-end: 0.5em;
+  }
+
+  /* ====== SYAIR / POEM ====== */
+  .ayat.poem {
+    background: var(--poem-bg);
+    border-radius: 10px;
+    padding: clamp(0.55rem, 1.8vw, 0.8rem) clamp(0.9rem, 2.5vw, 1.2rem);
+    border-right: 3px solid var(--poem-color);
+  }
+  .ayat.poem .ar {
+    font-style: normal;
+    text-align: center;
+    color: var(--poem-color);
+  }
+  .ayat.poem .id {
+    text-align: center;
+    font-style: italic;
+    color: var(--poem-color);
+  }
+
+  /* ====== DALIL BERNOMOR (Fasl 4) ====== */
+  .ayat.numbered {
+    position: relative;
+    padding-inline-start: 2.2rem;
+  }
+  .ayat.numbered .num-marker {
+    position: absolute;
+    inset-inline-start: 0;
+    top: clamp(0.6rem, 2vw, 0.9rem);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--pasal-bg);
+    border: 1px solid var(--border);
+    color: var(--heading);
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ====== PEMBATAS SEMESTER ====== */
+  .semester-marker {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: clamp(1.5rem, 5vw, 2.25rem) 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .semester-marker::before,
+  .semester-marker::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ====== JUDUL BAB (satu kali, di awal) ====== */
+  .bab__judul {
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin: 0 0 clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1rem, 3vw, 1.5rem);
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ====== JUDUL PASAL ====== */
+  .pasal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 1.8vw, 1.9rem);
+    color: var(--heading);
+    text-align: center;
+    background: var(--pasal-bg);
+    border-radius: 12px;
+    padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem);
+    margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem);
+  }
+  .bab__judul + .pasal__judul { margin-top: 0; }
+
+  .bagian__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1rem + 1.2vw, 1.5rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--border);
+  }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .sub__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.02rem, 0.9rem + 0.7vw, 1.2rem);
+    color: var(--id-color);
+    text-align: center;
+    margin: clamp(1.25rem, 4vw, 1.75rem) 0 0.4rem;
+  }
+
+  .soal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.75rem, 5vw, 2.75rem) 0 0.25rem;
+  }
+
+  /* ====== DAFTAR ISI ====== */
+  .daftar-isi {
+    direction: ltr;
+    background: var(--pasal-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .daftar-isi__judul {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .daftar-isi__list {
+    list-style: none;
+    counter-reset: pasal-counter;
+  }
+
+  .daftar-isi__list > li {
+    counter-increment: pasal-counter;
+    margin-bottom: 0.5rem;
+  }
+
+  .daftar-isi__list > li > a {
+    direction: rtl;
+    display: block;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(0.98rem, 0.88rem + 0.5vw, 1.15rem);
+    color: var(--ar-color);
+    text-decoration: none;
+  }
+
+  .daftar-isi__list > li > a::before {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--id-color);
+    margin-inline-end: 0.4em;
+    content: counter(pasal-counter) ".";
+  }
+
+  .daftar-isi__list > li > a:hover { color: var(--heading); }
+
+  .daftar-isi__sublist {
+    list-style: none;
+    direction: rtl;
+    margin: 0.35rem 0.25rem 0 0;
+    padding-right: 1.5rem;
+    border-right: 2px solid var(--border);
+  }
+
+  .daftar-isi__sublist li { margin-bottom: 0.25rem; }
+
+  .daftar-isi__sublist a {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .daftar-isi__sublist a:hover { color: var(--id-color); }
+
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الباب الثاني: براهين وحدانية الله تعالى واستحقاقه للعبادة دون سواه</h1>
+    <p class="isi__ket">Kitab Tauhid Kelas 1 Aliyah &middot; Bab 2 &middot; 145 baris &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia</p>
+
+    <nav class="daftar-isi">
+      <h2 class="daftar-isi__judul">Daftar Isi</h2>
+      <ol class="daftar-isi__list">
+        <li><a href="#muqaddimah">تمهيد</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#muqaddimah-bagian-1">أهمية الإيمان بالله</a></li>
+            <li><a href="#muqaddimah-bagian-2">مكانة التوحيد في القرآن الكريم</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-1">الفصل الأول: برهان الفطرة</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-1-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-2">الفصل الثاني: برهان الخلق والإبداع</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-2-bagian-1">1 - في النظر في الأرض وما بث فيها من مخلوقات</a></li>
+            <li><a href="#pasal-2-bagian-2">2 - النظر في السماء وما فيها من الكائنات</a></li>
+            <li><a href="#pasal-2-bagian-3">3 - النظر في خلق الإنسان وما فيه من العجائب</a></li>
+            <li><a href="#pasal-2-bagian-4">4 - ما جاء في القرآن الكريم</a></li>
+            <li><a href="#pasal-2-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-3">الفصل الثالث: برهان اتساق النظام الكوني</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-3-bagian-1">براهين الإرادة والنظام والإتساق الكوني والرد على الطبائعيين والقائلين بالمصادفة</a></li>
+            <li><a href="#pasal-3-bagian-2">تنبيه</a></li>
+            <li><a href="#pasal-3-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-4">الفصل الرابع: برهان الكمال الإلهي وغناه عن كل مخلوق وفقر كل مخلوق إليه</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-4-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+
+
+    <h2 class="bab__judul">الباب الثاني: براهين وحدانية الله تعالى واستحقاقه للعبادة دون سواه</h2>
+
+    <div class="ayat">
+      <p class="ar">ويتكون من الفصول الآتية :</p>
+      <p class="id">Dan bab ini terdiri dari pasal-pasal berikut:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الفصل الأول : برهان الفطرة.</p>
+      <p class="id">Pasal Pertama: Dalil Fitrah.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الفصل الثاني : برهان الخلق والإبداع.</p>
+      <p class="id">Pasal Kedua: Dalil Penciptaan dan Keajaiban Ciptaan.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الفصل الثالث : برهان اتساق النظام الكوني.</p>
+      <p class="id">Pasal Ketiga: Dalil Keteraturan Sistem Alam Semesta.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الفصل الرابع : برهان الكمال الإلهي وغناه عن كل مخلوق وفقر كل مخلوق إليه.</p>
+      <p class="id">Pasal Keempat: Dalil Kesempurnaan Ilahi, kemahakayaan-Nya dari segala makhluk, dan kebutuhan segala makhluk kepada-Nya.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="muqaddimah">تمهيد</h3>
+
+    <h3 class="bagian__judul" id="muqaddimah-bagian-1">أهمية الإيمان بالله</h3>
+
+    <div class="ayat">
+      <p class="ar">الإيمان بالله سبحانه هو الأصل الأول من أصول الإيمان كما تقدم بيانه، وهو يتضمن الإقرار بربوبيته وألوهيته وأسمائه وصفاته. ولأهمية هذا الأصل وكونه أصل الأصول ولب العقيدة، اقتضى الأمر التركيز عليه بصفة خاصة وبيان أدلته حتى يترسخ في نفس المسلم، وليتمكن من رد الشبه التي يروجها المشركون والملحدون.</p>
+      <p class="id">Iman kepada Allah Yang Mahasuci adalah rukun pertama dari rukun-rukun iman sebagaimana telah dijelaskan sebelumnya, dan ia mencakup pengakuan terhadap rububiyah, uluhiyah, nama-nama, dan sifat-sifat-Nya. Karena pentingnya rukun ini dan kedudukannya sebagai pokok dari segala pokok serta inti akidah, maka perlu ada penekanan khusus padanya beserta penjelasan dalil-dalilnya, agar tertanam kuat dalam jiwa seorang muslim, dan agar ia mampu membantah syubhat yang disebarkan oleh kaum musyrik dan ateis.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="muqaddimah-bagian-2">مكانة التوحيد في القرآن الكريم</h3>
+
+    <div class="ayat">
+      <p class="ar">غالب سور القرآن في التوحيد، بل كل سور القرآن في التوحيد؛ لأن القرآن إما خبر عن الله وأسمائه وصفاته، وإما دعوة إلى عبادته وحده لا شريك له وترك ما يعبد من دونه، وإما أمر ونهي وإلزام بطاعته فذلك من حقوق التوحيد ومكملاته، وإما خبر عن إكرامه لأهل التوحيد، وما فعل بهم في الدنيا وما يكرمهم به في الآخرة فهو جزاء توحيده، وإما خبر عن أهل الشرك وما فعل بهم في الدنيا من النكال، وما يحل بهم في الآخرة من العذاب فهو جزاء من خرج عن التوحيد. فالقرآن كله في التوحيد وحقوقه وجزائه، وفي شأن الشرك وأهله وجزائهم.</p>
+      <p class="id">Sebagian besar surah Al-Qur'an membahas tauhid, bahkan seluruh surah Al-Qur'an sesungguhnya membahas tauhid; karena Al-Qur'an itu berisi kabar tentang Allah, nama-nama, dan sifat-sifat-Nya; atau ajakan untuk beribadah hanya kepada-Nya tanpa sekutu dan meninggalkan apa yang disembah selain-Nya; atau perintah, larangan, dan kewajiban menaati-Nya, yang termasuk hak-hak tauhid dan penyempurnanya; atau kabar tentang pemuliaan-Nya bagi ahli tauhid, dan apa yang Dia perbuat bagi mereka di dunia serta apa yang akan Dia muliakan mereka dengannya di akhirat sebagai balasan tauhid mereka; atau kabar tentang ahli syirik dan apa yang Dia perbuat terhadap mereka di dunia berupa hukuman, serta apa yang akan menimpa mereka di akhirat berupa azab sebagai balasan bagi orang yang keluar dari tauhid. Maka seluruh Al-Qur'an berbicara tentang tauhid, hak-haknya, dan balasannya, serta tentang perkara syirik, pelakunya, dan balasan mereka.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-1">الفصل الأول: برهان الفطرة</h2>
+
+    <div class="ayat">
+      <p class="ar">الفطرة: مأخوذة من الفطر، بفتح الفاء وسكون الطاء، وهو الابتداء والاختراع. ويراد بها الطبع والجبلة. ويراد بها هنا دين الإسلام. كما قال تعالى: ﴿فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا﴾ (الآية ٣٠ من سورة الروم).</p>
+      <p class="id">Fitrah: diambil dari kata al-fithr, dengan fathah pada huruf fa dan sukun pada huruf tha, yang berarti permulaan dan penciptaan baru. Ia juga bermakna tabiat dan naluri bawaan. Yang dimaksud di sini adalah agama Islam, sebagaimana firman-Nya Ta'ala: 'Maka hadapkanlah wajahmu dengan lurus kepada agama (Islam); (sesuai) fitrah Allah yang Dia menciptakan manusia menurut fitrah itu.' (ayat 30 dari QS. Ar-Rum).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وقال النبي ﷺ: (كل مولود يولد على الفطرة) (1)، ومعناها أن فطرته مقتضية لدين الإسلام والإقرار به ومحبته. فنفس الفطرة تستلزم الإقرار بخالقها ومحبته وإخلاص الدين له. وموجبات الفطرة ومقتضياتها تحصل شيئاً بعد شيء بحسب كمال الفطرة إذا سلمت من المعارض. فقد دل الكتاب والسنة والآثار واتفاق السلف على أن الخلق مفطورون على دين الله الذي هو معرفته والإقرار به ومحبته والخضوع له، وأن ذلك موجب فطرتهم ومقتضاها يجب حصوله فيهم إن لم يحصل ما يعارضه ويقتضي حصول ضده (2). فكل مولود يولد على معرفة الله والإقرار به، فلا تجد أحداً إلا وهو يقر بأن له صانعاً (3).</p>
+      <p class="id">Nabi ﷺ bersabda: 'Setiap bayi dilahirkan di atas fitrah' (1), maknanya bahwa fitrahnya cenderung kepada agama Islam, mengakuinya, dan mencintainya. Fitrah itu sendiri mengharuskan pengakuan terhadap Penciptanya, kecintaan kepada-Nya, dan keikhlasan agama untuk-Nya. Konsekuensi dan tuntutan fitrah ini terwujud sedikit demi sedikit sesuai kesempurnaan fitrah tersebut, apabila selamat dari penghalang. Al-Qur'an, Sunnah, atsar, dan kesepakatan salaf telah menunjukkan bahwa makhluk diciptakan di atas fitrah agama Allah, yakni mengenal-Nya, mengakui-Nya, mencintai-Nya, dan tunduk kepada-Nya; dan hal itu adalah konsekuensi fitrah mereka yang pasti akan terwujud pada diri mereka selama tidak ada hal yang menghalangi dan menyebabkan munculnya sebaliknya (2). Maka setiap bayi dilahirkan di atas pengenalan terhadap Allah dan pengakuan kepada-Nya, sehingga engkau tidak akan mendapati seorang pun kecuali ia mengakui bahwa dirinya memiliki Pencipta (3).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فالإقرار بالخالق مركوز في الفطر، وإنما تظاهر من تظاهر بإنكاره كفرعون من باب المكابرة والعناد، ولهذا قال له موسى عليه الصلاة والسلام كما قال الله تعالى: ﴿قَالَ لَقَدْ عَلِمْتَ مَا أَنزَلَ هَؤُلَاءِ إِلَّا رَبُّ السَّمَاوَاتِ وَالْأَرْضِ بَصَائِرَ﴾ (4).</p>
+      <p class="id">Maka pengakuan terhadap Sang Pencipta tertanam dalam fitrah; siapa pun yang menampakkan pengingkarannya seperti Fir'aun, itu hanyalah karena sikap membangkang dan keras kepala. Karena itulah Musa 'alaihis shalatu wassalam berkata kepadanya, sebagaimana firman Allah Ta'ala: 'Dia (Musa) menjawab: Sungguh engkau telah mengetahui bahwa tidak ada yang menurunkan mukjizat-mukjizat itu kecuali Rabb (pemilik) langit dan bumi, sebagai bukti-bukti nyata.' (4).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وقال تعالى: ﴿وَجَحَدُوا بِهَا وَاسْتَيْقَنَتْهَا أَنفُسُهُمْ ظُلْمًا وَعُلُوًّا﴾ (آية ١٤ من سورة النمل).</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan mereka mengingkarinya secara lahir, padahal batin mereka meyakininya, karena kezaliman dan kesombongan.' (ayat 14 dari QS. An-Naml).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وقال تعالى: ﴿وَعَادًا وَثَمُودَ وَقَد تَّبَيَّنَ لَكُم مِّن مَّسَاكِنِهِمْ وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ فَصَدَّهُمْ عَنِ السَّبِيلِ وَكَانُوا مُسْتَبْصِرِينَ﴾ (سورة العنكبوت).</p>
+      <p class="id">Allah Ta'ala juga berfirman: 'Dan (Kami binasakan) kaum 'Ad dan Tsamud, dan sungguh telah nyata bagi kalian (bekas-bekas kehancuran) dari tempat tinggal mereka; setan telah menjadikan indah bagi mereka perbuatan-perbuatan mereka lalu menghalangi mereka dari jalan yang benar, padahal mereka adalah orang-orang yang berpandangan tajam.' (QS. Al-'Ankabut).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) في الصحيحين.</p>
+      <p class="id">(1) Diriwayatkan dalam Shahih Bukhari dan Muslim.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) ابن القيم في شفاء العليل صفحة ٣٨٨، ٤٠٥.</p>
+      <p class="id">(2) Ibnul Qayyim dalam kitab Syifa'ul 'Alil, halaman 388, 405.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(3) ابن الأثير في النهاية (٣/٤٥٧).</p>
+      <p class="id">(3) Ibnul Atsir dalam kitab An-Nihayah (3/457).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(4) الآية ١٠٢ من سورة الإسراء، والآية التي قبلها: ﴿وَلَقَدْ آتَيْنَا مُوسَى تِسْعَ آيَاتٍ بَيِّنَاتٍ فَاسْأَلْ بَنِي إِسْرَائِيلَ إِذْ جَاءَهُمْ فَقَالَ لَهُ فِرْعَوْنُ إِنِّي لَأَظُنُّكَ يَا مُوسَى مَسْحُورًا﴾.</p>
+      <p class="id">(4) Ayat 102 dari QS. Al-Isra', dan ayat sebelumnya: 'Dan sungguh Kami telah memberikan kepada Musa sembilan tanda (mukjizat) yang nyata, maka tanyakanlah kepada Bani Israil ketika Musa datang kepada mereka lalu Fir'aun berkata kepadanya: Sesungguhnya aku yakin engkau, wahai Musa, terkena sihir.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فالآيات تدل على أن هؤلاء الكفار يعرفون الخالق سبحانه بموجب فطرهم، ويتجهون إليه في حال ضروراتهم، كما قال تعالى: ﴿وَإِذَا مَسَّكُمُ الضُّرُّ فِي الْبَحْرِ ضَلَّ مَن تَدْعُونَ إِلَّا إِيَّاهُ﴾ (آية ٦٧ من سورة الإسراء)، ﴿وَإِذَا غَشِيَهُم مَّوْجٌ كَالظُّلَلِ دَعَوُا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ﴾ (آية ٣٢ من سورة لقمان).</p>
+      <p class="id">Ayat-ayat ini menunjukkan bahwa orang-orang kafir itu sebenarnya mengenal Sang Pencipta Yang Mahasuci berdasarkan fitrah mereka, dan mereka kembali kepada-Nya dalam keadaan terdesak, sebagaimana firman-Nya Ta'ala: 'Dan apabila kalian ditimpa bahaya di lautan, hilanglah (dari ingatan) siapa yang biasa kalian seru kecuali Dia sendiri.' (ayat 67 dari QS. Al-Isra'), 'Dan apabila mereka diliputi ombak yang seperti gunung, mereka berdoa kepada Allah dengan penuh keikhlasan.' (ayat 32 dari QS. Luqman).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فدل ذلك على أن النفوس البشرية مفطورة على الإقرار بالخالق، ولكن يعرض لها صوارف تغطي هذه الفطرة. فإذا حصلت الشدة انقشعت هذه الصوارف وعادت النفوس إلى فطرتها الحقيقية، فاتجهت إلى خالقها وحده تطلب منه النجاة والإنقاذ. وإنك لتجد هذا الاتجاه الفطري في الأطفال والعوام الذين لم يتعلموا طرق الاستدلال، تجدهم يتجهون إلى الله دون مرشد يرشدهم من الخلق إلى ذلك أو يلقنهم إياه، (فطرة الله التي فطر الناس عليها)، مما يدل على أن إثبات الخالق أمر فطري ضروري، وإن تظاهر بعض المتكبرين والمكابرين بإنكاره فهم إنما ينكرون فطرتهم وعقولهم.</p>
+      <p class="id">Hal itu menunjukkan bahwa jiwa manusia difitrahkan untuk mengakui Sang Pencipta, namun ada penghalang-penghalang yang menutupi fitrah tersebut. Ketika kesulitan datang, penghalang itu tersingkap dan jiwa manusia kembali kepada fitrahnya yang sejati, lalu ia menghadap hanya kepada Penciptanya semata, memohon keselamatan dan pertolongan dari-Nya. Engkau akan mendapati kecenderungan fitrah ini pada anak-anak dan orang awam yang belum mempelajari metode berargumentasi; engkau akan mendapati mereka menghadap kepada Allah tanpa ada pembimbing dari kalangan makhluk yang mengarahkan atau mengajarkannya kepada mereka — itulah 'fitrah Allah yang Dia ciptakan manusia atasnya' — yang menunjukkan bahwa penetapan adanya Sang Pencipta adalah perkara fitrah yang mendasar. Sekalipun sebagian orang sombong dan keras kepala menampakkan pengingkarannya, sesungguhnya mereka hanya mengingkari fitrah dan akal mereka sendiri.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وكذلك من اتجهوا بعباداتهم ودعواتهم إلى سواه من الأوثان والقبور والأولياء والصالحين، يخالفون مقتضى الفطرة التي فطروا عليها؛ لأنهم قد اجتالتهم عنها شياطين الإنس والجن، وأعمى بصائرهم التقليد الأعمى، ولو رجعوا إلى عقولهم لاستعادوا فطرتهم التي سلبت منهم بأيدي أعدائهم. ولهذا احتج الله عليهم بما استقر في فطرتهم من معرفته والإقرار بوحدانيته في الخلق والتدبير، على ما أنكروه من وحدانيته في الألوهية والعبادة، حيث عبدوا معه غيره واتجهوا إلى سواه،</p>
+      <p class="id">Begitu pula orang-orang yang menujukan ibadah dan doa mereka kepada selain-Nya, seperti berhala, kuburan, para wali, dan orang-orang saleh — mereka menyalahi tuntutan fitrah yang mereka diciptakan atasnya; karena setan-setan dari jenis manusia dan jin telah menyeret mereka darinya, dan taklid buta telah membutakan mata hati mereka. Seandainya mereka kembali kepada akal mereka, niscaya mereka akan mendapatkan kembali fitrah mereka yang telah dirampas oleh tangan musuh-musuh mereka. Oleh karena itulah Allah berhujjah atas mereka dengan apa yang telah tertanam dalam fitrah mereka berupa pengenalan terhadap-Nya dan pengakuan terhadap keesaan-Nya dalam penciptaan dan pengaturan (rububiyah), atas apa yang mereka ingkari dari keesaan-Nya dalam uluhiyah dan ibadah — di mana mereka menyembah selain-Nya bersama-Nya dan menghadap kepada selain-Nya,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فقال تعالى: ﴿وَجَحَدُوا بِهَا وَاسْتَيْقَنَتْهَا أَنفُسُهُمْ ظُلْمًا وَعُلُوًّا﴾ (آية ١٤ من سورة النمل)، ﴿قَالَ لَقَدْ عَلِمْتَ مَا أَنزَلَ هَؤُلَاءِ إِلَّا رَبُّ السَّمَاوَاتِ وَالْأَرْضِ بَصَائِرَ﴾ (الإسراء ١٠٢)، ﴿وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ فَصَدَّهُمْ عَنِ السَّبِيلِ وَكَانُوا مُسْتَبْصِرِينَ﴾ (سورة العنكبوت)، وذلك لما دعتهم الرسل إلى عبادة الله.</p>
+      <p class="id">maka Allah berfirman: 'Dan mereka mengingkarinya padahal batin mereka meyakininya, karena kezaliman dan kesombongan.' (ayat 14 dari QS. An-Naml), 'Dia (Musa) menjawab: Sungguh engkau telah mengetahui bahwa tidak ada yang menurunkan mukjizat-mukjizat itu kecuali Rabb langit dan bumi, sebagai bukti-bukti nyata.' (QS. Al-Isra': 102), 'Dan setan telah menjadikan indah bagi mereka perbuatan-perbuatan mereka lalu menghalangi mereka dari jalan yang benar, padahal mereka adalah orang-orang yang berpandangan tajam.' (QS. Al-'Ankabut) — dan itu terjadi ketika para rasul mengajak mereka untuk beribadah kepada Allah.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-1-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">بين كيفية اشتمال القرآن الكريم على بيان التوحيد وأدلته، ولماذا؟</p>
+      <p class="id">Jelaskan bagaimana Al-Qur'an mencakup penjelasan tentang tauhid beserta dalil-dalilnya, dan mengapa demikian?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بين المراد بالفطرة. وما الدليل على أن كل مولود يولد عليها. وما معنى ذلك؟</p>
+      <p class="id">Jelaskan apa yang dimaksud dengan fitrah. Apa dalil bahwa setiap bayi dilahirkan di atasnya? Dan apa maknanya?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر شيئاً من الأدلة على أن الفطرة تعرف الخالق وتقر به.</p>
+      <p class="id">Sebutkan sebagian dalil bahwa fitrah mengenal Sang Pencipta dan mengakui-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كيف تجيب عن كون بعض الخلق كفرعون والشيوعيين أنكروا وجود الخالق؟ وما الأدلة على بطلان قولهم؟</p>
+      <p class="id">Bagaimana engkau menjawab fakta bahwa sebagian makhluk seperti Fir'aun dan kaum komunis mengingkari keberadaan Sang Pencipta? Apa dalil yang membatalkan pendapat mereka?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما السبب في كون المشركين يخلصون لله في حال الشدة؟</p>
+      <p class="id">Apa sebab orang-orang musyrik berdoa dengan ikhlas kepada Allah semata ketika dalam kesulitan?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما وجه الاستدلال بالفطرة على بطلان الشرك؟</p>
+      <p class="id">Bagaimana bentuk pengambilan dalil dari fitrah atas batilnya kesyirikan?</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-2">الفصل الثاني: برهان الخلق والإبداع</h2>
+
+    <div class="ayat quran">
+      <p class="ar">من أعظم البراهين على وحدانية الله تعالى الخلق والإبداع الذي انفرد الله تعالى به، وأقامه دليلاً على استحقاقه للعبادة وبطلان عبادة ما سواه. قال تعالى: ﴿أَمْ جَعَلُوا لِلَّهِ شُرَكَاءَ خَلَقُوا كَخَلْقِهِ فَتَشَابَهَ الْخَلْقُ عَلَيْهِمْ قُلِ اللَّهُ خَالِقُ كُلِّ شَيْءٍ وَهُوَ الْوَاحِدُ الْقَهَّارُ﴾ (سورة الرعد).</p>
+      <p class="id">Di antara dalil terbesar atas keesaan Allah Ta'ala adalah penciptaan dan keajaiban ciptaan yang hanya Allah Ta'ala sendiri yang melakukannya, dan Dia jadikan itu sebagai bukti bahwa hanya Dia yang berhak disembah, serta batilnya menyembah selain-Nya. Allah Ta'ala berfirman: 'Ataukah mereka menjadikan sekutu-sekutu bagi Allah yang mampu menciptakan sebagaimana ciptaan-Nya sehingga penciptaan itu serupa bagi mereka? Katakanlah: Allah adalah Pencipta segala sesuatu, dan Dialah Yang Maha Esa lagi Maha Mengalahkan.' (QS. Ar-Ra'd).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أي هل هؤلاء الذين اتخذوا شركاء لله خلقوا خلقاً يشبه ما خلقه الله حتى يشركوهم معه في العبادة ويساووهم به؟! كلا، ليس الأمر كذلك؛ فإن الله هو المنفرد بالخلق والإبداع فيجب أن يفرد بالعبادة. وقال تعالى: ﴿أَفَمَن يَخْلُقُ كَمَن لَّا يَخْلُقُ أَفَلَا تَذَكَّرُونَ﴾ (سورة النحل)، ﴿هَذَا خَلْقُ اللَّهِ فَأَرُونِي مَاذَا خَلَقَ الَّذِينَ مِن دُونِهِ﴾ (سورة لقمان الآية ١١).</p>
+      <p class="id">Maksudnya, apakah orang-orang yang menjadikan sekutu-sekutu bagi Allah itu telah menciptakan sesuatu yang serupa dengan ciptaan Allah, sehingga mereka layak menyekutukan-Nya dalam ibadah dan menyamakannya dengan-Nya?! Tidak, bukan demikian; Allah-lah satu-satunya yang mencipta dan mengadakan, maka wajib pula Dia semata yang disembah. Allah Ta'ala berfirman: 'Apakah (Allah) yang menciptakan itu sama dengan yang tidak dapat menciptakan (apa pun)? Maka mengapa kalian tidak mengambil pelajaran?' (QS. An-Nahl), 'Inilah ciptaan Allah, maka perlihatkanlah kepadaku apa yang diciptakan oleh sembahan-sembahan selain-Nya.' (QS. Luqman ayat 11).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولهذا حث سبحانه على النظر في آياته الكونية الدالة على وحدانيته في الخلق والإبداع واستحقاقه للعبادة دون سواه، وذلك:</p>
+      <p class="id">Oleh karena itu, Allah Yang Mahasuci mendorong manusia untuk merenungkan tanda-tanda kekuasaan-Nya di alam semesta yang menunjukkan keesaan-Nya dalam mencipta dan mengadakan, serta bahwa hanya Dia yang berhak disembah, yaitu sebagai berikut:</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-2-bagian-1">1 - في النظر في الأرض وما بث فيها من مخلوقات</h3>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿وَفِي الْأَرْضِ آيَاتٌ لِّلْمُوقِنِينَ﴾ (سورة الذاريات)، ﴿أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا﴾ إلى قوله: ﴿وَجَنَّاتٍ أَلْفَافًا﴾ (سورة النبأ)، وقال تعالى: ﴿وَالْأَرْضَ مَدَدْنَاهَا وَأَلْقَيْنَا فِيهَا رَوَاسِيَ وَأَنبَتْنَا فِيهَا مِن كُلِّ زَوْجٍ بَهِيجٍ﴾ (سورة ق)، وقال تعالى: ﴿وَفِي الْأَرْضِ قِطَعٌ مُّتَجَاوِرَاتٌ وَجَنَّاتٌ مِّنْ أَعْنَابٍ وَزَرْعٌ وَنَخِيلٌ صِنْوَانٌ وَغَيْرُ صِنْوَانٍ يُسْقَى بِمَاءٍ وَاحِدٍ وَنُفَضِّلُ بَعْضَهَا عَلَى بَعْضٍ فِي الْأُكُلِ إِنَّ فِي ذَلِكَ لَآيَاتٍ لِّقَوْمٍ يَعْقِلُونَ﴾ (سورة الرعد).</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan di bumi terdapat tanda-tanda (kekuasaan Allah) bagi orang-orang yang yakin.' (QS. Adz-Dzariyat), 'Bukankah Kami telah menjadikan bumi sebagai hamparan?' hingga firman-Nya: 'dan kebun-kebun yang lebat.' (QS. An-Naba'), dan firman-Nya Ta'ala: 'Dan Kami hamparkan bumi itu dan Kami pancangkan gunung-gunung padanya, serta Kami tumbuhkan padanya segala sesuatu yang indah berpasang-pasangan.' (QS. Qaf), dan firman-Nya Ta'ala: 'Dan di bumi ini terdapat bagian-bagian yang berdampingan, kebun-kebun anggur, tanaman-tanaman, dan pohon kurma yang bercabang serta yang tidak bercabang, disirami dengan air yang sama; dan Kami lebihkan sebagian atasnya atas sebagian yang lain dalam hal rasanya. Sesungguhnya pada yang demikian itu terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berakal.' (QS. Ar-Ra'd).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وفي هذه الآيات الكريمة يوجه سبحانه الأنظار إلى التفكير في خلق الأرض من حيث سعة رقعتها حتى تستوعب المخلوقات التي تعيش على ظهرها على اختلاف أصنافها وطبائعها، وجعلها ممدودة ممهدة مثبتة بالجبال الرواسي لئلا تميد بأهلها. وأنبت فيها من مختلف النباتات التي يقتات منها سكان تلك الأرض؛ وهي على رغم اتحاد منبتها ومادة سقيها مختلفة الطعوم والروائح والمنافع، مما يدل على قدرة خالقها، وسعة علمه، وبالغ حكمته، وواسع رحمته، وانفراده بالخلق والإبداع، واستحقاقه للعبادة.</p>
+      <p class="id">Dalam ayat-ayat mulia ini, Allah Yang Mahasuci mengarahkan perhatian manusia untuk merenungkan penciptaan bumi, dari segi keluasannya yang mampu menampung berbagai makhluk yang hidup di permukaannya dengan segala jenis dan sifatnya, serta menjadikannya terhampar luas dan dikokohkan dengan gunung-gunung agar tidak berguncang bersama penghuninya. Allah juga menumbuhkan berbagai tumbuhan yang menjadi sumber makanan penduduk bumi; meskipun tumbuh dari tanah yang sama dan disirami air yang sama, tumbuhan itu berbeda-beda rasa, aroma, dan manfaatnya — yang menunjukkan kekuasaan Penciptanya, keluasan ilmu-Nya, kebijaksanaan-Nya yang sempurna, rahmat-Nya yang luas, keunikan-Nya dalam mencipta dan mengadakan, serta bahwa hanya Dia yang berhak disembah.</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">تأمل في نبات الأرض وانظر ... إلى آثار ما صنع المليك</p>
+      <p class="id">Renungkanlah tumbuhan di bumi dan perhatikanlah, jejak dari apa yang diciptakan Sang Raja.</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">عيون من لجين ناظرات ... بأحداق هي الذهب السبيك</p>
+      <p class="id">Mata-mata bagai perak yang memandang, dengan pupil bagaikan emas tempaan.</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">على قضب الزبرجد شاهدات ... بأن الله ليس له شريك</p>
+      <p class="id">Di atas tangkai zamrud, semuanya menjadi saksi, bahwa Allah tiada bersekutu.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال العلامة ابن القيم: ثم تأمل خلق الأرض على ما هي عليه حين خلقها واقفة ساكنة لتكون مهاداً ومستقراً للحيوان والنبات والأمتعة. ويتمكن الحيوان والناس من السعي عليها في مآربهم والجلوس لراحاتهم والنوم لهدوئهم، والتمكن من أعمالهم. ولو كانت رجراجة متكفئة لم يستطيعوا على ظهرها قراراً ولا هدوءاً ولا ثبت لهم عليها بناء، ولا أمكنهم عليها صناعة ولا تجارة ولا حراثة.</p>
+      <p class="id">Al-'Allamah Ibnul Qayyim berkata: Renungkanlah penciptaan bumi sebagaimana adanya, diciptakan diam dan tenang agar menjadi hamparan dan tempat menetap bagi hewan, tumbuhan, dan perbekalan hidup. Dengan begitu, hewan dan manusia dapat berjalan di atasnya untuk memenuhi keperluan mereka, duduk untuk beristirahat, tidur dengan tenang, dan mampu menjalankan pekerjaan mereka. Seandainya bumi ini bergoyang dan tidak stabil, niscaya mereka tidak akan mampu menetap dan tenang di atasnya, tidak dapat mendirikan bangunan yang kokoh, dan tidak akan mampu melakukan industri, perdagangan, ataupun bercocok tanam di atasnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ثم تأمل الحكمة العجيبة في الجبال التي يحسبها الجاهل الغافل فضلة في الأرض ولا حاجة إليها، وفيها من المنافع ما لا يحصيه إلا خالقها وناصبها. فمن منافعها أن الثلج يسقط عليها فيبقى في قللها حاصلاً لشراب الناس إلى حين نفاده، ليذوب أولاً فأولاً فتجيء منه السيول الغزيرة وتسيل منه الأنهار والأودية، فينبت في المروج والوهاد والربا ضروب النبات والفواكه والأدوية التي لا يكون مثلها في السهل والرمل.</p>
+      <p class="id">Renungkan pula hikmah yang menakjubkan pada gunung-gunung, yang oleh orang bodoh lagi lalai dianggap sebagai sesuatu yang berlebihan di bumi dan tidak diperlukan, padahal di dalamnya terdapat manfaat yang tidak terhitung kecuali oleh Penciptanya. Di antara manfaatnya, salju turun dan tersimpan di puncaknya sebagai persediaan air minum manusia hingga habis, mencair sedikit demi sedikit sehingga muncul darinya aliran deras yang membentuk sungai dan lembah, lalu tumbuhlah di padang, lembah, dan bukit berbagai jenis tumbuhan, buah-buahan, dan tanaman obat yang tidak dijumpai serupanya di dataran rendah maupun padang pasir.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ومن منافعها ما يكون في حصونها وقللها من المغارات والكهوف المعاقل التي هي بمنزلة الحصون والقلاع، وهي أيضاً أكنان للناس والحيوان. ومن منافعها ما ينحت من أحجارها للأبنية على اختلاف أصنافها، ومن منافعها ما يوجد فيها من المعادن على اختلاف أصنافها.</p>
+      <p class="id">Di antara manfaat gunung pula, terdapat gua-gua dan liang perlindungan di lereng dan puncaknya yang berfungsi seperti benteng dan kubu pertahanan, sekaligus menjadi tempat berlindung bagi manusia dan hewan. Di antara manfaatnya lagi, batu-batunya dapat dipahat untuk bahan bangunan dalam berbagai bentuk, dan di dalamnya juga terdapat beraneka jenis barang tambang.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ثم تأمل الحكمة الإلهية في إخراج الأقوات والثمار والحبوب والفواكه متلاحقة شيئاً بعد شيء متتابعة، ولم يخلقها كلها جملة واحدة. فإنها لو خلقت كذلك على وجه الأرض ولم تكن تنبت على هذه السوق والأغصان لدخل الخلل وفاتت المصالح التي رتبت على تلاحقها وتتابعها؛ فإن كل فصل وأوان يقتضي من الفواكه والنبات غير الذي يقتضيه الفصل الآخر.</p>
+      <p class="id">Renungkan pula hikmah Ilahi dalam mengeluarkan bahan pangan, buah-buahan, biji-bijian, dan aneka buah secara berurutan sedikit demi sedikit, dan tidak menciptakannya sekaligus dalam satu waktu. Sebab jika semuanya diciptakan langsung di muka bumi tanpa tumbuh melalui batang dan ranting seperti ini, niscaya akan timbul kekacauan dan hilanglah manfaat yang justru diperoleh dari sifatnya yang berurutan dan bertahap; karena setiap musim menuntut jenis buah dan tumbuhan yang berbeda dari musim lainnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ثم إنه سبحانه خلق تلك الأقوات مقارنة لمنافع أخر من العصف والخشب والورق والنور والسعف والكرب وغيرها من منافع النبات والشجر غير الأقوات، كعلف البهائم وأداة الأبنية والسفن والرحال والأواني وغيرها. ومنافع النور من الأدوية والمنظر البهيج الذي يشوق الناظرين، وحسن مرائي الشجر وخلقتها البديعة شاهدة لفاطرها ومبدعها بغاية الحكمة واللطف (1). فهذا برهان قاطع على وحدانية الله وقدرته وقهره، وأنه المستحق للعبادة وحده لا شريك له، والمستحق للحمد والشكر.</p>
+      <p class="id">Allah Yang Mahasuci juga menciptakan bahan pangan itu berdampingan dengan manfaat-manfaat lain, seperti jerami, kayu, daun, bunga, pelepah, dan tangkai, serta manfaat tumbuhan dan pepohonan lain di luar bahan pangan, seperti pakan ternak, bahan bangunan, kapal, kendaraan, wadah, dan sebagainya. Manfaat bunga meliputi bahan obat dan pemandangan indah yang menyenangkan mata, sedangkan keindahan rupa pepohonan dan bentuknya yang menakjubkan menjadi saksi atas Penciptanya dengan puncak hikmah dan kelembutan (1). Maka ini semua adalah dalil pasti atas keesaan Allah, kekuasaan, dan keperkasaan-Nya, serta bahwa hanya Dia yang berhak disembah tanpa sekutu, dan hanya Dia yang berhak menerima pujian dan syukur.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) انظر مفتاح دار السعادة صفحة ٢٣٦، ٢٤٣-٢٤٤.</p>
+      <p class="id">(1) Lihat kitab Miftah Dar as-Sa'adah, halaman 236, 243-244.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-2-bagian-2">2 - النظر في السماء وما فيها من الكائنات</h3>
+
+    <div class="ayat">
+      <p class="ar">قد يراد بالسماء كل ما علا وارتفع، ويراد بها في الغالب السماء المبنية والسبع الطباق التي جعلها الله سقفاً لما تحتها. قال تعالى: ﴿وَجَعَلْنَا السَّمَاءَ سَقْفًا مَّحْفُوظًا وَهُمْ عَنْ آيَاتِهَا مُعْرِضُونَ﴾ (سورة الأنبياء).</p>
+      <p class="id">Kata 'langit' terkadang dimaksudkan sebagai segala sesuatu yang tinggi dan menjulang, namun yang lebih umum dimaksud adalah langit yang dibangun bertingkat tujuh lapis, yang Allah jadikan sebagai atap bagi apa yang ada di bawahnya. Allah Ta'ala berfirman: 'Dan Kami jadikan langit itu sebagai atap yang terpelihara, sedangkan mereka berpaling dari tanda-tanda kekuasaan (Allah) yang terdapat padanya.' (QS. Al-Anbiya').</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿أَلَمْ تَرَوْا كَيْفَ خَلَقَ اللَّهُ سَبْعَ سَمَاوَاتٍ طِبَاقًا وَجَعَلَ الْقَمَرَ فِيهِنَّ نُورًا وَجَعَلَ الشَّمْسَ سِرَاجًا﴾ (سورة نوح).</p>
+      <p class="id">Allah Ta'ala berfirman: 'Tidakkah kalian memperhatikan bagaimana Allah menciptakan tujuh langit bertingkat-tingkat, dan menjadikan bulan padanya sebagai cahaya serta menjadikan matahari sebagai pelita?' (QS. Nuh).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وقال تعالى: ﴿الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا مَّا تَرَى فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ فَارْجِعِ الْبَصَرَ هَلْ تَرَى مِن فُطُورٍ ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ يَنقَلِبْ إِلَيْكَ الْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ﴾ (سورة الملك).</p>
+      <p class="id">Allah Ta'ala juga berfirman: 'Yang menciptakan tujuh langit berlapis-lapis. Engkau tidak akan melihat sesuatu yang tidak seimbang pada ciptaan Yang Maha Pengasih. Maka lihatlah berulang-ulang, adakah engkau melihat sesuatu yang cacat? Kemudian pandanglah sekali lagi, niscaya pandanganmu akan kembali kepadamu dalam keadaan tidak menemukan cacat dan dalam keadaan letih.' (QS. Al-Mulk).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فتأمل خلق السماء وارجع البصر فيها كرة بعد كرة، كيف تراها من أعظم الآيات في علوها وارتفاعها وسعتها وقرارها؛ لا عمد تحتها ولا علاقة فوقها، بل هي ممسوكة بقدرة الله الذي يمسك السماوات والأرض أن تزولا. ثم تأمل استواءها واعتدالها فلا صدع فيها ولا فطر ولا شق. ثم تأمل ما زينت به السماء الدنيا من المصابيح المتوقدة الجميلة، وانظر إلى هذه الشمس المشرقة والقمر المنير.</p>
+      <p class="id">Renungkanlah penciptaan langit dan pandanglah ia berulang-ulang, betapa ia menjadi salah satu tanda kekuasaan terbesar dari sisi ketinggian, keluasan, dan kestabilannya; tanpa tiang penyangga di bawahnya maupun gantungan di atasnya, melainkan ia tertahan dengan kekuasaan Allah yang menahan langit dan bumi agar tidak lenyap. Renungkan pula kerataan dan keseimbangannya, tanpa retakan, celah, ataupun belahan sedikit pun padanya. Renungkan pula keindahan hiasan langit dunia berupa bintang-bintang yang bercahaya indah, serta perhatikanlah matahari yang bersinar dan bulan yang menerangi.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ثم تأمل في هذا الفضاء الواسع بين السماء والأرض يسير فيه السحاب، وتحلق فيه الطير بأجنحتها لا يمسكهن إلا الله، وتحلق فيه السفن الفضائية والطائرات الفخمة التي تقل الجماعات الكبيرة من الناس وتحمل الأثقال العظيمة من الأمتعة. ولهذا يوجه الله الأنظار للتفكر في هذه الآيات الكونية العلوية، قال تعالى: ﴿وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ﴾ (سورة الذاريات)، ﴿وَالسَّمَاءَ بَنَيْنَاهَا بِأَيْيدٍ وَإِنَّا لَمُوسِعُونَ﴾ (سورة الذاريات)، ﴿أَفَلَمْ يَنظُرُوا إِلَى السَّمَاءِ فَوْقَهُمْ كَيْفَ بَنَيْنَاهَا وَزَيَّنَّاهَا وَمَا لَهَا مِن فُرُوجٍ﴾ (سورة ق).</p>
+      <p class="id">Renungkan pula ruang luas antara langit dan bumi, tempat awan bergerak, burung terbang dengan sayapnya yang hanya ditahan oleh Allah semata, serta pesawat ruang angkasa dan pesawat terbang megah yang mengangkut banyak orang dan membawa muatan berat melintas di dalamnya. Oleh karena itulah Allah mengarahkan perhatian untuk merenungkan tanda-tanda kosmik yang agung ini. Allah Ta'ala berfirman: 'Dan di langit terdapat rezeki kalian dan apa yang dijanjikan kepada kalian.' (QS. Adz-Dzariyat), 'Dan langit itu Kami bangun dengan kekuasaan (Kami), dan sesungguhnya Kami benar-benar meluaskannya.' (QS. Adz-Dzariyat), 'Maka tidakkah mereka memperhatikan langit yang ada di atas mereka, bagaimana Kami membangunnya dan menghiasinya, serta tidak terdapat retak sedikit pun padanya?' (QS. Qaf).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الآية الأولى يخبر أن رزق العباد في السماء، وهو المطر الذي ينبت الله به الزروع والأشجار المثمرة، وفيها ما يوعدون من الجنة والثواب. وفي الآية الثانية يخبر سبحانه عن السماء أنها من جملة مخلوقاته مع عظمها وسعتها، مما يدل على عظمة خالقها وقوته وقدرته. وفي الآية الثالثة يحث على النظر والتفكر في السماء التي فوق العباد وما فيها من إحكام البناء وقوته، وصفاء اللون، وزينة الكواكب وسلامتها من الشقوق والتصدع مع سعتها وامتدادها. كل هذه الآيات في السماوات تدل على وحدانية الخالق وعظيم قدرته، واستحقاقه للعبادة وحده لا شريك له، فكما أنه لا شريك له في خلق هذه الأشياء العظيمة فلا يجوز أن يشرك معه أحد في عبادته ممن ليس له خلق ولا إبداع ولا تدبير. فهي برهان قاطع على وحدانية الله سبحانه وتعالى وعظيم سلطانه.</p>
+      <p class="id">Pada ayat pertama, Allah mengabarkan bahwa rezeki para hamba ada di langit, yaitu hujan yang dengannya Allah menumbuhkan tanaman dan pepohonan berbuah, dan di sana pula terdapat surga serta pahala yang dijanjikan kepada mereka. Pada ayat kedua, Allah Yang Mahasuci mengabarkan bahwa langit termasuk salah satu ciptaan-Nya dengan segala kebesaran dan keluasannya, yang menunjukkan kebesaran, kekuatan, dan kekuasaan Penciptanya. Pada ayat ketiga, Allah mendorong manusia untuk merenungkan langit yang berada di atas para hamba, dengan kekokohan dan kekuatan bangunannya, kejernihan warnanya, keindahan bintang-bintangnya, serta keselamatannya dari retak dan pecah meski begitu luas dan terbentang. Semua tanda-tanda di langit ini menunjukkan keesaan Sang Pencipta dan kebesaran kekuasaan-Nya, serta bahwa hanya Dia yang berhak disembah tanpa sekutu; sebagaimana Dia tidak memiliki sekutu dalam menciptakan hal-hal besar ini, maka tidak boleh pula ada yang disekutukan dengan-Nya dalam ibadah, padahal ia tidak memiliki kemampuan mencipta, mengadakan, ataupun mengatur. Maka semua ini adalah dalil pasti atas keesaan Allah Yang Mahasuci lagi Mahatinggi dan kebesaran kekuasaan-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال قس بن ساعدة (1) في إحدى خطبه: ليل داج، ونهار ساج، وسماء ذات أبراج، ونجوم تزهر، وبحار تزخر، وجبال مرساة، وأرض مدحاة، وأنهار مجراة، إن في السماء لخبراً، وإن في الأرض لعبراً.</p>
+      <p class="id">Qass bin Sa'idah (1) pernah berkata dalam salah satu pidatonya: 'Malam yang gelap gulita, siang yang tenang, langit yang berhiaskan gugusan bintang, bintang-bintang yang berkilauan, lautan yang bergelombang, gunung-gunung yang tertancap kokoh, bumi yang terhampar, sungai-sungai yang mengalir — sesungguhnya di langit terdapat kabar, dan di bumi terdapat pelajaran.'</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) من خطباء العرب في الجاهلية.</p>
+      <p class="id">(1) Salah seorang orator terkenal bangsa Arab pada masa Jahiliyah.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-2-bagian-3">3 - النظر في خلق الإنسان وما فيه من العجائب</h3>
+
+    <div class="ayat quran">
+      <p class="ar">يقول الله تعالى: ﴿وَفِي أَنفُسِكُمْ أَفَلَا تُبْصِرُونَ﴾ (سورة الذاريات)، ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَكُم مِّن تُرَابٍ ثُمَّ إِذَا أَنتُم بَشَرٌ تَنتَشِرُونَ﴾ (سورة الروم)، ﴿وَضَرَبَ لَنَا مَثَلًا وَنَسِيَ خَلْقَهُ قَالَ مَن يُحْيِي الْعِظَامَ وَهِيَ رَمِيمٌ قُلْ يُحْيِيهَا الَّذِي أَنشَأَهَا أَوَّلَ مَرَّةٍ وَهُوَ بِكُلِّ خَلْقٍ عَلِيمٌ الَّذِي جَعَلَ لَكُم مِّنَ الشَّجَرِ الْأَخْضَرِ نَارًا فَإِذَا أَنتُم مِّنْهُ تُوقِدُونَ أَوَلَيْسَ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ بِقَادِرٍ عَلَىٰ أَن يَخْلُقَ مِثْلَهُم بَلَىٰ وَهُوَ الْخَلَّاقُ الْعَلِيمُ إِنَّمَا أَمْرُهُ إِذَا أَرَادَ شَيْئًا أَن يَقُولَ لَهُ كُن فَيَكُونُ فَسُبْحَانَ الَّذِي بِيَدِهِ مَلَكُوتُ كُلِّ شَيْءٍ وَإِلَيْهِ تُرْجَعُونَ﴾ (سورة يس)، وقال تعالى: ﴿وَصَوَّرَكُمْ فَأَحْسَنَ صُوَرَكُمْ وَإِلَيْهِ الْمَصِيرُ﴾ (آية ٣ من سورة التغابن)، وقال تعالى: ﴿لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ﴾ (سورة التين).</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan (juga) pada diri kalian sendiri. Maka apakah kalian tidak memperhatikan?' (QS. Adz-Dzariyat), 'Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan kalian dari tanah, kemudian tiba-tiba kalian menjadi manusia yang berkembang biak.' (QS. Ar-Rum), 'Dan dia membuat perumpamaan bagi Kami, dan dia lupa akan penciptaan dirinya sendiri; dia berkata: Siapakah yang dapat menghidupkan tulang-belulang yang telah hancur luluh? Katakanlah: Yang akan menghidupkannya adalah (Allah) yang menciptakannya pertama kali, dan Dia Maha Mengetahui tentang segala makhluk. (Dialah) yang menjadikan api untuk kalian dari kayu yang hijau, maka tiba-tiba kalian menyalakan (api) darinya. Dan tidakkah (Allah) yang menciptakan langit dan bumi itu mampu menciptakan yang serupa itu (jasad mereka yang telah hancur)? Benar, dan Dialah Maha Pencipta lagi Maha Mengetahui. Sesungguhnya perintah-Nya apabila Dia menghendaki sesuatu hanyalah berkata kepadanya: Jadilah! Maka jadilah ia. Maka Mahasuci (Allah) yang di tangan-Nya kekuasaan atas segala sesuatu, dan kepada-Nyalah kalian dikembalikan.' (QS. Yasin), Allah Ta'ala juga berfirman: 'Dan Dia membentuk rupa kalian, lalu membaguskan rupa kalian, dan hanya kepada-Nyalah tempat kembali.' (ayat 3 dari QS. At-Taghabun), dan firman-Nya Ta'ala: 'Sungguh Kami telah menciptakan manusia dalam bentuk yang sebaik-baiknya.' (QS. At-Tin).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في هذه الآيات يوجه الله الإنسان إلى أن ينظر في نفسه وعجيب خلقته وبديع تركيبه، مما يدل على عظمة خالقه وعلمه وقدرته وحكمته، وأنه المستحق للعبادة وحده لا شريك له. وأن هذا الإنسان مخلوق ضعيف محتاج إلى خالقه لا غنى له عنه طرفة عين، فكيف يستكبر عن عبادة ربه، كيف يتجبر ويطغى ويظلم ويبغي ويجور. فأصله مخلوق من تراب حيث خلق آدم أبو البشر عليه السلام، الذي تناسلت منه هذه المجموعات البشرية الهائلة التي انتشرت في الأرض على امتدادها. كيف تحول هذا التراب إلى بشر وتخلق منه كائن حي عاقل مفكر! وكيف نتجت عن هذا الكائن تلك المجموعات الهائلة والقرون المتتالية!</p>
+      <p class="id">Pada ayat-ayat ini, Allah mengarahkan manusia untuk merenungkan dirinya sendiri, keajaiban penciptaannya, dan keindahan susunan tubuhnya, yang semua itu menunjukkan kebesaran, ilmu, kekuasaan, dan kebijaksanaan Penciptanya, serta bahwa hanya Dia yang berhak disembah tanpa sekutu. Manusia adalah makhluk lemah yang senantiasa membutuhkan Penciptanya, tidak dapat lepas dari-Nya walau sekejap mata pun; lalu bagaimana mungkin ia menyombongkan diri untuk tidak beribadah kepada Rabbnya, bagaimana ia bisa bersikap congkak, melampaui batas, berbuat zalim, melanggar, dan bertindak sewenang-wenang? Padahal asalnya diciptakan dari tanah, sebagaimana Adam, bapak manusia 'alaihis salam, diciptakan, yang darinya berkembang biak kelompok-kelompok manusia yang begitu besar dan tersebar di seluruh penjuru bumi. Betapa menakjubkannya tanah ini berubah menjadi manusia dan tercipta darinya makhluk hidup yang berakal dan berpikir! Dan betapa menakjubkannya dari satu makhluk ini lahir kelompok-kelompok besar serta generasi demi generasi yang berkesinambungan!</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ثم من عجيب أمر هذا الإنسان ألا يتفكر في نفسه وعجيب خلقته. وحينما أخبر أن هناك حياة بعد الموت وداراً غير هذه الدار وأمر بالاستعداد لها، استبعد هذا الأمر وأنكره، ونفى أن يكون هناك بعث ونشور. وكيف يمكن هذا في نظره وقد فنيت الأجسام وبليت العظام وتفرقت الأعضاء وتفككت الأوصال؟! نسي خلقه الأول وإيجاده من عدم، وأن الذي قدر على البدء قادر على الإعادة من باب أولى: ﴿وَهُوَ الَّذِي يَبْدَأُ الْخَلْقَ ثُمَّ يُعِيدُهُ وَهُوَ أَهْوَنُ عَلَيْهِ وَلَهُ الْمَثَلُ الْأَعْلَىٰ فِي السَّمَاوَاتِ وَالْأَرْضِ وَهُوَ الْعَزِيزُ الْحَكِيمُ﴾ (سورة الروم).</p>
+      <p class="id">Termasuk keajaiban perkara manusia ini, ia tidak mau merenungkan dirinya sendiri dan keajaiban penciptaannya. Ketika dikabarkan bahwa ada kehidupan setelah kematian dan alam lain selain dunia ini, serta diperintahkan untuk mempersiapkan diri menghadapinya, ia justru menganggapnya mustahil dan mengingkarinya, serta menyangkal adanya kebangkitan dan pengumpulan kembali. Bagaimana mungkin hal itu terjadi menurut pandangannya, padahal jasad telah hancur, tulang telah lapuk, anggota badan telah tercerai-berai dan terurai?! Ia lupa akan penciptaannya yang pertama dan pengadaannya dari ketiadaan, padahal Dzat yang mampu memulai penciptaan tentu lebih mampu lagi untuk mengulanginya: 'Dan Dialah yang memulai penciptaan, kemudian mengulanginya kembali, dan itu lebih mudah bagi-Nya. Dan bagi-Nyalah sifat yang Mahatinggi di langit dan di bumi; Dialah Yang Mahaperkasa lagi Mahabijaksana.' (QS. Ar-Rum).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يقول العلامة ابن القيم: وهذا كثير في القرآن، يدعو العبد إلى النظر والفكر في مبدأ خلقه ووسطه وآخره؛ إذ نفسه وخلقه من أعظم الدلائل على خالقه وفاطره، وأقرب شيء إلى الإنسان نفسه، وفيه من العجائب الدالة على عظمة الله ما تنقضي الأعمار في الوقوف على بعضه، وهو غافل عنه معرض عن التفكر فيه، ولو فكر في نفسه لزجره ما يعلم من عجائب خلقها عن كفره. قال الله تعالى: ﴿قُتِلَ الْإِنسَانُ مَا أَكْفَرَهُ مِنْ أَيِّ شَيْءٍ خَلَقَهُ مِن نُّطْفَةٍ خَلَقَهُ فَقَدَّرَهُ ثُمَّ السَّبِيلَ يَسَّرَهُ ثُمَّ أَمَاتَهُ فَأَقْبَرَهُ ثُمَّ إِذَا شَاءَ أَنشَرَهُ﴾ (سورة عبس).</p>
+      <p class="id">Al-'Allamah Ibnul Qayyim berkata: Hal semacam ini banyak disebutkan dalam Al-Qur'an, mengajak setiap hamba untuk merenungkan dan memikirkan awal penciptaannya, pertengahannya, dan akhirnya; karena dirinya dan penciptaannya sendiri termasuk dalil terbesar atas keberadaan Penciptanya. Padahal tidak ada sesuatu yang lebih dekat dengan manusia selain dirinya sendiri, dan pada dirinya terdapat begitu banyak keajaiban yang menunjukkan kebesaran Allah, sampai-sampai seumur hidup pun tidak cukup untuk memahami sebagiannya saja — namun ia lalai dan berpaling dari merenungkannya. Seandainya ia mau merenungkan dirinya sendiri, niscaya keajaiban penciptaan yang ia ketahui akan mencegahnya dari kekufuran. Allah Ta'ala berfirman: 'Binasalah manusia; alangkah kufurnya dia! Dari apakah Allah menciptakannya? Dari setetes mani, Dia menciptakannya lalu menentukan kadarnya, kemudian memudahkan jalannya (kelahirannya), kemudian mematikannya dan menguburkannya, kemudian apabila Dia menghendaki, Dia membangkitkannya kembali.' (QS. 'Abasa).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فلم يكرر سبحانه على أسماعنا وعقولنا ذكر هذا لنسمع لفظ النطفة والعلقة والمضغة والتراب، ولا لنتكلم بها فقط، ولا لمجرد تعريفنا بذلك، بل لأمر وراء ذلك كله هو المقصود بالخطاب (1).</p>
+      <p class="id">Allah Yang Mahasuci tidaklah mengulang-ulang penyebutan ini kepada pendengaran dan akal kita hanya agar kita sekadar mendengar istilah nutfah, 'alaqah, mudhghah, dan tanah, atau sekadar membicarakannya, ataupun semata-mata untuk memperkenalkan hal itu kepada kita; melainkan ada maksud yang lebih dalam di balik semua itu yang menjadi tujuan sebenarnya dari seruan ini (1).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) مفتاح دار السعادة صفحة ٢٠٥، ومراده بما وراء ذلك عبادة الله وحده، حيث هو المتفرد بخلق هذا الإنسان الذي كفر بربه.</p>
+      <p class="id">(1) Miftah Dar as-Sa'adah, halaman 205; yang dimaksud dengan 'maksud di balik itu' adalah agar manusia beribadah hanya kepada Allah semata, karena Dialah satu-satunya yang menciptakan manusia yang justru mengingkari Rabbnya itu.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهذا الإنسان حين يسأل يعترف بأن الله هو الذي خلقه: ﴿وَلَئِن سَأَلْتَهُم مَّنْ خَلَقَهُمْ لَيَقُولُنَّ اللَّهُ فَأَنَّىٰ يُؤْفَكُونَ﴾ (الزخرف).</p>
+      <p class="id">Manusia ini, apabila ditanya, akan mengakui bahwa Allah-lah yang menciptakannya: 'Dan jika engkau bertanya kepada mereka: Siapakah yang menciptakan mereka? Niscaya mereka akan menjawab: Allah. Maka bagaimana mereka bisa dipalingkan (dari kebenaran)?' (QS. Az-Zukhruf).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ومع هذا هناك من يتجه بعبادته إلى غير خالقه، ويشرك مع الله من لا يملك له نفعاً ولا ضراً، ومن ثم كان جرمه أشد الجرم وذنبه أعظم الذنب. ففي الحديث لما سئل النبي ﷺ: «أي الذنب أعظم؟ قال: أن تجعل لله نداً وهو خلقك» (1). وهو معترف أيضاً أن هؤلاء الشركاء الذين اتخذهم مع الله لا يملكون له موتاً ولا حياة ولا نشوراً: ﴿اللَّهُ الَّذِي خَلَقَكُمْ ثُمَّ رَزَقَكُمْ ثُمَّ يُمِيتُكُمْ ثُمَّ يُحْيِيكُمْ هَلْ مِن شُرَكَائِكُم مَّن يَفْعَلُ مِن ذَٰلِكُم مِّن شَيْءٍ سُبْحَانَهُ وَتَعَالَىٰ عَمَّا يُشْرِكُونَ﴾ (سورة الروم).</p>
+      <p class="id">Meskipun demikian, ada saja orang yang menujukan ibadahnya kepada selain Penciptanya, dan menyekutukan Allah dengan sesuatu yang sama sekali tidak memiliki kemampuan memberi manfaat atau mudarat baginya; oleh karena itu, dosanya adalah dosa yang paling berat dan kesalahannya adalah kesalahan yang paling besar. Dalam sebuah hadis, ketika Nabi ﷺ ditanya: 'Dosa apakah yang paling besar?' Beliau menjawab: 'Engkau menjadikan tandingan bagi Allah padahal Dialah yang menciptakanmu' (1). Ia sendiri pun mengakui bahwa sekutu-sekutu yang ia jadikan bersama Allah itu sama sekali tidak berkuasa mematikan, menghidupkan, ataupun membangkitkannya: 'Allah-lah yang menciptakan kalian, kemudian memberi kalian rezeki, kemudian mematikan kalian, kemudian menghidupkan kalian kembali. Adakah di antara sekutu-sekutu kalian yang dapat melakukan sesuatu pun dari semua itu? Mahasuci Dia dan Mahatinggi dari apa yang mereka sekutukan.' (QS. Ar-Rum).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا أحد منهم يقدر ولو من باب المكابرة أو يتجرأ على أن يدعي أن هذه المعبودات الوثنية تقدر على الخلق والرزق والإماتة والإحياء، فلماذا إذن يشركونها مع الله في العبادة مع قيام البرهان على بطلان عبادتها.</p>
+      <p class="id">Tidak seorang pun dari mereka yang berani, sekalipun hanya karena sikap keras kepala, mengklaim bahwa sesembahan-sesembahan berhala ini mampu mencipta, memberi rezeki, mematikan, ataupun menghidupkan. Lalu mengapa mereka tetap menyekutukannya dengan Allah dalam ibadah, padahal telah tegak bukti yang membatalkan penyembahan terhadapnya?</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) رواه البخاري ومسلم.</p>
+      <p class="id">(1) Diriwayatkan oleh Imam Bukhari dan Muslim.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-2-bagian-4">4 - ما جاء في القرآن الكريم</h3>
+
+    <div class="ayat">
+      <p class="ar">ما جاء في القرآن الكريم من لفت النظر إلى قدرة الله تعالى على إيجاد الخلق في المادة الميتة الجامدة، وإخراج الحي من الميت، ومن بديع خلق الله وعجيب وباهر قدرته سريان الحياة في المواد الميتة، ومن ذلك:</p>
+      <p class="id">Termasuk hal yang disebutkan dalam Al-Qur'an untuk mengarahkan perhatian kepada kekuasaan Allah Ta'ala dalam mewujudkan ciptaan dari materi mati yang beku, serta mengeluarkan yang hidup dari yang mati; dan di antara keindahan ciptaan Allah serta kekuasaan-Nya yang menakjubkan dan gemilang adalah mengalirnya kehidupan pada materi yang mati. Di antaranya:</p>
+    </div>
+
+    <h4 class="sub__judul" id="pasal-2-sub-5">أولاً - خلق آدم من تراب</h4>
+
+    <div class="ayat quran">
+      <p class="ar">قال تعالى: ﴿إِنِّي خَالِقٌ بَشَرًا مِّن صَلْصَالٍ مِّنْ حَمَإٍ مَّسْنُونٍ﴾ (سورة الحجر)، ﴿إِنِّي خَالِقٌ بَشَرًا مِن طِينٍ﴾ (سورة ص). كيف تحول هذا التراب وهذا الطين إلى لحم ودم وعظم وعروق وسمع وبصر إلى غير ذلك!</p>
+      <p class="id">Allah Ta'ala berfirman: 'Sesungguhnya Aku akan menciptakan manusia dari tanah liat kering yang berasal dari lumpur hitam yang diberi bentuk.' (QS. Al-Hijr), 'Sesungguhnya Aku akan menciptakan manusia dari tanah.' (QS. Shad). Betapa menakjubkannya tanah dan lumpur ini berubah menjadi daging, darah, tulang, urat, pendengaran, penglihatan, dan berbagai hal lainnya!</p>
+    </div>
+
+    <h4 class="sub__judul" id="pasal-2-sub-6">ثانياً - خلق بني آدم من الماء</h4>
+
+    <div class="ayat quran">
+      <p class="ar">قال تعالى: ﴿فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ خُلِقَ مِن مَّاءٍ دَافِقٍ﴾ (سورة الطارق). كيف خلق من هذا السائل المهين هذا الإنسان العجيب.</p>
+      <p class="id">Allah Ta'ala berfirman: 'Maka hendaklah manusia memperhatikan dari apa dia diciptakan; dia diciptakan dari air yang memancar.' (QS. Ath-Thariq). Betapa menakjubkannya, dari cairan yang hina ini tercipta manusia yang begitu mengagumkan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال الإمام ابن القيم رحمه الله: «فانظر الآن إلى النطفة بعين البصيرة، وهي قطرة من ماء مهين ضعيف مستقذر، ولو مرت بها ساعة من الزمان فسدت وأنتنت. كيف استخرجها رب الأرباب العليم القدير من بين الصلب والترائب، منقادة لقدرته، مطيعة لمشيئته، مذللة الانقياد على ضيق طرقها واختلاف مجاريها، إلى أن ساقها إلى مستقرها ومجمعها. وكيف جمع سبحانه بين الذكر والأنثى وألقى المحبة بينهما، وكيف قادهما بسلسلة الشهوة والمحبة إلى الاجتماع الذي هو سبب تخليق الولد وتكوينه.</p>
+      <p class="id">Imam Ibnul Qayyim rahimahullah berkata: 'Perhatikanlah sekarang nutfah (setetes mani) dengan mata hati, ia hanyalah setetes air yang hina, lemah, dan menjijikkan, yang seandainya dibiarkan satu jam saja pasti akan rusak dan berbau busuk. Namun lihatlah bagaimana Rabb segala Rabb Yang Maha Mengetahui lagi Maha Kuasa mengeluarkannya dari antara tulang sulbi dan tulang dada, tunduk pada kekuasaan-Nya, patuh pada kehendak-Nya, mengalir dengan penuh ketundukan melalui jalur-jalurnya yang sempit dan berbeda-beda, hingga akhirnya sampai ke tempat menetap dan berkumpulnya. Lihat pula bagaimana Dia Yang Mahasuci mempertemukan lelaki dan perempuan serta menanamkan cinta di antara keduanya, dan bagaimana Dia menuntun keduanya melalui rantai syahwat dan cinta menuju pertemuan yang menjadi sebab terciptanya dan terbentuknya seorang anak.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وكيف قدر اجتماع ذينك الماءين مع بعد كل منهما عن صاحبه، وساقهما من أعماق العروق والأعضاء وجمعهما في موضع واحد، جعل لهما قراراً مكيناً لا يناله هواء فيفسد، ولا برد فيجمد، ولا عارض يصل إليه، ولا آفة تتسلط عليه. إلى أن قال: فارجع إلى النطفة وتأمل حالها وما صارت إليه ثانياً، وأنه لو اجتمع الإنس والجن على أن يخلقوا لها سمعاً أو بصراً أو عقلاً أو قدرة أو علماً أو روحاً، بل عظماً واحداً من أصغر عظامها، بل عرقاً من أدق عروقها، بل شعرة واحدة، لعجزوا عن ذلك، بل ذلك كله آثار صنع الله الذي أتقن كل شيء في قطرة من ماء مهين» (1).</p>
+      <p class="id">'Dan bagaimana Dia mentakdirkan pertemuan dua cairan itu padahal keduanya berasal dari tempat yang berjauhan, lalu menuntun keduanya dari kedalaman urat dan anggota tubuh serta mengumpulkan keduanya di satu tempat, dan menjadikan bagi keduanya tempat menetap yang kokoh, tidak tersentuh udara yang bisa merusaknya, tidak pula hawa dingin yang bisa membekukannya, tidak ada gangguan yang bisa menjangkaunya, dan tidak ada penyakit yang bisa menguasainya. Hingga beliau berkata: Maka kembalilah merenungkan nutfah itu dan perhatikan keadaannya serta apa yang kemudian terjadi padanya; sesungguhnya seandainya seluruh manusia dan jin berkumpul untuk menciptakan baginya pendengaran, penglihatan, akal, kekuatan, ilmu, ataupun ruh — bahkan sekadar satu tulang terkecilnya, atau satu urat yang paling halus, bahkan sehelai rambut sekalipun — niscaya mereka semua akan tidak mampu melakukannya. Semua itu adalah jejak ciptaan Allah yang menyempurnakan segala sesuatu, bahkan pada setetes air yang hina sekalipun.' (1)</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) مفتاح دار السعادة صفحة ٢٠٥، ٢١٤.</p>
+      <p class="id">(1) Miftah Dar as-Sa'adah, halaman 205, 214.</p>
+    </div>
+
+    <h4 class="sub__judul" id="pasal-2-sub-7">ثالثاً: إخراج الحي من الميت</h4>
+
+    <div class="ayat quran">
+      <p class="ar">قال تعالى: ﴿وَتُخْرِجُ الْحَيَّ مِنَ الْمَيِّتِ وَتُخْرِجُ الْمَيِّتَ مِنَ الْحَيِّ﴾ (آل عمران آية ٢٧)، ﴿إِنَّ اللَّهَ فَالِقُ الْحَبِّ وَالنَّوَىٰ يُخْرِجُ الْحَيَّ مِنَ الْمَيِّتِ وَمُخْرِجُ الْمَيِّتِ مِنَ الْحَيِّ﴾ (الأنعام آية ٩٥). ومعناه أن الله سبحانه يخرج الحيوان من النطفة وهي ميتة، ويخرج النطفة من الحيوان. وقيل: الفرخ من البيضة والبيضة من الطير. وقيل: المؤمن من الكافر والكافر من المؤمن (2). والكل حاصل، وهو دليل على عجيب قدرة الله ومحيط علمه بكل شيء.</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan Engkau mengeluarkan yang hidup dari yang mati dan mengeluarkan yang mati dari yang hidup.' (QS. Ali 'Imran ayat 27), 'Sesungguhnya Allah yang menumbuhkan butir biji-bijian dan biji buah; Dia mengeluarkan yang hidup dari yang mati dan mengeluarkan yang mati dari yang hidup.' (QS. Al-An'am ayat 95). Maknanya, Allah Yang Mahasuci mengeluarkan makhluk hidup dari nutfah yang mati, dan mengeluarkan nutfah dari makhluk hidup. Ada pula yang menafsirkan: anak burung dari telur dan telur dari burung. Ada pula yang menafsirkan: orang mukmin dari orang kafir dan orang kafir dari orang mukmin (2). Semua tafsiran ini benar adanya, dan itu menjadi dalil atas kekuasaan Allah yang menakjubkan serta ilmu-Nya yang meliputi segala sesuatu.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) انظر تفسير البغوي (١/٢٩١).</p>
+      <p class="id">(2) Lihat Tafsir Al-Baghawi (1/291).</p>
+    </div>
+
+    <h4 class="sub__judul" id="pasal-2-sub-8">رابعاً: سريان الحياة في المادة الميتة</h4>
+
+    <div class="ayat quran">
+      <p class="ar">قال تعالى: ﴿وَآيَةٌ لَّهُمُ الْأَرْضُ الْمَيْتَةُ أَحْيَيْنَاهَا وَأَخْرَجْنَا مِنْهَا حَبًّا فَمِنْهُ يَأْكُلُونَ﴾ (سورة يس)، قال تعالى: ﴿وَتَرَى الْأَرْضَ هَامِدَةً فَإِذَا أَنزَلْنَا عَلَيْهَا الْمَاءَ اهْتَزَّتْ وَرَبَتْ وَأَنبَتَتْ مِن كُلِّ زَوْجٍ بَهِيجٍ﴾ (سورة الحج). أليس وجود تربة صالحة كوجود رحم صالحة، وماء المطر كماء الفحل، وتخلق النطفة في الرحم كتخلق البذرة في التربة، وخروج الزرع حياً نامياً كخروج الولد حياً نامياً، وهكذا إلى حصاد الزرع وموت الإنسان؟ فهذان دليلان عقليان على صحة البعث (1) وقدرة الله تعالى ووحدانيته.</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan suatu tanda (kekuasaan Allah) bagi mereka adalah bumi yang mati; Kami hidupkan ia dan Kami keluarkan darinya biji-bijian, maka darinya mereka makan.' (QS. Yasin), Allah Ta'ala berfirman: 'Dan engkau lihat bumi ini kering dan tandus, kemudian apabila Kami turunkan air (hujan) di atasnya, hiduplah ia dan suburlah, serta menumbuhkan berbagai macam pasangan (tumbuhan) yang indah.' (QS. Al-Hajj). Bukankah keberadaan tanah yang subur itu seperti keberadaan rahim yang subur, air hujan seperti air pembuahan, terbentuknya janin di dalam rahim seperti tumbuhnya benih di dalam tanah, dan keluarnya tanaman dalam keadaan hidup dan tumbuh seperti lahirnya anak dalam keadaan hidup dan tumbuh, begitu seterusnya hingga panen tanaman dan kematian manusia? Maka kedua hal ini adalah dalil akal yang membuktikan kebenaran hari kebangkitan (1), serta kekuasaan dan keesaan Allah Ta'ala.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) أيسر التفاسير للجزائري (٣/١٤١-١٤٢).</p>
+      <p class="id">(1) Aisar At-Tafasir karya Al-Jaza'iri (3/141-142).</p>
+    </div>
+
+    <h4 class="sub__judul" id="pasal-2-sub-9">خامساً: الموجودات لابد لها من موجد ووحدة الخلق تدل على وحدانية الخالق</h4>
+
+    <div class="ayat quran">
+      <p class="ar">النتيجة التي يوصل إليها النظر في هذه المخلوقات هي الاستدلال بها على خالقها وعظيم سلطانه ووجوب شكره وذكره وعبادته وحده لا شريك له؛ فإنها ما خلقت باطلاً ولا أوجدت عبثاً. قال تعالى: ﴿إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ الَّذِينَ يَذْكُرُونَ اللَّهَ قِيَامًا وَقُعُودًا وَعَلَىٰ جُنُوبِهِمْ وَيَتَفَكَّرُونَ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ رَبَّنَا مَا خَلَقْتَ هَٰذَا بَاطِلًا سُبْحَانَكَ﴾ (الآيات ١٩٠-١٩١ من سورة آل عمران)، ﴿وَمَا خَلَقْنَا السَّمَاءَ وَالْأَرْضَ وَمَا بَيْنَهُمَا بَاطِلًا ذَٰلِكَ ظَنُّ الَّذِينَ كَفَرُوا فَوَيْلٌ لِّلَّذِينَ كَفَرُوا مِنَ النَّارِ﴾ (سورة ص).</p>
+      <p class="id">Kesimpulan yang diperoleh dari merenungkan makhluk-makhluk ini adalah untuk berdalil dengannya atas keberadaan Penciptanya dan kebesaran kekuasaan-Nya, serta wajibnya bersyukur, berzikir, dan beribadah hanya kepada-Nya tanpa sekutu; karena semua ini tidaklah diciptakan secara sia-sia ataupun main-main. Allah Ta'ala berfirman: 'Sesungguhnya dalam penciptaan langit dan bumi, serta pergantian malam dan siang, terdapat tanda-tanda (kebesaran Allah) bagi orang-orang yang berakal, yaitu orang-orang yang mengingat Allah sambil berdiri, duduk, atau dalam keadaan berbaring, dan mereka memikirkan tentang penciptaan langit dan bumi (seraya berkata): Wahai Rabb kami, tidaklah Engkau menciptakan semua ini dengan sia-sia, Mahasuci Engkau.' (ayat 190-191 dari QS. Ali 'Imran), 'Dan tidaklah Kami menciptakan langit dan bumi serta apa yang ada di antara keduanya dengan sia-sia. Itu adalah persangkaan orang-orang yang kafir, maka celakalah orang-orang kafir itu karena neraka.' (QS. Shad).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">والأكثر من الخلق يعترفون ويصرخون بأن الله وحده هو الذي خلق هذه المخلوقات، لكنهم يعبدون معه غيره ممن لم يخلق شيئاً: ﴿وَلَئِن سَأَلْتَهُم مَّنْ خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَسَخَّرَ الشَّمْسَ وَالْقَمَرَ لَيَقُولُنَّ اللَّهُ فَأَنَّىٰ يُؤْفَكُونَ﴾ (سورة العنكبوت)، ﴿قُلْ مَن يَرْزُقُكُم مِّنَ السَّمَاءِ وَالْأَرْضِ أَمَّن يَمْلِكُ السَّمْعَ وَالْأَبْصَارَ وَمَن يُخْرِجُ الْحَيَّ مِنَ الْمَيِّتِ وَيُخْرِجُ الْمَيِّتَ مِنَ الْحَيِّ وَمَن يُدَبِّرُ الْأَمْرَ فَسَيَقُولُونَ اللَّهُ فَقُلْ أَفَلَا تَتَّقُونَ فَذَٰلِكُمُ اللَّهُ رَبُّكُمُ الْحَقُّ فَمَاذَا بَعْدَ الْحَقِّ إِلَّا الضَّلَالُ فَأَنَّىٰ تُصْرَفُونَ﴾ (سورة يونس).</p>
+      <p class="id">Kebanyakan makhluk mengakui dan menyatakan dengan lantang bahwa hanya Allah semata yang menciptakan makhluk-makhluk ini, namun mereka tetap menyembah selain-Nya, padahal sesembahan itu tidak menciptakan apa pun: 'Dan sungguh jika engkau bertanya kepada mereka: Siapakah yang menciptakan langit dan bumi serta menundukkan matahari dan bulan? Niscaya mereka akan menjawab: Allah. Maka bagaimana mereka bisa dipalingkan (dari kebenaran)?' (QS. Al-'Ankabut), 'Katakanlah: Siapakah yang memberi kalian rezeki dari langit dan bumi, atau siapakah yang berkuasa atas pendengaran dan penglihatan, dan siapakah yang mengeluarkan yang hidup dari yang mati dan mengeluarkan yang mati dari yang hidup, dan siapakah yang mengatur segala urusan? Maka mereka akan menjawab: Allah. Katakanlah: Maka mengapa kalian tidak bertakwa? Itulah Allah, Rabb kalian yang sesungguhnya. Maka tidak ada sesudah kebenaran itu kecuali kesesatan; maka bagaimana kalian dapat dipalingkan?' (QS. Yunus).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فليس القصد من النظر والاستدلال هو الإقرار بوجود الخالق؛ لأن الكفار على اختلاف أجناسهم وملهم يقرون به، وإنما القصد إفراده بالعبادة وترك عبادة ما سواه. وإذا كان هناك من تظاهر بإنكار الخالق مكابرة وعناداً وتكبراً، فهذا لا قيمة له في حساب البشرية العاقلة المفكرة؛ لأنه قد ألغى عقله وسفه نفسه وصار في عداد البله والمعتوهين. قال الله تعالى: ﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ أَمْ خَلَقُوا السَّمَاوَاتِ وَالْأَرْضَ بَل لَّا يُوقِنُونَ﴾ (سورة الطور).</p>
+      <p class="id">Maka tujuan dari perenungan dan pengambilan dalil ini bukanlah sekadar mengakui keberadaan Sang Pencipta; karena orang-orang kafir dari berbagai bangsa dan agama pun mengakuinya. Tujuan sesungguhnya adalah agar Dia semata yang disembah dan meninggalkan penyembahan terhadap selain-Nya. Adapun jika ada yang menampakkan pengingkaran terhadap Sang Pencipta karena sikap membangkang, keras kepala, dan sombong, maka hal itu tidak bernilai apa pun dalam pandangan manusia yang berakal dan berpikir sehat; karena ia telah membuang akalnya, merendahkan dirinya sendiri, dan tergolong orang yang dungu lagi tidak waras. Allah Ta'ala berfirman: 'Apakah mereka diciptakan tanpa sesuatu pun (pencipta), ataukah mereka sendiri yang menciptakan (diri mereka)? Ataukah mereka yang menciptakan langit dan bumi? Sebenarnya mereka tidak meyakini (apa yang mereka katakan).' (QS. Ath-Thur).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المعنى: هل خلقوا من غير خالق؟ هذا لا يعقل؛ لأن كل مخلوق لابد له من خالق، قضية يعرفها حتى الأطفال. وإذا كان لابد لهم من خالق، فهل هم خلقوا أنفسهم؟ هذا محال؛ لأن الشيء لا يسبق وجوده. وإذا كانوا عاجزين عن خلق أنفسهم فهم عاجزون عن خلق غيرهم من باب أولى: (أم خلقوا السماوات والأرض)؟ لا، فيتعين أن لهم خالقاً هو الله سبحانه، يجب عليهم أن يخضعوا له ويعبدوه وحده لا شريك له.</p>
+      <p class="id">Maknanya: apakah mereka tercipta tanpa adanya pencipta? Hal ini tidak masuk akal, karena setiap makhluk pasti memiliki pencipta — sebuah kaidah yang bahkan dipahami oleh anak-anak sekalipun. Dan jika mereka pasti membutuhkan pencipta, apakah mungkin mereka menciptakan diri mereka sendiri? Ini pun mustahil, karena sesuatu tidak mungkin ada sebelum keberadaannya sendiri. Dan jika mereka tidak mampu menciptakan diri mereka sendiri, tentu mereka lebih tidak mampu lagi menciptakan yang lain: (apakah mereka yang menciptakan langit dan bumi)? Tentu tidak. Maka dapat dipastikan bahwa mereka memiliki Pencipta, yaitu Allah Yang Mahasuci, dan mereka wajib tunduk kepada-Nya serta menyembah-Nya semata tanpa sekutu.</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">فواعجباً كيف يعصى الإله ... أم كيف يجحده الجاحد</p>
+      <p class="id">Betapa mengherankan, bagaimana Sang Ilah bisa didurhakai, atau bagaimana orang yang ingkar berani mengingkari-Nya.</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">ولله في كل تحريكة ... وتسكينة أبداً شاهد</p>
+      <p class="id">Padahal bagi Allah, dalam setiap gerak dan diam, senantiasa terdapat saksi (atas keberadaan-Nya).</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">وفي كل شيء له آية ... تدل على أنه واحد</p>
+      <p class="id">Dan pada segala sesuatu terdapat tanda bagi-Nya, yang menunjukkan bahwa Dia Maha Esa.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ووحدة هذا الخلق وفق نظام واحد، كل يؤدي وظائفه المطلوبة منه طائعاً للذي: ﴿أَعْطَىٰ كُلَّ شَيْءٍ خَلْقَهُ ثُمَّ هَدَىٰ﴾ (سورة طه). لا يستعصي شيء منه عن أداء وظيفته ولا يؤدي وظيفة غيره، مما يدل على أن خالقه ومدبره واحد؛ إذ لو كان له عدة مدبرين لاختل نظامه تبعاً لاختلاف إرادات المدبرين. قال تعالى: ﴿لَوْ كَانَ فِيهِمَا آلِهَةٌ إِلَّا اللَّهُ لَفَسَدَتَا فَسُبْحَانَ اللَّهِ رَبِّ الْعَرْشِ عَمَّا يَصِفُونَ﴾ (سورة الأنبياء).</p>
+      <p class="id">Keesaan ciptaan ini berjalan sesuai satu sistem yang sama, setiap bagian menjalankan fungsinya masing-masing dengan tunduk kepada Dzat yang: 'memberikan kepada segala sesuatu bentuk kejadiannya, kemudian memberinya petunjuk.' (QS. Thaha). Tidak ada satu bagian pun yang menolak menjalankan fungsinya atau menjalankan fungsi bagian yang lain, yang menunjukkan bahwa Pencipta dan Pengaturnya adalah satu; sebab seandainya ada banyak pengatur, niscaya sistemnya akan kacau akibat perbedaan kehendak masing-masing pengatur. Allah Ta'ala berfirman: 'Seandainya pada keduanya (langit dan bumi) terdapat sesembahan-sesembahan selain Allah, niscaya keduanya telah rusak binasa. Maka Mahasuci Allah, Rabb pemilik 'Arsy, dari apa yang mereka sifatkan.' (QS. Al-Anbiya').</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فدلت الآية على أنه لا يجوز أن يكون فيهما آلهة متعددة، بل لا يكون الإله إلا واحداً. وعلى أنه لا يجوز أن يكون هذا الإله الواحد إلا الله سبحانه وتعالى. وإن فساد السماوات والأرض يلزم من كون الآلهة فيهما متعددة، ومن كون الإله الواحد غير الله. وأنه لا صلاح لهما إلا بأن يكون الإله فيهما هو الله وحده لا غيره؛ فإن قيامهما إنما هو بالعدل، وبه قامت السماوات والأرض (1). قال تعالى: ﴿قُلِ اللَّهُ خَالِقُ كُلِّ شَيْءٍ وَهُوَ الْوَاحِدُ الْقَهَّارُ﴾ (سورة الرعد)، وقال تعالى: ﴿مَا اتَّخَذَ اللَّهُ مِن وَلَدٍ وَمَا كَانَ مَعَهُ مِنْ إِلَٰهٍ إِذًا لَّذَهَبَ كُلُّ إِلَٰهٍ بِمَا خَلَقَ وَلَعَلَا بَعْضُهُمْ عَلَىٰ بَعْضٍ﴾ (سورة المؤمنون آية ٩١).</p>
+      <p class="id">Ayat ini menunjukkan bahwa tidak boleh ada sesembahan yang banyak pada keduanya (langit dan bumi), melainkan sesembahan itu haruslah satu saja. Ayat ini juga menunjukkan bahwa sesembahan yang satu itu tidak lain adalah Allah Yang Mahasuci lagi Mahatinggi. Kerusakan langit dan bumi pasti akan terjadi jika sesembahan padanya banyak, ataupun jika sesembahan yang satu itu bukan Allah. Keduanya hanya akan baik jika sesembahan padanya adalah Allah semata, tidak yang lain; karena tegaknya keduanya hanyalah dengan keadilan, dan dengan keadilan itulah langit dan bumi tegak berdiri (1). Allah Ta'ala berfirman: 'Katakanlah: Allah adalah Pencipta segala sesuatu, dan Dialah Yang Maha Esa lagi Maha Mengalahkan.' (QS. Ar-Ra'd), dan firman-Nya Ta'ala: 'Allah sekali-kali tidak mempunyai anak, dan tidak pula ada sesembahan lain bersama-Nya; kalau ada, tentu setiap sesembahan itu akan membawa pergi apa yang diciptakannya, dan sebagian dari sesembahan itu akan mengalahkan sebagian yang lain.' (QS. Al-Mu'minun ayat 91).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) شرح الطحاوية صفحة ٢٥.</p>
+      <p class="id">(1) Syarh Ath-Thahawiyyah, halaman 25.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فتأمل هذا البرهان الباهر بهذا اللفظ الوجيز الظاهر؛ فإن الإله الحق لابد أن يكون خالقاً فاعلاً يوصل إلى عابده النفع ويدفع عنه الضر. فلو كان معه سبحانه إله آخر يشركه في ملكه، لكان له خلق وفعل، وحينئذ فلا يرضى تلك الشركة، بل إن قدر على قهر ذلك الشريك وتفرده بالملك والإلهية دونه فعل، وإن لم يقدر على ذلك انفرد بخلقه وذهب بذلك الخلق، كما ينفرد ملوك الدنيا بعضهم عن بعض بملكه إذا لم يقدر المنفرد منهم على قهر الآخر والعلو عليه. فلابد من أحد ثلاثة أمور:</p>
+      <p class="id">Renungkanlah dalil yang begitu gemilang ini, yang terungkap dalam lafal yang ringkas namun jelas; sesungguhnya sesembahan yang haq pastilah pencipta yang aktif, yang mendatangkan manfaat bagi penyembahnya dan menolak mudarat darinya. Seandainya bersama-Nya ada sesembahan lain yang turut memiliki kerajaan-Nya, tentu sesembahan itu juga memiliki ciptaan dan perbuatan sendiri, dan pada saat itu ia tidak akan rela berbagi kekuasaan itu; bahkan jika ia mampu mengalahkan sekutunya itu, ia akan bertindak sendiri menguasai kerajaan dan ketuhanan tanpa sekutunya, dan jika tidak mampu, maka masing-masing akan berpisah dengan ciptaannya sendiri — sebagaimana raja-raja dunia yang saling berpisah dalam kekuasaan masing-masing apabila tidak ada satu pun di antara mereka yang mampu mengalahkan dan menguasai yang lain. Maka pasti terjadi salah satu dari tiga keadaan berikut:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إما أن يذهب كل إله بخلقه وسلطانه.</p>
+      <p class="id">Bisa jadi masing-masing sesembahan berpisah dengan ciptaan dan kekuasaannya sendiri-sendiri.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">وإما أن يعلو بعضهم على بعض.</p>
+      <p class="id">Atau, bisa jadi sebagian dari mereka saling mengalahkan yang lain.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">وإما أن يكونوا تحت قهر ملك واحد يتصرف فيهم كيف يشاء، ولا يتصرفون فيه، بل يكون وحده هو الإله وهم العبيد (1).</p>
+      <p class="id">Atau, bisa jadi mereka semua berada di bawah kekuasaan satu raja yang berbuat sekehendak-Nya terhadap mereka, sementara mereka tidak berdaya apa pun terhadap-Nya; sehingga hanya Dia sendirilah sesembahan yang sebenarnya, dan mereka semua hanyalah hamba-hamba-Nya belaka (1).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) شرح الطحاوية صفحة ٢٣-٢٤.</p>
+      <p class="id">(1) Syarh Ath-Thahawiyyah, halaman 23-24.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-2-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">ما وجه الاستدلال بالخلق على وحدانية الخالق؟ واذكر الأدلة على ذلك.</p>
+      <p class="id">Bagaimana bentuk pengambilan dalil dari penciptaan atas keesaan Sang Pencipta? Sebutkan dalil-dalilnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر شيئاً من آيات الله الدالة على وحدانيته في خلق الأرض وما فيها.</p>
+      <p class="id">Sebutkan sebagian ayat Allah yang menunjukkan keesaan-Nya dalam penciptaan bumi dan isinya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر شيئاً من أدلة وحدانية الله في خلق السماء، وما المراد بالسماء؟</p>
+      <p class="id">Sebutkan sebagian dalil keesaan Allah dalam penciptaan langit, dan apa yang dimaksud dengan langit?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر شيئاً من أدلة وحدانية الله في خلق الإنسان.</p>
+      <p class="id">Sebutkan sebagian dalil keesaan Allah dalam penciptaan manusia.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر وجه الاستدلال بخلق آدم وخلق بنيه على وحدانية الله وشيئاً من الآيات التي وردت بذلك.</p>
+      <p class="id">Sebutkan bagaimana penciptaan Adam dan keturunannya menjadi dalil atas keesaan Allah, beserta sebagian ayat yang berkaitan dengannya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما معنى إخراج الحي من الميت وإخراج الميت من الحي؟ وما وجه الاستدلال بذلك على وحدانية الله؟</p>
+      <p class="id">Apa makna mengeluarkan yang hidup dari yang mati dan mengeluarkan yang mati dari yang hidup? Bagaimana hal itu menjadi dalil atas keesaan Allah?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما وجه الاستدلال بإحياء الأرض على قدرة الله على إحياء الأموات يوم القيامة؟</p>
+      <p class="id">Bagaimana bentuk pengambilan dalil dari menghidupkan bumi atas kekuasaan Allah untuk membangkitkan orang mati pada hari Kiamat?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر الاستدلال على أن المخلوقات لابد لها من خالق وموجد في العقل والنقل.</p>
+      <p class="id">Sebutkan dalil, baik secara akal maupun dalil naqli (wahyu), bahwa setiap makhluk pasti memiliki pencipta dan pengada.</p>
+    </div>
+
+    <div class="semester-marker"><span>الفصل الدراسي الثاني</span></div>
+
+    <h2 class="pasal__judul" id="pasal-3">الفصل الثالث: برهان اتساق النظام الكوني</h2>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-1">براهين الإرادة والنظام والإتساق الكوني والرد على الطبائعيين والقائلين بالمصادفة</h3>
+
+    <div class="ayat">
+      <p class="ar">كل نظام مركب متناسق مستقل لا يمكن أن يحدث مصادفة من غير قصد، كما يقوله الطبائعيون والقائلون بالمصادفة.</p>
+      <p class="id">Setiap sistem yang tersusun rapi, serasi, dan berdiri sendiri tidak mungkin terjadi secara kebetulan tanpa tujuan, sebagaimana yang dikatakan oleh para naturalis dan penganut paham kebetulan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والطبائعيون هم الذين ينكرون وجود الخالق وينسبون وجود الأشياء إلى الطبيعة، والقائلون بالمصادفة مثلهم ينكرون وجود الخالق وينسبون وجود الأشياء إلى المصادفة (1)، وكلاهما متخبط. فالخلق ليس هو وليد المصادفة ولا نتاج الطبيعة كما يقوله الملاحدة؛ لأن كل محدث لابد له من محدث، وكل مخلوق لابد له من خالق، إذ لا يعقل وجود مخلوق دون خالق، ولا أثر دون مؤثر. فالصبي لو ضرب لالتفت ينظر من الذي ضربه، ولو قيل له: لم يضربك أحد، لم يقتنع، بل يظل يبكي حتى ينتقم ممن ضربه.</p>
+      <p class="id">Para naturalis adalah mereka yang mengingkari keberadaan Sang Pencipta dan menisbahkan keberadaan segala sesuatu kepada 'alam' (nature), sedangkan penganut paham kebetulan juga sama-sama mengingkari keberadaan Sang Pencipta dan menisbahkan keberadaan segala sesuatu kepada kebetulan (1); keduanya sama-sama sesat. Sebab penciptaan bukanlah hasil kebetulan ataupun produk alam semata sebagaimana dikatakan kaum ateis; karena setiap yang terjadi pasti ada yang mengadakannya, dan setiap makhluk pasti ada penciptanya, sebab mustahil ada makhluk tanpa pencipta, dan mustahil ada akibat tanpa sebab. Seorang anak kecil saja, jika dipukul, pasti menoleh mencari siapa yang memukulnya; dan jika dikatakan kepadanya, 'tidak ada yang memukulmu', ia tidak akan percaya, bahkan akan terus menangis hingga membalas orang yang memukulnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولهذا يحكى عن الإمام أبي حنيفة رحمه الله: إن قوماً أرادوا البحث معه في تقرير توحيد الربوبية، فقال لهم: أخبروني قبل أن نتكلم في هذه المسألة عن سفينة في دجلة تذهب فتمتلئ من الطعام والمتاع وغيره بنفسها، وتعود بنفسها فترسي بنفسها وتفرغ وترجع، كل ذلك من غير أن يدبرها أحد. فقالوا: هذا محال لا يمكن أبداً. فقال لهم: إذا كان هذا محالاً في سفينة، فكيف في هذا العالم كله علوه وسفله؟! (2).</p>
+      <p class="id">Oleh karena itu diceritakan tentang Imam Abu Hanifah rahimahullah: bahwa suatu kaum ingin berdebat dengannya untuk menetapkan tauhid rububiyah, maka beliau berkata kepada mereka: 'Beritahu aku terlebih dahulu, sebelum kita membahas masalah ini, tentang sebuah kapal di sungai Dajlah (Tigris) yang berlayar sendiri lalu terisi penuh dengan makanan, barang, dan lainnya dengan sendirinya, kemudian kembali sendiri, berlabuh sendiri, membongkar muatannya sendiri, lalu pergi lagi — semua itu terjadi tanpa ada seorang pun yang mengaturnya.' Mereka menjawab: 'Ini mustahil, tidak mungkin terjadi sama sekali.' Beliau pun berkata kepada mereka: 'Jika hal itu mustahil terjadi pada sebuah kapal saja, bagaimana mungkin bisa terjadi pada alam semesta ini seluruhnya, langit dan buminya?!' (2).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) أي أن الأشياء تحدث نتيجة اجتماع العناصر السالبة والموجبة ونحوها وتفاعلها بنفسها لا بسبب تدبير وارد من خالق لها ومقدر لوجودها في نظرهم.</p>
+      <p class="id">(1) Maksudnya, menurut pandangan mereka, segala sesuatu terjadi akibat pertemuan unsur-unsur negatif dan positif serta sejenisnya yang saling bereaksi dengan sendirinya, bukan karena pengaturan dari suatu Pencipta yang menentukan keberadaannya.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) شرح الطحاوية صفحة ٢١.</p>
+      <p class="id">(2) Syarh Ath-Thahawiyyah, halaman 21.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والمنكرون لوجود الخالق مضطربون في جوابهم عن هذا البرهان القاطع، وهو أننا نشاهد الأشياء تحدث شيئاً فشيئاً، وكل محدث لابد له من محدث. فتارة يقولون: هذه الأشياء تحدثها الطبيعة التي هي عبارة عن ذات الأشياء من النبات والحيوانات والجمادات، فهذه الكائنات عندهم هي الطبيعة وهي التي أوجدت نفسها. أو يقولون: هي عبارة عن صفات الأشياء وخصائصها من حرارة وبرودة ورطوبة ويبوسة وملاسة وخشونة، وهذه القابليات من حركة وسكون ونمو وتزاوج وتوالد، هذه الصفات وهذه القابليات هي الطبيعة بزعمهم، وهي التي أوجدت الأشياء.</p>
+      <p class="id">Orang-orang yang mengingkari keberadaan Sang Pencipta sesungguhnya kebingungan dalam menjawab dalil pasti ini, yaitu bahwa kita menyaksikan segala sesuatu terjadi sedikit demi sedikit, dan setiap yang terjadi itu pasti ada yang mengadakannya. Terkadang mereka berkata: segala sesuatu ini diadakan oleh 'alam' (nature), yang tidak lain adalah wujud benda-benda itu sendiri seperti tumbuhan, hewan, dan benda mati — sehingga menurut mereka, makhluk-makhluk inilah yang disebut alam, dan merekalah yang mengadakan diri mereka sendiri. Atau mereka berkata: alam adalah sifat-sifat dan karakteristik benda, seperti panas, dingin, lembap, kering, licin, dan kasar, serta berbagai potensi seperti gerak, diam, tumbuh, berkembang biak, dan beranak-pinak — sifat-sifat dan potensi inilah yang mereka anggap sebagai 'alam', dan merekalah yang mengadakan segala sesuatu.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهذا قول باطل على كلا الاعتبارين؛ لأن الطبيعة بالاعتبار الأول على حد قولهم تكون خالقة ومخلوقة، فالأرض خلقت الأرض والسماء خلقت السماء وهكذا، وهذا مستحيل. وإذا كان صدور الخلق عن الطبيعة بهذا الاعتبار مستحيلاً، فاستحالته بالاعتبار الثاني أشد استحالة؛ لأنه إذا عجزت ذات الشيء عن خلقه فعجز صفته من باب أولى؛ لأن وجود الصفة مرتبط بالموصوف الذي تقوم به، فكيف تخلقه وهي مفتقرة إليه؟! وإذا ثبت بالبرهان حدوث الموصوف لزم حدوث الصفة.</p>
+      <p class="id">Pandangan ini batil dalam kedua tinjauannya; karena menurut tinjauan pertama, 'alam' menjadi sekaligus pencipta dan yang diciptakan — bumi menciptakan bumi, langit menciptakan langit, dan seterusnya — dan ini adalah suatu kemustahilan. Jika munculnya penciptaan dari 'alam' menurut tinjauan pertama saja sudah mustahil, maka kemustahilannya menurut tinjauan kedua jauh lebih besar lagi; karena jika benda itu sendiri tidak mampu menciptakan dirinya, maka sifat dari benda itu tentu lebih tidak mampu lagi; sebab keberadaan suatu sifat bergantung pada benda yang memilikinya — lalu bagaimana mungkin sifat itu bisa menciptakan bendanya sendiri, padahal ia justru bergantung kepadanya?! Dan jika telah terbukti secara dalil bahwa benda itu baru (diciptakan), maka pastilah sifatnya pun demikian (baru dan diciptakan).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وأيضاً فالطبيعة لا شعور لها فهي آلة محضة، فكيف تصدر عنها الأفعال العظيمة التي هي في غاية الإبداع والحكمة والإتقان؟! فإنك إذا نظرت إلى هذا الكون المنظم بأفلاكه وأرضه وسمائه وسير المخلوقات فيه بهذه الدقة والتنظيم العجيب، تبين لك أنه لا يمكن أن يصدر إلا عن خالق حكيم هو الله: ﴿قُلِ اللَّهُ خَالِقُ كُلِّ شَيْءٍ وَهُوَ الْوَاحِدُ الْقَهَّارُ﴾ (سورة الرعد).</p>
+      <p class="id">Selain itu, 'alam' tidak memiliki kesadaran, ia hanyalah sekadar alat semata — lalu bagaimana mungkin darinya muncul perbuatan-perbuatan besar yang begitu sempurna dalam keindahan, hikmah, dan ketelitiannya?! Sesungguhnya jika engkau memperhatikan alam semesta yang begitu teratur ini, dengan orbit-orbitnya, buminya, langitnya, serta pergerakan makhluk-makhluk di dalamnya dengan ketelitian dan keteraturan yang menakjubkan, niscaya jelas bagimu bahwa semua itu tidak mungkin muncul kecuali dari Pencipta Yang Mahabijaksana, yaitu Allah: 'Katakanlah: Allah adalah Pencipta segala sesuatu, dan Dialah Yang Maha Esa lagi Maha Mengalahkan.' (QS. Ar-Ra'd).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وقد أعلن الله أنه هو الخالق وحده وتحدى هؤلاء الملحدين والمشركين بقوله: ﴿هَذَا خَلْقُ اللَّهِ فَأَرُونِي مَاذَا خَلَقَ الَّذِينَ مِن دُونِهِ﴾ (سورة لقمان آية ١١)، وبقوله: ﴿يَا أَيُّهَا النَّاسُ اذْكُرُوا نِعْمَتَ اللَّهِ عَلَيْكُمْ هَلْ مِنْ خَالِقٍ غَيْرُ اللَّهِ يَرْزُقُكُم مِّنَ السَّمَاءِ وَالْأَرْضِ لَا إِلَٰهَ إِلَّا هُوَ فَأَنَّىٰ تُؤْفَكُونَ﴾ (سورة فاطر)، وبقوله: ﴿يَا أَيُّهَا النَّاسُ ضُرِبَ مَثَلٌ فَاسْتَمِعُوا لَهُ إِنَّ الَّذِينَ تَدْعُونَ مِن دُونِ اللَّهِ لَن يَخْلُقُوا ذُبَابًا وَلَوِ اجْتَمَعُوا لَهُ﴾ (سورة الحج آية ٧٣)،</p>
+      <p class="id">Allah telah menyatakan bahwa hanya Dia semata Sang Pencipta, dan Dia menantang kaum ateis dan musyrik dengan firman-Nya: 'Inilah ciptaan Allah, maka perlihatkanlah kepadaku apa yang diciptakan oleh sesembahan-sesembahan selain-Nya.' (QS. Luqman ayat 11), dan firman-Nya: 'Wahai manusia, ingatlah nikmat Allah kepada kalian. Adakah pencipta selain Allah yang memberi kalian rezeki dari langit dan bumi? Tidak ada sesembahan yang berhak disembah selain Dia, maka bagaimana kalian bisa dipalingkan (dari kebenaran)?' (QS. Fatir), dan firman-Nya: 'Wahai manusia, telah dibuat suatu perumpamaan, maka dengarkanlah! Sesungguhnya sesembahan-sesembahan yang kalian seru selain Allah itu sekali-kali tidak dapat menciptakan seekor lalat pun, sekalipun mereka bersatu-padu untuk menciptakannya.' (QS. Al-Hajj ayat 73),</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وبقوله: ﴿قُلْ أَرَأَيْتُمْ إِن جَعَلَ اللَّهُ عَلَيْكُمُ اللَّيْلَ سَرْمَدًا إِلَىٰ يَوْمِ الْقِيَامَةِ مَنْ إِلَٰهٌ غَيْرُ اللَّهِ يَأْتِيكُم بِضِيَاءٍ أَفَلَا تَسْمَعُونَ قُلْ أَرَأَيْتُمْ إِن جَعَلَ اللَّهُ عَلَيْكُمُ النَّهَارَ سَرْمَدًا إِلَىٰ يَوْمِ الْقِيَامَةِ مَنْ إِلَٰهٌ غَيْرُ اللَّهِ يَأْتِيكُم بِلَيْلٍ تَسْكُنُونَ فِيهِ أَفَلَا تُبْصِرُونَ﴾ (سورة القصص)،</p>
+      <p class="id">Dan firman-Nya: 'Katakanlah: Terangkanlah kepadaku, jika Allah menjadikan malam bagi kalian terus-menerus hingga hari Kiamat, sesembahan manakah selain Allah yang dapat mendatangkan cahaya terang bagi kalian? Maka apakah kalian tidak mendengarkan? Katakanlah: Terangkanlah kepadaku, jika Allah menjadikan siang bagi kalian terus-menerus hingga hari Kiamat, sesembahan manakah selain Allah yang dapat mendatangkan malam bagi kalian untuk kalian beristirahat padanya? Maka apakah kalian tidak memperhatikan?' (QS. Al-Qashash),</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وبقوله: ﴿أَمَّنْ خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَأَنزَلَ لَكُم مِّنَ السَّمَاءِ مَاءً فَأَنبَتْنَا بِهِ حَدَائِقَ ذَاتَ بَهْجَةٍ مَّا كَانَ لَكُمْ أَن تُنبِتُوا شَجَرَهَا أَإِلَٰهٌ مَّعَ اللَّهِ بَلْ هُمْ قَوْمٌ يَعْدِلُونَ أَمَّن جَعَلَ الْأَرْضَ قَرَارًا وَجَعَلَ خِلَالَهَا أَنْهَارًا وَجَعَلَ لَهَا رَوَاسِيَ وَجَعَلَ بَيْنَ الْبَحْرَيْنِ حَاجِزًا أَإِلَٰهٌ مَّعَ اللَّهِ بَلْ أَكْثَرُهُمْ لَا يَعْلَمُونَ أَمَّن يُجِيبُ الْمُضْطَرَّ إِذَا دَعَاهُ وَيَكْشِفُ السُّوءَ وَيَجْعَلُكُمْ خُلَفَاءَ الْأَرْضِ أَإِلَٰهٌ مَّعَ اللَّهِ قَلِيلًا مَّا تَذَكَّرُونَ أَمَّن يَهْدِيكُمْ فِي ظُلُمَاتِ الْبَرِّ وَالْبَحْرِ وَمَن يُرْسِلُ الرِّيَاحَ بُشْرًا بَيْنَ يَدَيْ رَحْمَتِهِ أَإِلَٰهٌ مَّعَ اللَّهِ تَعَالَى اللَّهُ عَمَّا يُشْرِكُونَ أَمَّن يَبْدَأُ الْخَلْقَ ثُمَّ يُعِيدُهُ وَمَن يَرْزُقُكُم مِّنَ السَّمَاءِ وَالْأَرْضِ أَإِلَٰهٌ مَّعَ اللَّهِ قُلْ هَاتُوا بُرْهَانَكُمْ إِن كُنتُمْ صَادِقِينَ﴾ (سورة النمل).</p>
+      <p class="id">Dan firman-Nya: 'Bukankah Dia (Allah) yang menciptakan langit dan bumi, dan yang menurunkan air untuk kalian dari langit, lalu Kami tumbuhkan dengan air itu kebun-kebun yang indah, yang kalian sekali-kali tidak mampu menumbuhkan pohon-pohonnya? Adakah sesembahan lain bersama Allah? Sebenarnya mereka adalah kaum yang menyimpang (dari kebenaran). Ataukah Dia yang menjadikan bumi sebagai tempat menetap, menjadikan sungai-sungai mengalir di celah-celahnya, menjadikan gunung-gunung yang kokoh baginya, dan menjadikan pembatas di antara dua lautan? Adakah sesembahan lain bersama Allah? Sebenarnya kebanyakan mereka tidak mengetahui. Ataukah Dia yang memperkenankan doa orang yang dalam kesulitan apabila ia berdoa kepada-Nya, dan yang menghilangkan kesusahan, serta menjadikan kalian sebagai khalifah di bumi? Adakah sesembahan lain bersama Allah? Sedikit sekali kalian mengambil pelajaran. Ataukah Dia yang memberi petunjuk kepada kalian dalam kegelapan di darat dan di laut, dan yang mengirimkan angin sebagai pembawa kabar gembira sebelum kedatangan rahmat-Nya? Adakah sesembahan lain bersama Allah? Mahatinggi Allah dari apa yang mereka sekutukan. Ataukah Dia yang memulai penciptaan kemudian mengulanginya, dan yang memberi kalian rezeki dari langit dan bumi? Adakah sesembahan lain bersama Allah? Katakanlah: Kemukakanlah bukti kalian jika kalian orang-orang yang benar.' (QS. An-Naml).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ولما قال النمرود: (أنا أحيي وأميت)، قال له إبراهيم عليه السلام كما قال الله تعالى: ﴿فَإِنَّ اللَّهَ يَأْتِي بِالشَّمْسِ مِنَ الْمَشْرِقِ فَأْتِ بِهَا مِنَ الْمَغْرِبِ فَبُهِتَ الَّذِي كَفَرَ وَاللَّهُ لَا يَهْدِي الْقَوْمَ الظَّالِمِينَ﴾ (سورة البقرة).</p>
+      <p class="id">Ketika Namrud berkata: 'Aku dapat menghidupkan dan mematikan', Nabi Ibrahim 'alaihis salam menjawabnya sebagaimana difirmankan Allah Ta'ala: 'Maka sesungguhnya Allah menerbitkan matahari dari timur, maka terbitkanlah ia dari barat (jika engkau benar).' Maka heran dan terdiamlah orang kafir itu. Dan Allah tidak memberi petunjuk kepada kaum yang zalim.' (QS. Al-Baqarah).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فانقطعت حجة المعاندين، وقامت حجة الله على الخلق أجمعين. قال بعض العلماء في الرد على أصحاب القول بنسبة إيجاد الأشياء إلى الطبيعة (1):</p>
+      <p class="id">Maka terputuslah hujah orang-orang yang membangkang itu, dan tegaklah hujah Allah atas seluruh makhluk. Sebagian ulama pun bersyair dalam membantah orang-orang yang berpendapat bahwa segala sesuatu diadakan oleh 'alam' (nature) semata (1):</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">قل للطبيب الفيلسوف بزعمه ... أن الطبيعة علمها برهاني</p>
+      <p class="id">Katakanlah kepada sang tabib yang menganggap dirinya filsuf, bahwa ilmunya tentang 'alam' itu (justru) menjadi bukti (kelemahannya).</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أين الطبيعة عند كونك نطفة ... في البطن إذ مشجت به الماءان</p>
+      <p class="id">Di manakah 'alam' itu ketika engkau masih setetes mani, di dalam rahim, saat dua cairan itu bercampur padanya?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أين الطبيعة حين عدت علقة ... في أربعين وأربعين ثوان</p>
+      <p class="id">Di manakah 'alam' itu ketika engkau menjadi segumpal darah, dalam empat puluh hari yang berlalu?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أين الطبيعة حين كونك مضغة ... في أربعين وقد مضى العددان</p>
+      <p class="id">Di manakah 'alam' itu ketika engkau menjadi segumpal daging, di empat puluh hari berikutnya, setelah dua masa itu berlalu?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أترى الطبيعة صورتك مصوراً ... بمسامع ومناظر وبنان</p>
+      <p class="id">Apakah engkau kira 'alam' itu yang membentuk rupamu, dengan telinga, mata, dan jari-jemari?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أترى الطبيعة أخرجتك منكساً ... من بطن أمك واهي الأركان</p>
+      <p class="id">Apakah engkau kira 'alam' itu yang mengeluarkanmu dalam keadaan terbalik, dari perut ibumu, dengan tubuh yang masih lemah?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أم فجرت لك باللبان ثديها ... فرضعتها حتى مضى الحولان</p>
+      <p class="id">Ataukah 'alam' yang mengalirkan air susu dari payudara ibumu, sehingga engkau menyusu hingga genap dua tahun?</p>
+    </div>
+
+    <div class="ayat poem">
+      <p class="ar">أم صيرت في والديك محبة ... فهما بما يرضيك مغتبطان</p>
+      <p class="id">Ataukah 'alam' yang menanamkan kasih sayang di hati kedua orang tuamu, sehingga keduanya berbahagia dengan apa saja yang membuatmu senang?</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) من النونية القحطانية.</p>
+      <p class="id">(1) Dikutip dari syair An-Nuniyyah Al-Qahthaniyyah.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-2">تنبيه</h3>
+
+    <div class="ayat">
+      <p class="ar">مما يشبه قول أهل الطبيعة نسبة بعض أفعال الله تعالى إلى بعض مخلوقاته، كنسبة نزول الأمطار إلى المناخات والمنخفضات الجوية أو إلى النجوم، وهو ما يسمى بالاستسقاء بالأنواء. وفي الصحيحين من حديث زيد بن خالد رضي الله عنه قال: «صلى لنا رسول الله ﷺ صلاة الصبح بالحديبية على إثر سماء كانت من الليل، فلما انصرف أقبل على الناس فقال: هل تدرون ماذا قال ربكم؟ قالوا: الله ورسوله أعلم. قال: قال: أصبح من عبادي مؤمن بي وكافر، فأما من قال: مطرنا بفضل الله ورحمته، فذلك مؤمن بي كافر بالكواكب، وأما من قال: مطرنا بنوء كذا وكذا، فذلك كافر بي مؤمن بالكواكب». قال في فتح المجيد (1): دل الحديث على أنه لا يجوز لأحد أن يضيف أفعال الله إلى غيره، ولو على سبيل المجاز، انتهى. ونسبة أفعال الله إلى غيره على نوعين:</p>
+      <p class="id">Termasuk hal yang serupa dengan pandangan kaum naturalis adalah menisbahkan sebagian perbuatan Allah Ta'ala kepada sebagian makhluk-Nya, seperti menisbahkan turunnya hujan kepada kondisi cuaca dan tekanan udara, atau kepada bintang-bintang, yang dikenal dengan istilah al-istisqa' bil-anwa' (meminta hujan dengan menisbahkannya pada bintang). Dalam Shahih Bukhari dan Muslim, dari hadis Zaid bin Khalid radhiyallahu 'anhu, beliau berkata: 'Rasulullah ﷺ shalat Subuh bersama kami di Hudaibiyah setelah semalam turun hujan. Ketika selesai, beliau menghadap kepada orang-orang dan bersabda: Tahukah kalian apa yang difirmankan Rabb kalian? Mereka menjawab: Allah dan Rasul-Nya yang lebih mengetahui. Beliau bersabda: Allah berfirman: Pagi ini di antara hamba-Ku ada yang beriman kepada-Ku dan ada yang kafir. Adapun orang yang berkata: Kita diberi hujan karena karunia dan rahmat Allah, maka dialah yang beriman kepada-Ku dan kafir terhadap bintang. Sedangkan orang yang berkata: Kita diberi hujan karena bintang ini dan itu, maka dialah yang kafir kepada-Ku dan beriman kepada bintang.' Penulis kitab Fathul Majid (1) berkata: Hadis ini menunjukkan bahwa tidak boleh bagi siapa pun menyandarkan perbuatan Allah kepada selain-Nya, sekalipun hanya secara kiasan. Selesai (kutipan). Penisbahan perbuatan Allah kepada selain-Nya ini terbagi menjadi dua jenis:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النوع الأول: أن ينسبها إلى غيره نسبة إيجاد، كأن يعتقد أن نزول المطر بفعل النجوم وتأثيرها، وهذا شرك أكبر وكفر بالله تعالى يخرج من الملة؛ لأنه جعل لله شريكاً في أفعاله.</p>
+      <p class="id">Jenis pertama: menisbahkannya kepada selain Allah sebagai penyebab yang sesungguhnya, seperti meyakini bahwa turunnya hujan disebabkan oleh perbuatan dan pengaruh bintang-bintang. Ini termasuk syirik akbar dan kekufuran kepada Allah Ta'ala yang mengeluarkan pelakunya dari agama Islam; karena ia telah menjadikan sekutu bagi Allah dalam perbuatan-perbuatan-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النوع الثاني: أن ينسبها إلى غير الله مجازاً وتساهلاً في التعبير مع اعتقاده أنها أفعال الله وحده، فهذا محرم وشرك أصغر وكفر أصغر لا يخرج من الملة؛ لأنه لم يعتقد تأثير النوء بإنزال المطر، فيكون من كفر النعم لعدم نسبتها إلى الذي أنعم بها.</p>
+      <p class="id">Jenis kedua: menisbahkannya kepada selain Allah hanya secara kiasan dan kelonggaran dalam ungkapan, sementara ia tetap meyakini bahwa itu semua adalah perbuatan Allah semata. Ini hukumnya haram dan termasuk syirik kecil serta kekufuran kecil yang tidak mengeluarkan pelakunya dari agama Islam; karena ia tidak meyakini adanya pengaruh bintang dalam turunnya hujan, namun perbuatannya ini termasuk mengingkari nikmat karena tidak menisbahkannya kepada Dzat yang memberikan nikmat tersebut.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ومثل هذا أيضاً نسبة الحوادث إلى الدهر ومسبة الدهر من أجل ذلك. قال تعالى: ﴿وَقَالُوا مَا هِيَ إِلَّا حَيَاتُنَا الدُّنْيَا نَمُوتُ وَنَحْيَا وَمَا يُهْلِكُنَا إِلَّا الدَّهْرُ﴾ (سورة الجاثية آية ٢٤).</p>
+      <p class="id">Serupa dengan hal ini adalah menisbahkan berbagai kejadian kepada 'masa/waktu' (ad-dahr) serta mencaci maki waktu karena sebab itu. Allah Ta'ala berfirman: 'Dan mereka berkata: Kehidupan ini tidak lain hanyalah kehidupan dunia kita saja; kita mati dan kita hidup, dan tidak ada yang membinasakan kita selain waktu (masa).' (QS. Al-Jatsiyah ayat 24).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أي: ما ثم إلا هذه الدار، يموت قوم ويعيش آخرون، وليس هناك حياة أخرى نبعث إليها بعد الموت. ونسبوا إهلاكهم إلى الدهر ولم ينسبوه إلى الله، وهذا قول الفلاسفة الدهرية وبعض مشركي العرب، ومنهم من يسب الدهر لأنه يزعم أنه هو الذي يصيبه بالمصائب والمكاره. وفي الصحيحين عن أبي هريرة رضي الله عنه قال: قال رسول الله ﷺ: «يقول الله تعالى: يؤذيني ابن آدم، يسب الدهر وأنا الدهر، بيدي الأمر أقلب الليل والنهار». وفي رواية: «لا تسبوا الدهر فإني أنا الدهر».</p>
+      <p class="id">Maksudnya, tidak ada kehidupan lain selain dunia ini; sebagian orang mati dan sebagian lain hidup, dan tidak ada kehidupan lain yang akan kita jalani setelah kematian. Mereka menisbahkan kebinasaan mereka kepada waktu, bukan kepada Allah — ini adalah pandangan para filsuf Dahriyyah (yang menuhankan waktu) dan sebagian kaum musyrik Arab. Di antara mereka bahkan ada yang mencaci maki waktu karena menganggapnya sebagai penyebab bencana dan hal-hal buruk yang menimpanya. Dalam Shahih Bukhari dan Muslim, dari Abu Hurairah radhiyallahu 'anhu, beliau berkata: Rasulullah ﷺ bersabda: 'Allah Ta'ala berfirman: Anak Adam telah menyakiti-Ku; ia mencaci maki waktu, padahal Akulah waktu itu, di tangan-Kulah segala urusan, Aku yang membolak-balikkan malam dan siang.' Dalam riwayat lain: 'Janganlah kalian mencaci maki waktu, karena sesungguhnya Akulah waktu itu.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال البغوي في شرح السنة: ومعناه أن العرب كان من شأنها ذم الدهر أي سبه عند النوازل؛ لأنهم كانوا ينسبون إليه ما يصيبهم من المصائب والمكاره، فيقولون: أصابتهم قوارع الدهر وأبادهم الدهر. فإذا أضافوا إلى الدهر ما نالهم من الشدائد سبوا فاعلها، فكان مرجع سبهم إلى الله عز وجل، إذ هو الفاعل في الحقيقة للأمور التي يضيفونها إليه، فنهوا عن سب الدهر؛ لأن فاعل هذه الأمور التي سبوا الدهر من أجلها هو الله سبحانه وتعالى، فتكون مسبتهم للدهر مسبة لله تعالى؛ لأن الدهر ليس له فعل في هذه الأمور. وليس معنى الحديث أن الدهر من أسماء الله تعالى، ولكن معناه، كما بينه الحديث، أن الله هو الذي يقلب الليل والنهار ويجري فيهما ما يحبه الناس وما يكرهونه، والله أعلم (2).</p>
+      <p class="id">Al-Baghawi dalam Syarhus Sunnah berkata: Maknanya, bangsa Arab dahulu memiliki kebiasaan mencela waktu, yakni mencacinya ketika tertimpa bencana; karena mereka menisbahkan kepada waktu segala musibah dan keburukan yang menimpa mereka, dengan berkata: 'Bencana waktu telah menimpa mereka' atau 'waktu telah membinasakan mereka'. Ketika mereka menisbahkan kesulitan yang menimpa mereka kepada waktu, sesungguhnya mereka sedang mencaci pelaku sebenarnya, dan pelaku yang sebenarnya itu adalah Allah 'Azza wa Jalla, karena Dialah yang sesungguhnya melakukan hal-hal yang mereka nisbahkan kepada waktu tersebut. Oleh karena itu mereka dilarang mencaci maki waktu; karena pelaku sesungguhnya dari perkara-perkara yang mereka jadikan sasaran cacian terhadap waktu itu adalah Allah Yang Mahasuci lagi Mahatinggi, sehingga cacian mereka terhadap waktu sesungguhnya adalah cacian terhadap Allah Ta'ala; karena waktu itu sendiri tidak memiliki peran apa pun dalam perkara-perkara tersebut. Bukan berarti hadis ini menunjukkan bahwa 'Ad-Dahr' (waktu) termasuk nama-nama Allah Ta'ala, melainkan maknanya — sebagaimana dijelaskan hadis tersebut — bahwa Allah-lah yang membolak-balikkan malam dan siang serta menjadikan di dalamnya apa yang disukai maupun yang tidak disukai manusia. Wallahu a'lam (2).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) انظر فتح المجيد صفحة ٢٦٤.</p>
+      <p class="id">(1) Lihat kitab Fathul Majid, halaman 264.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) انظر فتح المجيد صفحة ٣٥٧-٣٥٨.</p>
+      <p class="id">(2) Lihat kitab Fathul Majid, halaman 357-358.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ومثل ذلك ما ينسب إلى البروج من الحظوظ والنحوس والربح والخسارة كما ينشر في بعض المجلات من الأمور الجاهلية. ومثل هذا سب الريح، فقد ورد النهي عنه في قوله ﷺ: «لا تسبوا الريح، فإذا رأيتم ما تكرهون فقولوا: اللهم إنا نسألك من خير هذه الريح وخير ما فيها وخير ما أمرت به، ونعوذ بك من شر هذه الريح وشر ما فيها وشر ما أمرت به»، صححه الترمذي.</p>
+      <p class="id">Serupa dengan hal ini adalah apa yang dinisbahkan kepada rasi bintang berupa keberuntungan, kesialan, untung, dan rugi, sebagaimana yang sering dimuat dalam sebagian majalah sebagai bentuk kejahiliahan. Termasuk pula dalam hal ini adalah mencaci maki angin; larangan mengenainya telah disebutkan dalam sabda Nabi ﷺ: 'Janganlah kalian mencaci maki angin. Apabila kalian melihat sesuatu yang tidak kalian sukai (dari angin tersebut), maka ucapkanlah: Ya Allah, sesungguhnya kami memohon kepada-Mu kebaikan angin ini, kebaikan apa yang ada padanya, dan kebaikan dari apa yang Engkau perintahkan padanya; dan kami berlindung kepada-Mu dari keburukan angin ini, keburukan apa yang ada padanya, dan keburukan dari apa yang Engkau perintahkan padanya.' Hadis ini dinilai sahih oleh At-Tirmidzi.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وذلك لأن الريح تهب بأمر الله، فمسبتها مسبة للذي أمرها وسخرها، فمسبتها من جنس مسبة الدهر. وبالجملة: تحرم نسبة الحوادث إلى الظواهر الكونية، وقد تكون كفراً، وقد تكون شركاً أكبر أو أصغر بحسب الاعتقاد في ذلك.</p>
+      <p class="id">Hal itu karena angin bertiup atas perintah Allah, sehingga mencacinya sama saja dengan mencaci Dzat yang memerintahkan dan menundukkannya, sebagaimana halnya mencaci maki waktu. Secara umum, menisbahkan berbagai kejadian kepada fenomena-fenomena alam hukumnya haram; hal itu bisa menjadi kekufuran, dan bisa pula menjadi syirik besar atau syirik kecil, tergantung pada keyakinan yang mendasarinya.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-3-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">ما وجه الاستدلال بوحدة الخلق على نظام واحد على وحدانية الخالق؟ وما الدليل على ذلك من القرآن؟</p>
+      <p class="id">Bagaimana bentuk pengambilan dalil dari kesatuan ciptaan yang berjalan atas satu sistem, atas keesaan Sang Pencipta? Apa dalilnya dari Al-Qur'an?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كيف ترد على من قال بأن هذه الموجودات وليدة المصادفة أو من نتاج الطبيعة؟</p>
+      <p class="id">Bagaimana engkau membantah orang yang mengatakan bahwa segala yang ada ini adalah hasil kebetulan atau produk dari 'alam'?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما الدليل على انفراد الله بالخلق وأن غيره لم يخلق شيئاً؟</p>
+      <p class="id">Apa dalil bahwa hanya Allah semata yang mencipta, dan bahwa selain-Nya tidak menciptakan apa pun?</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-4">الفصل الرابع: برهان الكمال الإلهي وغناه عن كل مخلوق وفقر كل مخلوق إليه</h2>
+
+    <div class="ayat">
+      <p class="ar">من براهين التوحيد الكمال الإلهي، وذلك بأن يكون المعبود كاملاً كمالاً مطلقاً، غنياً عما سواه، وكل ما سواه محتاج إليه. وهذا لا ينطبق إلا على الله وحده، فهو الكامل بذاته وأسمائه وصفاته وأفعاله، وما سواه ناقص من كل وجه، وهو الغني عما سواه وما سواه محتاج إليه. إذاً فالله سبحانه هو المستحق للعبادة وحده لكماله وغناه، وما سواه لا يستحق من العبادة شيئاً لنقصه وفقره؛ لأن الكامل الغني يملك ما يطلب منه ويقدر عليه، والناقص الفقير لا يملك ما يطلب منه ولا يقدر عليه. وقد ورد ذكر هذا البرهان في آيات كثيرة من القرآن، منها:</p>
+      <p class="id">Di antara dalil-dalil tauhid adalah kesempurnaan Ilahi, yaitu bahwa sesembahan yang berhak disembah haruslah sempurna secara mutlak, Mahakaya dari selain-Nya, sementara segala sesuatu selain-Nya membutuhkan-Nya. Sifat ini hanya berlaku bagi Allah semata; Dialah yang sempurna dalam Dzat, nama, sifat, dan perbuatan-Nya, sedangkan selain-Nya kurang dari segala sisi, dan Dialah Yang Mahakaya dari selain-Nya sementara selain-Nya membutuhkan-Nya. Oleh karena itu, Allah Yang Mahasuci-lah satu-satunya yang berhak disembah karena kesempurnaan dan kemahakayaan-Nya, sedangkan selain-Nya tidak berhak menerima ibadah sedikit pun karena kekurangan dan kefakirannya; sebab yang sempurna lagi kaya pasti memiliki apa yang diminta darinya dan mampu mewujudkannya, sedangkan yang kurang lagi fakir tidak memiliki apa yang diminta darinya dan tidak pula mampu mewujudkannya. Dalil ini disebutkan dalam banyak ayat Al-Qur'an, di antaranya:</p>
+    </div>
+
+    <div class="ayat numbered quran numbered-first">
+      <span class="num-marker">1</span><p class="ar">قوله تعالى: ﴿ذَٰلِكُمُ اللَّهُ رَبُّكُمْ لَهُ الْمُلْكُ وَالَّذِينَ تَدْعُونَ مِن دُونِهِ مَا يَمْلِكُونَ مِن قِطْمِيرٍ﴾ (سورة فاطر).</p>
+      <p class="id">Firman-Nya Ta'ala: 'Yang demikian itulah Allah, Rabb kalian; milik-Nyalah segala kerajaan. Sedangkan sesembahan-sesembahan yang kalian seru selain-Nya itu tidak memiliki sesuatu apa pun, walau setipis kulit ari biji kurma.' (QS. Fatir).</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">فمن كماله الإلهي أنه مالك الملك، ومن نقص ما سواه عدم الملكية لأحقر الأشياء.</p>
+      <p class="id">Termasuk kesempurnaan Ilahi-Nya adalah bahwa Dialah pemilik seluruh kerajaan, sedangkan termasuk kekurangan segala sesuatu selain-Nya adalah bahwa ia tidak memiliki apa pun, bahkan untuk sesuatu yang paling remeh sekalipun.</p>
+    </div>
+
+    <div class="ayat numbered quran numbered-first">
+      <span class="num-marker">2</span><p class="ar">قوله تعالى في سورة الإخلاص التي تعدل ثلث القرآن: ﴿قُلْ هُوَ اللَّهُ أَحَدٌ اللَّهُ الصَّمَدُ لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾.</p>
+      <p class="id">Firman-Nya Ta'ala dalam Surah Al-Ikhlash, yang pahalanya setara sepertiga Al-Qur'an: 'Katakanlah: Dialah Allah, Yang Maha Esa. Allah tempat bergantung segala sesuatu. Dia tidak beranak dan tidak pula diperanakkan. Dan tidak ada sesuatu pun yang setara dengan-Nya.'</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">فهو (الأحد) الذي انحصرت فيه الأحدية، فهو الأحد المنفرد بالكمال، الذي له الأسماء الحسنى والصفات الكاملة العليا والأفعال المقدسة، الذي لا نظير له ولا مثل.</p>
+      <p class="id">Dialah 'Al-Ahad' (Yang Maha Esa), yang keesaan itu hanya terkumpul pada diri-Nya semata; Dialah Yang Maha Esa yang sendirian dalam kesempurnaan, yang memiliki nama-nama yang indah, sifat-sifat sempurna yang tertinggi, dan perbuatan-perbuatan yang suci, yang tidak memiliki tandingan ataupun serupa.</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">(الصمد) أي المقصود في جميع الحوائج، فأهل العالم العلوي والسفلي مفتقرون إليه غاية الافتقار، يسألونه حوائجهم ويرغبون إليه في مهماتهم؛ لأنه الكامل في أوصافه، العليم الذي قد كمل في علمه، الحليم الذي كمل في حلمه، الذي وسعت رحمته كل شيء.</p>
+      <p class="id">'Ash-Shamad' artinya Dzat yang dituju dalam segala kebutuhan; seluruh penghuni alam atas maupun bawah sangat bergantung kepada-Nya, memohon kebutuhan mereka dan berharap kepada-Nya dalam segala urusan penting mereka; karena Dialah yang sempurna dalam segala sifat-Nya — Yang Maha Mengetahui dengan ilmu yang sempurna, Yang Maha Penyantun dengan kesantunan yang sempurna, yang rahmat-Nya meliputi segala sesuatu.</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">ومن كماله أنه (لم يلد ولم يولد) لكمال غناه عن غيره. (ولم يكن له كفواً أحد) أي لا مثيل له في أسمائه ولا في صفاته ولا في أفعاله، تبارك وتعالى (1)، فهو الغني عن الولد والوالد والشركاء لا شبيه له.</p>
+      <p class="id">Termasuk kesempurnaan-Nya, Dia (tidak beranak dan tidak pula diperanakkan) karena kesempurnaan kemahakayaan-Nya dari selain-Nya. (Dan tidak ada sesuatu pun yang setara dengan-Nya), artinya tidak ada yang menyerupai-Nya baik dalam nama, sifat, maupun perbuatan-Nya, Mahasuci dan Mahatinggi Dia (1). Maka Dialah Yang Mahakaya, tidak membutuhkan anak, orang tua, ataupun sekutu, dan tidak ada satu pun yang menyerupai-Nya.</p>
+    </div>
+
+    <div class="ayat numbered quran numbered-first">
+      <span class="num-marker">3</span><p class="ar">وقوله: ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾ (البقرة).</p>
+      <p class="id">Dan firman-Nya (Ayat Kursi): 'Allah, tidak ada sesembahan yang berhak disembah selain Dia, Yang Mahahidup lagi terus-menerus mengurus (makhluk-Nya); tidak mengantuk dan tidak pula tidur. Milik-Nyalah apa yang ada di langit dan apa yang ada di bumi. Tidak ada yang dapat memberi syafaat di sisi-Nya kecuali dengan izin-Nya. Dia mengetahui apa yang di hadapan mereka dan apa yang di belakang mereka, sedangkan mereka tidak mengetahui apa pun dari ilmu-Nya kecuali apa yang Dia kehendaki. Kursi-Nya meliputi langit dan bumi, dan Dia tidak merasa berat memelihara keduanya. Dan Dialah Yang Mahatinggi lagi Mahabesar.' (QS. Al-Baqarah).</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">وهذه أعظم آية في كتاب الله عز وجل، لما تشتمل عليه من ذكر صفات الله الكاملة، ونفي النقائص عن الله سبحانه وتعالى، لغناه التام وفقر جميع المخلوقات إليه.</p>
+      <p class="id">Ayat ini adalah ayat teragung dalam Kitabullah 'Azza wa Jalla, karena kandungannya yang menyebutkan sifat-sifat kesempurnaan Allah dan menafikan segala kekurangan dari-Nya Yang Mahasuci lagi Mahatinggi, berdasarkan kemahakayaan-Nya yang sempurna dan kebutuhan seluruh makhluk kepada-Nya.</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">فأخبر أنه (الله) الذي له جميع معاني الألوهية فلا يستحق العبادة إلا هو. (الحي) الذي له جميع معاني الحياة الكاملة من السمع والبصر والقدرة والإرادة وغيرها من الصفات الذاتية. (القيوم) الذي قام بنفسه واستغنى عن جميع مخلوقاته، وأقام غيره من جميع الموجودات فأوجدها وأبقاها وأمدها بجميع ما تحتاج إليه في وجودها وبقائها، وهذا يدخل فيه جميع صفاته الفعلية.</p>
+      <p class="id">Allah mengabarkan bahwa Dia (Allah), yang memiliki seluruh makna ketuhanan, sehingga tidak ada yang berhak disembah selain Dia. (Al-Hayy/Yang Mahahidup), yang memiliki seluruh makna kehidupan yang sempurna, berupa pendengaran, penglihatan, kekuasaan, kehendak, dan sifat-sifat dzati lainnya. (Al-Qayyum), yang berdiri sendiri dan tidak membutuhkan seluruh makhluk-Nya, sekaligus menegakkan seluruh makhluk lain — mengadakannya, mempertahankan keberadaannya, dan mencukupinya dengan segala yang dibutuhkan dalam keberadaan dan kelangsungan hidupnya; sifat ini mencakup seluruh sifat perbuatan-Nya.</p>
+    </div>
+
+    <div class="ayat numbered">
+      <p class="ar">(لا تأخذه سنة) وهي النعاس (ولا نوم)، وذلك لكمال حياته وقيوميته؛ لأن السنة والنوم من مظاهر العجز والضعف. ثم أخبر عن كمال ملكه فقال: (له ما في السماوات وما في الأرض)، وعن كمال سلطانه وهيبته فقال: (من ذا الذي يشفع عنده إلا بإذنه)، وعن كمال علمه فقال: (يعلم ما بين أيديهم) من الأمور المستقبلة (وما خلفهم) من الأمور الماضية. وأخبر أن الخلق لا يعلمون إلا ما علمهم: (ولا يحيطون بشيء من علمه إلا بما شاء) فهم محتاجون إليه في تعليمهم ما يجهلون.</p>
+      <p class="id">(Dia tidak mengantuk) dan (tidak pula tidur), karena kesempurnaan hidup dan keberdirian-Nya sendiri (qayyumiyyah); sebab kantuk dan tidur adalah tanda kelemahan dan ketidakberdayaan. Kemudian Dia mengabarkan kesempurnaan kerajaan-Nya dengan berfirman: (Milik-Nyalah apa yang ada di langit dan apa yang ada di bumi); kesempurnaan kekuasaan dan kewibawaan-Nya dengan berfirman: (Tidak ada yang dapat memberi syafaat di sisi-Nya kecuali dengan izin-Nya); dan kesempurnaan ilmu-Nya dengan berfirman: (Dia mengetahui apa yang di hadapan mereka) yakni perkara-perkara yang akan datang, (dan apa yang di belakang mereka) yakni perkara-perkara yang telah lalu. Dia juga mengabarkan bahwa makhluk tidak mengetahui apa pun kecuali apa yang Dia ajarkan kepada mereka: (Dan mereka tidak mengetahui apa pun dari ilmu-Nya kecuali apa yang Dia kehendaki), sehingga mereka senantiasa membutuhkan-Nya dalam mempelajari apa yang tidak mereka ketahui.</p>
+    </div>
+
+    <div class="ayat numbered quran">
+      <p class="ar">ثم أخبر عن عظمته وجلاله حيث (وسع كرسيه السماوات والأرض)، وقد جاء أن الكرسي موضع القدمين وهو دون العرش. وأخبر عن حفظه للسماوات والأرض من الاختلال والزوال، وأن ذلك لا يثقله ولا يشق عليه لكمال قدرته وسعة علمه فقال: (ولا يؤوده حفظهما)، كما قال تعالى: ﴿إِنَّ اللَّهَ يُمْسِكُ السَّمَاوَاتِ وَالْأَرْضَ أَن تَزُولَا﴾ (سورة فاطر آية ٤١). ثم قال: (وهو العلي) الذي له علو الذات فوق المخلوقات وعلو القهر (العظيم) الجامع لصفات العظمة والكبرياء والكمال والبقاء.</p>
+      <p class="id">Kemudian Dia mengabarkan tentang keagungan dan kemuliaan-Nya di mana (Kursi-Nya meliputi langit dan bumi) — dan disebutkan bahwa Kursi adalah tempat kedua telapak kaki-Nya dan berada di bawah 'Arsy. Dia juga mengabarkan penjagaan-Nya terhadap langit dan bumi dari kerusakan dan kehancuran, dan bahwa hal itu tidak memberatkan-Nya sama sekali karena kesempurnaan kekuasaan dan keluasan ilmu-Nya, sebagaimana firman-Nya: (Dan Dia tidak merasa berat memelihara keduanya), sebagaimana pula firman-Nya Ta'ala: 'Sesungguhnya Allah menahan langit dan bumi supaya tidak lenyap.' (QS. Fatir ayat 41). Kemudian Dia berfirman: (Dan Dialah Yang Mahatinggi), yang memiliki ketinggian Dzat di atas segala makhluk dan ketinggian dalam mengalahkan (segala sesuatu), (lagi Mahabesar), yang menghimpun sifat-sifat keagungan, kebesaran, kesempurnaan, dan kekekalan.</p>
+    </div>
+
+    <div class="ayat numbered quran">
+      <p class="ar">وغير ذلك في القرآن كثير، كما أنه سبحانه يذكر فقر المخلوقات إليه وبطلان عبادتها، كقوله تعالى: ﴿يَا أَيُّهَا النَّاسُ أَنتُمُ الْفُقَرَاءُ إِلَى اللَّهِ وَاللَّهُ هُوَ الْغَنِيُّ الْحَمِيدُ﴾ (فاطر)، وقوله: ﴿وَيَعْبُدُونَ مِن دُونِ اللَّهِ مَا لَا يَمْلِكُ لَهُمْ رِزْقًا مِّنَ السَّمَاوَاتِ وَالْأَرْضِ شَيْئًا وَلَا يَسْتَطِيعُونَ﴾ (سورة النحل)،</p>
+      <p class="id">Masih banyak lagi ayat serupa dalam Al-Qur'an, sebagaimana Allah Yang Mahasuci juga menyebutkan kebutuhan seluruh makhluk kepada-Nya dan batilnya penyembahan terhadap selain-Nya, seperti firman-Nya Ta'ala: 'Wahai manusia, kalianlah yang membutuhkan Allah; dan Allah, Dialah Yang Mahakaya lagi Maha Terpuji.' (QS. Fatir), dan firman-Nya: 'Dan mereka menyembah selain Allah, sesuatu yang tidak memiliki kuasa apa pun untuk memberi rezeki kepada mereka dari langit dan bumi, serta tidak berdaya (untuk itu).' (QS. An-Nahl),</p>
+    </div>
+
+    <div class="ayat numbered quran">
+      <p class="ar">وقوله: ﴿إِنَّ الَّذِينَ تَعْبُدُونَ مِن دُونِ اللَّهِ لَا يَمْلِكُونَ لَكُمْ رِزْقًا فَابْتَغُوا عِندَ اللَّهِ الرِّزْقَ وَاعْبُدُوهُ وَاشْكُرُوا لَهُ إِلَيْهِ تُرْجَعُونَ﴾ (سورة العنكبوت)، وقوله: ﴿وَالَّذِينَ يَدْعُونَ مِن دُونِ اللَّهِ لَا يَخْلُقُونَ شَيْئًا وَهُمْ يُخْلَقُونَ﴾ (سورة النحل)، وقوله: ﴿إِنَّ الَّذِينَ تَدْعُونَ مِن دُونِ اللَّهِ عِبَادٌ أَمْثَالُكُمْ﴾ (الأعراف ١٩٤).</p>
+      <p class="id">Dan firman-Nya: 'Sesungguhnya sesembahan-sesembahan yang kalian sembah selain Allah itu tidak memiliki kuasa untuk memberi rezeki kepada kalian; maka carilah rezeki di sisi Allah, sembahlah Dia, dan bersyukurlah kepada-Nya. Hanya kepada-Nyalah kalian akan dikembalikan.' (QS. Al-'Ankabut), dan firman-Nya: 'Dan sesembahan-sesembahan yang mereka seru selain Allah itu tidak dapat menciptakan apa pun, sedangkan mereka sendirilah yang diciptakan.' (QS. An-Nahl), dan firman-Nya: 'Sesungguhnya sesembahan-sesembahan yang kalian seru selain Allah itu adalah makhluk (hamba) yang serupa dengan kalian.' (QS. Al-A'raf: 194).</p>
+    </div>
+
+    <div class="ayat numbered quran">
+      <p class="ar">فكيف يسوى الناقص بالكامل! وكيف يسوى العاجز بالقادر! وكيف يسوى العبد المخلوق بالخالق! ولهذا يدرك المشركون يوم القيامة إذا دخلوا النار ضلالهم في هذه التسوية، حيث يقولون لمعبوديهم من دون الله: ﴿تَاللَّهِ إِن كُنَّا لَفِي ضَلَالٍ مُّبِينٍ إِذْ نُسَوِّيكُم بِرَبِّ الْعَالَمِينَ﴾ (سورة الشعراء).</p>
+      <p class="id">Maka bagaimana mungkin yang kurang disamakan dengan yang sempurna! Bagaimana mungkin yang tidak berdaya disamakan dengan Yang Maha Berkuasa! Bagaimana mungkin hamba yang diciptakan disamakan dengan Sang Pencipta! Oleh karena itulah orang-orang musyrik kelak pada hari Kiamat, ketika mereka masuk ke dalam neraka, akan menyadari kesesatan mereka dalam penyamaan ini, seraya berkata kepada sesembahan-sesembahan mereka selain Allah: 'Demi Allah, sungguh kami dahulu benar-benar dalam kesesatan yang nyata, karena kami telah menyamakan kalian dengan Rabb semesta alam.' (QS. Asy-Syu'ara').</p>
+    </div>
+
+    <div class="ayat numbered quran numbered-first">
+      <span class="num-marker">4</span><p class="ar">ومن أدلة كماله إتقان الخلق وإحكامه: ﴿مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ﴾ (سورة الملك آية ٣)، ﴿الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ﴾ (سورة السجدة آية ٧)، ﴿صُنْعَ اللَّهِ الَّذِي أَتْقَنَ كُلَّ شَيْءٍ﴾ (سورة النمل آية ٨٨)، ﴿الَّذِي أَعْطَىٰ كُلَّ شَيْءٍ خَلْقَهُ ثُمَّ هَدَىٰ﴾ (سورة طه). فإتقان الخلق وإحكامه وانضباطه يدل على كمال الخالق سبحانه وتعالى، وأنه هو المستحق للعبادة وحده دون سواه.</p>
+      <p class="id">Di antara dalil kesempurnaan-Nya adalah kesempurnaan dan ketelitian ciptaan-Nya: 'Kamu sekali-kali tidak akan melihat pada ciptaan Yang Maha Pengasih sesuatu yang tidak seimbang.' (QS. Al-Mulk ayat 3), 'Yang membuat segala sesuatu yang Dia ciptakan menjadi baik.' (QS. As-Sajdah ayat 7), 'Itulah ciptaan Allah yang menyempurnakan segala sesuatu.' (QS. An-Naml ayat 88), 'Yang memberikan kepada segala sesuatu bentuk kejadiannya, kemudian memberinya petunjuk.' (QS. Thaha). Maka kesempurnaan, ketelitian, dan keteraturan ciptaan ini menunjukkan kesempurnaan Sang Pencipta Yang Mahasuci lagi Mahatinggi, dan bahwa hanya Dia semata yang berhak disembah, tidak yang lain.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) انظر تفسير ابن سعدي (٧/٦٨٦).</p>
+      <p class="id">(1) Lihat Tafsir Ibnu Sa'di (7/686).</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-4-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">اذكر نموذجاً من الأدلة القرآنية على كمال الخالق وغناه.</p>
+      <p class="id">Sebutkan salah satu contoh dalil Al-Qur'an atas kesempurnaan dan kemahakayaan Sang Pencipta.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما وجه الاستدلال بكمال الخالق وغناه على وجوب إفراده بالعبادة؟</p>
+      <p class="id">Bagaimana kesempurnaan dan kemahakayaan Sang Pencipta menjadi dalil atas wajibnya mengesakan-Nya dalam ibadah?</p>
+    </div>
+
+
+  </div>
+</section>
+
+</body>
+</html>

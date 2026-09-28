@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الباب الرابع: في الإيمان بأسماء الله وصفاته — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #5a5343;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+    --quran: #8a5a15;
+    --quran-bg: #f7f0e0;
+    --pasal-bg: #eef2ea;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #b9b3a4;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+      --quran: #d9a54a;
+      --quran-bg: #2a2418;
+      --pasal-bg: #1c2420;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ====== SATU-SATUNYA SECTION: ISI ====== */
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 860px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  /* satu segmen = 1 baris Arab + 1 baris Indonesia */
+  .ayat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 0;
+  }
+
+  .ayat .ar {
+    direction: rtl;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2rem);
+    color: var(--ar-color);
+  }
+
+  .ayat .id {
+    direction: ltr;
+    text-align: left;
+    font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem);
+    color: var(--id-color);
+  }
+
+  .ayat.quran {
+    background: var(--quran-bg);
+    border-radius: 10px;
+    padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.6rem, 2vw, 0.9rem);
+    border-right: 3px solid var(--quran);
+  }
+  .ayat.quran .ar,
+  .ayat.quran .id {
+    color: var(--quran);
+  }
+
+  .ayat.footnote-row {
+    opacity: 0.75;
+  }
+  .ayat.footnote-row .ar { font-size: clamp(1rem, 0.85rem + 1vw, 1.3rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.72rem, 0.66rem + 0.4vw, 0.85rem); }
+
+  .ayat.list-item {
+    padding-inline-end: 1.4rem;
+    position: relative;
+  }
+  .ayat.list-item .ar::before {
+    content: "\2022";
+    color: var(--heading);
+    margin-inline-end: 0.5em;
+  }
+
+  /* ====== JUDUL BAB (satu kali, di awal) ====== */
+  .bab__judul {
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin: 0 0 clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1rem, 3vw, 1.5rem);
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ====== JUDUL PASAL (per bab Fasl, muncul berkali-kali) ====== */
+  .pasal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem);
+    color: var(--heading);
+    text-align: center;
+    background: var(--pasal-bg);
+    border-radius: 12px;
+    padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem);
+    margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem);
+  }
+  .bab__judul + .pasal__judul { margin-top: 0; }
+
+  .bagian__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--border);
+  }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .soal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.75rem, 5vw, 2.75rem) 0 0.25rem;
+  }
+
+  /* ====== DAFTAR ISI ====== */
+  .daftar-isi {
+    direction: ltr;
+    background: var(--pasal-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .daftar-isi__judul {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .daftar-isi__list {
+    list-style: none;
+    counter-reset: pasal-counter;
+  }
+
+  .daftar-isi__list > li {
+    counter-increment: pasal-counter;
+    margin-bottom: 0.5rem;
+  }
+
+  .daftar-isi__list > li > a {
+    direction: rtl;
+    display: block;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(0.98rem, 0.88rem + 0.5vw, 1.15rem);
+    color: var(--ar-color);
+    text-decoration: none;
+  }
+
+  .daftar-isi__list > li > a::before {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--id-color);
+    margin-inline-end: 0.4em;
+    content: counter(pasal-counter) ".";
+  }
+
+  .daftar-isi__list > li > a:hover { color: var(--heading); }
+
+  .daftar-isi__sublist {
+    list-style: none;
+    direction: rtl;
+    margin: 0.35rem 0.25rem 0 0;
+    padding-right: 1.5rem;
+    border-right: 2px solid var(--border);
+  }
+
+  .daftar-isi__sublist li { margin-bottom: 0.25rem; }
+
+  .daftar-isi__sublist a {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .daftar-isi__sublist a:hover { color: var(--id-color); }
+
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الباب الرابع: في الإيمان بأسماء الله وصفاته</h1>
+    <p class="isi__ket">Kitab Tauhid Kelas 1 Aliyah &middot; Bab 4, Pasal 1&ndash;3 &middot; 261 baris &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia</p>
+
+    <nav class="daftar-isi">
+      <h2 class="daftar-isi__judul">Daftar Isi</h2>
+      <ol class="daftar-isi__list">
+        <li><a href="#pasal-1">الفصل الأول: الأدلة من الكتاب والسنة والعقل على ثبوت الأسماء والصفات</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-1-bagian-1">أ - الأدلة من الكتاب والسنة</a></li>
+            <li><a href="#pasal-1-bagian-2">ب - الدليل العقلي على ثبوت الأسماء والصفات</a></li>
+            <li><a href="#pasal-1-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-2">الفصل الثاني: منهج أهل السنة والجماعة في أسماء الله وصفاته</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-2-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-3">الفصل الثالث: الرد على من أنكر الأسماء والصفات أو أنكر بعضها</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-3-bagian-1">والرد عليهم من وجوه</a></li>
+            <li><a href="#pasal-3-bagian-2">الوجه الأول</a></li>
+            <li><a href="#pasal-3-bagian-3">الوجه الثاني</a></li>
+            <li><a href="#pasal-3-bagian-4">الوجه الثالث</a></li>
+            <li><a href="#pasal-3-bagian-5">الوجه الرابع</a></li>
+            <li><a href="#pasal-3-bagian-6">الوجه الخامس</a></li>
+            <li><a href="#pasal-3-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+
+
+    <h2 class="bab__judul">الباب الرابع: في الإيمان بأسماء الله وصفاته</h2>
+
+    <div class="ayat">
+      <p class="ar">ويتكون من الفصول الآتية :</p>
+      <p class="id">Dan bab ini terdiri dari pasal-pasal berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الأول : الأدلة من الكتاب والسنة</p>
+      <p class="id">Pasal Pertama: Dalil-dalil dari Al-Qur'an dan Sunnah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والعقل على ثبوت الأسماء والصفات.</p>
+      <p class="id">serta akal atas tetapnya nama-nama dan sifat-sifat (Allah).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الثاني : منهج أهل السنة والجماعة</p>
+      <p class="id">Pasal Kedua: Manhaj Ahlus Sunnah wal Jama'ah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في أسماء الله وصفاته.</p>
+      <p class="id">dalam memahami nama-nama dan sifat-sifat Allah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الثالث : الرد على من أنكر</p>
+      <p class="id">Pasal Ketiga: Bantahan terhadap orang yang mengingkari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الأسماء والصفات أو أنكر شيئاً منها.</p>
+      <p class="id">nama-nama dan sifat-sifat, atau mengingkari sebagiannya.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-1">الفصل الأول: الأدلة من الكتاب والسنة والعقل على ثبوت الأسماء والصفات</h2>
+
+    <h3 class="bagian__judul" id="pasal-1-bagian-1">أ - الأدلة من الكتاب والسنة</h3>
+
+    <div class="ayat">
+      <p class="ar">سبق أن ذكرنا أن التوحيد ينقسم إلى</p>
+      <p class="id">Kita telah menyebutkan sebelumnya bahwa tauhid terbagi menjadi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ثلاثة أقسام: توحيد الربوبية، وتوحيد الألوهية، وتوحيد</p>
+      <p class="id">tiga bagian: tauhid rububiyah, tauhid uluhiyah, dan tauhid</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الأسماء والصفات، وذكرنا جملة من الأدلة على</p>
+      <p class="id">asma wa sifat, dan kita telah menyebutkan sejumlah dalil atas</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النوعين الأولين، توحيد الربوبية وتوحيد الألوهية. والآن</p>
+      <p class="id">dua jenis pertama, yaitu tauhid rububiyah dan tauhid uluhiyah. Sekarang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نذكر الأدلة على النوع الثالث، توحيد الأسماء</p>
+      <p class="id">kita sebutkan dalil-dalil atas jenis ketiga, yaitu tauhid asma</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والصفات، فإليك شيئاً من أدلة الكتاب والسنة.</p>
+      <p class="id">wa sifat. Berikut ini sebagian dalil dari Al-Qur'an dan Sunnah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan Allah memiliki nama-nama yang indah, maka berdoalah kepada-Nya dengan menyebutnya,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَذَرُوا الَّذِينَ يُلْحِدُونَ فِي أَسْمَائِهِ سَيُجْزَوْنَ مَا</p>
+      <p class="id">dan tinggalkanlah orang-orang yang menyimpang mengenai nama-nama-Nya; mereka kelak akan dibalas atas apa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كَانُوا يَعْمَلُونَ﴾ (سورة الأعراف ١٨٠). أثبت الله</p>
+      <p class="id">yang telah mereka kerjakan.' (QS. Al-A'raf 180). Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">سبحانه في هذه الآية لنفسه الأسماء وأخبر</p>
+      <p class="id">Yang Mahasuci menetapkan dalam ayat ini nama-nama bagi diri-Nya, dan mengabarkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أنها حسنى، وأمر بدعائه بها، بأن يقال:</p>
+      <p class="id">bahwa nama-nama itu indah, serta memerintahkan agar berdoa dengan menyebutnya, yaitu diucapkan:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يا الله، يا رحمن، يا رحيم، يا</p>
+      <p class="id">'Ya Allah, Ya Rahman, Ya Rahim, Ya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حي يا قيوم، يا رب العالمين. وتوعد</p>
+      <p class="id">Hayyu Ya Qayyum, Ya Rabbal 'alamin.' Dan Dia mengancam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الذين يلحدون في أسمائه، بمعنى أنهم يميلون</p>
+      <p class="id">orang-orang yang menyimpang mengenai nama-nama-Nya, yakni mereka yang membelokkannya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بها عن الحق، إما بنفيها عن الله،</p>
+      <p class="id">dari kebenaran, baik dengan meniadakannya dari Allah,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أو تأويلها بغير معناها الصحيح، أو غير</p>
+      <p class="id">atau menakwilkannya dengan makna yang tidak benar, atau bentuk</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ذلك من أنواع الإلحاد؛ توعدهم بأنه سيجازيهم</p>
+      <p class="id">lain dari penyimpangan; Dia mengancam mereka bahwa Dia akan membalas</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بعملهم السيئ. وقال تعالى: ﴿اللَّهُ لَا إِلَٰهَ</p>
+      <p class="id">perbuatan buruk mereka. Allah Ta'ala berfirman: 'Allah, tidak ada sesembahan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِلَّا هُوَ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ﴾ (سورة طه).</p>
+      <p class="id">yang berhak disembah selain Dia, milik-Nyalah nama-nama yang indah.' (QS. Thaha).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">﴿هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ</p>
+      <p class="id">'Dialah Allah yang tidak ada sesembahan yang berhak disembah selain Dia,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِمُ الْغَيْبِ وَالشَّهَادَةِ هُوَ الرَّحْمَٰنُ الرَّحِيمُ هُوَ</p>
+      <p class="id">Yang Mengetahui yang gaib dan yang nyata, Dialah Yang Maha Pengasih lagi Maha Penyayang. Dialah</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ</p>
+      <p class="id">Allah, yang tidak ada sesembahan yang berhak disembah selain Dia, Raja,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ</p>
+      <p class="id">Yang Mahasuci, Yang Maha Sejahtera, Yang Mengaruniakan Keamanan, Yang Maha Memelihara, Yang Mahaperkasa, Yang Maha Kuasa, Yang Memiliki Keagungan.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ هُوَ اللَّهُ الْخَالِقُ</p>
+      <p class="id">Mahasuci Allah dari apa yang mereka sekutukan. Dialah Allah, Yang Maha Pencipta,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">الْبَارِئُ الْمُصَوِّرُ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ يُسَبِّحُ لَهُ</p>
+      <p class="id">Yang Mengadakan, Yang Membentuk Rupa; bagi-Nya nama-nama yang indah, bertasbih kepada-Nya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مَا فِي السَّمَاوَاتِ وَالْأَرْضِ وَهُوَ الْعَزِيزُ الْحَكِيمُ﴾</p>
+      <p class="id">apa yang ada di langit dan di bumi, dan Dialah Yang Mahaperkasa lagi Mahabijaksana.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة الحشر ٢٤). فدلت هذه الآيات على</p>
+      <p class="id">(QS. Al-Hashr 24). Maka ayat-ayat ini menunjukkan atas</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إثبات الأسماء لله. ومن الأدلة على ثبوت</p>
+      <p class="id">penetapan nama-nama bagi Allah. Di antara dalil atas tetapnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أسماء الله من سنة الرسول ﷺ ما</p>
+      <p class="id">nama-nama Allah dari Sunnah Rasulullah ﷺ adalah apa yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رواه أبو هريرة رضي الله عنه أن</p>
+      <p class="id">diriwayatkan Abu Hurairah radhiyallahu 'anhu, bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رسول الله ﷺ قال: «إن لله تسعة</p>
+      <p class="id">Rasulullah ﷺ bersabda: '(Sesungguhnya Allah memiliki sembilan puluh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وتسعين اسماً، مائة إلا واحداً، من أحصاها</p>
+      <p class="id">sembilan nama, seratus kurang satu; barangsiapa menghitungnya (menghafal dan mengamalkannya)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">دخل الجنة» (1).</p>
+      <p class="id">maka ia masuk surga)' (1).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) متفق عليه.</p>
+      <p class="id">(1) Muttafaq 'alaih (disepakati keshahihannya oleh Bukhari dan Muslim).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وليست أسماء الله منحصرة في هذا العدد،</p>
+      <p class="id">Dan nama-nama Allah tidaklah terbatas pada jumlah ini,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بدليل ما رواه عبد الله بن مسعود</p>
+      <p class="id">berdasarkan dalil apa yang diriwayatkan Abdullah bin Mas'ud</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رضي الله عنه أن النبي ﷺ قال:</p>
+      <p class="id">radhiyallahu 'anhu, bahwa Nabi ﷺ bersabda:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">«أسألك بكل اسم هو لك، سميت به</p>
+      <p class="id">'(Aku memohon kepada-Mu dengan setiap nama yang menjadi milik-Mu, yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفسك، أو أنزلته في كتابك، أو علمته</p>
+      <p class="id">Engkau namakan diri-Mu dengannya, atau Engkau turunkan dalam Kitab-Mu, atau Engkau ajarkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أحداً من خلقك، أو استأثرت به في</p>
+      <p class="id">kepada seseorang dari makhluk-Mu, atau Engkau simpan sendiri dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">علم الغيب عندك، أن تجعل القرآن العظيم</p>
+      <p class="id">ilmu gaib di sisi-Mu, agar Engkau jadikan Al-Qur'an yang agung</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ربيع قلبي» الحديث (1). وكل اسم من</p>
+      <p class="id">sebagai penyejuk hatiku)' — Al-Hadits (1). Dan setiap nama dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أسماء الله يتضمن صفة من صفاته، فالعليم</p>
+      <p class="id">nama-nama Allah mengandung suatu sifat dari sifat-sifat-Nya; Al-'Alim (Yang Maha Mengetahui)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يدل على العلم، والحكيم يدل على الحكمة،</p>
+      <p class="id">menunjukkan sifat ilmu, dan Al-Hakim (Yang Mahabijaksana) menunjukkan sifat hikmah,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والسميع البصير يدلان على السمع والبصر، وهكذا</p>
+      <p class="id">sedangkan As-Sami' (Yang Maha Mendengar) dan Al-Bashir (Yang Maha Melihat) menunjukkan sifat pendengaran dan penglihatan; begitulah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كل اسم يدل على صفة من صفات</p>
+      <p class="id">setiap nama menunjukkan salah satu sifat dari sifat-sifat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله تعالى. وقال تعالى: ﴿قُلْ هُوَ اللَّهُ</p>
+      <p class="id">Allah Ta'ala. Allah Ta'ala berfirman: 'Katakanlah: Dialah Allah,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَحَدٌ اللَّهُ الصَّمَدُ لَمْ يَلِدْ وَلَمْ يُولَدْ</p>
+      <p class="id">Yang Maha Esa. Allah tempat bergantung segala sesuatu. Dia tidak beranak dan tidak pula diperanakkan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾ (سورة الإخلاص).</p>
+      <p class="id">dan tidak ada sesuatu pun yang setara dengan-Nya.' (QS. Al-Ikhlash).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عن أنس رضي الله عنه قال: كان</p>
+      <p class="id">Dari Anas radhiyallahu 'anhu, ia berkata: Ada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رجل من الأنصار يؤمهم في مسجد قباء،</p>
+      <p class="id">seorang laki-laki dari kaum Anshar yang mengimami mereka salat di Masjid Quba',</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فكان كلما افتتح سورة يقرأ بها لهم</p>
+      <p class="id">dan setiap kali ia memulai bacaan suatu surah dalam salat bersama mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الصلاة مما يقرأ به، افتتح بـ(قل</p>
+      <p class="id">dari apa yang ia baca, ia selalu memulainya dengan (Qul Huwallahu Ahad) sampai</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هو الله أحد) حتى يفرغ منها، ثم</p>
+      <p class="id">selesai membacanya, kemudian ia membaca surah lain setelahnya, dan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان يقرأ سورة أخرى معها، وكان يصنع</p>
+      <p class="id">ia melakukan hal itu di setiap rakaat. Maka para sahabatnya berbicara kepadanya, mereka berkata:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ذلك في كل ركعة. فكلمه أصحابه فقالوا:</p>
+      <p class="id">'Sesungguhnya engkau selalu memulai dengan surah ini, namun engkau tidak menganggapnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إنك تفتتح بهذه السورة، ثم لا ترى</p>
+      <p class="id">cukup sampai engkau membaca surah lainnya; maka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أنها تجزئك حتى تقرأ بالأخرى، فإما أن</p>
+      <p class="id">bacalah surah itu saja, atau tinggalkanlah dan bacalah surah lain saja.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تقرأ بها وإما أن تدعها وتقرأ بأخرى.</p>
+      <p class="id">Ia menjawab: 'Aku tidak akan meninggalkannya; jika kalian menghendaki</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فقال: ما أنا بتاركها، إن أحببتم أن</p>
+      <p class="id">aku tetap mengimami kalian dengan cara itu, akan aku lakukan; namun jika kalian tidak menyukainya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أؤمكم بذلك فعلت، وإن كرهتم تركتكم. وكانوا</p>
+      <p class="id">aku akan mengundurkan diri dari kalian.' Padahal para sahabat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يرون أنه من أفضلهم، وكرهوا أن يؤمهم</p>
+      <p class="id">memandangnya sebagai yang terbaik di antara mereka, dan mereka tidak suka jika diimami</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">غيره. فلما أتاهم النبي ﷺ أخبروه الخبر،</p>
+      <p class="id">oleh selainnya. Maka ketika Nabi ﷺ mendatangi mereka, mereka mengabarkan hal itu kepada beliau,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فقال: يا فلان، ما يمنعك أن تفعل</p>
+      <p class="id">lalu beliau bersabda: 'Wahai fulan, apa yang menghalangimu untuk melakukan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما أمرك به أصحابك، وما حملك على</p>
+      <p class="id">apa yang diperintahkan oleh para sahabatmu, dan apa yang membuatmu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لزوم هذه السورة في كل ركعة؟ قال:</p>
+      <p class="id">tetap membaca surah ini di setiap rakaat?' Ia menjawab:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إني أحبها. قال: (حبك إياها أدخلك الجنة)»</p>
+      <p class="id">'Sesungguhnya aku mencintainya.' Beliau bersabda: '(Kecintaanmu terhadapnya akan memasukkanmu ke dalam surga)'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(2). وعن عائشة رضي الله عنها أن</p>
+      <p class="id">(2). Dan dari Aisyah radhiyallahu 'anha, bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النبي ﷺ بعث رجلاً على سرية، وكان</p>
+      <p class="id">Nabi ﷺ mengutus seorang laki-laki memimpin sebuah pasukan kecil, dan ia</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يقرأ لأصحابه في صلاتهم فيختم بـ(قل هو</p>
+      <p class="id">selalu membaca (surah) untuk para sahabatnya dalam salat mereka lalu menutupnya dengan (Qul Huwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله أحد). فلما رجعوا ذكروا ذلك للنبي</p>
+      <p class="id">Allahu Ahad). Ketika mereka kembali, mereka menyebutkan hal itu kepada Nabi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ﷺ، فقال: سلوه لأي شيء يفعل ذلك.</p>
+      <p class="id">ﷺ, maka beliau bersabda: 'Tanyakan kepadanya mengapa ia melakukan hal itu.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فسألوه، فقال: لأنها صفة الرحمن، وأنا أحب</p>
+      <p class="id">Mereka pun bertanya kepadanya, lalu ia menjawab: 'Karena surah itu adalah sifat Ar-Rahman, dan aku senang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أن أقرأ بها. فقال النبي ﷺ: (أخبروه</p>
+      <p class="id">membacanya.' Maka Nabi ﷺ bersabda: '(Beritahukan kepadanya bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أن الله تعالى يحبه)» (3)، يعني أنها</p>
+      <p class="id">Allah Ta'ala mencintainya)' (3), maksudnya karena surah itu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اشتملت على صفات الرحمن.</p>
+      <p class="id">mengandung sifat-sifat Ar-Rahman.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) رواه أحمد في المسند وصححه ابن</p>
+      <p class="id">(1) Diriwayatkan oleh Imam Ahmad dalam Al-Musnad dan dinilai sahih oleh</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">حبان، وقد دل على عدم حصر أسماء</p>
+      <p class="id">Ibnu Hibban; hadis ini menunjukkan bahwa nama-nama Allah tidak terbatas</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">الله في تسعة وتسعين، فيكون المراد بالحديث،</p>
+      <p class="id">hanya pada sembilan puluh sembilan, sehingga yang dimaksud dengan hadis (sebelumnya),</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">والله أعلم، أن من تعلم هذه الأسماء</p>
+      <p class="id">wallahu a'lam, adalah bahwa barangsiapa mempelajari nama-nama tersebut</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">التسعة والتسعين ودعا الله بها وعبده بها</p>
+      <p class="id">yang sembilan puluh sembilan itu, lalu berdoa kepada Allah dan beribadah kepada-Nya dengannya,</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">دخل الجنة، ويكون ذلك خاصية لها.</p>
+      <p class="id">maka ia akan masuk surga; dan itu menjadi keistimewaan khusus baginya.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) و(3) رواه البخاري في صحيحه.</p>
+      <p class="id">(2) dan (3) Diriwayatkan oleh Imam Bukhari dalam Shahih-nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وقد أخبر سبحانه أن له وجهاً: ﴿وَيَبْقَىٰ</p>
+      <p class="id">Dan Allah Yang Mahasuci telah mengabarkan bahwa Dia memiliki wajah: 'Dan tetap kekal</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ﴾ (سورة الرحمن</p>
+      <p class="id">Wajah Rabbmu yang memiliki keagungan dan kemuliaan.' (QS. Ar-Rahman</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٢٧). وأن له يدين، فقال: ﴿لِمَا خَلَقْتُ</p>
+      <p class="id">27). Dan bahwa Dia memiliki dua tangan, sebagaimana firman-Nya: 'Terhadap apa yang telah Aku ciptakan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بِيَدَيَّ﴾ (سورة ص آية ٧٥). ﴿بَلْ يَدَاهُ</p>
+      <p class="id">dengan kedua tangan-Ku.' (QS. Shad ayat 75). 'Bahkan kedua tangan-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَبْسُوطَتَانِ﴾ (سورة المائدة آية ٦٤). وأنه يرضى</p>
+      <p class="id">terbentang.' (QS. Al-Ma'idah ayat 64). Dan bahwa Dia rida</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ويحب ويغضب ويسخط، إلى غير ذلك مما</p>
+      <p class="id">dan mencintai, murka, dan benci; serta selain itu dari apa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وصف الله به نفسه أو وصفه به</p>
+      <p class="id">yang Allah gambarkan tentang diri-Nya sendiri atau digambarkan oleh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رسوله.</p>
+      <p class="id">Rasul-Nya.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-1-bagian-2">ب - الدليل العقلي على ثبوت الأسماء والصفات</h3>
+
+    <div class="ayat">
+      <p class="ar">أما الدليل العقلي على ثبوت الأسماء والصفات</p>
+      <p class="id">Adapun dalil akal atas tetapnya nama-nama dan sifat-sifat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">التي دل عليها الشرع، فهو أن يقال:</p>
+      <p class="id">yang ditunjukkan oleh syariat, maka dapat dikatakan sebagai berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هذه المخلوقات العظيمة، على تنوعها واختلافها، وانتظامها</p>
+      <p class="id">Makhluk-makhluk yang agung ini, dengan segala keragaman dan perbedaannya, serta keteraturannya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في أداء مصالحها وسيرها في خططها المرسومة</p>
+      <p class="id">dalam menjalankan fungsinya masing-masing dan bergerak sesuai rencana yang telah ditetapkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لها، تدل على عظمة الله، وقدرته، وعلمه،</p>
+      <p class="id">baginya, menunjukkan kebesaran Allah, kekuasaan-Nya, ilmu-Nya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وحكمته، وإرادته، ومشيئته.</p>
+      <p class="id">kebijaksanaan-Nya, kehendak-Nya, dan iradah-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الإنعام، والإحسان، وكشف الضر، وتفريج الكربات؛ هذه</p>
+      <p class="id">Pemberian nikmat, kebaikan, penghilangan bahaya, dan pelepasan dari kesulitan; hal-hal ini</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الأشياء تدل على الرحمة والكرم والجود.</p>
+      <p class="id">menunjukkan kasih sayang, kedermawanan, dan kemurahan (Allah).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والعقاب، والانتقام من العصاة، يدلان على غضب</p>
+      <p class="id">Sedangkan hukuman dan pembalasan terhadap para pelaku maksiat, menunjukkan kemurkaan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله عليهم وكراهيته لهم.</p>
+      <p class="id">Allah kepada mereka dan kebencian-Nya terhadap mereka.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وإكرام الطائعين وإثابتهم يدلان على رضى الله</p>
+      <p class="id">Dan pemuliaan terhadap orang-orang yang taat serta pemberian pahala bagi mereka, menunjukkan keridaan Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عنهم ومحبته لهم.</p>
+      <p class="id">kepada mereka dan kecintaan-Nya kepada mereka.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-1-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">اذكر الأدلة من الكتاب والسنة على ثبوت الأسماء والصفات لله عز وجل.</p>
+      <p class="id">Sebutkan dalil-dalil dari Al-Qur'an dan Sunnah atas tetapnya nama-nama dan sifat-sifat bagi Allah 'Azza wa Jalla.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-2">الفصل الثاني: منهج أهل السنة والجماعة في أسماء الله وصفاته</h2>
+
+    <div class="ayat">
+      <p class="ar">منهج أهل السنة والجماعة من السلف الصالح</p>
+      <p class="id">Manhaj Ahlus Sunnah wal Jama'ah dari kalangan salafus saleh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وأتباعهم إثبات أسماء الله وصفاته كما وردت</p>
+      <p class="id">dan pengikut mereka adalah menetapkan nama-nama dan sifat-sifat Allah sebagaimana disebutkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الكتاب والسنة، وينبني منهجهم على القواعد</p>
+      <p class="id">dalam Al-Qur'an dan Sunnah, dan manhaj mereka dibangun di atas kaidah-kaidah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الآتية:</p>
+      <p class="id">berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أنهم يثبتون أسماء الله وصفاته كما وردت</p>
+      <p class="id">Mereka menetapkan nama-nama dan sifat-sifat Allah sebagaimana disebutkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الكتاب والسنة على ظاهرها وما تدل</p>
+      <p class="id">dalam Al-Qur'an dan Sunnah sesuai makna zahirnya dan apa yang ditunjukkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عليه ألفاظها من المعاني، لا يؤولونها عن</p>
+      <p class="id">oleh lafalnya, tanpa menakwilkannya keluar dari makna zahirnya, dan tanpa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ظاهرها، ولا يحرفون ألفاظها ودلالتها عن مواضعها.</p>
+      <p class="id">mengubah lafal serta maknanya dari tempatnya yang semestinya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ينفون عنها مشابهة صفات المخلوقين، كما قال</p>
+      <p class="id">Mereka meniadakan darinya keserupaan dengan sifat-sifat makhluk, sebagaimana firman-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تعالى: ﴿لَيْسَ كَمِثْلِهِ شَيْءٌ وَهُوَ السَّمِيعُ الْبَصِيرُ﴾</p>
+      <p class="id">Ta'ala: 'Tidak ada sesuatu pun yang serupa dengan-Nya, dan Dialah Yang Maha Mendengar lagi Maha Melihat.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة الشورى).</p>
+      <p class="id">(QS. Asy-Syura).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا يتجاوزون ما ورد في الكتاب والسنة</p>
+      <p class="id">Mereka tidak melampaui apa yang disebutkan dalam Al-Qur'an dan Sunnah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في إثبات أسماء الله وصفاته؛ فما أثبته</p>
+      <p class="id">dalam menetapkan nama-nama dan sifat-sifat Allah; maka apa yang ditetapkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله ورسوله من ذلك أثبتوه، وما نفاه</p>
+      <p class="id">oleh Allah dan Rasul-Nya, mereka tetapkan; apa yang dinafikan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله ورسوله نفوه، وما سكت عنه الله</p>
+      <p class="id">oleh Allah dan Rasul-Nya, mereka nafikan pula; dan apa yang didiamkan oleh Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ورسوله سكتوا عنه.</p>
+      <p class="id">dan Rasul-Nya, mereka pun diam tentangnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يعتقدون أن نصوص الأسماء والصفات من المحكم</p>
+      <p class="id">Mereka meyakini bahwa nash-nash tentang nama-nama dan sifat-sifat termasuk ayat muhkam (yang jelas)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الذي يُفهم معناه ويُفسَّر، وليست من المتشابه،</p>
+      <p class="id">yang dapat dipahami dan ditafsirkan maknanya, bukan termasuk ayat mutasyabih (yang samar),</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فلا يفوضون معناها، كما يُنسب ذلك إليهم</p>
+      <p class="id">sehingga mereka tidak menyerahkan begitu saja maknanya, sebagaimana yang dituduhkan kepada mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">من كذب عليهم أو لم يعرف منهجهم.</p>
+      <p class="id">oleh orang yang berdusta atas nama mereka atau yang tidak memahami manhaj mereka yang sesungguhnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يفوضون كيفية الصفات إلى الله تعالى ولا</p>
+      <p class="id">Mereka menyerahkan kaifiyat (bagaimana bentuknya) sifat-sifat itu kepada Allah Ta'ala dan tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يبحثون عنها.</p>
+      <p class="id">mencari tahu tentangnya.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-2-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">بين منهج أهل السنة والجماعة في أسماء الله وصفاته.</p>
+      <p class="id">Jelaskan manhaj Ahlus Sunnah wal Jama'ah dalam memahami nama-nama dan sifat-sifat Allah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اذكر القواعد التي ينبني عليها مذهب أهل السنة والجماعة في أسماء الله وصفاته.</p>
+      <p class="id">Sebutkan kaidah-kaidah yang menjadi dasar mazhab Ahlus Sunnah wal Jama'ah dalam memahami nama-nama dan sifat-sifat Allah.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-3">الفصل الثالث: الرد على من أنكر الأسماء والصفات أو أنكر بعضها</h2>
+
+    <div class="ayat">
+      <p class="ar">الذين ينكرون الأسماء والصفات ثلاثة أصناف:</p>
+      <p class="id">Orang-orang yang mengingkari nama-nama dan sifat-sifat (Allah) terbagi menjadi tiga golongan:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الجهمية: وهم أتباع الجهم بن صفوان، وهؤلاء</p>
+      <p class="id">Jahmiyah: yaitu para pengikut Jahm bin Shafwan, dan mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ينكرون الأسماء والصفات جميعاً.</p>
+      <p class="id">mengingkari nama-nama dan sifat-sifat (Allah) secara keseluruhan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المعتزلة: وهم أتباع واصل بن عطاء الذي</p>
+      <p class="id">Mu'tazilah: yaitu para pengikut Washil bin 'Atha' yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اعتزل مجلس الحسن البصري، وهؤلاء يثبتون الأسماء</p>
+      <p class="id">memisahkan diri dari majelis Al-Hasan Al-Bashri; mereka menetapkan nama-nama Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">على أنها ألفاظ مجردة عن المعاني، وينفون</p>
+      <p class="id">sebagai sekadar lafal yang kosong dari makna, dan menafikan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الصفات كلها.</p>
+      <p class="id">seluruh sifat-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الأشاعرة (1) والماتوريدية (2) ومن تبعهم: وهؤلاء</p>
+      <p class="id">Asy'ariyah (1) dan Maturidiyah (2) serta para pengikutnya: mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يثبتون الأسماء وبعض الصفات وينفون بعضها.</p>
+      <p class="id">menetapkan nama-nama Allah dan sebagian sifat-Nya, namun menafikan sebagian yang lain.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والشبهة التي بنوا عليها جميعاً مذاهبهم هي</p>
+      <p class="id">Adapun syubhat yang menjadi landasan semua aliran mereka adalah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفرار من تشبيه الله بخلقه بزعمهم؛ لأن</p>
+      <p class="id">upaya menghindari penyerupaan Allah dengan makhluk-Nya menurut anggapan mereka; karena</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المخلوقين يسمون ببعض تلك الأسماء ويوصفون بتلك</p>
+      <p class="id">makhluk juga dinamai dengan sebagian nama tersebut dan disifati</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الصفات، فيلزم من الاشتراك في لفظ الاسم</p>
+      <p class="id">dengan sifat-sifat tersebut, sehingga menurut mereka kesamaan dalam lafal nama</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والصفة ومعناهما الاشتراك في حقيقتهما، وهذا يلزم</p>
+      <p class="id">dan sifat beserta maknanya mengharuskan kesamaan pada hakikatnya, dan ini mengharuskan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">منه تشبيه المخلوق بالخالق في نظرهم. والتزموا</p>
+      <p class="id">terjadinya penyerupaan makhluk dengan Sang Khalik menurut pandangan mereka. Mereka pun berpegang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حيال ذلك أحد أمرين:</p>
+      <p class="id">pada salah satu dari dua sikap berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إما تأويل نصوص الأسماء والصفات عن ظاهرها،</p>
+      <p class="id">Baik dengan menakwilkan nash-nash nama dan sifat dari makna zahirnya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كتأويل الوجه بالذات، واليد بالنعمة.</p>
+      <p class="id">seperti menakwilkan 'wajah' dengan 'zat', dan 'tangan' dengan 'nikmat'.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وإما تفويض معاني هذه النصوص إلى الله،</p>
+      <p class="id">Ataupun dengan menyerahkan makna nash-nash tersebut kepada Allah,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فيقولون: الله أعلم بمراده منها، مع اعتقاد</p>
+      <p class="id">seraya berkata: 'Allah lebih mengetahui apa yang dimaksud dengannya', sembari meyakini</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أنها ليست على ظاهرها.</p>
+      <p class="id">bahwa makna tersebut bukanlah makna zahirnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وأول من عُرف عنه إنكار الأسماء والصفات</p>
+      <p class="id">Orang pertama yang diketahui pernah mengingkari nama-nama dan sifat-sifat (Allah)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بعض مشركي العرب الذين أنزل الله فيهم</p>
+      <p class="id">adalah sebagian kaum musyrikin Arab, yang karena merekalah Allah menurunkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قوله تعالى: ﴿كَذَٰلِكَ أَرْسَلْنَاكَ فِي أُمَّةٍ قَدْ</p>
+      <p class="id">firman-Nya Ta'ala: 'Demikianlah Kami mengutusmu kepada suatu umat yang sungguh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">خَلَتْ مِن قَبْلِهَا أُمَمٌ لِّتَتْلُوَ عَلَيْهِمُ الَّذِي</p>
+      <p class="id">telah berlalu sebelumnya berbagai umat lain, agar engkau membacakan kepada mereka apa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَوْحَيْنَا إِلَيْكَ وَهُمْ يَكْفُرُونَ بِالرَّحْمَٰنِ﴾ (سورة الرعد</p>
+      <p class="id">yang telah Kami wahyukan kepadamu, padahal mereka mengingkari (nama) Ar-Rahman.' (QS. Ar-Ra'd</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">آية ٣٠). وسبب نزول هذه الآية أن</p>
+      <p class="id">ayat 30). Adapun sebab turunnya ayat ini adalah bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قريشاً لما سمعت رسول الله ﷺ يذكر</p>
+      <p class="id">kaum Quraisy, ketika mendengar Rasulullah ﷺ menyebut nama Ar-Rahman,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الرحمن أنكروا ذلك، فأنزل الله فيهم: ﴿وَهُمْ</p>
+      <p class="id">mengingkarinya, maka Allah menurunkan ayat tentang mereka: 'Padahal mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَكْفُرُونَ بِالرَّحْمَٰنِ﴾. وذكر ابن جرير أن ذلك</p>
+      <p class="id">mengingkari (nama) Ar-Rahman.' Ibnu Jarir menyebutkan bahwa peristiwa itu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان في صلح الحديبية، حين كتب الكاتب</p>
+      <p class="id">terjadi pada saat Perjanjian Hudaibiyah, ketika juru tulis menuliskan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في قضية الصلح الذي جرى بينهم وبين</p>
+      <p class="id">dalam naskah perjanjian yang terjadi antara mereka dan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رسول الله ﷺ: (بسم الله الرحمن الرحيم)،</p>
+      <p class="id">Rasulullah ﷺ: '(Bismillahirrahmanirrahim)', maka kaum Quraisy berkata:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فقالت قريش: أما الرحمن فلا نعرفه. وروى</p>
+      <p class="id">'Adapun Ar-Rahman, kami tidak mengenalnya.' Ibnu Jarir juga meriwayatkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ابن جرير أيضاً عن ابن عباس: كان</p>
+      <p class="id">dari Ibnu 'Abbas, bahwa dahulu Rasulullah ﷺ, ketika</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رسول الله ﷺ يدعو ساجداً يقول: «يا</p>
+      <p class="id">bersujud, biasa berdoa dengan mengucapkan: 'Wahai</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رحمن يا رحيم»، فقال المشركون: هذا يزعم</p>
+      <p class="id">Rahman, wahai Rahim.' Maka kaum musyrikin berkata: 'Orang ini mengaku</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أنه يدعو واحداً وهو يدعو مثنى! فأنزل</p>
+      <p class="id">menyeru satu (Tuhan), padahal ia menyeru dua!' Maka Allah menurunkan (ayat):</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله: ﴿قُلِ ادْعُوا اللَّهَ أَوِ ادْعُوا الرَّحْمَٰنَ</p>
+      <p class="id">'Katakanlah: Serulah Allah atau serulah Ar-Rahman; dengan nama mana pun kalian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَيًّا مَّا تَدْعُوا فَلَهُ الْأَسْمَاءُ الْحُسْنَىٰ﴾ (الإسراء</p>
+      <p class="id">menyeru-Nya, maka Dialah yang memiliki nama-nama yang indah.' (QS. Al-Isra'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">آية ١١٠). وقال تعالى في سورة الفرقان:</p>
+      <p class="id">ayat 110). Dan Allah Ta'ala berfirman dalam Surah Al-Furqan:</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">﴿وَإِذَا قِيلَ لَهُمُ اسْجُدُوا لِلرَّحْمَٰنِ قَالُوا وَمَا</p>
+      <p class="id">'Dan apabila dikatakan kepada mereka: Sujudlah kepada Ar-Rahman! Mereka berkata: Apa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الرَّحْمَٰنُ﴾ (سورة الفرقان آية ٦٠). فهؤلاء المشركون</p>
+      <p class="id">itu Ar-Rahman?' (QS. Al-Furqan ayat 60). Maka kaum musyrikin ini</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هم سلف الجهمية والمعتزلة والأشاعرة، وكل من</p>
+      <p class="id">adalah pendahulu bagi kaum Jahmiyah, Mu'tazilah, dan Asy'ariyah, serta setiap orang yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفى عن الله ما أثبته لنفسه أو</p>
+      <p class="id">mengingkari dari Allah apa yang telah Dia tetapkan bagi diri-Nya sendiri atau</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أثبته له رسوله ﷺ من أسماء الله</p>
+      <p class="id">yang ditetapkan oleh Rasul-Nya ﷺ dari nama-nama dan sifat-sifat-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وصفاته. وبئس السلف لبئس الخلف.</p>
+      <p class="id">Maka betapa buruknya pendahulu itu, dan betapa buruknya pula generasi penerusnya.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) هم أتباع مذهب أبي الحسن الأشعري</p>
+      <p class="id">(1) Mereka adalah para pengikut mazhab Abul Hasan Al-Asy'ari</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">قبل رجوعه إلى مذهب أهل السنة، ولم</p>
+      <p class="id">sebelum beliau kembali kepada mazhab Ahlus Sunnah; namun mereka sendiri tidak</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">يرجعوا عما رجع عنه.</p>
+      <p class="id">kembali dari apa yang telah beliau tinggalkan.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) هم أتباع مذهب أبي منصور الماتوريدي.</p>
+      <p class="id">(2) Mereka adalah para pengikut mazhab Abu Manshur Al-Maturidi.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-1">والرد عليهم من وجوه</h3>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-2">الوجه الأول</h3>
+
+    <div class="ayat">
+      <p class="ar">أن الله سبحانه وتعالى أثبت لنفسه الأسماء</p>
+      <p class="id">Sesungguhnya Allah Yang Mahasuci lagi Mahatinggi telah menetapkan bagi diri-Nya nama-nama</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والصفات، وأثبتهما له رسوله ﷺ، فنفيها عن</p>
+      <p class="id">dan sifat-sifat, dan keduanya juga ditetapkan oleh Rasul-Nya ﷺ; maka meniadakannya dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله أو نفي بعضها نفي لما أثبته</p>
+      <p class="id">Allah, atau meniadakan sebagiannya saja, berarti mengingkari apa yang telah ditetapkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله ورسوله، وهذا محادة لله ورسوله.</p>
+      <p class="id">oleh Allah dan Rasul-Nya, dan ini adalah bentuk penentangan terhadap Allah dan Rasul-Nya.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-3">الوجه الثاني</h3>
+
+    <div class="ayat">
+      <p class="ar">أنه لا يلزم من وجود هذه الصفات</p>
+      <p class="id">Sesungguhnya tidak mengharuskan, dari adanya sifat-sifat ini pada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في المخلوقين، أو من تسمى بعض المخلوقين</p>
+      <p class="id">diri makhluk, atau dari penamaan sebagian makhluk dengan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بشيء من تلك الأسماء، مشابهة بين الله</p>
+      <p class="id">sebagian nama-nama tersebut, adanya keserupaan antara Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وخلقه؛ فإن لله سبحانه أسماء وصفات تخصه،</p>
+      <p class="id">dan makhluk-Nya; karena Allah Yang Mahasuci memiliki nama-nama dan sifat-sifat yang khusus bagi-Nya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وللمخلوق أسماء وصفات تخصه. فكما أن لله</p>
+      <p class="id">sedangkan makhluk pun memiliki nama-nama dan sifat-sifat yang khusus baginya. Maka sebagaimana Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">سبحانه وتعالى ذاتاً لا تشبه ذوات المخلوقين،</p>
+      <p class="id">Yang Mahasuci lagi Mahatinggi memiliki Zat yang tidak menyerupai zat para makhluk,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فله أسماء وصفات لا تشبه أسماء المخلوقين</p>
+      <p class="id">Dia pun memiliki nama-nama dan sifat-sifat yang tidak menyerupai nama-nama makhluk</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وصفاتهم، والاشتراك في الاسم والمعنى العام لا</p>
+      <p class="id">dan sifat-sifat mereka; dan kesamaan dalam nama serta makna umum tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يوجب الاشتراك في الحقيقة. فقد سمى الله</p>
+      <p class="id">mengharuskan kesamaan pada hakikatnya. Sungguh Allah telah menamai</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفسه عليماً حليماً، وسمى بعض عباده عليماً</p>
+      <p class="id">diri-Nya Al-'Alim (Maha Mengetahui) lagi Al-Halim (Maha Penyantun), dan Dia menamai sebagian hamba-Nya 'alim' (berilmu)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فقال: ﴿وَبَشِّرُوهُ بِغُلَامٍ عَلِيمٍ﴾ (الذاريات ٢٨)، يعني</p>
+      <p class="id">sebagaimana firman-Nya: 'Maka berilah dia kabar gembira dengan (kelahiran) seorang anak yang alim.' (QS. Adz-Dzariyat 28), yang dimaksud</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إسحاق. وسمى آخر حليماً فقال: ﴿فَبَشَّرْنَاهُ بِغُلَامٍ</p>
+      <p class="id">adalah Ishaq. Dan Dia menamai yang lain 'halim' (penyantun), dengan berfirman: 'Maka Kami beri dia kabar gembira dengan seorang anak yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حَلِيمٍ﴾ (الصافات ١٠١)، يعني إسماعيل. وليس العليم</p>
+      <p class="id">halim.' (QS. Ash-Shaffat 101), yang dimaksud adalah Isma'il. Namun 'alim' (sifat makhluk)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كالعليم ولا الحليم كالحليم. وسمى نفسه فقال</p>
+      <p class="id">tidaklah sama dengan Al-'Alim (Allah), dan 'halim' (makhluk) pun tidak sama dengan Al-Halim (Allah). Dan Dia menamai diri-Nya, dengan berfirman</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إن الله سميعاً بصيراً، وسمى بعض عباده</p>
+      <p class="id">bahwa Allah Maha Mendengar lagi Maha Melihat, dan Dia menamai sebagian hamba-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">سميعاً بصيراً فقال: ﴿إِنَّا خَلَقْنَا الْإِنسَانَ مِن</p>
+      <p class="id">'sami' bashir' (mendengar dan melihat), dengan berfirman: 'Sesungguhnya Kami telah menciptakan manusia dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نُّطْفَةٍ أَمْشَاجٍ نَّبْتَلِيهِ فَجَعَلْنَاهُ سَمِيعًا بَصِيرًا﴾ (سورة</p>
+      <p class="id">setetes mani campuran yang Kami hendak mengujinya, maka Kami jadikan ia mendengar dan melihat.' (QS.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الإنسان)، وليس السميع كالسميع ولا البصير كالبصير.</p>
+      <p class="id">Al-Insan), namun 'yang mendengar' (makhluk) tidaklah sama dengan Yang Maha Mendengar (Allah), begitu pula 'yang melihat' tidak sama dengan Yang Maha Melihat.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وسمى نفسه بالرؤوف الرحيم فقال: ﴿إِنَّ اللَّهَ</p>
+      <p class="id">Dan Dia menamai diri-Nya Ar-Ra'uf (Maha Pengasih) lagi Ar-Rahim (Maha Penyayang), dengan berfirman: 'Sesungguhnya Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بِالنَّاسِ لَرَءُوفٌ رَّحِيمٌ﴾ (الحج ٦٥)، وسمى بعض</p>
+      <p class="id">Maha Pengasih lagi Maha Penyayang terhadap manusia.' (QS. Al-Hajj 65), dan Dia menamai sebagian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عباده رؤوفاً رحيماً فقال: ﴿لَقَدْ جَاءَكُمْ رَسُولٌ</p>
+      <p class="id">hamba-Nya dengan sifat pengasih dan penyayang, dengan berfirman: 'Sungguh telah datang kepada kalian seorang rasul</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مِّنْ أَنفُسِكُمْ عَزِيزٌ عَلَيْهِ مَا عَنِتُّمْ حَرِيصٌ</p>
+      <p class="id">dari kalangan kalian sendiri, yang berat terasa olehnya penderitaan yang kalian alami, sangat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عَلَيْكُم بِالْمُؤْمِنِينَ رَءُوفٌ رَّحِيمٌ﴾ (سورة التوبة)، وليس</p>
+      <p class="id">menginginkan (keimanan dan keselamatan) bagi kalian, dan terhadap orang-orang mukmin dia sangat pengasih lagi penyayang.' (QS. At-Taubah), namun</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الرؤوف كالرؤوف ولا الرحيم كالرحيم. وكذلك وصف</p>
+      <p class="id">pengasih (makhluk) tidaklah sama dengan Yang Maha Pengasih (Allah), begitu pula penyayang (makhluk) tidak sama dengan Yang Maha Penyayang. Begitu pula Dia menyifati</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفسه بصفات، ووصف عباده بنظير ذلك، مثل</p>
+      <p class="id">diri-Nya dengan berbagai sifat, dan menyifati hamba-Nya dengan sifat yang serupa, seperti</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قوله: ﴿وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ﴾ (البقرة</p>
+      <p class="id">firman-Nya: 'Dan mereka tidak dapat meliputi sedikit pun dari ilmu-Nya.' (QS. Al-Baqarah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٢٥٥)، فوصف نفسه بالعلم، ووصف عباده بالعلم</p>
+      <p class="id">255), Dia menyifati diri-Nya dengan ilmu, dan menyifati hamba-Nya dengan ilmu pula,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فقال: ﴿وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا﴾</p>
+      <p class="id">dengan berfirman: 'Dan tidaklah kalian diberi ilmu pengetahuan kecuali hanya sedikit.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(الإسراء ٨٥)، وقال: ﴿وَفَوْقَ كُلِّ ذِي عِلْمٍ</p>
+      <p class="id">(QS. Al-Isra' 85), dan berfirman: 'Dan di atas setiap orang yang berilmu itu ada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عَلِيمٌ﴾، وقال: ﴿وَقَالَ الَّذِينَ أُوتُوا الْعِلْمَ﴾ (القصص</p>
+      <p class="id">yang lebih mengetahui lagi.' Serta berfirman: 'Dan berkatalah orang-orang yang diberi ilmu.' (QS. Al-Qashash</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٨٠). ووصف نفسه بالقوة فقال: ﴿إِنَّ اللَّهَ</p>
+      <p class="id">80). Dan Dia menyifati diri-Nya dengan kekuatan, dengan berfirman: 'Sesungguhnya Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَقَوِيٌّ عَزِيزٌ﴾ (الحج ٧٤)، ﴿إِنَّ اللَّهَ هُوَ</p>
+      <p class="id">benar-benar Mahakuat lagi Mahaperkasa.' (QS. Al-Hajj 74), 'Sesungguhnya Allah, Dialah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ﴾ (سورة الذاريات)، ووصف</p>
+      <p class="id">Maha Pemberi rezeki, Yang mempunyai kekuatan lagi sangat kokoh.' (QS. Adz-Dzariyat), dan Dia menyifati</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عباده بالقوة فقال: ﴿اللَّهُ الَّذِي خَلَقَكُم مِّن</p>
+      <p class="id">hamba-Nya dengan kekuatan, dengan berfirman: 'Allah yang menciptakan kalian dari</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ضَعْفٍ ثُمَّ جَعَلَ مِن بَعْدِ ضَعْفٍ قُوَّةً</p>
+      <p class="id">keadaan lemah, kemudian menjadikan sesudah keadaan lemah itu kekuatan,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ثُمَّ جَعَلَ مِن بَعْدِ قُوَّةٍ ضَعْفًا وَشَيْبَةً﴾</p>
+      <p class="id">kemudian menjadikan sesudah kekuatan itu kelemahan dan uban (usia tua).'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(الروم ٥٤)، إلى غير ذلك. ومعلوم أن</p>
+      <p class="id">(QS. Ar-Rum 54), dan lain sebagainya. Dan diketahui bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أسماء الله وصفاته تخصه وتليق به، وأسماء</p>
+      <p class="id">nama-nama dan sifat-sifat Allah adalah khusus bagi-Nya dan layak bagi-Nya, sedangkan nama-nama</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المخلوقين تخصهم وتليق بهم. ولا يلزم من</p>
+      <p class="id">makhluk khusus bagi mereka dan layak bagi mereka. Maka kesamaan dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الاشتراك في الاسم والمعنى العام الاشتراك في</p>
+      <p class="id">nama dan makna umum tidak mengharuskan kesamaan pada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الحقيقة، وذلك لعدم التماثل بين المسميين والموصوفين،</p>
+      <p class="id">hakikatnya, karena tidak adanya kesetaraan antara Dzat yang dinamai (Allah) dan yang diberi sifat (makhluk),</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهذا ظاهر، والحمد لله.</p>
+      <p class="id">dan hal ini sudah jelas, segala puji bagi Allah.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-4">الوجه الثالث</h3>
+
+    <div class="ayat">
+      <p class="ar">أن الذي ليس له صفات كمال لا</p>
+      <p class="id">Sesungguhnya sesuatu yang tidak memiliki sifat-sifat kesempurnaan tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يصلح أن يكون إلهاً. ولهذا قال إبراهيم</p>
+      <p class="id">layak untuk menjadi sesembahan. Oleh karena itu, Nabi Ibrahim berkata</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لأبيه: ﴿لِمَ تَعْبُدُ مَا لَا يَسْمَعُ وَلَا</p>
+      <p class="id">kepada ayahnya: 'Mengapa engkau menyembah sesuatu yang tidak dapat mendengar dan tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُبْصِرُ﴾ (سورة مريم آية ٤٢). وقال تعالى</p>
+      <p class="id">dapat melihat?' (QS. Maryam ayat 42). Dan Allah Ta'ala berfirman</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الرد على الذين عبدوا العجل: ﴿أَلَمْ</p>
+      <p class="id">dalam membantah orang-orang yang menyembah anak sapi: 'Apakah</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَرَوْا أَنَّهُ لَا يُكَلِّمُهُمْ وَلَا يَهْدِيهِمْ سَبِيلًا﴾</p>
+      <p class="id">mereka tidak melihat bahwa (anak sapi) itu tidak dapat berbicara kepada mereka dan tidak dapat menunjuki mereka jalan?'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة الأعراف آية ١٤٨).</p>
+      <p class="id">(QS. Al-A'raf ayat 148).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-5">الوجه الرابع</h3>
+
+    <div class="ayat">
+      <p class="ar">إن إثبات الصفات كمال، ونفيها نقص؛ فالذي</p>
+      <p class="id">Sesungguhnya menetapkan sifat-sifat itu adalah kesempurnaan, sedangkan meniadakannya adalah kekurangan; maka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ليس له صفات إما معدوم وإما ناقص،</p>
+      <p class="id">sesuatu yang tidak memiliki sifat, ia pastilah tidak ada (ma'dum) atau kurang,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والله تعالى منزه عن النقص.</p>
+      <p class="id">sedangkan Allah Ta'ala Mahasuci dari segala kekurangan.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="pasal-3-bagian-6">الوجه الخامس</h3>
+
+    <div class="ayat">
+      <p class="ar">أن تأويل الصفات عن ظاهرها لا دليل</p>
+      <p class="id">Sesungguhnya menakwilkan sifat-sifat dari makna zahirnya tidak memiliki dalil</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عليه فهو باطل، وتفويض معناها يلزم منه</p>
+      <p class="id">yang mendukungnya, sehingga itu adalah batil; dan menyerahkan maknanya (tafwidh) mengharuskan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أن الله خاطبنا في القرآن بما لا</p>
+      <p class="id">bahwa Allah berbicara kepada kita dalam Al-Qur'an dengan sesuatu yang tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفهم معناه، مع أنه أمرنا أن ندعوه</p>
+      <p class="id">kita pahami maknanya, padahal Dia memerintahkan kita untuk berdoa kepada-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بأسمائه، فكيف ندعوه بما لا نفهم معناه؟!</p>
+      <p class="id">dengan menyebut nama-nama-Nya; lalu bagaimana kita berdoa dengan sesuatu yang tidak kita pahami maknanya?!</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وأمرنا بتدبر القرآن كله، فكيف يأمرنا بتدبر</p>
+      <p class="id">Padahal Dia memerintahkan kita untuk merenungkan seluruh Al-Qur'an, maka bagaimana mungkin Dia memerintahkan kita merenungkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما لا يُفهم؟! فتبين من هذا أنه</p>
+      <p class="id">sesuatu yang tidak dapat dipahami?! Maka jelaslah dari sini bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا بد من إثبات أسماء الله وصفاته</p>
+      <p class="id">wajib menetapkan nama-nama dan sifat-sifat Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">على الوجه اللائق بالله مع نفي مشابهة</p>
+      <p class="id">dengan cara yang layak bagi-Nya, disertai peniadaan keserupaan dengan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المخلوقين، كما قال تعالى: ﴿لَيْسَ كَمِثْلِهِ شَيْءٌ</p>
+      <p class="id">makhluk, sebagaimana firman-Nya Ta'ala: 'Tidak ada sesuatu pun yang serupa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَهُوَ السَّمِيعُ الْبَصِيرُ﴾ (سورة الشورى)، فنفى عن</p>
+      <p class="id">dengan-Nya, dan Dialah Yang Maha Mendengar lagi Maha Melihat.' (QS. Asy-Syura), maka Dia meniadakan dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفسه مماثلة الأشياء، وأثبت له السمع والبصر،</p>
+      <p class="id">diri-Nya keserupaan dengan segala sesuatu, namun menetapkan bagi diri-Nya pendengaran dan penglihatan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فدل على أن إثبات الصفات لا يلزم</p>
+      <p class="id">yang menunjukkan bahwa menetapkan sifat-sifat tidak mengharuskan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">منه التشبيه، وعلى وجوب إثبات الصفات مع</p>
+      <p class="id">adanya penyerupaan (tasybih), sekaligus menunjukkan wajibnya menetapkan sifat-sifat disertai</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نفي المشابهة. وهذا معنى قول أهل السنة</p>
+      <p class="id">peniadaan keserupaan. Inilah makna perkataan Ahlus Sunnah wal Jama'ah:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والجماعة: إثبات بلا تمثيل، وتنزيه بلا تعطيل.</p>
+      <p class="id">'Menetapkan tanpa menyerupakan, dan mensucikan tanpa meniadakan.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وصلى الله على نبينا محمد وآله وصحبه.</p>
+      <p class="id">Semoga selawat Allah tercurah atas Nabi kita Muhammad, keluarga, dan sahabat beliau.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-3-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">اذكر طوائف الذين أنكروا الأسماء والصفات أو أنكروا بعضها. وما شبهتهم في ذلك؟</p>
+      <p class="id">Sebutkan golongan-golongan yang mengingkari nama-nama dan sifat-sifat (Allah), atau mengingkari sebagiannya. Apa syubhat mereka dalam hal itu?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كيف ترد على منكري الأسماء والصفات أو شيء منها؟</p>
+      <p class="id">Bagaimana engkau membantah orang-orang yang mengingkari nama-nama dan sifat-sifat (Allah), atau sebagian darinya?</p>
+    </div>
+
+
+  </div>
+</section>
+
+</body>
+</html>

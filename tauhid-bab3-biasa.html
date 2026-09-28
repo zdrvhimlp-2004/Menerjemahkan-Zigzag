@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الباب الثالث: شمول العبادة — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #5a5343;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+    --quran: #8a5a15;
+    --quran-bg: #f7f0e0;
+    --pasal-bg: #eef2ea;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #b9b3a4;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+      --quran: #d9a54a;
+      --quran-bg: #2a2418;
+      --pasal-bg: #1c2420;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ====== SATU-SATUNYA SECTION: ISI ====== */
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 860px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  /* satu segmen = 1 baris Arab + 1 baris Indonesia */
+  .ayat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 0;
+  }
+
+  .ayat .ar {
+    direction: rtl;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2rem);
+    color: var(--ar-color);
+  }
+
+  .ayat .id {
+    direction: ltr;
+    text-align: left;
+    font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem);
+    color: var(--id-color);
+  }
+
+  .ayat.quran {
+    background: var(--quran-bg);
+    border-radius: 10px;
+    padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.6rem, 2vw, 0.9rem);
+    border-right: 3px solid var(--quran);
+  }
+  .ayat.quran .ar,
+  .ayat.quran .id {
+    color: var(--quran);
+  }
+
+  .ayat.footnote-row {
+    opacity: 0.75;
+  }
+  .ayat.footnote-row .ar { font-size: clamp(1rem, 0.85rem + 1vw, 1.3rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.72rem, 0.66rem + 0.4vw, 0.85rem); }
+
+  .ayat.list-item {
+    padding-inline-end: 1.4rem;
+    position: relative;
+  }
+  .ayat.list-item .ar::before {
+    content: "\2022";
+    color: var(--heading);
+    margin-inline-end: 0.5em;
+  }
+
+  /* ====== JUDUL BAB (satu kali, di awal) ====== */
+  .bab__judul {
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin: 0 0 clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1rem, 3vw, 1.5rem);
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ====== JUDUL PASAL (per bab Fasl, muncul berkali-kali) ====== */
+  .pasal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem);
+    color: var(--heading);
+    text-align: center;
+    background: var(--pasal-bg);
+    border-radius: 12px;
+    padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem);
+    margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem);
+  }
+  .bab__judul + .pasal__judul { margin-top: 0; }
+
+  .bagian__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--border);
+  }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .soal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.75rem, 5vw, 2.75rem) 0 0.25rem;
+  }
+
+  /* ====== DAFTAR ISI ====== */
+  .daftar-isi {
+    direction: ltr;
+    background: var(--pasal-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .daftar-isi__judul {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .daftar-isi__list {
+    list-style: none;
+    counter-reset: pasal-counter;
+  }
+
+  .daftar-isi__list > li {
+    counter-increment: pasal-counter;
+    margin-bottom: 0.5rem;
+  }
+
+  .daftar-isi__list > li > a {
+    direction: rtl;
+    display: block;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(0.98rem, 0.88rem + 0.5vw, 1.15rem);
+    color: var(--ar-color);
+    text-decoration: none;
+  }
+
+  .daftar-isi__list > li > a::before {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--id-color);
+    margin-inline-end: 0.4em;
+    content: counter(pasal-counter) ".";
+  }
+
+  .daftar-isi__list > li > a:hover { color: var(--heading); }
+
+  .daftar-isi__sublist {
+    list-style: none;
+    direction: rtl;
+    margin: 0.35rem 0.25rem 0 0;
+    padding-right: 1.5rem;
+    border-right: 2px solid var(--border);
+  }
+
+  .daftar-isi__sublist li { margin-bottom: 0.25rem; }
+
+  .daftar-isi__sublist a {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .daftar-isi__sublist a:hover { color: var(--id-color); }
+
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الباب الثالث: شمول العبادة</h1>
+    <p class="isi__ket">Kitab Tauhid Kelas 1 Aliyah &middot; Bab 3, Pasal 1&ndash;5 &middot; 281 baris &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia</p>
+
+    <nav class="daftar-isi">
+      <h2 class="daftar-isi__judul">Daftar Isi</h2>
+      <ol class="daftar-isi__list">
+        <li><a href="#pasal-1">الفصل الأول: التوحيد المطلوب هو إفراد الله بالعبادة</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-1-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-2">الفصل الثاني: معنى العبادة</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-2-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-3">الفصل الثالث: شمول العبادة لكل ما يقوم عليه المجتمع المسلم</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-3-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-4">الفصل الرابع: الرد على الذين يرون عزل الدين عن الدولة</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-4-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+        <li><a href="#pasal-5">الفصل الخامس: المنهج الإلهي لنظام الحياة هو منهج الإيمان بالله</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#pasal-5-soal">الأسئلة</a></li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+
+
+    <h2 class="bab__judul">الباب الثالث: شمول العبادة</h2>
+
+    <div class="ayat">
+      <p class="ar">ويتكون من الفصول الآتية :</p>
+      <p class="id">Dan bab ini terdiri dari pasal-pasal berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الأول : أن التوحيد المطلوب هو</p>
+      <p class="id">Pasal Pertama: Bahwa tauhid yang dituntut adalah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إفراد الله بالعبادة.</p>
+      <p class="id">mengesakan Allah dalam ibadah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الثاني : بيان معنى العبادة.</p>
+      <p class="id">Pasal Kedua: Penjelasan makna ibadah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الثالث : شمول العبادة لكل ما</p>
+      <p class="id">Pasal Ketiga: Cakupan ibadah atas segala hal</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يقوم عليه المجتمع المسلم في عقيدته وحكمه</p>
+      <p class="id">yang menjadi dasar masyarakat muslim, dalam akidah, hukum,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وسلوكه وأخلاقه.</p>
+      <p class="id">perilaku, dan akhlaknya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الرابع : الرد على الذين يرون</p>
+      <p class="id">Pasal Keempat: Bantahan terhadap orang yang berpandangan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عزل الدين عن الدولة، وأن الدين في</p>
+      <p class="id">agama terpisah dari negara, dan bahwa agama menurut</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">نظرهم محصور في الشعائر التعبدية.</p>
+      <p class="id">pandangan mereka terbatas hanya pada ritual ibadah semata.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الفصل الخامس : المنهج الإلهي لنظام الحياة</p>
+      <p class="id">Pasal Kelima: Manhaj Ilahi bagi sistem kehidupan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هو منهج الإيمان بالله، وما سواه فهو</p>
+      <p class="id">adalah manhaj iman kepada Allah, sedangkan selain itu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">منهج جاهلي.</p>
+      <p class="id">adalah manhaj jahiliyah.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-1">الفصل الأول: التوحيد المطلوب هو إفراد الله بالعبادة</h2>
+
+    <div class="ayat">
+      <p class="ar">عرفنا فيما سبق أن التوحيد ثلاثة أنواع:</p>
+      <p class="id">Kita telah mengetahui sebelumnya bahwa tauhid ada tiga jenis:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">توحيد الربوبية، وتوحيد الألوهية، وتوحيد الأسماء والصفات.</p>
+      <p class="id">tauhid rububiyah, tauhid uluhiyah, dan tauhid asma wa sifat.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فتوحيد الربوبية هو إفراد الله تعالى بأفعاله</p>
+      <p class="id">Tauhid rububiyah adalah mengesakan Allah Ta'ala dalam perbuatan-Nya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كالخلق والرزق والإحياء والإماتة وجلب الخير ودفع</p>
+      <p class="id">seperti mencipta, memberi rezeki, menghidupkan, mematikan, mendatangkan kebaikan, dan menolak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الشر، وتوحيد الألوهية هو إفراد الله تعالى</p>
+      <p class="id">keburukan. Tauhid uluhiyah adalah mengesakan Allah Ta'ala</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بأفعال العباد التي يفعلونها على وجه التقرب</p>
+      <p class="id">dalam perbuatan hamba yang mereka lakukan sebagai bentuk pendekatan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والتعبد، كالدعاء والنذر والنحر والخوف والرجاء والرغبة</p>
+      <p class="id">diri dan ibadah, seperti berdoa, bernazar, menyembelih, takut, mengharap, cinta,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والرهبة والإنابة والتوكل وغير ذلك من أنواع</p>
+      <p class="id">gentar, kembali (kepada-Nya), dan bertawakal, serta jenis-jenis</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">العبادة المشروعة. وتوحيد الأسماء والصفات هو الإقرار</p>
+      <p class="id">ibadah lain yang disyariatkan. Adapun tauhid asma wa sifat adalah pengakuan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بأسماء الله وصفاته التي سمى بها ووصف</p>
+      <p class="id">terhadap nama-nama dan sifat-sifat Allah yang Dia sebutkan dan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بها نفسه أو سماه ووصفه بها رسوله.</p>
+      <p class="id">gambarkan tentang diri-Nya sendiri, atau yang disebutkan dan digambarkan oleh Rasul-Nya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فأسماؤه كالحي القيوم السميع البصير العليم القدير</p>
+      <p class="id">Maka nama-nama-Nya seperti Al-Hayy, Al-Qayyum, As-Sami', Al-Bashir, Al-'Alim, Al-Qadir,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الخبير، وصفاته كالسمع والبصر والوجه واليد والعلم</p>
+      <p class="id">Al-Khabir; dan sifat-sifat-Nya seperti pendengaran, penglihatan, wajah, tangan, ilmu,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والقدرة والإرادة، إلى غير ذلك مما ثبت</p>
+      <p class="id">kekuasaan, dan kehendak, serta selain itu dari apa yang telah ditetapkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في الكتاب والسنة. فالنوع الأول من التوحيد</p>
+      <p class="id">dalam Al-Qur'an dan Sunnah. Maka jenis tauhid pertama,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهو توحيد الربوبية قد أقر به الكفار</p>
+      <p class="id">yaitu tauhid rububiyah, telah diakui oleh orang-orang kafir</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولم يدخلهم في الإسلام؛ لأن الإقرار به</p>
+      <p class="id">namun tidak memasukkan mereka ke dalam Islam; karena pengakuan terhadapnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وحده لا يكفي. قال تعالى: ﴿وَلَئِن سَأَلْتَهُم</p>
+      <p class="id">saja tidak cukup. Allah Ta'ala berfirman: 'Dan sungguh jika engkau bertanya kepada mereka,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مَّنْ خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ لَيَقُولُنَّ خَلَقَهُنَّ الْعَزِيزُ</p>
+      <p class="id">siapakah yang menciptakan langit dan bumi, niscaya mereka akan menjawab: Yang menciptakannya adalah Yang Mahaperkasa lagi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الْعَلِيمُ﴾ (سورة الزخرف). وقال تعالى: ﴿قُلْ مَن</p>
+      <p class="id">Maha Mengetahui.' (QS. Az-Zukhruf). Dan Allah Ta'ala berfirman: 'Katakanlah: Siapakah</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">رَّبُّ السَّمَاوَاتِ السَّبْعِ وَرَبُّ الْعَرْشِ الْعَظِيمِ سَيَقُولُونَ</p>
+      <p class="id">Rabb pemilik tujuh langit dan Rabb pemilik 'Arsy yang agung? Niscaya mereka akan menjawab:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لِلَّهِ﴾ (سورة المؤمنون آية ٨٦-٨٧). ﴿وَلَئِن سَأَلْتَهُم</p>
+      <p class="id">Kepunyaan Allah.' (QS. Al-Mu'minun ayat 86-87). 'Dan sungguh jika engkau bertanya kepada mereka,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَّنْ خَلَقَهُمْ لَيَقُولُنَّ اللَّهُ﴾ (سورة الزخرف آية</p>
+      <p class="id">siapakah yang menciptakan mereka, niscaya mereka akan menjawab: Allah.' (QS. Az-Zukhruf ayat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٨٧). ﴿قُلْ مَن يَرْزُقُكُم مِّنَ السَّمَاءِ وَالْأَرْضِ</p>
+      <p class="id">87). 'Katakanlah: Siapakah yang memberi kalian rezeki dari langit dan bumi,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَمَّن يَمْلِكُ السَّمْعَ وَالْأَبْصَارَ وَمَن يُخْرِجُ الْحَيَّ</p>
+      <p class="id">atau siapakah yang berkuasa atas pendengaran dan penglihatan, dan siapakah yang mengeluarkan yang hidup</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مِنَ الْمَيِّتِ وَيُخْرِجُ الْمَيِّتَ مِنَ الْحَيِّ وَمَن</p>
+      <p class="id">dari yang mati, dan mengeluarkan yang mati dari yang hidup, dan siapakah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُدَبِّرُ الْأَمْرَ فَسَيَقُولُونَ اللَّهُ﴾ (سورة يونس آية</p>
+      <p class="id">yang mengatur segala urusan? Niscaya mereka akan menjawab: Allah.' (QS. Yunus ayat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٣١). والتوحيد المطلوب والذي يدخل في الإسلام</p>
+      <p class="id">31). Adapun tauhid yang dituntut, yang memasukkan seseorang ke dalam Islam,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هو توحيد الألوهية، وهو إفراد الله بالعبادة،</p>
+      <p class="id">adalah tauhid uluhiyah, yaitu mengesakan Allah dalam ibadah;</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهذا هو الذي جحده المشركون وبعث الله</p>
+      <p class="id">inilah yang diingkari oleh kaum musyrikin, dan karena itulah Allah mengutus</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الرسل في الدعوة إليه. قال تعالى: ﴿وَلَقَدْ</p>
+      <p class="id">para rasul untuk mengajak kepadanya. Allah Ta'ala berfirman: 'Dan sungguh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بَعَثْنَا فِي كُلِّ أُمَّةٍ رَّسُولًا أَنِ اعْبُدُوا</p>
+      <p class="id">Kami telah mengutus pada tiap-tiap umat seorang rasul (untuk menyerukan): Sembahlah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اللَّهَ وَاجْتَنِبُوا الطَّاغُوتَ﴾ (سورة النحل آية ٣٦).</p>
+      <p class="id">Allah dan jauhilah thaghut.' (QS. An-Nahl ayat 36).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وهذا النوع من التوحيد هو الذي شرع</p>
+      <p class="id">Dan jenis tauhid inilah yang karenanya disyariatkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الجهاد من أجله. قال تعالى: ﴿وَقَاتِلُوهُمْ حَتَّىٰ</p>
+      <p class="id">jihad. Allah Ta'ala berfirman: 'Dan perangilah mereka sampai</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَا تَكُونَ فِتْنَةٌ وَيَكُونَ الدِّينُ كُلُّهُ لِلَّهِ﴾</p>
+      <p class="id">tidak ada lagi fitnah, dan agama itu semuanya untuk Allah.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة الأنفال آية ٣٩). وهو الذي أمر</p>
+      <p class="id">(QS. Al-Anfal ayat 39). Dan inilah yang diperintahkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله به عباده: ﴿وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا</p>
+      <p class="id">Allah kepada hamba-hamba-Nya: 'Padahal mereka tidak diperintahkan kecuali untuk beribadah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ﴾ (سورة البينة آية</p>
+      <p class="id">kepada Allah dengan ikhlas menjalankan agama untuk-Nya.' (QS. Al-Bayyinah ayat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٥). فإن قيل: ما وجه ذكر توحيد</p>
+      <p class="id">5). Maka jika ditanyakan: apa alasan disebutkannya tauhid</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الربوبية في القرآن مع أن المطلوب هو</p>
+      <p class="id">rububiyah dalam Al-Qur'an, padahal yang dituntut adalah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">توحيد الألوهية؟ قيل: توحيد الربوبية إنما يذكر</p>
+      <p class="id">tauhid uluhiyah? Dijawab: tauhid rububiyah disebutkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في القرآن من أجل الاستدلال على توحيد</p>
+      <p class="id">dalam Al-Qur'an semata-mata untuk berdalil atas tauhid</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الألوهية؛ لأنه مستلزم له. قال تعالى: ﴿يَا</p>
+      <p class="id">uluhiyah; karena tauhid uluhiyah adalah konsekuensi dari tauhid rububiyah. Allah Ta'ala berfirman: 'Wahai</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ وَالَّذِينَ</p>
+      <p class="id">manusia, sembahlah Rabb kalian yang telah menciptakan kalian dan orang-orang</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ الَّذِي جَعَلَ لَكُمُ</p>
+      <p class="id">sebelum kalian, agar kalian bertakwa; (Dialah) yang menjadikan bagi kalian</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">الْأَرْضَ فِرَاشًا وَالسَّمَاءَ بِنَاءً وَأَنزَلَ مِنَ السَّمَاءِ</p>
+      <p class="id">bumi sebagai hamparan dan langit sebagai atap, dan menurunkan dari langit</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مَاءً فَأَخْرَجَ بِهِ مِنَ الثَّمَرَاتِ رِزْقًا لَّكُمْ</p>
+      <p class="id">air (hujan), lalu Dia keluarkan dengannya buah-buahan sebagai rezeki bagi kalian.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَلَا تَجْعَلُوا لِلَّهِ أَندَادًا وَأَنتُمْ تَعْلَمُونَ﴾ (سورة</p>
+      <p class="id">Maka janganlah kalian mengadakan sekutu-sekutu bagi Allah padahal kalian mengetahui.' (QS.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">البقرة). وهذا التوحيد هو معنى لا إله</p>
+      <p class="id">Al-Baqarah). Dan tauhid inilah makna dari kalimat 'la ilaha</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إلا الله؛ فإن الإله معناه المعبود، أي</p>
+      <p class="id">illallah'; karena 'ilah' artinya sesembahan, yakni</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا معبود بحق إلا الله، وما سواه</p>
+      <p class="id">tidak ada sesembahan yang benar-benar berhak disembah selain Allah, dan selain-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فعبادته باطلة. كما قال تعالى: ﴿ذَٰلِكَ بِأَنَّ</p>
+      <p class="id">maka ibadah kepadanya adalah batil. Sebagaimana firman-Nya Ta'ala: 'Yang demikian itu karena</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">اللَّهَ هُوَ الْحَقُّ وَأَنَّ مَا يَدْعُونَ مِن</p>
+      <p class="id">Allah, Dialah yang haq, dan apa yang mereka seru selain</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">دُونِهِ هُوَ الْبَاطِلُ﴾ (سورة الحج آية ٦٢).</p>
+      <p class="id">Dia itulah yang batil.' (QS. Al-Hajj ayat 62).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وبهذا يظهر غلط من ظن أن معنى</p>
+      <p class="id">Dari sinilah tampak kekeliruan orang yang menyangka bahwa makna</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا إله إلا الله هو الإقرار بأن</p>
+      <p class="id">'la ilaha illallah' adalah pengakuan bahwa Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله هو الخالق الرازق والمدبر، فيفسر هذه</p>
+      <p class="id">adalah Pencipta, Pemberi rezeki, dan Pengatur, lalu menafsirkan kalimat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الكلمة بتوحيد الربوبية. والدليل على بطلان هذا</p>
+      <p class="id">ini dengan tauhid rububiyah semata. Padahal dalil yang membatalkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">التفسير لمعنى لا إله إلا الله أن</p>
+      <p class="id">tafsiran seperti ini bagi makna 'la ilaha illallah' adalah bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النبي ﷺ قاتل المشركين وهم يقرون بتوحيد</p>
+      <p class="id">Nabi ﷺ memerangi kaum musyrikin padahal mereka mengakui tauhid</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الربوبية، وقال: (أمرت أن أقاتل الناس حتى</p>
+      <p class="id">rububiyah, dan beliau bersabda: '(Aku diperintahkan untuk memerangi manusia sampai</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يشهدوا أن لا إله إلا الله وأن</p>
+      <p class="id">mereka bersaksi bahwa tidak ada sesembahan yang berhak disembah selain Allah dan bahwa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">محمداً رسول الله) الحديث (1). فدل على</p>
+      <p class="id">Muhammad adalah utusan Allah)' — Al-Hadits (1). Maka hal ini menunjukkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أن معنى لا إله إلا الله ليس</p>
+      <p class="id">bahwa makna 'la ilaha illallah' bukanlah sekadar</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هو الإقرار بالربوبية؛ لأن الإقرار بالربوبية موجود</p>
+      <p class="id">pengakuan terhadap rububiyah; karena pengakuan terhadap rububiyah sudah ada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولا يكاد أحد ينكره في العالم، ولو</p>
+      <p class="id">dan hampir tidak ada seorang pun di dunia ini yang mengingkarinya. Sekiranya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان هو معنى لا إله إلا الله</p>
+      <p class="id">itulah makna 'la ilaha illallah', tentu kaum musyrikin</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لم يستكبر المشركون عن قول هذه الكلمة.</p>
+      <p class="id">tidak akan menyombongkan diri untuk mengucapkan kalimat ini.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿إِنَّهُمْ كَانُوا إِذَا قِيلَ لَهُمْ</p>
+      <p class="id">Allah Ta'ala berfirman: 'Sesungguhnya mereka dahulu apabila dikatakan kepada mereka,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَا إِلَٰهَ إِلَّا اللَّهُ يَسْتَكْبِرُونَ وَيَقُولُونَ أَئِنَّا</p>
+      <p class="id">Tidak ada sesembahan yang berhak disembah selain Allah, mereka menyombongkan diri, dan berkata: Apakah sungguh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَتَارِكُو آلِهَتِنَا لِشَاعِرٍ مَّجْنُونٍ﴾ (الصافات آية ٣٥-٣٦).</p>
+      <p class="id">kami harus meninggalkan sesembahan-sesembahan kami hanya karena seorang penyair gila?' (QS. Ash-Shaffat ayat 35-36).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إذ كيف يستكبرون عن شيء يقرون به؟!</p>
+      <p class="id">Bagaimana mungkin mereka menyombongkan diri terhadap sesuatu yang mereka akui sendiri?!</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وكذلك يخطئ بعض الكتاب المعاصرين حيث يفسرون</p>
+      <p class="id">Begitu pula sebagian penulis kontemporer keliru ketika menafsirkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا إله إلا الله بالحاكمية، فيقولون معناها:</p>
+      <p class="id">'la ilaha illallah' dengan hakimiyyah (kedaulatan hukum), lalu mereka berkata maknanya:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا حاكمية إلا لله. وهذا خطأ؛ لأن</p>
+      <p class="id">'tidak ada kedaulatan hukum kecuali bagi Allah'. Ini adalah kekeliruan; karena</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الحاكمية جزء جانبي من معناها الذي هو</p>
+      <p class="id">hakimiyyah hanyalah bagian sampingan dari maknanya yang sesungguhnya, yaitu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إثبات العبودية لله ونفي الشرك.</p>
+      <p class="id">menetapkan penghambaan diri kepada Allah dan meniadakan segala bentuk kesyirikan.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) الحديث متفق عليه.</p>
+      <p class="id">(1) Hadis ini disepakati keshahihannya (muttafaq 'alaih).</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-1-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">ما التوحيد المطلوب من العباد؟ وما الدليل؟</p>
+      <p class="id">Apa tauhid yang dituntut dari para hamba? Dan apa dalilnya?</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-2">الفصل الثاني: معنى العبادة</h2>
+
+    <div class="ayat">
+      <p class="ar">العبادة هي الذل والخضوع مع المحبة. فقد</p>
+      <p class="id">Ibadah adalah kehinaan diri dan ketundukan yang disertai kecintaan. Sebagian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عرفها بعض العلماء بأنها: غاية الذل مع</p>
+      <p class="id">ulama mendefinisikannya sebagai: puncak kehinaan diri disertai puncak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">غاية الحب. وعرفها شيخ الإسلام ابن تيمية</p>
+      <p class="id">kecintaan. Sedangkan Syaikhul Islam Ibnu Taimiyah rahimahullah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رحمه الله بأنها اسم جامع لكل ما</p>
+      <p class="id">mendefinisikannya sebagai nama yang mencakup segala sesuatu yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يحبه الله ويرضاه من الأعمال والأقوال الظاهرة</p>
+      <p class="id">dicintai dan diridai Allah, baik berupa perbuatan maupun perkataan, yang lahir</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والباطنة. وقد خلق الله الخلق من أجلها.</p>
+      <p class="id">maupun yang batin. Dan Allah menciptakan makhluk semata-mata untuk tujuan ini.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا</p>
+      <p class="id">Allah Ta'ala berfirman: 'Dan tidaklah Aku menciptakan jin dan manusia melainkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لِيَعْبُدُونِ﴾ (سورة الذاريات). ولا تكون العبادة صحيحة</p>
+      <p class="id">agar mereka beribadah kepada-Ku.' (QS. Adz-Dzariyat). Adapun ibadah tidak akan sah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إلا إذا كانت خالصة لله ليس فيها</p>
+      <p class="id">kecuali jika dilakukan dengan ikhlas semata untuk Allah, tanpa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شرك، وكان المنهج موافقاً لما شرعه. فمن</p>
+      <p class="id">kesyirikan sedikit pun, dan caranya sesuai dengan apa yang Dia syariatkan. Maka barangsiapa</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عبد الله مخلصاً له العبادة على وفق</p>
+      <p class="id">beribadah kepada Allah dengan ikhlas sesuai dengan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما شرع فهو الموحد، ومن لم يعبده</p>
+      <p class="id">apa yang disyariatkan, maka dialah orang yang bertauhid; barangsiapa tidak mau beribadah kepada-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان متكبراً، ومن عبده وعبد معه غيره</p>
+      <p class="id">maka ia sombong; barangsiapa beribadah kepada-Nya namun juga beribadah kepada selain-Nya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان مشركاً، ومن عبده على غير ما</p>
+      <p class="id">maka ia musyrik; dan barangsiapa beribadah kepada-Nya dengan cara yang tidak</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شرع كان مبتدعاً مخرفاً. فالعبادة لا تكون</p>
+      <p class="id">disyariatkan maka ia adalah ahli bid'ah yang sesat. Maka ibadah tidak akan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">صحيحة مقبولة إلا بشرطين: الإخلاص لله تعالى،</p>
+      <p class="id">sah dan diterima kecuali dengan dua syarat: ikhlas karena Allah Ta'ala semata,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والمتابعة للرسول ﷺ. قال تعالى: ﴿بَلَىٰ مَنْ</p>
+      <p class="id">dan mengikuti (petunjuk) Rasulullah ﷺ. Allah Ta'ala berfirman: 'Ya (memang demikian), barangsiapa yang</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَسْلَمَ وَجْهَهُ لِلَّهِ وَهُوَ مُحْسِنٌ فَلَهُ أَجْرُهُ</p>
+      <p class="id">menyerahkan dirinya kepada Allah sedang ia berbuat kebaikan, maka baginya pahalanya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عِندَ رَبِّهِ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ</p>
+      <p class="id">di sisi Rabbnya; tidak ada rasa takut atas mereka dan tidak (pula)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَحْزَنُونَ﴾ (سورة البقرة). ومعنى (أسلم وجهه لله)</p>
+      <p class="id">mereka bersedih hati.' (QS. Al-Baqarah). Makna dari '(menyerahkan dirinya kepada Allah)'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أي أخلص عمله من الشرك. ومعنى (وهو</p>
+      <p class="id">adalah memurnikan amalnya dari kesyirikan. Dan makna '(ia berbuat kebaikan/muhsin)'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">محسن) أي متبع للرسول، فلم يكن في</p>
+      <p class="id">adalah mengikuti Rasul, sehingga tidak ada dalam amalnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عمله بدعة ولا خرافة.</p>
+      <p class="id">bid'ah ataupun khurafat.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-2-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">عرف العبادة، وبين مكانتها وشروط صحتها.</p>
+      <p class="id">Definisikan ibadah, jelaskan kedudukannya, dan syarat-syarat sahnya.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-3">الفصل الثالث: شمول العبادة لكل ما يقوم عليه المجتمع المسلم</h2>
+
+    <div class="ayat">
+      <p class="ar">العبادة كما سبق تشمل كل شؤون حياة</p>
+      <p class="id">Ibadah, sebagaimana telah disebutkan, mencakup seluruh urusan kehidupan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المسلمين: في العقيدة، بحيث تكون عقيدة المسلم</p>
+      <p class="id">kaum muslimin: dalam akidah, sehingga akidah seorang muslim haruslah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">خالصة لله سليمة من الشرك ومن المبادئ</p>
+      <p class="id">murni untuk Allah, bersih dari kesyirikan serta dari berbagai prinsip</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الهدامة والأفكار المنحرفة. وفي الشعائر التعبدية، بحيث</p>
+      <p class="id">yang merusak dan pemikiran yang menyimpang. Juga dalam syiar-syiar ibadah, sehingga</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تكون وفق المنهج الذي شرعه الله، سليمة</p>
+      <p class="id">harus sesuai dengan manhaj yang Allah syariatkan, bersih</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">من البدع والخرافات. فقوله ﷺ: (من أحدث</p>
+      <p class="id">dari bid'ah dan khurafat. Sebagaimana sabda beliau ﷺ: '(Barangsiapa mengada-adakan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في أمرنا هذا ما ليس منه فهو</p>
+      <p class="id">dalam urusan (agama) kami ini sesuatu yang bukan darinya, maka ia</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رد) (1)، وفي قوله: (من عمل عملاً</p>
+      <p class="id">tertolak)' (1), dan dalam sabdanya: '(Barangsiapa melakukan suatu amalan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ليس عليه أمرنا فهو رد) (2). وفي</p>
+      <p class="id">yang tidak sesuai dengan perintah kami, maka ia tertolak)' (2). Juga dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الحكم بين الناس، قال تعالى: ﴿وَأَنِ احْكُم</p>
+      <p class="id">hal memutuskan perkara di antara manusia, Allah Ta'ala berfirman: 'Dan hendaklah engkau memutuskan perkara</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بَيْنَهُم بِمَا أَنزَلَ اللَّهُ وَلَا تَتَّبِعْ أَهْوَاءَهُمْ﴾</p>
+      <p class="id">di antara mereka dengan apa yang Allah turunkan, dan janganlah engkau mengikuti hawa nafsu mereka.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(المائدة آية ٤٩). قال تعالى: ﴿فَإِن تَنَازَعْتُمْ</p>
+      <p class="id">(QS. Al-Ma'idah ayat 49). Allah Ta'ala berfirman: 'Maka jika kalian berselisih</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فِي شَيْءٍ فَرُدُّوهُ إِلَى اللَّهِ وَالرَّسُولِ إِن</p>
+      <p class="id">tentang sesuatu, kembalikanlah ia kepada Allah dan Rasul, jika</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كُنتُمْ تُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ﴾ (سورة النساء</p>
+      <p class="id">kalian beriman kepada Allah dan hari akhir.' (QS. An-Nisa ayat</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">آية ٥٩). قال تعالى: ﴿فَلَا وَرَبِّكَ لَا</p>
+      <p class="id">59). Allah Ta'ala berfirman: 'Maka demi Rabbmu, mereka tidak</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يُؤْمِنُونَ حَتَّىٰ يُحَكِّمُوكَ فِيمَا شَجَرَ بَيْنَهُمْ ثُمَّ</p>
+      <p class="id">beriman sampai mereka menjadikan engkau sebagai hakim dalam perkara yang mereka perselisihkan, kemudian</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَا يَجِدُوا فِي أَنفُسِهِمْ حَرَجًا مِّمَّا قَضَيْتَ</p>
+      <p class="id">mereka tidak merasa keberatan dalam hati mereka atas keputusan yang engkau berikan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيُسَلِّمُوا تَسْلِيمًا﴾ (سورة النساء). فتحكيم الشريعة عبادة</p>
+      <p class="id">dan mereka menerima dengan sepenuhnya.' (QS. An-Nisa). Maka berhukum dengan syariat adalah ibadah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لله وتوحيد له، وتحكيم النظم والقوانين البشرية</p>
+      <p class="id">kepada Allah dan bentuk pengesaan-Nya, sedangkan berhukum dengan aturan dan hukum buatan manusia</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كفر وشرك. قال تعالى: ﴿وَمَن لَّمْ يَحْكُم</p>
+      <p class="id">adalah kekufuran dan kesyirikan. Allah Ta'ala berfirman: 'Dan barangsiapa tidak berhukum</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بِمَا أَنزَلَ اللَّهُ فَأُولَٰئِكَ هُمُ الْكَافِرُونَ﴾ (سورة</p>
+      <p class="id">dengan apa yang Allah turunkan, maka mereka itulah orang-orang kafir.' (QS.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المائدة). قال تعالى: ﴿أَمْ لَهُمْ شُرَكَاءُ شَرَعُوا</p>
+      <p class="id">Al-Ma'idah). Allah Ta'ala berfirman: 'Ataukah mereka mempunyai sekutu-sekutu yang membuat</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَهُم مِّنَ الدِّينِ مَا لَمْ يَأْذَن بِهِ</p>
+      <p class="id">syariat bagi mereka dalam agama, apa yang tidak diizinkan oleh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اللَّهُ﴾ (الشورى آية ٢١). وطاعة المخلوق في</p>
+      <p class="id">Allah?' (QS. Asy-Syura ayat 21). Dan ketaatan kepada makhluk dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تحليل الحرام وتحريم الحلال شرك أيضاً. قال</p>
+      <p class="id">menghalalkan yang haram dan mengharamkan yang halal juga termasuk syirik. Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تعالى: ﴿وَإِنَّ الشَّيَاطِينَ لَيُوحُونَ إِلَىٰ أَوْلِيَائِهِمْ لِيُجَادِلُوكُمْ</p>
+      <p class="id">Ta'ala berfirman: 'Dan sesungguhnya setan-setan itu membisikkan kepada kawan-kawan mereka agar membantah kalian;</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَإِنْ أَطَعْتُمُوهُمْ إِنَّكُمْ لَمُشْرِكُونَ﴾ (سورة الأنعام). قال</p>
+      <p class="id">dan jika kalian menaati mereka, sesungguhnya kalian menjadi orang-orang musyrik.' (QS. Al-An'am). Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تعالى: ﴿اتَّخَذُوا أَحْبَارَهُمْ وَرُهْبَانَهُمْ أَرْبَابًا مِّن دُونِ</p>
+      <p class="id">Ta'ala berfirman: 'Mereka menjadikan para pendeta dan rahib mereka sebagai rabb selain</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">اللَّهِ وَالْمَسِيحَ ابْنَ مَرْيَمَ وَمَا أُمِرُوا إِلَّا</p>
+      <p class="id">Allah, begitu pula Al-Masih putra Maryam, padahal mereka tidak diperintahkan kecuali</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لِيَعْبُدُوا إِلَٰهًا وَاحِدًا لَّا إِلَٰهَ إِلَّا هُوَ</p>
+      <p class="id">untuk menyembah sesembahan yang satu, tidak ada sesembahan yang berhak disembah selain Dia,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">سُبْحَانَهُ عَمَّا يُشْرِكُونَ﴾ (سورة التوبة).</p>
+      <p class="id">Mahasuci Dia dari apa yang mereka sekutukan.' (QS. At-Taubah).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) رواه البخاري ومسلم.</p>
+      <p class="id">(1) Diriwayatkan oleh Imam Bukhari dan Muslim.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) رواه مسلم.</p>
+      <p class="id">(2) Diriwayatkan oleh Imam Muslim.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولا يكفي أن يكون المقصود من تحكيم</p>
+      <p class="id">Dan tidak cukup bahwa tujuan dari berhukum dengan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الشريعة إقامة العدل وتوفير الأمن فقط، بل</p>
+      <p class="id">syariat hanyalah sekadar menegakkan keadilan dan menjaga keamanan semata, akan tetapi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا بد أن يكون المقصود الأعظم والأساسي</p>
+      <p class="id">harus dipastikan bahwa tujuan utama dan mendasarnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هو التعبد لله بذلك وطاعة أمره وقبول</p>
+      <p class="id">adalah beribadah kepada Allah dengan hal itu, menaati perintah-Nya, dan menerima</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شريعته، كالجهاد والأمر بالمعروف والنهي عن المنكر.</p>
+      <p class="id">syariat-Nya, seperti halnya jihad serta amar makruf nahi mungkar.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وكذلك العبادة تشمل سلوك المسلم مع بني</p>
+      <p class="id">Begitu pula ibadah mencakup perilaku seorang muslim terhadap sesama</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مجتمعه، وتخلقه بأخلاق الإسلام، من بره بوالديه،</p>
+      <p class="id">anggota masyarakatnya, serta akhlaknya yang berlandaskan ajaran Islam, seperti berbakti kepada kedua orang tuanya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وصلته لأرحامه، ومواساته للفقراء والمحتاجين، ومحبة الخير</p>
+      <p class="id">menyambung silaturahmi, menyantuni orang fakir dan yang membutuhkan, mencintai kebaikan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لإخوانه وإعانتهم على مصالحهم، وكف أذاه عنهم،</p>
+      <p class="id">bagi saudara-saudaranya serta membantu kepentingan mereka, menahan gangguan terhadap mereka,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والإحسان إلى الجار واليتيم والمسكين وابن السبيل</p>
+      <p class="id">berbuat baik kepada tetangga, anak yatim, orang miskin, musafir,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والمملوك من الآدميين والبهائم. فالعبادة تشمل فعل</p>
+      <p class="id">serta budak, baik dari kalangan manusia maupun hewan. Maka ibadah mencakup melakukan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كل ما أمر الله به ورسوله، وترك</p>
+      <p class="id">segala yang diperintahkan oleh Allah dan Rasul-Nya, serta meninggalkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كل ما نهى عنه ورسوله. وهذا يشمل</p>
+      <p class="id">segala yang dilarang oleh keduanya. Dan ini mencakup</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كل حياة المسلم.</p>
+      <p class="id">seluruh kehidupan seorang muslim.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-3-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">ما الذي يشمله مسمى العبادة مع الاستدلال؟</p>
+      <p class="id">Apa saja yang tercakup dalam istilah ibadah, disertai dalilnya?</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما الدليل على أن مصادر العبادة مقصورة على ما ورد في الكتاب والسنة؟</p>
+      <p class="id">Apa dalil bahwa sumber-sumber ibadah hanya terbatas pada apa yang terdapat dalam Al-Qur'an dan Sunnah?</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-4">الفصل الرابع: الرد على الذين يرون عزل الدين عن الدولة</h2>
+
+    <div class="ayat">
+      <p class="ar">يحاول المستشرقون والمستغربون الذاهبون مذهب الغرب في</p>
+      <p class="id">Para orientalis dan kaum yang terpengaruh gaya Barat dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فهم الدين أن يعزلوا الدين والعبادة عن</p>
+      <p class="id">memahami agama berupaya memisahkan agama dan ibadah dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بقية شؤون الحياة، ويحصروهما في نطاق ضيق</p>
+      <p class="id">berbagai urusan kehidupan lainnya, serta membatasi keduanya dalam ruang lingkup yang sempit</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">من حياة المسلمين، فيجعلوهما فيما يمارسه المسلمون</p>
+      <p class="id">dari kehidupan kaum muslimin, sehingga menjadikan keduanya hanya sebatas apa yang dilakukan kaum muslimin</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في المساجد من الصلاة والذكر، أو فيما</p>
+      <p class="id">di masjid berupa salat dan zikir, atau sebatas hubungan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بين العبد وبين ربه، ولا شأن للدين</p>
+      <p class="id">antara seorang hamba dengan Rabbnya, tanpa ada peran agama dan akidah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والعقيدة في شؤون الحكم والسياسة، ولا في</p>
+      <p class="id">dalam urusan pemerintahan dan politik, tidak pula dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شؤون الاقتصاد، ولا في الحكم بين الناس</p>
+      <p class="id">urusan ekonomi, ataupun dalam memutuskan perkara di antara manusia</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">في دمائهم وأموالهم وأعراضهم؛ إنما هذه الأمور</p>
+      <p class="id">menyangkut darah, harta, dan kehormatan mereka; menurut anggapan mereka, semua urusan itu</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بزعمهم من اختصاص القوانين الوضعية والنظم الأرضية</p>
+      <p class="id">hanyalah wewenang undang-undang buatan manusia dan sistem sekuler,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تشريعاً وتطبيقاً. وهذا كفر بالله عز وجل،</p>
+      <p class="id">baik dalam pembuatan hukum maupun penerapannya. Ini adalah kekufuran terhadap Allah 'Azza wa Jalla,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وعزل لسلطانه، وتعطيل لشريعته، وشرك في عبادته؛</p>
+      <p class="id">pemisahan dari kekuasaan-Nya, peniadaan syariat-Nya, serta kesyirikan dalam beribadah kepada-Nya;</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لأن الدين والعبادة، كما أسلفنا، يشملان كل</p>
+      <p class="id">karena agama dan ibadah, sebagaimana telah kami sebutkan sebelumnya, mencakup seluruh</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شؤون المسلمين: عقيدة، وعبادة، ومعاملة، وتحكيماً، وحكماً،</p>
+      <p class="id">urusan kaum muslimin: akidah, ibadah, muamalah, penerapan hukum, keputusan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وسلوكاً، وأخلاقاً. قال الله تعالى: ﴿الْيَوْمَ أَكْمَلْتُ</p>
+      <p class="id">perilaku, dan akhlak. Allah Ta'ala berfirman: 'Pada hari ini telah Aku sempurnakan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَكُمْ دِينَكُمْ﴾. فالذي يقصر الإسلام على بعض</p>
+      <p class="id">bagi kalian agama kalian.' Maka orang yang membatasi Islam hanya pada sebagian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الشعائر التعبدية ويعزله ويقصيه عن بقية شؤون</p>
+      <p class="id">ritual ibadah saja, lalu memisahkan dan menyingkirkannya dari urusan-urusan kehidupan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الحياة يعتبره ناقصاً، ويكذب قوله تعالى: ﴿الْيَوْمَ</p>
+      <p class="id">lainnya, sesungguhnya ia menganggap Islam itu tidak sempurna, dan mendustakan firman-Nya Ta'ala: 'Pada hari ini</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ</p>
+      <p class="id">telah Aku sempurnakan bagi kalian agama kalian, dan telah Aku cukupkan kepada kalian nikmat-Ku, serta</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَكُمُ الْإِسْلَامَ دِينًا﴾ (سورة المائدة آية ٣)،</p>
+      <p class="id">Aku ridai Islam sebagai agama bagi kalian.' (QS. Al-Ma'idah ayat 3),</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وقوله تعالى: ﴿فَإِن تَنَازَعْتُمْ فِي شَيْءٍ فَرُدُّوهُ</p>
+      <p class="id">dan firman-Nya Ta'ala: 'Maka jika kalian berselisih tentang sesuatu, kembalikanlah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِلَى اللَّهِ وَالرَّسُولِ﴾ (سورة النساء آية ٥٩)،</p>
+      <p class="id">kepada Allah dan Rasul.' (QS. An-Nisa ayat 59),</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وقوله تعالى: ﴿ذَٰلِكُمْ حُكْمُ اللَّهِ يَحْكُمُ بَيْنَكُمْ</p>
+      <p class="id">dan firman-Nya Ta'ala: 'Itulah hukum Allah yang Dia tetapkan di antara kalian;</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَاللَّهُ عَلِيمٌ حَكِيمٌ﴾ (سورة الممتحنة). إن الإسلام</p>
+      <p class="id">dan Allah Maha Mengetahui lagi Mahabijaksana.' (QS. Al-Mumtahanah). Sesungguhnya Islam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">معناه الاستسلام لله بالتوحيد، والانقياد له بالطاعة،</p>
+      <p class="id">maknanya adalah berserah diri kepada Allah dengan tauhid, tunduk kepada-Nya dengan ketaatan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وتلقي الأحكام منه: ﴿إِنِ الْحُكْمُ إِلَّا لِلَّهِ﴾</p>
+      <p class="id">dan menerima segala hukum dari-Nya semata: 'Keputusan hukum itu hanyalah milik Allah.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة يوسف آية ٤٠)، ﴿أَمْ لَهُمْ شُرَكَاءُ</p>
+      <p class="id">(QS. Yusuf ayat 40), 'Ataukah mereka mempunyai sekutu-sekutu yang membuat</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">شَرَعُوا لَهُم مِّنَ الدِّينِ مَا لَمْ يَأْذَن</p>
+      <p class="id">syariat bagi mereka dalam agama, apa yang tidak diizinkan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بِهِ اللَّهُ﴾ (الشورى آية ٢١). أما الذي</p>
+      <p class="id">oleh Allah?' (QS. Asy-Syura ayat 21). Adapun orang yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يزعم أنه يؤمن بالله ويتلقى الأحكام من</p>
+      <p class="id">mengklaim beriman kepada Allah namun menerima hukum dari selain-Nya,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">غيره فهو كاذب في دعواه الإيمان. قال</p>
+      <p class="id">maka ia adalah pendusta dalam pengakuan imannya. Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تعالى: ﴿أَلَمْ تَرَ إِلَى الَّذِينَ يَزْعُمُونَ أَنَّهُمْ</p>
+      <p class="id">Ta'ala berfirman: 'Tidakkah engkau memperhatikan orang-orang yang mengaku bahwa mereka</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">آمَنُوا بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن</p>
+      <p class="id">telah beriman kepada apa yang diturunkan kepadamu dan apa yang diturunkan sebelum</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَبْلِكَ يُرِيدُونَ أَن يَتَحَاكَمُوا إِلَى الطَّاغُوتِ وَقَدْ</p>
+      <p class="id">kamu, namun mereka justru ingin berhukum kepada thaghut, padahal</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أُمِرُوا أَن يَكْفُرُوا بِهِ﴾ (النساء آية ٦٠).</p>
+      <p class="id">mereka telah diperintahkan untuk mengingkarinya.' (QS. An-Nisa ayat 60).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما هذا التناقض؟! هل يجتمع الإيمان بالله</p>
+      <p class="id">Betapa besar kontradiksi ini?! Mungkinkah iman kepada Allah bersanding</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مع تحكيم الطاغوت وعدم الكفر به؟! إن</p>
+      <p class="id">dengan berhukum kepada thaghut tanpa mengingkarinya?! Sesungguhnya</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الكفر بالطاغوت شرط أساسي في صحة الإيمان</p>
+      <p class="id">mengingkari thaghut adalah syarat mendasar bagi sahnya iman</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بالله والاستمساك بدينه. قال تعالى: ﴿فَمَن يَكْفُرْ</p>
+      <p class="id">kepada Allah dan keteguhan berpegang pada agama-Nya. Allah Ta'ala berfirman: 'Maka barangsiapa mengingkari</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بِالطَّاغُوتِ وَيُؤْمِن بِاللَّهِ فَقَدِ اسْتَمْسَكَ بِالْعُرْوَةِ الْوُثْقَىٰ</p>
+      <p class="id">thaghut dan beriman kepada Allah, sungguh ia telah berpegang pada tali yang sangat kokoh,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَا انفِصَامَ لَهَا﴾ (البقرة آية ٢٥٦). وأعظم</p>
+      <p class="id">yang tidak akan pernah putus.' (QS. Al-Baqarah ayat 256). Dan yang lebih</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">من ذلك محاولة فصل توحيد الألوهية عن</p>
+      <p class="id">parah lagi dari itu adalah upaya memisahkan tauhid uluhiyah dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">العقيدة، بحيث تكون العقيدة المطلوبة في نظر</p>
+      <p class="id">akidah, sehingga menurut sebagian orang yang sesat, akidah yang dituntut</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بعض الضلال هي الإقرار بتوحيد الربوبية فحسب.</p>
+      <p class="id">hanyalah sekadar pengakuan terhadap tauhid rububiyah semata.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فإذا أقر به صار عندهم موحداً (1)،</p>
+      <p class="id">Maka apabila seseorang telah mengakuinya, ia dianggap sudah bertauhid (1)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولو عبد غير الله من القبور والأولياء</p>
+      <p class="id">sekalipun ia menyembah selain Allah, seperti kuburan, para wali,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">والصالحين.</p>
+      <p class="id">dan orang-orang saleh.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) كما هو موجود في كتب العقائد</p>
+      <p class="id">(1) Sebagaimana yang terdapat dalam kitab-kitab akidah yang disusun</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">المؤلفة على طريقة المتكلمين، حيث يعرفون التوحيد</p>
+      <p class="id">menurut metode ahli kalam, di mana mereka mendefinisikan tauhid</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">بأنه الإقرار بوجود الله وأنه الخالق المدبر</p>
+      <p class="id">sebagai pengakuan terhadap keberadaan Allah dan bahwa Dia adalah Pencipta</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">للكون، إلى آخر ما يقولون.</p>
+      <p class="id">lagi Pengatur alam semesta, dan seterusnya perkataan mereka.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-4-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">كيف ترد على من يرى عزل الدين عن شؤون الحياة؟ وما حكم من يرى ذلك أو يفعله مع الاستدلال؟</p>
+      <p class="id">Bagaimana engkau membantah orang yang berpandangan agama terpisah dari urusan kehidupan? Apa hukum orang yang berpandangan atau berbuat demikian, disertai dalilnya?</p>
+    </div>
+
+    <h2 class="pasal__judul" id="pasal-5">الفصل الخامس: المنهج الإلهي لنظام الحياة هو منهج الإيمان بالله</h2>
+
+    <div class="ayat">
+      <p class="ar">قال الله تعالى: ﴿لَقَدْ مَنَّ اللَّهُ عَلَى</p>
+      <p class="id">Allah Ta'ala berfirman: 'Sungguh Allah telah memberikan karunia besar kepada</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">الْمُؤْمِنِينَ إِذْ بَعَثَ فِيهِمْ رَسُولًا مِّنْ أَنفُسِهِمْ</p>
+      <p class="id">orang-orang mukmin ketika Dia mengutus di tengah mereka seorang rasul dari kalangan mereka sendiri,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَتْلُو عَلَيْهِمْ آيَاتِهِ وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ</p>
+      <p class="id">yang membacakan kepada mereka ayat-ayat-Nya, menyucikan mereka, dan mengajarkan kepada mereka Kitab dan hikmah,</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِن كَانُوا مِن قَبْلُ لَفِي ضَلَالٍ مُّبِينٍ﴾</p>
+      <p class="id">padahal sebelumnya mereka benar-benar berada dalam kesesatan yang nyata.'</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">(سورة آل عمران ١٦٤). كان الناس قبل</p>
+      <p class="id">(QS. Ali 'Imran 164). Sebelum diutusnya Nabi ﷺ, manusia berada</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بعثة النبي ﷺ في جاهلية جهلاء وضلالة</p>
+      <p class="id">dalam kejahiliahan yang pekat dan kesesatan yang membutakan:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عمياء: في عباداتهم حيث يعبدون الأصنام، وفي</p>
+      <p class="id">dalam ibadah mereka, mereka menyembah berhala; dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حكمهم وسياستهم حيث يحكمون الطواغيت، ويعيشون على</p>
+      <p class="id">pemerintahan dan politik mereka, mereka berhukum kepada thaghut, serta hidup dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الغارات والثارات والنهب والسلب والقلق والخوف، وفي</p>
+      <p class="id">penjarahan, dendam turun-temurun, perampasan, kegelisahan, dan ketakutan; dan dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اقتصادياتهم حيث يتعاملون بالربا والميسر وأكل الأموال</p>
+      <p class="id">perekonomian mereka, mereka bertransaksi dengan riba, judi, dan memakan harta</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">بالباطل، إلى غير ذلك من الضلال، وكانوا</p>
+      <p class="id">secara batil, di samping berbagai bentuk kesesatan lainnya; mereka juga</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مستضعفين في الأرض لا دولة تجمعهم ولا</p>
+      <p class="id">dalam keadaan tertindas di muka bumi, tanpa negara yang menyatukan mereka</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عقيدة تؤلف بينهم. فلما بعث الله النبي</p>
+      <p class="id">maupun akidah yang mempersatukan hati mereka. Maka ketika Allah mengutus Nabi</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ﷺ أخرج الله به المؤمنين من الظلمات</p>
+      <p class="id">ﷺ, Allah mengeluarkan orang-orang mukmin dengannya dari kegelapan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إلى النور، فصحت عقيدتهم، واجتمعت كلمتهم، وقامت</p>
+      <p class="id">menuju cahaya, sehingga akidah mereka menjadi lurus, kalimat mereka bersatu,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">دولتهم، وتألفت قلوبهم، وطابت مكاسبهم، وقام اقتصادهم.</p>
+      <p class="id">negara mereka pun berdiri, hati mereka menjadi rukun, penghasilan mereka menjadi baik,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وقد ذكرهم الله بذلك في قوله: ﴿وَاذْكُرُوا</p>
+      <p class="id">dan perekonomian mereka pun tegak. Allah telah mengingatkan mereka akan hal itu dalam firman-Nya: 'Dan ingatlah</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">نِعْمَتَ اللَّهِ عَلَيْكُمْ إِذْ كُنتُمْ أَعْدَاءً فَأَلَّفَ</p>
+      <p class="id">nikmat Allah kepada kalian, ketika kalian dahulu bermusuhan, lalu Dia satukan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بَيْنَ قُلُوبِكُمْ فَأَصْبَحْتُم بِنِعْمَتِهِ إِخْوَانًا وَكُنتُمْ عَلَىٰ</p>
+      <p class="id">hati kalian, sehingga dengan nikmat-Nya kalian menjadi bersaudara; dan dahulu kalian berada di</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">شَفَا حُفْرَةٍ مِّنَ النَّارِ فَأَنقَذَكُم مِّنْهَا﴾ (آل</p>
+      <p class="id">tepi jurang neraka, lalu Dia selamatkan kalian darinya.' (QS. Ali</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عمران آية ١٠٣)، وفي قوله: ﴿وَاذْكُرُوا إِذْ</p>
+      <p class="id">'Imran ayat 103), dan dalam firman-Nya: 'Dan ingatlah ketika</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَنتُمْ قَلِيلٌ مُّسْتَضْعَفُونَ فِي الْأَرْضِ تَخَافُونَ أَن</p>
+      <p class="id">kalian dahulu berjumlah sedikit, tertindas di muka bumi, kalian takut</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَتَخَطَّفَكُمُ النَّاسُ فَآوَاكُمْ وَأَيَّدَكُم بِنَصْرِهِ وَرَزَقَكُم مِّنَ</p>
+      <p class="id">orang-orang akan menculik kalian, lalu Dia melindungi kalian, menguatkan kalian dengan pertolongan-Nya, serta memberi kalian rezeki dari</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الطَّيِّبَاتِ لَعَلَّكُمْ تَشْكُرُونَ﴾ (سورة الأنفال). قال تعالى:</p>
+      <p class="id">yang baik-baik, agar kalian bersyukur.' (QS. Al-Anfal). Allah Ta'ala berfirman:</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">﴿كَمَا أَرْسَلْنَا فِيكُمْ رَسُولًا مِّنكُمْ يَتْلُو عَلَيْكُمْ</p>
+      <p class="id">'Sebagaimana Kami telah mengutus kepada kalian seorang rasul dari kalangan kalian sendiri, yang membacakan kepada kalian</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">آيَاتِنَا وَيُزَكِّيكُمْ وَيُعَلِّمُكُمُ الْكِتَابَ وَالْحِكْمَةَ وَيُعَلِّمُكُم مَّا</p>
+      <p class="id">ayat-ayat Kami, menyucikan kalian, mengajarkan kepada kalian Kitab dan hikmah, serta mengajarkan kepada kalian apa yang</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لَمْ تَكُونُوا تَعْلَمُونَ﴾ (سورة البقرة). هذا هو</p>
+      <p class="id">belum kalian ketahui.' (QS. Al-Baqarah). Inilah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المنهج الإلهي لنظام الحياة: منهج الإيمان بالله</p>
+      <p class="id">manhaj Ilahi bagi sistem kehidupan: manhaj iman kepada Allah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ورسوله والحكم بشريعته، وما عداه من المناهج</p>
+      <p class="id">dan Rasul-Nya serta berhukum dengan syariat-Nya; adapun selain itu dari berbagai manhaj</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">البشرية المخالفة للمنهج الإلهي هو منهج الجاهلية.</p>
+      <p class="id">buatan manusia yang bertentangan dengan manhaj Ilahi ini, itulah manhaj jahiliyah.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿فَإِن تَوَلَّوْا فَاعْلَمْ أَنَّمَا يُرِيدُ</p>
+      <p class="id">Allah Ta'ala berfirman: 'Maka jika mereka berpaling, ketahuilah bahwa sesungguhnya Allah hendak</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">اللَّهُ أَن يُصِيبَهُم بِبَعْضِ ذُنُوبِهِمْ وَإِنَّ كَثِيرًا</p>
+      <p class="id">menimpakan kepada mereka sebagian akibat dosa-dosa mereka; dan sesungguhnya kebanyakan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مِّنَ النَّاسِ لَفَاسِقُونَ أَفَحُكْمَ الْجَاهِلِيَّةِ يَبْغُونَ وَمَنْ</p>
+      <p class="id">manusia adalah orang-orang fasik. Apakah hukum jahiliyah yang mereka kehendaki? Dan siapakah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَحْسَنُ مِنَ اللَّهِ حُكْمًا لِّقَوْمٍ يُوقِنُونَ﴾ (سورة</p>
+      <p class="id">yang lebih baik hukumnya daripada Allah bagi kaum yang meyakini (agamanya)?' (QS.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">المائدة ٤٩-٥٠). فما عدا حكم الإسلام هو</p>
+      <p class="id">Al-Ma'idah 49-50). Maka segala hukum selain hukum Islam adalah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حكم الجاهلية، وإن سمي تقدماً ورقياً، وإن</p>
+      <p class="id">hukum jahiliyah, sekalipun dinamakan kemajuan dan peradaban, dan sekalipun</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كان عليه أكثر الخلق وأعظمهم تقدماً في</p>
+      <p class="id">mayoritas manusia serta yang paling maju di antara mereka dalam</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الحضارة المادية. وكل دعوة بغير الإسلام هي</p>
+      <p class="id">peradaban materi menganutnya. Dan setiap seruan selain seruan Islam adalah</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">دعوة جاهلية، كالدعوة إلى القوميات والحزبيات والعنصريات.</p>
+      <p class="id">seruan jahiliyah, seperti seruan kepada nasionalisme, fanatisme golongan, dan rasialisme.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال تعالى: ﴿يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم</p>
+      <p class="id">Allah Ta'ala berfirman: 'Wahai manusia, sesungguhnya Kami telah menciptakan kalian</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا</p>
+      <p class="id">dari seorang laki-laki dan seorang perempuan, dan Kami jadikan kalian berbangsa-bangsa dan bersuku-suku agar kalian saling mengenal.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ﴾ (الحجرات آية</p>
+      <p class="id">Sesungguhnya yang paling mulia di antara kalian di sisi Allah adalah yang paling bertakwa di antara kalian.' (QS.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">١٣). فالفضل إنما هو في الدين والتقوى</p>
+      <p class="id">Al-Hujurat ayat 13). Maka keutamaan itu hanyalah terletak pada agama dan ketakwaan,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">لا في القوميات والعنصريات والحزبيات. وقد قال</p>
+      <p class="id">bukan pada nasionalisme, rasialisme, ataupun fanatisme golongan. Nabi ﷺ pun bersabda</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">النبي ﷺ في خطبته يوم فتح مكة:</p>
+      <p class="id">dalam khutbahnya pada hari penaklukan kota Makkah:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">«يا أيها الناس، إن الله تعالى قد</p>
+      <p class="id">'Wahai manusia, sesungguhnya Allah Ta'ala telah menghilangkan dari kalian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أذهب عنكم عُبِّيَّةَ (1) الجاهلية وتعظمها بآبائها،</p>
+      <p class="id">kesombongan (1) jahiliyah dan kebanggaannya terhadap nenek moyang. Manusia itu ada dua golongan:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فالناس رجلان: رجل بر تقي كريم على</p>
+      <p class="id">seorang yang baik, bertakwa, dan mulia di sisi Allah Ta'ala,</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله تعالى، ورجل فاجر شقي هين على</p>
+      <p class="id">atau seorang yang durhaka, celaka, dan hina di</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الله تعالى. إن الله عز وجل يقول:</p>
+      <p class="id">sisi Allah Ta'ala. Sesungguhnya Allah 'Azza wa Jalla berfirman:</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">﴿يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ</p>
+      <p class="id">'Wahai manusia, sesungguhnya Kami telah menciptakan kalian dari seorang laki-laki</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا إِنَّ أَكْرَمَكُمْ</p>
+      <p class="id">dan seorang perempuan, dan Kami jadikan kalian berbangsa-bangsa dan bersuku-suku agar kalian saling mengenal. Sesungguhnya yang paling mulia di antara kalian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">عِندَ اللَّهِ أَتْقَاكُمْ﴾ (الحجرات آية ١٣)». ثم</p>
+      <p class="id">di sisi Allah adalah yang paling bertakwa di antara kalian.' (QS. Al-Hujurat ayat 13)'. Kemudian</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قال: «أقول قولي هذا وأستغفر الله لي</p>
+      <p class="id">beliau bersabda: 'Aku sampaikan perkataanku ini, dan aku memohon ampun bagiku</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ولكم» (2).</p>
+      <p class="id">dan bagi kalian' (2).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(1) عبية، بضم العين وكسر الباء مشددة</p>
+      <p class="id">(1) 'Ubiyyah — dengan dhammah pada 'ain, kasrah pada ba yang bertasydid,</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">وتشديد الياء مفتوحة: الكبر. النهاية لابن الأثير</p>
+      <p class="id">dan ya bertasydid berharakat fathah — artinya kesombongan. Lihat An-Nihayah karya Ibnul Atsir</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٣/١٦٩).</p>
+      <p class="id">(3/169).</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(2) رواه ابن أبي حاتم، تفسير ابن</p>
+      <p class="id">(2) Diriwayatkan oleh Ibnu Abi Hatim, dalam Tafsir Ibnu</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">كثير (٦/٣٨٨) طبعة دار الأندلس، وله شواهد</p>
+      <p class="id">Katsir (6/388) terbitan Dar Al-Andalus, dan memiliki penguat riwayat pada Ahmad, Abu Dawud,</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">عند أحمد وأبي داود والترمذي.</p>
+      <p class="id">dan At-Tirmidzi.</p>
+    </div>
+
+    <h3 class="soal__judul" id="pasal-5-soal">الأسئلة</h3>
+
+    <div class="ayat">
+      <p class="ar">اذكر الأدلة على أن المنهج الإلهي لنظام الحياة هو منهج الإيمان وحده.</p>
+      <p class="id">Sebutkan dalil-dalil bahwa manhaj Ilahi bagi sistem kehidupan adalah manhaj iman semata.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ما حكم المناهج المخالفة للمنهج الإلهي؟ وما الدليل على ذلك؟</p>
+      <p class="id">Apa hukum manhaj-manhaj yang bertentangan dengan manhaj Ilahi? Dan apa dalilnya?</p>
+    </div>
+
+
+  </div>
+</section>
+
+</body>
+</html>
