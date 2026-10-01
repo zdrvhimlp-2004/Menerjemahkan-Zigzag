@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>أحوال المسند إليه (١) — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">أحوال المسند إليه (١)</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasl 2: Keadaan-Keadaan Musnad Ilayh, bagian 1 &middot; hlm. 97&ndash;131 &middot; Terjemah biasa</p>
+
+    <h2 class="pasal__judul">الفصل الثاني: أحوال المسند إليه</h2>
+    <p class="judul__id">Pasal Kedua: Keadaan-Keadaan Musnad Ilayh (Subjek Logis)</p>
+
+    <div class="ayat">
+      <p class="ar">الْمُسْنَدُ إِلَيْهِ هُوَ أَحَدُ أَجْزَاءِ الْجُمْلَةِ - كَمَا عَرَفْتَ - إِذْ تَتَكَوَّنُ الْجُمْلَةُ مِنْ مُسْنَدٍ وَمُسْنَدٍ إِلَيْهِ وَأَحَدِ الْمُتَعَلِّقَاتِ - إِنْ وُجِدَ - كَالْمَفْعُولِ وَالظَّرْفِ وَالْمَصْدَرِ وَالْجَارِّ وَالْمَجْرُورِ.. وَسَنَتَنَاوَلُ فِي هَذَا الْفَصْلِ أَحْوَالَ الْمُسْنَدِ إِلَيْهِ مِنْ حَذْفٍ وَذِكْرٍ وَتَعْرِيفٍ وَتَنْكِيرٍ وَإِتْبَاعٍ وَتَقْدِيمٍ وَتَأْخِيرٍ.. ثُمَّ نُتْبِعُ ذَلِكَ بِأَحْوَالِ الْمُسْنَدِ وَأَحْوَالِ الْمُتَعَلِّقَاتِ فِي الْفَصْلَيْنِ التَّالِيَيْنِ. وَفِي خِتَامِ هَذَا الْجُزْءِ سَنَعْرِضُ لِظَوَاهِرَ أُسْلُوبِيَّةٍ تَشْمَلُ كُلَّ أَجْزَاءِ الْجُمْلَةِ الْمَذْكُورَةِ.</p>
+      <p class="id">Musnad ilayh adalah salah satu unsur kalimat — sebagaimana telah diketahui — sebab kalimat tersusun dari musnad, musnad ilayh, dan salah satu muta'alliqat (unsur pelengkap) bila ada, seperti maf'ul, zharaf, mashdar, serta jar-majrur. Dalam pasal ini akan dibahas keadaan-keadaan musnad ilayh: pembuangan (hadzf), penyebutan (dzikr), ta'rif (definit), tankir (indefinit), itba' (pengiring/athaf), serta taqdim-ta'khir (pendahuluan-pengakhiran). Kemudian hal itu akan diikuti dengan pembahasan keadaan musnad dan keadaan muta'alliqat pada dua pasal berikutnya. Dan di penghujung bagian ini akan disajikan fenomena-fenomena gaya bahasa yang mencakup seluruh unsur kalimat yang disebutkan tadi.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</h3>
+    <p class="judul__id">Pembuangan Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar">لَا بُدَّ لِكُلِّ حَذْفٍ يَقَعُ فِي اللُّغَةِ مِنْ وُجُودِ أَمْرَيْنِ بِدُونِهِمَا يَكُونُ الْحَذْفُ عَبَثًا وَضَرْبًا مِنَ الْهَذَيَانِ، وَهَذَانِ الْأَمْرَانِ هُمَا:</p>
+      <p class="id">Setiap pembuangan (hadzf) yang terjadi dalam bahasa mestilah memenuhi dua hal, yang tanpa keduanya pembuangan itu menjadi sia-sia dan sejenis igauan. Kedua hal itu adalah:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">١ - وُجُودُ الْقَرِينَةِ الدَّالَّةِ الَّتِي تَدُلُّ عَلَى الْمَحْذُوفِ وَتُرْشِدُ إِلَيْهِ وَتُعَيِّنُهُ.</p>
+      <p class="id">1. Adanya qarinah (petunjuk/indikasi) yang menunjukkan unsur yang dibuang, mengarahkan kepadanya, dan menentukannya secara pasti.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">٢ - وُجُودُ سِرٍّ بَلَاغِيٍّ يَدْعُو إِلَى الْحَذْفِ وَيُرَجِّحُهُ عَلَى الذِّكْرِ.. وَهَذِهِ الْأَسْرَارُ كَثِيرَةٌ، وَلَا يُمْكِنُ اسْتِقْصَاؤُهَا وَالْإِحَاطَةُ بِهَا، وَلِذَا يَقُولُ عَبْدُ الْقَاهِرِ فِي إِبْرَازِ فَوَائِدِ الْحَذْفِ وَبَيَانِ قِيمَتِهِ الْبَلَاغِيَّةِ:</p>
+      <p class="id">2. Adanya rahasia balaghah yang mendorong terjadinya pembuangan dan mengunggulkannya atas penyebutan. Rahasia-rahasia ini sangat banyak dan tidak mungkin dihitung serta dicakup seluruhnya. Karena itu 'Abdul Qahir berkata dalam memaparkan faedah-faedah hadzf dan menjelaskan nilai balaghahnya:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">«هُوَ بَابٌ دَقِيقُ الْمَسْلَكِ، لَطِيفُ الْمَأْخَذِ، عَجِيبُ الْأَمْرِ، شَبِيهٌ بِالسِّحْرِ، فَإِنَّكَ تَرَى بِهِ تَرْكَ الذِّكْرِ أَفْصَحَ مِنَ الذِّكْرِ، وَالصَّمْتَ عَنِ الْإِفَادَةِ أَزْيَدَ لِلْإِفَادَةِ، وَتَجِدُكَ أَنْطَقَ مَا تَكُونُ إِذَا لَمْ تَنْطِقْ وَأَتَمَّ مَا تَكُونُ بَيَانًا إِذَا لَمْ تُبِنْ.. وَهَذِهِ جُمْلَةٌ قَدْ تُنْكِرُهَا حَتَّى تُخْبَرَ، وَتَدْفَعُهَا حَتَّى تَنْظُرَ، وَأَنَا أَكْتُبُ لَكَ بَدِيئًا أَمْثِلَةً مِمَّا عُرِضَ فِيهِ الْحَذْفُ، ثُمَّ أُنَبِّهُكَ عَلَى صِحَّةِ مَا أَشَرْتُ إِلَيْهِ، وَأُقِيمُ الْحُجَّةَ مِنْ ذَلِكَ عَلَيْهِ...»</p>
+      <p class="id">"Ia adalah bab yang jalannya halus, sudut pandangnya lembut, perkaranya menakjubkan, dan menyerupai sihir. Sebab engkau akan melihat bahwa meninggalkan penyebutan lebih fasih daripada menyebutkannya, diamnya dari menerangkan justru lebih menerangkan, dan engkau mendapati dirimu paling fasih justru ketika tidak berbicara, dan paling sempurna penjelasannya justru ketika tidak menjelaskan... Pernyataan ini mungkin akan engkau ingkari sampai engkau diberitahu, dan engkau tolak sampai engkau melihat sendiri. Maka akan kutuliskan untukmu pada mulanya beberapa contoh tempat terjadinya pembuangan, kemudian kuberitahukan kepadamu kebenaran apa yang kuisyaratkan itu, dan kutegakkan hujjah atasnya dari sana..."</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) دَلَائِلُ الْإِعْجَازِ ص ١٧٠.</p>
+      <p class="id">(1) Dala'il al-I'jaz, hlm. 170.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 98</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَأَخَذَ يَعْرِضُ كَثِيرًا مِنْ شَوَاهِدِ حَذْفِ الْمُبْتَدَأِ وَالْمَفْعُولِ مُبَيِّنًا دِقَّةَ الْحَذْفِ فِيهَا وَمَزِيَّتَهُ وَفَضْلَهُ عَلَى الذِّكْرِ، وَمُوَضِّحًا أَنَّ تَقْدِيرَ الْمَحْذُوفِ وَالنَّظَرَ إِلَيْهِ وَاعْتِبَارَهُ فِي الْكَلَامِ يُعَدُّ تَكَلُّفًا وَيَذْهَبُ بِمَزِيَّةِ الْحَذْفِ وَيُضَيِّعُ رَوْنَقَهُ.. يَقُولُ: «تَكَلُّفٌ أَنْ تَرُدَّ مَا حَذَفَ الشَّاعِرُ وَأَنْ تُخْرِجَهُ إِلَى لَفْظِكَ وَتُوقِعَهُ فِي سَمْعِكَ، فَإِنَّكَ تَعْلَمُ أَنَّ الَّذِي قُلْتَ</p>
+      <p class="id">Lalu ia memaparkan banyak sekali syahid (contoh kutipan) pembuangan mubtada' dan maf'ul, sambil menjelaskan kehalusan hadzf padanya, keunggulannya, dan kelebihannya atas penyebutan. Ia juga menjelaskan bahwa men-taqdir-kan (memperkirakan lafal) yang dibuang, memandangnya, dan memperhitungkannya dalam kalimat, dianggap sebagai sebuah pemaksaan yang justru menghilangkan keunggulan hadzf dan merusak keindahannya. Ia berkata: "Suatu pemaksaan bila engkau mengembalikan apa yang dibuang penyair, mengeluarkannya ke dalam lafalmu, dan memasukkannya ke pendengaranmu, sebab engkau tahu bahwa yang telah kaukatakan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كَمَا قُلْتَ وَأَنَّ رُبَّ حَذْفٍ هُوَ قِلَادَةُ الْجِيدِ وَقَاعِدَةُ التَّجْوِيدِ» وَيَقُولُ: «إِنَّكَ تَرَى نَصْبَهُ الْكَلَامَ وَهَيْئَتَهُ تَرُومُ مِنْكَ أَنْ تَنْسَى هَذَا الْمُبْتَدَأَ أَوْ تُبَاعِدَهُ عَنْ وَهْمِكَ، وَتَجْتَهِدَ أَلَّا يَدُورَ فِي خَلَدِكَ، وَلَا يَعْرِضَ لِخَاطِرِكَ، وَتَرَاكَ كَأَنَّكَ تَتَوَقَّاهُ تَوَقِّيَ الشَّيْءِ يُكْرَهُ مَكَانُهُ، وَالثَّقِيلِ يُخْشَى هُجُومُهُ» وَيَقُولُ: «تَرَى النَّفْسَ كَيْفَ تَتَفَادَى مِنْ إِظْهَارِ الْمَحْذُوفِ وَكَيْفَ تَأْنَسُ إِلَى إِضْمَارِهِ، وَتَرَى الْمَلَاحَةَ كَيْفَ تَذْهَبُ إِنْ أَنْتَ رُمْتَ التَّكَلُّمَ بِهِ»، وَيَقُولُ: «فَمَا مِنِ اسْمٍ أَوْ فِعْلٍ تَجِدُهُ قَدْ حُذِفَ ثُمَّ أُصِيبَ بِهِ مَوْضِعُهُ، وَحُذِفَ فِي الْحَالِ الَّتِي يَنْبَغِي أَنْ يُحْذَفَ فِيهَا، إِلَّا وَأَنْتَ تَجِدُ حَذْفَهُ هُنَاكَ أَحْسَنَ مِنْ ذِكْرِهِ، وَتَرَى إِضْمَارَهُ فِي النَّفْسِ أَوْلَى وَآنَسَ مِنَ النُّطْقِ بِهِ» (١).</p>
+      <p class="id">sama seperti yang telah kaukatakan, dan betapa banyak hadzf yang justru menjadi kalung leher dan kaidah kesempurnaan ucapan." Ia berkata (pula): "Engkau melihat susunan kalimat dan bentuknya itu menuntutmu untuk melupakan mubtada' ini atau menjauhkannya dari anganmu, dan engkau berusaha agar ia tidak terlintas dalam benakmu ataupun muncul dalam pikiranmu, sehingga engkau seolah menghindarinya sebagaimana seseorang menghindari sesuatu yang dibenci keberadaannya, dan sesuatu berat yang ditakutkan datangnya." Ia berkata: "Lihatlah bagaimana jiwa menghindar dari menampakkan yang dibuang, dan bagaimana ia merasa tenteram dengan menyembunyikannya; dan lihatlah bagaimana keindahan itu sirna jika engkau bermaksud mengucapkannya." Ia berkata (lagi): "Tidaklah suatu isim atau fi'il yang engkau dapati telah dibuang, lalu tempat pembuangan itu tepat pada keadaan yang sepatutnya dibuang padanya, melainkan engkau akan mendapati pembuangannya di sana lebih baik daripada penyebutannya, dan engkau akan melihat penyimpanannya dalam jiwa lebih utama dan lebih menenteramkan daripada pengucapannya."(1)</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) ارْجِعْ إِلَى هَذِهِ الْأَقْوَالِ فِي دَلَائِلِ الْإِعْجَازِ ١٧٤، ١٧٥.</p>
+      <p class="id">(1) Rujuklah pernyataan-pernyataan ini dalam Dala'il al-I'jaz, hlm. 174&ndash;175.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذَا وَنَسْتَطِيعُ أَنْ نَقُولَ إِنَّ هُنَاكَ ثَلَاثَ مَزَايَا تَرَاهَا كَامِنَةً وَرَاءَ كُلِّ حَذْفٍ يَقَعُ فِي اللُّغَةِ وَهِيَ: الْإِيجَازُ، وَإِثَارَةُ وَتَحْرِيكُ خَيَالِ الْمُخَاطَبِ وَأَحَاسِيسِهِ لِيُدْرِكَ مِنَ الْعِبَارَةِ مَا طُوِيَ ذِكْرُهُ وَسُكِتَ عَنْهُ، وَالِاحْتِرَازُ عَنِ الْعَبَثِ بِنَاءً عَلَى الظَّاهِرِ، لِأَنَّ ذِكْرَ الْكَلِمَةِ الَّتِي أُقِيمَ عَلَيْهَا الدَّلِيلُ وَأَشَارَ إِلَيْهَا السِّيَاقُ وَأَرْشَدَتْ إِلَيْهَا قَرَائِنُ الْأَحْوَالِ، يُعَدُّ عَبَثًا بِمُقْتَضَى الْبَلَاغَةِ، وَإِنْ كَانَ لَا يُسَمَّى عَبَثًا عِنْدَ التَّحْقِيقِ، وَلِذَا قَيَّدُوهُ بِقَوْلِهِمْ "بِنَاءً عَلَى الظَّاهِرِ".</p>
+      <p class="id">Dengan ini kita dapat mengatakan bahwa ada tiga keunggulan yang tersembunyi di balik setiap hadzf yang terjadi dalam bahasa, yaitu: ijaz (keringkasan); membangkitkan dan menggerakkan imajinasi serta perasaan mukhathab (lawan bicara) agar ia memahami dari ungkapan itu apa yang disembunyikan penyebutannya dan didiamkan; serta menghindari kesia-siaan berdasarkan zahir (lahiriah) — sebab menyebutkan kata yang dalil telah ditegakkan atasnya, yang ditunjukkan oleh konteks, dan diarahkan oleh qarinah keadaan, dianggap sia-sia menurut tuntutan balaghah, sekalipun pada hakikatnya tidak disebut sia-sia. Karena itu mereka membatasinya dengan ungkapan "berdasarkan zahir".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَعِنْدَمَا نُنْعِمُ النَّظَرَ وَنَتَأَمَّلُ الشَّوَاهِدَ الَّتِي طُوِيَ فِيهَا الْمُسْنَدُ إِلَيْهِ نَجِدُ أَنَّ حَذْفَهُ قَدْ كَثُرَ وَاطَّرَدَ عِنْدَ ذِكْرِ الدِّيَارِ وَالْأَطْلَالِ، وَفِي مَقَامَاتِ الْمَدْحِ وَالْهِجَاءِ وَالْفَخْرِ وَالرِّثَاءِ، وَأَنَّ هُنَالِكَ أَسْرَارًا بَلَاغِيَّةً، تَكْمُنُ وَرَاءَ الْحَذْفِ فِي تِلْكَ الْمَقَامَاتِ.</p>
+      <p class="id">Dan ketika kita mencermati dan merenungkan syahid-syahid tempat musnad ilayh disembunyikan, kita dapati bahwa pembuangannya banyak terjadi dan konsisten pada penyebutan diyar (kampung halaman) dan athlal (bekas-bekas perkemahan), serta pada maqam (konteks) pujian, celaan, kebanggaan, dan ratapan; dan bahwa di sana terdapat rahasia-rahasia balaghah yang tersembunyi di balik hadzf pada maqam-maqam tersebut.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">ذَكَرَ عَبْدُ الْقَاهِرِ أَنَّ حَذْفَ الْمُسْنَدِ إِلَيْهِ "الْمُبْتَدَأِ" يَكْثُرُ عِنْدَ ذِكْرِ الدِّيَارِ وَالْأَطْلَالِ، وَيَطَّرِدُ كَذَلِكَ عِنْدَ الْمَدْحِ وَالْفَخْرِ وَعِنْدَ الْهِجَاءِ أَوِ الرِّثَاءِ، إِذْ تَرَاهُمْ يَبْدَءُونَ بِذِكْرِ الرَّجُلِ وَيُقَدِّمُونَ بَعْضَ أَمْرِهِ ثُمَّ يَدَعُونَ الْكَلَامَ وَيَسْتَأْنِفُونَ كَلَامًا آخَرَ، وَهُمْ إِذَا فَعَلُوا ذَلِكَ أَتَوْا فِي أَكْثَرِ الْأَمْرِ بِخَبَرٍ مِنْ غَيْرِ مُبْتَدَأٍ.. وَيَعْرِضُ عَبْدُ الْقَاهِرِ كَثِيرًا مِنَ الشَّوَاهِدِ لِهَذَا الْحَذْفِ.</p>
+      <p class="id">'Abdul Qahir menyebutkan bahwa hadzf musnad ilayh (mubtada') banyak terjadi pada penyebutan diyar dan athlal, dan juga konsisten terjadi pada pujian dan kebanggaan, maupun pada celaan atau ratapan. Sebab engkau akan mendapati mereka memulai dengan menyebut seseorang dan mengemukakan sebagian keadaannya, kemudian meninggalkan kalimat itu dan memulai kalimat lain yang baru. Dan apabila mereka melakukan hal itu, pada umumnya mereka mendatangkan khabar tanpa mubtada'. 'Abdul Qahir memaparkan banyak sekali syahid untuk hadzf jenis ini.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مِنْ ذَلِكَ قَوْلُ عُمَرَ بْنِ أَبِي رَبِيعَةَ:</p>
+      <p class="id">Di antaranya ucapan 'Umar bin Abi Rabi'ah:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">اعْتَادَ قَلْبَكَ مِنْ لَيْلَى عَوَائِدُهُ</span><span class="shatr">وَهَاجَ أَهْوَاءَكَ الْمَكْنُونَةَ الطَّلَلُ</span></p>
+        <p class="id">Kerinduan pada Laila kembali menyapa hatimu, dan reruntuhan bekas perkemahan itu membangkitkan rindu-rindu yang terpendam.</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">رَبْعٌ قَوَاءٌ أَذَاعَ الْمُعْصِرَاتُ بِهِ</span><span class="shatr">وَكُلُّ حَيْرَانَ سَارٍ مَاؤُهُ خَضِلُ</span></p>
+        <p class="id">(Itulah) tempat tinggal yang sepi lagi tandus, disiram awan tebal hingga tersebar di sana, dan setiap aliran air yang mengalir kebingungan menjadikannya basah dan subur.</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) قَوَاءٌ: مُوحِشٌ قَفْرٌ، وَالْمُعْصِرَاتُ: السَّحَابُ، وَكَذَا الْحَيْرَانُ وَالسَّارِي، وَخَضِلٌ: كَثِيرٌ.</p>
+      <p class="id">(1) Qawa': sunyi dan tandus. Al-mu'shirat: awan tebal (demikian pula al-hayran dan as-sari). Khadhil: lebat/banyak.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَرَادَ: ذَلِكَ رَبْعٌ قَوَاءٌ، فَحُذِفَ الْمُبْتَدَأُ.</p>
+      <p class="id">Maksudnya: "itulah tempat tinggal yang sepi lagi tandus", maka mubtada'-nya dibuang.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِثْلُهُ قَوْلُ عُمَرَ بْنِ أَبِي رَبِيعَةَ أَيْضًا:</p>
+      <p class="id">Dan serupa dengannya ucapan 'Umar bin Abi Rabi'ah pula:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">هَلْ تَعْرِفُ الْيَوْمَ رَسْمَ الدَّارِ وَالطَّلَلَا</span><span class="shatr">كَمَا عَرَفْتَ بِجَفْنِ الصَّيْقَلِ الْخِلَلَا</span></p>
+        <p class="id">Tahukah engkau sekarang bekas rumah dan reruntuhan itu, sebagaimana engkau mengenali sarung pedang yang mengkilap itu?</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">دَارٌ لِمَيَّةَ إِذْ أَهْلِي وَأَهْلُهُمُ</span><span class="shatr">بِالْكَانِسِيَّةِ نَرْعَى اللَّهْوَ وَالْغَزَلَا</span></p>
+        <p class="id">(Itulah) rumah Mayyah, saat keluargaku dan keluarga mereka di Kanisiyyah bersama-sama menikmati hiburan dan asmara.</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) الصَّيْقَلُ: السَّيْفُ الْمَصْقُولُ... وَالْخِلَلُ بِكَسْرِ الْخَاءِ: مُفْرَدُهَا خُلَّةٌ وَهِيَ جَفْنُ السَّيْفِ الْمُبَطَّنُ بِالْجِلْدِ وَنَحْوِهِ.. وَالْكَانِسِيَّةُ: مَوْضِعٌ.</p>
+      <p class="id">(2) Ash-shaiqal: pedang yang digosok hingga mengkilap. Al-khilal (dengan kasrah kha'): bentuk jamak dari khullah, yaitu sarung pedang yang dilapisi kulit dan semacamnya. Al-Kanisiyyah: nama suatu tempat.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَكَأَنَّهُ قَالَ: تِلْكَ دَارٌ...</p>
+      <p class="id">Seolah-olah ia berkata: "itulah rumah..."</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَنَحْوُهُ قَوْلُ ذِي الرُّمَّةِ:</p>
+      <p class="id">Dan semisal dengannya ucapan Dzu ar-Rummah:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">إِلَى لَوَائِحَ مِنْ أَطْلَالِ أَحْوِيَةٍ</span><span class="shatr">كَأَنَّهَا خِلَلٌ مُوشِيَّةٌ قُشُبُ</span></p>
+        <p class="id">Menuju tanda-tanda yang tampak dari reruntuhan bekas perkampungan, seolah ia sarung-sarung pedang bersulam yang masih baru.</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">دِيَارُ مَيَّةَ إِذْ مَيٌّ تُسَاعِفُنَا</span><span class="shatr">وَلَا يُرَى مِثْلُهَا عُجْمٌ وَلَا عَرَبُ</span></p>
+        <p class="id">(Itulah) kampung-kampung Mayy, saat Mayy berbaik hati kepada kami, dan tiada yang menyerupainya baik dari orang 'Ajam maupun Arab.</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٣) اللَّوَائِحُ: مَا تَبَيَّنَ وَلَاحَ، وَأَحْوِيَةٌ: بُيُوتٌ مُجْتَمِعَةٌ مُفْرَدُهَا حِوَاءٌ، وَمُوشِيَّةٌ: مَنْقُوشَةٌ، وَقُشُبٌ: جُدُدٌ.</p>
+      <p class="id">(3) Al-lawa'ih: apa yang tampak dan terlihat jelas. Ahwiyah: rumah-rumah yang berkumpul, bentuk tunggalnya hiwa'. Musyiyyah: bersulam/berhias. Qusyub: yang masih baru.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَرَادَ: تِلْكَ دِيَارٌ، أَوْ هَذِهِ دِيَارٌ...</p>
+      <p class="id">Maksudnya: "itulah kampung-kampung" atau "inilah kampung-kampung..."</p>
+    </div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
