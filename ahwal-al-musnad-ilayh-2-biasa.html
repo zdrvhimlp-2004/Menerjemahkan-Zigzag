@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>أحوال المسند إليه (٢) — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">أحوال المسند إليه (٢)</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasl 2: Keadaan-Keadaan Musnad Ilayh, bagian 2 &middot; hlm. 132&ndash;166 &middot; Terjemah biasa</p>
+
+    <h2 class="pasal__judul">الفصل الثاني: أحوال المسند إليه</h2>
+    <p class="judul__id">Pasal Kedua: Keadaan-Keadaan Musnad Ilayh (Subjek Logis) &mdash; bagian 2</p>
+
+    <h3 class="bagian__judul" id="tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</h3>
+    <p class="judul__id">Pengenalan dengan Idhafah (Penyandaran)</p>
+
+    <div class="ayat">
+      <p class="ar">وَيُعَرَّفُ الْمُسْنَدُ إِلَيْهِ بِالْإِضَافَةِ لِإِفَادَةِ أَغْرَاضٍ بَلَاغِيَّةٍ كَثِيرَةٍ، وَالدَّلَالَةِ عَلَى أَسْرَارٍ وَمَزَايَا جَمَّةٍ.. أَهَمُّهَا مَا يَلِي:</p>
+      <p class="id">Musnad ilayh dikenalkan dengan idhafah (penyandaran) untuk memberikan berbagai faedah tujuan balaghah, dan menunjukkan rahasia-rahasia serta keistimewaan yang banyak. Yang terpenting di antaranya adalah sebagai berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">١- إِرَادَةُ الْإِيجَازِ كَقَوْلِكَ: كِتَابِي مُفِيدٌ، إِذِ الْإِضَافَةُ فِيهِ هِيَ أَخْصَرُ طَرِيقٍ لِإِحْضَارِ الْمُسْنَدِ إِلَيْهِ "كِتَابِي" فِي ذِهْنِ السَّامِعِ فَمَا مِنْ رَيْبٍ فِي أَنَّ هَذَا أَخْصَرُ مِنْ قَوْلِكَ: الْكِتَابُ الَّذِي أَمْلِكُهُ مَثَلًا...</p>
+      <p class="id">1. Menghendaki keringkasan (ijaz), seperti perkataanmu: "Kitabku bermanfaat." Idhafah di sini adalah cara paling ringkas untuk menghadirkan musnad ilayh "كتابي" (kitabku) dalam benak pendengar. Tidak diragukan bahwa ini lebih ringkas daripada perkataanmu: "Kitab yang aku miliki", misalnya...</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَانْظُرْ إِلَى قَوْلِ جَعْفَرٍ الْحَارِثِيِّ وَكَانَ مَسْجُونًا بِمَكَّةَ فَزَارَتْهُ فَتَاتُهُ مَعَ رَكْبِ قَوْمِهَا فَلَمَّا رَحَلَتْ عَنْهُ قَالَ وَاصِفًا أَلَمَهُ وَأَحْزَانَهُ:</p>
+      <p class="id">Perhatikan perkataan Ja'far Al-Haritsi — yang saat itu dipenjara di Makkah, lalu kekasihnya mengunjunginya bersama rombongan kaumnya, kemudian ketika rombongan itu pergi meninggalkannya, ia berkata menggambarkan kepedihan dan kesedihannya:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">هَوَايَ مَعَ الرَّكْبِ الْيَمَانِينَ مُصْعِدُ</span><span class="shatr">جَنِيبٌ وَجُثْمَانِي بِمَكَّةَ مُوثَقُ (١)</span></p>
+        <p class="id">Kekasihku ikut bergerak bersama rombongan dari Yaman, dituntun serta sebagai tawanan, sedangkan jasadku terikat di Makkah. (1)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تَجِدُ أَنَّ الْإِضَافَةَ فِي قَوْلِهِ: "هَوَايَ" هِيَ أَخْصَرُ طَرِيقٍ لِإِحْضَارِ الْمُسْنَدِ إِلَيْهِ فِي ذِهْنِ الْمُخَاطَبِ، وَقَدِ اقْتَضَى الْمَقَامُ هَذَا الْإِيجَازَ، لِأَنَّ الشَّاعِرَ حَزِينٌ مُتَأَلِّمٌ ضَائِقُ الصَّدْرِ لِسِجْنِهِ وَفِرَاقِ أَحِبَّتِهِ وَمِثْلُ هَذَا الْمَقَامِ يُلَائِمُهُ الْإِيجَازُ وَطَيُّ الْكَلِمَاتِ وَاخْتِصَارُ الْقَوْلِ.</p>
+      <p class="id">Engkau dapati bahwa idhafah dalam perkataannya "هَوَايَ" (kekasihku) adalah cara paling ringkas untuk menghadirkan musnad ilayh dalam benak lawan bicara. Maqam ini menuntut keringkasan tersebut, karena sang penyair sedang bersedih, terluka, dan sesak dadanya akibat dipenjara dan berpisah dengan orang-orang yang dicintainya. Maqam semacam ini sesuai dengan keringkasan, pelipatan kata-kata, dan peringkasan ucapan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٢- أَنْ يَكُونَ التَّعْرِيفُ بِالْإِضَافَةِ مُغْنِيًا عَنْ تَفْصِيلٍ يَتَعَذَّرُ أَوْ عَنْ تَفْصِيلٍ تَرْكُهُ أَرْجَحُ لِاعْتِبَارٍ مَا، فَمِنَ الْأَوَّلِ قَوْلُكَ: أَهْلُ مِصْرَ كِرَامٌ، إِذْ يَتَعَذَّرُ عَلَيْكَ ذِكْرُهُمْ وَالْإِحَاطَةُ بِهِمْ...</p>
+      <p class="id">2. Pengenalan dengan idhafah mencukupkan dari perincian yang mustahil dilakukan, atau dari perincian yang meninggalkannya lebih utama karena suatu pertimbangan. Contoh yang pertama adalah perkataanmu: "Penduduk Mesir itu mulia," karena mustahil bagimu menyebutkan mereka satu per satu dan mencakup seluruhnya...</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِثْلُهُ قَوْلُ أَبِي السَّمْطِ مَرْوَانَ بْنِ أَبِي حَفْصَةَ:</p>
+      <p class="id">Serupa dengannya perkataan Abu As-Samth Marwan bin Abi Hafshah:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">بَنُو مَطَرٍ يَوْمَ اللَّقَاءِ كَأَنَّهُمْ</span><span class="shatr">أُسُودُهَا فِي غِيلِ خَفَّانَ أَشْبُلُ (٢)</span></p>
+        <p class="id">Bani Mathar pada hari pertempuran, seolah-olah mereka adalah singa-singa yang anak-anaknya tumbuh di hutan Khaffan. (2)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">إِذْ يَتَعَذَّرُ عَلَيْهِ الْإِحَاطَةُ بِبَنِي مَطَرٍ وَاسْتِقْصَاءُ أَسْمَائِهِمْ.</p>
+      <p class="id">karena mustahil baginya mencakup seluruh Bani Mathar dan menelusuri nama-nama mereka satu per satu.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) هَوَايَ: الْمُرَادُ الَّذِي أَهْوَى فَهُوَ مِنْ إِطْلَاقِ الْمَصْدَرِ عَلَى اسْمِ الْمَفْعُولِ مَجَازًا مُرْسَلًا، وَالْيَمَانِينَ: جَمْعُ يَمَانٍ وَأَلِفُهُ عِوَضٌ عَنْ يَاءِ النَّسَبِ وَالْمُصْعِدُ: اسْمُ فَاعِلٍ مِنْ أَصْعَدَ بِمَعْنَى أَبْعَدَ فِي السَّيْرِ، وَالْجَنِيبُ: الْمُسْتَتْبَعُ مِنْ جَنَبَ الْبَعِيرَ إِذَا قَادَهُ إِلَى جَنْبِهِ، وَمُوثَقٌ: مُقَيَّدٌ مَحْبُوسٌ.</p>
+      <p class="id">(1) Hawaya: maksudnya adalah orang yang dicintai, merupakan penggunaan kata mashdar untuk makna isim maf'ul secara majaz mursal. Al-yamaanin: bentuk jamak dari "yamaan" (orang Yaman), alifnya sebagai pengganti ya nisbah. Al-mush'id: isim fa'il dari "ash'ada" yang berarti menempuh perjalanan jauh. Al-janiib: yang dituntun di samping, dari "janaba al-ba'ir" (menuntun unta di sampingnya). Muutsaq: terikat dan terkurung.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) بَنُو مَطَرٍ: قَوْمُ الشَّاعِرِ أَوْ قَوْمُ الْمَمْدُوحِ وَالْغِيلُ الشَّجَرُ الْمُلْتَفُّ وَخَفَّانُ: مَأْسَدَةٌ قُرْبَ الْكُوفَةِ، وَالْأَشْبُلُ: أَوْلَادُ الْأَسَدِ مُفْرَدُهُ شِبْلٌ.</p>
+      <p class="id">(2) Banu Mathar: kaum sang penyair atau kaum orang yang dipuji. Al-ghail: pepohonan yang rimbun dan saling bertautan. Khaffan: sarang singa dekat Kufah. Al-asybul: anak-anak singa, mufradnya "syibl".</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 133</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَمِنَ الثَّانِي قَوْلُ الْحَارِثِ بْنِ وَعْلَةَ الْجَرْمِيِّ - وَقَدْ مَرَّ بِكَ فِي أَسْرَارِ الْحَذْفِ -:</p>
+      <p class="id">Adapun contoh yang kedua adalah perkataan Al-Harits bin Wa'lah Al-Jarmi — yang telah disinggung sebelumnya dalam pembahasan rahasia-rahasia hadzf —:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">قوْمِي هُمُ قَتَلُوا أُمَيْمَ أَخِي</span><span class="shatr">فَإِذَا رَمَيْتُ يُصِيبُنِي سَهْمِي</span></p>
+        <p class="id">Kaumkulah yang membunuh saudaraku, Umaim; maka apabila aku memanah, panahku sendiri yang akan mengenaiku.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَالْإِضَافَةُ فِي قَوْلِهِ: "قَوْمِي" أَغْنَتْ عَنْ تَفْصِيلٍ تَرْكُهُ أَرْجَحُ، لِأَنَّهُ لَوْ فَصَّلَ فَذَكَرَ الْقَتَلَةَ بِأَسْمَائِهِمْ لَأَوْغَرَ صُدُورَهُمْ عَلَيْهِ، وَلَا يَخْفَى عَلَيْكَ مَا وَرَاءَ الْإِضَافَةِ وَالِاخْتِصَاصِ "هُمْ قَتَلُوا" وَتَرْخِيمِ الْمُنَادَى: "أُمَيْمَ" مِنْ حُزْنٍ وَأَلَمٍ وَمِنْ إِبْرَازٍ لِجَرِيمَةِ قَوْمِهِ وَتَصْوِيرٍ لِبَشَاعَتِهَا (١).</p>
+      <p class="id">Idhafah dalam perkataannya "قومي" (kaumku) mencukupkan dari perincian yang meninggalkannya lebih utama, karena seandainya ia merinci dengan menyebutkan nama-nama para pembunuh itu, tentu akan membangkitkan kedengkian mereka terhadapnya. Tidak tersembunyi bagimu apa yang tersimpan di balik idhafah dan takhshish "هُمْ قَتَلُوا" (merekalah yang membunuh), serta tarkhim pada kata panggilan "أُمَيْمَ" (wahai Umaim), berupa kesedihan, kepedihan, penonjolan kejahatan kaumnya, dan penggambaran akan kekejiannya (1).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">٣- أَنْ تَكُونَ الْإِضَافَةُ مُتَضَمِّنَةً تَعْظِيمَ الْمُضَافِ كَقَوْلِهِ تَعَالَى: ﴿وَأَنَّهُ لَمَا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ﴾ <span class="ref">[الجن: ١٩]</span>، وَقَوْلِهِ عَزَّ وَجَلَّ: ﴿قَالَ إِنِّي عَبْدُ اللَّهِ وَآتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا﴾ <span class="ref">[مريم: ٣٠]</span>، وَقَوْلِهِ جَلَّ وَعَلَا: ﴿وَعِبَادُ الرَّحْمَنِ الَّذِينَ يَمْشُونَ عَلَى الْأَرْضِ هَوْنًا﴾ <span class="ref">[الفرقان: ٦٣]</span>، فَالْإِضَافَةُ إِلَى اللَّهِ تَعَالَى تَشْرِيفٌ مَا بَعْدَهُ تَشْرِيفٌ وَتَعْظِيمٌ مَا بَعْدَهُ تَعْظِيمٌ، وَلِذَا حَقَّ لِلْقَاضِي عِيَاضٍ أَنْ يَقُولَ مُفْتَخِرًا بِعُبُودِيَّتِهِ لِلَّهِ الْخَالِقِ تَبَارَكَ وَتَعَالَى:</p>
+      <p class="id">3. Idhafah mengandung pengagungan terhadap mudhaf (kata yang disandarkan), seperti dalam firman Allah Ta'ala: <em>"Dan sesungguhnya ketika hamba Allah (Muhammad) berdiri menyembah-Nya (mengerjakan salat),"</em> <span class="ref">[QS. Al-Jin: 19]</span>, dan firman-Nya 'Azza wa Jalla: <em>"Dia (Isa) berkata, 'Sesungguhnya aku hamba Allah, Dia memberiku Kitab (Injil) dan Dia menjadikan aku seorang nabi,'"</em> <span class="ref">[QS. Maryam: 30]</span>, dan firman-Nya Jalla wa 'Ala: <em>"Dan hamba-hamba Tuhan Yang Maha Pengasih itu (ialah) orang-orang yang berjalan di bumi dengan rendah hati,"</em> <span class="ref">[QS. Al-Furqan: 63]</span>. Idhafah kepada Allah Ta'ala adalah kemuliaan yang tiada taranya dan pengagungan yang tiada taranya. Karena itu, pantaslah Al-Qadhi 'Iyadh berkata dengan bangga atas kehambaannya kepada Allah, Sang Pencipta Tabaraka wa Ta'ala:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمِمَّا زَادَنِي شَرَفًا وَتِيهَا</span><span class="shatr">وَكِدْتُ بِأَخْمُصِي أَطَأُ الثَّرَيَّا</span></p>
+        <p class="id">Di antara yang menambah kemuliaan dan kebanggaanku, hingga nyaris telapak kakiku menginjak bintang Tsurayya,</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">دُخُولِي تَحْتَ قَوْلِكَ : يَا عِبَادِي</span><span class="shatr">وَأَنْ جَعَلْتَ أَحْمَدَ لِي نَبِيًّا</span></p>
+        <p class="id">adalah masuknya diriku ke dalam firman-Mu: "Wahai hamba-hamba-Ku," dan bahwa Engkau telah menjadikan Ahmad (Muhammad) sebagai nabi bagiku.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَوْ تَعْظِيمَ الْمُضَافِ إِلَيْهِ كَقَوْلِكَ: خَادِمِي جَاءَ.. أَمْوَالِي لَا تُعَدُّ، تَفْتَخِرُ بِأَنَّكَ عَظِيمٌ لَكَ خَادِمٌ وَلَدَيْكَ أَمْوَالٌ، فَالْإِضَافَةُ تَضَمَّنَتْ تَعْظِيمَ الْمُضَافِ إِلَيْهِ أَيْ: "الْمُتَكَلِّمَ".</p>
+      <p class="id">Atau idhafah mengandung pengagungan terhadap mudhaf ilayh (kata yang disandarkan kepadanya), seperti perkataanmu: "Pelayanku datang".. "Hartaku tak terhitung", engkau berbangga bahwa engkau orang besar yang memiliki pelayan dan harta. Idhafah di sini mengandung pengagungan terhadap mudhaf ilayh, yakni "pembicara" itu sendiri.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">٤- أَنْ يُقْصَدَ بِالْإِضَافَةِ تَحْقِيرُ شَأْنِ الْمُضَافِ أَوِ الْمُضَافِ إِلَيْهِ كَقَوْلِكَ: أَعْدَاءُ الْإِسْلَامِ يَتَرَبَّصُونَ بِهِ.. أَمْوَالُ السَّارِقِ لَمْ تَنْفَعْهُ... فَلَا يَخْفَى عَلَيْكَ تَحْقِيرُ الْمُضَافِ فِي الْأَوَّلِ وَالْمُضَافِ إِلَيْهِ فِي الثَّانِي.</p>
+      <p class="id">4. Dimaksudkan dengan idhafah untuk merendahkan kedudukan mudhaf atau mudhaf ilayh, seperti perkataanmu: "Musuh-musuh Islam mengintai-intainya".. "Harta sang pencuri tidak bermanfaat baginya"... Tidak tersembunyi bagimu bahwa perendahan terjadi pada mudhaf dalam contoh pertama dan pada mudhaf ilayh dalam contoh kedua.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمِنْ ذَلِكَ قَوْلُهُ تَعَالَى: ﴿وَلَا تَتَّبِعُوا خُطُوَاتِ الشَّيْطَانِ﴾ <span class="ref">[البقرة: ١٦٨]</span>.</p>
+      <p class="id">Di antaranya firman Allah Ta'ala: <em>"Dan janganlah kamu mengikuti langkah-langkah setan."</em> <span class="ref">[QS. Al-Baqarah: 168]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَدِ اجْتَمَعَ التَّحْقِيرُ وَالتَّعْظِيمُ فِي قَوْلِ جَمِيلٍ:</p>
+      <p class="id">Perendahan dan pengagungan berpadu sekaligus dalam perkataan Jamil:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">أَبُوكَ حُبَابٌ سَارِقُ الضَّيْفِ بُرْدَهُ</span><span class="shatr">وَجَدِّيَ يَا حَجَّاجُ فَارِسُ شَمَّرَا (٢)</span></p>
+        <p class="id">Ayahmu adalah Hubab, pencuri selimut tamunya; sedangkan kakekku, wahai Hajjaj, adalah penunggang (kuda) Syammara. (2)</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) ارْجِعْ إِلَى مَا قُلْنَاهُ فِي هَذَا الْبَيْتِ عِنْدَ حَدِيثِنَا عَنْ حَذْفِ الْمُسْنَدِ إِلَيْهِ.</p>
+      <p class="id">(1) Kembalilah kepada apa yang telah kami jelaskan tentang bait ini ketika membahas pembuangan musnad ilayh.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) شَمَّرُ: اسْمُ نَاقَةٍ وَالشَّمَرِيَّةُ: النَّاقَةُ السَّرِيعَةُ. وَشَمَّرُ: أَيْضًا اسْمُ فَرَسٍ وَهَذَا هُوَ الْمُرَادُ فِي الْبَيْتِ... يَفْخَرُ جَمِيلٌ بِأَنَّ جَدَّهُ فَارِسُ شَمَّرَ وَصَاحِبُ خَيْلٍ.</p>
+      <p class="id">(2) Syammar: nama seekor unta, dan "asy-syamriyyah" adalah unta yang cepat. Syammar juga nama seekor kuda, dan inilah yang dimaksud dalam bait ini... Jamil berbangga bahwa kakeknya adalah penunggang kuda Syammar dan pemilik kuda-kuda.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 134</span></div>
+
+    <div class="ayat">
+      <p class="ar">فَالْإِضَافَةُ فِي "سَارِقِ الضَّيْفِ" أَفَادَتْ تَحْقِيرَ أَبِي الْمُخَاطَبِ "حُبَابٍ" وَفِي "فَارِسِ شَمَّرَ" أَفَادَتْ تَعْظِيمَ جَدِّ الشَّاعِرِ.</p>
+      <p class="id">Idhafah pada "سارق الضيف" (pencuri tamu) memberi faedah perendahan terhadap ayah lawan bicara, Hubab, sedangkan pada "فارس شمر" (penunggang Syammar) memberi faedah pengagungan terhadap kakek sang penyair.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">٥- وَقَدْ يُقْصَدُ بِالْإِضَافَةِ إِفَادَةُ مَعْنًى لَطِيفٍ كَمَا فِي قَوْلِ بَعْضِهِمْ:</p>
+      <p class="id">5. Terkadang idhafah dimaksudkan untuk memberikan makna yang halus, sebagaimana dalam perkataan sebagian penyair:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">إِذَا كَوْكَبُ الْخَرْقَاءِ لَاحَ بِسُحْرَةٍ</span><span class="shatr">سُهَيْلٌ أَذَاعَتْ غَزْلَهَا فِي الْأَقَارِبِ (١)</span></p>
+        <p class="id">Apabila bintang Al-Kharqa' —yaitu bintang Suhail— tampak di waktu sahur, ia pun menyebarkan benang pintalannya kepada para kerabat. (1)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ جَعَلَ لِلْخَرْقَاءِ كَوْكَبًا وَأَضَافَهُ إِلَيْهَا لِأَدْنَى مُنَاسَبَةٍ وَهِيَ أَنَّهَا لَا تَتَذَكَّرُ كِسْوَةَ الشِّتَاءِ إِلَّا وَقْتَ طُلُوعِهِ سَحَرًا، وَهُوَ لَا يَطْلُعُ سَحَرًا إِلَّا فِي الشِّتَاءِ، وَتَكْمُنُ وَرَاءَ تِلْكَ الْإِضَافَةِ مَعَانٍ دَقِيقَةٌ كَالْمُدَاعَبَةِ وَالْمِزَاحِ وَالسُّخْرِيَةِ مِنْ تِلْكَ الْمَرْأَةِ الْخَرْقَاءِ الْكَسُولِ، وَإِثَارَتِهَا وَاسْتِنْهَاضِهَا وَحَثِّهَا عَلَى الْعَمَلِ وَتَرْكِ الْإِهْمَالِ.</p>
+      <p class="id">Penyair menjadikan bintang itu milik wanita yang ceroboh (Al-Kharqa') dan menyandarkannya kepadanya karena keterkaitan yang sangat tipis, yaitu bahwa wanita itu tidak teringat untuk menenun pakaian musim dingin kecuali pada saat bintang itu terbit di waktu sahur, sementara bintang itu tidak terbit di waktu sahur kecuali pada musim dingin. Di balik idhafah tersebut tersimpan makna-makna halus, seperti canda, gurauan, dan sindiran terhadap wanita yang ceroboh dan pemalas itu, sekaligus membangkitkan dan mendorongnya untuk bekerja dan meninggalkan kelalaian.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">٦- وَقَدْ يُقْصَدُ بِالْإِضَافَةِ الِاسْتِعْطَافُ وَالْحَثُّ عَلَى الشَّفَقَةِ، كَمَا فِي قَوْلِهِ تَعَالَى: ﴿لَا تُضَارَّ وَالِدَةٌ بِوَلَدِهَا وَلَا مَوْلُودٌ لَّهُ بِوَلَدِهِ﴾ <span class="ref">[البقرة: ٢٣٣]</span>، فَقَدْ أُضِيفَ الْوَلَدُ إِلَيْهَا وَإِلَى الْأَبِ: "بِوَلَدِهَا.. بِوَلَدِهِ" اسْتِعْطَافًا لَهُمَا وَحَثًّا عَلَى الْإِشْفَاقِ عَلَيْهِ، وَالْكَفِّ عَنْ مَضَرَّتِهِ، أَوْ عَنِ الْمُضَارَّةِ بَيْنَهُمَا بِأَنْ يُضِرَّ كُلٌّ مِنْهُمَا الْآخَرَ بِسَبَبِهِ. لِأَنَّ تِلْكَ الْمَضَرَّةَ تَرْجِعُ فِي الْأَخِيرِ إِلَى وَلَدِهِمَا...</p>
+      <p class="id">6. Terkadang idhafah dimaksudkan untuk membangkitkan belas kasihan dan mendorong kasih sayang, sebagaimana dalam firman Allah Ta'ala: <em>"Janganlah seorang ibu menderita kesengsaraan karena anaknya, dan juga seorang ayah karena anaknya,"</em> <span class="ref">[QS. Al-Baqarah: 233]</span> Anak di sini disandarkan kepada sang ibu dan sang ayah: "بِوَلَدِهَا" (karena anaknya) .. "بِوَلَدِهِ" (karena anaknya), sebagai bentuk ajakan kasih sayang bagi keduanya dan dorongan untuk mengasihinya, serta menahan diri dari membahayakannya, atau dari saling membahayakan di antara keduanya dengan cara salah satu dari mereka membahayakan yang lain karena sebab sang anak, sebab bahaya itu pada akhirnya akan kembali kepada anak mereka berdua...</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَقُولُ الزَّمَخْشَرِيُّ: "فَإِنْ قُلْتَ: كَيْفَ قِيلَ بِوَلَدِهَا وَبِوَلَدِهِ؟ قُلْتُ: لَمَّا نُهِيَتِ الْمَرْأَةُ عَنِ الْمُضَارَّةِ أُضِيفَ إِلَيْهَا الْوَلَدُ اسْتِعْطَافًا لَهَا عَلَيْهِ، وَأَنَّهُ لَيْسَ بِأَجْنَبِيٍّ مِنْهَا فَمِنْ حَقِّهَا أَنْ تُشْفِقَ عَلَيْهِ، وَكَذَلِكَ الْوَالِدُ" (٢).</p>
+      <p class="id">Az-Zamakhsyari berkata: "Jika engkau bertanya: Mengapa dikatakan 'bi-waladihaa' dan 'bi-waladihi'? Aku jawab: Ketika sang wanita dilarang dari membahayakan (anaknya), anak itu disandarkan kepadanya sebagai bentuk ajakan kasih sayang baginya terhadap anak itu, dan bahwa anak itu bukanlah orang asing baginya, sehingga sudah menjadi haknya untuk mengasihinya. Demikian pula sang ayah." (2)</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) الْخَرْقَاءُ: يُرِيدُ: الْمَرْأَةَ الْخَرْقَاءَ أَيِ الْمُهْمِلَةَ الْكَسُولَ وَسُهَيْلٌ بَدَلٌ مِنَ الْكَوْكَبِ، وَأَذَاعَتْ غَزْلَهَا فِي الْأَقَارِبِ: فَرَّقَتْهُ عَلَيْهِمْ لِيُعَاوِنُوهَا وَيُسْعِفُوهَا.</p>
+      <p class="id">(1) Al-kharqaa': maksudnya adalah wanita yang ceroboh, yakni yang lalai dan pemalas. "Suhail" adalah badal dari "kaukab" (bintang). "Adzaa'at ghazlahaa fil-aqaarib": ia membagikan hasil pintalannya kepada para kerabat agar mereka membantu dan menolongnya.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) الْكَشَّافُ جُزْءٌ ١ ص ٣٧١.</p>
+      <p class="id">(2) Al-Kasysyaf, jilid 1, hlm. 371.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 135</span></div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
