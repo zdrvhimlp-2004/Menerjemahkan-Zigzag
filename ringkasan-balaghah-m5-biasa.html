@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>ملخص البلاغة — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">مُلَخَّصُ الْبَلَاغَةِ (عِلْمُ الْمَعَانِي)</h1>
+    <p class="isi__ket">Ringkasan Balaghah ('Ilm al-Ma'ani) untuk Tingkat 5 Jurusan Bahasa Arab &middot; Ma'had al-'Ulum al-Islamiyyah wa al-'Arabiyyah Jakarta &middot; Di bawah bimbingan Dr. Muhammad bin Ahmad Al-Khudhair &middot; Semester 2, Tahun Akademik 1447 H &middot; Terjemah biasa</p>
+
+    <h2 class="pasal__judul" id="adhrab-khabar">أَضْرُبُ الْخَبَرِ</h2>
+    <p class="judul__id">Jenis-Jenis Khabar (Kalimat Berita)</p>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْخَالِيَ الذِّهْنِ لَمْ يَأْتِ بِالتَّأْكِيدِ.</p>
+      <p class="id">Jika lawan bicara berpikiran kosong (tidak ragu, tidak mengingkari), tidak perlu didatangkan penguat (taukid).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْمُتَرَدِّدَ / الشَّاكَّ يُؤْتَى بِأَدَاةِ تَوْكِيدٍ اسْتِحْسَانًا.</p>
+      <p class="id">Jika lawan bicara bimbang/ragu, didatangkan alat taukid secara istihsan (dianjurkan).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ مُنْكِرًا يُؤْتَى بِأَدَاةِ التَّوْكِيدِ وُجُوبًا حَسَبَ إِنْكَارِهِ.</p>
+      <p class="id">Jika lawan bicara mengingkari, wajib didatangkan alat taukid sesuai kadar pengingkarannya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَأَضْرُبُ الْخَبَرِ: ابْتِدَائِيٌّ، طَلَبِيٌّ، إِنْكَارِيٌّ.</p>
+      <p class="id">Maka jenis-jenis khabar ada tiga: ibtida'i (tanpa taukid), thalabi (dengan taukid yang dianjurkan), dan inkari (dengan taukid yang wajib).</p>
+    </div>
+
+    <h2 class="pasal__judul" id="ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</h2>
+    <p class="judul__id">Mengeluarkan Kalam dari Tuntutan Lahiriahnya (dalam Khabar)</p>
+
+    <div class="ayat">
+      <p class="ar">أَيْ: خَرَجَ الْكَلَامُ عَنْ أَضْرُبِ الْخَبَرِ وَحُكْمِهِ كَمَا سَبَقَ.</p>
+      <p class="id">Yaitu, kalam keluar dari jenis-jenis khabar dan hukumnya yang baku, sebagaimana telah disebutkan.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مِثَالُهُ لِلْخَالِي الذِّهْنِ: لَكِنْ تَأْتِي جُمْلَةٌ خَبَرِيَّةٌ بِمُؤَكِّدَةٍ كَمَنْزِلَةِ مُتَرَدِّدٍ أَوِ السَّائِلِ، يَكُونُ غَالِبًا فِي: النَّصَائِحِ، إِرْشَادٍ، تَوْجِيهٍ، نَهْيٍ، أَمْرِ حَدَثٍ غَرِيبٍ يَسْتَدْعِي وُقُوفَ النَّفْسِ وَتَأَمُّلَهَا.</p>
+      <p class="id">Contohnya bagi yang berpikiran kosong: namun datang jumlah khabariyyah dengan penguat, diposisikan seperti orang yang ragu atau bertanya. Hal ini umumnya terjadi dalam: nasihat, bimbingan, arahan, larangan, atau perkara yang menakjubkan yang menuntut jiwa untuk berhenti dan merenung.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      <p class="id"><strong>Contoh:</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأُوحِيَ إِلَى نُوحٍ أَنَّهُ لَن يُؤْمِنَ مِن قَوْمِكَ إِلَّا مَن قَدْ آمَنَ فَلَا تَبْتَئِسْ بِمَا كَانُوا يَفْعَلُونَ وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا وَلَا تُخَاطِبْنِي فِي الَّذِينَ ظَلَمُوا إِنَّهُم مُّغْرَقُونَ <span class="ref">[هود: ٣٦-٣٧]</span></p>
+      <p class="id">"Dan diwahyukan kepada Nuh, 'Sesungguhnya tidak akan ada lagi di antara kaummu yang beriman, kecuali orang yang telah beriman (saja), karena itu janganlah engkau bersedih hati tentang apa yang selalu mereka lakukan. Dan buatlah kapal itu dengan pengawasan dan petunjuk wahyu Kami, dan janganlah engkau bicarakan dengan-Ku tentang orang-orang yang zalim, sesungguhnya mereka itu akan ditenggelamkan.'" <span class="ref">[QS. Hud: 36-37]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا <span class="ref">[التوبة: ٤٠]</span></p>
+      <p class="id">"Jika kamu tidak menolongnya (Muhammad), sesungguhnya Allah telah menolongnya, (yaitu) ketika orang-orang kafir (musyrik Makkah) mengeluarkannya (dari Makkah), sedang dia salah seorang dari dua orang ketika keduanya berada dalam gua, di waktu dia berkata kepada sahabatnya, 'Janganlah engkau bersedih hati, sesungguhnya Allah bersama kita.'" <span class="ref">[QS. At-Taubah: 40]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">سَيَحْلِفُونَ بِاللَّهِ لَكُمْ إِذَا انقَلَبْتُمْ إِلَيْهِمْ لِتُعْرِضُوا عَنْهُمْ فَأَعْرِضُوا عَنْهُمْ إِنَّهُمْ رِجْسٌ <span class="ref">[التوبة: ٩٥]</span></p>
+      <p class="id">"Mereka akan bersumpah kepadamu dengan nama Allah, apabila kamu kembali kepada mereka, agar kamu berpaling dari mereka. Maka berpalinglah dari mereka karena sesungguhnya mereka itu najis." <span class="ref">[QS. At-Taubah: 95]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا أُبَرِّئُ نَفْسِي إِنَّ النَّفْسَ لَأَمَّارَةٌ بِالسُّوءِ إِلَّا مَا رَحِمَ رَبِّي إِنَّ رَبِّي غَفُورٌ رَّحِيمٌ <span class="ref">[يوسف: ٥٣]</span></p>
+      <p class="id">"Dan aku tidak (menyatakan) diriku bebas (dari kesalahan), karena sesungguhnya nafsu itu selalu mendorong kepada kejahatan, kecuali (nafsu) yang diberi rahmat oleh Tuhanku. Sesungguhnya Tuhanku Maha Pengampun, Maha Penyayang." <span class="ref">[QS. Yusuf: 53]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">يُنَزَّلُ الْمُنْكِرُ مَنْزِلَةَ غَيْرِ الْمُنْكِرِ لِعَدَمِ الِاعْتِدَادِ بِإِنْكَارِهِ.</p>
+      <p class="id">Orang yang mengingkari diposisikan seperti orang yang tidak mengingkari, karena pengingkarannya tidak dianggap (tidak berdasar).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      <p class="id"><strong>Contoh:</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ لَّا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ <span class="ref">[البقرة: ١٦٣]</span></p>
+      <p class="id">"Dan Tuhanmu adalah Tuhan Yang Maha Esa, tidak ada tuhan selain Dia, Yang Maha Pengasih, Maha Penyayang." <span class="ref">[QS. Al-Baqarah: 163]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَذَلِكَ أَرْسَلْنَاكَ فِي أُمَّةٍ قَدْ خَلَتْ مِن قَبْلِهَا أُمَمٌ لِّتَتْلُوَ عَلَيْهِمُ الَّذِي أَوْحَيْنَا إِلَيْكَ وَهُمْ يَكْفُرُونَ بِالرَّحْمَٰنِ قُلْ هُوَ رَبِّي لَا إِلَٰهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ مَتَابِ <span class="ref">[الرعد: ٣٠]</span></p>
+      <p class="id">"Demikianlah, Kami telah mengutus engkau (Muhammad) kepada suatu umat yang sungguh sebelumnya telah berlalu beberapa umat, agar engkau membacakan kepada mereka (Al-Qur'an) yang Kami wahyukan kepadamu, padahal mereka ingkar kepada Allah Yang Maha Pengasih. Katakanlah, 'Dia Tuhanku, tidak ada tuhan selain Dia, hanya kepada-Nya aku bertawakal dan hanya kepada-Nya aku bertobat.'" <span class="ref">[QS. Ar-Ra'd: 30]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 3</span></div>
+
+    <h2 class="pasal__judul" id="hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Pembuangan Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>شُرُوطُ الْحَذْفِ:</strong> وُجُودُ الْقَرِينَةِ، وَوُجُودُ سِرٍّ بَلَاغِيٍّ.<br>قَالَ عَبْدُ الْقَاهِرِ الْجُرْجَانِيُّ: "التَّرْكُ أَفْصَحُ مِنَ الذِّكْرِ".<br>مَزَايَا عِنْدَ الْحَذْفِ: الْإِيجَازُ، الْإِثَارَةُ وَتَحْرِيكُ خَيَالِ الْمُخَاطَبِ، الِاحْتِرَازُ.</p>
+      <p class="id"><strong>Syarat-syarat hadzf:</strong> adanya qarinah (indikator konteks), dan adanya rahasia balaghah.<br>'Abdul Qahir Al-Jurjani berkata: "Membuang (meninggalkan sebutan) lebih fasih daripada menyebutkan."<br>Keistimewaan saat hadzf: ijaz (keringkasan), membangkitkan dan menggerakkan imajinasi lawan bicara, serta ihtiraz (menjaga diri dari kesalahan).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="asrar-hadzf">الْأَسْرَارُ الْبَلَاغِيَّةُ عِنْدَ الْحَذْفِ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong><br>ضِيقُ الْمَقَامِ</p>
+      <p class="id"><strong>Contoh:</strong><br>Sempitnya maqam (dhiq al-maqam)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَأَقْبَلَتِ امْرَأَتُهُ فِي صَرَّةٍ فَصَكَّتْ وَجْهَهَا وَقَالَتْ عَجُوزٌ عَقِيمٌ <span class="ref">[الذاريات: ٢٩]</span></p>
+      <p class="id">"Kemudian istrinya datang memekik (tercengang) lalu menepuk mukanya sendiri seraya berkata, '(Aku adalah) seorang perempuan tua yang mandul.'" <span class="ref">[QS. Adz-Dzariyat: 29]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يُوسُفُ أَعْرِضْ عَنْ هَذَا وَاسْتَغْفِرِي لِذَنبِكِ إِنَّكِ كُنتِ مِنَ الْخَاطِئِينَ <span class="ref">[يوسف: ٢٩]</span></p>
+      <p class="id">"Yusuf, berpalinglah (lupakanlah) dari (peristiwa) ini, dan (istriku) mohonlah ampunan atas dosamu itu, sesungguhnya engkau termasuk orang-orang yang bersalah." <span class="ref">[QS. Yusuf: 29]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْيِينُهُ لِلْمُسْنَدِ الْمَذْكُورِ</p>
+      <p class="id">Penentuannya ditunjukkan oleh musnad yang disebutkan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ <span class="ref">[الرعد: ٩]</span></p>
+      <p class="id">"(Dialah) Yang mengetahui yang gaib dan yang tampak, Yang Mahabesar, Mahatinggi." <span class="ref">[QS. Ar-Ra'd: 9]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَى فِرْعَوْنَ وَهَامَانَ وَقَارُونَ فَقَالُوا سَاحِرٌ كَذَّابٌ <span class="ref">[غافر: ٢٤]</span></p>
+      <p class="id">"kepada Fir'aun, Haman, dan Karun; tetapi mereka berkata, '(Dia) seorang pesihir, pendusta.'" <span class="ref">[QS. Ghafir: 24]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ظُهُورُهُ ظُهُورًا لَا لَبْسَ فِيهِ</p>
+      <p class="id">Kejelasannya tampak tanpa kerancuan sama sekali</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَلَّا إِذَا بَلَغَتِ التَّرَاقِيَ <span class="ref">[القيامة: ٢٦]</span></p>
+      <p class="id">"Sekali-kali tidak! Apabila nyawa (seseorang) telah sampai ke kerongkongan (dada)," <span class="ref">[QS. Al-Qiyamah: 26]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَلَوْلَا إِذَا بَلَغَتِ الْحُلْقُومَ <span class="ref">[الواقعة: ٨٣]</span></p>
+      <p class="id">"Maka mengapa ketika (nyawa) sampai di kerongkongan," <span class="ref">[QS. Al-Waqi'ah: 83]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَقَالَ إِنِّي أَحْبَبْتُ حُبَّ الْخَيْرِ عَن ذِكْرِ رَبِّي حَتَّى تَوَارَتْ بِالْحِجَابِ <span class="ref">[ص: ٣٢]</span></p>
+      <p class="id">"Maka dia berkata, 'Sesungguhnya aku menyukai kesenangan terhadap barang yang baik (kuda), sehingga aku lalai mengingat Tuhanku sampai (kuda itu) hilang dari pandangan.'" <span class="ref">[QS. Sad: 32]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَحْقِيرُ الْمُسْنَدِ إِلَيْهِ وَتَعْظِيمُهُ</p>
+      <p class="id">Merendahkan atau mengagungkan musnad ilayh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا وَإِنَّ اللَّهَ عَلَى نَصْرِهِمْ لَقَدِيرٌ <span class="ref">[الحج: ٣٩]</span></p>
+      <p class="id">"Telah diizinkan (berperang) bagi orang-orang yang diperangi, karena sesungguhnya mereka telah dizalimi. Dan sungguh, Allah Mahakuasa menolong mereka." <span class="ref">[QS. Al-Hajj: 39]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَمَّا حَذْفُ الْمُسْنَدِ إِلَيْهِ بِبِنَاءِ الْفِعْلِ لِلْمَفْعُولِ فَلِأَغْرَاضٍ مِنْهَا:</p>
+      <p class="id">Adapun hadzf musnad ilayh dengan membangun fi'il untuk maf'ul (bentuk pasif/mabni lil-majhul), maka itu untuk beberapa tujuan, di antaranya:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْخَوْفُ عَلَى الْفَاعِلِ الْحَقِيقِيِّ (سُرِقَ الْمَتَاعُ)</p>
+      <p class="id">Kekhawatiran terhadap pelaku sebenarnya (contoh: "barang itu telah dicuri")</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">احْتِقَارُهُ</p>
+      <p class="id">Merendahkannya (pelaku)</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 4</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْجَهْلُ بِهِ</p>
+      <p class="id">Ketidaktahuan terhadapnya</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْعِلْمُ بِالْفَاعِلِ</p>
+      <p class="id">Pengetahuan (yang sudah jelas) tentang pelakunya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَإِذَا قُضِيَتِ الصَّلَاةُ فَانتَشِرُوا فِي الْأَرْضِ <span class="ref">[الجمعة: ١٠]</span></p>
+      <p class="id">"Apabila salat telah dilaksanakan, maka bertebaranlah kamu di bumi," <span class="ref">[QS. Al-Jumu'ah: 10]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَقِيلَ يَا أَرْضُ ابْلَعِي مَاءَكِ وَيَا سَمَاءُ أَقْلِعِي وَغِيضَ الْمَاءُ وَقُضِيَ الْأَمْرُ وَاسْتَوَتْ عَلَى الْجُودِيِّ وَقِيلَ بُعْدًا لِّلْقَوْمِ الظَّالِمِينَ <span class="ref">[هود: ٤٤]</span></p>
+      <p class="id">"Dan difirmankan, 'Wahai bumi! Telanlah airmu dan wahai langit (hujan)! Berhentilah.' Dan air pun disurutkan, perintah pun diselesaikan dan kapal itu pun berlabuh di atas gunung Judi, dan dikatakan, 'Binasalah orang-orang yang zalim.'" <span class="ref">[QS. Hud: 44]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَغُلِبُوا هُنَالِكَ وَانقَلَبُوا صَاغِرِينَ * وَأُلْقِيَ السَّحَرَةُ سَاجِدِينَ <span class="ref">[الأعراف: ١١٩-١٢٠]</span></p>
+      <p class="id">"Maka mereka kalah di tempat itu dan jadilah mereka orang-orang yang hina. * Dan (dengan kejadian itu) para pesihir itu serta-merta tersungkur sujud," <span class="ref">[QS. Al-A'raf: 119-120]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Penyebutan Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>غَرَضُهُ:</strong></p>
+      <p class="id"><strong>Tujuannya:</strong></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّقْرِيرِ وَالْإِيضَاحِ</p>
+      <p class="id">Menambah penegasan dan kejelasan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ <span class="ref">[البقرة: ٥]</span></p>
+      <p class="id">"Mereka itulah yang mendapat petunjuk dari Tuhannya, dan merekalah orang-orang yang beruntung." <span class="ref">[QS. Al-Baqarah: 5]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الرَّغْبَةُ فِي إِطَالَةِ الْكَلَامِ وَامْتِدَادِ الْحَدِيثِ</p>
+      <p class="id">Keinginan untuk memperpanjang kalam dan membentangkan pembicaraan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا تِلْكَ بِيَمِينِكَ يَا مُوسَىٰ * قَالَ هِيَ عَصَايَ <span class="ref">[طه: ١٧-١٨]</span></p>
+      <p class="id">"Dan apakah itu yang di tangan kananmu, wahai Musa? * Dia (Musa) menjawab, 'Ini tongkatku,'" <span class="ref">[QS. Taha: 17-18]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَلَذُّذًا بِذِكْرِهِ وَتَرَدُّدِهِ</p>
+      <p class="id">Menikmati penyebutan dan pengulangannya</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّسْجِيلُ عَلَى السَّامِعِ</p>
+      <p class="id">Mencatatkan (menetapkan sebagai bukti) atas pendengar</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ضَعْفُ التَّعْوِيلِ عَلَى الْقَرِينَةِ</p>
+      <p class="id">Lemahnya sandaran pada qarinah (sehingga perlu disebutkan secara eksplisit)</p>
+    </div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
