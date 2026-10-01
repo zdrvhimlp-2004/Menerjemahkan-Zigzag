@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>أحوال المسند — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">أحوال المسند</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasl 3: Keadaan-Keadaan Musnad (Predikat Logis) &middot; hlm. 167&ndash;215 &middot; Terjemah biasa</p>
+
+    <h2 class="pasal__judul">الفصل الثالث: أحوال المسند</h2>
+    <p class="judul__id">Pasal Ketiga: Keadaan-Keadaan Musnad (Predikat Logis)</p>
+
+    <h3 class="bagian__judul" id="hadzf-musnad">حَذْفُ الْمُسْنَدِ</h3>
+    <p class="judul__id">Pembuangan Musnad</p>
+
+    <div class="ayat">
+      <p class="ar">يُحْذَفُ الْمُسْنَدُ عِنْدَ وُجُودِ الْقَرِينَةِ الدَّالَّةِ عَلَى حَذْفِهِ لِيُفِيدَ أَغْرَاضًا بَلَاغِيَّةً مُتَعَدِّدَةً.. هَذِهِ الْأَغْرَاضُ لَا يُمْكِنُ الْإِحَاطَةُ بِهَا - كَمَا ذَكَرْتُ لَكَ عِنْدَ الْحَدِيثِ عَنْ حَذْفِ الْمُسْنَدِ إِلَيْهِ - وَذَلِكَ لِأَنَّهَا دَقَائِقُ وَلَطَائِفُ تَكُونُ وَرَاءَ الْعِبَارَاتِ وَالصِّيَغِ وَلَا يُدْرِكُهَا إِلَّا الْمُتَأَمِّلُ الْوَاعِي وَالذَّوَّاقَةُ الْخَبِيرُ بِالنَّظْمِ وَأَحْوَالِهِ، وَنَحْنُ عِنْدَمَا نَتَحَدَّثُ عَنْ أَغْرَاضِ الْحَذْفِ إِنَّمَا نَذْكُرُ بَعْضًا مِنْ تِلْكَ الدَّقَائِقِ، وَأَنْتَ عِنْدَمَا تَتَأَمَّلُ النَّظْمَ الْجَيِّدَ وَالْأَسَالِيبَ الرَّفِيعَةَ لَا تَقِفْ عِنْدَ ذَاكَ الْقَدْرِ الَّذِي نَذْكُرُهُ، بَلْ عَلَيْكَ أَنْ تُطِيلَ النَّظَرَ وَالْبَحْثَ وَالتَّنْقِيبَ حَتَّى تَصِلَ إِلَى دَقَائِقَ أُخْرَى كَثِيرَةٍ قَدْ لَا تُحِيطُ بِهَا فِي تِلْكَ الدِّرَاسَةِ الْعَاجِلَةِ.</p>
+      <p class="id">Musnad dibuang ketika terdapat qarinah (indikator) yang menunjukkan pembuangannya, untuk memberikan berbagai tujuan balaghah. Tujuan-tujuan ini tidak dapat dicakup seluruhnya — sebagaimana telah kusampaikan ketika membahas pembuangan musnad ilayh — karena ia adalah kehalusan dan keindahan makna yang tersembunyi di balik ungkapan dan susunan kalimat, yang hanya dapat ditangkap oleh orang yang merenung dengan sadar dan pencicip sastra yang ahli dalam susunan bahasa serta keadaan-keadaannya. Ketika kami membahas tujuan-tujuan hadzf, kami hanya menyebutkan sebagian dari kehalusan-kehalusan itu. Engkau sendiri, ketika merenungkan susunan kalimat yang baik dan gaya bahasa yang tinggi, janganlah berhenti pada kadar yang kami sebutkan ini, melainkan hendaklah engkau memperpanjang perenungan, penelusuran, dan penggalian hingga sampai pada banyak kehalusan lain yang mungkin tidak tercakup dalam kajian ringkas ini.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَوَرَاءَ كُلِّ حَذْفٍ سَوَاءٌ أَكَانَ الْمَحْذُوفُ مُسْنَدًا إِلَيْهِ أَمْ مُسْنَدًا أَمْ أَحَدَ مُتَعَلِّقَاتِ الْفِعْلِ ثَلَاثُ مَزَايَا بَلَاغِيَّةٍ وَهِيَ: الْإِيجَازُ - الِاحْتِرَازُ عَنِ الْعَبَثِ بِنَاءً عَلَى الظَّاهِرِ - إِثَارَةُ حِسِّ الْمُخَاطَبِ وَإِيقَاظُ مَشَاعِرِهِ كَيْ يَقِفَ عَلَى الْمَطْوِيِّ مِنَ الْعِبَارَةِ وَيُحِيطَ بِهِ.. وَقَدْ بَيَّنْتُ لَكَ هَذِهِ الْمَزَايَا الثَّلَاثَ عِنْدَ حَدِيثِنَا عَنْ حَذْفِ الْمُسْنَدِ إِلَيْهِ فَارْجِعْ إِلَيْهَا هُنَاكَ.</p>
+      <p class="id">Di balik setiap hadzf, baik yang dibuang itu musnad ilayh, musnad, maupun salah satu muta'alliq fi'il, terdapat tiga keistimewaan balaghah, yaitu: ijaz (keringkasan), al-ihtiraz 'an al-'abats (menjaga diri dari kesia-siaan berdasarkan lahiriahnya), dan membangkitkan rasa lawan bicara serta membangunkan perasaannya agar ia menemukan sendiri apa yang terlipat dari ungkapan itu dan mencakupnya. Aku telah menjelaskan tiga keistimewaan ini ketika membahas pembuangan musnad ilayh, maka kembalilah kepadanya di sana.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَبِالْإِضَافَةِ إِلَى تِلْكَ الْمَزَايَا الَّتِي تَكْمُنُ وَرَاءَ كُلِّ حَذْفٍ نَجِدُ لِحَذْفِ الْمُسْنَدِ أَغْرَاضًا بَلَاغِيَّةً أُخْرَى تَتَجَلَّى مِنْ خِلَالِ النَّظَرِ فِي السِّيَاقِ.. أَهَمُّهَا مَا يَلِي:</p>
+      <p class="id">Selain keistimewaan-keistimewaan yang tersembunyi di balik setiap hadzf itu, kita dapati bagi hadzf al-musnad tujuan-tujuan balaghah lain yang tampak jelas melalui pengamatan konteks. Yang terpenting di antaranya adalah sebagai berikut:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">١ - ضِيقُ الْمَقَامِ.. كَمَا فِي قَوْلِ ضَابِئِ بْنِ الْحَارِثِ الْبُرْجُمِيِّ، وَكَانَ عُثْمَانُ قَدْ حَبَسَهُ فِي الْمَدِينَةِ لِهِجَائِهِ بَنِي نَهْشَلٍ وَرَمْيِهِ أُمَّهُمْ، فَضَاقَ ضَابِئٌ بِسِجْنِهِ وَقَالَ مُعَبِّرًا عَنْ آلَامِهِ، وَوَاصِفًا وَمُصَوِّرًا أَحْزَانَهُ.</p>
+      <p class="id">1. Sempitnya maqam (dhiq al-maqam), sebagaimana dalam perkataan Dhabi' bin Al-Harits Al-Burjumi — yang saat itu dipenjara oleh Utsman di Madinah karena menghina Bani Nahsyal dan menuduh ibu mereka — maka Dhabi' pun merasa sesak oleh penjaranya dan berkata mengungkapkan kepedihannya, serta menggambarkan dan melukiskan kesedihannya.</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمَنْ يَكُ أَمْسَى بِالْمَدِينَةِ رَحْلُهُ</span><span class="shatr">فَإِنِّي وَقَيَّارٌ بِهَا لَغَرِيبٌ (١)</span></p>
+        <p class="id">Barang siapa yang pelananya kini berada di Madinah, maka sesungguhnya aku dan Qayyar (kudaku) adalah orang asing di dalamnya. (1)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَرَادَ مَنْ أَمْسَى بِالْمَدِينَةِ مُسْتَقِرًّا لَهُ مَنْزِلُهُ الَّذِي يَأْوِي إِلَيْهِ، وَأَهْلُهُ وَأَصْحَابُهُ</p>
+      <p class="id">Ia bermaksud: barang siapa yang Madinah telah menjadi tempat tinggal tetapnya, rumah yang ia huni, bersama keluarga dan sahabat-sahabatnya</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) رَحْلُهُ: مَنْزِلُهُ وَمَأْوَاهُ وَقَيَّارٌ: اسْمُ فَرَسِهِ أَوْ بَعِيرِهِ.</p>
+      <p class="id">(1) "Rahluhu": tempat tinggal dan tempat berlindungnya. Qayyar: nama kuda atau untanya.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 168</span></div>
+
+    <div class="ayat">
+      <p class="ar">الَّذِينَ يَأْنَسُ بِهِمْ وَيَسْكُنُ إِلَيْهِمْ فَقَدْ طَابَتْ نَفْسُهُ وَحَسُنَ حَالُهُ وَرَضِيَ بِعِيشَتِهِ، أَمَّا أَنَا وَقَيَّارٌ فَإِنَّا بِهَا لَغَرِيبَانِ، وَأَنَّى لِلْغَرِيبِ أَنْ يَسْعَدَ وَيَهْنَأَ، فَالشَّاعِرُ حَزِينٌ مَكْرُوبٌ، قَدْ ضَاقَ صَدْرُهُ لِغُرْبَتِهِ وَحَبْسِهِ، وَتَتَجَسَّدُ آلَامُهُ كُلَّمَا تَذَكَّرَ الْأَهْلَ وَالْأَصْحَابَ وَالْمَنْزِلَ الْهَنِيءَ، وَكُلَّمَا مَرَّ بِخَيَالِهِ الِانْطِلَاقُ وَالْحُرِّيَّةُ.</p>
+      <p class="id">yang ia akrabi dan tenteram bersama mereka, maka jiwanya telah merasa baik, keadaannya telah membaik, dan ia telah rida dengan kehidupannya. Adapun aku dan Qayyar, sesungguhnya kami berdua adalah orang-orang asing di dalamnya, dan bagaimana mungkin orang asing dapat berbahagia dan tenteram? Sang penyair bersedih dan berduka, dadanya sesak karena keterasingan dan pemenjaraannya. Kepedihannya terwujud setiap kali ia mengingat keluarga, sahabat-sahabat, dan tempat tinggal yang menyenangkan, dan setiap kali terbayang dalam khayalnya kebebasan dan kemerdekaan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَلِذَا تَرَاهُ قَدْ طَوَى الْمُسْنَدَ إِلَى "قَيَّارٍ" فِي الشَّطْرِ الثَّانِي وَتَقْدِيرُهُ: فَإِنِّي لَغَرِيبٌ بِهَا وَقَيَّارٌ غَرِيبٌ بِهَا أَيْضًا فَطَيُّهُ يُنْبِئُ بِالْحَالِ الْكَئِيبَةِ الَّتِي يَعِيشُهَا الشَّاعِرُ، كَمَا تَرَاهُ قَدْ طَوَى جَوَابَ الشَّرْطِ وَتَقْدِيرُهُ: وَمَنْ يَكُ أَمْسَى بِالْمَدِينَةِ رَحْلُهُ فَهُوَ مَسْرُورٌ طَيِّبُ النَّفْسِ مُسْتَرِيحُ الْبَالِ، طَوَاهُ لِنَفْسِ السَّبَبِ، وَكَأَنَّ الْكَلِمَاتِ لَا تُسْعِفُهُ كَيْ يَذْكُرَ جَوَابَ الشَّرْطِ وَخَبَرَ قَيَّارٍ، ثُمَّ كَيْفَ يَذْكُرُ الْجَوَابَ وَهُوَ مِنْ جِنْسِ السَّعَادَةِ وَالْهَنَاءِ؟ إِنَّ لِسَانَهُ لَيَتَوَقَّفُ عَاجِزًا عَنِ النُّطْقِ بِهِ، لِأَنَّ فِي الْإِفْصَاحِ عَنْهُ زِيَادَةً لِآلَامِهِ وَأَحْزَانِهِ.</p>
+      <p class="id">Karena itu engkau lihat ia melipat (membuang) musnad bagi "قَيَّار" (Qayyar) pada hemistich kedua, dengan perkiraan: "maka sesungguhnya aku adalah orang asing di dalamnya, dan Qayyar pun orang asing di dalamnya juga." Pembuangan ini mengabarkan keadaan muram yang dialami sang penyair. Engkau lihat pula ia membuang jawab syarat, dengan perkiraan: "dan barang siapa yang pelananya kini berada di Madinah, maka ia bahagia, baik jiwanya, dan tenteram pikirannya" — ia membuangnya karena sebab yang sama, seolah-olah kata-kata tidak sanggup membantunya untuk menyebutkan jawab syarat dan khabar bagi Qayyar. Bagaimana mungkin ia menyebutkan jawaban itu, padahal ia termasuk jenis kebahagiaan dan kesenangan? Lidahnya seakan terhenti, tak berdaya mengucapkannya, karena mengungkapkannya hanya akan menambah kepedihan dan kesedihannya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَأَمَّلْ كَيْفَ قَدَّمَ "قَيَّارًا" فَقَالَ: "فَإِنِّي وَقَيَّارٌ" وَلَمْ يَقُلْ: "فَإِنِّي لَغَرِيبٌ بِهَا وَقَيَّارٌ"، وَذَلِكَ لِلْإِشَارَةِ إِلَى أَنَّ قَيَّارًا وَلَوْ لَمْ يَكُنْ مِنْ جِنْسِ الْعُقَلَاءِ، قَدْ بَلَغَهُ هَذَا الْكَرْبُ وَاشْتَدَّتْ عَلَيْهِ تِلْكَ الْغُرْبَةُ حَتَّى صَارَ مُسَاوِيًا لِلْعُقَلَاءِ فِي التَّشَكِّي مِنْهَا وَمُقَاسَاةِ شَدَائِدِهَا، فَتَقْدِيمُ قَيَّارٍ وَإِقْحَامُهُ بَيْنَ جُزْأَيِ الْجُمْلَةِ، يُنْبِئُ بِالتَّسْوِيَةِ بَيْنَهُمَا فِي التَّحَسُّرِ وَمُقَاسَاةِ الْأَلَمِ، وَيُنْبِئُ بِالتَّالِي بِشِدَّةِ مَا يُلَاقِيهِ الشَّاعِرُ، فَلَمْ تَعُدِ الْآلَامُ مَقْصُورَةً عَلَيْهِ بَلْ تَجَاوَزَتْهُ إِلَى جَوَادِهِ فَصَارَ الْجَوَادُ يَشْعُرُ بِمَا يَشْعُرُ بِهِ "ضَابِئٌ" صَاحِبُهُ مِنْ أَلَمٍ وَضِيقٍ...</p>
+      <p class="id">Renungkanlah bagaimana ia mendahulukan "قَيَّار" (Qayyar), dengan berkata: "فَإِنِّي وَقَيَّارٌ" (maka sesungguhnya aku dan Qayyar), dan tidak berkata: "فَإِنِّي لَغَرِيبٌ بِهَا وَقَيَّارٌ" (maka sesungguhnya aku adalah orang asing di dalamnya, dan Qayyar), untuk mengisyaratkan bahwa Qayyar, meskipun bukan termasuk makhluk berakal, telah ditimpa kesusahan ini dan keterasingan itu telah begitu mencekamnya, hingga ia setara dengan makhluk berakal dalam mengeluh dan merasakan derita kesulitan itu. Pendahuluan Qayyar dan penyisipannya di antara dua bagian kalimat ini mengabarkan kesetaraan keduanya dalam penyesalan dan penderitaan rasa sakit, dan selanjutnya mengabarkan betapa dahsyatnya apa yang dialami sang penyair — penderitaan itu tidak lagi terbatas padanya, melainkan melampauinya hingga mengenai kudanya, sehingga sang kuda pun ikut merasakan apa yang dirasakan oleh Dhabi', pemiliknya, berupa rasa sakit dan kesesakan...</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْ ذَلِكَ قَوْلُ عَمْرِو بْنِ امْرِئِ الْقَيْسِ الْخَزْرَجِيِّ يُخَاطِبُ مَالِكَ بْنَ الْعَجْلَانِ حِينَ رَدَّ قَضَاءَهُ فِي وَاقِعَةٍ لِلْأَوْسِ وَالْخَزْرَجِ</p>
+      <p class="id">Di antaranya pula perkataan 'Amr bin Imri'ul Qais Al-Khazraji ketika berbicara kepada Malik bin Al-'Ajlan saat ia menolak putusannya dalam suatu perkara antara suku Aus dan Khazraj:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">يَا مَالُ وَالسَّيِّدُ الْمُعَمَّمُ قَدْ يُبْطِرُهُ</span><span class="shatr">بَعْضُ الرَّأْيِ وَالسَّرَفُ</span></p>
+        <p class="id">Wahai Malik, sesungguhnya seorang pemimpin yang dijunjung tinggi pun terkadang dapat terkecoh oleh sebagian pendapat dan sikap berlebihan,</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">نَحْنُ بِمَا عِنْدَنَا وَأَنْتَ بِمَا عِنْدَكَ رَاضٍ</span><span class="shatr">وَالرَّأْيُ مُخْتَلِفُ (١)</span></p>
+        <p class="id">kami rida dengan pendapat yang ada pada kami, dan engkau rida dengan pendapat yang ada padamu, sedangkan pendapat itu berbeda-beda. (1)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُرِيدُ نَحْنُ بِمَا عِنْدَنَا مِنَ الرَّأْيِ رَاضُونَ، لِأَنَّ رَأْيَنَا هُوَ الصَّوَابُ وَالْحَقُّ، وَأَنْتَ</p>
+      <p class="id">Ia bermaksud: kami rida dengan pendapat yang ada pada kami, karena pendapat kami adalah yang benar dan haq, sedangkan engkau</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) مَالِ: مُنَادًى مُرَخَّمٌ وَالْأَصْلُ: يَا مَالِكُ، وَتَرْخِيمُ الْمُنَادَى مِمَّا يُبْرِزُ حَالَ الْمُتَكَلِّمِ وَيُنْبِئُ بِآلَامِ الشَّاعِرِ وَأَحْزَانِهِ. وَالْمُعَمَّمُ الَّذِي عَمَّمَهُ الْقَوْمُ وَارْتَضَوْا حُكْمَهُ وَرَأْيَهُ وَيُبْطِرُهُ: يَخْتَلُهُ، وَالْمَعْنَى يَخُونُهُ التَّوْفِيقُ فَيَحْكُمُ بِغَيْرِ الصَّوَابِ وَيَقْضِي بِغَيْرِ الْحَقِّ...</p>
+      <p class="id">(1) "مال" adalah munada yang di-tarkhim, asalnya "يا مالك" (wahai Malik). Tarkhim pada munada menonjolkan keadaan pembicara dan mengabarkan kepedihan serta kesedihan sang penyair. "Al-mu'ammam": orang yang dijunjung dan diterima hukum serta pendapatnya oleh kaumnya. "Yubthiruhu": menjeratnya; maknanya: taufik mengkhianatinya sehingga ia menghukumi dengan tidak benar dan memutuskan dengan tidak adil...</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 169</span></div>
+
+    <div class="ayat">
+      <p class="ar">بِمَا عِنْدَكَ مِنْ رَأْيٍ رَاضٍ وَقَدْ قَضَيْتَ بِهِ وَحَكَمْتَ عَلَى الرَّغْمِ مِنْ مُنَافَاتِهِ لِلصَّوَابِ وَمُجَانَبَتِهِ لِلْحَقِّ، فَالرَّأْيُ مُخْتَلِفٌ وَالْحَقُّ بِجَانِبِ الشَّاعِرِ وَالصَّوَابُ فِي رَأْيِهِ، وَعَلَى الرَّغْمِ مِنْ ذَلِكَ لَمْ يَأْخُذْ بِهِ مَالِكٌ وَلَمْ يَقْضِ لِعَمْرٍو وَهَذَا هُوَ مَا يُؤْلِمُ الشَّاعِرَ وَيُحْزِنُهُ.</p>
+      <p class="id">rida dengan pendapat yang ada padamu, dan engkau telah memutuskan serta menghukumi dengannya, meskipun bertentangan dengan kebenaran dan menyimpang dari yang haq. Pendapat itu memang berbeda-beda, namun kebenaran ada di pihak sang penyair dan yang benar ada pada pendapatnya. Meskipun demikian, Malik tidak mengambilnya dan tidak memutuskan untuk 'Amr — inilah yang menyakitkan dan menyedihkan sang penyair.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِمَّا يُضَاعِفُ آلَامَهُ وَيَزِيدُ أَحْزَانَهُ، أَنَّ الْقَاضِيَ ذُو رَأْيٍ وَصَاحِبُ عَقْلٍ رَاجِحٍ إِنَّهُ السَّيِّدُ الْمُعَمَّمُ، قَدْ عَمَّمَهُ الْجَمِيعُ وَارْتَضَوْا رَأْيَهُ، وَلَكِنْ لِكُلِّ جَوَادٍ كَبْوَةٌ، وَلِكُلِّ عَالِمٍ هَفْوَةٌ، فَالسَّيِّدُ الْمُعَمَّمُ ذُو الْعَقْلِ الرَّاجِحِ قَدْ يُبْطِرُهُ بَعْضُ الرَّأْيِ وَيَخُونُهُ التَّوْفِيقُ فَيَقْضِي بِغَيْرِ الصَّوَابِ، وَهَذَا مَا قَدْ حَدَثَ، وَهُوَ الَّذِي يُؤْلِمُ عَمْرًا وَيُحْزِنُهُ، وَلِذَا تَرَاهُ قَدْ طَوَى الْمُسْنَدَ مِنَ الشَّطْرِ الْأَوَّلِ فِي الْبَيْتِ الثَّانِي، فَلَمْ يَقُلْ: نَحْنُ بِمَا عِنْدَنَا رَاضُونَ، بَلْ حَذَفَ الرِّضَا مِنْ جَانِبِهِمْ لِدَلَالَةِ رِضَا الْمُخَاطَبِ بِرَأْيِهِ فِي الشَّطْرِ الثَّانِي عَلَيْهِ...</p>
+      <p class="id">Di antara yang melipatgandakan kepedihan dan menambah kesedihannya adalah bahwa sang hakim itu memiliki pendapat dan akal yang unggul — dialah sang pemimpin yang dijunjung, yang telah diakui dan diterima pendapatnya oleh semua orang. Namun, setiap kuda tangkas pun bisa tersandung, dan setiap orang berilmu pun bisa keliru. Sang pemimpin yang berakal unggul itu pun bisa terkecoh oleh sebagian pendapat dan dikhianati taufiknya sehingga memutuskan dengan tidak benar — dan inilah yang telah terjadi, yang menyakitkan dan menyedihkan 'Amr. Karena itu engkau lihat ia melipat (membuang) musnad pada hemistich pertama bait kedua — ia tidak berkata: "kami rida dengan apa yang ada pada kami," melainkan membuang kata "rida" dari pihak mereka, karena ditunjukkan oleh rida lawan bicara terhadap pendapatnya pada hemistich kedua...</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذَا الْحَذْفُ يُنْبِئُ بِآلَامِ الشَّاعِرِ وَضِيقِهِ، وَكَأَنَّهُ يَأْبَى أَنْ يُصَرِّحَ بِنِسْبَةِ الرِّضَا إِلَيْهِمْ فِي اللَّفْظِ، فَهُمْ مُقْتَنِعُونَ بِصَوَابِ رَأْيِهِمْ، وَغَيْرُ رَاضِينَ بِمَا حَكَمَ بِهِ مَالِكٌ ذُو الرَّأْيِ وَالْعَقْلِ، فَحَذْفُ الْمُسْنَدِ يُبْرِزُ لَكَ حَالَتَهُمْ تِلْكَ.</p>
+      <p class="id">Hadzf ini mengabarkan kepedihan dan kesesakan sang penyair, seolah-olah ia enggan menegaskan penyandaran kata "rida" kepada mereka secara eksplisit dalam lafal — mereka yakin akan kebenaran pendapat mereka, namun tidak rida dengan apa yang diputuskan oleh Malik yang berakal dan berpendapat itu. Hadzf al-musnad menonjolkan bagimu keadaan mereka tersebut.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَانْظُرْ إِلَى قَوْلِ الْمُتَنَبِّي:</p>
+      <p class="id">Dan perhatikan perkataan Al-Mutanabbi:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">قَالَتْ وَقَدْ رَأَتِ اصْفِرَارِي: مَنْ بِهِ؟</span><span class="shatr">وَتَنَهَّدَتْ فَأَجَبْتُهَا: الْمُتَنَهِّدُ (١)</span></p>
+        <p class="id">Ia berkata ketika melihat wajahku pucat pasi: "Siapa gerangan yang membuatnya begini?" lalu ia menarik napas panjang, maka kujawab: "Dialah yang menarik napas panjang itu." (1)</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُرِيدُ لَمَّا رَأَتْ حَالِي وَمَا وَصَلْتُ إِلَيْهِ بِسَبَبِ حُبِّهَا تَسَاءَلَتْ مُتَنَهِّدَةً: مَنْ فَعَلَ بِكَ هَذَا؟ وَمَنْ وَرَاءَ حَالَتِكَ هَذِهِ؟ فَأَجَبْتُهَا الْمُتَنَهِّدُ أَيْ فَعَلَ بِي مَا تَرَيْنَ أَنْتِ، فَأَنْتِ الَّتِي أَهْوَاهَا وَأَعْشَقُهَا، فَالشَّاعِرُ قَدْ حَذَفَ الْمُسْنَدَ وَطَوَاهُ، فَلَمْ يَقُلْ صَنَعَ مَا تَرَيْنَ الْمُتَنَهِّدُ، بَلْ قَالَ: الْمُتَنَهِّدُ وَالْمُتَنَهِّدُ هِيَ السَّائِلَةُ، وَكَأَنَّ أَلَمَ الْعِشْقِ قَدْ وَصَلَهُ إِلَى حَالَةٍ لَمْ يَسْتَطِعْ مَعَهَا أَنْ يُكْمِلَ الْجَوَابَ، وَكَأَنَّ الشَّاعِرَ أَيْضًا، أَرَادَ بِهَذَا الْحَذْفِ أَنْ يُبَادِرَ بِذِكْرِ الْمُتَنَهِّدِ، وَأَنْ يُفْصِحَ لَهَا عَنْ حُبِّهِ، فَهِيَ الَّتِي أَوْصَلَتْهُ إِلَى تِلْكَ الْحَالِ، وَقَدْ وَجَدَهَا فُرْصَةً عِنْدَمَا سَأَلَتْهُ مَنْ بِهِ؟ كَيْ يُسَارِعَ بِالْإِفْصَاحِ عَنْ حُبِّهِ، فَحَذْفُ الْمُسْنَدِ يُحَقِّقُ تِلْكَ الْمُسَارَعَةَ، وَلَوْ ذَكَرَهُ فَقَالَ: فَعَلَ هَذَا بِي الْمُتَنَهِّدُ لَكَانَ هُنَالِكَ تَبَاطُؤٌ فِي الْإِعْلَانِ عَنْ حُبِّهِ.</p>
+      <p class="id">Ia bermaksud: ketika kekasihnya melihat keadaannya dan apa yang telah dialaminya karena cintanya, ia bertanya sambil menarik napas panjang: "Siapa yang melakukan ini kepadamu? Siapa di balik keadaanmu ini?" Maka kujawab: "yang menarik napas panjang itu", yakni: yang melakukan kepadaku apa yang engkau lihat adalah dirimu sendiri yang menarik napas panjang itu, karena engkaulah yang kucintai dan kurindukan. Sang penyair membuang musnad dan melipatnya — ia tidak berkata "yang melakukan apa yang engkau lihat adalah orang yang menarik napas panjang itu", melainkan hanya berkata: "yang menarik napas panjang itu", padahal yang menarik napas panjang itu adalah sang penanya sendiri. Seolah-olah rasa sakit cinta telah membawanya pada keadaan di mana ia tak mampu menyelesaikan jawabannya. Seolah-olah sang penyair juga, dengan hadzf ini, ingin segera menyebutkan "yang menarik napas panjang itu" dan mengungkapkan cintanya kepadanya — karena dialah yang telah membawanya pada keadaan itu, dan ia menemukan kesempatan ketika kekasihnya bertanya "siapa gerangan?" untuk segera mengungkapkan cintanya. Hadzf al-musnad mewujudkan kesegeraan itu; seandainya ia menyebutkannya dengan berkata: "yang melakukan ini kepadaku adalah orang yang menarik napas panjang itu", tentu akan ada keterlambatan dalam mengungkapkan cintanya.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) اصْفِرَارِي: يُرِيدُ مَا يُصِيبُ الْمُحِبَّ مِنْ ضَنًى وَشُحُوبٍ وَصُفْرَةٍ نَاجِمَةٍ عَنِ الْعِشْقِ وَالْغَرَامِ.</p>
+      <p class="id">(1) "Ishfiraari" (kepucatanku): yang dimaksud adalah apa yang menimpa seorang pencinta berupa kelesuan, pucat, dan kekuningan wajah akibat cinta dan asmara.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 170</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَلَا يَخْفَى عَلَيْكَ مَا وَرَاءَ الِالْتِفَاتِ فِي الْبَيْتِ مِنْ دَلَالِ الْمُحِبِّ وَتَمَنُّعِهِ، فَهِيَ تُخَاطِبُهُ وَلَمْ تَقُلْ لَهُ: مَنْ بِكَ؟ بَلِ الْتَفَتَتْ فَقَالَتْ: مَنْ بِهِ؟ دَلَالًا وَتَمَنُّعًا، وَيَصِحُّ أَنْ يُقَدَّرَ الْمُسْنَدُ الْمَحْذُوفُ اسْمًا فَيَكُونُ الْمَعْنَى مَنِ الْمُطَالَبُ بِهِ فَأَجَبْتُهَا الْمُتَنَهِّدُ هُوَ الْمُطَالَبُ بِهِ وَعِنْدَئِذٍ يَكُونُ الضَّمِيرُ فِي "بِهِ" عَائِدًا إِلَى الِاصْفِرَارِ فَلَا الْتِفَاتَ.</p>
+      <p class="id">Tidak tersembunyi bagimu apa yang tersimpan di balik iltifat dalam bait ini, berupa kemanjaan dan keengganan sang kekasih — ia berbicara kepadanya namun tidak berkata "siapa yang membuatmu begini?" melainkan beralih (iltifat) dan berkata "siapa yang membuatnya begini?" sebagai bentuk kemanjaan dan keengganan. Boleh juga musnad yang dibuang itu diperkirakan sebagai isim, sehingga maknanya menjadi: "siapa yang dituntut dengannya?" lalu kujawab: "yang menarik napas panjang itulah yang dituntut dengannya" — dan pada saat itu dhamir pada "بِهِ" (dengannya) merujuk kepada "al-ishfiraar" (kepucatan), sehingga tidak ada iltifat.</p>
+    </div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
