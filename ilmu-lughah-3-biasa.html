@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>علم اللغة ٣ — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f4f1e9;
+    --card: #fffdf7;
+    --border: #e4ddcb;
+    --ar-color: #23331f;
+    --id-color: #5a5343;
+    --heading: #1f4d3a;
+    --muted: #8a8270;
+    --quran: #8a5a15;
+    --quran-bg: #f7f0e0;
+    --pasal-bg: #eef2ea;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --card: #1f2124;
+      --border: #33363a;
+      --ar-color: #e9e6dc;
+      --id-color: #b9b3a4;
+      --heading: #7fc9a6;
+      --muted: #9a9384;
+      --quran: #d9a54a;
+      --quran-bg: #2a2418;
+      --pasal-bg: #1c2420;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ar-color);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  .isi {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+  }
+
+  .isi__wrap {
+    width: 100%;
+    max-width: 860px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 5vw, 3.25rem);
+    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
+  }
+
+  .isi__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem);
+    text-align: center;
+    color: var(--heading);
+    margin-bottom: 0.35rem;
+  }
+
+  .isi__ket {
+    direction: ltr;
+    text-align: center;
+    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+    color: var(--muted);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .ayat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 0;
+  }
+
+  .ayat .ar {
+    direction: rtl;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2rem);
+    color: var(--ar-color);
+  }
+
+  .ayat .id {
+    direction: ltr;
+    text-align: left;
+    font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem);
+    color: var(--id-color);
+  }
+
+  .ayat.quran {
+    background: var(--quran-bg);
+    border-radius: 10px;
+    padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.6rem, 2vw, 0.9rem);
+    border-right: 3px solid var(--quran);
+  }
+  .ayat.quran .ar,
+  .ayat.quran .id {
+    color: var(--quran);
+  }
+
+  .ayat.footnote-row {
+    opacity: 0.75;
+  }
+  .ayat.footnote-row .ar { font-size: clamp(1rem, 0.85rem + 1vw, 1.3rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.72rem, 0.66rem + 0.4vw, 0.85rem); }
+
+  .ayat.list-item {
+    padding-inline-end: 1.4rem;
+    position: relative;
+  }
+  .ayat.list-item .ar::before {
+    content: "\2022";
+    color: var(--heading);
+    margin-inline-end: 0.5em;
+  }
+
+  .ayat.list-item.bernomor .ar::before {
+    content: none;
+  }
+
+  .bab__judul {
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin: 0 0 clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1rem, 3vw, 1.5rem);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .pasal__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem);
+    color: var(--heading);
+    text-align: center;
+    background: var(--pasal-bg);
+    border-radius: 12px;
+    padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem);
+    margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem);
+  }
+  .bab__judul + .pasal__judul { margin-top: 0; }
+
+  .bagian__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem);
+    color: var(--heading);
+    text-align: center;
+    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--border);
+  }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .sub__judul {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1.05rem, 0.92rem + 0.7vw, 1.25rem);
+    color: var(--id-color);
+    margin: clamp(1.1rem, 3vw, 1.6rem) 0 0.25rem;
+  }
+
+  /* ====== DAFTAR ISI ====== */
+  .daftar-isi {
+    direction: ltr;
+    background: var(--pasal-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem);
+    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .daftar-isi__judul {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .daftar-isi__list {
+    list-style: none;
+    counter-reset: pasal-counter;
+  }
+
+  .daftar-isi__list > li {
+    counter-increment: pasal-counter;
+    margin-bottom: 0.5rem;
+  }
+
+  .daftar-isi__list > li > a {
+    direction: rtl;
+    display: block;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(0.98rem, 0.88rem + 0.5vw, 1.15rem);
+    color: var(--ar-color);
+    text-decoration: none;
+  }
+
+  .daftar-isi__list > li > a::before {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--id-color);
+    margin-inline-end: 0.4em;
+    content: counter(pasal-counter) ".";
+  }
+
+  .daftar-isi__list > li > a:hover { color: var(--heading); }
+
+  .daftar-isi__sublist {
+    list-style: none;
+    direction: rtl;
+    margin: 0.35rem 0.25rem 0 0;
+    padding-right: 1.5rem;
+    border-right: 2px solid var(--border);
+  }
+
+  .daftar-isi__sublist li { margin-bottom: 0.25rem; }
+
+  .daftar-isi__sublist a {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .daftar-isi__sublist a:hover { color: var(--id-color); }
+
+  /* ====== TABEL ====== */
+  .tabel-wrap {
+    overflow-x: auto;
+    margin: clamp(0.75rem, 2.5vw, 1.25rem) 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  table.tabel {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.92rem);
+  }
+  table.tabel th,
+  table.tabel td {
+    padding: 0.55rem 0.7rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.tabel th {
+    background: var(--pasal-bg);
+    color: var(--heading);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-align: start;
+  }
+  table.tabel tr:last-child td { border-bottom: none; }
+  table.tabel td.ar,
+  table.tabel th.ar {
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+    color: var(--ar-color);
+    text-align: right;
+  }
+  table.tabel td.id,
+  table.tabel th.id {
+    direction: ltr;
+    color: var(--id-color);
+    text-align: left;
+  }
+  table.tabel td.num {
+    direction: ltr;
+    text-align: center;
+    color: var(--muted);
+    font-family: 'Poppins', sans-serif;
+    width: 2.5rem;
+  }
+
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">عِلْمُ اللُّغَةِ ٣: عِلْمُ الْأَصْوَاتِ</h1>
+    <p class="isi__ket">Mata Kuliah 'Ilm al-Lughah (Linguistik) 3 &middot; Jurusan Bahasa Arab, Ma'had al-'Ulum al-Islamiyyah wa al-'Arabiyyah Indonesia &middot; Dosen: Dr. Ath-Thahir Ath-Thayyib Ath-Thahir &middot; Terjemah biasa</p>
+
+    <nav class="daftar-isi">
+      <h2 class="daftar-isi__judul">Daftar Isi</h2>
+      <ol class="daftar-isi__list">
+        <li><a href="#tujuan-mukarrar">ب. هَدَفُ الْمُقَرَّرِ</a></li>
+        <li><a href="#mawdhuat-mukarrar">مَوْضُوعَاتُ الْمُقَرَّرِ</a></li>
+        <li><a href="#ilmu-ashwat-mabadi">عِلْمُ الْأَصْوَاتِ، مَبَادِئُهُ، وَمَجَالَاتُهُ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#jawanib-ilmu-ashwat">جَوَانِبُ عِلْمِ الْأَصْوَاتِ</a></li>
+            <li><a href="#majalat-ilmu-ashwat">مَجَالَاتُ عِلْمِ الْأَصْوَاتِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#dars-shawti">الدَّرْسُ الصَّوْتِيُّ: تَطَوُّرُهُ وَنَشْأَتُهُ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#dirasah-arab">الدِّرَاسَةُ الصَّوْتِيَّةُ عِنْدَ الْعَرَبِ</a></li>
+            <li><a href="#juhud-ittijahat">جُهُودٌ وَاتِّجَاهَاتٌ فِي الدَّرْسِ الصَّوْتِيِّ</a></li>
+            <li><a href="#juhud-muhdatsin">جُهُودُ الْمُحْدَثِينَ الْعَرَبِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#ilmu-ashwat-fiziyai">عِلْمُ الْأَصْوَاتِ الْفِيزِيَائِيُّ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#mafhum-shawt">مَفْهُومُ الصَّوْتِ</a></li>
+            <li><a href="#tarif-shawt">تَعْرِيفُ الصَّوْتِ فِيزِيَائِيًّا</a></li>
+            <li><a href="#khasais-shawt">خَصَائِصُ الصَّوْتِ</a></li>
+            <li><a href="#taqsim-maddah">تَقْسِيمُ الْمَادَّةِ الصَّوْتِيَّةِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#ilmu-ashwat-mujarradah">عِلْمُ الْأَصْوَاتِ الْمُجَرَّدَةِ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#farq-mujarradah">الْفَرْقُ بَيْنَ عِلْمِ الْأَصْوَاتِ الْمُجَرَّدَةِ وَعِلْمِ الصَّوْتِيَّاتِ</a></li>
+            <li><a href="#mafahim-asasiyyah">مَفَاهِيمُ أَسَاسِيَّةٌ فِي عِلْمِ الْأَصْوَاتِ الْمُجَرَّدَةِ</a></li>
+            <li><a href="#ahammiyyah-mujarradah">أَهَمِّيَّةُ عِلْمِ الْأَصْوَاتِ الْمُجَرَّدَةِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#jihaz-nuthq">جِهَازُ النُّطْقِ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#riatan">الرِّئَتَانِ</a></li>
+            <li><a href="#qasabah">الْقَصَبَةُ الْهَوَائِيَّةُ</a></li>
+            <li><a href="#hanjarah">الْحَنْجَرَةُ</a></li>
+            <li><a href="#watarani">الْوَتَرَانِ (الْحَبْلَانِ) الصَّوْتِيَّانِ</a></li>
+            <li><a href="#halq">الْحَلْقُ</a></li>
+            <li><a href="#tajwif-fam">تَجْوِيفُ الْفَمِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#taqsim-makharij">تَقْسِيمُ الْأَصْوَاتِ بِحَسَبِ الْمَخَارِجِ (عِلْمُ الْأَصْوَاتِ الْقِطْعِيَّةِ)</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#makharij-huruf">مَخَارِجُ الْحُرُوفِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#sifat-shawt">صِفَاتُ الصَّوْتِ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#qism-lahu-dhidd">أَوَّلًا: قِسْمٌ لَهُ ضِدٌّ</a></li>
+            <li><a href="#qism-la-dhidd">ثَانِيًا: صِفَاتٌ لَيْسَ لَهَا ضِدٌّ</a></li>
+          </ol>
+        </li>
+        <li><a href="#maqathi-shawtiyyah">الْمَقَاطِعُ الصَّوْتِيَّةُ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#qawaid-taqti">قَوَاعِدُ التَّقْطِيعِ الصَّوْتِيِّ لِلْكَلِمَاتِ</a></li>
+            <li><a href="#anwa-maqathi">أَنْوَاعُ الْمَقَاطِعِ فِي الْعَرَبِيَّةِ</a></li>
+          </ol>
+        </li>
+        <li><a href="#ada-shawti">الْأَدَاءُ الصَّوْتِيُّ</a>
+          <ol class="daftar-isi__sublist">
+            <li><a href="#majalat-ada">مَجَالَاتُ الْأَدَاءِ الصَّوْتِيِّ</a></li>
+            <li><a href="#maharat-ihtiraf">مَهَارَاتٌ فِي احْتِرَافِ الْأَدَاءِ الصَّوْتِيِّ</a></li>
+            <li><a href="#tanwi-ada">التَّنْوِيعُ فِي الْأَدَاءِ الصَّوْتِيِّ</a></li>
+            <li><a href="#fawasil-shawtiyyah">الْفَوَاصِلُ الصَّوْتِيَّةُ</a></li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="ayat">
+      <p class="ar">جَامِعَةُ الْإِمَامِ مُحَمَّدِ بْنِ سُعُودٍ الْإِسْلَامِيَّةِ</p>
+      <p class="id">Universitas Islam Imam Muhammad bin Saud</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَعْهَدُ الْعُلُومِ الْإِسْلَامِيَّةِ وَالْعَرَبِيَّةِ فِي إِنْدُونِيسِيَا</p>
+      <p class="id">Ma'had al-'Ulum al-Islamiyyah wa al-'Arabiyyah di Indonesia</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">كُلِّيَّةُ اللُّغَةِ الْعَرَبِيَّةِ - قِسْمُ اللُّغَةِ الْعَرَبِيَّةِ</p>
+      <p class="id">Fakultas Bahasa Arab - Jurusan Bahasa Arab</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">اسْمُ الْمُقَرَّرِ: عِلْمُ اللُّغَةِ (٣)</p>
+      <p class="id">Nama mata kuliah: 'Ilm al-Lughah (3)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">رَمْزُ الْمُقَرَّرِ: نَحْو (٦٢٣٠٥)</p>
+      <p class="id">Kode mata kuliah: Nahwu (62305)</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">الْبَرْنَامَجُ: اللُّغَةُ الْعَرَبِيَّةُ</p>
+      <p class="id">Program studi: Bahasa Arab</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أُسْتَاذُ الْمُقَرَّرِ: د. الطَّاهِرُ الطَّيِّبُ الطَّاهِرُ</p>
+      <p class="id">Dosen pengampu: Dr. Ath-Thahir Ath-Thayyib Ath-Thahir</p>
+    </div>
+
+    <h2 class="pasal__judul" id="tujuan-mukarrar">ب. هَدَفُ الْمُقَرَّرِ</h2>
+
+    <h3 class="bagian__judul">١. الْوَصْفُ الْعَامُّ لِلْمُقَرَّرِ</h3>
+
+    <div class="ayat">
+      <p class="ar">يُقَدِّمُ هَذَا الْمُقَرَّرُ مَعْلُومَاتٍ عَنْ عِلْمِ الْأَصْوَاتِ مِنْ حَيْثُ نَشْأَتِهِ وَمَجَالَاتِهِ الْمُتَعَلِّقَةِ بِهِ.</p>
+      <p class="id">Mata kuliah ini menyajikan pengetahuan tentang ilmu bunyi ('Ilm al-Aswat/fonetik), mencakup sejarah kemunculannya serta bidang-bidang kajian yang terkait dengannya.</p>
+    </div>
+
+    <h3 class="bagian__judul">٢. الْهَدَفُ الرَّئِيسُ لِلْمُقَرَّرِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">مَعْرِفَةُ الْمَبَادِئِ الْعَامَّةِ لِعِلْمِ الْأَصْوَاتِ وَنَشْأَةِ الدَّرْسِ الصَّوْتِيِّ وَمَجَالَاتِهِ.</p>
+      <p class="id">Mengetahui prinsip-prinsip umum ilmu bunyi, sejarah kemunculan kajian fonetik, dan bidang-bidang kajiannya.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَعْرِفَةُ جِهَازِ النُّطْقِ وَأَقْسَامِ الْأَصْوَاتِ وَالدِّرَاسَةِ الصَّوْتِيَّةِ.</p>
+      <p class="id">Mengetahui alat ucap (organ artikulasi), pembagian bunyi-bunyi, dan kajian fonetik.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّعْرِيفُ بِتَقْسِيمَاتِ الْأَصْوَاتِ اللُّغَوِيَّةِ.</p>
+      <p class="id">Mengenal pembagian-pembagian bunyi bahasa.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقُدْرَةُ عَلَى تَمْيِيزِ مُسْتَوَيَاتِ الدَّرْسِ الصَّوْتِيِّ.</p>
+      <p class="id">Mampu membedakan level-level (tataran) kajian fonetik.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">بَيَانُ أَثَرِ الْأَدَاءِ الصَّوْتِيِّ وَأَنْوَاعِهِ.</p>
+      <p class="id">Menjelaskan pengaruh performa vokal (olah suara) serta jenis-jenisnya.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="mawdhuat-mukarrar">مَوْضُوعَاتُ الْمُقَرَّرِ</h2>
+
+    <div class="tabel-wrap">
+      <table class="tabel">
+        <thead>
+          <tr>
+            <th class="num">م</th>
+            <th class="ar">قَائِمَةُ الْمَوْضُوعَاتِ</th>
+            <th class="id">Daftar Topik</th>
+            <th class="num">ساعات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">١</td>
+            <td class="ar">عِلْمُ الْأَصْوَاتِ، مَبَادِئُهُ، وَمَجَالَاتُهُ</td>
+            <td class="id">Ilmu bunyi, prinsip-prinsip, dan bidang-bidangnya</td>
+            <td class="num">٤</td>
+          </tr>
+          <tr>
+            <td class="num">٢</td>
+            <td class="ar">الدَّرْسُ الصَّوْتِيُّ: نَشْأَتُهُ وَتَطَوُّرُهُ</td>
+            <td class="id">Kajian fonetik: sejarah dan perkembangannya</td>
+            <td class="num">٦</td>
+          </tr>
+          <tr>
+            <td class="num">٣</td>
+            <td class="ar">فِيزِيَائِيَّةُ الْأَصْوَاتِ (عِلْمُ الْأَصْوَاتِ الْفِيزِيَائِيُّ)</td>
+            <td class="id">Fisika bunyi (fonetik akustik)</td>
+            <td class="num">٦</td>
+          </tr>
+          <tr>
+            <td class="num">٤</td>
+            <td class="ar">جِهَازُ النُّطْقِ</td>
+            <td class="id">Alat ucap (organ artikulasi)</td>
+            <td class="num">٣</td>
+          </tr>
+          <tr>
+            <td class="num">٥</td>
+            <td class="ar">عِلْمُ الْأَصْوَاتِ الْمُجَرَّدَةِ</td>
+            <td class="id">Fonologi</td>
+            <td class="num">١٤</td>
+          </tr>
+          <tr>
+            <td class="num">٦</td>
+            <td class="ar">تَقْسِيمُ الْأَصْوَاتِ بِحَسَبِ الْمَخَارِجِ (عِلْمُ الْأَصْوَاتِ الْقِطْعِيَّةِ)</td>
+            <td class="id">Pembagian bunyi menurut makhraj (fonetik segmental)</td>
+            <td class="num">٣</td>
+          </tr>
+          <tr>
+            <td class="num">٧</td>
+            <td class="ar">صِفَاتُ الْأَصْوَاتِ</td>
+            <td class="id">Sifat-sifat bunyi (cara artikulasi)</td>
+            <td class="num">٤</td>
+          </tr>
+          <tr>
+            <td class="num">٨</td>
+            <td class="ar">الْمَقَاطِعُ الصَّوْتِيَّةُ</td>
+            <td class="id">Suku kata (silabel)</td>
+            <td class="num">٤</td>
+          </tr>
+          <tr>
+            <td class="num">٩</td>
+            <td class="ar">التَّشْكِيلُ الصَّوْتِيُّ</td>
+            <td class="id">Harakat (vokalisasi)</td>
+            <td class="num">٣</td>
+          </tr>
+          <tr>
+            <td class="num">١٠</td>
+            <td class="ar">الْأَدَاءُ الصَّوْتِيُّ (الْمَلَامِحُ النُّطْقِيَّةُ)</td>
+            <td class="id">Performa vokal (ciri-ciri artikulasi)</td>
+            <td class="num">٣</td>
+          </tr>
+          <tr>
+            <td class="num">١١</td>
+            <td class="ar">مُرَاجَعَاتٌ وَتَطْبِيقَاتٌ</td>
+            <td class="id">Tinjauan ulang dan latihan praktik</td>
+            <td class="num">٦</td>
+          </tr>
+          <tr>
+            <td class="num"></td>
+            <td class="ar">الْمَجْمُوعُ</td>
+            <td class="id">Jumlah</td>
+            <td class="num">٣٠</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="pasal__judul" id="ilmu-ashwat-mabadi">عِلْمُ الْأَصْوَاتِ، مَبَادِئُهُ، وَمَجَالَاتُهُ</h2>
+
+    <div class="ayat">
+      <p class="ar">عِلْمُ الْأَصْوَاتِ يَدْرُسُ الْأَصْوَاتَ اللُّغَوِيَّةَ، مِنْ حَيْثُ مَخَارِجُهَا وَصِفَاتُهَا وَكَيْفِيَّةُ صُدُورِهَا. وَيُطْلَقُ عَلَى هَذَا الْعِلْمِ أَيْضًا: الصَّوْتِيَّاتُ، أَوْ عِلْمُ الصَّوْتِيَّاتِ، وَهُوَ فَرْعٌ مِنْ فُرُوعِ عِلْمِ اللُّغَةِ.</p>
+      <p class="id">Ilmu bunyi mempelajari bunyi-bunyi bahasa dari segi makhraj (tempat keluarnya), sifat-sifatnya, dan cara terbentuknya. Ilmu ini juga disebut: fonetik ("ash-shawtiyyat"), atau "'ilm ash-shawtiyyat", dan merupakan salah satu cabang dari cabang-cabang ilmu bahasa (linguistik).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَرَى عِلْمُ الْأَصْوَاتِ فِي اللُّغَةِ مَجْمُوعَةً مِنَ الْأَصْوَاتِ يُنْتِجُهَا الْإِنْسَانُ بِوَسَاطَةِ جِهَازِهِ الصَّوْتِيِّ (جِهَازِ النُّطْقِ)، الَّذِي يُولَدُ مُزَوَّدًا بِهِ، وَهُوَ يَتَكَوَّنُ أَسَاسًا مِنَ الرِّئَتَيْنِ وَالْقَصَبَةِ الْهَوَائِيَّةِ ثُمَّ الْحَلْقِ وَالْحَنْجَرَةِ وَالْحِبَالِ الصَّوْتِيَّةِ (الْأَوْتَارِ الصَّوْتِيَّةِ) وَاللَّهَاةِ وَاللِّسَانِ وَالْحَنَكَيْنِ وَالشَّفَتَيْنِ، وَمَعَهَا تَجْوِيفُ الْفَمِ وَالْأَنْفِ.</p>
+      <p class="id">Ilmu bunyi memandang bahasa sebagai sekumpulan bunyi yang dihasilkan manusia melalui alat ucapnya (organ artikulasi), yang telah dibawa sejak lahir. Alat ini pada dasarnya terdiri dari paru-paru, batang tenggorokan (trakea), kemudian tekak, laring, pita suara, anak tekak (uvula), lidah, kedua langit-langit, dan kedua bibir, beserta rongga mulut dan rongga hidung.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَالطَّرِيقَةُ الَّتِي يُنْتِجُ بِهَا الْجِهَازُ الْأَصْوَاتَ، تَقُومُ عَلَى عَمَلِيَّةٍ يَسِيرَةٍ تَنْتُجُ عَنِ احْتِكَاكِ الْهَوَاءِ بَيْنَ الْعَضَلَاتِ فَيُسْمَعُ لَهَا رَنِينٌ، يَخْرُجُ كُلَّ مَرَّةٍ عَلَى شَكْلٍ مُغَايِرٍ لِلْمَرَّةِ الْأُخْرَى، وَهَذَا الْهَوَاءُ تَدْفَعُهُ الرِّئَتَانِ إِلَى الْمِنْطَقَةِ الَّتِي يُرَادُ أَنْ يَخْرُجَ الْهَوَاءُ مِنْهَا، فَيَنْتُجُ بِذَلِكَ مَا نُطْلِقُ عَلَيْهِ الصَّوْتَ.</p>
+      <p class="id">Cara alat ini menghasilkan bunyi berlangsung melalui proses sederhana yang timbul dari gesekan udara di antara otot-otot, sehingga terdengar dengungan yang keluar setiap kali dengan bentuk berbeda dari sebelumnya. Udara ini didorong oleh paru-paru menuju area tempat udara hendak dikeluarkan, sehingga dari situ terbentuklah apa yang kita sebut "bunyi".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَقُومُ عُلَمَاءُ الْأَصْوَاتِ بِدِرَاسَةِ شَيْئَيْنِ هُمَا: مَخَارِجُ الْأَصْوَاتِ أَيْ تَحْدِيدُ مِنْطَقَةِ كُلِّ صَوْتٍ عَلَى جِهَازِ النُّطْقِ، وَيُسَمُّونَ الْأَصْوَاتَ بِحَسَبِ مَخَارِجِهَا، فَيَقُولُونَ: هَذَا صَوْتٌ لِثَوِيٌّ، وَذَاكَ أَسْنَانِيٌّ، وَآخَرُ شَفَوِيٌّ، وَرَابِعٌ لَهَوِيٌّ وَهَكَذَا.... وَالشَّيْءُ الثَّانِي هُوَ صِفَاتُ الْأَصْوَاتِ، وَهُنَا يَقُومُونَ بِوَصْفِ الصَّوْتِ بِنَاءً عَلَى مُلَاحَظَةِ طَرِيقَةِ احْتِكَاكِ الْهَوَاءِ بِعَضَلَاتِ جِهَازِ النُّطْقِ، وَتَتَغَيَّرُ طَرِيقَةُ النُّطْقِ (طَرِيقَةُ احْتِكَاكِ الْهَوَاءِ وَطَرِيقَةُ وَضْعِ الْعُضْوِ النَّاطِقِ فِي نَفْسِ الْمَخَارِجِ)، وَيُؤَدِّي ذَلِكَ إِلَى أَنْ يَتَّصِفَ الصَّوْتُ بِسِمَاتٍ مُخْتَلِفَةٍ، تُحَدِّدُ صِفَاتِهِ النُّطْقِيَّةَ، فَيُقَالُ هَذَا صَوْتٌ مَهْمُوسٌ، وَذَاكَ مَجْهُورٌ، وَثَالِثٌ رِخْوٌ، وَرَابِعٌ شَدِيدٌ وَهَكَذَا.</p>
+      <p class="id">Para ahli fonetik mengkaji dua hal: pertama, makhraj (tempat keluar) bunyi, yaitu menentukan area setiap bunyi pada alat ucap — mereka menamai bunyi-bunyi berdasarkan makhrajnya, sehingga dikatakan: ini bunyi gusi (litsawi), itu bunyi gigi (asnani), yang lain bunyi bibir (syafawi), yang keempat bunyi anak tekak (lahawi), dan seterusnya.... Kedua, sifat-sifat bunyi — di sini mereka mendeskripsikan bunyi berdasarkan pengamatan cara gesekan udara dengan otot-otot alat ucap. Cara pengucapan ini berubah-ubah (cara gesekan udara dan cara peletakan organ pengucap pada makhraj yang sama), sehingga bunyi memiliki ciri-ciri yang berbeda-beda yang menentukan sifat artikulasinya — dikatakanlah ini bunyi tak bersuara (mahmus), itu bersuara (majhur), yang ketiga frikatif/lunak (rikhw), yang keempat letup/keras (syadid), dan seterusnya.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="jawanib-ilmu-ashwat">جَوَانِبُ عِلْمِ الْأَصْوَاتِ</h3>
+
+    <div class="ayat">
+      <p class="ar">تَمُرُّ عَمَلِيَّةُ الْكَلَامِ بِخَمْسِ خُطُوَاتٍ، أَوْ أَحْدَاثٍ مُتَتَالِيَةٍ مُتَرَابِطَةٍ، يَقُودُ بَعْضُهَا إِلَى بَعْضٍ، حَتَّى يَتِمَّ التَّوَاصُلُ بَيْنَ الْمُتَكَلِّمِ وَالسَّامِعِ، وَتِلْكَ الْأَحْدَاثُ بِتَرْتِيبِ وُقُوعِهَا هِيَ:</p>
+      <p class="id">Proses berbicara melewati lima tahap, atau peristiwa yang berurutan dan saling terkait, yang satu mengantarkan kepada yang lain, hingga terjalin komunikasi antara pembicara dan pendengar. Peristiwa-peristiwa itu, menurut urutan terjadinya, adalah:</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. الْأَحْدَاثُ النَّفْسِيَّةُ وَالْعَمَلِيَّاتُ الْعَقْلِيَّةُ الَّتِي تَجْرِي فِي ذِهْنِ الْمُتَكَلِّمِ قَبْلَ الْكَلَامِ، أَوْ أَثْنَاءَهُ.</p>
+      <p class="id">1. Peristiwa psikologis dan proses mental yang berlangsung dalam benak pembicara sebelum atau selama berbicara.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. عَمَلِيَّةُ إِصْدَارِ الْكَلَامِ الْمُمَثَّلِ فِي أَصْوَاتٍ يُنْتِجُهَا الْجِهَازُ الْمُسَمَّى جِهَازَ النُّطْقِ.</p>
+      <p class="id">2. Proses mengeluarkan ujaran yang terwujud dalam bunyi-bunyi yang dihasilkan oleh alat yang disebut alat ucap.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. الْمَوْجَاتُ وَالذَّبْذَبَاتُ الصَّوْتِيَّةُ الْوَاقِعَةُ بَيْنَ فَمِ الْمُتَكَلِّمِ وَأُذُنِ السَّامِعِ.</p>
+      <p class="id">3. Gelombang dan getaran bunyi yang berlangsung antara mulut pembicara dan telinga pendengar.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٤. الْعَمَلِيَّاتُ الْعُضْوِيَّةُ الَّتِي يَخْضَعُ لَهَا الْجِهَازُ السَّمْعِيُّ لَدَى السَّامِعِ.</p>
+      <p class="id">4. Proses-proses organik yang dialami oleh sistem pendengaran pada diri pendengar.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٥. الْأَحْدَاثُ النَّفْسِيَّةُ وَالْعَمَلِيَّاتُ الَّتِي تَجْرِي فِي ذِهْنِ السَّامِعِ عِنْدَ سَمَاعِهِ لِلْكَلَامِ وَاسْتِقْبَالِهِ لِلْمَوْجَاتِ وَالذَّبْذَبَاتِ الصَّوْتِيَّةِ الْمَنْقُولَةِ إِلَيْهِ بِوَسَاطَةِ الْهَوَاءِ.</p>
+      <p class="id">5. Peristiwa psikologis dan proses yang berlangsung dalam benak pendengar ketika ia mendengar ujaran dan menerima gelombang serta getaran bunyi yang disalurkan kepadanya melalui udara.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُفْتَرَضُ أَنْ يَقُومَ عَالِمُ الْأَصْوَاتِ بِالنَّظَرِ فِي الْخُطُوَاتِ الْخَمْسِ الْمَذْكُورَةِ، حَتَّى يُحِيطَ بِجَوَانِبِ مَوْضُوعِهِ، غَيْرَ أَنَّ مُعْظَمَ الدَّارِسِينَ مِنْ عُلَمَاءِ الْأَصْوَاتِ رَأَوْا إِهْمَالَ الْجَانِبَيْنِ الْأَوَّلِ وَالْخَامِسِ وَعَدَمَ التَّعَرُّضِ لَهُمَا بِالدَّرْسِ، وَذَلِكَ لِأَنَّ الْجَانِبَيْنِ الْمُشَارَ إِلَيْهِمَا جَانِبَانِ نَفْسِيَّانِ عَقْلِيَّانِ، وَمَوْضُوعُ عِلْمِ اللُّغَةِ دَرْسُ الْأَحْدَاثِ اللُّغَوِيَّةِ الْمَنْطُوقَةِ بِالْفِعْلِ، وَلِأَنَّ هَذِهِ الْعَمَلِيَّاتِ النَّفْسِيَّةَ الْعَقْلِيَّةَ مُعَقَّدَةٌ وَغَامِضَةٌ.</p>
+      <p class="id">Idealnya, seorang ahli fonetik meninjau kelima tahap tersebut agar mencakup seluruh sisi objek kajiannya. Namun, sebagian besar peneliti dari kalangan ahli fonetik memandang perlu mengabaikan sisi pertama dan kelima serta tidak membahasnya, karena kedua sisi yang disebutkan itu bersifat psikologis dan mental, sedangkan objek kajian linguistik adalah peristiwa-peristiwa kebahasaan yang benar-benar diucapkan secara lisan, dan karena proses-proses psikologis mental ini rumit dan kabur.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَتَّضِحُ مِمَّا سَبَقَ أَنَّ أَصْوَاتَ الْكَلَامِ لَهَا ثَلَاثَةُ جَوَانِبَ مُتَّصِلَةٍ لَا يُمْكِنُ تَصَوُّرُ أَحَدِهَا دُونَ الْآخَرِ، وَهَذِهِ الْجَوَانِبُ هِيَ:</p>
+      <p class="id">Dari uraian di atas jelaslah bahwa bunyi-bunyi ujaran memiliki tiga sisi yang saling berkaitan, yang satu tidak dapat dibayangkan tanpa yang lain. Ketiga sisi ini adalah:</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. جَانِبُ إِصْدَارِ الْأَصْوَاتِ، أَوِ الْجَانِبُ النُّطْقِيُّ، وَيُشَارُ إِلَيْهِ بِالْجَانِبِ الْفِسْيُولُوجِيِّ، أَوِ الْعُضْوِيِّ لِلْأَصْوَاتِ.</p>
+      <p class="id">1. Sisi pengeluaran bunyi, atau sisi artikulatoris, yang juga disebut sisi fisiologis atau organik dari bunyi.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. جَانِبُ الِانْتِقَالِ، أَوِ الِانْتِشَارِ فِي الْهَوَاءِ، أَوِ الْجَانِبُ الْأَكُوسْتِيكِيُّ، أَوِ الْفِيزِيَائِيُّ.</p>
+      <p class="id">2. Sisi perambatan atau penyebaran di udara, atau sisi akustik/fisika.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. جَانِبُ اسْتِقْبَالِ الصَّوْتِ، أَوِ الْجَانِبُ السَّمْعِيُّ، وَيَتَمَثَّلُ فِي الذَّبْذَبَاتِ الَّتِي تُؤَثِّرُ عَلَى طَبْلَةِ أُذُنِ السَّامِعِ.</p>
+      <p class="id">3. Sisi penerimaan bunyi, atau sisi auditif, yang terwujud dalam getaran-getaran yang memengaruhi gendang telinga pendengar.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="majalat-ilmu-ashwat">مَجَالَاتُ عِلْمِ الْأَصْوَاتِ</h3>
+
+    <div class="ayat">
+      <p class="ar">تِلْكَ الْجَوَانِبُ الثَّلَاثَةُ تَقَعُ فِي مَجَالِ عِلْمِ الْأَصْوَاتِ، وَهُوَ الْمُخْتَصُّ بِدِرَاسَتِهَا وَالنَّظَرِ فِيهَا دُونَ غَيْرِهِ مِنْ فُرُوعِ عِلْمِ اللُّغَةِ. وَيَتَطَلَّبُ تَعَدُّدُ تِلْكَ الْجَوَانِبِ تَعَدُّدًا فِي الْمَنَاهِجِ حَتَّى يَقُومَ كُلٌّ مِنْهَا بِدِرَاسَةِ جَانِبٍ مِنْ تِلْكَ الْجَوَانِبِ، وَنَتِيجَةً لِهَذِهِ التَّعَدُّدِيَّةِ، ظَهَرَتْ فُرُوعٌ عَدِيدَةٌ لِعِلْمِ الْأَصْوَاتِ، تَخْتَلِفُ فِي أَهْدَافِهَا وَوَسَائِلِهَا، وَمِنْ أَهَمِّ تِلْكَ الْفُرُوعِ:</p>
+      <p class="id">Ketiga sisi tersebut termasuk dalam ranah ilmu bunyi, yang khusus mengkajinya, tidak seperti cabang-cabang linguistik lainnya. Banyaknya sisi tersebut menuntut keragaman metode, sehingga masing-masing metode mengkaji satu sisi dari sisi-sisi itu. Akibat keragaman ini, muncullah berbagai cabang ilmu bunyi yang berbeda-beda tujuan dan sarananya. Di antara cabang-cabang terpenting tersebut adalah:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ النُّطْقِيُّ:</strong> يَبْحَثُ فِي عَمَلِيَّةِ إِنْتَاجِ الْأَصْوَاتِ اللُّغَوِيَّةِ وَمَكَانِ نُطْقِهَا، وَطَرِيقَةِ إِصْدَارِهَا، وَيُسَمَّى هَذَا الْعِلْمُ أَيْضًا عِلْمَ الْأَصْوَاتِ الْفِسْيُولُوجِيَّ، أَوْ عِلْمَ الْأَصْوَاتِ الْوَظَائِفِيَّ.</p>
+      <p class="id"><strong>Fonetik artikulatoris:</strong> mengkaji proses produksi bunyi bahasa, tempat pengucapannya, dan cara pengeluarannya. Ilmu ini juga disebut fonetik fisiologis, atau fonetik fungsional.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْفِيزِيَائِيُّ:</strong> يَبْحَثُ فِي أَصْوَاتِ اللُّغَةِ مِنْ حَيْثُ خَصَائِصُهَا الْمَادِّيَّةُ، أَوِ الْفِيزِيَائِيَّةُ أَثْنَاءَ انْتِقَالِهَا مِنَ الْمُتَكَلِّمِ إِلَى السَّامِعِ، وَيَعْرِضُ هَذَا الْعِلْمُ لِتَرَدُّدِ الصَّوْتِ وَسِعَةِ الذَّبْذَبَةِ وَطَبِيعَةِ الْمَوْجَةِ الصَّوْتِيَّةِ وَعُلُوِّ الصَّوْتِ (النَّغْمَةِ) وَنَوْعِهِ (الْجَرْسِ).</p>
+      <p class="id"><strong>Fonetik akustik:</strong> mengkaji bunyi bahasa dari segi karakteristik fisiknya selama perambatan dari pembicara ke pendengar; ilmu ini membahas frekuensi bunyi, amplitudo getaran, sifat gelombang bunyi, tinggi-rendah nada, dan timbre (warna suara)nya.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ السَّمْعِيُّ:</strong> يَبْحَثُ فِي جِهَازِ السَّمْعِ الْبَشَرِيِّ وَفِي الْعَمَلِيَّةِ السَّمْعِيَّةِ وَطَرِيقَةِ اسْتِقْبَالِ الْأَصْوَاتِ اللُّغَوِيَّةِ وَإِدْرَاكِهَا.</p>
+      <p class="id"><strong>Fonetik auditif:</strong> mengkaji sistem pendengaran manusia, proses mendengar, serta cara penerimaan dan persepsi bunyi bahasa.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْعَامُّ:</strong> يَبْحَثُ فِي الْأَصْوَاتِ اللُّغَوِيَّةِ بِشَكْلٍ عَامٍّ، أَيْ دُونَ رَبْطِهَا بِلُغَةٍ فِعْلِيَّةٍ.</p>
+      <p class="id"><strong>Fonetik umum:</strong> mengkaji bunyi bahasa secara umum, yaitu tanpa mengaitkannya dengan bahasa tertentu.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْخَاصُّ:</strong> يَبْحَثُ فِي أَصْوَاتِ لُغَةٍ مُعَيَّنَةٍ دُونَ سِوَاهَا، مِثْلَ أَصْوَاتِ اللُّغَةِ الْعَرَبِيَّةِ.</p>
+      <p class="id"><strong>Fonetik khusus:</strong> mengkaji bunyi-bunyi suatu bahasa tertentu saja, seperti bunyi-bunyi bahasa Arab.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْآلِيُّ:</strong> يَبْحَثُ فِي أَصْوَاتِ اللُّغَةِ بِاسْتِخْدَامِ الْمَنْهَجِ التَّجْرِيبِيِّ، كَمَا يَسْتَخْدِمُ الْآلَاتِ الْإِلِكْتْرُونِيَّةَ لِكَشْفِ خَصَائِصِ هَذِهِ الْأَصْوَاتِ مِثْلَ جِهَازِ رَسْمِ الْأَطْيَافِ الَّذِي يُحَدِّدُ نَوْعَ الصَّوْتِ وَقُوَّتَهُ وَنَغْمَتَهُ. كَمَا يَسْتَخْدِمُ الْحَنَكَ الِاصْطِنَاعِيَّ لِدِرَاسَةِ الْأَصْوَاتِ الْحَنَكِيَّةِ. وَيُسَمَّى هَذَا الْعِلْمُ أَيْضًا: عِلْمَ الْأَصْوَاتِ الْمَعْمَلِيَّ، أَوْ عِلْمَ الْأَصْوَاتِ التَّجْرِيبِيَّ.</p>
+      <p class="id"><strong>Fonetik instrumental:</strong> mengkaji bunyi bahasa dengan menggunakan metode eksperimental, serta menggunakan alat-alat elektronik untuk mengungkap karakteristik bunyi-bunyi ini, seperti alat spektrograf yang menentukan jenis, kekuatan, dan nada bunyi. Ilmu ini juga menggunakan langit-langit buatan (palatogram) untuk mengkaji bunyi-bunyi palatal. Ilmu ini juga disebut: fonetik laboratorium, atau fonetik eksperimental.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْمُقَارَنُ:</strong> يَبْحَثُ فِي وُجُوهِ الشَّبَهِ وَالِاخْتِلَافِ بَيْنَ أَصْوَاتِ لُغَةٍ مَا، وَأَصْوَاتِ اللُّغَاتِ الْأُخْرَى.</p>
+      <p class="id"><strong>Fonetik komparatif:</strong> mengkaji sisi-sisi kesamaan dan perbedaan antara bunyi suatu bahasa dengan bunyi bahasa-bahasa lain.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْوَصْفِيُّ:</strong> يَبْحَثُ فِي أَصْوَاتِ اللُّغَةِ الْمُسْتَخْدَمَةِ فِي فَتْرَةٍ زَمَنِيَّةٍ مُحَدَّدَةٍ. وَهُوَ مُقَابِلٌ لِعِلْمِ الْأَصْوَاتِ التَّارِيخِيِّ.</p>
+      <p class="id"><strong>Fonetik deskriptif:</strong> mengkaji bunyi bahasa yang digunakan pada periode waktu tertentu. Ilmu ini berlawanan dengan fonetik historis.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ التَّارِيخِيُّ:</strong> يَبْحَثُ فِي أَصْوَاتِ لُغَةٍ مَا، لِمَعْرِفَةِ التَّغَيُّرِ وَالتَّطَوُّرِ الَّذِي أَصَابَهَا عَبْرَ مَرَاحِلَ تَارِيخِيَّةٍ سَابِقَةٍ.</p>
+      <p class="id"><strong>Fonetik historis:</strong> mengkaji bunyi suatu bahasa untuk mengetahui perubahan dan perkembangan yang dialaminya melalui tahapan-tahapan sejarah sebelumnya.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْقِطْعِيَّةِ:</strong> يَبْحَثُ فِي الصَّوَائِتِ وَالصَّوَامِتِ فَقَطْ.</p>
+      <p class="id"><strong>Fonetik segmental:</strong> mengkaji vokal dan konsonan saja.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ فَوْقَ الْقِطْعِيَّةِ:</strong> يَبْحَثُ فِي النَّبْرِ وَالْفَوَاصِلِ وَالنَّغَمَاتِ (الْفُونِيمُ أَصْغَرُ وَحْدَةٍ صَوْتِيَّةٍ مُمَيِّزَةٍ لَيْسَ لَهَا مَعْنًى نَحْوِيٌّ أَوْ دَلَالِيٌّ).</p>
+      <p class="id"><strong>Fonetik suprasegmental:</strong> mengkaji tekanan (stress), jeda, dan intonasi (fonem adalah satuan bunyi pembeda terkecil yang tidak memiliki makna gramatikal atau semantik tersendiri).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ الْأَصْوَاتِ الْوَظِيفِيُّ:</strong> يَدْرُسُ الْأَصْوَاتَ مِنْ حَيْثُ وَظِيفَتِهَا، أَيْ أَنَّهُ يَدْرُسُ الْفُونِيمَاتِ وَتَوْزِيعَاتِهَا وَأَلُوفُونَاتِهَا، وَيُسَمَّى عِلْمَ الْفُونِيمَاتِ.</p>
+      <p class="id"><strong>Fonetik fungsional:</strong> mengkaji bunyi dari segi fungsinya, yaitu mengkaji fonem-fonem, distribusinya, dan alofon-alofonnya; disebut juga ilmu fonem (fonemik).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar"><strong>عِلْمُ عُيُوبِ النُّطْقِ:</strong> يَدْرُسُ عُيُوبَ النُّطْقِ لَدَى الْأَفْرَادِ وَأَسْبَابَهَا وَطُرُقَ عِلَاجِهَا.</p>
+      <p class="id"><strong>Patologi wicara (ilmu cacat ucap):</strong> mengkaji gangguan-gangguan artikulasi pada individu, penyebabnya, dan cara penanganannya.</p>
+    </div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
