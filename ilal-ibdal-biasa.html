@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>الإعلال والإبدال — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+  .ayat.list-item.bernomor .ar::before { content: none; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الْإِعْلَالُ وَالْإِبْدَالُ</h1>
+    <p class="isi__ket">I'lal wal Ibdal (Perubahan dan Penggantian Huruf dalam Sharf/Morfologi Arab) &middot; Juz 1, Hlm. 121&ndash;138 &middot; Terjemah biasa</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْإِعْلَالُ:</strong> هُوَ تَغْيِيرُ حَرْفِ الْعِلَّةِ لِلتَّخْفِيفِ، بِقَلْبِهِ، أَوْ إِسْكَانِهِ، أَوْ حَذْفِهِ؛ فَأَنْوَاعُهُ ثَلَاثَةٌ: الْقَلْبُ، وَالْإِسْكَانُ، وَالْحَذْفُ.</p>
+      <p class="id"><strong>I'lal:</strong> adalah perubahan huruf 'illah (huruf lemah: alif, waw, ya) untuk meringankan pengucapan, dengan cara mengubahnya (qalb), mematikannya (iskan), atau membuangnya (hadzf). Jenisnya ada tiga: qalb, iskan, dan hadzf.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَمَّا <strong>الْإِبْدَالُ:</strong> فَهُوَ جَعْلُ مُطْلَقِ حَرْفٍ مَكَانَ آخَرَ. فَخَرَجَ بِالْإِطْلَاقِ الْإِعْلَالُ بِالْقَلْبِ، لِاخْتِصَاصِهِ بِحُرُوفِ الْعِلَّةِ، فَكُلُّ إِعْلَالٍ يُقَالُ لَهُ إِبْدَالٌ وَلَا عَكْسَ، إِذْ يَجْتَمِعَانِ فِي نَحْوِ قَالَ وَرَمَى، وَيَنْفَرِدُ الْإِبْدَالُ فِي نَحْوِ اصْطَبَرَ وَادَّكَرَ. وَخَرَجَ بِالْمَكَانِ الْعِوَضُ، فَقَدْ يَكُونُ فِي غَيْرِ مَكَانِ الْمُعَوَّضِ مِنْهُ كَتَاءَيْ عِدَةٍ وَاسْتِقَامَةٍ وَهَمْزَتَيْ ابْنٍ وَاسْمٍ.</p>
+      <p class="id">Adapun <strong>Ibdal</strong> adalah menjadikan sembarang huruf menggantikan huruf lain pada tempat yang sama. Dengan kata "sembarang" ini, i'lal dengan qalb dikeluarkan dari definisi tersebut, karena qalb khusus terbatas pada huruf 'illah saja — sehingga setiap i'lal (dengan qalb) dapat disebut ibdal, namun tidak berlaku sebaliknya. Keduanya bertemu dalam contoh seperti "qala" dan "rama", sementara ibdal saja (tanpa i'lal) berdiri sendiri dalam contoh seperti "ishthabara" dan "iddakara". Dengan kata "tempat yang sama" ini, al-'iwadh (penggantian sebagai kompensasi) dikeluarkan dari definisi ibdal, karena penggantian semacam itu terkadang terjadi bukan pada tempat yang sama dengan yang digantikan, seperti ta' pada "'iddah" dan "istiqamah", serta hamzah pada "ibn" dan "ism".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ الْأَشْمُونِيُّ: قَدْ يُطْلَقُ الْإِبْدَالُ عَلَى مَا يَعُمُّ الْقَلْبَ، إِلَّا أَنَّ الْإِبْدَالَ إِزَالَةٌ، وَالْقَلْبَ إِحَالَةٌ، وَالْإِحَالَةُ لَا تَكُونُ إِلَّا بَيْنَ الْأَشْيَاءِ الْمُتَمَاثِلَةِ، وَمِنْ ثَمَّ اخْتَصَّ بِحُرُوفِ الْعِلَّةِ وَالْهَمْزَةِ، لِأَنَّهَا تَقَارُبُهَا بِكَثْرَةِ التَّغْيِيرِ.</p>
+      <p class="id">Al-Asymuni berkata: Ibdal terkadang digunakan secara umum mencakup qalb, hanya saja ibdal bermakna penghapusan (izalah), sedangkan qalb bermakna pengalihan (ihalah), dan pengalihan hanya terjadi antara hal-hal yang sejenis. Oleh karena itu, qalb khusus terbatas pada huruf 'illah dan hamzah, karena keduanya saling berdekatan sifatnya dengan seringnya terjadi perubahan di antara keduanya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَاعْلَمْ أَنَّ الْحُرُوفَ الَّتِي تُبْدَلُ مِنْ غَيْرِهَا ثَلَاثَةُ أَقْسَامٍ:</p>
+      <p class="id">Ketahuilah bahwa huruf-huruf yang digantikan dari huruf lain terbagi menjadi tiga bagian:</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. مَا يُبْدَلُ إِبْدَالًا شَائِعًا لِلْإِدْغَامِ، وَهُوَ جَمِيعُ الْحُرُوفِ إِلَّا الْأَلِفَ.</p>
+      <p class="id">1. Huruf yang digantikan secara lazim untuk keperluan idgham (peleburan), yaitu semua huruf kecuali alif.</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. مَا يُبْدَلُ إِبْدَالًا نَادِرًا، وَهُوَ شِبْهُ أَحْرُفِ: الْحَاءِ، وَالْخَاءِ، وَالْعَيْنِ الْمُهْمَلَةِ، وَالْقَافِ، وَالضَّادِ، وَالذَّالِ الْمُعْجَمَتَانِ، كَقَوْلِهِمْ فِي وُكْنَةٍ، وَهِيَ بَيْتُ الْقَطَا فِي الْجَبَلِ: وُقْنَةٌ؛ وَفِي أَغَنَّ أَخَنَّ؛ وَفِي رُبَعٍ رُبَحٌ؛ وَفِي خَطَرٍ غَطَرٌ؛ وَفِي جَلْدٍ جَضْدٌ؛ وَفِي تَلَعْثَمَ تَلَعْذَمَ.</p>
+      <p class="id">2. Huruf yang digantikan secara jarang, yaitu sekitar huruf-huruf: ha, kha, 'ain tak bertitik, qaf, dhad, dan dzal — seperti ucapan mereka pada kata "wuknah" (sarang burung qatha di gunung) menjadi "wuqnah"; pada "aghann" menjadi "akhann"; pada "ruba'" menjadi "rubah"; pada "khathar" menjadi "ghathar"; pada "jald" menjadi "jadhd"; dan pada "tala'tsama" menjadi "tala'dzama".</p>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. مَا يُبْدَلُ إِبْدَالًا شَائِعًا لِغَيْرِ إِدْغَامٍ، وَهُوَ اثْنَانِ وَعِشْرُونَ حَرْفًا، يَجْمَعُهَا قَوْلُكَ: (لَجَدَّ صِرْفٌ شَكْسٌ أَمِنَ طَيٌّ ثَوْبُ عِزَّتِهِ)، وَالضَّرُورِيُّ مِنْهَا فِي التَّصْرِيفِ تِسْعَةُ أَحْرُفٍ، يَجْمَعُهَا قَوْلُكَ: (هَدَأْتُ مُوَطِّيًا)، وَمَا عَدَاهَا فَإِبْدَالُهُ غَيْرُ ضَرُورِيٍّ فِيهِ، كَقَوْلِهِمْ فِي أَصْلَانَ بِالضَّمِّ، عَلَى مَا ذَهَبَ إِلَيْهِ الْكُوفِيُّونَ، جَمْعُ أَصِيلٍ، أَوْ هُوَ تَصْغِيرُ أَصِيلٍ، وَهُوَ الْوَقْتُ بَعْدَ الْعَصْرِ: أُصَيَلَّالٌ، وَفِي اضْطَجَعَ إِذَا نَامَ: الْطَجَعَ، وَفِي نَحْوِ عَلِيٍّ عَلَمًا، فِي الْوَقْفِ أَوْ مَا جَرَى مَجْرَاهُ: عَلِجْ، بِإِبْدَالِ النُّونِ لَامًا فِي الْأَوَّلِ، وَالضَّادِ لَامًا فِي الثَّانِي، وَالْيَاءِ جِيمًا فِي الثَّالِثِ.</p>
+      <p class="id">3. Huruf yang digantikan secara lazim bukan untuk idgham, yaitu dua puluh dua huruf, terhimpun dalam ucapan: "lajadda shirfun syaksun amina thayyun tsaubu 'izzatihi" — dan yang bersifat wajib (dharuri) di antaranya dalam tashrif ada sembilan huruf, terhimpun dalam ucapan: "hada'tu muwaththiyan". Selain itu, penggantiannya tidak bersifat wajib, seperti ucapan mereka pada "ashlaan" (dengan dhammah) — menurut pendapat ulama Kufah — jamak dari "ashiil", atau bentuk tashghir dari "ashiil" (yaitu waktu setelah 'ashr) menjadi "ushayallaal"; dan pada "idhthaja'a" (ketika tidur) menjadi "ithtaja'a"; dan pada nama "'Aliyy" sebagai nama diri, dalam keadaan waqaf atau yang serupa dengannya, menjadi "'alij" — dengan menggantikan nun menjadi lam pada contoh pertama, dhad menjadi lam pada contoh kedua, dan ya menjadi jim pada contoh ketiga.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قَالَ النَّابِغَةُ:</p>
+      <p class="id">An-Nabighah berkata:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَقَفْتُ فِيهَا أُصَيَلَّالًا أُسَائِلُهَا</span><span class="shatr">أَعْيَتْ جَوَابًا وَمَا بِالرَّبْعِ مِنْ أَحَدِ</span></p>
+        <p class="id">Aku berhenti di sana pada waktu senja, bertanya kepadanya — ia tak kuasa menjawab, dan tiada seorang pun di tempat tinggal itu.</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) ثَمَّ: يَعْنِي: هُنَاكَ. [ن]<br>(٢) أَوْ إِنْ شِئْتَ قُلْ: "جَلْدٌ شَكِسٌ ثَوَابُهُ مِنْ صِرْفِ طَيٍّ قُعَرُّ". [ن]</p>
+      <p class="id">(1) "Tsamma": maksudnya: di sana. [catatan editor]<br>(2) Atau jika engkau mau, katakanlah: "jaldun syakisun tsawabuhu min sharfi thayyin qu'arru". [catatan editor]</p>
+    </div>
+
+    <div class="hal"><span>Juz 1 &middot; Hlm. 122</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ مَنْظُورُ بْنُ حَبَّةَ الْأَسَدِيُّ فِي ذِئْبٍ:</p>
+      <p class="id">Manzhur bin Habbah Al-Asadi berkata tentang seekor serigala:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَمَّا رَأَى أَنْ لَا دَعَهْ لَا شِبَعْ</span><span class="shatr">مَالَ إِلَى أَرْطَاةِ حَقْفٍ فَالْطَجَعْ</span></p>
+        <p class="id">Ketika ia melihat tiada lagi makanan dan tiada kekenyangan, ia pun menoleh ke sebatang pohon arthah di gundukan pasir, lalu berbaring (ithtaja'a).</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ آخَرُ:</p>
+      <p class="id">Penyair lain berkata:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">خَالِيَ عُوَيْفٌ وَأَبُوا عَلِجّ</span><span class="shatr">الْمُطْعِمَانِ اللَّحْمَ بِالْعَشِجّ</span></p>
+        <p class="id">Pamanku Uwaif dan ayahku Alij ('Ali) — keduanya memberi makan daging pada waktu petang ('asyij).</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُرِيدُ أَبَا عَلِيٍّ وَالْعَشِيَّ، وَتُسَمَّى هَذِهِ اللُّغَةُ عَجْعَجَةَ قُضَاعَةَ. وَاشْتَرَطَ بَعْضُهُمْ فِيهَا أَنْ تَكُونَ الْجِيمُ مَسْبُوقَةً بِعَيْنٍ، كَمَا فِي الْبَيْتِ، وَبَعْضُهُمْ يُطْلِقُ، مُسْتَدِلًّا بِقَوْلِ بَعْضِ أَهْلِ الْيَمَنِ:</p>
+      <p class="id">Maksudnya "Abu 'Ali" dan "al-'asyiyy" (petang) — dialek ini disebut 'Aj'ajah Qudha'ah. Sebagian mensyaratkan agar jim itu didahului oleh 'ain, seperti dalam bait ini, dan sebagian lain tidak membatasinya, berdalil dengan ucapan sebagian penduduk Yaman:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَا هُمَّ إِنْ كُنْتَ قَبِلْتَ حِجَّتِجْ</span><span class="shatr">فَلَا يَزَالُ شَاحِجٌ يَأْتِيكَ بِجْ</span></p>
+        <p class="id">Wahai Tuhanku ("lahumma" = "Allahumma"), jika Engkau telah menerima hajiku, maka akan selalu ada bighal yang meringkik mendatangi-Mu dengannya (sebagai kurban),</p>
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">أَقْمَرُ نَهَّاتٌ يُنَزِّي وَفْرَتِجْ</span></p>
+        <p class="id">seekor bighal putih yang meringkik, yang menggerak-gerakkan bulu rambutnya.</p>
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) الشَّاحِجُ: الْبَغْلُ إِذَا صَوَّتَ. وَالْأَقْمَرُ: الْأَبْيَضُ. وَالنَّهَّاتُ: النَّهَّاقُ. يُنَزِّي: يُحَرِّكُ. وَالْوَفْرَةُ: الشَّعْرُ إِلَى شَحْمَةِ الْأُذُنِ.</p>
+      <p class="id">(1) "Asy-syahij": bighal ketika bersuara. "Al-aqmar": yang putih. "An-nahhat": yang meringkik keras. "Yunazzi": menggerak-gerakkan. "Al-wafrah": rambut yang menjulur sampai ke daun telinga.</p>
+    </div>
+
+    <div class="hal"><span>Juz 1 &middot; Hlm. 123</span></div>
+
+    <h2 class="pasal__judul" id="ilal-hamzah">أ) الْإِعْلَالُ فِي الْهَمْزَةِ</h2>
+    <p class="judul__id">A) I'lal pada Hamzah</p>
+
+    <h3 class="bagian__judul" id="ya-waw-jadi-hamzah-wajib">١ - تُقْلَبُ الْيَاءُ وَالْوَاوُ هَمْزَةً وُجُوبًا فِي أَرْبَعَةِ مَوَاضِعَ</h3>
+    <p class="judul__id">Ya dan Waw Diubah Menjadi Hamzah secara Wajib dalam Empat Posisi</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْأَوَّلُ:</strong> أَنْ تَتَطَرَّفَا بَعْدَ أَلِفٍ زَائِدَةٍ، كَسَمَاءٍ وَبِنَاءٍ، أَصْلُهُمَا سَمَاوٌ وَبِنَايٌ، بِخِلَافِ نَحْوِ قَالَ، وَبَاعَ، وَإِدَاوَةٍ، وَهِيَ الْمِطْهَرَةُ، وَهِدَايَةٍ، لِعَدَمِ التَّطَرُّفِ، وَنَحْوِ دَلْوٍ وَظَبْيٍ، لِعَدَمِ تَقَدُّمِ الْأَلِفِ، وَنَحْوِ آيَةٍ وَرَايَةٍ، لِعَدَمِ زِيَادَتِهَا.</p>
+      <p class="id"><strong>Pertama:</strong> keduanya berada di akhir kata (tharaf) setelah alif tambahan (za'idah), seperti "samaa'" dan "binaa'" — asalnya "samaw" dan "binay". Berbeda dengan "qaala", "baa'a", "idaawah" (wadah air wudhu), dan "hidaayah", karena huruf layyinnya tidak berada di akhir kata; dan seperti "dalwun" dan "zhabyun", karena tidak didahului alif; dan seperti "aayatin" dan "raayatin", karena alifnya bukan alif tambahan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُشَارِكُهُمَا فِي ذَلِكَ الْأَلِفُ، فَإِنَّهَا إِذَا تَطَرَّفَتْ بَعْدَ أَلِفٍ زَائِدَةٍ أُبْدِلَتْ هَمْزَةً، كَحَمْرَاءَ إِذْ أَصْلُهَا حَمْرَى كَسَكْرَى، زِيدَتْ أَلِفٌ قَبْلَ الْآخِرِ لِلْمَدِّ، كَأَلِفِ كِتَابٍ، فَقُلِبَتِ الْأَخِيرَةُ هَمْزَةً.</p>
+      <p class="id">Alif juga ikut serta dalam hukum ini: jika ia berada di akhir kata setelah alif tambahan, ia diganti menjadi hamzah, seperti "hamraa'" — asalnya "hamraa" (seperti "sakraa") — lalu ditambahkan alif sebelum huruf terakhir untuk pemanjangan (mad), seperti alif pada "kitaab", sehingga huruf alif terakhir itu diubah menjadi hamzah.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) وَهِيَ مَا يُحْمَلُ بِهَا الْمَاءُ لِلطَّهَارَةِ وَالْوُضُوءِ، وَمِنْهُ قَوْلُ الْمُغِيرَةِ بْنِ شُعْبَةَ فِي صَحِيحِ مُسْلِمٍ: "بَيْنَا أَنَا مَعَ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ذَاتَ لَيْلَةٍ إِذْ نَزَلَ فَقَضَى حَاجَتَهُ ثُمَّ جَاءَ فَصَبَبْتُ عَلَيْهِ مِنْ إِدَاوَةٍ كَانَتْ مَعِي فَتَوَضَّأَ وَمَسَحَ عَلَى خُفَّيْهِ"، شَرْحُ صَحِيحِ مُسْلِمٍ لِلنَّوَوِيِّ "٣/٥٠٩". [ن]</p>
+      <p class="id">(2) Yaitu wadah yang digunakan untuk membawa air guna bersuci dan berwudhu. Di antaranya, ucapan Al-Mughirah bin Syu'bah dalam Shahih Muslim: "Pada suatu malam aku bersama Rasulullah ﷺ, lalu beliau turun (dari kendaraannya) dan menuntaskan hajatnya, kemudian datang, maka aku tuangkan air kepadanya dari sebuah idawah yang ada bersamaku, lalu beliau berwudhu dan mengusap kedua khuffnya." (Syarh Shahih Muslim karya An-Nawawi, 3/509). [catatan editor]</p>
+    </div>
+
+    <div class="hal"><span>Juz 1 &middot; Hlm. 124</span></div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الثَّانِي:</strong> أَنْ تَقَعَا عَيْنًا لِاسْمِ فَاعِلِ فِعْلٍ أُعِلَّتَا فِيهِ، نَحْوَ قَائِلٍ وَبَائِعٍ، أَصْلُهُمَا قَاوِلٌ وَبَايِعٌ، بِخِلَافِ نَحْوِ عَيِنَ فَهُوَ عَايِنٌ، وَعَوِرَ فَهُوَ عَاوِرٌ، لِأَنَّ الْعَيْنَ لَمَّا صَحَّتْ فِي الْفِعْلِ، خَوْفَ الْإِلْبَاسِ بِعَانَ وَعَارَ، صَحَّتْ فِي اسْمِ الْفَاعِلِ تَبَعًا لِلْفِعْلِ.</p>
+      <p class="id"><strong>Kedua:</strong> keduanya menjadi huruf 'ain (radikal tengah) bagi isim fa'il dari sebuah fi'il yang (huruf 'ain-nya) mengalami i'lal, seperti "qaa'il" dan "baa'i'" — asalnya "qaawil" dan "baayi'". Berbeda dengan "'ayina" sehingga menjadi "'aayin", dan "'awira" sehingga menjadi "'aawir" — karena huruf 'ain pada fi'ilnya tetap sahih (tidak di-i'lal), demi menghindari kerancuan dengan "'aana" dan "'aara"; maka pada isim fa'il-nya pun tetap sahih mengikuti fi'ilnya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الثَّالِثُ:</strong> أَنْ تَقَعَا بَعْدَ أَلِفِ مَفَاعِلَ وَشِبْهِهِ، وَقَدْ كَانَتْ مَدَّتَيْنِ زَائِدَتَيْنِ فِي الْمُفْرَدِ، كَعَجُوزٍ وَعَجَائِزَ، وَصَحِيفَةٍ وَصَحَائِفَ، بِخِلَافِ نَحْوِ قَسْوَرٍ، وَهُوَ الْأَسَدُ، وَقَسَاوِرَ، لِأَنَّ الْوَاوَ لَيْسَتْ بِمَدَّةٍ، وَمَعِيشَةٍ وَمَعَايِشَ، لِأَنَّ الْمَدَّةَ فِي الْمُفْرَدِ أَصْلِيَّةٌ، وَشَذَّ فِي مُصِيبَةٍ مَصَائِبُ، وَفِي مَنَارَةٍ مَنَائِرُ بِالْقَلْبِ، مَعَ أَصَالَةِ الْمَدَّةِ فِي الْمُفْرَدِ، وَسَهَّلَهُ شَبَهُ الْأَصْلِيِّ بِالزَّائِدِ.</p>
+      <p class="id"><strong>Ketiga:</strong> keduanya berada setelah alif pada wazan "mafaa'il" dan yang serupa dengannya, sedangkan keduanya merupakan huruf mad tambahan dalam bentuk tunggalnya, seperti "'ajuuz" dan "'ajaa'iz", "shahiifah" dan "shahaa'if". Berbeda dengan "qaswar" (singa) dan "qasaawir", karena waw di sana bukan huruf mad; dan "ma'iisyah" serta "ma'aayisy", karena mad pada bentuk tunggalnya bersifat asli (bukan tambahan). Terjadi keganjilan (syadz) pada "mushiibah" menjadi "mashaa'ib", dan "manaarah" menjadi "manaa'ir" dengan qalb, padahal mad-nya bersifat asli pada bentuk tunggal — kemudahan ini terjadi karena kemiripan antara huruf asli dan huruf tambahan.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُشَارِكُهُمَا فِي ذَلِكَ الْحُكْمِ الْأَلِفُ، كَرِسَالَةٍ وَرَسَائِلَ، وَقِلَادَةٍ وَقَلَائِدَ.</p>
+      <p class="id">Alif pun turut dalam hukum ini, seperti "risaalah" dan "rasaa'il", "qilaadah" dan "qalaa'id".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الرَّابِعُ:</strong> أَنْ تَقَعَا ثَانِيَتَيْ لِينَيْنِ بَيْنَهُمَا أَلِفُ مَفَاعِلَ، سَوَاءٌ كَانَ اللِّينَانِ يَاءَيْنِ، كَنَيَائِفَ جَمْعِ نَيِّفٍ، وَهُوَ الزَّائِدُ عَلَى الْعِقْدِ، أَوْ وَاوَيْنِ، كَأَوَائِلَ جَمْعِ أَوَّلٍ، أَوْ مُخْتَلِفَيْنِ، كَسَيَائِدَ جَمْعِ سَيِّدٍ، أَصْلُهُ سَيَوِدٌ. وَأَمَّا قَوْلُ جَنْدَلِ بْنِ الْمُثَنَّى الطُّهَوِيِّ: "وَكَحَّلَ الْعَيْنَيْنِ بِالْعَوَاوِرِ" مِنْ غَيْرِ قَلْبٍ، فَلِأَنَّ أَصْلَهُ بِالْعَوَاوِيرِ كَطَوَاوِيسَ، وَقَدْ تَقَدَّمَ جَوَازُ حَذْفِ يَاءِ مَفَاعِيلَ، وَلِذَا صُحِّحَ.</p>
+      <p class="id"><strong>Keempat:</strong> keduanya menjadi huruf layyin kedua, di antara keduanya terdapat alif wazan "mafaa'il" — baik kedua huruf layyin itu sama-sama ya, seperti "nayaa'if" jamak dari "nayyif" (lebih dari sepuluh/kelebihan dari satu bilangan bulat); atau sama-sama waw, seperti "awaa'il" jamak dari "awwal"; atau berbeda, seperti "sayaa'id" jamak dari "sayyid" yang asalnya "sayawid". Adapun ucapan Jandal bin Al-Mutsanna Ath-Thuhawi: "wa kahhalal-'ainaini bil-'awaawiri" (dan ia mencelakkan kedua mata dengan "al-'awaawir") tanpa qalb, itu karena asalnya adalah "bil-'awaawiir" seperti "thawaawiis" — dan telah disebutkan sebelumnya bolehnya membuang ya pada wazan "mafaa'iil", dan karena itulah ia dibiarkan sahih (tidak di-i'lal).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَخْتَصُّ الْوَاوُ بِقَلْبِهَا هَمْزَةً إِذَا تَصَدَّرَتْ قَبْلَ وَاوٍ مُتَحَرِّكَةٍ مُطْلَقًا، أَوْ سَاكِنَةٍ مُتَأَصِّلَةِ الْوَاوِيَّةِ، نَحْوَ أَوَاصِلَ وَأَوَاقٍ، جَمْعَيْ وَاصِلَةٍ وَوَاقِيَةٍ، وَمِنْهُ قَوْلُ مُهَلْهِلٍ:</p>
+      <p class="id">Waw secara khusus diubah menjadi hamzah jika ia berada di awal kata, sebelum waw lain yang berharakat secara umum, atau yang bersukun namun pada asalnya memang berupa waw — seperti "awaashil" dan "awaaqin", jamak dari "waashilah" dan "waaqiyah". Di antaranya ucapan Muhalhil:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">ضَرَبَتْ صَدْرَهَا إِلَيَّ وَقَالَتْ</span><span class="shatr">يَا عَدِيًّا لَقَدْ وَقَتْكَ الْأَوَاقِي</span></p>
+        <p class="id">Ia memukul dadanya ke arahku dan berkata: "Wahai yang terkasih, sungguh telah melindungimu para penjaga (al-awaqi)."</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَنَحْوَ الْأُولَى مُؤَنَّثِ الْأَوَّلِ، وَكَذَا جَمْعُهَا وَهُوَ الْأُوَلُ، بِخِلَافِ نَحْوِ هَوَوِيٍّ وَنَوَوِيٍّ، فِي النِّسْبَةِ إِلَى هَوًى وَنَوًى، لِعَدَمِ التَّصَدُّرِ، وَوُفِيَ وَوُعِدَ مَجْهُولَيْنِ، لِعَدَمِ تَأَصُّلِ الثَّانِيَةِ.</p>
+      <p class="id">Dan seperti "al-uulaa" (bentuk feminin dari "al-awwal"), demikian pula bentuk jamaknya, yaitu "al-uwal". Berbeda dengan "hawawiyy" dan "nawawiyy" dalam penisbahan kepada "hawan" dan "nawan", karena waw-nya tidak berada di awal kata; dan "wufiya" serta "wu'ida" dalam bentuk pasif (majhul), karena waw yang kedua pada keduanya tidak asli.</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) رَاجِعْ مَا كَتَبْتُهُ فِي هَامِشِ "ص ٩٤" عَنِ اللِّينِ وَمَدِّهِ. [ن]</p>
+      <p class="id">(1) Lihat kembali apa yang telah saya tulis dalam catatan kaki hlm. 94 tentang huruf layyin dan pemanjangannya. [catatan editor]</p>
+    </div>
+
+    <div class="hal"><span>Juz 1 &middot; Hlm. 125</span></div>
+
+    <h3 class="bagian__judul" id="waw-jadi-hamzah-jawaz">تُبْدَلُ الْوَاوُ هَمْزَةً جَوَازًا فِي مَوْضِعَيْنِ</h3>
+    <p class="judul__id">Waw Diganti Jadi Hamzah secara Boleh (Jawaz) dalam Dua Posisi</p>
+
+    <div class="ayat">
+      <p class="ar">وَتُبْدَلُ الْهَمْزَةُ مِنَ الْوَاوِ جَوَازًا فِي مَوْضِعَيْنِ:</p>
+      <p class="id">Hamzah diganti dari waw secara boleh (jawaz, tidak wajib) dalam dua posisi:</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>أَحَدُهُمَا:</strong> إِذَا كَانَتْ مَضْمُومَةً ضَمًّا لَازِمًا غَيْرَ مُشَدَّدَةٍ، كَوُجُوهٍ وَأُجُوهٍ، وَوُقُوتٍ وَأُقُوتٍ: فِي جَمْعِ وَقْتٍ وَوَجْهٍ، وَأَدْوُرٍ وَأَدْؤُرٍ، وَأَنْوُرٍ وَأَنْؤُرٍ: جَمْعَيْ دَارٍ وَنَارٍ، وَقَؤُولٍ وَصَؤُولٍ: مُبَالَغَةً فِي قَائِلٍ وَصَائِلٍ. فَخَرَجَتْ ضَمَّةُ الْإِعْرَابِ، نَحْوَ هَذَا دَلْوٌ، وَضَمَّةُ التِقَاءِ السَّاكِنَيْنِ، نَحْوَ ﴿وَلَا تَنسَوُا الْفَضْلَ بَيْنَكُم﴾ <span class="ref">[البقرة: ٢٣٧]</span>، وَخَرَجَ بِغَيْرِ مُشَدَّدَةٍ، نَحْوَ التَّعَوُّذِ وَالتَّحَوُّلِ.</p>
+      <p class="id"><strong>Salah satunya:</strong> jika waw itu berharakat dhammah yang bersifat tetap (lazim) dan tidak bertasydid, seperti "wujuuh" menjadi "ujuuh", "wuquut" menjadi "uquut" dalam jamak dari "waqt" dan "wajh"; "adwur" menjadi "ad'ur", "anwur" menjadi "an'ur" — jamak dari "daar" dan "naar"; dan "qawuul" serta "shawuul" — bentuk hiperbola dari "qaa'il" dan "shaa'il" — menjadi "qa'uul" dan "sha'uul". Dengan syarat "tetap" ini dikeluarkan dhammah i'rab, seperti "haadzaa dalwun" (ini adalah timba); dan dhammah karena bertemunya dua huruf mati, seperti dalam firman Allah: <em>"Dan janganlah kamu lupakan keutamaan di antara kamu,"</em> <span class="ref">[QS. Al-Baqarah: 237]</span>. Dan dengan syarat "tidak bertasydid" ini dikeluarkan contoh seperti "at-ta'awwudz" dan "at-tahawwul".</p>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) فِي الْأَصْلِ: "قُتُول" وَهُوَ تَصْحِيفٌ، وَالصَّحِيحُ مَا أَثْبَتْنَاهُ. [ن]</p>
+      <p class="id">(1) Dalam naskah asli tertulis "qutuul", namun itu adalah kesalahan penulisan (tashif); yang benar adalah seperti yang kami tetapkan di sini. [catatan editor]</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ثَانِيهِمَا:</strong> إِذَا كَانَتْ مَكْسُورَةً فِي أَوَّلِ الْكَلِمَةِ، كَإِشَاحٍ وَإِفَادَةٍ وَإِسَادَةٍ، فِي وِشَاحٍ، وَوِفَادَةٍ، وَوِسَادَةٍ.</p>
+      <p class="id"><strong>Kedua:</strong> jika waw itu berharakat kasrah di awal kata, seperti "isyaah", "ifaadah", dan "isaadah" pada "wisyaah", "wifaadah", dan "wisaadah".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُبَدَّلُ الْهَمْزَةُ مِنَ الْيَاءِ جَوَازًا إِذَا كَانَتِ الْيَاءُ بَعْدَ أَلِفٍ، وَقَبْلَ يَاءٍ مُشَدَّدَةٍ، كَغَنَائِيٍّ وَرَائِيٍّ: فِي النِّسْبَةِ لِغَايَةٍ وَرَايَةٍ.</p>
+      <p class="id">Hamzah juga diganti dari ya secara boleh, jika ya itu berada setelah alif dan sebelum ya bertasydid, seperti "ghanaa'iyy" dan "raa'iyy" dalam penisbahan kepada "ghaayah" dan "raayah".</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَجَاءَتِ الْهَمْزَةُ بَدَلًا مِنَ الْهَاءِ فِي مَاءٍ، بِدَلِيلِ تَصْغِيرِهِ عَلَى مُوَيْهٍ، وَجَمْعِهِ عَلَى أَوَاهٍ.</p>
+      <p class="id">Hamzah juga muncul sebagai pengganti dari ha pada kata "maa'" (air), dengan bukti bentuk tashghirnya "muwayh" dan bentuk jamaknya "awaah".</p>
+    </div>
+
+    <!-- NEXT -->
+  </div>
+</section>
+
+</body>
+</html>
