@@ -71,6 +71,30 @@
 
   .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
   .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
 </style>
 </head>
 <body>
@@ -79,6 +103,39 @@
   <div class="isi__wrap">
     <h1 class="isi__judul">أحوال المسند إليه (٢)</h1>
     <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasl 2: Keadaan-Keadaan Musnad Ilayh, bagian 2 &middot; hlm. 132&ndash;166 &middot; Terjemah biasa</p>
+
+    <dialog id="fihris-modal" class="modal" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</a><div class="toc__id">Ta'rif dengan Idhafah (Penyandaran)</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tankir-musnad-ilayh">تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Tankir Al-Musnad Ilayh &mdash; Penaqiran Musnad Ilayh</div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#tawabi-musnad-ilayh">تَوَابِعُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Tawabi' Al-Musnad Ilayh &mdash; Kata-Kata Pengikut Musnad Ilayh</div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#tawabi-wasf">١ - الْوَصْفُ</a><div class="toc__id">1. Al-Washf (Sifat/Na'at)</div></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-tawkid">٢ - التَّوْكِيدُ</a><div class="toc__id">2. At-Tawkid (Penguat)</div></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-atf-bayan">٣ - عَطْفُ الْبَيَانِ</a><div class="toc__id">3. 'Athf Al-Bayan</div></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-badal">٤ - الْبَدَلُ</a><div class="toc__id">4. Al-Badal (Pengganti)</div></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-atf-nasaq">٥ - عَطْفُ النَّسَقِ</a><div class="toc__id">5. 'Athf An-Nasaq (Kata Sambung)</div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#taqib-dhamir-fashl">تَعْقِيبُ الْمُسْنَدِ إِلَيْهِ بِضَمِيرِ الْفَصْلِ</a><div class="toc__id">Ta'qib Al-Musnad Ilayh dengan Dhamir Al-Fashl</div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#taqdim-musnad-ilayh">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Taqdim Al-Musnad Ilayh &mdash; Pendahuluan Musnad Ilayh</div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#taqdim-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</a><div class="toc__id">Pendahuluan dalam Nafi (Negasi)</div></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</a><div class="toc__id">Pendahuluan dalam Itsbat (Penetapan)</div></li>
+              <li><a class="toc__ar" lang="ar" href="#maqamat-tawkid">الْمَقَامَاتُ الَّتِي تَقْتَضِي التَّوْكِيدَ</a><div class="toc__id">Maqam-Maqam yang Menuntut Tawkid</div></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</a><div class="toc__id">Pendahuluan Isim Nakirah</div></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</a><div class="toc__id">Pendahuluan "Mitsl" dan "Ghair"</div></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-umum-nafi">تَقْدِيمُ أَلْفَاظِ الْعُمُومِ عَلَى النَّفْيِ</a><div class="toc__id">Pendahuluan Lafal-Lafal Umum atas Nafi</div></li>
+            </ul>
+          </li>
+        </ol>
+      </nav>
+    </dialog>
 
     <h2 class="pasal__judul">الفصل الثاني: أحوال المسند إليه</h2>
     <p class="judul__id">Pasal Kedua: Keadaan-Keadaan Musnad Ilayh (Subjek Logis) &mdash; bagian 2</p>
@@ -523,7 +580,7 @@
       <p class="id">Musnad ilayh terkadang diiringi oleh tabi' (pengiring) seperti washf (sifat), badal, taukid (penegasan), dan 'athaf (penyambungan), untuk suatu tujuan yang dimaksudkan oleh ahli balaghah. Kedudukan musnad ilayh dalam hal ini sama dengan kedudukan unsur-unsur kalimat lainnya. Tidak tersembunyi bagimu bahwa keadaan-keadaan yang telah kami sebutkan untuk musnad ilayh juga berlaku pada unsur-unsur kalimat lainnya. Berikut penjelasan tawabi' ini:</p>
     </div>
 
-    <h4 class="sub__judul">١ - الْوَصْفُ</h4>
+    <h4 class="sub__judul" id="tawabi-wasf">١ - الْوَصْفُ</h4>
     <p class="judul__id">1. Washf (Sifat)</p>
 
     <div class="ayat">
@@ -631,7 +688,7 @@
       <p class="id">(1) "Janna azh-zhalaam" berarti permulaan kegelapan datang, dan percampurannya (merata) hanya terjadi setelah cahaya siang hilang sepenuhnya. Al-madzq: susu yang dicampur air, merupakan mashdar bermakna isim maf'ul. Sang penyair menggambarkan suatu kaum yang menjamunya namun berlama-lama, lalu mereka menyuguhkan susu campuran encer ini kepadanya...</p>
     </div>
 
-    <h4 class="sub__judul">٢ - التَّوْكِيدُ</h4>
+    <h4 class="sub__judul" id="tawabi-tawkid">٢ - التَّوْكِيدُ</h4>
     <p class="judul__id">2. Taukid (Penegasan)</p>
 
     <div class="ayat">
@@ -668,7 +725,7 @@
 
     <div class="hal"><span>Hlm. 145</span></div>
 
-    <h4 class="sub__judul">٣ - عَطْفُ الْبَيَانِ</h4>
+    <h4 class="sub__judul" id="tawabi-atf-bayan">٣ - عَطْفُ الْبَيَانِ</h4>
     <p class="judul__id">3. 'Athaf Bayan (Penyambung Penjelas)</p>
 
     <div class="ayat">
@@ -714,7 +771,7 @@
       <p class="id">Di antaranya: 'athaf bayan mencela matbu' dengan menunjukkan kehinaannya, sebagaimana dalam firman Allah Ta'ala: <em>"Dan mereka memohon kemenangan (atas musuh-musuh mereka) dan binasalah semua orang yang berbuat sewenang-wenang lagi keras kepala, (15) di hadapannya ada (neraka) Jahanam dan dia akan diberi minuman dengan air nanah, (16) diminumnya dengan terpaksa dan hampir dia tidak bisa menelannya,"</em> <span class="ref">[QS. Ibrahim: 15-17]</span> Kata "صَدِيد" (nanah) adalah bayan bagi "مَاء" (air), dimaksudkan untuk mencela dan menunjukkan kehinaan, kerendahan, dan keburukannya, agar orang yang sewenang-wenang itu jera dan berhenti dari kepala batunya.</p>
     </div>
 
-    <h4 class="sub__judul">٤ - الْبَدَلُ</h4>
+    <h4 class="sub__judul" id="tawabi-badal">٤ - الْبَدَلُ</h4>
     <p class="judul__id">4. Badal (Pengganti)</p>
 
     <div class="ayat quran">
@@ -817,7 +874,7 @@
       <p class="id">Dengan ini jelaslah bagimu bahwa pandangan ahli balaghah terhadap tawabi' berbeda dari pandangan ahli nahwu. Ahli balaghah memandang kepada apa yang tersembunyi di baliknya berupa kehalusan makna, tujuan, dan keindahan estetis, sedangkan ahli nahwu memandang kepada hukum-hukumnya dan cara penggunaannya dalam kalimat. Karena itu engkau dapati ahli nahwu, misalnya, menyamakan antara badal mutabiq dan 'athaf bayan, menjadikan keduanya satu hal yang sama. Namun tidaklah demikian menurut ahli balaghah; keduanya berbeda, dan masing-masing memiliki maqam-maqam khusus dan maksud-maksud tersendiri yang dituju, sebagaimana telah engkau lihat dalam syawahid.</p>
     </div>
 
-    <h4 class="sub__judul">٥ - عَطْفُ النَّسَقِ</h4>
+    <h4 class="sub__judul" id="tawabi-atf-nasaq">٥ - عَطْفُ النَّسَقِ</h4>
     <p class="judul__id">5. 'Athaf Nasaq (Penyambung Berurutan)</p>
 
     <div class="ayat">
@@ -933,7 +990,7 @@
       <p class="id">Para ahli balaghah memberikan perhatian besar dalam kajian mereka tentang pendahuluan musnad ilayh, dengan mengkaji pendahuluannya atas khabar fi'liyyah dalam konteks nafi (negasi) maupun itsbat (afirmasi), seperti: "Bukan aku yang melakukan ini," "Aku tidak melakukan ini," dan "Aku melakukannya." Mereka juga memberikan perhatian pada kajian pendahuluan nakirah, "مثل" (serupa) dan "غير" (selain), serta lafal-lafal umum seperti "كل" (semua) dan "جميع" (seluruh). Barangkali perhatian para ahli balaghah terhadap kajian pendahuluan secara umum, dan pendahuluan alat-alat ini secara khusus, kembali kepada kehalusan dan rahasia-rahasia yang tersembunyi di baliknya, yang sepatutnya diketahui dan dicakup oleh pelajar. Berikut penjelasannya:</p>
     </div>
 
-    <h4 class="sub__judul">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</h4>
+    <h4 class="sub__judul" id="taqdim-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</h4>
     <p class="judul__id">Pendahuluan Musnad Ilayh dalam Konteks Nafi (Negasi)</p>
 
     <div class="ayat">
@@ -1078,7 +1135,7 @@
       <p class="id">Perhatikan firman Allah 'Azza wa Jalla: <em>"Sungguh, pasti terlaksana perkataan (hukuman) terhadap kebanyakan mereka, karena mereka tidak beriman,"</em> <span class="ref">[QS. Yasin: 7]</span>, dan firman-Nya Ta'ala: <em>"Maka gelaplah bagi mereka segala macam berita pada hari itu, sehingga mereka tidak saling bertanya,"</em> <span class="ref">[QS. Al-Qashash: 66]</span>, dan firman-Nya Jalla wa 'Ala: <em>"Sesungguhnya seburuk-buruk makhluk bergerak (melata) di sisi Allah ialah orang-orang yang tuli dan bisu yang tidak mengerti apa pun,"</em> <span class="ref">[QS. Al-Anfal: 22]</span> Engkau dapati bahwa pendahuluan dalam ayat-ayat yang mulia ini telah memberi faedah taukid dan penguatan hukum yang tidak diberikan oleh pengakhiran musnad ilayh. Renungkanlah perkataanmu: "فلا يؤمنون" (maka mereka tidak beriman) dibandingkan dengan apa yang ada dalam susunan Al-Qur'an yang mulia: "فهم لا يؤمنون" (karena mereka tidak beriman), niscaya engkau akan menyadari apa yang telah diberikan oleh pendahuluan musnad ilayh dalam susunan Qur'ani ini berupa penegasan penafian keimanan dari mereka. Terkadang pula dengan pendahuluan ini diberikan faedah qashr, seperti perkataanmu: "Aku tidak menerima kezaliman".. "Orang mukmin tidak berbuat kejahatan," apabila engkau menghendaki penafian perbuatan dari musnad ilayh yang didahulukan dan menetapkannya bagi selainnya.</p>
     </div>
 
-    <h4 class="sub__judul">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</h4>
+    <h4 class="sub__judul" id="taqdim-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</h4>
     <p class="judul__id">Pendahuluan Musnad Ilayh dalam Konteks Itsbat (Afirmasi)</p>
 
     <div class="ayat">
@@ -1130,7 +1187,7 @@
 
     <div class="hal"><span>Hlm. 157</span></div>
 
-    <h4 class="sub__judul">الْمَقَامَاتُ الَّتِي تَقْتَضِي التَّوْكِيدَ</h4>
+    <h4 class="sub__judul" id="maqamat-tawkid">الْمَقَامَاتُ الَّتِي تَقْتَضِي التَّوْكِيدَ</h4>
     <p class="judul__id">Maqam-Maqam yang Menuntut Taukid</p>
 
     <div class="ayat">
@@ -1272,7 +1329,7 @@
       <p class="id">Ketidaksesuaian lafal dengan makna pada saat itu kembali kepada kosongnya susunan kalimat dari taukid yang dituntut oleh maqam, sebagaimana telah aku jelaskan kepadamu.</p>
     </div>
 
-    <h4 class="sub__judul">تَقْدِيمُ النَّكِرَةِ</h4>
+    <h4 class="sub__judul" id="taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</h4>
     <p class="judul__id">Pendahuluan Nakirah</p>
 
     <div class="ayat">
@@ -1302,7 +1359,7 @@
       <p class="id">Apabila engkau tidak menghendaki taukid maupun takhshish, engkau berkata: "Seorang laki-laki datang," tanpa pendahuluan. Begitu pula halnya dalam perkataanmu "seorang laki-laki tidak datang kepadaku," sesuai dengan apa yang telah dijelaskan sebelumnya dalam pendahuluan kata ma'rifah.</p>
     </div>
 
-    <h4 class="sub__judul">تَقْدِيمُ مِثْلَ وَغَيْرَ</h4>
+    <h4 class="sub__judul" id="taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</h4>
     <p class="judul__id">Pendahuluan "Mitsl" (Serupa) dan "Ghair" (Selain)</p>
 
     <div class="ayat">
@@ -1431,7 +1488,7 @@
       <p class="id">Dalam kedua bait ini, "mitsl" dan "ghair" tidak dimaksudkan sebagai kinayah, melainkan dimaksudkan makna hakiki. Karena itu pendahuluan keduanya tidak wajib menurut hukum balaghah, karena tidak ada yang menuntut dan mengharuskan pendahuluan keduanya.</p>
     </div>
 
-    <h4 class="sub__judul">تَقْدِيمُ أَلْفَاظِ الْعُمُومِ عَلَى النَّفْيِ</h4>
+    <h4 class="sub__judul" id="taqdim-umum-nafi">تَقْدِيمُ أَلْفَاظِ الْعُمُومِ عَلَى النَّفْيِ</h4>
     <p class="judul__id">Pendahuluan Lafal-Lafal Umum atas Nafi</p>
 
     <div class="ayat">
@@ -1659,5 +1716,36 @@
   </div>
 </section>
 
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
 </body>
 </html>

@@ -71,6 +71,30 @@
 
   .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
   .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
 </style>
 </head>
 <body>
@@ -79,6 +103,23 @@
   <div class="isi__wrap">
     <h1 class="isi__judul">أحوال المسند إليه (١)</h1>
     <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasl 2: Keadaan-Keadaan Musnad Ilayh, bagian 1 &middot; hlm. 97&ndash;131 &middot; Terjemah biasa</p>
+
+    <dialog id="fihris-modal" class="modal" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Hadzf Al-Musnad Ilayh &mdash; Pembuangan Musnad Ilayh</div></li>
+          <li><a class="toc__ar" lang="ar" href="#dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Dzikr Al-Musnad Ilayh &mdash; Penyebutan Musnad Ilayh</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-musnad-ilayh">تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Ta'rif Al-Musnad Ilayh &mdash; Pengantar Pema'rifahan</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-dhama'ir">التَّعْرِيفُ بِالضَّمَائِرِ</a><div class="toc__id">Ta'rif dengan Dhamir (Kata Ganti)</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-ilmiyyah">التَّعْرِيفُ بِالْعَلَمِيَّةِ</a><div class="toc__id">Ta'rif dengan 'Alamiyyah (Nama Diri)</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-maushul">التَّعْرِيفُ بِالْأَسْمَاءِ الْمَوْصُولَةِ</a><div class="toc__id">Ta'rif dengan Isim Maushul (Kata Sambung)</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-isyarah">التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ</a><div class="toc__id">Ta'rif dengan Isim Isyarah (Kata Tunjuk)</div></li>
+          <li><a class="toc__ar" lang="ar" href="#tarif-alif-lam">التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ</a><div class="toc__id">Ta'rif dengan Alif-Lam</div></li>
+        </ol>
+      </nav>
+    </dialog>
 
     <h2 class="pasal__judul">الفصل الثاني: أحوال المسند إليه</h2>
     <p class="judul__id">Pasal Kedua: Keadaan-Keadaan Musnad Ilayh (Subjek Logis)</p>
@@ -2060,5 +2101,36 @@
   </div>
 </section>
 
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
 </body>
 </html>
