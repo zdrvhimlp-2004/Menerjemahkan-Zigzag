@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>ملخص البلاغة — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">مُلَخَّصُ الْبَلَاغَةِ (عِلْمُ الْمَعَانِي)</h1>
+    <p class="isi__ket">Ringkasan Balaghah ('Ilm al-Ma'ani) untuk Tingkat 5 Jurusan Bahasa Arab &middot; Ma'had al-'Ulum al-Islamiyyah wa al-'Arabiyyah Jakarta &middot; Di bawah bimbingan Dr. Muhammad bin Ahmad Al-Khudhair &middot; Semester 2, Tahun Akademik 1447 H &middot; Terjemah biasa</p>
+
+    <h2 class="pasal__judul" id="adhrab-khabar">أَضْرُبُ الْخَبَرِ</h2>
+    <p class="judul__id">Jenis-Jenis Khabar (Kalimat Berita)</p>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْخَالِيَ الذِّهْنِ لَمْ يَأْتِ بِالتَّأْكِيدِ.</p>
+      <p class="id">Jika lawan bicara berpikiran kosong (tidak ragu, tidak mengingkari), tidak perlu didatangkan penguat (taukid).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْمُتَرَدِّدَ / الشَّاكَّ يُؤْتَى بِأَدَاةِ تَوْكِيدٍ اسْتِحْسَانًا.</p>
+      <p class="id">Jika lawan bicara bimbang/ragu, didatangkan alat taukid secara istihsan (dianjurkan).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ مُنْكِرًا يُؤْتَى بِأَدَاةِ التَّوْكِيدِ وُجُوبًا حَسَبَ إِنْكَارِهِ.</p>
+      <p class="id">Jika lawan bicara mengingkari, wajib didatangkan alat taukid sesuai kadar pengingkarannya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَأَضْرُبُ الْخَبَرِ: ابْتِدَائِيٌّ، طَلَبِيٌّ، إِنْكَارِيٌّ.</p>
+      <p class="id">Maka jenis-jenis khabar ada tiga: ibtida'i (tanpa taukid), thalabi (dengan taukid yang dianjurkan), dan inkari (dengan taukid yang wajib).</p>
+    </div>
+
+    <h2 class="pasal__judul" id="ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</h2>
+    <p class="judul__id">Mengeluarkan Kalam dari Tuntutan Lahiriahnya (dalam Khabar)</p>
+
+    <div class="ayat">
+      <p class="ar">أَيْ: خَرَجَ الْكَلَامُ عَنْ أَضْرُبِ الْخَبَرِ وَحُكْمِهِ كَمَا سَبَقَ.</p>
+      <p class="id">Yaitu, kalam keluar dari jenis-jenis khabar dan hukumnya yang baku, sebagaimana telah disebutkan.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مِثَالُهُ لِلْخَالِي الذِّهْنِ: لَكِنْ تَأْتِي جُمْلَةٌ خَبَرِيَّةٌ بِمُؤَكِّدَةٍ كَمَنْزِلَةِ مُتَرَدِّدٍ أَوِ السَّائِلِ، يَكُونُ غَالِبًا فِي: النَّصَائِحِ، إِرْشَادٍ، تَوْجِيهٍ، نَهْيٍ، أَمْرِ حَدَثٍ غَرِيبٍ يَسْتَدْعِي وُقُوفَ النَّفْسِ وَتَأَمُّلَهَا.</p>
+      <p class="id">Contohnya bagi yang berpikiran kosong: namun datang jumlah khabariyyah dengan penguat, diposisikan seperti orang yang ragu atau bertanya. Hal ini umumnya terjadi dalam: nasihat, bimbingan, arahan, larangan, atau perkara yang menakjubkan yang menuntut jiwa untuk berhenti dan merenung.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      <p class="id"><strong>Contoh:</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأُوحِيَ إِلَى نُوحٍ أَنَّهُ لَن يُؤْمِنَ مِن قَوْمِكَ إِلَّا مَن قَدْ آمَنَ فَلَا تَبْتَئِسْ بِمَا كَانُوا يَفْعَلُونَ وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا وَلَا تُخَاطِبْنِي فِي الَّذِينَ ظَلَمُوا إِنَّهُم مُّغْرَقُونَ <span class="ref">[هود: ٣٦-٣٧]</span></p>
+      <p class="id">"Dan diwahyukan kepada Nuh, 'Sesungguhnya tidak akan ada lagi di antara kaummu yang beriman, kecuali orang yang telah beriman (saja), karena itu janganlah engkau bersedih hati tentang apa yang selalu mereka lakukan. Dan buatlah kapal itu dengan pengawasan dan petunjuk wahyu Kami, dan janganlah engkau bicarakan dengan-Ku tentang orang-orang yang zalim, sesungguhnya mereka itu akan ditenggelamkan.'" <span class="ref">[QS. Hud: 36-37]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا <span class="ref">[التوبة: ٤٠]</span></p>
+      <p class="id">"Jika kamu tidak menolongnya (Muhammad), sesungguhnya Allah telah menolongnya, (yaitu) ketika orang-orang kafir (musyrik Makkah) mengeluarkannya (dari Makkah), sedang dia salah seorang dari dua orang ketika keduanya berada dalam gua, di waktu dia berkata kepada sahabatnya, 'Janganlah engkau bersedih hati, sesungguhnya Allah bersama kita.'" <span class="ref">[QS. At-Taubah: 40]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">سَيَحْلِفُونَ بِاللَّهِ لَكُمْ إِذَا انقَلَبْتُمْ إِلَيْهِمْ لِتُعْرِضُوا عَنْهُمْ فَأَعْرِضُوا عَنْهُمْ إِنَّهُمْ رِجْسٌ <span class="ref">[التوبة: ٩٥]</span></p>
+      <p class="id">"Mereka akan bersumpah kepadamu dengan nama Allah, apabila kamu kembali kepada mereka, agar kamu berpaling dari mereka. Maka berpalinglah dari mereka karena sesungguhnya mereka itu najis." <span class="ref">[QS. At-Taubah: 95]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا أُبَرِّئُ نَفْسِي إِنَّ النَّفْسَ لَأَمَّارَةٌ بِالسُّوءِ إِلَّا مَا رَحِمَ رَبِّي إِنَّ رَبِّي غَفُورٌ رَّحِيمٌ <span class="ref">[يوسف: ٥٣]</span></p>
+      <p class="id">"Dan aku tidak (menyatakan) diriku bebas (dari kesalahan), karena sesungguhnya nafsu itu selalu mendorong kepada kejahatan, kecuali (nafsu) yang diberi rahmat oleh Tuhanku. Sesungguhnya Tuhanku Maha Pengampun, Maha Penyayang." <span class="ref">[QS. Yusuf: 53]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">يُنَزَّلُ الْمُنْكِرُ مَنْزِلَةَ غَيْرِ الْمُنْكِرِ لِعَدَمِ الِاعْتِدَادِ بِإِنْكَارِهِ.</p>
+      <p class="id">Orang yang mengingkari diposisikan seperti orang yang tidak mengingkari, karena pengingkarannya tidak dianggap (tidak berdasar).</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      <p class="id"><strong>Contoh:</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ لَّا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ <span class="ref">[البقرة: ١٦٣]</span></p>
+      <p class="id">"Dan Tuhanmu adalah Tuhan Yang Maha Esa, tidak ada tuhan selain Dia, Yang Maha Pengasih, Maha Penyayang." <span class="ref">[QS. Al-Baqarah: 163]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَذَلِكَ أَرْسَلْنَاكَ فِي أُمَّةٍ قَدْ خَلَتْ مِن قَبْلِهَا أُمَمٌ لِّتَتْلُوَ عَلَيْهِمُ الَّذِي أَوْحَيْنَا إِلَيْكَ وَهُمْ يَكْفُرُونَ بِالرَّحْمَٰنِ قُلْ هُوَ رَبِّي لَا إِلَٰهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ مَتَابِ <span class="ref">[الرعد: ٣٠]</span></p>
+      <p class="id">"Demikianlah, Kami telah mengutus engkau (Muhammad) kepada suatu umat yang sungguh sebelumnya telah berlalu beberapa umat, agar engkau membacakan kepada mereka (Al-Qur'an) yang Kami wahyukan kepadamu, padahal mereka ingkar kepada Allah Yang Maha Pengasih. Katakanlah, 'Dia Tuhanku, tidak ada tuhan selain Dia, hanya kepada-Nya aku bertawakal dan hanya kepada-Nya aku bertobat.'" <span class="ref">[QS. Ar-Ra'd: 30]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 3</span></div>
+
+    <h2 class="pasal__judul" id="hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Pembuangan Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>شُرُوطُ الْحَذْفِ:</strong> وُجُودُ الْقَرِينَةِ، وَوُجُودُ سِرٍّ بَلَاغِيٍّ.<br>قَالَ عَبْدُ الْقَاهِرِ الْجُرْجَانِيُّ: "التَّرْكُ أَفْصَحُ مِنَ الذِّكْرِ".<br>مَزَايَا عِنْدَ الْحَذْفِ: الْإِيجَازُ، الْإِثَارَةُ وَتَحْرِيكُ خَيَالِ الْمُخَاطَبِ، الِاحْتِرَازُ.</p>
+      <p class="id"><strong>Syarat-syarat hadzf:</strong> adanya qarinah (indikator konteks), dan adanya rahasia balaghah.<br>'Abdul Qahir Al-Jurjani berkata: "Membuang (meninggalkan sebutan) lebih fasih daripada menyebutkan."<br>Keistimewaan saat hadzf: ijaz (keringkasan), membangkitkan dan menggerakkan imajinasi lawan bicara, serta ihtiraz (menjaga diri dari kesalahan).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="asrar-hadzf">الْأَسْرَارُ الْبَلَاغِيَّةُ عِنْدَ الْحَذْفِ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong><br>ضِيقُ الْمَقَامِ</p>
+      <p class="id"><strong>Contoh:</strong><br>Sempitnya maqam (dhiq al-maqam)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَأَقْبَلَتِ امْرَأَتُهُ فِي صَرَّةٍ فَصَكَّتْ وَجْهَهَا وَقَالَتْ عَجُوزٌ عَقِيمٌ <span class="ref">[الذاريات: ٢٩]</span></p>
+      <p class="id">"Kemudian istrinya datang memekik (tercengang) lalu menepuk mukanya sendiri seraya berkata, '(Aku adalah) seorang perempuan tua yang mandul.'" <span class="ref">[QS. Adz-Dzariyat: 29]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يُوسُفُ أَعْرِضْ عَنْ هَذَا وَاسْتَغْفِرِي لِذَنبِكِ إِنَّكِ كُنتِ مِنَ الْخَاطِئِينَ <span class="ref">[يوسف: ٢٩]</span></p>
+      <p class="id">"Yusuf, berpalinglah (lupakanlah) dari (peristiwa) ini, dan (istriku) mohonlah ampunan atas dosamu itu, sesungguhnya engkau termasuk orang-orang yang bersalah." <span class="ref">[QS. Yusuf: 29]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْيِينُهُ لِلْمُسْنَدِ الْمَذْكُورِ</p>
+      <p class="id">Penentuannya ditunjukkan oleh musnad yang disebutkan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ <span class="ref">[الرعد: ٩]</span></p>
+      <p class="id">"(Dialah) Yang mengetahui yang gaib dan yang tampak, Yang Mahabesar, Mahatinggi." <span class="ref">[QS. Ar-Ra'd: 9]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَى فِرْعَوْنَ وَهَامَانَ وَقَارُونَ فَقَالُوا سَاحِرٌ كَذَّابٌ <span class="ref">[غافر: ٢٤]</span></p>
+      <p class="id">"kepada Fir'aun, Haman, dan Karun; tetapi mereka berkata, '(Dia) seorang pesihir, pendusta.'" <span class="ref">[QS. Ghafir: 24]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ظُهُورُهُ ظُهُورًا لَا لَبْسَ فِيهِ</p>
+      <p class="id">Kejelasannya tampak tanpa kerancuan sama sekali</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَلَّا إِذَا بَلَغَتِ التَّرَاقِيَ <span class="ref">[القيامة: ٢٦]</span></p>
+      <p class="id">"Sekali-kali tidak! Apabila nyawa (seseorang) telah sampai ke kerongkongan (dada)," <span class="ref">[QS. Al-Qiyamah: 26]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَلَوْلَا إِذَا بَلَغَتِ الْحُلْقُومَ <span class="ref">[الواقعة: ٨٣]</span></p>
+      <p class="id">"Maka mengapa ketika (nyawa) sampai di kerongkongan," <span class="ref">[QS. Al-Waqi'ah: 83]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَقَالَ إِنِّي أَحْبَبْتُ حُبَّ الْخَيْرِ عَن ذِكْرِ رَبِّي حَتَّى تَوَارَتْ بِالْحِجَابِ <span class="ref">[ص: ٣٢]</span></p>
+      <p class="id">"Maka dia berkata, 'Sesungguhnya aku menyukai kesenangan terhadap barang yang baik (kuda), sehingga aku lalai mengingat Tuhanku sampai (kuda itu) hilang dari pandangan.'" <span class="ref">[QS. Sad: 32]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَحْقِيرُ الْمُسْنَدِ إِلَيْهِ وَتَعْظِيمُهُ</p>
+      <p class="id">Merendahkan atau mengagungkan musnad ilayh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا وَإِنَّ اللَّهَ عَلَى نَصْرِهِمْ لَقَدِيرٌ <span class="ref">[الحج: ٣٩]</span></p>
+      <p class="id">"Telah diizinkan (berperang) bagi orang-orang yang diperangi, karena sesungguhnya mereka telah dizalimi. Dan sungguh, Allah Mahakuasa menolong mereka." <span class="ref">[QS. Al-Hajj: 39]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَمَّا حَذْفُ الْمُسْنَدِ إِلَيْهِ بِبِنَاءِ الْفِعْلِ لِلْمَفْعُولِ فَلِأَغْرَاضٍ مِنْهَا:</p>
+      <p class="id">Adapun hadzf musnad ilayh dengan membangun fi'il untuk maf'ul (bentuk pasif/mabni lil-majhul), maka itu untuk beberapa tujuan, di antaranya:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْخَوْفُ عَلَى الْفَاعِلِ الْحَقِيقِيِّ (سُرِقَ الْمَتَاعُ)</p>
+      <p class="id">Kekhawatiran terhadap pelaku sebenarnya (contoh: "barang itu telah dicuri")</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">احْتِقَارُهُ</p>
+      <p class="id">Merendahkannya (pelaku)</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 4</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْجَهْلُ بِهِ</p>
+      <p class="id">Ketidaktahuan terhadapnya</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْعِلْمُ بِالْفَاعِلِ</p>
+      <p class="id">Pengetahuan (yang sudah jelas) tentang pelakunya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَإِذَا قُضِيَتِ الصَّلَاةُ فَانتَشِرُوا فِي الْأَرْضِ <span class="ref">[الجمعة: ١٠]</span></p>
+      <p class="id">"Apabila salat telah dilaksanakan, maka bertebaranlah kamu di bumi," <span class="ref">[QS. Al-Jumu'ah: 10]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَقِيلَ يَا أَرْضُ ابْلَعِي مَاءَكِ وَيَا سَمَاءُ أَقْلِعِي وَغِيضَ الْمَاءُ وَقُضِيَ الْأَمْرُ وَاسْتَوَتْ عَلَى الْجُودِيِّ وَقِيلَ بُعْدًا لِّلْقَوْمِ الظَّالِمِينَ <span class="ref">[هود: ٤٤]</span></p>
+      <p class="id">"Dan difirmankan, 'Wahai bumi! Telanlah airmu dan wahai langit (hujan)! Berhentilah.' Dan air pun disurutkan, perintah pun diselesaikan dan kapal itu pun berlabuh di atas gunung Judi, dan dikatakan, 'Binasalah orang-orang yang zalim.'" <span class="ref">[QS. Hud: 44]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَغُلِبُوا هُنَالِكَ وَانقَلَبُوا صَاغِرِينَ * وَأُلْقِيَ السَّحَرَةُ سَاجِدِينَ <span class="ref">[الأعراف: ١١٩-١٢٠]</span></p>
+      <p class="id">"Maka mereka kalah di tempat itu dan jadilah mereka orang-orang yang hina. * Dan (dengan kejadian itu) para pesihir itu serta-merta tersungkur sujud," <span class="ref">[QS. Al-A'raf: 119-120]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Penyebutan Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>غَرَضُهُ:</strong></p>
+      <p class="id"><strong>Tujuannya:</strong></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّقْرِيرِ وَالْإِيضَاحِ</p>
+      <p class="id">Menambah penegasan dan kejelasan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ <span class="ref">[البقرة: ٥]</span></p>
+      <p class="id">"Mereka itulah yang mendapat petunjuk dari Tuhannya, dan merekalah orang-orang yang beruntung." <span class="ref">[QS. Al-Baqarah: 5]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الرَّغْبَةُ فِي إِطَالَةِ الْكَلَامِ وَامْتِدَادِ الْحَدِيثِ</p>
+      <p class="id">Keinginan untuk memperpanjang kalam dan membentangkan pembicaraan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا تِلْكَ بِيَمِينِكَ يَا مُوسَىٰ * قَالَ هِيَ عَصَايَ <span class="ref">[طه: ١٧-١٨]</span></p>
+      <p class="id">"Dan apakah itu yang di tangan kananmu, wahai Musa? * Dia (Musa) menjawab, 'Ini tongkatku,'" <span class="ref">[QS. Taha: 17-18]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَلَذُّذًا بِذِكْرِهِ وَتَرَدُّدِهِ</p>
+      <p class="id">Menikmati penyebutan dan pengulangannya</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّسْجِيلُ عَلَى السَّامِعِ</p>
+      <p class="id">Mencatatkan (menetapkan sebagai bukti) atas pendengar</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ضَعْفُ التَّعْوِيلِ عَلَى الْقَرِينَةِ</p>
+      <p class="id">Lemahnya sandaran pada qarinah (sehingga perlu disebutkan secara eksplisit)</p>
+    </div>
+
+    <h2 class="pasal__judul" id="tarif-musnad-ilayh">تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Ta'rif (Pemastian) Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar">بِالْعَلَمِيَّةِ، وَالضَّمَائِرِ، وَاسْمِ الْإِشَارَةِ، وَالِاسْمِ الْمَوْصُولِ، وَأَلْ، وَالْإِضَافَةِ.</p>
+      <p class="id">Dengan 'alamiyyah (nama diri), dhamir (kata ganti), isim isyarah (kata tunjuk), isim maushul (kata sambung), "al" (artikel definit), dan idhafah (penyandaran/genitif).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-dhamair">التَّعْرِيفُ بِالضَّمَائِرِ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْمُتَكَلِّمِ:</strong></p>
+      <p class="id"><strong>Dhamir mutakallim (kata ganti orang pertama):</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنِّي أَنَا رَبُّكَ فَاخْلَعْ نَعْلَيْكَ إِنَّكَ بِالْوَادِ الْمُقَدَّسِ طُوًى * وَأَنَا اخْتَرْتُكَ فَاسْتَمِعْ لِمَا يُوحَىٰ * إِنَّنِي أَنَا اللَّهُ لَا إِلَٰهَ إِلَّا أَنَا فَاعْبُدْنِي وَأَقِمِ الصَّلَاةَ لِذِكْرِي <span class="ref">[طه: ١٢-١٤]</span></p>
+      <p class="id">"Sesungguhnya Akulah Tuhanmu, maka lepaskanlah kedua terompahmu; sesungguhnya engkau berada di lembah suci, Thuwa. * Dan Aku telah memilihmu, maka dengarkanlah apa yang akan diwahyukan (kepadamu). * Sungguh, Aku ini Allah, tidak ada tuhan selain Aku, maka sembahlah Aku dan laksanakanlah salat untuk mengingat Aku." <span class="ref">[QS. Taha: 12-14]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْغَيْبَةِ:</strong></p>
+      <p class="id"><strong>Dhamir ghaibah (kata ganti orang ketiga):</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَاصْبِرُوا حَتَّىٰ يَحْكُمَ اللَّهُ بَيْنَنَا وَهُوَ خَيْرُ الْحَاكِمِينَ <span class="ref">[الأعراف: ٨٧]</span></p>
+      <p class="id">"Maka bersabarlah sampai Allah memberi keputusan di antara kita, dan Dia adalah hakim yang terbaik." <span class="ref">[QS. Al-A'raf: 87]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْمُخَاطَبِ:</strong></p>
+      <p class="id"><strong>Dhamir mukhathab (kata ganti orang kedua):</strong></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ <span class="ref">[القلم: ٤]</span></p>
+      <p class="id">"Dan sesungguhnya engkau (Muhammad) benar-benar berbudi pekerti yang luhur." <span class="ref">[QS. Al-Qalam: 4]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 5</span></div>
+
+    <div class="ayat">
+      <p class="ar">يَكْثُرُ الْعِتَابُ بِضَمِيرِ الْخِطَابِ فِي مَقَامِ الْعِتَابِ وَاللَّوْمِ.</p>
+      <p class="id">Dhamir khithab (kata ganti orang kedua) banyak digunakan dalam konteks teguran dan celaan.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-ilmiyyah">التَّعْرِيفُ بِالْعَلَمِيَّةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يَقْتَضِيَ الْمَقَامُ إِحْضَارَ مَدْلُولٍ بِعَيْنِهِ وَشَخْصِهِ فِي ذِهْنِ السَّامِعِ ابْتِدَاءً بِاسْمِهِ الْمُخْتَصِّ بِهِ.</p>
+      <p class="id">Maqam (konteks) menuntut untuk menghadirkan rujukan tertentu dengan jelas dan identitasnya dalam benak pendengar, langsung sejak awal dengan nama khususnya.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ <span class="ref">[الإخلاص: ١-٢]</span></p>
+      <p class="id">"Katakanlah (Muhammad), 'Dialah Allah, Yang Maha Esa. * Allah tempat meminta segala sesuatu.'" <span class="ref">[QS. Al-Ikhlas: 1-2]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ إِلَى تَعْظِيمِهِ أَوْ إِلَى إِهَانَتِهِ وَتَحْقِيرِهِ.</p>
+      <p class="id">Dimaksudkan untuk mengagungkannya, atau untuk menghinakan dan merendahkannya.</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ إِلَى التَّفَاؤُلِ.</p>
+      <p class="id">Dimaksudkan untuk optimisme (tafa'ul).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-maushul">التَّعْرِيفُ بِأَسْمَاءِ الْمَوْصُولَةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّقْرِيرِ</p>
+      <p class="id">Menambah penegasan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَرَاوَدَتْهُ الَّتِي هُوَ فِي بَيْتِهَا عَن نَّفْسِهِ <span class="ref">[يوسف: ٢٣]</span></p>
+      <p class="id">"Dan perempuan yang (Yusuf tinggal) di rumahnya menggoda dirinya (ingin berbuat tidak senonoh)." <span class="ref">[QS. Yusuf: 23]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لِتَنْبِيهِ الْمُخَاطَبِ إِلَى خَطَئِهِ</p>
+      <p class="id">Untuk mengingatkan lawan bicara atas kesalahannya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الَّذِينَ تَدْعُونَ مِن دُونِ اللَّهِ عِبَادٌ أَمْثَالُكُمْ <span class="ref">[الأعراف: ١٩٤]</span></p>
+      <p class="id">"Sesungguhnya yang kamu seru selain Allah itu adalah hamba(-hamba Allah) seperti kamu (juga)." <span class="ref">[QS. Al-A'raf: 194]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِيمَاءٌ إِلَى وَجْهِ بِنَاءِ الْخَبَرِ</p>
+      <p class="id">Mengisyaratkan alasan (sebab) ditetapkannya khabar</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الَّذِينَ يَسْتَكْبِرُونَ عَنْ عِبَادَتِي سَيَدْخُلُونَ جَهَنَّمَ دَاخِرِينَ <span class="ref">[غافر: ٦٠]</span></p>
+      <p class="id">"Sesungguhnya orang-orang yang menyombongkan diri enggan beribadah kepada-Ku akan masuk (neraka) Jahanam dalam keadaan hina dina." <span class="ref">[QS. Ghafir: 60]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّفْخِيمُ وَالتَّهْوِيلُ</p>
+      <p class="id">Pengagungan dan penggambaran yang mendahsyatkan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَغَشِيَهُم مِّنَ الْيَمِّ مَا غَشِيَهُمْ <span class="ref">[طه: ٧٨]</span></p>
+      <p class="id">"Maka mereka ditutup oleh ombak laut yang menenggelamkan mereka." <span class="ref">[QS. Taha: 78]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِذَا رَأَوْكَ إِن يَتَّخِذُونَكَ إِلَّا هُزُوًا أَهَٰذَا الَّذِي بَعَثَ اللَّهُ رَسُولًا <span class="ref">[الفرقان: ٤١]</span></p>
+      <p class="id">"Dan apabila mereka melihatmu (Muhammad), mereka hanyalah menjadikan engkau sebagai ejekan (dengan mengatakan), 'Inikah orangnya yang diutus Allah sebagai Rasul?'" <span class="ref">[QS. Al-Furqan: 41]</span></p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-isyarah">التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ تَمْيِيزُ مُسْنَدٍ إِلَيْهِ أَكْمَلَ التَّمْيِيزِ</p>
+      <p class="id">Dimaksudkan untuk membedakan musnad ilayh dengan pembedaan yang paling sempurna</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَلَوْلَا إِذْ سَمِعْتُمُوهُ قُلْتُم مَّا يَكُونُ لَنَا أَن نَّتَكَلَّمَ بِهَٰذَا سُبْحَانَكَ هَٰذَا بُهْتَانٌ عَظِيمٌ <span class="ref">[النور: ١٦]</span></p>
+      <p class="id">"Dan mengapa kamu tidak berkata, ketika mendengarnya, 'Tidak pantas bagi kita membicarakan ini, Mahasuci Engkau (Allah), ini adalah kebohongan yang besar.'" <span class="ref">[QS. An-Nur: 16]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَعْظِيمِ مُسْنَدٍ إِلَيْهِ أَوْ إِلَى تَحْقِيرِهِ</p>
+      <p class="id">Dimaksudkan untuk mengagungkan musnad ilayh atau merendahkannya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ وَيُبَشِّرُ الْمُؤْمِنِينَ الَّذِينَ يَعْمَلُونَ الصَّالِحَاتِ أَنَّ لَهُمْ أَجْرًا كَبِيرًا <span class="ref">[الإسراء: ٩]</span></p>
+      <p class="id">"Sungguh, Al-Qur'an ini memberi petunjuk ke (jalan) yang paling lurus dan memberi kabar gembira kepada orang mukmin yang mengerjakan kebajikan, bahwa mereka akan mendapat pahala yang besar." <span class="ref">[QS. Al-Isra: 9]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِذَا رَأَوْكَ إِن يَتَّخِذُونَكَ إِلَّا هُزُوًا أَهَٰذَا الَّذِي بَعَثَ اللَّهُ رَسُولًا <span class="ref">[الفرقان: ٤١]</span></p>
+      <p class="id">"Dan apabila mereka melihatmu (Muhammad), mereka hanyalah menjadikan engkau sebagai ejekan (dengan mengatakan), 'Inikah orangnya yang diutus Allah sebagai Rasul?'" <span class="ref">[QS. Al-Furqan: 41]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّنْبِيهُ عَلَى أَنَّ الْمُشَارَ إِلَيْهِ مَذْكُورٌ بَعْدَ أَوْصَافٍ عَدِيدَةٍ لِشَيْءٍ</p>
+      <p class="id">Mengingatkan bahwa yang ditunjuk telah disebutkan sebelumnya melalui beberapa sifat</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ <span class="ref">[البقرة: ٥]</span></p>
+      <p class="id">"Mereka itulah yang mendapat petunjuk dari Tuhannya, dan merekalah orang-orang yang beruntung." <span class="ref">[QS. Al-Baqarah: 5]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 6</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَجْسِيدُ الْمَعْنَوِيَّاتِ وَإِبْرَازُهَا فِي صُورَةٍ مَحْسُوسَةٍ مُشَاهَدَةٍ</p>
+      <p class="id">Mewujudkan hal-hal abstrak dan menampilkannya dalam bentuk inderawi yang dapat disaksikan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يُقَلِّبُ اللَّهُ اللَّيْلَ وَالنَّهَارَ إِنَّ فِي ذَٰلِكَ لَعِبْرَةً لِّأُولِي الْأَبْصَارِ <span class="ref">[النور: ٤٤]</span></p>
+      <p class="id">"Allah menggantikan malam dan siang. Sungguh, pada yang demikian itu terdapat pelajaran bagi orang-orang yang mempunyai penglihatan (mata hati)." <span class="ref">[QS. An-Nur: 44]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">يُخَلِّصُ الْكَلَامَ</p>
+      <p class="id">Memurnikan (merapikan) kalam</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ذَٰلِكَ مِمَّا أَوْحَىٰ إِلَيْكَ رَبُّكَ مِنَ الْحِكْمَةِ <span class="ref">[الإسراء: ٣٩]</span></p>
+      <p class="id">"Itulah sebagian hikmah yang diwahyukan Tuhanmu kepadamu (Muhammad)." <span class="ref">[QS. Al-Isra: 39]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يَقُومَ مَقَامَ أَدَوَاتِ الرَّبْطِ، فَيَصِلَ بَيْنَ الْجُمَلِ الْمُسْتَأْنَفَةِ وَالْجُمَلِ الْمُتَقَدِّمَةِ</p>
+      <p class="id">Berfungsi menggantikan alat penghubung, sehingga menyambungkan antara kalimat baru dengan kalimat sebelumnya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاذْكُرْ إِسْمَاعِيلَ وَالْيَسَعَ وَذَا الْكِفْلِ وَكُلٌّ مِّنَ الْأَخْيَارِ * هَٰذَا ذِكْرٌ وَإِنَّ لِلْمُتَّقِينَ لَحُسْنَ مَآبٍ <span class="ref">[ص: ٤٨-٤٩]</span></p>
+      <p class="id">"Dan ingatlah Ismail, Ilyasa', dan Zulkifli. Masing-masing mereka termasuk orang-orang yang paling baik. * Ini adalah kehormatan (bagi mereka). Dan sesungguhnya bagi orang-orang yang bertakwa benar-benar disediakan tempat kembali yang baik." <span class="ref">[QS. Sad: 48-49]</span></p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-alif-lam">التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الصَّرِيحِيُّ، وَهِيَ الَّتِي يَتَقَدَّمُ لِمَدْخُولِهَا ذِكْرٌ صَرِيحٌ فِي الْكَلَامِ.</p>
+      <p class="id">Lam al-'ahd al-khariji ash-sharihi (lam yang menunjuk pada sesuatu yang telah disebutkan secara eksplisit sebelumnya).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مَثَلُ نُورِهِ كَمِشْكَاةٍ فِيهَا مِصْبَاحٌ الْمِصْبَاحُ فِي زُجَاجَةٍ الزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّيٌّ <span class="ref">[النور: ٣٥]</span></p>
+      <p class="id">"Perumpamaan cahaya-Nya seperti sebuah ceruk yang di dalamnya ada pelita besar. Pelita itu di dalam kaca (dan) kaca itu seakan-akan bintang (yang berkilauan)..." <span class="ref">[QS. An-Nur: 35]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الْكِنَائِيُّ، وَهِيَ الَّتِي يَتَقَدَّمُ لِمَدْخُولِهَا ذِكْرٌ كِنَائِيٌّ.</p>
+      <p class="id">Lam al-'ahd al-khariji al-kina'i (lam yang menunjuk pada sesuatu yang telah diisyaratkan secara tidak langsung sebelumnya).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِذْ قَالَتِ امْرَأَتُ عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّرًا فَتَقَبَّلْ مِنِّي إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ * فَلَمَّا وَضَعَتْهَا قَالَتْ رَبِّ إِنِّي وَضَعْتُهَا أُنثَىٰ وَاللَّهُ أَعْلَمُ بِمَا وَضَعَتْ وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ <span class="ref">[آل عمران: ٣٥-٣٦]</span></p>
+      <p class="id">"(Ingatlah), ketika istri 'Imran berkata, 'Ya Tuhanku, sesungguhnya aku menazarkan kepada-Mu anak yang dalam kandunganku menjadi hamba yang berkhidmat (di Baitulmaqdis). Karena itu terimalah (nazar) itu dariku. Sungguh, Engkaulah Yang Maha Mendengar, Maha Mengetahui.' * Maka ketika melahirkannya, dia berkata, 'Ya Tuhanku, aku telah melahirkan anak perempuan.' Padahal Allah lebih tahu apa yang dia lahirkan, dan anak laki-laki tidaklah seperti anak perempuan." <span class="ref">[QS. Ali 'Imran: 35-36]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الْعِلْمِيُّ، مَا لَمْ يَتَقَدَّمْ لِمَدْخُولِهَا ذِكْرٌ لَا صَرِيحًا وَلَا كِنَائِيًّا.</p>
+      <p class="id">Lam al-'ahd al-khariji al-'ilmi (lam yang menunjuk pada sesuatu yang dikenal lewat pengetahuan bersama, tanpa didahului penyebutan eksplisit maupun isyarat tidak langsung).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَقَدْ رَضِيَ اللَّهُ عَنِ الْمُؤْمِنِينَ إِذْ يُبَايِعُونَكَ تَحْتَ الشَّجَرَةِ <span class="ref">[الفتح: ١٨]</span></p>
+      <p class="id">"Sungguh, Allah telah meridai orang-orang mukmin ketika mereka berjanji setia kepadamu (Muhammad) di bawah pohon," <span class="ref">[QS. Al-Fath: 18]</span></p>
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      <p class="id">Di antara tujuan-tujuan balaghahnya:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ الْإِيجَازِ</p>
+      <p class="id">Menginginkan keringkasan (ijaz)</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مُغْنٍ عَنْ تَفْصِيلٍ يَتَعَذَّرُ أَوْ عَنْ تَفْصِيلٍ تُرِكَ</p>
+      <p class="id">Mencukupkan dari rincian yang sulit dilakukan, atau rincian yang memang sengaja ditinggalkan</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْظِيمُ الْمُضَافِ</p>
+      <p class="id">Mengagungkan mudhaf (yang disandarkan)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ كَادُوا يَكُونُونَ عَلَيْهِ لِبَدًا <span class="ref">[الجن: ١٩]</span></p>
+      <p class="id">"Dan sesungguhnya ketika hamba Allah (Muhammad) berdiri menyembah-Nya (salat), hampir saja mereka (jin) berdesak-desakan mengerumuninya." <span class="ref">[QS. Al-Jinn: 19]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَحْقِيرُ شَأْنِ الْمُضَافِ أَوِ الْمُضَافِ إِلَيْهِ</p>
+      <p class="id">Merendahkan kedudukan mudhaf atau mudhaf ilayh</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 7</span></div>
+
+    <div class="ayat quran">
+      <p class="ar">يَا أَيُّهَا النَّاسُ كُلُوا مِمَّا فِي الْأَرْضِ حَلَالًا طَيِّبًا وَلَا تَتَّبِعُوا خُطُوَاتِ الشَّيْطَانِ إِنَّهُ لَكُمْ عَدُوٌّ مُّبِينٌ <span class="ref">[البقرة: ١٦٨]</span></p>
+      <p class="id">"Wahai manusia! Makanlah dari (makanan) yang halal dan baik yang terdapat di bumi, dan janganlah kamu mengikuti langkah-langkah setan. Sungguh, setan itu musuh yang nyata bagimu." <span class="ref">[QS. Al-Baqarah: 168]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="tankir-musnad-ilayh">تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ</h2>
+    <p class="judul__id">Tankir (Penakrifan Indefinit) Musnad Ilayh</p>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى أَنَّ الْمُسْنَدَ إِلَيْهِ فَرْدٌ غَيْرُ مُعَيَّنٍ مِنْ أَفْرَادِ حَقِيقَتِهِ، حَيْثُ لَا يَتَعَلَّقُ بِتَعْيِينِهِ غَرَضٌ.</p>
+      <p class="id">Dimaksudkan bahwa musnad ilayh adalah individu yang tidak tertentu dari jenis hakikatnya, karena tidak ada tujuan yang terkait dengan penentuannya secara khusus.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ رَجُلٌ مِّنْ أَقْصَى الْمَدِينَةِ يَسْعَىٰ <span class="ref">[القصص: ٢٠]</span></p>
+      <p class="id">"Dan datanglah seorang laki-laki dari ujung kota bergegas-gegas." <span class="ref">[QS. Al-Qashash: 20]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَعْظِيمِ الْمُسْنَدِ إِلَيْهِ</p>
+      <p class="id">Dimaksudkan untuk mengagungkan musnad ilayh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ يَا أُولِي الْأَلْبَابِ لَعَلَّكُمْ تَتَّقُونَ <span class="ref">[البقرة: ١٧٩]</span></p>
+      <p class="id">"Dan dalam qisas itu ada (jaminan) kehidupan bagimu, wahai orang-orang yang berakal, agar kamu bertakwa." <span class="ref">[QS. Al-Baqarah: 179]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَحْقِيرِهِ</p>
+      <p class="id">Dimaksudkan untuk merendahkannya</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَا أَبَتِ إِنِّي أَخَافُ أَن يَمَسَّكَ عَذَابٌ مِّنَ الرَّحْمَٰنِ فَتَكُونَ لِلشَّيْطَانِ وَلِيًّا <span class="ref">[مريم: ٤٥]</span></p>
+      <p class="id">"Wahai Ayahku, sesungguhnya aku khawatir engkau akan ditimpa azab dari (Allah) Yang Maha Pengasih, sehingga engkau menjadi kawan bagi setan." <span class="ref">[QS. Maryam: 45]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَكْثِيرِهِ</p>
+      <p class="id">Dimaksudkan untuk menunjukkan kebanyakan (jumlahnya)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ السَّحَرَةُ فِرْعَوْنَ قَالُوا إِنَّ لَنَا لَأَجْرًا إِن كُنَّا نَحْنُ الْغَالِبِينَ <span class="ref">[الأعراف: ١١٣]</span></p>
+      <p class="id">"Dan para pesihir itu datang kepada Fir'aun mengatakan, 'Apakah kami akan mendapat imbalan, jika kami yang menang?'" <span class="ref">[QS. Al-A'raf: 113]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى إِفَادَةِ التَّقْلِيلِ</p>
+      <p class="id">Dimaksudkan untuk memberi faedah sedikitnya (jumlah)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَرِضْوَانٌ مِّنَ اللَّهِ أَكْبَرُ ذَٰلِكَ هُوَ الْفَوْزُ الْعَظِيمُ <span class="ref">[التوبة: ٧٢]</span></p>
+      <p class="id">"Dan keridaan Allah lebih besar. Itulah kemenangan yang agung." <span class="ref">[QS. At-Taubah: 72]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى إِفَادَةِ مُسْنَدٍ إِلَيْهِ مِنْ نَوْعٍ خَاصٍّ</p>
+      <p class="id">Dimaksudkan untuk memberi faedah musnad ilayh dari jenis tertentu</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">خَتَمَ اللَّهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ وَعَلَىٰ أَبْصَارِهِمْ غِشَاوَةٌ وَلَهُمْ عَذَابٌ عَظِيمٌ <span class="ref">[البقرة: ٧]</span></p>
+      <p class="id">"Allah telah mengunci hati dan pendengaran mereka, penglihatan mereka telah tertutup, dan mereka akan mendapat azab yang berat." <span class="ref">[QS. Al-Baqarah: 7]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى كَرَاهَةِ أَنْ يُنْسَبَ الْفِعْلُ إِلَيْهِ مُعَرَّفًا</p>
+      <p class="id">Dimaksudkan karena tidak ingin menyandarkan perbuatan itu kepadanya secara ma'rifah (jelas/eksplisit)</p>
+    </div>
+
+    <h2 class="pasal__judul" id="tawabi-musnad-ilayh">التَّوَابِعُ الْمُسْنَدَ إِلَيْهِ</h2>
+    <p class="judul__id">Taba' (Kata yang Mengikuti) Musnad Ilayh</p>
+
+    <div class="ayat">
+      <p class="ar">الْوَصْفُ، وَالْبَدَلُ، وَالتَّوْكِيدُ، وَالْعَطْفُ.</p>
+      <p class="id">Wasf (sifat), badal (pengganti), taukid (penguat), dan 'athaf (kata sambung).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="tawabi-wasf">الْوَصْفُ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      <p class="id">Di antara tujuan-tujuan balaghahnya:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مُفَسِّرًا وَكَاشِفًا لِلْمَوْصُوفِ</p>
+      <p class="id">Sebagai penjelas dan penyingkap (sifat) bagi yang disifati</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الْإِنسَانَ خُلِقَ هَلُوعًا * إِذَا مَسَّهُ الشَّرُّ جَزُوعًا <span class="ref">[المعارج: ١٩-٢٠]</span></p>
+      <p class="id">"Sesungguhnya manusia diciptakan bersifat suka mengeluh. * Apabila dia ditimpa kesusahan dia berkeluh kesah," <span class="ref">[QS. Al-Ma'arij: 19-20]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَخْصِيصُهُ</p>
+      <p class="id">Mengkhususkannya</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 8</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَدْحٌ أَوْ ذَمٌّ أَوْ تَأْكِيدُ إِظْهَارِ الْفَرَحِ وَإِظْهَارِ التَّأَسُّفِ</p>
+      <p class="id">Pujian, celaan, atau penegasan dalam menampakkan kegembiraan dan penyesalan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="ref">[الفاتحة: ١]</span></p>
+      <p class="id">"Dengan nama Allah Yang Maha Pengasih, Maha Penyayang." <span class="ref">[QS. Al-Fatihah: 1]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">بَيَانٌ لِلْمَوْصُوفِ بِالتَّرَحُّمِ وَطَلَبِ الْمَغْفِرَةِ</p>
+      <p class="id">Penjelasan sifat yang disifati dengan kasih sayang dan permohonan ampunan</p>
+    </div>
+
+    <h3 class="bagian__judul" id="tawabi-taukid">التَّوْكِيدُ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      <p class="id">Di antara tujuan-tujuan balaghahnya:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِبْرَازُ الْمُؤَكَّدِ وَزِيَادَةُ تَقْرِيرِ الْمَعْنَى</p>
+      <p class="id">Menonjolkan yang ditegaskan dan menambah penegasan makna</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">دَفْعُ تَوَهُّمِ التَّجَوُّزِ وَالسَّهْوِ</p>
+      <p class="id">Menolak dugaan adanya makna kiasan (majaz) atau kelalaian</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدُ الْعُمُومِ</p>
+      <p class="id">Menegaskan keumuman</p>
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-musnad-ilayh-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</h2>
+    <p class="judul__id">Mendahulukan Musnad Ilayh dalam Kalimat Negasi</p>
+
+    <div class="ayat">
+      <p class="ar">يُفِيدُ:</p>
+      <p class="id">Memberi faedah:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الِاخْتِصَاصَ</p>
+      <p class="id">Pengkhususan (ikhtisas)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ يَا قَوْمِ أَرَهْطِي أَعَزُّ عَلَيْكُم مِّنَ اللَّهِ وَاتَّخَذْتُمُوهُ وَرَاءَكُمْ ظِهْرِيًّا إِنَّ رَبِّي بِمَا تَعْمَلُونَ مُحِيطٌ <span class="ref">[هود: ٩٢]</span></p>
+      <p class="id">"Dia (Syu'aib) berkata, 'Wahai kaumku! Apakah keluargaku lebih terhormat menurut pandanganmu daripada Allah, sedangkan Dia kamu jadikan sesuatu yang terbuang di belakangmu? Sesungguhnya (pengetahuan) Tuhanku meliputi apa yang kamu kerjakan.'" <span class="ref">[QS. Hud: 92]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدَ وَتَقْوِيَةَ الْحُكْمِ</p>
+      <p class="id">Penegasan dan penguatan hukum (vonis kalimat)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَمْ يَقُولُونَ شَاعِرٌ نَّتَرَبَّصُ بِهِ رَيْبَ الْمَنُونِ <span class="ref">[الطور: ٣٠]</span></p>
+      <p class="id">"Atau apakah mereka mengatakan, '(Muhammad adalah) seorang penyair yang kami tunggu-tunggu kecelakaan menimpanya.'" <span class="ref">[QS. Ath-Thur: 30]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-musnad-ilayh-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</h2>
+    <p class="judul__id">Mendahulukan Musnad Ilayh dalam Kalimat Positif</p>
+
+    <div class="ayat list-item">
+      <p class="ar">الِاخْتِصَاصُ</p>
+      <p class="id">Pengkhususan (ikhtisas)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَالِحًا قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُ هُوَ أَنشَأَكُم <span class="ref">[هود: ٦١]</span></p>
+      <p class="id">"Dan kepada kaum Samud (Kami utus) saudara mereka, Saleh. Dia berkata, 'Wahai kaumku! Sembahlah Allah, tidak ada tuhan bagimu selain Dia. Dialah yang menciptakan kamu...'" <span class="ref">[QS. Hud: 61]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 9</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدُ وَتَقْوِيَةُ الْحُكْمِ</p>
+      <p class="id">Penegasan dan penguatan hukum (vonis kalimat)</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَالَّذِينَ يَدْعُونَ مِن دُونِ اللَّهِ لَا يَخْلُقُونَ شَيْئًا وَهُمْ يُخْلَقُونَ <span class="ref">[النحل: ٢٠]</span></p>
+      <p class="id">"Dan segala sesuatu yang mereka seru selain Allah, tidak dapat membuat sesuatu apa pun, bahkan mereka sendiri yang dibuat (diciptakan)." <span class="ref">[QS. An-Nahl: 20]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</h2>
+    <p class="judul__id">Mendahulukan Kata Nakirah (Indefinit)</p>
+
+    <div class="ayat">
+      <p class="ar">تُفِيدُ الِاخْتِصَاصَ أَوْ تَأْكِيدَ الْجِنْسِ وَالْعَدَدِ.</p>
+      <p class="id">Memberi faedah pengkhususan, atau penegasan jenis dan jumlah.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</h2>
+    <p class="judul__id">Mendahulukan Kata "Mitsl" dan "Ghair"</p>
+
+    <div class="ayat">
+      <p class="ar">لَا يُقَدَّمُ "مِثْلَ" وَ"غَيْرَ" إِلَّا إِذَا أُرِيدَ بِهِمَا الْكِنَايَةُ.</p>
+      <p class="id">"Mitsl" (seperti) dan "ghair" (selain) tidak didahulukan kecuali bila dimaksudkan sebagai kinayah (sindiran tidak langsung).</p>
+    </div>
+
+    <h2 class="pasal__judul" id="iirad-musnad-filan-isman">إِيرَادُ الْمُسْنَدِ فِعْلًا أَوِ اسْمًا</h2>
+    <p class="judul__id">Mendatangkan Musnad sebagai Fi'il atau Isim</p>
+
+    <div class="ayat list-item">
+      <p class="ar">الْمُسْنَدُ فِعْلٌ يُفِيدُ الْحُدُوثَ وَالتَّجَدُّدَ</p>
+      <p class="id">Musnad berupa fi'il memberi faedah kejadian dan pembaruan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَمْحُو اللَّهُ مَا يَشَاءُ وَيُثْبِتُ وَعِندَهُ أُمُّ الْكِتَابِ <span class="ref">[الرعد: ٣٩]</span></p>
+      <p class="id">"Allah menghapus apa yang Dia kehendaki dan menetapkan (apa yang Dia kehendaki), dan di sisi-Nya terdapat Ummul Kitab (Lauh Mahfuz)." <span class="ref">[QS. Ar-Ra'd: 39]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْمُسْنَدُ اسْمٌ يُفِيدُ الثُّبُوتَ وَالدَّوَامَ</p>
+      <p class="id">Musnad berupa isim memberi faedah ketetapan dan kelangsungan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَكَلْبُهُم بَاسِطٌ ذِرَاعَيْهِ بِالْوَصِيدِ لَوِ اطَّلَعْتَ عَلَيْهِمْ لَوَلَّيْتَ مِنْهُمْ فِرَارًا وَلَمُلِئْتَ مِنْهُمْ رُعْبًا <span class="ref">[الكهف: ١٨]</span></p>
+      <p class="id">"Dan anjingnya membentangkan kedua kaki depannya di depan pintu gua. Jika kamu menyaksikan mereka, pastilah kamu akan berpaling melarikan diri dari mereka dan pasti kamu akan dipenuhi rasa ketakutan terhadap mereka." <span class="ref">[QS. Al-Kahf: 18]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="tankir-tarif-musnad-ringkasan">تَنْكِيرُ مُسْنَدٍ وَتَعْرِيفُهُ</h2>
+    <p class="judul__id">Tankir dan Ta'rif Musnad</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>أَغْرَاضُ تَنْكِيرِ الْمُسْنَدِ:</strong></p>
+      <p class="id"><strong>Tujuan-tujuan tankir musnad:</strong></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">عَدَمُ إِرَادَةِ الْقَصْرِ وَالْعَهْدِ</p>
+      <p class="id">Tidak dimaksudkan qashr (pembatasan) dan 'ahd (sesuatu yang telah dikenal)</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ التَّفْخِيمِ وَالتَّعْظِيمِ</p>
+      <p class="id">Dimaksudkan untuk pengagungan dan penghormatan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ <span class="ref">[البقرة: ٢]</span></p>
+      <p class="id">"Kitab (Al-Qur'an) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa," <span class="ref">[QS. Al-Baqarah: 2]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِفَادَةُ التَّحْقِيرِ وَالتَّهْوِينِ</p>
+      <p class="id">Memberi faedah perendahan dan peremehan</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>أَمَّا تَعْرِيفُ الْمُسْنَدِ فَأَغْرَاضُهُ:</strong></p>
+      <p class="id"><strong>Adapun ta'rif musnad, tujuan-tujuannya:</strong></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ الْعَهْدِ</p>
+      <p class="id">Dimaksudkan 'ahd (sesuatu yang telah dikenal)</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِفَادَةُ قَصْرٍ عَلَى مُسْنَدٍ إِلَيْهِ</p>
+      <p class="id">Memberi faedah qashr (pembatasan) pada musnad ilayh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قُلْنَا لَا تَخَفْ إِنَّكَ أَنتَ الْأَعْلَىٰ <span class="ref">[طه: ٦٨]</span></p>
+      <p class="id">"Kami berfirman, 'Janganlah takut! Sesungguhnya engkaulah yang paling unggul (menang).'" <span class="ref">[QS. Taha: 68]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 10</span></div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْظِيمُ الْمُسْنَدِ إِلَيْهِ</p>
+      <p class="id">Mengagungkan musnad ilayh</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ إِنِّي عَبْدُ اللَّهِ آتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا <span class="ref">[مريم: ٣٠]</span></p>
+      <p class="id">"Dia (Isa) berkata, 'Sesungguhnya aku hamba Allah, Dia memberiku Kitab (Injil) dan Dia menjadikan aku seorang nabi.'" <span class="ref">[QS. Maryam: 30]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-maful">تَقْدِيمُ الْمَفْعُولِ وَنَحْوِهِ مِنَ الْمُتَعَلِّقَاتِ عَلَى الْعَامِلِ</h2>
+    <p class="judul__id">Mendahulukan Maf'ul dan Semisalnya dari Muta'alliqat atas 'Amil</p>
+
+    <div class="ayat">
+      <p class="ar">غَالِبًا لِلِاخْتِصَاصِ، أَيْ: قَصْرِ الْعَامِلِ الْمُؤَخَّرِ عَلَى مَعْمُولِهِ الْمُقَدَّمِ.</p>
+      <p class="id">Umumnya untuk pengkhususan (ikhtisas), yaitu membatasi 'amil (kata kerja/pengatur) yang diakhirkan pada ma'mul (objek)-nya yang didahulukan.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span></p>
+      <p class="id">"Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan." <span class="ref">[QS. Al-Fatihah: 5]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="khuruj-muqtadha-zhahir">خُرُوجُ الْكَلَامِ عَنِ الْمُقْتَضَى الظَّاهِرِ</h2>
+    <p class="judul__id">Keluarnya Kalam dari Tuntutan yang Tampak Secara Lahiriah</p>
+
+    <div class="ayat">
+      <p class="ar">مِنْهَا: تَنْزِيلُ الْمُنْكِرِ مَنْزِلَةَ غَيْرِ الْمُنْكِرِ، وَتَنْزِيلُ غَيْرِ الْمُنْكِرِ مَنْزِلَةَ الْمُنْكِرِ، وَوَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ، وَوَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ، وَالِالْتِفَاتُ، وَأُسْلُوبُ الْحَكِيمِ، وَالْقَلْبُ، وَالتَّغْلِيبُ، وَالتَّعْبِيرُ عَنِ الْمُسْتَقْبَلِ بِلَفْظِ الْمَاضِي، وَعَنِ الْمَاضِي بِلَفْظِ الْمُضَارِعِ.</p>
+      <p class="id">Di antaranya: memposisikan orang yang mengingkari seperti orang yang tidak mengingkari, dan memposisikan orang yang tidak mengingkari seperti orang yang mengingkari; meletakkan dhamir (kata ganti tersembunyi) pada posisi isim zhahir (kata benda eksplisit); meletakkan isim zhahir pada posisi dhamir; iltifat (peralihan sudut pandang); uslub al-hakim (gaya bijak); qalb (pembalikan); taghlib (pengutamaan); serta pengungkapan masa depan dengan bentuk lampau dan masa lampau dengan bentuk present.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="wadh-mudhmar">وَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ</h3>
+
+    <div class="ayat">
+      <p class="ar">الْأَصْلُ فِي الضَّمِيرِ أَنْ يَعُودَ إِلَى مُتَقَدِّمٍ لَفْظًا وَرُتْبَةً، لَا أَنْ يَعُودَ إِلَى الْمُتَأَخِّرِ، وَإِذَا كَانَ كَذَلِكَ فَالْمَوْضِعُ مَوْضِعُ مُظْهَرٍ.</p>
+      <p class="id">Pada asalnya, dhamir (kata ganti) kembali kepada sesuatu yang telah disebutkan lebih dulu secara lafal dan kedudukan, bukan kembali pada sesuatu yang disebutkan belakangan. Jika demikian, maka tempat itu semestinya tempat isim zhahir (bukan dhamir).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَن يَدْعُ مَعَ اللَّهِ إِلَٰهًا آخَرَ لَا بُرْهَانَ لَهُ بِهِ فَإِنَّمَا حِسَابُهُ عِندَ رَبِّهِ إِنَّهُ لَا يُفْلِحُ الْكَافِرُونَ <span class="ref">[المؤمنون: ١١٧]</span></p>
+      <p class="id">"Dan barangsiapa menyembah tuhan yang lain di samping Allah, padahal tidak ada suatu dasar pun baginya untuk menyembahnya, maka sesungguhnya perhitungannya di sisi Tuhannya. Sesungguhnya orang-orang yang kafir itu tidak akan beruntung." <span class="ref">[QS. Al-Mu'minun: 117]</span></p>
+    </div>
+
+    <h3 class="bagian__judul" id="wadh-muzhhar">وَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">تَنْبِيهٌ إِلَى غَبَاوَةِ الْمُخَاطَبِ</p>
+      <p class="id">Mengisyaratkan kebodohan lawan bicara</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّثْبِيتِ وَالتَّقْرِيرِ</p>
+      <p class="id">Menambah pengukuhan dan penegasan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَوَلَمْ يَرَوْا كَيْفَ يُبْدِئُ اللَّهُ الْخَلْقَ ثُمَّ يُعِيدُهُ إِنَّ ذَٰلِكَ عَلَى اللَّهِ يَسِيرٌ * قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ثُمَّ اللَّهُ يُنشِئُ النَّشْأَةَ الْآخِرَةَ إِنَّ اللَّهَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ <span class="ref">[العنكبوت: ١٩-٢٠]</span></p>
+      <p class="id">"Dan apakah mereka tidak memperhatikan bagaimana Allah memulai penciptaan (makhluk), kemudian mengulanginya (kembali). Sungguh, yang demikian itu mudah bagi Allah. * Katakanlah, 'Berjalanlah di bumi, maka perhatikanlah bagaimana (Allah) memulai penciptaan (makhluk), kemudian Allah menjadikan kejadian yang akhir. Sungguh, Allah Mahakuasa atas segala sesuatu.'" <span class="ref">[QS. Al-'Ankabut: 19-20]</span></p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَقْوِيَةُ دَاعِي الْمَأْمُورِ عَلَى امْتِثَالِ وَتَحْقِيقِ الْأَمْرِ</p>
+      <p class="id">Menguatkan dorongan bagi orang yang diperintah untuk mematuhi dan mewujudkan perintah</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ إِنَّ اللَّهَ يُحِبُّ الْمُتَوَكِّلِينَ <span class="ref">[آل عمران: ١٥٩]</span></p>
+      <p class="id">"Kemudian, apabila engkau telah membulatkan tekad, maka bertawakallah kepada Allah. Sungguh, Allah mencintai orang yang bertawakal." <span class="ref">[QS. Ali 'Imran: 159]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 11</span></div>
+
+    <h2 class="pasal__judul" id="shuwar-iltifat">صُوَرُ الِالْتِفَاتِ وَمَا يَتَمَكَّنُ وَرَاءَهَا مِنْ أَسْرَارٍ بَلَاغِيَّةٍ</h2>
+    <p class="judul__id">Bentuk-Bentuk Iltifat dan Rahasia Balaghah di Baliknya</p>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الْأُولَى:</strong> الِالْتِفَاتُ مِنَ التَّكَلُّمِ إِلَى الْخِطَابِ.<br>فَائِدَةٌ: تَحْرِيكُ وَإِثَارَةُ وَإِيقَاظُ مَشَاعِرِ السَّامِعِ وَتَنْبِيهُ ذِهْنِهِ.</p>
+      <p class="id"><strong>Bentuk pertama:</strong> Iltifat dari orang pertama (mutakallim) ke orang kedua (khithab).<br>Faedah: menggerakkan, membangkitkan, dan membangunkan perasaan pendengar serta mengingatkan benaknya.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَىٰ قَالَ يَا قَوْمِ اتَّبِعُوا الْمُرْسَلِينَ * اتَّبِعُوا مَن لَّا يَسْأَلُكُمْ أَجْرًا وَهُم مُّهْتَدُونَ * وَمَا لِيَ لَا أَعْبُدُ الَّذِي فَطَرَنِي وَإِلَيْهِ تُرْجَعُونَ <span class="ref">[يس: ٢٠-٢٢]</span></p>
+      <p class="id">"Dan datanglah dari ujung kota, seorang laki-laki dengan bergegas. Dia berkata, 'Wahai kaumku! Ikutilah para rasul itu. * Ikutilah orang yang tidak minta imbalan kepadamu; dan mereka adalah orang-orang yang mendapat petunjuk. * Mengapa aku tidak menyembah (Tuhan) yang telah menciptakanku dan hanya kepada-Nya kamu akan dikembalikan?'" <span class="ref">[QS. Yasin: 20-22]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الثَّانِيَةُ:</strong> الِالْتِفَاتُ مِنَ التَّكَلُّمِ إِلَى الْغَيْبَةِ.</p>
+      <p class="id"><strong>Bentuk kedua:</strong> Iltifat dari orang pertama (mutakallim) ke orang ketiga (ghaibah).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْحَثُّ عَلَى فِعْلِ الْمَأْمُورِ بِهِ</p>
+      <p class="id">Mendorong agar perbuatan yang diperintahkan dilaksanakan</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ * فَصَلِّ لِرَبِّكَ وَانْحَرْ <span class="ref">[الكوثر: ١-٢]</span></p>
+      <p class="id">"Sesungguhnya Kami telah memberimu (Muhammad) nikmat yang banyak. * Maka laksanakanlah salat karena Tuhanmu, dan berkurbanlah." <span class="ref">[QS. Al-Kautsar: 1-2]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الثَّالِثَةُ:</strong> الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى التَّكَلُّمِ.</p>
+      <p class="id"><strong>Bentuk ketiga:</strong> Iltifat dari orang kedua (khithab) ke orang pertama (mutakallim).</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">دَلَالَةٌ عَلَى عَظَمَةِ اللَّهِ وَاخْتِصَاصِهِ بِتِلْكَ الصِّفَاتِ وَدَفْعُ التَّوَهُّمِ وَانْصِرَافِهَا إِلَى آلِهَتِهِمْ</p>
+      <p class="id">Menunjukkan keagungan Allah dan kekhususan-Nya dengan sifat-sifat tersebut, serta menolak dugaan bahwa sifat-sifat itu beralih kepada sesembahan-sesembahan mereka</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ إِنَّ رَبِّي رَحِيمٌ وَدُودٌ <span class="ref">[هود: ٩٠]</span></p>
+      <p class="id">"Dan mohonlah ampunan kepada Tuhanmu, kemudian bertobatlah kepada-Nya. Sesungguhnya Tuhanku Maha Penyayang, Maha Pengasih." <span class="ref">[QS. Hud: 90]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الرَّابِعَةُ:</strong> الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى الْغَيْبَةِ.</p>
+      <p class="id"><strong>Bentuk keempat:</strong> Iltifat dari orang kedua (khithab) ke orang ketiga (ghaibah).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَذَٰلِكُمْ ظَنُّكُمُ الَّذِي ظَنَنتُم بِرَبِّكُمْ أَرْدَاكُمْ فَأَصْبَحْتُم مِّنَ الْخَاسِرِينَ * فَإِن يَصْبِرُوا فَالنَّارُ مَثْوًى لَّهُمْ وَإِن يَسْتَعْتِبُوا فَمَا هُم مِّنَ الْمُعْتَبِينَ <span class="ref">[فصلت: ٢٣]</span></p>
+      <p class="id">"Dan itulah dugaanmu yang telah kamu duga terhadap Tuhanmu, yang telah membinasakan kamu, maka jadilah kamu termasuk orang-orang yang rugi. * Jika mereka bersabar (menderita azab), maka nerakalah tempat tinggal mereka, dan jika mereka mengemukakan alasan, maka mereka tidak termasuk orang-orang yang diterima alasannya." <span class="ref">[QS. Fushshilat: 23]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الْخَامِسَةُ:</strong> الِالْتِفَاتُ مِنَ الْغَيْبَةِ إِلَى التَّكَلُّمِ.</p>
+      <p class="id"><strong>Bentuk kelima:</strong> Iltifat dari orang ketiga (ghaibah) ke orang pertama (mutakallim).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاللَّهُ الَّذِي أَرْسَلَ الرِّيَاحَ فَتُثِيرُ سَحَابًا فَسُقْنَاهُ إِلَىٰ بَلَدٍ مَّيِّتٍ فَأَحْيَيْنَا بِهِ الْأَرْضَ بَعْدَ مَوْتِهَا كَذَٰلِكَ النُّشُورُ <span class="ref">[فاطر: ٩]</span></p>
+      <p class="id">"Dan Allah-lah yang mengirim angin, lalu angin itu menggerakkan awan, maka Kami halau awan itu ke suatu negeri yang mati (tandus), lalu dengan hujan itu Kami hidupkan bumi setelah mati (kering). Seperti itulah kebangkitan itu." <span class="ref">[QS. Fathir: 9]</span></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ السَّادِسَةُ:</strong> الِالْتِفَاتُ مِنَ الْغَيْبَةِ إِلَى الْخِطَابِ.</p>
+      <p class="id"><strong>Bentuk keenam:</strong> Iltifat dari orang ketiga (ghaibah) ke orang kedua (khithab).</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِيَهُمْ ثِيَابُ سُندُسٍ خُضْرٌ وَإِسْتَبْرَقٌ وَحُلُّوا أَسَاوِرَ مِن فِضَّةٍ وَسَقَاهُمْ رَبُّهُمْ شَرَابًا طَهُورًا * إِنَّ هَٰذَا كَانَ لَكُمْ جَزَاءً وَكَانَ سَعْيُكُم مَّشْكُورًا <span class="ref">[الإنسان: ٢١-٢٢]</span></p>
+      <p class="id">"Mereka memakai pakaian sutra halus yang hijau dan sutra tebal, dan dipakaikan kepada mereka gelang terbuat dari perak, dan Tuhan memberikan kepada mereka minuman yang bersih. * Sesungguhnya ini adalah balasan untukmu, dan usahamu disyukuri (diberi balasan)." <span class="ref">[QS. Al-Insan: 21-22]</span></p>
+    </div>
+
+    <div class="hal"><span>Hlm. 12</span></div>
+
+    <h2 class="pasal__judul" id="uslub-hakim">أُسْلُوبُ الْحَكِيمِ</h2>
+    <p class="judul__id">Uslub al-Hakim (Gaya Bijak)</p>
+
+    <div class="ayat">
+      <p class="ar">هُوَ أَنْ تُلَقِّيَ الْمُخَاطَبَ بِغَيْرِ مَا يَتَرَقَّبُ، بِحَمْلِ كَلَامِهِ عَلَى خِلَافِ مُرَادِهِ، تَنْبِيهًا عَلَى أَنَّهُ أَوْلَى بِالْقَصْدِ.</p>
+      <p class="id">Yaitu memberikan jawaban kepada lawan bicara dengan sesuatu yang berbeda dari apa yang ia nantikan, dengan mengalihkan maksud ucapannya ke makna lain yang berbeda dari yang dia inginkan, sebagai isyarat bahwa makna itulah yang lebih layak menjadi maksudnya.</p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَسْأَلُونَكَ عَنِ الْأَهِلَّةِ قُلْ هِيَ مَوَاقِيتُ لِلنَّاسِ وَالْحَجِّ <span class="ref">[البقرة: ١٨٩]</span></p>
+      <p class="id">"Mereka bertanya kepadamu (Muhammad) tentang bulan sabit. Katakanlah, 'Itu adalah (penunjuk) waktu bagi manusia dan (ibadah) haji.'" <span class="ref">[QS. Al-Baqarah: 189]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَسْأَلُونَكَ مَاذَا يُنفِقُونَ قُلْ مَا أَنفَقْتُم مِّنْ خَيْرٍ فَلِلْوَالِدَيْنِ وَالْأَقْرَبِينَ وَالْيَتَامَىٰ وَالْمَسَاكِينِ وَابْنِ السَّبِيلِ <span class="ref">[البقرة: ٢١٥]</span></p>
+      <p class="id">"Mereka bertanya kepadamu (Muhammad) tentang apa yang mereka infakkan. Katakanlah, 'Harta apa saja yang kamu infakkan, hendaklah diperuntukkan bagi kedua orang tua, kerabat, anak yatim, orang miskin dan orang yang dalam perjalanan.'" <span class="ref">[QS. Al-Baqarah: 215]</span></p>
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ فِرْعَوْنُ وَمَا رَبُّ الْعَالَمِينَ * قَالَ رَبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا إِن كُنتُم مُّوقِنِينَ * قَالَ لِمَنْ حَوْلَهُ أَلَا تَسْتَمِعُونَ * قَالَ رَبُّكُمْ وَرَبُّ آبَائِكُمُ الْأَوَّلِينَ * قَالَ إِنَّ رَسُولَكُمُ الَّذِي أُرْسِلَ إِلَيْكُمْ لَمَجْنُونٌ <span class="ref">[الشعراء: ٢٣-٢٧]</span></p>
+      <p class="id">"Fir'aun bertanya, 'Siapakah Tuhan seluruh alam itu?' * Dia (Musa) menjawab, '(Dialah) Tuhan langit dan bumi dan apa yang ada di antara keduanya, jika kamu sungguh-sungguh orang yang meyakini.' * Dia (Fir'aun) berkata kepada orang-orang sekelilingnya, 'Apakah kamu tidak mendengarkan?' * Dia (Musa) berkata (lagi), '(Dia) Tuhanmu dan Tuhan nenek moyangmu dahulu.' * Dia (Fir'aun) berkata, 'Sesungguhnya Rasulmu yang diutus kepadamu benar-benar orang gila.'" <span class="ref">[QS. Asy-Syu'ara: 23-27]</span></p>
+    </div>
+
+    <h2 class="pasal__judul" id="asalib-qashr">أَسَالِيبُ الْقَصْرِ</h2>
+    <p class="judul__id">Gaya-Gaya Qashr (Pembatasan)</p>
+
+    <div class="ayat">
+      <p class="ar">أَسَالِيبُ الْقَصْرِ أَسَالِيبُ ثَرِيَّةٌ، فَهِيَ مِنَ الْأَسَالِيبِ الْغَنِيَّةِ بِالِاعْتِبَارَاتِ الدَّقِيقَةِ وَالْمُلَاحَظَاتِ اللَّطِيفَةِ، وَلِذَا قَالُوا: إِنَّ الْقَصْرَ فَنٌّ دَقِيقُ الْمَجْرَى، لَطِيفُ الْمَغْزَى، جَلِيلُ الْمِقْدَارِ، كَثِيرُ الْفَوَائِدِ، غَزِيرُ الْأَسْرَارِ.<br>انْظُرْ إِلَى قَوْلِ عَبْدِ اللَّهِ بْنِ قَيْسٍ الرُّقَيَّاتِ:</p>
+      <p class="id">Gaya-gaya qashr adalah gaya-gaya yang kaya, termasuk gaya yang penuh dengan pertimbangan-pertimbangan cermat dan catatan-catatan yang halus. Oleh karena itu dikatakan: qashr adalah seni yang alurnya cermat, maknanya halus, kedudukannya agung, faedahnya banyak, dan rahasianya berlimpah.<br>Perhatikan perkataan 'Abdullah bin Qais Ar-Ruqayyat:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">إِنَّمَا مُصْعَبٌ شِهَابٌ مِنَ اللهِ</span><span class="shatr">تَجَلَّتْ عَنْ وَجْهِهِ الظُّلْمَاءُ</span></p>
+        <p class="id">Sesungguhnya Mush'ab adalah bintang cahaya dari Allah, yang telah tersingkap kegelapan dari wajahnya.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تَجِدْهُ يُفِيدُ الْمُبَالَغَةَ فِي وَصْفِ مُصْعَبٍ بِالشَّجَاعَةِ وَالْإِقْدَامِ بِعِبَارَةٍ مُخْتَصَرَةٍ وَأُسْلُوبٍ مُوجَزٍ، وَقَدْ آثَرَ الشَّاعِرُ التَّعْبِيرَ بِـ"إِنَّمَا" لِيَدُلَّ عَلَى أَنَّ اتِّصَافَ مُصْعَبٍ بِصِفَةِ الشَّجَاعَةِ أَمْرٌ ظَاهِرٌ بَيِّنٌ، فَتِلْكَ خُصُوصِيَّةٌ مِنْ خُصُوصِيَّاتِ "إِنَّمَا" - كَمَا سَنَرَى - وَبِهَذَا يَتَّضِحُ لَكَ أَنَّ أُسْلُوبَ الْقَصْرِ فِي الْبَيْتِ قَدْ حَقَّقَ ثَلَاثَ مَزَايَا: الْإِيجَازَ وَالْمُبَالَغَةَ وَالدَّلَالَةَ عَلَى شُهْرَةِ مُصْعَبٍ وَذُيُوعِ شَجَاعَتِهِ.</p>
+      <p class="id">Engkau dapati ia memberi faedah mubalaghah (hiperbola) dalam mendeskripsikan Mush'ab dengan sifat keberanian dan keteguhan, dengan ungkapan yang singkat dan gaya yang ringkas. Penyair memilih mengungkapkannya dengan "innama" untuk menunjukkan bahwa sifat keberanian Mush'ab adalah perkara yang jelas dan nyata — itulah salah satu kekhususan "innama", sebagaimana akan kita lihat. Dengan ini jelaslah bagimu bahwa gaya qashr dalam bait ini telah mewujudkan tiga keistimewaan: ijaz (keringkasan), mubalaghah, dan penunjukan atas kemasyhuran Mush'ab serta tersebarnya keberaniannya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذَا، وَالْقَصْرُ فِي اللُّغَةِ مَعْنَاهُ الْحَبْسُ، يُقَالُ: قَصَرْتُهُ أَيْ: حَبَسْتُهُ، وَهُوَ مَقْصُورٌ أَيْ مَحْبُوسٌ، قَالَ تَعَالَى: حُورٌ مَّقْصُورَاتٌ فِي الْخِيَامِ <span class="ref">[الرحمن: ٧٢]</span>، أَيْ: مَحْبُوسَاتٌ قَدْ قَصَرْنَ نَظَرَهُنَّ عَلَى أَزْوَاجِهِنَّ، فَالْمَرْأَةُ قَاصِرَةُ الطَّرْفِ هِيَ الَّتِي تَحْبِسُ طَرْفَهَا عَلَى بَعْلِهَا وَتَخُصُّهُ بِهِ فَلَا تَمُدُّهُ إِلَى غَيْرِهِ. وَفِي اصْطِلَاحِ الْبَلَاغِيِّينَ: هُوَ تَخْصِيصُ شَيْءٍ بِشَيْءٍ بِطَرِيقٍ مَخْصُوصٍ. فَعِنْدَمَا نَقُولُ: زُهَيْرٌ شَاعِرٌ لَا كَاتِبٌ، فَإِنَّنَا نَخُصُّ زُهَيْرًا بِصِفَةِ الشِّعْرِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الْكِتَابَةِ، فَزُهَيْرٌ مَقْصُورٌ وَالشِّعْرُ مَقْصُورٌ عَلَيْهِ، وَقَدْ قَيَّدَ الْبَلَاغِيُّونَ التَّخْصِيصَ بِالطَّرِيقِ الْمَخْصُوصِ، لِيَخْرُجَ كُلُّ مَا أَفَادَ الْقَصْرَ بِغَيْرِ تِلْكَ الطُّرُقِ الْمَخْصُوصَةِ، كَقَوْلِنَا: زَيْدٌ مَقْصُورٌ عَلَى الْعِلْمِ، وَجَاءَ مُحَمَّدٌ وَحْدَهُ... وَعَلِيٌّ يَخْتَصُّ بِالشِّعْرِ... وَخَالِدٌ يَنْفَرِدُ بِالشَّجَاعَةِ.<br>وَقَالَ أَبُو ذُؤَيْبٍ:</p>
+      <p class="id">Demikianlah; qashr secara bahasa bermakna penahanan (al-habs). Dikatakan: "qashartuhu", artinya: aku menahannya; dan ia disebut "maqshur", artinya: ditahan. Allah Ta'ala berfirman: <em>"(Bidadari-bidadari) yang dipingit dalam kemah,"</em> <span class="ref">[QS. Ar-Rahman: 72]</span>, yaitu: yang ditahan, yang telah membatasi pandangan mereka hanya pada suami-suami mereka. Maka perempuan yang "qashirah ath-tharf" adalah yang menahan pandangannya hanya pada suaminya dan mengkhususkannya, tidak mengarahkannya kepada selainnya. Dalam istilah para ahli balaghah: qashr adalah mengkhususkan sesuatu dengan sesuatu melalui cara tertentu. Ketika kita berkata: "Zuhair adalah penyair, bukan penulis prosa," kita mengkhususkan Zuhair dengan sifat kepenyairan sehingga tidak melampauinya ke sifat menulis prosa — maka Zuhair adalah "maqshur" (yang dibatasi) dan kepenyairan adalah "maqshur 'alaihi" (yang menjadi batasannya). Para ahli balaghah membatasi pengkhususan ini dengan "cara tertentu", agar mengeluarkan segala sesuatu yang memberi faedah qashr namun bukan melalui cara-cara tertentu itu — seperti ucapan kita: "Zaid terbatas pada ilmu", "Muhammad datang sendirian...", "Ali khusus dalam syair...", "Khalid tersendiri dalam keberanian."<br>Abu Dzu'aib berkata:</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 13</span></div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَإِذَا الْمَنِيَّةُ أَنْشَبَتْ أَظْفَارَهَا</span><span class="shatr">أَلْفَيْتَ كُلَّ تَمِيمَةٍ لَا تَنْفَعُ</span></p>
+        <p class="id">Dan apabila ajal telah mencengkeramkan cakar-cakarnya, niscaya kau dapati setiap jimat tak lagi berguna.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذِهِ الْأَقْوَالُ وَإِنْ أَفَادَتِ اخْتِصَاصَ شَيْءٍ بِشَيْءٍ إِلَّا أَنَّهَا لَا تَدْخُلُ فِي نِطَاقِ دِرَاسَةِ الْبَلَاغِيِّينَ وَمَيْدَانِ بَحْثِهِمْ لِأَنَّ التَّخْصِيصَ فِيهَا لَمْ يَتِمَّ عَنِ الطُّرُقِ الْمَعْهُودَةِ الَّتِي حَدَّدُوهَا.<br>وَعِنْدَ التَّأَمُّلِ نَجِدُ أَنَّ إِفَادَةَ الْقَصْرِ بِغَيْرِ الطُّرُقِ الَّتِي حَدَّدَهَا الْبَلَاغِيُّونَ لَيْسَ وَرَاءَهَا اعْتِبَارَاتٌ بَلَاغِيَّةٌ تَسْتَدْعِي الدِّرَاسَةَ وَالْبَحْثَ، وَلِذَا حَصَرَ الْبَلَاغِيُّونَ دِرَاسَةَ الْقَصْرِ فِي تِلْكَ الطُّرُقِ الْغَنِيَّةِ بِالِاعْتِبَارَاتِ وَالْمُلَاحَظَاتِ الدَّقِيقَةِ... وَهِيَ ((التَّقْدِيمُ)) كَقَوْلِهِ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، وَالْعَطْفُ نَحْوَ: مُحَمَّدٌ كَاتِبٌ لَا شَاعِرٌ، وَ"إِنَّمَا" كَقَوْلِهِ تَعَالَى: إِنَّمَا أَنتَ مُنذِرُ مَن يَخْشَاهَا <span class="ref">[النازعات: ٤٥]</span>، وَالنَّفْيُ وَالِاسْتِثْنَاءُ كَقَوْلِهِ عَزَّ وَجَلَّ: إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٣]</span>، وَأَضَافَ بَعْضُهُمْ: ((تَعْرِيفُ الْمُسْنَدِ أَوِ الْمُسْنَدِ إِلَيْهِ بِأَلْ))، وَ((تَوَسُّطُ ضَمِيرِ الْفَصْلِ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ)) نَحْوَ: مُحَمَّدٌ الْجَوَادُ... وَالشُّجَاعُ عَمْرٌو... وَعَلِيٌّ هُوَ الْعَالِمُ... وَزَادَ بَعْضُهُمْ طُرُقًا أُخْرَى حَتَّى وَصَلَتْ طُرُقُ الْقَصْرِ عِنْدَهُمْ إِلَى أَرْبَعَةَ عَشَرَ طَرِيقًا.<br>وَلَكِنَّ مَا عَلَيْهِ جُمْهُورُ الْبَلَاغِيِّينَ هُوَ الطُّرُقُ الْأَرْبَعَةُ الْأُولَى: النَّفْيُ وَالِاسْتِثْنَاءُ، وَ((إِنَّمَا))، وَالتَّقْدِيمُ، وَالْعَطْفُ بِـ((لَا)) وَ((بَلْ)) وَ((لَكِنْ))؛ لِأَنَّهَا هِيَ الْغَنِيَّةُ بِالِاعْتِبَارَاتِ وَالْمُلَاحَظَاتِ دُونَ غَيْرِهَا. وَالْبَلَاغِيُّونَ فِي دِرَاسَتِهِمْ لِأُسْلُوبِ الْقَصْرِ يَنْظُرُونَ إِلَى غَرَضِ الْمُتَكَلِّمِ مِنَ الِاخْتِصَاصِ... وَإِلَى حَالِ الْمُخَاطَبِ الَّتِي وَقَفَ عَلَيْهَا الْمُتَكَلِّمُ فَأَحْدَثَ هَذَا التَّخْصِيصَ... وَإِلَى طَرَفَيِ الْقَصْرِ أَيِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ... ثُمَّ إِلَى طُرُقِ الْقَصْرِ الْمَشْهُورَةِ وَمَا بَيْنَهَا مِنْ فُرُوقٍ وَاعْتِبَارَاتٍ... فَالْقَصْرُ كَمَا عَرَّفُوهُ: ((تَخْصِيصُ شَيْءٍ بِشَيْءٍ بِطَرِيقٍ مَخْصُوصٍ))، الشَّيْءُ الْأَوَّلُ هُوَ الْمَقْصُورُ عَلَيْهِ، وَالثَّانِي هُوَ الْمَقْصُورُ.</p>
+      <p class="id">Ungkapan-ungkapan semacam ini, meskipun memberi faedah pengkhususan sesuatu dengan sesuatu, namun tidak termasuk dalam ruang lingkup kajian para ahli balaghah dan lapangan penelitian mereka, karena pengkhususan di dalamnya tidak terjadi melalui cara-cara baku yang telah mereka tentukan.<br>Dengan perenungan, kita dapati bahwa faedah qashr melalui cara-cara selain yang ditentukan para ahli balaghah itu tidak memiliki pertimbangan balaghah di baliknya yang menuntut kajian dan penelitian. Oleh karena itu, para ahli balaghah membatasi kajian qashr pada cara-cara yang kaya pertimbangan dan catatan cermat tersebut... yaitu: "taqdim" (pendahuluan), seperti firman Allah Ta'ala: <em>"Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan,"</em> <span class="ref">[QS. Al-Fatihah: 5]</span>; "'athaf" (penyambungan), seperti: "Muhammad penulis prosa, bukan penyair"; "innama", seperti firman Allah Ta'ala: <em>"Engkau (Muhammad) hanyalah pemberi peringatan bagi siapa yang takut kepada(hari)nya,"</em> <span class="ref">[QS. An-Nazi'at: 45]</span>; dan "nafi wa istitsna'" (negasi dan pengecualian), seperti firman Allah 'Azza wa Jalla: <em>"Engkau (Muhammad) tidak lain hanyalah seorang pemberi peringatan,"</em> <span class="ref">[QS. Fathir: 23]</span>. Sebagian menambahkan: "ta'rif musnad atau musnad ilayh dengan al", dan "berselanya dhamir fashl antara mubtada' dan khabar", seperti: "Muhammad al-jawad (sang dermawan)...", "asy-syuja'u 'Amr (sang pemberani adalah 'Amr)...", "'Ali huwal-'alim (Ali-lah sang alim)...". Sebagian lain menambahkan cara-cara lain hingga cara-cara qashr menurut mereka mencapai empat belas cara.<br>Akan tetapi, yang dipegang oleh mayoritas ahli balaghah hanyalah empat cara pertama: nafi dan istitsna', "innama", taqdim, dan 'athaf dengan "la", "bal", dan "lakin"; karena cara-cara inilah yang kaya dengan pertimbangan dan catatan, berbeda dari yang lainnya. Para ahli balaghah dalam mengkaji gaya qashr memperhatikan tujuan pembicara dari pengkhususan itu... dan keadaan lawan bicara yang diketahui pembicara sehingga ia melakukan pengkhususan ini... dan kedua sisi qashr, yaitu maqshur dan maqshur 'alaih... kemudian cara-cara qashr yang masyhur beserta perbedaan dan pertimbangan di antaranya... Maka qashr, sebagaimana mereka definisikan: "mengkhususkan sesuatu dengan sesuatu melalui cara tertentu" — hal yang pertama adalah maqshur 'alaih, dan yang kedua adalah maqshur.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 14</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَمَعْنَى اخْتِصَاصِ الْمَقْصُورِ بِالْمَقْصُورِ عَلَيْهِ أَلَّا يَتَجَاوَزَهُ وَيَتَعَدَّاهُ إِلَى غَيْرِهِ، فَفِي قَوْلِنَا: ((مَا شَاعِرٌ إِلَّا زُهَيْرٌ))، قَصْرٌ لِلشَّاعِرِيَّةِ عَلَى زُهَيْرٍ بِحَيْثُ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ. وَهَذَا الْغَيْرُ الَّذِي انْتَفَتْ عَنْهُ صِفَةُ الشِّعْرِ إِنْ كَانَ عَامًّا فَالْقَصْرُ حَقِيقِيٌّ، وَإِنْ كَانَ مُعَيَّنًا فَالْقَصْرُ إِضَافِيٌّ... وَالْعَامُّ إِنْ كَانَ مُطَابِقًا لِلْوَاقِعِ الْخَارِجِيِّ فَالْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ، وَإِنْ كَانَ مَبْنِيًّا عَلَى الِادِّعَاءِ وَالْمُبَالَغَةِ فَهُوَ حَقِيقِيٌّ ادِّعَائِيٌّ.<br>ثُمَّ الْقَصْرُ الْإِضَافِيُّ يُنْظَرُ فِيهِ إِلَى حَالِ الْمُخَاطَبِ، فَهُوَ إِمَّا أَنْ يَكُونَ مُتَرَدِّدًا فِي إِثْبَاتِ الْمَقْصُورِ لِلْمَقْصُورِ عَلَيْهِ وَنَفْيِهِ عَنِ الْمَنْفِيِّ عَنْهُ، وَإِمَّا أَنْ يَكُونَ مُعْتَقِدًا الشَّرِكَةَ، أَيِ: اشْتِرَاكَ الْمَنْفِيِّ عَنْهُ وَالْمَقْصُورِ عَلَيْهِ فِي الْمَقْصُورِ... وَإِمَّا أَنْ يَعْتَقِدَ الْعَكْسَ، أَيْ: إِثْبَاتَ الْمَقْصُورِ لِلْمَنْفِيِّ عَنْهُ وَنَفْيَهُ عَنِ الْمَقْصُورِ عَلَيْهِ... فَالْأَوَّلُ قَصْرُ التَّعْيِينِ، وَالثَّانِي قَصْرُ الْإِفْرَادِ، وَالثَّالِثُ قَصْرُ الْقَلْبِ.<br>ثُمَّ يَنْظُرُونَ إِلَى طَرَفَيِ الْقَصْرِ، أَيِ: الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ، لِأَنَّهُ لَا بُدَّ أَنْ يَكُونَ أَحَدُهُمَا مَوْصُوفًا وَالْآخَرُ صِفَةً، وَلِذَا فَالْقَصْرُ إِمَّا أَنْ يَكُونَ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ أَوْ قَصْرَ مَوْصُوفٍ عَلَى صِفَةٍ.<br>هَذَا، وَلَيْسَتْ طُرُقُ الْقَصْرِ سَوَاءً فِي الدَّلَالَةِ عَلَيْهِ، بَلْ بَيْنَهَا فُرُوقٌ دَقِيقَةٌ - كَمَا قُلْتُ - تَحْتَاجُ مِنَ الدَّارِسِ لِكَيْ يَقِفَ عَلَيْهَا إِلَى تَأَمُّلٍ وَاعٍ وَنَظَرٍ دَقِيقٍ؛ ثُمَّ إِنَّ تَحْدِيدَ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ لَيْسَ بِالشَّيْءِ الْهَيِّنِ، بَلْ يَحْتَاجُ مِنَ الدَّارِسِ</p>
+      <p class="id">Makna pengkhususan maqshur dengan maqshur 'alaih adalah agar maqshur tidak melampaui dan melewatinya kepada selainnya. Dalam ucapan kita: "Tidak ada penyair kecuali Zuhair", terjadi qashr kepenyairan pada Zuhair sehingga tidak melampauinya kepada selainnya. Jika "selain" yang dinafikan darinya sifat kepenyairan itu bersifat umum, maka qashr itu hakiki; jika tertentu, maka qashr itu idhafi (relatif)... Jika yang umum itu sesuai dengan realitas luar, maka qashr itu haqiqi tahqiqi (benar-benar hakiki); jika dibangun atas pengandaian dan hiperbola, maka itu haqiqi iddi'a'i (hakiki secara klaim).<br>Kemudian, qashr idhafi ditinjau dari keadaan lawan bicara: bisa jadi ia ragu-ragu dalam menetapkan maqshur bagi maqshur 'alaih dan menafikannya dari yang dinafikan; bisa jadi ia meyakini adanya keserikatan, yaitu keikutsertaan yang dinafikan dan maqshur 'alaih bersama dalam maqshur itu...; atau bisa jadi ia meyakini kebalikannya, yaitu menetapkan maqshur bagi yang dinafikan dan menafikannya dari maqshur 'alaih... Yang pertama disebut qashr ta'yin, yang kedua qashr ifrad, dan yang ketiga qashr qalb.<br>Kemudian mereka meninjau kedua sisi qashr, yaitu maqshur dan maqshur 'alaih, karena salah satunya mesti berupa maushuf (yang disifati) dan yang lain berupa sifat. Oleh karena itu, qashr bisa berupa qashr sifat atas maushuf, atau qashr maushuf atas sifat.<br>Demikianlah; cara-cara qashr tidaklah setara dalam menunjukkan qashr itu, melainkan di antaranya terdapat perbedaan-perbedaan halus — sebagaimana telah kukatakan — yang menuntut dari pelajar perenungan yang sadar dan pandangan yang cermat untuk memahaminya. Kemudian, menentukan maqshur dan maqshur 'alaih bukanlah perkara yang mudah, melainkan menuntut dari pelajar</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 15</span></div>
+
+    <div class="ayat">
+      <p class="ar">أَيْضًا إِلَى نَظَرٍ وَتَأَمُّلٍ فِي أُسْلُوبِ الْقَصْرِ، فَمَثَلًا قَوْلُكَ: إِنَّمَا ضَرَبَ مُحَمَّدٌ زَيْدًا، يُفِيدُ قَصْرَ الضَّرْبِ الْوَاقِعِ مِنْ مُحَمَّدٍ عَلَى الْمَفْعُولِ: زَيْدٍ، وَقَوْلُكَ: إِنَّمَا ضَرَبَ زَيْدًا مُحَمَّدٌ، يُفِيدُ قَصْرَ الضَّرْبِ الْوَاقِعِ عَلَى زَيْدٍ عَلَى فَاعِلِهِ مُحَمَّدٍ، وَبَيْنَهُمَا فَرْقٌ كَبِيرٌ.</p>
+      <p class="id">juga pandangan dan perenungan dalam gaya qashr itu sendiri. Misalnya, ucapanmu: "innamā dharaba Muḥammadun Zaidan" (sesungguhnya Muhammad hanya memukul Zaid) memberi faedah qashr pemukulan yang dilakukan Muhammad pada objeknya, yaitu Zaid. Sedangkan ucapanmu: "innamā dharaba Zaidan Muḥammadun" (sesungguhnya Zaid hanya dipukul oleh Muhammad) memberi faedah qashr pemukulan yang menimpa Zaid pada pelakunya, yaitu Muhammad. Di antara keduanya terdapat perbedaan besar.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-idhafi">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْقَصْرُ الْحَقِيقِيُّ</strong></p>
+      <p class="id"><strong>Qashr Haqiqi (Pembatasan Hakiki)</strong></p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَا كَانَ غَرَضُ الْمُتَكَلِّمِ مِنْهُ أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِحَيْثُ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ أَصْلًا... وَهَذَا يَعْنِي أَنَّ الْمَنْفِيَّ عَنْهُ يَكُونُ عَامًّا، فَالْمَقْصُورُ مُخْتَصٌّ بِالْمَقْصُورِ عَلَيْهِ مَنْفِيٌّ عَنْ كُلِّ مَا عَدَاهُ... كَمَا فِي قَوْلِهِ تَعَالَى: وَعِندَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، فَفِي الْآيَةِ طَرِيقَانِ مِنْ طُرُقِ الْقَصْرِ: الْأَوَّلُ التَّقْدِيمُ ((وَعِنْدَهُ مَفَاتِحُ الْغَيْبِ))، وَالثَّانِي: النَّفْيُ وَالِاسْتِثْنَاءُ ((لَا يَعْلَمُهَا إِلَّا هُوَ))، فَمَفَاتِحُ الْغَيْبِ عِنْدَهُ وَلَيْسَتْ عِنْدَ غَيْرِهِ، وَعِلْمُهَا مَقْصُورٌ عَلَيْهِ تَعَالَى، مَنْفِيٌّ عَنْ كُلِّ مَا عَدَاهُ، وَتَكْرَارُ الْقَصْرِ أَفَادَ تَأْكِيدَ هَذِهِ الْحَقِيقَةِ وَتَقْرِيرَهَا، وَهِيَ أَنَّ الْعِلْمَ بِالْغَيْبِ مُخْتَصٌّ بِهِ تَعَالَى، لَا يَتَعَدَّاهُ إِلَى أَحَدٍ مِنْ خَلْقِهِ. وَمِنْهُ قَوْلُنَا: ((مَا خَاتَمُ الْأَنْبِيَاءِ إِلَّا مُحَمَّدٌ)) فَالْمُرَادُ أَنَّ خَتْمَ النُّبُوَّةِ مَقْصُورٌ عَلَى مُحَمَّدٍ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ مِنَ الرُّسُلِ... وَقَوْلُهُ عَزَّ وَجَلَّ: قُلْ يَا أَهْلَ الْكِتَابِ تَعَالَوْا إِلَىٰ كَلِمَةٍ سَوَاءٍ بَيْنَنَا وَبَيْنَكُمْ أَلَّا نَعْبُدَ إِلَّا اللَّهَ وَلَا نُشْرِكَ بِهِ شَيْئًا <span class="ref">[آل عمران: ٦٤]</span>، فَالْمُرَادُ قَصْرُ الْعِبَادَةِ عَلَى اللَّهِ تَعَالَى بِحَيْثُ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ مُطْلَقًا.<br>وَيَنْقَسِمُ الْقَصْرُ الْحَقِيقِيُّ إِلَى قِسْمَيْنِ: حَقِيقِيٍّ تَحْقِيقِيٍّ وَحَقِيقِيٍّ ادِّعَائِيٍّ.</p>
+      <p class="id">Yaitu qashr yang tujuan pembicaranya adalah mengkhususkan maqshur dengan maqshur 'alaih sehingga sama sekali tidak melampauinya kepada yang lain... Ini berarti bahwa yang dinafikan bersifat umum, sehingga maqshur dikhususkan pada maqshur 'alaih dan dinafikan dari segala sesuatu selainnya... seperti dalam firman Allah Ta'ala: <em>"Dan kunci-kunci semua yang gaib ada pada-Nya; tidak ada yang mengetahuinya selain Dia,"</em> <span class="ref">[QS. Al-An'am: 59]</span>. Dalam ayat ini terdapat dua cara qashr: pertama, taqdim ("dan di sisi-Nya kunci-kunci yang gaib"); kedua, nafi dan istitsna' ("tidak ada yang mengetahuinya selain Dia"). Maka kunci-kunci yang gaib ada di sisi-Nya, bukan di sisi selain-Nya, dan pengetahuan tentangnya terbatas pada-Nya Ta'ala, dinafikan dari segala sesuatu selain-Nya. Pengulangan qashr ini memberi faedah penegasan dan pengukuhan kenyataan ini, yaitu bahwa ilmu tentang yang gaib khusus bagi-Nya Ta'ala, tidak melampaui-Nya kepada siapa pun dari makhluk-Nya. Termasuk dalam hal ini ucapan kita: "Tidak ada penutup para nabi kecuali Muhammad" — maksudnya bahwa penutupan kenabian terbatas pada Muhammad, tidak melampauinya kepada rasul lain... Dan firman Allah 'Azza wa Jalla: <em>"Katakanlah (Muhammad), 'Wahai Ahli Kitab! Marilah (berpegang) kepada ketetapan yang sama antara kami dan kamu, bahwa kita tidak menyembah selain Allah dan tidak mempersekutukan-Nya dengan sesuatu apa pun,'"</em> <span class="ref">[QS. Ali 'Imran: 64]</span>, yang dimaksud adalah membatasi ibadah hanya kepada Allah Ta'ala sehingga sama sekali tidak melampaui-Nya kepada yang lain.<br>Qashr haqiqi terbagi menjadi dua: haqiqi tahqiqi dan haqiqi iddi'a'i.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-tahqiqi">الْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَا كَانَ الْمَنْفِيُّ فِيهِ عَامًّا يَتَنَاوَلُ كُلَّ مَا عَدَا الْمَقْصُورَ عَلَيْهِ مِنْ حَيْثُ وَاقِعُ الْحَالِ وَحَقِيقَةُ الْأَمْرِ، فَالْمَقْصُورُ يَخْتَصُّ بِالْمَقْصُورِ عَلَيْهِ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَةِ الْحَالِ، كَمَا فِي الشَّوَاهِدِ الَّتِي مَرَّتْ بِنَا، وَكَمَا فِي قَوْلِكَ: مَا أَكْرَمْتُ إِلَّا زَيْدًا، إِذَا كَانَ الْإِكْرَامُ لَمْ يَقَعْ مِنْكَ إِلَّا عَلَى زَيْدٍ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَتِهِ... وَمِنْهُ قَوْلُنَا: ((لَا يَحُجُّ إِلَى مَكَّةَ إِلَّا الْمُسْلِمُونَ))، فَالْوَاقِعُ يُطَابِقُ هَذَا، لِأَنَّ الْحَجَّ إِلَى مَكَّةَ مَقْصُورٌ عَلَى الْمُسْلِمِينَ، وَمَنْفِيٌّ عَنْ كُلِّ مَنْ عَدَاهُمْ مِنْ أَصْحَابِ الْمِلَلِ الْأُخْرَى.</p>
+      <p class="id">Yaitu qashr yang nafinya bersifat umum, mencakup segala sesuatu selain maqshur 'alaih dari segi kenyataan dan hakikat perkaranya. Maqshur dikhususkan pada maqshur 'alaih, tidak melampauinya kepada yang lain dalam kenyataan dan hakikat keadaannya — seperti dalam contoh-contoh yang telah kita lalui, dan seperti ucapanmu: "Aku tidak memuliakan kecuali Zaid," jika pemuliaan itu memang hanya terjadi darimu kepada Zaid dalam kenyataan dan hakikatnya... Termasuk dalam hal ini ucapan kita: "Tidak berhaji ke Makkah kecuali kaum muslimin" — kenyataan memang sesuai dengan ini, karena haji ke Makkah terbatas pada kaum muslimin, dan dinafikan dari semua selain mereka dari pemeluk agama-agama lain.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 16</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْهُ قَوْلُهُ تَعَالَى: تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ <span class="ref">[الملك: ١]</span>، فَالْمُلْكُ مُخْتَصٌّ بِاللَّهِ فِي الْحَقِيقَةِ وَالْوَاقِعِ، وَقَوْلُهُ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، فَالْعِبَادَةُ وَطَلَبُ الْعَوْنِ مُخْتَصَّانِ بِاللَّهِ وَمَنْفِيَّانِ عَنْ كُلِّ مَا عَدَاهُ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَتِهِ.<br>وَقَوْلُهُ عَزَّ وَجَلَّ: وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ <span class="ref">[آل عمران: ١٣٥]</span>، فَغُفْرَانُ الذُّنُوبِ مُخْتَصٌّ بِاللَّهِ تَعَالَى، مَنْفِيٌّ عَمَّا عَدَاهُ فِي الْوَاقِعِ وَالْحَقِيقَةِ.<br>وَنُلَاحِظُ أَنَّ الْمَقْصُورَ فِي جُلِّ الشَّوَاهِدِ الْمَذْكُورَةِ صِفَةٌ وَالْمَقْصُورَ عَلَيْهِ مَوْصُوفٌ، فَالْقَصْرُ الْحَقِيقِيُّ التَّحْقِيقِيُّ يَقَعُ كَثِيرًا فِي الْكَلَامِ إِذَا كَانَ الْمَقْصُورُ صِفَةً، وَيَقِلُّ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ، لِأَنَّ الْغَالِبَ فِي الْمَوْصُوفِ أَنْ يَتَّصِفَ بِعِدَّةِ صِفَاتٍ وَلَا يُوقَفُ عَلَى صِفَةٍ وَاحِدَةٍ، أَمَّا الصِّفَةُ فَيَجُوزُ وَقْفُهَا عَلَى مَوْصُوفٍ وَاحِدٍ وَحَصْرُهَا فِيهِ.<br>وَقَدْ غَالَى بَعْضُ الْبَلَاغِيِّينَ فَقَالُوا: إِنَّ قَصْرَ الْمَوْصُوفِ عَلَى الصِّفَةِ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا لَا يَتَأَتَّى لِأَنَّهُ مَا مِنْ مَوْصُوفٍ إِلَّا وَلَهُ صِفَاتٌ كَثِيرَةٌ تَتَعَذَّرُ الْإِحَاطَةُ بِهَا أَوْ تَتَعَسَّرُ، فَإِذَا قُلْنَا: مَا زُهَيْرٌ إِلَّا شَاعِرٌ... وَمَا زِيَادٌ إِلَّا كَاتِبٌ... لَا يَتَأَتَّى أَنْ يَكُونَ زُهَيْرٌ مَقْصُورًا عَلَى صِفَةِ الشِّعْرِ لَا يَتَجَاوَزُهَا إِلَى غَيْرِهَا... وَلَا أَنْ يَكُونَ زِيَادٌ مَوْقُوفًا عَلَى الْكِتَابَةِ لَا يَتَعَدَّاهَا إِلَى غَيْرِهَا... كَيْفَ وَهُمَا يَأْكُلَانِ وَيَتَكَلَّمَانِ وَيَمْشِيَانِ وَيَتَّصِفَانِ بِالْحَيَاةِ، وَبِالْبَيَاضِ أَوِ السَّوَادِ وَبِالْقِصَرِ أَوِ الطُّولِ وَبِالذَّكَاءِ أَوِ الْغَبَاءِ.<br>وَخُلَاصَةُ الْقَوْلِ أَنَّ الْمَنْفِيَّ عَنْهُ فِي الْقَصْرِ الْحَقِيقِيِّ التَّحْقِيقِيِّ، مَا هُوَ بِسَبِيلٍ مِنَ الْمَقْصُورِ عَلَيْهِ، وَوَاقِعٌ فِي دَائِرَتِهِ، وَيَتَبَادَرُ إِلَى الذِّهْنِ عِنْدَ سَمَاعِ أُسْلُوبِ الْقَصْرِ، فَإِذَا قُلْتَ: مَا شَاعِرٌ إِلَّا زَيْدٌ؛ فَإِنَّكَ لَا تَعْنِي نَفْيَ الشَّاعِرِيَّةِ عَنْ كُلِّ مَنْ وَلَدَتْهُ حَوَّاءُ فِي كُلِّ الْعُصُورِ وَكُلِّ الْأُمَمِ، وَإِنَّمَا تَعْنِي نَفْيَ الشَّاعِرِيَّةِ فِي حُدُودِ مَا يُشِيرُ إِلَيْهِ السِّيَاقُ وَالْقَرَائِنُ، وَكَذَا إِنْ قُلْتَ: مَا زُهَيْرٌ إِلَّا شَاعِرٌ، لَا يَعْنِي أَنَّكَ تَنْفِي عَنْ زُهَيْرٍ كُلَّ صِفَةٍ غَيْرَ الشِّعْرِ، وَإِنَّمَا يَعْنِي أَنَّكَ تَنْفِي عَنْهُ كُلَّ مَا هُوَ بِسَبِيلٍ مِنْ صِفَةِ الشِّعْرِ كَالْخَطَابَةِ وَالْكِتَابَةِ، وَكُلَّ مَا هُوَ فِي نِطَاقِ الْقَوْلِ وَالْإِبْدَاعِ مِمَّا يُحَدِّدُهُ السِّيَاقُ وَتُشِيرُ إِلَيْهِ الْقَرَائِنُ.</p>
+      <p class="id">Termasuk dalam hal ini firman Allah Ta'ala: <em>"Mahasuci (Allah) yang menguasai kerajaan, dan Dia Mahakuasa atas segala sesuatu,"</em> <span class="ref">[QS. Al-Mulk: 1]</span>, maka kerajaan (kekuasaan) terbatas pada Allah secara hakikat dan kenyataan; dan firman-Nya: <em>"Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan,"</em> <span class="ref">[QS. Al-Fatihah: 5]</span>, maka ibadah dan permohonan pertolongan terbatas pada Allah dan dinafikan dari segala sesuatu selain-Nya dalam kenyataan dan hakikatnya.<br>Dan firman Allah 'Azza wa Jalla: <em>"Dan siapa (lagi) yang dapat mengampuni dosa-dosa selain Allah?"</em> <span class="ref">[QS. Ali 'Imran: 135]</span>, maka ampunan dosa terbatas pada Allah Ta'ala, dinafikan dari selain-Nya dalam kenyataan dan hakikat.<br>Kita perhatikan bahwa maqshur dalam sebagian besar contoh yang disebutkan berupa sifat, dan maqshur 'alaih berupa maushuf. Qashr haqiqi tahqiqi banyak terjadi dalam kalam apabila maqshur-nya berupa sifat, dan jarang terjadi pada qashr maushuf atas sifat, karena pada umumnya maushuf memiliki beberapa sifat dan tidak terbatas pada satu sifat saja, sedangkan sifat boleh dibatasi hanya pada satu maushuf saja.<br>Sebagian ahli balaghah berlebihan dengan mengatakan: qashr maushuf atas sifat sebagai qashr haqiqi tahqiqi tidak mungkin terjadi, karena tidak ada maushuf kecuali memiliki banyak sifat yang sulit atau mustahil dicakup seluruhnya. Jika kita berkata: "Tidak ada Zuhair kecuali penyair..." dan "Tidak ada Ziyad kecuali penulis prosa...", tidak mungkin Zuhair dibatasi pada sifat kepenyairan saja tanpa melampauinya ke sifat lain..., dan tidak mungkin pula Ziyad terbatas pada menulis prosa tanpa melampauinya ke yang lain... — bagaimana mungkin, sedangkan keduanya juga makan, berbicara, berjalan, dan memiliki sifat kehidupan, warna putih atau hitam, pendek atau tinggi, cerdas atau bodoh.<br>Kesimpulannya, yang dinafikan dalam qashr haqiqi tahqiqi adalah apa yang sejalur dengan maqshur 'alaih, berada dalam lingkupnya, dan segera terlintas dalam benak ketika mendengar gaya qashr itu. Jika engkau berkata: "Tidak ada penyair kecuali Zaid," engkau tidak bermaksud menafikan kepenyairan dari setiap keturunan Hawa di segala zaman dan segala bangsa, melainkan engkau bermaksud menafikan kepenyairan dalam batas yang diisyaratkan oleh konteks dan qarinah. Demikian pula jika engkau berkata: "Tidak ada Zuhair kecuali penyair," tidak berarti engkau menafikan dari Zuhair segala sifat selain kepenyairan, melainkan berarti engkau menafikan darinya segala sesuatu yang sejalur dengan sifat kepenyairan, seperti kepandaian berpidato dan menulis prosa, dan segala sesuatu dalam lingkup ucapan dan kreativitas yang ditentukan oleh konteks dan diisyaratkan oleh qarinah.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-iddiai">الْقَصْرُ الْحَقِيقِيُّ الِادِّعَائِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar">فَهُوَ أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِحَيْثُ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ، ادِّعَاءً وَمُبَالَغَةً، فَالْمَقْصُورُ يَخْتَصُّ بِالْمَقْصُورِ عَلَيْهِ وَيُنْفَى عَنْ كُلِّ مَا عَدَاهُ مِمَّا هُوَ بِسَبِيلٍ مِنْهُ نَفْيًا يَقُومُ عَلَى الْمُبَالَغَةِ وَالتَّجَوُّزِ، وَلَا يَقُومُ عَلَى الْمُطَابَقَةِ الْحَقِيقِيَّةِ لِلْوَاقِعِ، كَمَا فِي قَوْلِهِ تَعَالَى: إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٨]</span>، فَقَدْ قُصِرَتْ خَشْيَةُ اللَّهِ عَلَى الْعُلَمَاءِ وَنُفِيَتْ عَنْ كُلِّ</p>
+      <p class="id">Yaitu qashr yang di dalamnya maqshur dikhususkan dengan maqshur 'alaih sehingga tidak melampauinya ke selainnya, secara klaim (iddi'a') dan hiperbola (mubalaghah). Maqshur dikhususkan pada maqshur 'alaih dan dinafikan dari segala sesuatu selainnya yang sejalur dengannya, dengan penafian yang dibangun atas hiperbola dan majaz, bukan dibangun atas kesesuaian hakiki dengan kenyataan — seperti dalam firman Allah Ta'ala: <em>"Sungguh, di antara hamba-hamba Allah yang takut kepada-Nya hanyalah para ulama,"</em> <span class="ref">[QS. Fathir: 28]</span>. Rasa takut kepada Allah dibatasi pada para ulama dan dinafikan dari setiap</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 17</span></div>
+
+    <div class="ayat">
+      <p class="ar">مَنْ عَدَاهُمْ... وَلَا يَعْنِي هَذَا أَنَّ غَيْرَ الْعَالِمِ لَا يَخْشَى اللَّهَ تَعَالَى، بَلْ قَدْ يَكُونُ غَيْرُ الْعَالِمِ أَشَدَّ خَشْيَةً لِلَّهِ مِنَ الْعَالِمِ، وَلَكِنَّ سِيَاقَ الْآيَاتِ فِي التَّنْوِيهِ بِشَأْنِ الْعُلَمَاءِ وَتَعْظِيمِ مَنْزِلَتِهِمْ، وَالْحَثِّ عَلَى النَّظَرِ وَالتَّأَمُّلِ.<br>اقْرَأْ: أَلَمْ تَرَ أَنَّ اللَّهَ أَنزَلَ مِنَ السَّمَاءِ مَاءً فَأَخْرَجْنَا بِهِ ثَمَرَاتٍ مُّخْتَلِفًا أَلْوَانُهَا وَمِنَ الْجِبَالِ جُدَدٌ بِيضٌ وَحُمْرٌ مُّخْتَلِفٌ أَلْوَانُهَا وَغَرَابِيبُ سُودٌ * وَمِنَ النَّاسِ وَالدَّوَابِّ وَالْأَنْعَامِ مُخْتَلِفٌ أَلْوَانُهُ كَذَٰلِكَ إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٧-٢٨]</span>، وَلِذَا كَانَتْ خَشْيَةُ اللَّهِ مَقْصُورَةً عَلَى الْعُلَمَاءِ دُونَ غَيْرِهِمْ، لِأَنَّ خَشْيَةَ غَيْرِهِمْ لَا يُعْتَدُّ بِهَا فِي هَذَا الْمَقَامِ.<br>الْقَصْرُ الِادِّعَائِيُّ كَثِيرٌ فِي كَلَامِ الْعَرَبِ، وَيَرِدُ فِي مَقَامَاتِ الْمُبَالَغَةِ وَالْمَدْحِ وَالتَّعْظِيمِ، نَحْوَ قَوْلِهِمْ:</p>
+      <p class="id">selain mereka... Ini tidak berarti bahwa selain ulama tidak takut kepada Allah Ta'ala; bahkan bisa jadi orang yang bukan ulama lebih takut kepada Allah daripada ulama. Akan tetapi, konteks ayat-ayat ini adalah untuk mengapresiasi kedudukan ulama dan mengagungkan derajat mereka, serta mendorong perenungan dan pengamatan.<br>Bacalah: <em>"Tidakkah engkau melihat bahwa Allah menurunkan air hujan dari langit, lalu Kami hasilkan dengan (air) itu buah-buahan yang beraneka macam jenis dan warnanya. Dan di antara gunung-gunung itu ada garis-garis putih dan merah yang beraneka macam warnanya, dan ada (pula) yang hitam pekat. * Dan demikian (pula) di antara manusia, hewan-hewan melata, dan hewan-hewan ternak ada yang bermacam-macam warnanya (dan jenisnya). Sungguh, di antara hamba-hamba Allah yang takut kepada-Nya hanyalah para ulama,"</em> <span class="ref">[QS. Fathir: 27-28]</span>. Oleh karena itu, rasa takut kepada Allah dibatasi pada ulama, bukan selain mereka, karena rasa takut selain mereka tidak diperhitungkan dalam konteks ini.<br>Qashr iddi'a'i banyak dijumpai dalam kalam orang Arab, dan muncul dalam konteks hiperbola, pujian, dan pengagungan, seperti ucapan mereka:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا مُؤَدِّبٌ إِلَّا فُلَانٌ</p>
+      <p class="id">"Tidak ada pendidik yang sejati kecuali si Fulan"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا عَالِمٌ إِلَّا فُلَانٌ</p>
+      <p class="id">"Tidak ada orang berilmu sejati kecuali si Fulan"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا شَاعِرٌ إِلَّا امْرُؤُ الْقَيْسِ</p>
+      <p class="id">"Tidak ada penyair sejati kecuali Imru'ul Qais"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا خَطِيبٌ إِلَّا صُحَارٌ الْعَبْدِيُّ</p>
+      <p class="id">"Tidak ada orator sejati kecuali Shuhar Al-'Abdi"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا كَاتِبٌ إِلَّا فُلَانٌ</p>
+      <p class="id">"Tidak ada penulis prosa sejati kecuali si Fulan"</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَبْنُونَ الْكَلَامَ فِي ذَلِكَ عَلَى الْمُبَالَغَةِ وَعَدَمِ الِاعْتِدَادِ بِغَيْرِ الْمَذْكُورِ فِي تِلْكَ الصِّفَاتِ.</p>
+      <p class="id">Mereka membangun ungkapan-ungkapan itu atas dasar hiperbola dan tidak diperhitungkannya siapa pun selain yang disebutkan dalam sifat-sifat tersebut.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-idhafi">الْقَصْرُ الْإِضَافِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar">أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِالنِّسْبَةِ إِلَى شَيْءٍ مُعَيَّنٍ، أَيْ بِالْإِضَافَةِ إِلَيْهِ، بِحَيْثُ لَا يَتَجَاوَزُهُ إِلَى ذَلِكَ الْمُعَيَّنِ... كَمَا فِي قَوْلِنَا: زُهَيْرٌ شَاعِرٌ لَا كَاتِبٌ، فَالْمُرَادُ قَصْرُ زُهَيْرٍ عَلَى صِفَةِ الشِّعْرِ، بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةٍ مُعَيَّنَةٍ مُحَدَّدَةٍ، وَهِيَ صِفَةُ الْكِتَابَةِ. وَهَذَا لَا يُنَافِي أَنْ يَكُونَ لِزُهَيْرٍ صِفَاتٌ أُخْرَى كَالْخَطَابَةِ مَثَلًا. فَفِي الْقَصْرِ الْإِضَافِيِّ يَكُونُ الْمَنْفِيُّ مُعَيَّنًا مُحَدَّدًا، وَالْمُرَادُ أَلَّا يَتَجَاوَزَ الْمَقْصُورُ الْمَقْصُورَ عَلَيْهِ إِلَى هَذَا الْمَنْفِيِّ الْمُعَيَّنِ، وَإِنْ أَمْكَنَ أَنْ يَتَجَاوَزَهُ إِلَى غَيْرِهِ... وَمِنْهُ قَوْلُنَا: الشَّاعِرُ ذُو الرُّمَّةِ لَا زِيَادٌ، فَصِفَةُ الشِّعْرِ مَقْصُورَةٌ عَلَى ذِي الرُّمَّةِ، لَا تَتَعَدَّاهُ إِلَى زِيَادٍ، وَإِنْ صَحَّ أَنْ تَتَعَدَّاهُ إِلَى نُصَيْبٍ وَالْكُمَيْتِ وَجَرِيرٍ وَالْفَرَزْدَقِ وَغَيْرِهِمْ مِنَ الشُّعَرَاءِ.<br>وَيَنْقَسِمُ الْقَصْرُ الْإِضَافِيُّ بِاعْتِبَارِ حَالِ الْمُخَاطَبِ إِلَى ثَلَاثَةِ أَقْسَامٍ: قَصْرِ الْقَلْبِ وَالْإِفْرَادِ وَالتَّعْيِينِ.</p>
+      <p class="id">Yaitu qashr yang di dalamnya maqshur dikhususkan dengan maqshur 'alaih dalam kaitannya dengan sesuatu yang tertentu, yakni relatif terhadapnya, sehingga tidak melampauinya kepada yang tertentu itu... seperti dalam ucapan kita: "Zuhair penyair, bukan penulis prosa" — yang dimaksud adalah membatasi Zuhair pada sifat kepenyairan, sehingga tidak melampauinya ke sifat tertentu yang spesifik, yaitu sifat menulis prosa. Ini tidak bertentangan dengan kemungkinan Zuhair memiliki sifat-sifat lain, seperti kepandaian berpidato misalnya. Dalam qashr idhafi, yang dinafikan bersifat tertentu dan spesifik, dan yang dimaksud adalah agar maqshur tidak melampaui maqshur 'alaih kepada yang dinafikan tertentu ini, meskipun mungkin melampauinya kepada yang lain... Termasuk dalam hal ini ucapan kita: "Sang penyair adalah Dzur-Rummah, bukan Ziyad" — sifat kepenyairan dibatasi pada Dzur-Rummah, tidak melampauinya kepada Ziyad, meskipun boleh jadi melampauinya kepada Nushaib, Al-Kumait, Jarir, Al-Farazdaq, dan penyair-penyair lainnya.<br>Qashr idhafi terbagi, ditinjau dari keadaan lawan bicara, menjadi tiga bagian: qashr qalb, qashr ifrad, dan qashr ta'yin.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-qalb">قَصْرُ الْقَلْبِ</h3>
+
+    <div class="ayat">
+      <p class="ar">هُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ مَكَانَ آخَرَ... وَيُخَاطَبُ بِهِ مَنْ يَعْتَقِدُ الْعَكْسَ، كَقَوْلِكَ: جَاءَنِي زَيْدٌ لَا عَمْرٌو، مُخَاطِبًا مَنْ يَعْتَقِدُ أَنَّ عَمْرًا هُوَ الَّذِي جَاءَكَ دُونَ زَيْدٍ، فَأَنْتَ تَعْكِسُ وَتَقْلِبُ مَا يَعْتَقِدُهُ، وَلِذَا سُمِّيَ قَصْرَ قَلْبٍ. وَمِنْهُ قَوْلُهُ تَعَالَى: وَإِذَا قِيلَ لَهُمْ آمِنُوا كَمَا آمَنَ النَّاسُ قَالُوا أَنُؤْمِنُ كَمَا آمَنَ السُّفَهَاءُ أَلَا إِنَّهُمْ هُمُ السُّفَهَاءُ وَلَٰكِن لَّا يَعْلَمُونَ <span class="ref">[البقرة: ١٣]</span>، لِأَنَّ الْمُنَافِقِينَ يَعْتَقِدُونَ أَنَّ الْمُؤْمِنِينَ هُمُ السُّفَهَاءُ دُونَهُمْ، فَقَلَبَ اللَّهُ عَزَّ وَجَلَّ اعْتِقَادَهُمْ وَبَيَّنَ أَنَّ الْمُنَافِقِينَ هُمُ السُّفَهَاءُ وَلَكِنْ لَا يَعْلَمُونَ.</p>
+      <p class="id">Yaitu mengkhususkan suatu perkara dengan sesuatu, menggantikan yang lain... yang menjadi sasaran bicaranya adalah orang yang meyakini kebalikannya. Seperti ucapanmu: "Zaid yang datang kepadaku, bukan 'Amr," ditujukan kepada orang yang meyakini bahwa 'Amr-lah yang datang kepadamu, bukan Zaid — maka engkau membalikkan apa yang ia yakini, dan karena itulah disebut qashr qalb (pembalikan). Termasuk dalam hal ini firman Allah Ta'ala: <em>"Dan apabila dikatakan kepada mereka, 'Berimanlah kamu sebagaimana orang lain telah beriman,' mereka menjawab, 'Apakah kami akan beriman seperti orang-orang yang kurang akal itu telah beriman?' Ingatlah, sesungguhnya merekalah orang-orang yang kurang akal, tetapi mereka tidak tahu,"</em> <span class="ref">[QS. Al-Baqarah: 13]</span>, karena orang-orang munafik meyakini bahwa orang-orang berimanlah yang kurang akal, bukan mereka — maka Allah 'Azza wa Jalla membalikkan keyakinan mereka dan menjelaskan bahwa orang-orang munafiklah yang kurang akal, hanya saja mereka tidak mengetahuinya.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ تَعَالَى: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ وَأُمُّهُ صِدِّيقَةٌ كَانَا يَأْكُلَانِ الطَّعَامَ انظُرْ كَيْفَ نُبَيِّنُ لَهُمُ الْآيَاتِ ثُمَّ انظُرْ أَنَّىٰ يُؤْفَكُونَ <span class="ref">[المائدة: ٧٥]</span>، فَالنَّصَارَى يَعْتَقِدُونَ أَنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ: لَّقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ وَإِن لَّمْ يَنتَهُوا عَمَّا يَقُولُونَ لَيَمَسَّنَّ الَّذِينَ كَفَرُوا مِنْهُمْ عَذَابٌ أَلِيمٌ <span class="ref">[المائدة: ٧٣]</span>، فَقَلَبَ اللَّهُ تَعَالَى اعْتِقَادَهُمْ: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[المائدة: ٧٥]</span>، فَالْمَسِيحُ مَقْصُورٌ عَلَى كَوْنِهِ رَسُولًا يَخْلُو كَمَا خَلَتِ الرُّسُلُ مِنْ قَبْلِهِ، وَلَا يَتَجَاوَزُ ذَلِكَ إِلَى كَوْنِهِ إِلَٰهًا كَمَا اعْتَقَدَ الْكَفَرَةُ، وَلِذَا فَالْقَصْرُ فِي الْآيَةِ الْكَرِيمَةِ قَصْرُ قَلْبٍ.</p>
+      <p class="id">Dan firman Allah Ta'ala: <em>"Al-Masih putra Maryam hanyalah seorang Rasul yang sesungguhnya telah berlalu sebelumnya beberapa rasul, dan ibunya seorang yang sangat benar, keduanya biasa memakan makanan. Perhatikanlah bagaimana Kami menjelaskan kepada mereka tanda-tanda kekuasaan (Kami), kemudian perhatikanlah bagaimana mereka berpaling,"</em> <span class="ref">[QS. Al-Ma'idah: 75]</span>. Orang-orang Nasrani meyakini bahwa Allah adalah salah satu dari tiga (Tuhan): <em>"Sungguh, telah kafir orang-orang yang mengatakan bahwa Allah salah satu dari (Tuhan) yang tiga, padahal tidak ada tuhan selain Tuhan Yang Esa. Jika mereka tidak berhenti dari apa yang mereka katakan itu, pasti orang-orang yang kafir di antara mereka akan ditimpa azab yang pedih,"</em> <span class="ref">[QS. Al-Ma'idah: 73]</span>. Maka Allah Ta'ala membalikkan keyakinan mereka: <em>"Al-Masih putra Maryam hanyalah seorang Rasul yang sesungguhnya telah berlalu sebelumnya beberapa rasul,"</em> <span class="ref">[QS. Al-Ma'idah: 75]</span>. Al-Masih dibatasi pada kedudukannya sebagai rasul yang akan berlalu sebagaimana rasul-rasul sebelumnya telah berlalu, tidak melampaui itu kepada kedudukannya sebagai tuhan sebagaimana diyakini orang-orang kafir. Oleh karena itu, qashr dalam ayat yang mulia ini adalah qashr qalb.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-ifrad">قَصْرُ الْإِفْرَادِ</h3>
+
+    <div class="ayat">
+      <p class="ar">هُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ دُونَ آخَرَ، وَيُخَاطَبُ بِهِ مَنْ يَعْتَقِدُ الشَّرِكَةَ، كَقَوْلِكَ: مُحَمَّدٌ الْجَوَادُ لَا عَلِيٌّ، لِمَنِ اعْتَقَدَ أَنَّهُمَا يَشْتَرِكَانِ فِي صِفَةِ الْجُودِ. وَمِنْهُ قَوْلُهُ تَعَالَى: لَّقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ <span class="ref">[المائدة: ٧٣]</span>، فَهُمْ يَعْتَقِدُونَ الشَّرِكَةَ، وَأَنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ، وَأَفَادَ أُسْلُوبُ الْقَصْرِ أَنَّ الْإِلَٰهَ وَاحِدٌ، ((وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ))، فَهُوَ قَصْرُ إِفْرَادٍ، حَيْثُ اعْتَقَدُوا أَنَّ صِفَةَ الْأُلُوهِيَّةِ يَشْتَرِكُ فِيهَا ثَلَاثَةٌ، وَأُفْرِدَ لَهَا الْقَصْرُ وَاحِدًا يَخْتَصُّ بِهَا دُونَ الْآخَرِينَ.</p>
+      <p class="id">Yaitu mengkhususkan suatu perkara dengan sesuatu, tanpa yang lain, yang menjadi sasaran bicaranya adalah orang yang meyakini adanya keserikatan. Seperti ucapanmu: "Muhammad-lah yang dermawan, bukan Ali," kepada orang yang meyakini bahwa keduanya sama-sama memiliki sifat kedermawanan. Termasuk dalam hal ini firman Allah Ta'ala: <em>"Sungguh, telah kafir orang-orang yang mengatakan bahwa Allah salah satu dari (Tuhan) yang tiga, padahal tidak ada tuhan selain Tuhan Yang Esa,"</em> <span class="ref">[QS. Al-Ma'idah: 73]</span>. Mereka meyakini adanya keserikatan, bahwa Allah salah satu dari tiga, dan gaya qashr ini memberi faedah bahwa Tuhan itu Esa, "dan tidak ada tuhan selain Tuhan Yang Esa" — maka ini adalah qashr ifrad, karena mereka meyakini bahwa sifat ketuhanan diserikati oleh tiga pihak, lalu qashr menjadikannya terpisah pada satu pihak saja yang khusus memilikinya, tanpa yang lain.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَأَمَّلْ قَوْلَهُ تَعَالَى: وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ <span class="ref">[آل عمران: ١٤٤]</span>، فَالصَّحَابَةُ رِضْوَانُ اللَّهِ عَلَيْهِمْ لِشِدَّةِ تَعَلُّقِهِمْ وَحُبِّهِمْ لِلنَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نُزِّلُوا مَنْزِلَةَ مَنْ يَعْتَقِدُ أَنَّ مُحَمَّدًا عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ يَجْمَعُ بَيْنَ صِفَتَيِ الرِّسَالَةِ وَالْخُلْدِ، فَجَاءَ أُسْلُوبُ الْقَصْرِ مُفِيدًا أَنَّهُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مَقْصُورٌ عَلَى صِفَةِ الرِّسَالَةِ، فَهُوَ رَسُولٌ يَخْلُو كَمَا خَلَتِ الرُّسُلُ مِنْ قَبْلِهِ، لَا يَتَجَاوَزُ صِفَةَ الرِّسَالَةِ إِلَى التَّخْلِيدِ فِي الدُّنْيَا.<br>وَقَوْلُهُ تَعَالَى: وَمَا يَسْتَوِي الْأَحْيَاءُ وَلَا الْأَمْوَاتُ إِنَّ اللَّهَ يُسْمِعُ مَن يَشَاءُ وَمَا أَنتَ بِمُسْمِعٍ مَّن فِي الْقُبُورِ * إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٢-٢٣]</span>، فَلَمَّا كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتَمَنَّى هِدَايَةَ قَوْمِهِ، حَرِيصًا بَلْ شَدِيدَ الْحِرْصِ عَلَى قَبُولِهِمِ</p>
+      <p class="id">Perhatikan firman Allah Ta'ala: <em>"Dan Muhammad hanyalah seorang rasul; sungguh, sebelum dia telah berlalu beberapa rasul. Apakah jika dia wafat atau terbunuh kamu berbalik ke belakang (murtad)?"</em> <span class="ref">[QS. Ali 'Imran: 144]</span>. Para sahabat — semoga Allah meridhai mereka — karena begitu besar keterikatan dan cinta mereka kepada Nabi ﷺ, diposisikan seperti orang yang meyakini bahwa Muhammad ﷺ menggabungkan dua sifat sekaligus: kerasulan dan keabadian. Maka datanglah gaya qashr ini memberi faedah bahwa beliau ﷺ dibatasi pada sifat kerasulan — beliau adalah rasul yang akan berlalu sebagaimana para rasul sebelumnya telah berlalu, tidak melampaui sifat kerasulan itu kepada keabadian di dunia.<br>Dan firman Allah Ta'ala: <em>"Dan tidak sama orang yang hidup dengan orang yang mati. Sungguh, Allah memberikan pendengaran kepada siapa yang Dia kehendaki dan engkau (Muhammad) tidak akan sanggup menjadikan orang yang di dalam kubur dapat mendengar. * Engkau (Muhammad) tidak lain hanyalah seorang pemberi peringatan,"</em> <span class="ref">[QS. Fathir: 22-23]</span>. Ketika Nabi ﷺ sangat mengharapkan petunjuk bagi kaumnya, bahkan sangat berambisi agar mereka menerima</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 18</span></div>
+
+    <div class="ayat">
+      <p class="ar">الْهِدَايَةَ، نُزِّلَ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مَنْزِلَةَ مَنْ يَعْتَقِدُ أَنَّهُ يَجْمَعُ بَيْنَ صِفَتَيِ الْإِنْذَارِ وَالْقُدْرَةِ عَلَى خَلْقِ الْهِدَايَةِ فِي النُّفُوسِ الَّتِي أَصَرَّتْ عَلَى الضَّلَالِ وَالْمُكَابَرَةِ، فَجَاءَ أُسْلُوبُ الْقَصْرِ: ((إِنْ أَنْتَ إِلَّا نَذِيرٌ)) مُحَدِّدًا مَهَمَّةَ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَقَاصِرًا لَهُ عَلَى صِفَةِ الْإِنْذَارِ، لَا يَتَعَدَّاهَا إِلَى الْقُدْرَةِ عَلَى إِسْمَاعِ مَنْ فِي الْقُبُورِ.<br>وَيُشْتَرَطُ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ إِفْرَادًا، عَدَمُ تَنَافِي الْوَصْفَيْنِ حَتَّى يُتَصَوَّرَ اجْتِمَاعُهُمَا لِمَوْصُوفٍ وَاحِدٍ فِي ذِهْنِ الْمُخَاطَبِ، فَلَا يُقَالُ فِي قَوْلِكَ: مُحَمَّدٌ أَبْيَضُ لَا أَسْوَدُ، إِنَّهُ قَصْرُ إِفْرَادٍ، إِذْ لَا يُتَصَوَّرُ أَنْ يَعْتَقِدَ مُعْتَقِدٌ أَنَّ مُحَمَّدًا يَتَّصِفُ بِالْبَيَاضِ وَالسَّوَادِ مَعًا. كَمَا اشْتَرَطَ الْخَطِيبُ الْقَزْوِينِيُّ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ قَلْبًا، تَنَافِيَ الصِّفَتَيْنِ حَتَّى يَكُونَ إِثْبَاتُ إِحْدَاهُمَا مُشْعِرًا بِانْتِفَاءِ الْأُخْرَى، كَقَوْلِكَ: مُحَمَّدٌ طَوِيلٌ لَا قَصِيرٌ، زَيْدٌ ذَكِيٌّ لَا غَبِيٌّ، عَمْرٌو شُجَاعٌ لَا جَبَانٌ، حَاتِمٌ كَرِيمٌ لَا بَخِيلٌ. وَرُدَّ عَلَيْهِ بِأَنَّ قَصْرَ الْقَلْبِ يَرِدُ كَثِيرًا فِي الصِّفَاتِ غَيْرِ الْمُتَنَافِيَةِ - كَمَا مَرَّ بِكَ - فَلَا وَجْهَ لِهَذَا الِاشْتِرَاطِ.</p>
+      <p class="id">petunjuk itu, maka beliau ﷺ diposisikan seperti orang yang diyakini menggabungkan dua sifat: sifat memberi peringatan dan kemampuan untuk menciptakan hidayah dalam jiwa-jiwa yang bersikeras dalam kesesatan dan keangkuhan. Maka datanglah gaya qashr: "engkau tidak lain hanyalah seorang pemberi peringatan," yang menentukan tugas Nabi ﷺ dan membatasinya pada sifat memberi peringatan, tidak melampauinya kepada kemampuan membuat orang yang di dalam kubur mendengar.<br>Disyaratkan dalam qashr maushuf atas sifat secara ifrad, bahwa kedua sifat itu tidak bertentangan, sehingga keduanya dapat dibayangkan berkumpul pada satu maushuf dalam benak lawan bicara. Maka tidak dikatakan dalam ucapanmu: "Muhammad putih, bukan hitam," sebagai qashr ifrad, karena tidak terbayangkan ada yang meyakini bahwa Muhammad memiliki sifat putih dan hitam sekaligus. Sementara itu, Al-Khathib Al-Qazwini mensyaratkan dalam qashr maushuf atas sifat secara qalb, adanya pertentangan antara kedua sifat, sehingga penetapan salah satunya mengisyaratkan ketiadaan yang lain, seperti ucapanmu: "Muhammad tinggi, bukan pendek," "Zaid cerdas, bukan bodoh," "'Amr pemberani, bukan pengecut," "Hatim dermawan, bukan pelit." Namun hal ini dibantah bahwa qashr qalb banyak terjadi pada sifat-sifat yang tidak bertentangan — sebagaimana telah engkau lihat — sehingga tidak ada alasan untuk persyaratan ini.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-tayin">قَصْرُ التَّعْيِينِ</h3>
+
+    <div class="ayat">
+      <p class="ar">وَهُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ دُونَ آخَرَ، وَيُخَاطَبُ بِهِ الْمُتَرَدِّدُ بَيْنَ شَيْئَيْنِ، كَقَوْلِكَ لِمَنْ يَتَرَدَّدُ شَاكًّا فِي النَّاجِحِ: أَعَمْرٌو أَمْ بَكْرٌ؟ إِنَّمَا النَّاجِحُ عَمْرٌو، وَقَوْلِكَ: لِمَنْ يَشُكُّ فِي أَمْرِ زَيْدٍ: أَمُقِيمٌ أَمْ مُسَافِرٌ؟ زَيْدٌ مُقِيمٌ لَا مُسَافِرٌ.<br>تَأَمَّلْ قَوْلَهُ تَعَالَى: وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[آل عمران: ١٤٤]</span>، وَقَوْلَهُ عَزَّ وَجَلَّ: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[المائدة: ٧٥]</span>، فَالْعِبَارَاتُ وَاحِدَةٌ وَالْبِنَاءُ هُوَ الْبِنَاءُ، وَعَلَى الرَّغْمِ مِنْ ذَلِكَ نَقُولُ: إِنَّ الْقَصْرَ فِي الْآيَةِ الْأُولَى قَصْرُ إِفْرَادٍ، وَفِي الثَّانِيَةِ قَصْرُ قَلْبٍ، وَالَّذِي جَعَلَنَا نَقُولُ هَذَا الْقَوْلَ الْوُقُوفُ عَلَى أَحْوَالِ الْمُخَاطَبِينَ مِنْ خِلَالِ تَأَمُّلِ سِيَاقِ الْآيَتَيْنِ.</p>
+      <p class="id">Yaitu mengkhususkan suatu perkara dengan sesuatu, tanpa yang lain, yang menjadi sasaran bicaranya adalah orang yang ragu-ragu antara dua hal. Seperti ucapanmu kepada orang yang ragu-ragu siapa yang lulus — "Apakah 'Amr atau Bakr?" — "Yang lulus hanyalah 'Amr"; dan ucapanmu kepada orang yang ragu tentang keadaan Zaid — "Apakah ia menetap atau bepergian?" — "Zaid menetap, tidak bepergian."<br>Perhatikan firman Allah Ta'ala: <em>"Dan Muhammad hanyalah seorang rasul; sungguh, sebelum dia telah berlalu beberapa rasul,"</em> <span class="ref">[QS. Ali 'Imran: 144]</span>, dan firman Allah 'Azza wa Jalla: <em>"Al-Masih putra Maryam hanyalah seorang Rasul yang sesungguhnya telah berlalu sebelumnya beberapa rasul,"</em> <span class="ref">[QS. Al-Ma'idah: 75]</span>. Ungkapannya sama dan susunannya pun sama, namun demikian kita katakan: qashr dalam ayat pertama adalah qashr ifrad, sedangkan dalam ayat kedua adalah qashr qalb. Yang membuat kita mengatakan demikian adalah pemahaman terhadap keadaan masing-masing pihak yang disapa, melalui perenungan terhadap konteks kedua ayat tersebut.</p>
+    </div>
+
+    <h2 class="pasal__judul" id="qashr-sifah-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</h2>
+    <p class="judul__id">Qashr Sifat atas Maushuf dan Maushuf atas Sifat</p>
+
+    <div class="ayat">
+      <p class="ar">وَيَنْقَسِمُ الْقَصْرُ بِاعْتِبَارِ طَرَفَيْهِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ إِلَى قَصْرِ صِفَةٍ عَلَى مَوْصُوفٍ، وَقَصْرِ مَوْصُوفٍ عَلَى صِفَةٍ، وَالْمُرَادُ بِالصِّفَةِ هُنَا الصِّفَةُ الْمَعْنَوِيَّةُ الَّتِي هِيَ مَعْنًى قَائِمٌ بِالْغَيْرِ سَوَاءٌ كَانَ فِعْلًا أَوْ مَصْدَرًا أَوْ مُشْتَقًّا أَوْ ظَرْفًا أَوْ جَارًّا وَمَجْرُورًا أَوْ غَيْرَ ذَلِكَ، وَلَيْسَ الْمُرَادُ بِهَا النَّعْتَ النَّحْوِيَّ؛ لِأَنَّهُ لَا يَقَعُ قَصْرٌ بَيْنَ نَعْتٍ وَمَنْعُوتِهِ، كَقَوْلِكَ: جَاءَ رَجُلٌ فَاضِلٌ، فَفَاضِلٌ نَعْتٌ نَحْوِيٌّ لِلرَّجُلِ، لَا يُفْصَلُ بَيْنَهُمَا وَلَا يُتَصَوَّرُ بَيْنَهُمَا قَصْرٌ.</p>
+      <p class="id">Qashr terbagi, ditinjau dari kedua sisinya — maqshur dan maqshur 'alaih — menjadi qashr sifat atas maushuf, dan qashr maushuf atas sifat. Yang dimaksud dengan "sifat" di sini adalah sifat ma'nawiyyah, yaitu makna yang bersandar pada sesuatu yang lain, baik berupa fi'il, mashdar, musytaq (kata turunan), zharaf, jar-majrur, atau lainnya — bukan yang dimaksud adalah na'at (sifat) secara nahwu, karena qashr tidak terjadi antara na'at dan man'ut-nya. Seperti ucapanmu: "Datang seorang lelaki yang mulia," maka "mulia" adalah na'at nahwu bagi "lelaki", tidak dipisahkan di antara keduanya dan tidak terbayangkan adanya qashr di antara keduanya.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 19</span></div>
+
+    <div class="ayat">
+      <p class="ar">كَمَا أَنَّ الْمُرَادَ بِالْمَوْصُوفِ هُنَا كُلُّ مَا قَامَ بِهِ غَيْرُهُ، وَإِنْ كَانَ هُوَ فِي نَفْسِهِ صِفَةً. تَقُولُ فِي قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ: مَا شَاعِرٌ إِلَّا زُهَيْرٌ، مَا كَتَبَ فُلَانٌ إِلَّا الشِّعْرَ، مَا أَكْرَمْتُ إِلَّا زَيْدًا.<br>وَفِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ: مَا شَوْقِي إِلَّا شَاعِرٌ، إِنَّمَا أَنْتَ وَالِدُ مُحَمَّدٍ، فَارِسٌ لَا عَالِمٌ، مَا حَاتِمٌ بَخِيلًا بَلْ جَوَادٌ.</p>
+      <p class="id">Sebagaimana yang dimaksud dengan "maushuf" di sini adalah segala sesuatu yang disandari oleh yang lain, meskipun ia sendiri pada hakikatnya adalah sebuah sifat. Engkau katakan dalam qashr sifat atas maushuf: "Tidak ada penyair kecuali Zuhair," "Tidaklah si Fulan menulis kecuali syair," "Aku tidak memuliakan kecuali Zaid."<br>Dan dalam qashr maushuf atas sifat: "Tidak ada Syauqi kecuali penyair," "Engkau hanyalah ayah Muhammad," "Seorang kesatria, bukan seorang alim," "Hatim bukanlah pelit, melainkan dermawan."</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-sifah-ala-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَعْنَاهُ: أَلَّا تَتَجَاوَزَ الصِّفَةُ ذَلِكَ الْمَوْصُوفَ إِلَى مَوْصُوفٍ آخَرَ أَصْلًا، إِذَا كَانَ الْقَصْرُ حَقِيقِيًّا، أَوْ إِلَى مَوْصُوفٍ آخَرَ مُعَيَّنٍ إِذَا كَانَ الْقَصْرُ إِضَافِيًّا، وَلَا يَمْنَعُ هَذَا أَنْ يَتَّصِفَ الْمَوْصُوفُ الْمَقْصُورُ عَلَيْهِ بِصِفَاتٍ أُخْرَى غَيْرَ تِلْكَ الصِّفَةِ الْمَقْصُورَةِ. تَقُولُ: الْخَالِقُ هُوَ اللَّهُ، فَتَقْصُرُ صِفَةَ الْخَلْقِ عَلَى اللَّهِ سُبْحَانَهُ وَتَعَالَى قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا، وَمِنْهُ قَوْلُهُ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، حَيْثُ قُصِرَتْ صِفَةُ الْعِبَادَةِ وَكَذَلِكَ صِفَةُ الِاسْتِعَانَةِ عَلَى اللَّهِ تَعَالَى، قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا فِي الْأَوَّلِ وَهُوَ قَصْرُ الْعِبَادَةِ، وَقَصْرًا حَقِيقِيًّا غَيْرَ تَحْقِيقِيٍّ فِي الثَّانِي وَهُوَ قَصْرُ الِاسْتِعَانَةِ، وَمِنْهُ قَوْلُهُ تَعَالَى: وَعِندَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، حَيْثُ قُصِرَ الْعِلْمُ بِمَفَاتِيحِ الْغَيْبِ عَلَى اللَّهِ تَعَالَى قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا، فَهُوَ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ.<br>وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ:</p>
+      <p class="id">Maknanya: agar sifat itu sama sekali tidak melampaui maushuf tersebut kepada maushuf lain, jika qashr-nya haqiqi; atau tidak melampaui ke maushuf lain yang tertentu, jika qashr-nya idhafi. Ini tidak menghalangi maushuf yang menjadi maqshur 'alaih untuk memiliki sifat-sifat lain selain sifat yang dibatasi itu. Engkau berkata: "Pencipta adalah Allah," engkau membatasi sifat penciptaan pada Allah Subhanahu wa Ta'ala secara qashr haqiqi tahqiqi. Termasuk dalam hal ini firman Allah Ta'ala: <em>"Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan,"</em> <span class="ref">[QS. Al-Fatihah: 5]</span>, di mana sifat ibadah dan sifat permohonan pertolongan dibatasi pada Allah Ta'ala — secara qashr haqiqi tahqiqi pada yang pertama (qashr ibadah), dan secara qashr haqiqi ghair tahqiqi pada yang kedua (qashr permohonan pertolongan). Termasuk pula firman Allah Ta'ala: <em>"Dan kunci-kunci semua yang gaib ada pada-Nya; tidak ada yang mengetahuinya selain Dia,"</em> <span class="ref">[QS. Al-An'am: 59]</span>, di mana pengetahuan tentang kunci-kunci yang gaib dibatasi pada Allah Ta'ala secara qashr haqiqi tahqiqi — maka ini adalah qashr sifat atas maushuf.<br>Termasuk dalam hal ini perkataan Abu Tammam:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَا يَطْرُدُ الْهُمَّ إِلَّا الْهُمُّ مِنْ رَجُلٍ</span><span class="shatr">مُقَلْقِلِ بَنَاتِ الْقَفْرَةِ النُّعْبِ</span></p>
+        <p class="id">Tidak ada yang mengusir kesedihan kecuali kesedihan (usaha keras) dari seorang lelaki yang menggoncangkan unta-unta padang pasir yang hitam legam.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ الشَّاعِرُ طَرْدَ الْهَمِّ وَهُوَ صِفَةٌ عَلَى الْهَمِّ مِنْ رَجُلٍ مُقَلْقِلٍ لِبَنَاتِ الْقَفْرَةِ وَهُوَ مَوْصُوفٌ، قَصْرًا حَقِيقِيًّا ادِّعَائِيًّا؛ لِأَنَّ النَّاسَ يَطْرُدُونَ هُمُومَهُمْ بِأُمُورٍ كَثِيرَةٍ، وَلَكِنَّ الشَّاعِرَ لَمْ يَعْتَدَّ بِشَيْءٍ مِنْهَا إِلَّا بِالرِّحْلَةِ الَّتِي غَيَّرَتْهُ وَأَضْنَتْهُ وَالَّتِي كَانَتْ سَبَبًا فِي حُزْنِ صَاحِبَتِهِ وَانْسِكَابِ عَبَرَاتِهَا، فَأَرَادَ أَنْ يُبَيِّنَ لَهَا أَنَّ تِلْكَ الرِّحْلَةَ هِيَ الْوَسِيلَةُ الْوَحِيدَةُ لِطَرْدِ الْهُمُومِ وَالْأَحْزَانِ.<br>وَقَوْلُ الْمُتَنَبِّي فِي رِثَاءِ جَدَّتِهِ:</p>
+      <p class="id">Penyair membatasi pengusiran kesedihan — yang merupakan sifat — pada kesedihan dari seorang lelaki yang menggoncangkan unta-unta padang pasir — yang merupakan maushuf — secara qashr haqiqi iddi'a'i, karena manusia pada umumnya mengusir kesedihan mereka dengan banyak cara, namun penyair ini tidak menganggap ada cara lain kecuali perjalanan jauh yang telah mengubah dan melelahkannya, yang menjadi sebab kesedihan kekasihnya dan tumpahnya air matanya. Ia ingin menjelaskan kepadanya bahwa perjalanan itulah satu-satunya sarana untuk mengusir kesedihan dan kedukaan.<br>Dan perkataan Al-Mutanabbi dalam meratapi neneknya:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَلَمْ يُسْلِهَا إِلَّا الْمَنَايَا وَإِنَّمَا</span><span class="shatr">أَشَدُّ مِنَ السُّقْمِ الَّذِي أَذْهَبَ السُّقْمَا</span></p>
+        <p class="id">Dan tidak ada yang dapat melupakannya kecuali ajal; sesungguhnya yang lebih dahsyat dari penyakit adalah apa yang telah melenyapkan penyakit itu.</p>
+      </div>
+    </div>
+
+    <div class="hal"><span>Hlm. 20</span></div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ سُلُوَّهَا عَلَى الْمَنَايَا قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا؛ لِأَنَّ جَدَّتَهُ كَانَتْ قَدِ اشْتَاقَتْ إِلَيْهِ فِي غَيْبَتِهِ، فَلَمَّا وَصَلَهَا كِتَابُهُ قَبَّلَتْهُ وَفَرِحَتْ، ثُمَّ أُخْبِرَتْ كَذِبًا أَنَّهُ قَدْ مَاتَ فَحَمَّتْ وَمَاتَتْ، فَرَثَاهَا بِتِلْكَ الْقَصِيدَةِ.<br>أَمَّا قَوْلُهُ: ((وَإِنَّمَا أَشَدُّ مِنَ السُّقْمِ الَّذِي أَذْهَبَ السُّقْمَا)) فَلَكَ أَنْ تَجْعَلَهُ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ، أَيْ: قَصْرَ ((أَشَدَّ مِنَ السُّقْمِ)) عَلَى ((الَّذِي أَذْهَبَ السُّقْمَ))، وَالْمُرَادُ بِأَشَدَّ مِنَ السُّقْمِ صِفَاتُ الْكَآبَةِ وَالْأَلَمِ وَالْفُقْدَانِ وَالْوَجَعِ الَّتِي تَغْلِبُ السُّقْمَ وَتَقْهَرُهُ وَتَعْلُوهُ، لِأَنَّهُ لَا يَقْهَرُ الشَّيْءَ إِلَّا مَا هُوَ أَشَدُّ مِنْهُ وَأَقْوَى، فَهُوَ يَتَخَيَّلُ صِفَاتِ كَآبَةٍ أَقْوَى مِنَ السُّقْمِ، وَيَقْصُرُهَا عَلَى مَا أَذْهَبَ السُّقْمَ، وَهَذَا إِغْرَابٌ فِي الْخَيَالِ.</p>
+      <p class="id">Al-Mutanabbi membatasi "sulwuha" (apa yang dapat menghiburkannya/membuatnya lupa) pada ajal — qashr sifat atas maushuf, secara qashr haqiqi tahqiqi — karena neneknya sangat merindukannya saat ia tak ada. Ketika surat darinya sampai, ia menciumnya dan bergembira. Lalu ia diberi kabar dusta bahwa cucunya telah meninggal, sehingga ia demam lalu wafat. Maka Al-Mutanabbi meratapinya dengan qasidah itu.<br>Adapun ucapannya: "sesungguhnya yang lebih dahsyat dari penyakit adalah apa yang telah melenyapkan penyakit itu" — engkau boleh menjadikannya sebagai qashr sifat atas maushuf, yaitu: qashr "yang lebih dahsyat dari penyakit" atas "apa yang telah melenyapkan penyakit". Yang dimaksud dengan "lebih dahsyat dari penyakit" adalah sifat-sifat kesedihan, kepedihan, kehilangan, dan nestapa yang mengalahkan, menundukkan, dan melampaui penyakit — karena tidak ada yang dapat mengalahkan sesuatu kecuali yang lebih dahsyat dan lebih kuat darinya. Ia membayangkan sifat-sifat kesedihan yang lebih kuat dari penyakit, lalu membatasinya pada apa yang telah melenyapkan penyakit itu — ini adalah keganjilan dalam imajinasi (yang indah).</p>
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-mawshuf-ala-sifah">قَصْرُ الْمَوْصُوفِ عَلَى الصِّفَةِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَعْنَاهُ: أَلَّا يَتَجَاوَزَ الْمَوْصُوفُ تِلْكَ الصِّفَةَ إِلَى صِفَةٍ أُخْرَى أَصْلًا، إِذَا كَانَ الْقَصْرُ حَقِيقِيًّا، أَوْ إِلَى صِفَةٍ أُخْرَى مُعَيَّنَةٍ إِذَا كَانَ الْقَصْرُ إِضَافِيًّا، وَهَذَا لَا يَمْنَعُ أَنْ تَكُونَ تِلْكَ الصِّفَةُ الْمَقْصُورُ عَلَيْهَا وَصْفًا لِمَوْصُوفٍ آخَرَ غَيْرِ الْمَقْصُورِ، فَقَوْلُكَ: مَا عَمْرٌو إِلَّا شُجَاعٌ، قَصْرٌ لِعَمْرٍو عَلَى صِفَةِ الشَّجَاعَةِ بِحَيْثُ لَا يَتَعَدَّاهَا إِلَى صِفَةٍ أُخْرَى، أَمَّا الشَّجَاعَةُ فَلَيْسَ هُنَالِكَ مَا يَمْنَعُ مِنْ أَنْ يَتَّصِفَ بِهَا غَيْرُ عَمْرٍو. وَتَقُولُ: زَيْدٌ كَاتِبٌ لَا شَاعِرٌ، فَتَقْصُرُ زَيْدًا عَلَى صِفَةِ الْكِتَابَةِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الشِّعْرِ، فَهُوَ قَصْرٌ إِضَافِيٌّ. وَتَقُولُ: مَا شَوْقِي إِلَّا شَاعِرٌ، فَتَقْصُرُ شَوْقِيًّا عَلَى صِفَةِ الشِّعْرِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الْكِتَابَةِ، فَيَكُونُ قَصْرًا إِضَافِيًّا، أَوْ لَا يَتَجَاوَزُهَا إِلَى أَيَّةِ صِفَةٍ أُخْرَى، فَيَكُونُ قَصْرًا حَقِيقِيًّا.<br>وَمِنْ شَوَاهِدِ قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ قَوْلُهُ تَعَالَى: إِنَّ اللَّهَ يُسْمِعُ مَن يَشَاءُ وَمَا أَنتَ بِمُسْمِعٍ مَّن فِي الْقُبُورِ * إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٢-٢٣]</span>، حَيْثُ قُصِرَ الرَّسُولُ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عَلَى صِفَةِ الْإِنْذَارِ، لَا يَتَجَاوَزُهَا إِلَى أَنْ يَمْلِكَ تَحْوِيلَ الْقُلُوبِ الْمُشْرِكَةِ عَمَّا هِيَ عَلَيْهِ مِنَ الْعِنَادِ وَالْمُكَابَرَةِ، وَقَوْلُهُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ: "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ، وَإِنَّمَا أَنَا قَاسِمٌ وَاللَّهُ عَزَّ وَجَلَّ يُعْطِي".<br>وَمِنْهُ قَوْلُ دُرَيْدِ بْنِ الصِّمَّةِ:</p>
+      <p class="id">Maknanya: agar maushuf itu tidak melampaui sifat tersebut sama sekali ke sifat lain, jika qashr-nya haqiqi; atau tidak melampaui ke sifat lain tertentu, jika qashr-nya idhafi. Ini tidak menghalangi sifat yang menjadi maqshur 'alaih untuk menjadi sifat bagi maushuf lain selain yang dibatasi. Ucapanmu: "Tidak ada 'Amr kecuali pemberani," adalah qashr 'Amr pada sifat keberanian sehingga tidak melampauinya ke sifat lain, sementara keberanian itu sendiri tidak ada yang menghalangi selain 'Amr untuk juga memilikinya. Engkau berkata: "Zaid penulis prosa, bukan penyair," engkau membatasi Zaid pada sifat menulis prosa sehingga tidak melampauinya ke sifat kepenyairan — ini qashr idhafi. Engkau berkata: "Tidak ada Syauqi kecuali penyair," engkau membatasi Syauqi pada sifat kepenyairan sehingga tidak melampauinya ke sifat menulis prosa — ini qashr idhafi; atau tidak melampauinya ke sifat lain apa pun — maka ini qashr haqiqi.<br>Di antara contoh qashr maushuf atas sifat adalah firman Allah Ta'ala: <em>"Sungguh, Allah memberikan pendengaran kepada siapa yang Dia kehendaki dan engkau (Muhammad) tidak akan sanggup menjadikan orang yang di dalam kubur dapat mendengar. * Engkau (Muhammad) tidak lain hanyalah seorang pemberi peringatan,"</em> <span class="ref">[QS. Fathir: 22-23]</span>, di mana Rasul ﷺ dibatasi pada sifat memberi peringatan, tidak melampauinya kepada kemampuan mengubah hati-hati musyrik dari keingkaran dan keangkuhan mereka; dan sabda beliau ﷺ: "Barangsiapa yang Allah kehendaki kebaikan baginya, Dia akan memahamkannya dalam agama; sesungguhnya aku hanyalah yang membagikan, sedangkan Allah 'Azza wa Jalla-lah yang memberi."<br>Termasuk dalam hal ini perkataan Durayd bin Ash-Shimmah:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَهَلْ أَنَا إِلَّا مِن غَزِيَّةَ إِنْ غَوَتْ</span><span class="shatr">غَوَيْتُ وَإِنْ تَرْشُدْ غَزِيَّةُ أَرْشُدِ</span></p>
+        <p class="id">Dan bukankah aku ini bagian dari (kabilah) Ghaziyyah? Jika ia sesat, aku pun sesat; dan jika Ghaziyyah mendapat petunjuk, aku pun mendapat petunjuk.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حَيْثُ قَصَرَ الشَّاعِرُ نَفْسَهُ عَلَى كَوْنِهِ مِنْ تِلْكَ الْقَبِيلَةِ، لَا يَتَعَدَّاهَا إِلَى أَنْ يَكُونَ مِنْ غَيْرِهَا مِنَ الْقَبَائِلِ، فَهُوَ قَصْرٌ حَقِيقِيٌّ تَحْقِيقِيٌّ.</p>
+      <p class="id">Penyair membatasi dirinya pada kedudukannya sebagai bagian dari kabilah itu, tidak melampauinya kepada kedudukan sebagai bagian dari kabilah lain — maka ini qashr haqiqi tahqiqi.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 21</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ تَعَالَى: وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا مَتَاعُ الْغُرُورِ <span class="ref">[الحديد: ٢٠]</span>، وَقَوْلُكَ: إِنَّمَا زَيْدٌ فِي الدَّارِ، وَمَا الْجُودُ إِلَّا أَنْ تَجُودَ بِالنَّفْسِ، إِلَّا إِذَا كَانَ الْخَبَرُ اسْمًا جَامِدًا وَالْمُبْتَدَأُ مُشْتَقًّا، فَإِنَّ الْقَصْرَ عِنْدَئِذٍ يَكُونُ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِكَ: مَا الْكَاتِبُ إِلَّا زَيْدٌ، وَمَا الْقَائِمُ إِلَّا عَمْرٌو، لِأَنَّكَ أَرَدْتَ الْحُكْمَ عَلَى الْكَاتِبِ بِأَنَّهُ زَيْدٌ، وَعَلَى الْقَائِمِ بِأَنَّهُ عَمْرٌو، فَالْكَاتِبُ مُبْتَدَأٌ خَبَرُهُ زَيْدٌ، وَالْقَائِمُ مُبْتَدَأٌ خَبَرُهُ عَمْرٌو، وَالْقَصْرُ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ.<br>قَصْرُ الْخَبَرِ عَلَى الْمُبْتَدَأِ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِهِ تَعَالَى: مَّا عَلَى الرَّسُولِ إِلَّا الْبَلَاغُ <span class="ref">[المائدة: ٩٩]</span>، وَقَوْلِهِ عَزَّ وَجَلَّ: فَإِنَّمَا عَلَيْكَ الْبَلَاغُ وَعَلَيْنَا الْحِسَابُ <span class="ref">[الرعد: ٤٠]</span>، فَقَدْ قُصِرَتْ مَهَمَّةُ الرَّسُولِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عَلَى الْبَلَاغِ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ، أَمَّا قَوْلُهُ ((وَعَلَيْنَا الْحِسَابُ)) فَهُوَ قَصْرٌ لِلْمُبْتَدَأِ ((الْحِسَابِ)) عَلَى الْخَبَرِ ((عَلَيْنَا))، قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا.<br>وَإِذَا وَقَعَ الْقَصْرُ بَيْنَ أَجْزَاءِ الْجُمْلَةِ الْفِعْلِيَّةِ، فَإِنَّ قَصْرَ الْفِعْلِ عَلَى الْفَاعِلِ يَكُونُ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِكَ: مَا كَتَبَ إِلَّا مُحَمَّدٌ، لَا يَنَالُ الْعُلَا إِلَّا الْمَجِدُّ، وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ وَقَدْ تَقَدَّمَ: ((لَا يَطْرُدُ الْهَمَّ إِلَّا الْهَمُّ مِنْ رَجُلٍ))، وَقَوْلُهُ جَلَّ وَعَلَا: لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، وَقَوْلُهُ تَعَالَى: هَلْ يُهْلَكُ إِلَّا الْقَوْمُ الظَّالِمُونَ <span class="ref">[الأنعام: ٤٧]</span>، وَقَوْلُهُ عَزَّ قَائِلًا: وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ <span class="ref">[آل عمران: ١٣٥]</span>، وَقَوْلُهُ تَعَالَى: إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٨]</span>.<br>وَقَصْرُ الْفِعْلِ عَلَى الْمَفْعُولِ كَقَوْلِكَ: مَا ضَرَبَ مُحَمَّدٌ إِلَّا زَيْدًا، وَإِنَّمَا أَكْرَمَ زَيْدٌ عَمْرًا، وَكَمَا فِي الْآيَاتِ الْكَرِيمَةِ: مَا قُلْتُ لَهُمْ إِلَّا مَا أَمَرْتَنِي بِهِ <span class="ref">[المائدة: ١١٧]</span>، وَإِن يُهْلِكُونَ إِلَّا أَنفُسَهُمْ <span class="ref">[الأنعام: ٢٦]</span>، إِن يَتَّبِعُونَ إِلَّا الظَّنَّ <span class="ref">[النجم: ٢٨]</span>.<br>وَكَقَوْلِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: "فَعَلَيْكُمْ بِالْجَمَاعَةِ فَإِنَّمَا يَأْكُلُ الذِّئْبُ الْقَاصِيَةَ".</p>
+      <p class="id">Dan firman Allah Ta'ala: <em>"Dan kehidupan dunia hanyalah kesenangan yang menipu,"</em> <span class="ref">[QS. Al-Hadid: 20]</span>, dan ucapanmu: "Zaid hanya berada di rumah," "Tidak ada kedermawanan sejati kecuali mengorbankan nyawa," kecuali jika khabar-nya berupa isim jamid (bukan turunan) dan mubtada'-nya berupa musytaq (kata turunan), maka qashr-nya ketika itu adalah qashr sifat atas maushuf, seperti ucapanmu: "Tidak ada penulis prosa kecuali Zaid," "Tidak ada yang berdiri kecuali 'Amr," karena engkau bermaksud menghukumi "penulis prosa" itu adalah Zaid, dan "yang berdiri" itu adalah 'Amr — maka "penulis prosa" adalah mubtada' yang khabar-nya Zaid, dan "yang berdiri" adalah mubtada' yang khabar-nya 'Amr, sehingga qashr-nya adalah qashr sifat atas maushuf.<br>Qashr khabar atas mubtada' termasuk qashr sifat atas maushuf, seperti firman Allah Ta'ala: <em>"Kewajiban Rasul tidak lain hanyalah menyampaikan (amanat Allah),"</em> <span class="ref">[QS. Al-Ma'idah: 99]</span>, dan firman Allah 'Azza wa Jalla: <em>"maka sesungguhnya kewajibanmu hanya menyampaikan (risalah) dan Kewajiban Kamilah membuat perhitungan,"</em> <span class="ref">[QS. Ar-Ra'd: 40]</span>. Tugas Rasul ﷺ dibatasi pada penyampaian — qashr sifat atas maushuf. Adapun ucapan-Nya "dan Kewajiban Kamilah membuat perhitungan" adalah qashr mubtada' "perhitungan" atas khabar "Kewajiban Kami" — qashr maushuf atas sifat secara qashr haqiqi tahqiqi.<br>Jika qashr terjadi di antara bagian-bagian jumlah fi'liyyah (kalimat verbal), maka qashr fi'il atas fa'il termasuk qashr sifat atas maushuf, seperti ucapanmu: "Tidak ada yang menulis kecuali Muhammad," "Tidak akan meraih keluhuran kecuali orang yang bersungguh-sungguh." Termasuk pula perkataan Abu Tammam yang telah disebutkan: "Tidak ada yang mengusir kesedihan kecuali kesedihan dari seorang lelaki..."; dan firman-Nya Yang Mahatinggi dan Mahaagung: <em>"tidak ada yang mengetahuinya selain Dia,"</em> <span class="ref">[QS. Al-An'am: 59]</span>; firman Allah Ta'ala: <em>"Apakah ada yang dibinasakan (Allah) selain orang-orang yang zalim?"</em> <span class="ref">[QS. Al-An'am: 47]</span>; firman-Nya 'Azza qa'ilan: <em>"dan siapa (lagi) yang dapat mengampuni dosa-dosa selain Allah?"</em> <span class="ref">[QS. Ali 'Imran: 135]</span>; dan firman Allah Ta'ala: <em>"Sungguh, di antara hamba-hamba Allah yang takut kepada-Nya hanyalah para ulama,"</em> <span class="ref">[QS. Fathir: 28]</span>.<br>Qashr fi'il atas maf'ul, seperti ucapanmu: "Tidak ada yang dipukul Muhammad kecuali Zaid," "Sesungguhnya Zaid hanya memuliakan 'Amr," dan seperti dalam ayat-ayat yang mulia: <em>"Aku tidak pernah mengatakan kepada mereka kecuali apa yang Engkau perintahkan kepadaku,"</em> <span class="ref">[QS. Al-Ma'idah: 117]</span>; <em>"dan mereka hanya membinasakan diri mereka sendiri,"</em> <span class="ref">[QS. Al-An'am: 26]</span>; <em>"mereka hanya mengikuti dugaan belaka,"</em> <span class="ref">[QS. An-Najm: 28]</span>.<br>Seperti juga sabda Nabi ﷺ: "Maka berpeganglah kalian pada jamaah, karena sesungguhnya serigala hanya memangsa domba yang terpisah (dari kawanan)."</p>
+    </div>
+
+    <h2 class="pasal__judul" id="thuruq-qashr">طُرُقُ الْقَصْرِ</h2>
+    <p class="judul__id">Cara-Cara (Jalan) Qashr</p>
+
+    <div class="ayat">
+      <p class="ar">طُرُقُ الْقَصْرِ الَّتِي اصْطُلِحَ عَلَيْهَا عِنْدَ الْبَلَاغِيِّينَ أَرْبَعَةٌ: الْعَطْفُ بِـ"لَا" وَ"بَلْ" وَ"لَكِنْ"، وَالنَّفْيُ وَالِاسْتِثْنَاءُ، وَ"إِنَّمَا"، وَالتَّقْدِيمُ. وَأَضَافَ بَعْضُهُمْ طَرِيقَيْنِ آخَرَيْنِ، وَهُمَا: تَوَسُّطُ ضَمِيرِ الْفَصْلِ، وَتَعْرِيفُ أَحَدِ رُكْنَيِ الْإِسْنَادِ بِأَلْ. وَقَدِ اشْتُهِرَتْ هَذِهِ الطُّرُقُ عِنْدَ الْبَلَاغِيِّينَ، وَلَكِنَّ إِفَادَةَ الْقَصْرِ لَيْسَتْ مَقْصُورَةً عَلَيْهَا، فَهُنَاكَ طُرُقٌ كَثِيرَةٌ غَيْرُهَا.</p>
+      <p class="id">Cara-cara qashr yang telah disepakati istilahnya di kalangan ahli balaghah ada empat: 'athaf dengan "la", "bal", dan "lakin"; nafi dan istitsna'; "innama"; dan taqdim. Sebagian menambahkan dua cara lagi, yaitu: berselanya dhamir fashl, dan ta'rif salah satu dari dua rukun isnad (musnad atau musnad ilayh) dengan "al". Cara-cara ini telah masyhur di kalangan ahli balaghah, namun faedah qashr tidak terbatas padanya saja — masih ada banyak cara lain selainnya.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 22</span></div>
+
+    <h3 class="bagian__judul" id="athf-la-bal-lakin">١ - الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ:</p>
+      <p class="id">Seperti:</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زَيْدٌ كَرِيمٌ لَا عَمْرٌو</p>
+      <p class="id">"Zaid-lah yang dermawan, bukan 'Amr"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">فُلَانٌ جَوَادٌ لَا بَخِيلٌ</p>
+      <p class="id">"Si Fulan dermawan, bukan pelit"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">وَهُوَ يَدْعُوكَ إِلَى الْخَيْرِ لَا إِلَى الشَّرِّ</p>
+      <p class="id">"Dan ia mengajakmu kepada kebaikan, bukan kepada keburukan"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">خَالِدٌ يَنْصَحُكَ مُخْلِصًا لَا مُرَائِيًا</p>
+      <p class="id">"Khalid menasihatimu dengan tulus, bukan dengan riya"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">جَاءَ خَالِدٌ لَا عَمْرٌو</p>
+      <p class="id">"Khalid yang datang, bukan 'Amr"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَيْسَ حَاتِمٌ بَخِيلًا بَلْ جَوَادٌ</p>
+      <p class="id">"Hatim bukanlah pelit, melainkan dermawan"</p>
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَمْ يَنْصَحْنِي عَمْرٌو وَلَكِنْ صَدِيقُهُ</p>
+      <p class="id">"Bukan 'Amr yang menasihatiku, melainkan sahabatnya"</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَنَجِدُ أَنَّ الْقَصْرَ قَدْ أُفِيدَ بِأَحَدِ الْحُرُوفِ الْمَذْكُورَةِ، وَوَاضِحٌ أَنَّ طَرِيقَ الْعَطْفِ يُصَرَّحُ فِيهِ بِكُلٍّ مِنَ الْمُثْبَتِ وَالْمَنْفِيِّ، أَيِ: الْمَقْصُورِ عَلَيْهِ وَالْمَنْفِيِّ عَنْهُ، وَلِذَا كَانَ أَقْوَى طُرُقِ الْقَصْرِ وَأَكَّدَهَا، لِأَنَّ غَيْرَهُ مِنَ الطُّرُقِ لَا يُصَرَّحُ فِيهَا بِالنَّفْيِ بَلْ يُفْهَمُ ضِمْنًا كَمَا سَتَرَى.<br>وَعَلَى الرَّغْمِ مِنْ أَنَّ فَائِدَةَ التَّأْكِيدِ أَقْوَى فِي هَذَا الطَّرِيقِ، فَإِنَّ مَزِيَّةَ الْإِيجَازِ فِيهِ تَتَضَاءَلُ لِلتَّصْرِيحِ فِيهِ بِالْإِثْبَاتِ وَالنَّفْيِ كَمَا قُلْتُ.<br>وَ"لَا" صَالِحَةٌ لِكُلِّ أَنْوَاعِ الْقَصْرِ، وَالْمَقْصُورُ عَلَيْهِ بِهَا هُوَ الْمُقَابِلُ لِمَا بَعْدَهَا، وَيُشْتَرَطُ لِدَلَالَتِهَا عَلَى الْقَصْرِ أَنْ يَكُونَ الْمَعْطُوفُ بِهَا مُفْرَدًا وَأَلَّا يَتَقَدَّمَهَا نَفْيٌ أَوْ نَهْيٌ وَأَلَّا يَكُونَ مَا بَعْدَهَا دَاخِلًا فِي عُمُومِ مَا قَبْلَهَا، تَقُولُ: زَيْدٌ شَاعِرٌ لَا غَيْرُ، فَتُفِيدُ قَصْرَ زَيْدٍ عَلَى صِفَةِ الشِّعْرِ قَصْرًا حَقِيقِيًّا، وَتَقُولُ: زَيْدٌ شَاعِرٌ لَا كَاتِبٌ، فَتُفِيدُ قَصْرَهُ عَلَى الشِّعْرِ قَصْرًا إِضَافِيًّا.<br>وَتَأَمَّلْ قَوْلَ أَبِي تَمَّامٍ:</p>
+      <p class="id">Kita dapati bahwa qashr telah diberikan faedahnya melalui salah satu huruf yang disebutkan. Jelas bahwa dalam cara 'athaf ini, baik yang ditetapkan maupun yang dinafikan — yaitu maqshur 'alaih dan yang dinafikan — disebutkan secara eksplisit. Oleh karena itu, cara ini adalah cara qashr yang paling kuat dan paling tegas, karena cara-cara lain tidak menyebutkan nafi secara eksplisit, melainkan dipahami secara implisit, sebagaimana akan engkau lihat.<br>Meskipun faedah penegasan lebih kuat dalam cara ini, namun keistimewaan ijaz (keringkasan) di dalamnya berkurang karena adanya penyebutan eksplisit baik penetapan maupun penafian, sebagaimana telah kukatakan.<br>"La" cocok untuk segala jenis qashr, dan maqshur 'alaih dengannya adalah lawan dari apa yang datang setelahnya. Disyaratkan agar "la" menunjukkan qashr: bahwa yang di-'athaf-kan dengannya berupa mufrad (tunggal, bukan jumlah), tidak didahului oleh nafi atau nahi, dan apa yang setelahnya tidak termasuk dalam keumuman apa yang sebelumnya. Engkau berkata: "Zaid penyair, tidak lain," memberi faedah qashr Zaid pada sifat kepenyairan secara qashr haqiqi; dan engkau berkata: "Zaid penyair, bukan penulis prosa," memberi faedah qashr-nya pada kepenyairan secara qashr idhafi.<br>Perhatikan perkataan Abu Tammam:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">بِيضُ الصَّفَائِحِ لَا سُودُ الصَّحَائِفِ</span><span class="shatr">فِي مُتُونِهِنَّ جَلَاءُ الشَّكِّ وَالرِّيَبِ</span></p>
+        <p class="id">Pedang-pedang putih berkilau, bukan lembaran-lembaran hitam (buku ramalan); pada sisi-sisinyalah tersingkap keraguan dan kebimbangan.</p>
+      </div>
+    </div>
+
+    <div class="hal"><span>Hlm. 23</span></div>
+
+    <div class="ayat">
+      <p class="ar">تَجِدْهُ قَدْ قَصَرَ السُّيُوفَ الَّتِي حَقَّقَتِ النَّصْرَ وَفَتَحَتْ عَمُّورِيَّةَ عَلَى كَوْنِهَا بِيضَ الصَّفَائِحِ مُشْرِقَةً لَامِعَةً، وَنَفَاهَا عَنْ كَوْنِهَا سُودَ الصَّحَائِفِ سَوْدَاءَ مُظْلِمَةً، فَالْمَقْصُورُ عَلَيْهِ - كَمَا تَرَى - هُوَ الْمُقَابِلُ لِمَا بَعْدَ "لَا"، ثُمَّ قَصَرَ ((جَلَاءَ الشَّكِّ وَالرِّيَبِ)) عَلَى كَوْنِهِ فِي مُتُونِ هَذِهِ السُّيُوفِ أَيْ جَوَانِبِهِنَّ، وَنَفَاهُ عَنْ كُتُبِ الْمُنَجِّمِينَ، وَطَرِيقُ هَذَا الْقَصْرِ هُوَ التَّقْدِيمُ الْآتِي بَيَانُهُ.<br>وَلَا يَخْفَى عَلَيْكَ مَا وَرَاءَ أُسْلُوبَيِ الْقَصْرِ فِي الْبَيْتِ مِنْ تَوْبِيخٍ وَتَحْقِيرٍ لِهَؤُلَاءِ الْمُنَجِّمِينَ، وَتَفْنِيدٍ لِقَوْلِهِمْ وَمَا تُخْبِرُ بِهِ صُحُفُهُمْ.<br>وَمِثْلُهُ قَوْلُهُ فِي هَذِهِ الْقَصِيدَةِ أَيْضًا، مُحَقِّرًا كُتُبَ الْمُنَجِّمِينَ:</p>
+      <p class="id">Engkau dapati ia membatasi pedang-pedang yang mewujudkan kemenangan dan menaklukkan Amuriyah pada kedudukannya sebagai "bidh ash-shafa'ih" (lempengan putih yang berkilau), dan menafikannya dari kedudukan sebagai "sud ash-shaha'if" (lembaran hitam yang gelap) — maqshur 'alaih, sebagaimana engkau lihat, adalah lawan dari apa yang datang setelah "la". Kemudian ia membatasi "tersingkapnya keraguan dan kebimbangan" pada keberadaannya di sisi-sisi pedang itu, dan menafikannya dari kitab-kitab para ahli nujum (astrolog), dan cara qashr ini adalah taqdim, yang akan dijelaskan nanti.<br>Tidak tersembunyi bagimu apa yang terkandung di balik kedua gaya qashr dalam bait ini, berupa celaan dan penghinaan terhadap para ahli nujum itu, serta pembantahan terhadap perkataan mereka dan apa yang diberitakan oleh kitab-kitab mereka.<br>Seperti itu pula ucapannya dalam qasidah ini juga, merendahkan kitab-kitab para ahli nujum:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَالْعِلْمُ فِي شُهُبِ الْأَرْمَاحِ لَامِعَةً</span><span class="shatr">بَيْنَ الْخَمِيسَيْنِ لَا فِي السَّبْعَةِ الشُّهُبِ</span></p>
+        <p class="id">Dan ilmu (ramalan sejati) ada pada kilauan ujung-ujung tombak yang berkilat di antara dua pasukan, bukan pada tujuh bintang (planet).</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حَيْثُ قَصَرَ الْعِلْمَ عَلَى كَوْنِهِ فِي شُهُبِ الْأَرْمَاحِ، وَنَفَاهُ عَنِ النُّجُومِ الَّتِي يَسْتَنْبِئُهَا الْمُنَجِّمُونَ، أَيْ: عَنِ ((السَّبْعَةِ الشُّهُبِ)).<br>فَإِذَا سُبِقَتْ ((لَا)) بِنَفْيٍ، نَحْوَ: مَا جَاءَ زَيْدٌ وَلَا عَمْرٌو، أَوْ نَهْيٍ، نَحْوَ: لَا تَفْعَلْ هَذَا وَلَا ذَاكَ، أَوْ كَانَ الْمَعْطُوفُ بِهَا جُمْلَةً، نَحْوَ: زَيْدٌ مُقْدَامٌ لَا أَبُوهُ كَرِيمٌ، وَالْفَقِيرُ يُعْطَى مِنَ الصَّدَقَةِ لَا أَحَدَ يُنْكِرُ هَذَا، أَوْ كَانَ مَا بَعْدَهَا دَاخِلًا فِي عُمُومِ مَا قَبْلَهَا، نَحْوَ: عَادَ الْحُجَّاجُ لَا إِبْرَاهِيمُ، وَنَجَحَ الطُّلَّابُ لَا خَالِدٌ، فَعِنْدَئِذٍ لَا تَدُلُّ عَلَى الْقَصْرِ، لِأَنَّهَا لَا تُفِيدُ إِثْبَاتَ أَمْرِ الْآخَرِ وَنَفْيَهُ عَنْ غَيْرِهِ، كَمَا هُوَ وَاضِحٌ فِي الْأَمْثِلَةِ.</p>
+      <p class="id">Ia membatasi ilmu (ramalan sejati) pada keberadaannya di kilauan ujung-ujung tombak, dan menafikannya dari bintang-bintang yang diramalkan para ahli nujum, yaitu "tujuh bintang" (planet).<br>Jika "la" didahului oleh nafi, seperti: "Zaid tidak datang, dan tidak pula 'Amr," atau nahi (larangan), seperti: "Jangan kau lakukan ini, dan jangan pula itu," atau yang di-'athaf-kan dengannya berupa jumlah (kalimat), seperti: "Zaid pemberani, bukan ayahnya yang mulia," "Orang fakir diberi sedekah, tidak seorang pun mengingkari ini," atau apa yang setelahnya termasuk dalam keumuman apa yang sebelumnya, seperti: "Para jamaah haji kembali, bukan Ibrahim," "Para pelajar lulus, bukan Khalid" — maka ketika itu "la" tidak menunjukkan qashr, karena ia tidak memberi faedah penetapan satu hal dan penafiannya dari yang lain, sebagaimana jelas terlihat dalam contoh-contoh tersebut.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَ"بَلْ" تُفِيدُ الْقَصْرَ إِذَا وَلِيَهَا مُفْرَدٌ، وَتَقَدَّمَهَا نَفْيٌ أَوْ نَهْيٌ؛ لِأَنَّهَا فِي هَذِهِ الْحَالِ تُقَرِّرُ حُكْمَ مَا قَبْلَهَا وَتُثْبِتُ ضِدَّهُ لِمَا بَعْدَهَا، فَتَتَضَمَّنُ النَّفْيَ وَالْإِثْبَاتَ، وَذَلِكَ عِمَادُ الْقَصْرِ، فَقَوْلُكَ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، يُفِيدُ نَفْيَ الْمَجِيءِ عَنْ زَيْدٍ وَإِثْبَاتَهُ لِعَمْرٍو، فَالْمَقْصُورُ عَلَيْهِ (بِبَلْ) هُوَ مَا بَعْدَهَا.<br>وَيَرَى الْبَلَاغِيُّونَ أَنَّهَا صَالِحَةٌ لِلْقَصْرِ الْإِضَافِيِّ إِفْرَادًا وَقَلْبًا وَتَعْيِينًا، وَلَا تَصْلُحُ لِلْقَصْرِ الْحَقِيقِيِّ، لِأَنَّ الْمَنْفِيَّ مَعَهَا يَكُونُ أَمْرًا مُحَدَّدًا دَائِمًا، فَإِنْ جَاءَ عَامًّا لَا يَكُونُ مَنْفِيًّا بَلْ يَكُونُ مَسْكُوتًا عَنْهُ، نَحْوَ: مَا جَاءَنِي أَحَدٌ بَلْ زَيْدٌ، فَلَا تُفِيدُ هَذِهِ الْجُمْلَةُ سِوَى إِثْبَاتِ الْمَجِيءِ لِزَيْدٍ، أَمَّا مَا قَبْلَ ((بَلْ)) وَهُوَ "أَحَدٌ" فَمَسْكُوتٌ عَنْهُ، وَالْمَسْكُوتُ عَنْهُ لَا يُوصَفُ بِنَفْيٍ وَلَا إِثْبَاتٍ، بَلْ يَرَى الْجُمْهُورُ أَنَّ مَا قَبْلَ ((بَلْ)) مَسْكُوتٌ عَنْهُ حَتَّى وَلَوْ كَانَ مُحَدَّدًا، نَحْوَ: مَا جَاءَنِي زَيْدٌ بَلْ عَمْرٌو، مَا زَيْدٌ قَائِمًا بَلْ قَاعِدٌ. وَلِذَا فَهِيَ لَا تُفِيدُ قَصْرًا. وَيَرَى بَعْضٌ أَنَّ النَّفْيَ لِمَا قَبْلَ ((بَلْ)) وَلِمَا بَعْدَهَا،</p>
+      <p class="id">"Bal" memberi faedah qashr apabila diikuti oleh mufrad (bukan jumlah) dan didahului oleh nafi atau nahi, karena dalam keadaan ini ia menetapkan hukum apa yang sebelumnya dan menetapkan kebalikannya bagi apa yang setelahnya, sehingga mengandung nafi dan itsbat sekaligus — dan itulah inti qashr. Ucapanmu: "Zaid tidak datang, melainkan 'Amr," memberi faedah menafikan kedatangan dari Zaid dan menetapkannya bagi 'Amr — maqshur 'alaih dengan "bal" adalah apa yang setelahnya.<br>Para ahli balaghah berpendapat bahwa "bal" cocok untuk qashr idhafi — baik ifrad, qalb, maupun ta'yin — namun tidak cocok untuk qashr haqiqi, karena yang dinafikan bersamanya selalu bersifat tertentu. Jika yang dinafikan itu umum, ia tidak dianggap dinafikan, melainkan menjadi "maskut 'anhu" (tidak dibicarakan), seperti: "Tidak seorang pun datang kepadaku, melainkan Zaid" — kalimat ini hanya memberi faedah penetapan kedatangan bagi Zaid, sedangkan apa yang sebelum "bal", yaitu "seseorang", tidak dibicarakan, dan yang tidak dibicarakan tidak disifati dengan nafi maupun itsbat. Bahkan mayoritas berpendapat bahwa apa yang sebelum "bal" tidak dibicarakan, bahkan jika pun tertentu, seperti: "Zaid tidak datang kepadaku, melainkan 'Amr," "Zaid tidak berdiri, melainkan duduk." Oleh karena itu, "bal" tidak memberi faedah qashr (menurut pandangan ini). Sebagian lain berpendapat bahwa nafi itu berlaku bagi apa yang sebelum "bal" dan apa yang setelahnya,</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 24</span></div>
+
+    <div class="ayat">
+      <p class="ar">فَقَوْلُكَ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، يُفِيدُ نَفْيَ الْمَجِيءِ عَنْهُمَا مَعًا، وَلِذَا فَهِيَ لَا تُفِيدُ الْقَصْرَ، لِأَنَّ النَّفْيَ وَالْإِثْبَاتَ غَيْرُ مُحَقَّقٍ. وَالَّذِي أَرَاهُ أَنَّ ((بَلْ)) تُفِيدُ الْقَصْرَ بِأَنْوَاعِهِ: الْإِضَافِيَّ قَلْبًا وَإِفْرَادًا وَتَعْيِينًا، وَالْحَقِيقِيَّ تَحْقِيقِيًّا وَادِّعَائِيًّا، فَهَذَا مَا يُفْهَمُ مِنَ الْأَسَالِيبِ وَالتَّعْبِيرَاتِ، وَلَا يُمْكِنُ دَفْعُهُ وَلَا إِنْكَارُهُ، تَقُولُ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، فَيَكُونُ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا إِضَافِيًّا، وَتَقُولُ: مَا زَيْدٌ قَائِمًا بَلْ قَاعِدٌ، فَيَكُونُ قَصْرَ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَتَقُولُ: مَا جَاءَنِي أَحَدٌ بَلْ عَمْرٌو، فَيَكُونُ قَصْرًا حَقِيقِيًّا، وَلَا أَرَى مَعْنًى لِكَوْنِ مَا قَبْلَهَا مَسْكُوتًا عَنْهُ، وَلَا لِتَوَجُّهِ النَّفْيِ لِمَا بَعْدَهَا.<br>أَمَّا إِذَا وَقَعَتْ ((بَلْ)) بَعْدَ الْإِثْبَاتِ، نَحْوَ: جَاءَ زَيْدٌ بَلْ عَمْرٌو، فَلَا تُفِيدُ الْقَصْرَ؛ لِأَنَّ الْمَعْنَى عَلَى أَنَّكَ نَقَلْتَ الْمَجِيءَ إِلَى التَّابِعِ ((عَمْرٍو)) وَجَعَلْتَ الْمَتْبُوعَ ((زَيْدًا)) فِي حُكْمِ الْمَسْكُوتِ عَنْهُ، فَالْجُمْلَةُ لَا تُفِيدُ سِوَى مُجَرَّدِ إِثْبَاتِ الْمَجِيءِ لِعَمْرٍو، وَعِنْدَئِذٍ فَلَا قَصْرَ، لِأَنَّ الْقَصْرَ نَفْيٌ وَإِثْبَاتٌ كَمَا عَلِمْتَ.<br>وَمِنْ شَوَاهِدِ الْقَصْرِ بِبَلْ قَوْلُ الْإِمَامِ عَلِيٍّ كَرَّمَ اللَّهُ وَجْهَهُ:</p>
+      <p class="id">maka ucapanmu: "Zaid tidak datang, melainkan 'Amr," memberi faedah menafikan kedatangan dari keduanya sekaligus, sehingga tidak memberi faedah qashr, karena nafi dan itsbat-nya tidak jelas. Pendapat yang kupegang adalah bahwa "bal" memberi faedah qashr dengan segala jenisnya: idhafi (qalb, ifrad, ta'yin) dan haqiqi (tahqiqi dan iddi'a'i) — inilah yang dipahami dari gaya dan ungkapan bahasa, dan tidak dapat ditolak atau diingkari. Engkau berkata: "Zaid tidak datang, melainkan 'Amr," ini qashr sifat atas maushuf secara qashr idhafi; engkau berkata: "Zaid tidak berdiri, melainkan duduk," ini qashr maushuf atas sifat secara qashr idhafi; engkau berkata: "Tidak seorang pun datang kepadaku, melainkan 'Amr," ini qashr haqiqi. Aku tidak melihat makna bagi anggapan bahwa apa yang sebelumnya tidak dibicarakan, dan tidak pula bagi pengarahan nafi hanya kepada apa yang setelahnya.<br>Adapun jika "bal" terletak setelah itsbat, seperti: "Zaid datang, bahkan 'Amr (juga)," maka ia tidak memberi faedah qashr, karena maknanya adalah engkau memindahkan kedatangan itu kepada yang mengikuti ('Amr) dan menjadikan yang diikuti (Zaid) berstatus tidak dibicarakan — maka kalimat ini hanya memberi faedah penetapan kedatangan bagi 'Amr semata, dan dalam hal ini tidak ada qashr, karena qashr adalah nafi dan itsbat sekaligus, sebagaimana telah kau ketahui.<br>Di antara contoh qashr dengan "bal" adalah perkataan Imam Ali karramallahu wajhah:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَيْسَ الْيَتِيمُ الَّذِي قَدْ مَاتَ وَالِدُهُ</span><span class="shatr">بَلِ الْيَتِيمُ يَتِيمُ الْعِلْمِ وَالْأَدَبِ</span></p>
+        <p class="id">Bukanlah yatim itu orang yang telah mati ayahnya, tetapi yatim sejati adalah yang yatim dari ilmu dan adab.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ الشَّاعِرُ الْيَتِيمَ عَلَى صِفَةِ الْحِرْمَانِ مِنَ الْعِلْمِ وَالْأَدَبِ، وَنَفَاهُ عَنْ فَقْدَانِ الْوَالِدِ قَبْلَ بُلُوغِ مَبْلَغِ الرِّجَالِ، فَهُوَ قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَأَرَاهُ قَصْرَ قَلْبٍ، لِأَنَّهُ قَلَبَ مَا هُوَ رَاسِخٌ فِي الْأَذْهَانِ مِنْ أَنَّ الْيَتِيمَ هُوَ الَّذِي قَدْ مَاتَ وَالِدُهُ قَبْلَ بُلُوغِ سِنِّ الرِّجَالِ، وَفِيهِ حَثٌّ عَلَى التَّزَوُّدِ بِالْعِلْمِ وَالتَّحَلِّي بِالْأَخْلَاقِ وَالْآدَابِ الرَّفِيعَةِ، فَفَاقِدُهُمَا هُوَ الْيَتِيمُ.<br>وَ"لَكِنْ" تُفِيدُ الْقَصْرَ إِذَا سَبَقَهَا نَفْيٌ أَوْ نَهْيٌ وَوَلِيَهَا مُفْرَدٌ ((كَبَلْ))، مِثْلَ: مَا أَكْرَمَنِي زَيْدٌ لَكِنْ عَمْرٌو، فَقَدْ قَصَرَ الْإِكْرَامَ عَلَى عَمْرٍو وَنَفَاهُ عَنْ زَيْدٍ، فَالْمَقْصُورُ عَلَيْهِ (بِلَكِنْ) هُوَ الْوَاقِعُ بَعْدَهَا مِثْلَ ((بَلْ)) تَمَامًا، وَهِيَ صَالِحَةٌ لِلْقَصْرِ الْإِضَافِيِّ قَلْبًا وَإِفْرَادًا وَتَعْيِينًا حَسَبَ اعْتِقَادِ الْمُخَاطَبِ، وَلِلْقَصْرِ الْحَقِيقِيِّ بِنَوْعَيْهِ، وَيَرَى بَعْضُ الْبَلَاغِيِّينَ أَنَّهَا لَا تَصْلُحُ لِلْقَصْرِ الْحَقِيقِيِّ، لِأَنَّ الْمَنْفِيَّ مَعَهَا دَائِمًا يَكُونُ أَمْرًا خَاصًّا.<br>وَيَشْتَرِطُ بَعْضُهُمْ لِلْقَصْرِ بِلَكِنْ بِالْإِضَافَةِ إِلَى مَا ذُكِرَ أَلَّا تَقْتَرِنَ بِالْوَاوِ، وَهَذَا لَيْسَ بِشَيْءٍ لِأَنَّا نَرَاهَا فِي الْأَسَالِيبِ الْجَيِّدَةِ وَالتَّرَاكِيبِ الْمُمْتَازَةِ قَدِ اقْتَرَنَتْ بِالْوَاوِ وَأَفَادَتِ الْقَصْرَ، انْظُرْ إِلَى قَوْلِهِ تَعَالَى: مَّا كَانَ مُحَمَّدٌ أَبَا أَحَدٍ مِّن رِّجَالِكُمْ وَلَٰكِن رَّسُولَ اللَّهِ وَخَاتَمَ النَّبِيِّينَ <span class="ref">[الأحزاب: ٤٠]</span>، فَقَدْ قُصِرَ النَّبِيُّ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ عَلَى الرِّسَالَةِ وَالْخَتْمِ لَا يَتَجَاوَزُهُمَا إِلَى أُبُوَّةِ زَيْدٍ، قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَ"لَكِنْ" مَقْرُونَةٌ بِالْوَاوِ كَمَا تَرَى.</p>
+      <p class="id">Penyair membatasi yatim pada sifat kehilangan ilmu dan adab, dan menafikannya dari kehilangan ayah sebelum mencapai usia dewasa — maka ini qashr maushuf atas sifat secara qashr idhafi, dan aku memandangnya sebagai qashr qalb, karena ia membalikkan apa yang telah mengakar dalam benak, yaitu bahwa yatim adalah orang yang ayahnya telah meninggal sebelum ia mencapai usia dewasa. Di dalamnya terdapat dorongan untuk membekali diri dengan ilmu dan menghiasi diri dengan akhlak serta adab yang luhur — maka siapa yang kehilangan keduanya, dialah yatim yang sesungguhnya.<br>"Lakin" memberi faedah qashr jika didahului oleh nafi atau nahi dan diikuti oleh mufrad — seperti "bal" — misalnya: "Zaid tidak memuliakanku, melainkan 'Amr," maka ia membatasi pemuliaan pada 'Amr dan menafikannya dari Zaid — maqshur 'alaih dengan "lakin" adalah yang terletak setelahnya, persis seperti "bal". "Lakin" cocok untuk qashr idhafi — qalb, ifrad, maupun ta'yin — sesuai keyakinan lawan bicara, serta untuk qashr haqiqi dengan kedua jenisnya. Sebagian ahli balaghah berpendapat bahwa "lakin" tidak cocok untuk qashr haqiqi, karena yang dinafikan bersamanya selalu bersifat khusus.<br>Sebagian mensyaratkan bagi qashr dengan "lakin", selain yang disebutkan, agar tidak berbarengan dengan huruf wawu — namun ini tidak beralasan, karena kita melihatnya dalam gaya-gaya yang baik dan susunan-susunan yang unggul telah berbarengan dengan wawu dan tetap memberi faedah qashr. Perhatikan firman Allah Ta'ala: <em>"Muhammad bukanlah ayah dari salah seorang lelaki di antara kamu, tetapi dia adalah Rasulullah dan penutup para nabi,"</em> <span class="ref">[QS. Al-Ahzab: 40]</span>. Nabi ﷺ dibatasi pada kerasulan dan penutupan kenabian, tidak melampauinya ke keayahan terhadap Zaid — qashr maushuf atas sifat secara qashr idhafi, dan "lakin" berbarengan dengan wawu, sebagaimana engkau lihat.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="nafi-istitsna">٢ - النَّفْيُ وَالِاسْتِثْنَاءُ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ: مَا الْقَادِمُ إِلَّا زَيْدٌ، وَمَا أَنْتَ إِلَّا مُصِيبٌ، فَتُفِيدُ قَصْرَ الصِّفَةِ عَلَى الْمَوْصُوفِ فِي الْأَوَّلِ، وَالْمَوْصُوفِ عَلَى الصِّفَةِ فِي الثَّانِي، وَيُسْتَخْدَمُ هَذَا الطَّرِيقُ فِيمَا يُنْكِرُهُ الْمُخَاطَبُ وَيَدْفَعُهُ، أَوْ فِيمَا يَجْهَلُهُ وَلَا يَعْرِفُهُ، أَوْ فِيمَا يَشُكُّ فِيهِ وَيَرْتَابُ.<br>تَأَمَّلْ قَوْلَهُ تَعَالَى: وَهُوَ الَّذِي يَتَوَفَّاكُم بِاللَّيْلِ وَيَعْلَمُ مَا جَرَحْتُم بِالنَّهَارِ ثُمَّ يَبْعَثُكُمْ فِيهِ لِيُقْضَىٰ أَجَلٌ مُّسَمًّى ثُمَّ إِلَيْهِ مَرْجِعُكُمْ ثُمَّ يُنَبِّئُكُم بِمَا كُنتُمْ تَعْمَلُونَ <span class="ref">[الأنعام: ٦٠]</span>، تَجِدْهُ قَدْ قَصَرَ الِاتِّبَاعَ عَلَى الْوَحْيِ لَا يَتَجَاوَزُهُ إِلَى غَيْرِهِ، فَهُوَ قَصْرٌ حَقِيقِيٌّ، وَقَدْ أُوثِرَ التَّعْبِيرُ بِالنَّفْيِ وَالِاسْتِثْنَاءِ، إِذِ الْمُخَاطَبُونَ وَهُمُ الْكَفَرَةُ الْمُشْرِكُونَ يُنْكِرُونَ ذَلِكَ وَيَدْفَعُونَهُ، فَهُمْ يَعْتَقِدُونَ أَنَّهُ شَاعِرٌ أَوْ سَاحِرٌ أَوْ كَاهِنٌ، لَا يُقِرُّونَ بِالْوَحْيِ، بَلْ يَقُولُونَ: وَقَالُوا أَسَاطِيرُ الْأَوَّلِينَ اكْتَتَبَهَا فَهِيَ تُتْلَىٰ عَلَيْهِ بُكْرَةً وَأَصِيلًا <span class="ref">[الفرقان: ٥]</span>، فَلَمَّا كَانَ الْمُشْرِكُونَ مُنْكِرِينَ أَنْ يَكُونَ الرَّسُولُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مُتَّبِعًا لِوَحْيٍ يُوحَى إِلَيْهِ وَيَجْحَدُونَ ذَلِكَ وَيَدْفَعُونَهُ، جَاءَ الْقَصْرُ ((بِإِنَّ وَإِلَّا)) لِيُبَدِّدَ هَذَا الْإِنْكَارَ وَيَدْفَعَ ذَلِكَ الْجُحُودَ.</p>
+      <p class="id">Seperti: "Yang datang hanyalah Zaid," "Engkau tidak lain hanyalah orang yang benar" — memberi faedah qashr sifat atas maushuf pada contoh pertama, dan maushuf atas sifat pada contoh kedua. Cara ini digunakan untuk perkara yang diingkari dan ditolak oleh lawan bicara, atau yang tidak diketahuinya, atau yang diragukan dan dicurigainya.<br>Perhatikan firman Allah Ta'ala: <em>"Dan Dialah yang menidurkan kamu di malam hari dan Dia mengetahui apa yang kamu kerjakan di siang hari, kemudian Dia membangunkan kamu pada siang hari untuk disempurnakan umur(mu) yang telah ditentukan, kemudian kepada Allah-lah kamu kembali, lalu Dia memberitahukan kepadamu apa yang dahulu kamu kerjakan,"</em> <span class="ref">[QS. Al-An'am: 60]</span>. Engkau dapati ayat ini (secara implisit mendasari pembahasan tentang wahyu yang diikuti Nabi) membatasi ketaatan pada wahyu, tidak melampauinya ke selainnya — maka ini qashr haqiqi. Dipilihlah ungkapan dengan nafi dan istitsna', karena lawan bicara, yaitu orang-orang kafir musyrik, mengingkari dan menolak hal itu — mereka meyakini bahwa beliau adalah penyair, atau tukang sihir, atau dukun, tidak mengakui adanya wahyu, bahkan mereka berkata: <em>"Dan mereka berkata, '(Al-Qur'an itu) dongeng orang-orang dahulu yang dimintanya untuk dituliskan, maka dibacakanlah kepadanya setiap pagi dan petang,'"</em> <span class="ref">[QS. Al-Furqan: 5]</span>. Karena orang-orang musyrik mengingkari bahwa Rasul ﷺ mengikuti wahyu yang diwahyukan kepadanya, serta menolak dan menampiknya, maka datanglah qashr dengan "in" dan "illa" untuk membubarkan pengingkaran itu dan menolak penampikan tersebut.</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 25</span></div>
+
+    <h3 class="bagian__judul" id="innama-qashr">٣ - إِنَّمَا</h3>
+
+    <div class="ayat">
+      <p class="ar">وَدَلَالَةُ "إِنَّمَا" عَلَى الْقَصْرِ دَلَالَةٌ وَضْعِيَّةٌ، وَعَلَى الرَّغْمِ مِنْ ذَلِكَ لَمْ يَفُتِ الْبَلَاغِيِّينَ أَنْ يَتَحَدَّثُوا عَنْ وَجْهِ دَلَالَتِهَا عَلَى الْقَصْرِ، فَقَدْ ذَكَرُوا أَنَّهَا تَدُلُّ عَلَى الْقَصْرِ لِتَضَمُّنِهَا مَعْنَى ((مَا وَإِلَّا)) وَاسْتَدَلُّوا عَلَى ذَلِكَ بِوُجُوهٍ.<br>قَوْلُهُ تَعَالَى: قَالَ إِنَّمَا الْعِلْمُ عِندَ اللَّهِ <span class="ref">[الأحقاف: ٢٣]</span>، وَقَوْلُهُ عَزَّ وَجَلَّ: قَالَ إِنَّمَا يَأْتِيكُم بِهِ اللَّهُ إِن شَاءَ <span class="ref">[هود: ٣٣]</span>، وَقَوْلُهُ جَلَّ وَعَلَا: إِنَّمَا عِلْمُهَا عِندَ رَبِّي <span class="ref">[الأعراف: ١٨٧]</span>، فَإِنَّهُ إِنَّمَا يَحْصُلُ مُطَابَقَةُ الْجَوَابِ إِذَا كَانَتْ "إِنَّمَا" لِلْحَصْرِ لِيَكُونَ مَعْنَاهُ: لَا آتِيكُمْ بِهِ، إِنَّمَا يَأْتِي بِهِ اللَّهُ، وَلَا أَعْلَمُهَا، إِنَّمَا يَعْلَمُهَا اللَّهُ.<br>الْمَقْصُورُ عَلَيْهِ ((بِإِنَّمَا)) هُوَ الْمُؤَخَّرُ دَائِمًا، تَقُولُ فِي قَصْرِ الْعِلْمِ عَلَى مُحَمَّدٍ: إِنَّمَا الْعَالِمُ مُحَمَّدٌ، وَفِي قَصْرِهِ عَلَى الْعِلْمِ: إِنَّمَا مُحَمَّدٌ عَالِمٌ، وَتَأْتِي "إِنَّمَا" لِإِفَادَةِ كُلِّ أَنْوَاعِ الْقَصْرِ؛ فَهِيَ تُفِيدُ الْقَصْرَ الْحَقِيقِيَّ بِقِسْمَيْهِ التَّحْقِيقِيِّ وَالِادِّعَائِيِّ، كَمَا تُفِيدُ الْقَصْرَ الْإِضَافِيَّ بِأَنْوَاعِهِ الثَّلَاثَةِ: الْقَلْبِ وَالْإِفْرَادِ وَالتَّعْيِينِ. قَوْلُهُ تَعَالَى: إِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاءَ فِي الْخَمْرِ وَالْمَيْسِرِ وَيَصُدَّكُمْ عَن ذِكْرِ اللَّهِ وَعَنِ الصَّلَاةِ فَهَلْ أَنتُم مُّنتَهُونَ <span class="ref">[المائدة: ٩١]</span>، تَجِدْ إِرَادَةَ الشَّيْطَانِ قَدْ</p>
+      <p class="id">Penunjukan "innama" atas qashr adalah penunjukan yang bersifat baku (wadh'iyyah), dan meski demikian, para ahli balaghah tidak lupa membahas sisi penunjukannya atas qashr. Mereka menyebutkan bahwa "innama" menunjukkan qashr karena mengandung makna "ma dan illa", dan mereka membuktikan hal itu dengan beberapa argumen.<br>Firman Allah Ta'ala: <em>"Dia berkata, 'Sesungguhnya ilmu (tentang itu) hanya ada pada Allah,'"</em> <span class="ref">[QS. Al-Ahqaf: 23]</span>, firman Allah 'Azza wa Jalla: <em>"Dia (Nuh) berkata, 'Hanya Allah yang akan mendatangkan azab itu kepadamu, jika Dia menghendaki,'"</em> <span class="ref">[QS. Hud: 33]</span>, firman-Nya Yang Mahatinggi dan Mahaagung: <em>"sesungguhnya pengetahuan tentang itu hanya ada pada Tuhanku,"</em> <span class="ref">[QS. Al-A'raf: 187]</span>. Kesesuaian jawaban (dalam konteks ayat-ayat itu) baru terjadi jika "innama" berfungsi sebagai hashr (pembatasan), sehingga maknanya: "Aku tidak mendatangkannya kepadamu, hanya Allah yang mendatangkannya," dan "Aku tidak mengetahuinya, hanya Allah yang mengetahuinya."<br>Maqshur 'alaih dengan "innama" selalu berada di posisi akhir. Engkau katakan dalam qashr ilmu pada Muhammad: "innamal-'alimu Muhammadun" (sesungguhnya yang berilmu hanyalah Muhammad); dan dalam qashr-nya pada ilmu: "innama Muhammadun 'alimun" (sesungguhnya Muhammad hanyalah seorang yang berilmu). "Innama" datang untuk memberi faedah segala jenis qashr: ia memberi faedah qashr haqiqi dengan kedua jenisnya — tahqiqi dan iddi'a'i — sebagaimana juga memberi faedah qashr idhafi dengan ketiga jenisnya — qalb, ifrad, dan ta'yin. Firman Allah Ta'ala: <em>"Sesungguhnya setan itu bermaksud menimbulkan permusuhan dan kebencian di antara kamu melalui khamar dan judi, dan menghalang-halangi kamu dari mengingat Allah dan melaksanakan salat; maka tidakkah kamu mau berhenti?"</em> <span class="ref">[QS. Al-Ma'idah: 91]</span>. Engkau dapati bahwa keinginan setan telah</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 26</span></div>
+
+    <div class="ayat">
+      <p class="ar">قُصِرَتْ ((بِإِنَّمَا)) عَلَى إِيقَاعِ الْعَدَاوَةِ وَالْبَغْضَاءِ بَيْنَ الْمُسْلِمِينَ فِي الْخَمْرِ وَالْمَيْسِرِ وَصَدِّهِمْ عَنِ الذِّكْرِ وَالصَّلَاةِ، فَهُوَ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا حَقِيقِيًّا غَيْرَ تَحْقِيقِيٍّ، لِأَنَّهُ مَبْنِيٌّ عَلَى الْمُبَالَغَةِ، إِذِ الشَّيْطَانُ يَسْلُكُ كُلَّ طَرِيقٍ لِكَيْ يُبْعِدَ الْعَبْدَ عَنْ طَاعَةِ رَبِّهِ، وَلَكِنْ لَمَّا كَانَتْ هَذِهِ الْأُمُورُ، وَهِيَ الْخَمْرُ وَالْمَيْسِرُ وَالصَّلَاةُ وَالذِّكْرُ، مِنَ الْخُطُورَةِ بِمَكَانٍ، فَقَدْ قُصِرَتْ إِرَادَةُ الشَّيْطَانِ عَلَيْهَا، أَيْ عَلَى مَا يَكُونُ فِيهَا مِنْ إِيقَاعِ الْعَدَاوَةِ بَيْنَهُمْ فِي الْخَمْرِ وَالْمَيْسِرِ، وَالصَّدِّ عَنِ الذِّكْرِ وَالصَّلَاةِ، وَكَأَنَّ مَا عَدَاهَا لَا يُعْتَدُّ بِهِ إِذَا مَا قُورِنَ بِهَا.</p>
+      <p class="id">dibatasi dengan "innama" pada menimbulkan permusuhan dan kebencian di antara kaum muslimin melalui khamar dan judi, serta menghalangi mereka dari dzikir dan salat — maka ini qashr sifat atas maushuf secara qashr haqiqi ghair tahqiqi, karena dibangun atas hiperbola, sebab setan sesungguhnya menempuh segala cara untuk menjauhkan hamba dari ketaatan kepada Tuhannya. Akan tetapi, karena perkara-perkara ini — khamar, judi, salat, dan dzikir — sangat penting kedudukannya, maka keinginan setan dibatasi padanya, yaitu pada apa yang terkandung di dalamnya berupa penimbulan permusuhan di antara mereka melalui khamar dan judi, serta penghalangan dari dzikir dan salat — seolah-olah selain itu tidak diperhitungkan jika dibandingkan dengannya.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="taqdim-qashr">٤ - التَّقْدِيمُ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ: مَا أَنَا قُلْتُ هَذَا الشِّعْرَ، فَقَدْ دَلَّ تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ وَإِيلَاؤُهُ أَدَاةَ النَّفْيِ عَلَى الْقَصْرِ، أَيْ: نَفْيِ الشِّعْرِ عَنِ الْمُسْنَدِ إِلَيْهِ الْمُقَدَّمِ وَإِثْبَاتِهِ لِغَيْرِهِ.<br>وَمِنْ ذَلِكَ قَوْلُ الْمُتَنَبِّي:</p>
+      <p class="id">Seperti: "Bukan aku yang mengucapkan syair ini" — pendahuluan musnad ilayh dan posisinya tepat setelah alat nafi menunjukkan qashr, yaitu: menafikan kepenyairan dari musnad ilayh yang didahulukan dan menetapkannya bagi yang lain.<br>Termasuk dalam hal ini perkataan Al-Mutanabbi:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمَا أَنَا أَسْقَمْتُ جِسْمِي بِهِ</span><span class="shatr">وَلَا أَنَا أَضْرَمْتُ فِي الْقَلْبِ نَارًا</span></p>
+        <p class="id">Bukan aku yang membuat tubuhku sakit karenanya, dan bukan pula aku yang menyalakan api dalam hati.</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ أَيْضًا:</p>
+      <p class="id">Dan perkataannya juga:</p>
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمَا أَنَا وَحْدِي قُلْتُ ذَا الشِّعْرَ كُلَّهُ</span><span class="shatr">وَلَكِنْ لِشِعْرِي فِيكَ مِنْ نَفْسِهِ شِعْرُ</span></p>
+        <p class="id">Dan bukan aku sendiri yang mengucapkan seluruh syair ini, tetapi syairku tentangmu memiliki syairnya sendiri (yang seakan tercipta sendiri).</p>
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَتَقْدِيمُ الْمُسْنَدِ إِلَيْهِ عَلَى الْخَبَرِ الْفِعْلِيِّ بَعْدَ أَدَاةِ النَّفْيِ، يُفِيدُ غَالِبًا الِاخْتِصَاصَ، وَلِذَا كَانَ مِنَ الْخَطَإِ أَنْ نَقُولَ: مَا أَنَا قُلْتُ هَذَا وَلَا قَالَهُ أَحَدٌ غَيْرِي، أَوْ تَقُولَ: مَا أَنَا قُلْتُ شِعْرًا، أَوْ مَا أَنَا أَكْرَمْتُ إِلَّا زَيْدًا.<br>وَمِنْ تَقْدِيمِ الْمُسْنَدِ الَّذِي أَفَادَ تَقْدِيمُهُ الْقَصْرَ قَوْلُهُ جَلَّ وَعَلَا: لَكُمْ دِينُكُمْ وَلِيَ دِينِ <span class="ref">[الكافرون: ٦]</span>، وَقَوْلُهُ تَعَالَى: لَا فِيهَا غَوْلٌ وَلَا هُمْ عَنْهَا يُنزَفُونَ <span class="ref">[الصافات: ٤٧]</span>، وَقَوْلُهُ عَزَّ وَجَلَّ: وَلِلَّهِ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ <span class="ref">[آل عمران: ١٨٩]</span>.</p>
+      <p class="id">Pendahuluan musnad ilayh atas khabar fi'liyyah setelah alat nafi, umumnya memberi faedah ikhtisas (pengkhususan). Oleh karena itu, akan menjadi kesalahan jika kita berkata: "Bukan aku yang mengucapkan ini, dan tidak pula orang lain selainku yang mengucapkannya," atau engkau berkata: "Bukan aku yang mengucapkan syair," atau "Bukan aku yang memuliakan kecuali Zaid" (karena struktur ini merusak makna qashr yang dimaksud).<br>Di antara pendahuluan musnad yang memberi faedah qashr adalah firman-Nya Yang Mahatinggi dan Mahaagung: <em>"Untukmu agamamu, dan untukkulah agamaku,"</em> <span class="ref">[QS. Al-Kafirun: 6]</span>, dan firman Allah Ta'ala: <em>"Tidak ada dalam khamar itu unsur yang memabukkan dan merusak akal, dan mereka tidak mabuk karenanya,"</em> <span class="ref">[QS. Ash-Shaffat: 47]</span>, dan firman Allah 'Azza wa Jalla: <em>"Dan milik Allah-lah kerajaan langit dan bumi,"</em> <span class="ref">[QS. Ali 'Imran: 189]</span>.</p>
+    </div>
+
+    <h3 class="bagian__judul" id="dhamir-fashl">٥ - ضَمِيرُ الْفَصْلِ</h3>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْ طُرُقِ الْقَصْرِ الَّتِي أَقَرَّهَا بَعْضُ الْبَلَاغِيِّينَ ضَمِيرُ الْفَصْلِ، وَهُوَ أَنْ يُعَقَّبَ الْمُسْنَدُ إِلَيْهِ بِضَمِيرٍ يُسَمَّى ضَمِيرَ الْفَصْلِ لِتَخْصِيصِهِ بِالْمُسْنَدِ، بِمَعْنَى جَعْلِ الْمُسْنَدِ مَقْصُورًا عَلَى الْمُسْنَدِ إِلَيْهِ، كَقَوْلِكَ: زُهَيْرٌ هُوَ الشَّاعِرُ، فَفِيهِ قَصْرٌ لِصِفَةِ الشِّعْرِ عَلَى زُهَيْرٍ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ، وَطَرِيقُ الْقَصْرِ هُوَ الْفَصْلُ بِالضَّمِيرِ، وَهَذَا الضَّمِيرُ حَرْفٌ بِاتِّفَاقِ جُمْهُورِ النُّحَاةِ وَلَيْسَ اسْمًا، وَالْقَائِلُونَ بِأَنَّهُ اسْمٌ أَكْثَرُهُمْ عَلَى أَنَّهُ لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ، وَهُوَ يَقَعُ إِمَّا بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ كَمَا فِي الْمِثَالِ الْمَذْكُورِ أَوْ بَيْنَ مَا أَصْلُهُمَا الْمُبْتَدَأُ وَالْخَبَرُ، كَقَوْلِكَ: صَارَ امْرُؤُ الْقَيْسِ هُوَ الشَّاعِرَ،</p>
+      <p class="id">Di antara cara-cara qashr yang diakui sebagian ahli balaghah adalah dhamir fashl (kata ganti pemisah), yaitu musnad ilayh diikuti oleh sebuah dhamir yang disebut dhamir fashl, untuk mengkhususkannya dengan musnad — dalam arti menjadikan musnad terbatas pada musnad ilayh. Seperti ucapanmu: "Zuhair-lah sang penyair," di dalamnya terkandung qashr sifat kepenyairan pada Zuhair, tidak melampauinya kepada yang lain — cara qashr-nya adalah pemisahan dengan dhamir ini. Dhamir ini, menurut kesepakatan mayoritas ahli nahwu, berstatus huruf, bukan isim; adapun yang berpendapat ia isim, sebagian besar dari mereka berpandangan bahwa ia tidak memiliki kedudukan i'rab (mahall). Ia terletak baik di antara mubtada' dan khabar, seperti dalam contoh yang disebutkan, atau di antara dua unsur yang pada asalnya adalah mubtada' dan khabar, seperti ucapanmu: "Imru'ul Qais telah menjadi sang penyair,"</p>
+    </div>
+
+    <div class="hal"><span>Hlm. 27</span></div>
+
+    <div class="ayat">
+      <p class="ar">وَعَلِمْتُ أَنَّ حَاتِمًا هُوَ الْكَرِيمَ. وَالْمَقْصُورُ عَلَيْهِ بِهَذَا الطَّرِيقِ هُوَ الْمُبْتَدَأُ وَالْمَقْصُورُ هُوَ الْخَبَرُ. وَتُلَاحِظُ فِي الْأَمْثِلَةِ الْمَذْكُورَةِ أَنَّ ضَمِيرَ الْفَصْلِ قَدْ أَفَادَ بِالْإِضَافَةِ إِلَى الْقَصْرِ: تَأْكِيدَ نِسْبَةِ الْخَبَرِ إِلَى الْمُبْتَدَأِ، وَتِلْكَ الْإِفَادَةُ تَرَاهَا وَرَاءَ كُلِّ أُسْلُوبٍ مِنْ أَسَالِيبِ الْقَصْرِ، كَمَا أَفَادَ أَيْضًا الدَّلَالَةَ عَلَى أَنَّ مَا بَعْدَ الْمُبْتَدَإِ خَبَرٌ لَهُ وَلَيْسَ صِفَةً، لِأَنَّ قَوْلَكَ: زُهَيْرٌ الشَّاعِرُ، فِيهِ إِيهَامٌ أَنَّ "الشَّاعِرَ" صِفَةٌ لِزُهَيْرٍ، فَإِذَا قُلْتَ: زُهَيْرٌ هُوَ الشَّاعِرُ، انْدَفَعَ هَذَا التَّوَهُّمُ، وَأَصْبَحَتِ الْجُمْلَةُ دَالَّةً دَلَالَةً بَيِّنَةً عَلَى أَنَّ "الشَّاعِرَ" خَبَرٌ لِزُهَيْرٍ لَا صِفَةٌ.<br>وَمِنْ شَوَاهِدِ الْقَصْرِ بِضَمِيرِ الْفَصْلِ قَوْلُهُ: فَلَمَّا تَوَفَّيْتَنِي كُنتَ أَنتَ الرَّقِيبَ عَلَيْهِمْ وَأَنتَ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ <span class="ref">[المائدة: ١١٧]</span>، التَّوَفِّيَةُ فِي الْآيَةِ بِمَعْنَى الرَّفْعِ، فَقَدْ جَاءَتِ التَّوَفِّيَةُ فِي كِتَابِ اللَّهِ عَلَى ثَلَاثَةِ أَوْجُهٍ: بِمَعْنَى الْمَوْتِ، كَمَا فِي قَوْلِهِ عَزَّ وَجَلَّ: اللَّهُ يَتَوَفَّى الْأَنفُسَ حِينَ مَوْتِهَا وَالَّتِي لَمْ تَمُتْ فِي مَنَامِهَا فَيُمْسِكُ الَّتِي قَضَىٰ عَلَيْهَا الْمَوْتَ وَيُرْسِلُ الْأُخْرَىٰ إِلَىٰ أَجَلٍ مُّسَمًّى إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ <span class="ref">[الزمر: ٤٢]</span>، وَبِمَعْنَى النَّوْمِ كَمَا فِي قَوْلِهِ تَعَالَى: وَهُوَ الَّذِي يَتَوَفَّاكُم بِاللَّيْلِ وَيَعْلَمُ مَا جَرَحْتُم بِالنَّهَارِ <span class="ref">[الأنعام: ٦٠]</span>، وَبِمَعْنَى الرَّفْعِ كَمَا فِي قَوْلِهِ جَلَّ وَعَلَا: فَلَمَّا تَوَفَّيْتَنِي. وَفِي الْآيَةِ الْكَرِيمَةِ قَصْرٌ لِصِفَةِ الْمُرَاقَبَةِ بِمَعْنَى: الْمُرَاعَاةِ وَالْحِفْظِ وَالْعِلْمِ عَلَى مَوْصُوفٍ وَهُوَ اللَّهُ تَعَالَى، وَطَرِيقُ الْقَصْرِ هُوَ ضَمِيرُ الْفَصْلِ: ((أَنْتَ))، وَلَوْ لَمْ يَكُنْ ضَمِيرُ الْفَصْلِ فِي الْآيَةِ الْكَرِيمَةِ لِلدَّلَالَةِ عَلَى الْقَصْرِ لَمَا حَسُنَ، لِأَنَّ اللَّهَ لَمْ يَزَلْ رَقِيبًا عَلَيْهِمْ فِي جَمِيعِ الْأَحْوَالِ، وَإِنَّمَا الَّذِي حَصَلَ بِتَوَفِّيهِ عِيسَى عَلَيْهِ السَّلَامُ - وَقَدْ كَانَ شَهِيدًا عَلَيْهِمْ يُرَاقِبُهُمْ وَيَأْمُرُهُمْ بِعِبَادَةِ اللَّهِ - أَنَّهُ لَمْ يَبْقَ لَهُمْ رَقِيبٌ غَيْرُ اللَّهِ تَعَالَى، وَلِذَا يَنْبَغِي أَنْ يَتَعَيَّنَ إِعْرَابُهُ فَصْلًا دَالًّا عَلَى الْقَصْرِ.</p>
+      <p class="id">"dan aku tahu bahwa Hatim-lah sang dermawan." Maqshur 'alaih dengan cara ini adalah mubtada', dan maqshur adalah khabar. Engkau perhatikan dalam contoh-contoh yang disebutkan bahwa dhamir fashl memberi faedah, selain qashr, juga: penegasan penisbatan khabar kepada mubtada' — faedah ini selalu engkau temukan di balik setiap gaya qashr. Dhamir fashl juga memberi faedah menunjukkan bahwa apa yang setelah mubtada' adalah khabar baginya, bukan sifat. Karena ucapanmu: "Zuhair sang penyair," mengandung kerancuan seolah "sang penyair" adalah sifat bagi Zuhair; namun jika engkau berkata: "Zuhair-lah sang penyair," kerancuan ini tertolak, dan kalimat itu menjadi jelas menunjukkan bahwa "sang penyair" adalah khabar bagi Zuhair, bukan sifat.<br>Di antara contoh qashr dengan dhamir fashl adalah firman-Nya: <em>"Maka setelah Engkau mewafatkan aku, Engkaulah yang mengawasi mereka. Dan Engkau Maha Menyaksikan atas segala sesuatu,"</em> <span class="ref">[QS. Al-Ma'idah: 117]</span>. "At-tawaffi" dalam ayat ini bermakna pengangkatan (ke langit). "At-tawaffi" dalam Kitabullah muncul dalam tiga makna: bermakna kematian, seperti dalam firman Allah 'Azza wa Jalla: <em>"Allah memegang nyawa (seseorang) pada saat kematiannya dan (memegang) nyawa (seseorang) yang belum mati pada waktu tidurnya; maka Dia tahanlah nyawa (orang) yang telah Dia tetapkan kematiannya dan Dia melepaskan nyawa yang lain sampai waktu yang ditetapkan. Sungguh, pada yang demikian itu terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir,"</em> <span class="ref">[QS. Az-Zumar: 42]</span>; bermakna tidur, seperti dalam firman Allah Ta'ala: <em>"Dan Dialah yang menidurkan kamu di malam hari dan Dia mengetahui apa yang kamu kerjakan di siang hari,"</em> <span class="ref">[QS. Al-An'am: 60]</span>; dan bermakna pengangkatan, seperti dalam firman-Nya Yang Mahatinggi dan Mahaagung: "Maka setelah Engkau mewafatkan (mengangkat) aku..." Dalam ayat yang mulia ini terdapat qashr sifat pengawasan — dalam arti pemeliharaan, penjagaan, dan pengetahuan — pada maushuf, yaitu Allah Ta'ala, dan cara qashr-nya adalah dhamir fashl "anta" (Engkau). Seandainya dhamir fashl dalam ayat ini tidak menunjukkan qashr, niscaya ungkapan itu tidak akan tepat, karena Allah senantiasa mengawasi mereka dalam segala keadaan. Yang sebenarnya terjadi dengan diangkatnya Isa 'alaihissalam — yang sebelumnya menjadi saksi atas mereka, mengawasi dan memerintahkan mereka untuk beribadah kepada Allah — adalah bahwa tidak ada lagi pengawas bagi mereka selain Allah Ta'ala. Oleh karena itu, selayaknya i'rab-nya ditetapkan sebagai fashl yang menunjukkan qashr.</p>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْ ذَلِكَ قَوْلُهُ تَعَالَى: لَا يَسْتَوِي أَصْحَابُ النَّارِ وَأَصْحَابُ الْجَنَّةِ أَصْحَابُ الْجَنَّةِ هُمُ الْفَائِزُونَ <span class="ref">[الحشر: ٢٠]</span>، فَقَدْ قُصِرَتْ صِفَةُ الْفَوْزِ عَلَى أَصْحَابِ الْجَنَّةِ قَصْرًا إِضَافِيًّا، فَهِيَ لَا تَتَعَدَّاهُمْ إِلَى أَصْحَابِ النَّارِ، وَطَرِيقُ الْقَصْرِ هُوَ ضَمِيرُ الْفَصْلِ، وَذَلِكَ لِأَنَّ الْآيَةَ الْكَرِيمَةَ تُقَرِّرُ عَدَمَ الِاسْتِوَاءِ بَيْنَ أَهْلِ الْجَنَّةِ وَأَهْلِ النَّارِ، فَأَهْلُ الْجَنَّةِ هُمُ الْفَائِزُونَ بِكُلِّ مَطْلُوبٍ، النَّاجُونَ مِنْ كُلِّ مَكْرُوهٍ، وَهَذَا لَا يَحْسُنُ إِلَّا بِأَنْ يَكُونَ ضَمِيرُ الْفَصْلِ ((هُمْ)) لِلِاخْتِصَاصِ، وَلَا يَتَأَتَّى إِعْرَابُهُ مُبْتَدَأً ثَانِيًا وَلَا تَأْكِيدًا لِلْجُمْلَةِ. وَمِثْلُهُ قَوْلُهُ تَعَالَى: إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ <span class="ref">[الذاريات: ٥٨]</span>، حَيْثُ قُصِرَتْ صِفَةُ الرِّزْقِ عَلَى اللَّهِ تَعَالَى قَصْرًا حَقِيقِيًّا، وَقَوْلُهُ تَعَالَى: إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ <span class="ref">[الكوثر: ٣]</span>، قُصِرَتْ صِفَةُ ((الْأَبْتَرِ)) عَلَى ((شَانِئِكَ))، وَالْمَعْنَى: إِنَّ عَدُوَّ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ هُوَ الْمَحْرُومُ مِنْ رَحْمَةِ اللَّهِ، الْمَقْطُوعُ مِنْ كُلِّ خَيْرٍ. وَيُمْكِنُ أَنْ يَكُونَ طَرِيقُ الْقَصْرِ فِي الْآيَاتِ الْكَرِيمَةِ تَعْرِيفَ الْمُسْنَدِ بِأَلِ الِاسْتِغْرَاقِيَّةِ، وَعِنْدَئِذٍ يَكُونُ ضَمِيرُ الْفَصْلِ لِتَأْكِيدِ الْقَصْرِ.</p>
+      <p class="id">Termasuk dalam hal ini firman Allah Ta'ala: <em>"Tidaklah sama penghuni neraka dengan penghuni surga; penghuni surga itulah orang-orang yang memperoleh kemenangan,"</em> <span class="ref">[QS. Al-Hasyr: 20]</span>. Sifat kemenangan dibatasi pada penghuni surga secara qashr idhafi, tidak melampaui mereka kepada penghuni neraka, dan cara qashr-nya adalah dhamir fashl. Hal ini karena ayat yang mulia ini menetapkan ketidaksetaraan antara penghuni surga dan penghuni neraka — penghuni surgalah yang memperoleh segala yang diharapkan, selamat dari segala yang tidak disukai. Ini hanya tepat jika dhamir fashl "hum" (mereka) berfungsi untuk ikhtisas (pengkhususan), dan tidak mungkin diperlakukan sebagai mubtada' kedua atau sebagai penegas kalimat semata. Seperti itu pula firman Allah Ta'ala: <em>"Sungguh, Allah, Dialah Pemberi rezeki Yang mempunyai kekuatan lagi sangat kukuh,"</em> <span class="ref">[QS. Adz-Dzariyat: 58]</span>, di mana sifat memberi rezeki dibatasi pada Allah Ta'ala secara qashr haqiqi; dan firman Allah Ta'ala: <em>"Sesungguhnya orang-orang yang membencimu dialah yang terputus,"</em> <span class="ref">[QS. Al-Kautsar: 3]</span>, sifat "al-abtar" (yang terputus) dibatasi pada "pembencimu" — maknanya: sesungguhnya musuh Rasulullah ﷺ-lah yang terhalang dari rahmat Allah, yang terputus dari segala kebaikan. Cara qashr dalam ayat-ayat yang mulia ini dapat pula berupa ta'rif musnad dengan "al" istighraqiyyah (yang mencakup keseluruhan), dan dalam hal ini dhamir fashl berfungsi untuk menegaskan qashr tersebut.</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
