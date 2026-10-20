@@ -251,9 +251,20 @@
   }
   .daftar-isi__sublist a:hover { color: var(--id-color); }
 
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
 </style>
 </head>
 <body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
 
 <section class="isi">
   <div class="isi__wrap">
@@ -1629,5 +1640,67 @@
   </div>
 </section>
 
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+    pageEl.style.display = curPage ? '' : 'none';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 </body>
 </html>

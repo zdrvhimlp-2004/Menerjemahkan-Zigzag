@@ -71,14 +71,132 @@
 
   .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
   .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(640px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
 </style>
 </head>
 <body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
 
 <section class="isi">
   <div class="isi__wrap">
     <h1 class="isi__judul">مُلَخَّصُ الْبَلَاغَةِ (عِلْمُ الْمَعَانِي)</h1>
     <p class="isi__ket">Ringkasan Balaghah ('Ilm al-Ma'ani) untuk Tingkat 5 Jurusan Bahasa Arab &middot; Ma'had al-'Ulum al-Islamiyyah wa al-'Arabiyyah Jakarta &middot; Di bawah bimbingan Dr. Muhammad bin Ahmad Al-Khudhair &middot; Semester 2, Tahun Akademik 1447 H &middot; Terjemah biasa</p>
+
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#adhrab-khabar">أَضْرُبُ الْخَبَرِ</a><div class="toc__id">Tiga jenis khabar: ibtidai, thalabi, dan inkari <span class="toc__meta">&middot; Hlm. 3</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</a><div class="toc__id">Mengeluarkan kalam dari tuntutan lahiriahnya (dalam khabar) <span class="toc__meta">&middot; Hlm. 3</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Pembuangan musnad ilayh karena sebab-sebab balaghah tertentu <span class="toc__meta">&middot; Hlm. 4</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#asrar-hadzf">الْأَسْرَارُ الْبَلَاغِيَّةُ عِنْدَ الْحَذْفِ</a><div class="toc__id">Rahasia-rahasia balaghah di balik pembuangan musnad ilayh <span class="toc__meta">&middot; Hlm. 4</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Penyebutan musnad ilayh, kebalikan dari penghapusannya tadi <span class="toc__meta">&middot; Hlm. 5</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#tarif-musnad-ilayh">تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Ta'rif atau pema'rifahan musnad ilayh secara umum <span class="toc__meta">&middot; Hlm. 5</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#tarif-dhamair">التَّعْرِيفُ بِالضَّمَائِرِ</a><div class="toc__id">Pema'rifahan musnad ilayh melalui dhamir kata ganti <span class="toc__meta">&middot; Hlm. 5</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-ilmiyyah">التَّعْرِيفُ بِالْعَلَمِيَّةِ</a><div class="toc__id">Pema'rifahan musnad ilayh melalui nama diri ('alamiyyah) <span class="toc__meta">&middot; Hlm. 6</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-maushul">التَّعْرِيفُ بِأَسْمَاءِ الْمَوْصُولَةِ</a><div class="toc__id">Pema'rifahan musnad ilayh dengan isim maushul penyambung <span class="toc__meta">&middot; Hlm. 6</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-isyarah">التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ</a><div class="toc__id">Pema'rifahan musnad ilayh dengan isim isyarah penunjuk <span class="toc__meta">&middot; Hlm. 6</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-alif-lam">التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ</a><div class="toc__id">Pema'rifahan musnad ilayh dengan alif dan lam <span class="toc__meta">&middot; Hlm. 7</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</a><div class="toc__id">Pema'rifahan musnad ilayh lewat idhafah atau penyandaran <span class="toc__meta">&middot; Hlm. 7</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#tankir-musnad-ilayh">تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ</a><div class="toc__id">Tankir atau penakriran musnad ilayh dan sebab-sebabnya <span class="toc__meta">&middot; Hlm. 8</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#tawabi-musnad-ilayh">التَّوَابِعُ الْمُسْنَدَ إِلَيْهِ</a><div class="toc__id">Taba' atau kata-kata yang mengikuti musnad ilayh <span class="toc__meta">&middot; Hlm. 8</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#tawabi-wasf">الْوَصْفُ</a><div class="toc__id">Sifat (na'at) sebagai salah satu taba' musnad <span class="toc__meta">&middot; Hlm. 8</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-taukid">التَّوْكِيدُ</a><div class="toc__id">Tawkid (penguat) sebagai salah satu taba' musnad <span class="toc__meta">&middot; Hlm. 9</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-musnad-ilayh-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</a><div class="toc__id">Mendahulukan musnad ilayh dalam kalimat nafi (negasi) <span class="toc__meta">&middot; Hlm. 9</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-musnad-ilayh-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</a><div class="toc__id">Mendahulukan musnad ilayh dalam kalimat itsbat (positif) <span class="toc__meta">&middot; Hlm. 9</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</a><div class="toc__id">Mendahulukan kata nakirah (isim indefinit) dalam kalimat <span class="toc__meta">&middot; Hlm. 10</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</a><div class="toc__id">Mendahulukan kata "mitsl" dan "ghair" dalam kalimat <span class="toc__meta">&middot; Hlm. 10</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#iirad-musnad-filan-isman">إِيرَادُ الْمُسْنَدِ فِعْلًا أَوِ اسْمًا</a><div class="toc__id">Mendatangkan musnad sebagai bentuk fi'il atau isim <span class="toc__meta">&middot; Hlm. 10</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#tankir-tarif-musnad-ringkasan">تَنْكِيرُ مُسْنَدٍ وَتَعْرِيفُهُ</a><div class="toc__id">Tankir (penakriran) dan ta'rif (pemastian) pada musnad <span class="toc__meta">&middot; Hlm. 10</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-maful">تَقْدِيمُ الْمَفْعُولِ وَنَحْوِهِ مِنَ الْمُتَعَلِّقَاتِ عَلَى الْعَامِلِ</a><div class="toc__id">Mendahulukan maf'ul dan muta'alliqat lain atas 'amil <span class="toc__meta">&middot; Hlm. 11</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#khuruj-muqtadha-zhahir">خُرُوجُ الْكَلَامِ عَنِ الْمُقْتَضَى الظَّاهِرِ</a><div class="toc__id">Keluarnya kalam dari tuntutan yang tampak lahiriah <span class="toc__meta">&middot; Hlm. 11</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#wadh-mudhmar">وَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ</a><div class="toc__id">Meletakkan isim dhamir pada posisi isim zhahir <span class="toc__meta">&middot; Hlm. 11</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#wadh-muzhhar">وَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ</a><div class="toc__id">Meletakkan isim zhahir pada posisi isim dhamir <span class="toc__meta">&middot; Hlm. 11</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#shuwar-iltifat">صُوَرُ الِالْتِفَاتِ وَمَا يَتَمَكَّنُ وَرَاءَهَا مِنْ أَسْرَارٍ بَلَاغِيَّةٍ</a><div class="toc__id">Bentuk-bentuk iltifat dan rahasia balaghah di baliknya <span class="toc__meta">&middot; Hlm. 12</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#uslub-hakim">أُسْلُوبُ الْحَكِيمِ</a><div class="toc__id">Uslub al-hakim, gaya bijak menjawab pertanyaan orang <span class="toc__meta">&middot; Hlm. 13</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#asalib-qashr">أَسَالِيبُ الْقَصْرِ</a><div class="toc__id">Gaya-gaya qashr atau pembatasan dalam ilmu ma'ani <span class="toc__meta">&middot; Hlm. 13</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-idhafi">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</a><div class="toc__id">Pembagian qashr: haqiqi (sejati) dan idhafi (relatif) <span class="toc__meta">&middot; Hlm. 16</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-tahqiqi">الْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ</a><div class="toc__id">Qashr haqiqi tahqiqi: pembatasan yang benar-benar nyata <span class="toc__meta">&middot; Hlm. 16</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-iddiai">الْقَصْرُ الْحَقِيقِيُّ الِادِّعَائِيُّ</a><div class="toc__id">Qashr haqiqi iddi'ai: pembatasan menurut klaim pembicara <span class="toc__meta">&middot; Hlm. 17</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-idhafi">الْقَصْرُ الْإِضَافِيُّ</a><div class="toc__id">Qashr idhafi: pembatasan relatif terhadap sesuatu tertentu <span class="toc__meta">&middot; Hlm. 18</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-qalb">قَصْرُ الْقَلْبِ</a><div class="toc__id">Qashr qalb: membalik anggapan yang salah pendengar <span class="toc__meta">&middot; Hlm. 18</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-ifrad">قَصْرُ الْإِفْرَادِ</a><div class="toc__id">Qashr ifrad: menolak sekutu bagi sesuatu tertentu <span class="toc__meta">&middot; Hlm. 18</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-tayin">قَصْرُ التَّعْيِينِ</a><div class="toc__id">Qashr ta'yin: menentukan pilihan di antara dua <span class="toc__meta">&middot; Hlm. 19</span></div></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#qashr-sifah-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</a><div class="toc__id">Qashr sifat atas maushuf, dan sebaliknya juga <span class="toc__meta">&middot; Hlm. 19</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#qashr-sifah-ala-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ</a><div class="toc__id">Qashr sifat atas maushuf: membatasi sifat tersebut <span class="toc__meta">&middot; Hlm. 20</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-mawshuf-ala-sifah">قَصْرُ الْمَوْصُوفِ عَلَى الصِّفَةِ</a><div class="toc__id">Qashr maushuf atas sifat: membatasi maushuf tersebut <span class="toc__meta">&middot; Hlm. 21</span></div></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#thuruq-qashr">طُرُقُ الْقَصْرِ</a><div class="toc__id">Cara-cara atau jalan untuk membentuk kalimat qashr <span class="toc__meta">&middot; Hlm. 22</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#athf-la-bal-lakin">١ - الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</a><div class="toc__id">Cara pertama: 'athf dengan laa, bal, lakin <span class="toc__meta">&middot; Hlm. 23</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#nafi-istitsna">٢ - النَّفْيُ وَالِاسْتِثْنَاءُ</a><div class="toc__id">Cara kedua: nafi (negasi) disertai istitsna (pengecualian) <span class="toc__meta">&middot; Hlm. 25</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#innama-qashr">٣ - إِنَّمَا</a><div class="toc__id">Cara ketiga: menggunakan kata "innama" untuk qashr <span class="toc__meta">&middot; Hlm. 26</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-qashr">٤ - التَّقْدِيمُ</a><div class="toc__id">Cara keempat: taqdim atau mendahulukan bagian kalimat <span class="toc__meta">&middot; Hlm. 27</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#dhamir-fashl">٥ - ضَمِيرُ الْفَصْلِ</a><div class="toc__id">Cara kelima: menggunakan dhamir fashl pemisah kalimat <span class="toc__meta">&middot; Hlm. 27</span></div></li>
+            </ul>
+          </li>
+        </ol>
+      </nav>
+    </dialog>
 
     <h2 class="pasal__judul" id="adhrab-khabar">أَضْرُبُ الْخَبَرِ</h2>
     <p class="judul__id">Jenis-Jenis Khabar (Kalimat Berita)</p>
@@ -1448,5 +1566,98 @@
   </div>
 </section>
 
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+    pageEl.style.display = curPage ? '' : 'none';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 </body>
 </html>
