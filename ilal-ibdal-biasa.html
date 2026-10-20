@@ -72,6 +72,31 @@
 
   .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
   .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
 </style>
 </head>
 <body>
@@ -81,7 +106,49 @@
     <h1 class="isi__judul">الْإِعْلَالُ وَالْإِبْدَالُ</h1>
     <p class="isi__ket">I'lal wal Ibdal (Perubahan dan Penggantian Huruf dalam Sharf/Morfologi Arab) &middot; Juz 1, Hlm. 121&ndash;138 &middot; Terjemah biasa</p>
 
-    <div class="ayat">
+    <dialog id="fihris-modal" class="modal" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#pendahuluan">تَعْرِيفُ الْإِعْلَالِ وَالْإِبْدَالِ</a><div class="toc__id">Definisi dan tiga kategori huruf dalam ibdal <span class="toc__meta">&middot; Hlm. 121</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-hamzah">أ) الْإِعْلَالُ فِي الْهَمْزَةِ</a><div class="toc__id">Perubahan ya dan waw menjadi hamzah (i'lal) <span class="toc__meta">&middot; Hlm. 124</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#ya-waw-jadi-hamzah-wajib">١ - تُقْلَبُ يَاءً وَوَاوًا هَمْزَةً وُجُوبًا</a><div class="toc__id">Empat posisi wajib mengubah ya-waw jadi hamzah <span class="toc__meta">&middot; Hlm. 124</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#waw-jadi-hamzah-jawaz">تُبْدَلُ الْوَاوُ هَمْزَةً جَوَازًا</a><div class="toc__id">Dua posisi boleh mengubah waw menjadi hamzah <span class="toc__meta">&middot; Hlm. 126</span></div></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#aks-ma-taqaddam">ب) فَصْلٌ فِي عَكْسِ مَا تَقَدَّمَ</a><div class="toc__id">Kebalikannya: hamzah berubah menjadi ya atau waw <span class="toc__meta">&middot; Hlm. 126</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#bab-jama-mafail">بَابُ الْجَمْعِ عَلَى زِنَةِ مَفَاعِلَ</a><div class="toc__id">Hamzah jadi ya-waw pada jamak wazan mafa'il <span class="toc__meta">&middot; Hlm. 126</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#bab-dua-hamzah">بَابُ الْهَمْزَتَيْنِ الْمُلْتَقِيَتَيْنِ</a><div class="toc__id">Hamzah jadi ya-waw saat dua hamzah bertemu <span class="toc__meta">&middot; Hlm. 127</span></div></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-huruf-illah">الْإِعْلَالُ فِي حُرُوفِ الْعِلَّةِ</a><div class="toc__id">I'lal pada huruf lemah: alif, waw, ya <span class="toc__meta">&middot; Hlm. 129</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#alif-waw-jadi-ya">أ) قَلْبُ الْأَلِفِ وَالْوَاوِ يَاءً</a><div class="toc__id">Alif dan waw diubah menjadi huruf ya <span class="toc__meta">&middot; Hlm. 129</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#waw-jadi-ya-10">تُقْلَبُ الْوَاوُ يَاءً فِي عَشَرَةِ مَوَاضِعَ</a><div class="toc__id">Sepuluh posisi waw diubah menjadi huruf ya <span class="toc__meta">&middot; Hlm. 129</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#alif-ya-jadi-waw">ب) قَلْبُ الْأَلِفِ وَالْيَاءِ وَاوًا</a><div class="toc__id">Alif dan ya diubah menjadi huruf waw <span class="toc__meta">&middot; Hlm. 132</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#waw-ya-jadi-alif">ج) قَلْبُ الْوَاوِ وَالْيَاءِ أَلِفًا</a><div class="toc__id">Sepuluh syarat lengkap waw-ya diubah jadi alif <span class="toc__meta">&middot; Hlm. 133</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#fa-iftial">فَصْلٌ فِي فَاءِ الِافْتِعَالِ وَتَائِهِ</a><div class="toc__id">Perubahan ta' ifti'al tergantung huruf fa' fi'ilnya <span class="toc__meta">&middot; Hlm. 134</span></div></li>
+          <li><a class="toc__ar" lang="ar" href="#ibdal-mim">فَصْلُ إِبْدَالِ الْمِيمِ مِنَ الْوَاوِ وَالنُّونِ</a><div class="toc__id">Mim menggantikan waw pada "fam" dan nun <span class="toc__meta">&middot; Hlm. 136</span></div></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-naql">الْإِعْلَالُ بِالنَّقْلِ</a><div class="toc__id">Memindahkan baris huruf lemah ke huruf sebelumnya <span class="toc__meta">&middot; Hlm. 137</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#naql-4-mawadhi">يَنْحَصِرُ فِي أَرْبَعَةِ مَوَاضِعَ</a><div class="toc__id">Empat posisi tempat berlakunya i'lal dengan naql <span class="toc__meta">&middot; Hlm. 137</span></div></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#ilal-hadzf">الْإِعْلَالُ بِالْحَذْفِ</a><div class="toc__id">Penghapusan huruf: qiyasi dan ghairu qiyasi (acak) <span class="toc__meta">&middot; Hlm. 138</span></div></li>
+        </ol>
+      </nav>
+    </dialog>
+
+    <div class="ayat" id="pendahuluan">
       <p class="ar"><strong>الْإِعْلَالُ:</strong> هُوَ تَغْيِيرُ حَرْفِ الْعِلَّةِ لِلتَّخْفِيفِ، بِقَلْبِهِ، أَوْ إِسْكَانِهِ، أَوْ حَذْفِهِ؛ فَأَنْوَاعُهُ ثَلَاثَةٌ: الْقَلْبُ، وَالْإِسْكَانُ، وَالْحَذْفُ.</p>
       <p class="id"><strong>I'lal:</strong> adalah perubahan huruf 'illah (huruf lemah: alif, waw, ya) untuk meringankan pengucapan, dengan cara mengubahnya (qalb), mematikannya (iskan), atau membuangnya (hadzf). Jenisnya ada tiga: qalb, iskan, dan hadzf.</p>
     </div>
@@ -885,5 +952,36 @@
   </div>
 </section>
 
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
 </body>
 </html>
