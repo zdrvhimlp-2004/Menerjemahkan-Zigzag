@@ -220,6 +220,7 @@
     font-size: .8rem;
   }
   .item .end svg { width: 18px; height: 18px; vertical-align: middle; }
+  .item .end .count { margin-right: .35rem; font-size: .85rem; font-weight: 500; color: var(--accent); }
 
   .item.folder .ico { background: rgba(124, 196, 255, .22); }
   .item.soon {
@@ -645,7 +646,10 @@ function buildItem(n, path, showPath) {
 
   const end = el('span', 'end');
   if (!folder && !soon) end.innerHTML = SVG.ext;
-  if (folder) end.insertAdjacentHTML('beforeend', ' ' + SVG.chev);
+  if (folder) {
+    end.appendChild(span('count', String(n.c.length))); // jumlah kartu langsung di dalam folder
+    end.insertAdjacentHTML('beforeend', SVG.chev);
+  }
   if (soon) end.appendChild(span('badge', 'Segera'));
   root.appendChild(end);
   return root;
