@@ -557,7 +557,10 @@ const isFolder = (n) => Array.isArray(n.c);
   })(DATA[0].c);
 
   const semFolders = Object.keys(BY_SEMESTER).map((s) => f('Semester ' + s,
-    BY_SEMESTER[s].map((name) => byName[name] || l(name, s))));
+    BY_SEMESTER[s].map((name) => {
+      const n = byName[name] || l(name, s);
+      return Object.assign({}, n, { name: n.key || n.name }); // tanpa (م١): sudah jelas dari foldernya
+    })));
   const root = f('Data Lughoh per Semester', semFolders);
   root.noDeep = true; // isi tidak ikut diindeks pencarian (duplikat dari Data Lughoh)
   DATA.splice(1, 0, root);
