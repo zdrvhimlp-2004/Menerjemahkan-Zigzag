@@ -1,0 +1,30 @@
+name: Auto merge ke main
+
+# Setiap push ke branch ccr-* langsung digabung ke main.
+on:
+  push:
+    branches:
+      - 'ccr-**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-merge-main
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gabungkan ke main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git merge --no-ff "origin/${GITHUB_REF_NAME}" -m "Merge branch '${GITHUB_REF_NAME}' ke main"
+          git push origin main
