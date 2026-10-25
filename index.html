@@ -369,7 +369,9 @@
    Isi folder bebas campur folder & link. Tinggal tambah/ubah di sini.
    ============================================================ */
 const f = (name, c = []) => ({ name, c });
-const l = (name, sem) => ({ name, sem, c: [] }); // mata kuliah = folder (isi menyusul)
+const arDigits = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+// mata kuliah = folder (isi menyusul); semester digabung ke nama: النحو (1) (م١)
+const l = (name, sem) => ({ name: name + ' (م' + arDigits(sem) + ')', key: name, sem, c: [] });
 const link = (name, sem, href) => ({ name, sem, href }); // untuk nanti, kalau sudah ada file
 
 const DATA = [
@@ -551,11 +553,11 @@ const isFolder = (n) => Array.isArray(n.c);
 (function buildBySemester() {
   const byName = {};
   (function walk(nodes) {
-    nodes.forEach((n) => { byName[n.name] = byName[n.name] || n; if (isFolder(n)) walk(n.c); });
+    nodes.forEach((n) => { const k = n.key || n.name; byName[k] = byName[k] || n; if (isFolder(n)) walk(n.c); });
   })(DATA[0].c);
 
   const semFolders = Object.keys(BY_SEMESTER).map((s) => f('Semester ' + s,
-    BY_SEMESTER[s].map((name) => Object.assign({}, byName[name] || l(name, s), { sem: undefined }))));
+    BY_SEMESTER[s].map((name) => byName[name] || l(name, s))));
   const root = f('Data Lughoh per Semester', semFolders);
   root.noDeep = true; // isi tidak ikut diindeks pencarian (duplikat dari Data Lughoh)
   DATA.splice(1, 0, root);
@@ -639,8 +641,7 @@ function buildItem(n, path, showPath) {
   root.appendChild(txt);
 
   const end = el('span', 'end');
-  if (n.sem) end.appendChild(span('badge', 'Smt ' + n.sem));
-  else if (!folder && !soon) end.innerHTML = SVG.ext;
+  if (!folder && !soon) end.innerHTML = SVG.ext;
   if (folder) end.insertAdjacentHTML('beforeend', ' ' + SVG.chev);
   if (soon) end.appendChild(span('badge', 'Segera'));
   root.appendChild(end);
