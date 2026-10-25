@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menerjemahkan Zigzag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #081327;
+    --bg-glow: #0f2a52;
+    --card: #11223f;
+    --card-hover: #17305a;
+    --border: #25416d;
+    --text: #eaf3ff;
+    --muted: #8fb0d9;
+    --accent: #7cc4ff;
+    --accent-strong: #4da3f5;
+    --on-accent: #06182f;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 480px at 50% -120px, var(--bg-glow), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+
+  .ar { font-family: 'Amiri', 'Traditional Arabic', serif; direction: rtl; unicode-bidi: isolate; }
+
+  .page {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1rem 1rem 3rem;
+  }
+
+  /* ====== TOPBAR: search + login ====== */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: .6rem;
+    padding: .75rem 0;
+    background: linear-gradient(var(--bg) 70%, transparent);
+  }
+
+  .search {
+    flex: 1;
+    position: relative;
+  }
+  .search svg {
+    position: absolute;
+    left: .9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    stroke: var(--muted);
+    pointer-events: none;
+  }
+  .search input {
+    width: 100%;
+    height: 44px;
+    padding: 0 2.4rem 0 2.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    font: inherit;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .search input::placeholder { color: var(--muted); }
+  .search input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(124, 196, 255, .2);
+  }
+  .search .clear {
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    display: none;
+    place-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  .search .clear:hover { color: var(--text); background: var(--card-hover); }
+  .search.has-text .clear { display: grid; }
+
+  .btn-login {
+    flex: none;
+    height: 44px;
+    padding: 0 1.1rem;
+    background: var(--accent);
+    color: var(--on-accent);
+    border: 0;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+  }
+  .btn-login:hover { background: #a2d6ff; }
+  .btn-login:active { transform: scale(.97); }
+
+  /* ====== PROFIL ====== */
+  .profile {
+    text-align: center;
+    padding: 1.4rem 0 1.2rem;
+  }
+  .profile .logo {
+    width: 76px; height: 76px;
+    margin: 0 auto .8rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--accent), var(--accent-strong));
+    color: var(--on-accent);
+    font-family: 'Amiri', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(77, 163, 245, .35);
+  }
+  .profile h1 { font-size: 1.25rem; font-weight: 600; }
+  .profile p { color: var(--muted); font-size: .85rem; margin-top: .15rem; }
+
+  /* ====== BREADCRUMB ====== */
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem;
+    margin-bottom: .9rem;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+  .crumbs button {
+    background: none;
+    border: 0;
+    color: var(--accent);
+    font: inherit;
+    cursor: pointer;
+    padding: .15rem .25rem;
+    border-radius: 6px;
+  }
+  .crumbs button:hover { background: var(--card); }
+  .crumbs .cur { color: var(--text); padding: .15rem .25rem; }
+  .crumbs .sep { opacity: .5; }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .section-title .ar { font-size: 1.5rem; display: block; line-height: 1.5; }
+  .section-title .id { font-size: 1.05rem; font-weight: 600; }
+  .section-title small { display: block; color: var(--muted); font-size: .8rem; }
+
+  /* ====== DAFTAR LINK / FOLDER ====== */
+  .list { display: flex; flex-direction: column; gap: .65rem; }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    width: 100%;
+    min-height: 62px;
+    padding: .7rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: var(--text);
+    text-decoration: none;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, transform .12s;
+  }
+  .item:hover, .item:focus-visible {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .item .ico {
+    flex: none;
+    width: 38px; height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(124, 196, 255, .14);
+    color: var(--accent);
+  }
+  .item .ico svg { width: 20px; height: 20px; }
+  .item .txt { flex: 1; min-width: 0; }
+  .item .t-ar { display: block; font-size: 1.3rem; line-height: 1.5; }
+  .item .t-id { display: block; font-weight: 500; font-size: .95rem; }
+  .item .sub { display: block; color: var(--muted); font-size: .75rem; }
+  .item .end {
+    flex: none;
+    min-width: 38px;
+    text-align: right;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+  .item .end svg { width: 18px; height: 18px; vertical-align: middle; }
+
+  .item.folder .ico { background: rgba(124, 196, 255, .22); }
+  .item.soon {
+    cursor: default;
+    opacity: .6;
+  }
+  .item.soon:hover { transform: none; border-color: var(--border); background: var(--card); }
+  .badge {
+    display: inline-block;
+    padding: .1rem .55rem;
+    border-radius: 999px;
+    background: rgba(124, 196, 255, .16);
+    color: var(--accent);
+    font-size: .7rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 2rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    font-size: .9rem;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: .75rem;
+    margin-top: 2rem;
+    opacity: .8;
+  }
+
+  /* ====== MODAL LOGIN ====== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    place-items: center;
+    padding: 1rem;
+    background: rgba(3, 9, 20, .7);
+    backdrop-filter: blur(4px);
+  }
+  .overlay.open { display: grid; }
+  .modal {
+    width: 100%;
+    max-width: 360px;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  }
+  .modal h2 { font-size: 1.1rem; margin-bottom: .2rem; }
+  .modal p.lead { color: var(--muted); font-size: .8rem; margin-bottom: 1rem; }
+  .modal label { display: block; font-size: .78rem; color: var(--muted); margin: .7rem 0 .25rem; }
+  .modal input {
+    width: 100%;
+    height: 42px;
+    padding: 0 .9rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font: inherit;
+    outline: none;
+  }
+  .modal input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124, 196, 255, .2); }
+  .modal .actions { display: flex; gap: .6rem; margin-top: 1.2rem; }
+  .modal .actions button {
+    flex: 1;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .modal .actions button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+  }
+  .modal .msg { min-height: 1.2rem; margin-top: .8rem; font-size: .78rem; color: var(--accent); text-align: center; }
+
+  @media (max-width: 420px) {
+    .item .t-ar { font-size: 1.2rem; }
+    .btn-login { padding: 0 .9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Paling atas: search + login -->
+  <header class="topbar">
+    <div class="search" id="searchBox">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari">
+      <button class="clear" id="clearQ" aria-label="Hapus pencarian">&times;</button>
+    </div>
+    <button class="btn-login" id="btnLogin">Login</button>
+  </header>
+
+  <!-- Linktree -->
+  <section class="profile">
+    <div class="logo ar">ز</div>
+    <h1>Menerjemahkan Zigzag</h1>
+    <p>Kumpulan terjemah &amp; materi perkuliahan</p>
+  </section>
+
+  <nav class="crumbs" id="crumbs" aria-label="Lokasi"></nav>
+  <div class="section-title" id="sectionTitle"></div>
+  <main class="list" id="list"></main>
+
+  <footer>&copy; Menerjemahkan Zigzag</footer>
+</div>
+
+<!-- Login -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <form class="modal" id="loginForm">
+    <h2 id="loginTitle">Masuk</h2>
+    <p class="lead">Login untuk mengakses materi pribadi.</p>
+    <label for="user">Email / Username</label>
+    <input id="user" type="text" autocomplete="username" required>
+    <label for="pass">Password</label>
+    <input id="pass" type="password" autocomplete="current-password" required>
+    <div class="msg" id="loginMsg"></div>
+    <div class="actions">
+      <button type="button" id="cancelLogin">Batal</button>
+      <button type="submit" class="primary">Masuk</button>
+    </div>
+  </form>
+</div>
+
+<script>
+/* ============================================================
+   DATA
+   f(ar, id, children, desc)  -> folder
+   l(ar, semester, href)      -> link (href kosong = belum ada, tampil "Segera")
+   Isi folder bebas campur folder & link. Tinggal tambah/ubah di sini.
+   ============================================================ */
+const f = (ar, id, c = [], desc = '') => ({ ar, id, c, desc });
+const l = (ar, sem, href = '') => ({ ar, sem, href });
+
+const DATA = [
+  f('', 'Data Lughoh', [
+    f('النحو & التطبيقات', 'Nahwu & Aplikasi', [
+      l('مقرر النحو (1)', 1),
+      l('مقرر النحو (2)', 2),
+      l('مقرر النحو (3)', 3),
+      l('مقرر النحو (5)', 5),
+      l('مقرر النحو (7)', 6),
+      l('مقرر تطبيقات نحوية', 6),
+    ]),
+    f('الصرف', 'Saraf', [
+      l('مقرر الصرف (1)', 2),
+      l('مقرر صرف (2)', 3),
+      l('مقرر صرف (3)', 4),
+      l('مقرر صرف (4)', 5),
+    ]),
+    f('البلاغة', 'Balaghah', [
+      l('مقرر البلاغة (1)', 1),
+      l('مقرر البلاغة (2)', 2),
+      l('مقرر البلاغة (3)', 3),
+      l('مقرر البلاغة (4)', 4),
+      l('مقرر البلاغة (5)', 5, 'ringkasan-balaghah-m5-biasa.html'),
+      l('مقرر البلاغة (7)', 6),
+      l('مقرر البلاغة القرآنية والنبوية', 6),
+    ]),
+    f('الأدب & التاريخ الأدبي', 'Sastra & Sejarah Sastra', [
+      l('مقرر تاريخ الأدب العربي (1)', 1),
+      l('مقرر تاريخ الأدب العربي (2)', 2),
+      l('مقرر تاريخ الأدب العربي (3)', 3),
+      l('مقرر تاريخ الأدب العربي (4)', 4),
+      l('مقرر تاريخ الأدب العربي (5)', 5),
+      l('مقرر تاريخ الأدب العربي (7)', 6),
+      l('مقرر النصوص الأدبية (1)', 2),
+      l('مقرر النصوص الأدبية (2)', 3),
+      l('مقرر النصوص الأدبية (4)', 5),
+      l('مقرر النصوص الأدبية (6)', 6),
+    ]),
+    f('النقد الأدبي & النظرية', 'Kritik Sastra & Teori', [
+      l('مقرر النقد الأدبي (1)', 4),
+      l('مقرر النقد الأدبي (2)', 5),
+      l('مقرر النقد الأدبي (3)', 6),
+      l('مقرر المناهج النقدية', 6),
+      l('مقرر نظرية الأدب', 6),
+    ]),
+    f('علم اللغة', 'Linguistik / Linguistik Terapan', [
+      l('مقرر علم اللغة (1)', 3),
+      l('مقرر علم اللغة (2)', 4),
+      l('مقرر علم اللغة (3)', 5, 'ilmu-lughah-3-biasa.html'),
+      l('مقرر علم اللغة (5)', 6),
+      l('مقرر علم اللغة (6)', 6),
+    ]),
+    f('المهارات & العروض', 'Mahārāt (Skill Bahasa) & Arud', [
+      l('مقرر مهارات الكتابة (1)', 1),
+      l('مقرر مهارات الكتابة (2)', 2),
+      l('مقرر مهارات الكتابة (3)', 4),
+      l('مقرر مهارات القراءة والاستماع (1)', 1),
+      l('مقرر مهارات القراءة (2)', 2),
+      l('مقرر مهارات القراءة (3)', 4),
+      l('مقرر مهارات التحدث', 3),
+      l('مقرر العروض (1)', 5),
+      l('مقرر الترجمة', 6),
+    ]),
+    f('القرآن الكريم', "Al-Qur'an", [
+      l('مقرر القرآن الكريم (1)', 1),
+      l('مقرر القرآن الكريم (2)', 2),
+      l('مقرر القرآن الكريم (3)', 3),
+      l('مقرر القرآن الكريم (4)', 4),
+      l('مقرر القرآن الكريم (5)', 5),
+      l('مقرر القرآن الكريم (7)', 6),
+      l('مقرر القرآن الكريم (8)', 6),
+    ]),
+    f('', 'Studi Islam, Hukum & Kewarganegaraan', [
+      // item boleh berupa folder: التوحيد berisi 4 bab
+      Object.assign(f('مقرر التوحيد (1)', '', [
+        l('الباب الأول: التوحيد للصف الأول الثانوي', 1, 'tauhid-bab1-biasa.html'),
+        l('الباب الثاني: براهين وحدانية الله', 1, 'tauhid-bab2-biasa.html'),
+        l('الباب الثالث: شمول العبادة', 1, 'tauhid-bab3-biasa.html'),
+        l('الباب الرابع: في الإيمان بأسماء الله وصفاته', 1, 'tauhid-bab4-biasa.html'),
+      ]), { sem: 1 }),
+      l('مقرر فقه (203)', 2),
+      l('مقرر السيرة النبوية', 2),
+      l('مقرر الثقافة الإسلامية', 4),
+      l('مقرر التربية الوطنية الإندونيسية', 1),
+      l('مقرر اللغة الإندونيسية', 1),
+    ]),
+    f('', 'Keguruan, Metode Pengajaran & Riset', [
+      l('مقرر طرق تدريس اللغة العربية للناطقين بغيرها', 6),
+      l('مقرر الإدارة والتخطيط التربوي', 6),
+      l('مقرر التدريب العملي التربوي', 6),
+      l('مقرر البحث والمصادر', 6),
+    ]),
+  ], 'Materi bahasa Arab per mata kuliah'),
+
+  f('', 'Data Thawalib MPI', [], 'Segera diisi'),
+  f('', 'My Apps', [], 'Segera diisi'),
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+const listEl = $('list'), crumbsEl = $('crumbs'), titleEl = $('sectionTitle');
+const qEl = $('q'), searchBox = $('searchBox');
+
+const isFolder = (n) => Array.isArray(n.c);
+const SVG = {
+  folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
+  ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+};
+
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+function span(cls, text) { const s = el('span', cls); s.textContent = text; return s; }
+
+function countLinks(n) {
+  if (!isFolder(n)) return n.href ? 1 : 0;
+  return n.c.reduce((a, x) => a + countLinks(x), 0);
+}
+function countAll(n) {
+  if (!isFolder(n)) return 1;
+  return n.c.reduce((a, x) => a + countAll(x), 0);
+}
+
+function nodeAt(path) {
+  let node = { c: DATA }, trail = [];
+  for (const i of path) {
+    node = node.c && node.c[i];
+    if (!node) return null;
+    trail.push(node);
+  }
+  return { node, trail };
+}
+
+function go(path) {
+  location.hash = path.length ? '#/' + path.join('/') : '#/';
+}
+function currentPath() {
+  const m = location.hash.replace(/^#\/?/, '');
+  return m ? m.split('/').map(Number).filter((n) => Number.isInteger(n) && n >= 0) : [];
+}
+
+function buildItem(n, path, showPath) {
+  const folder = isFolder(n);
+  const soon = !folder && !n.href;
+  const root = el(folder ? 'button' : soon ? 'div' : 'a', 'item' + (folder ? ' folder' : '') + (soon ? ' soon' : ''));
+  if (folder) {
+    root.type = 'button';
+    root.addEventListener('click', () => { qEl.value = ''; syncSearch(); go(path); });
+  } else if (!soon) {
+    root.href = n.href;
+  }
+
+  root.appendChild(el('span', 'ico', folder ? SVG.folder : SVG.doc));
+
+  const txt = el('span', 'txt');
+  if (n.ar) txt.appendChild(span('t-ar ar', n.ar));
+  if (n.id) txt.appendChild(span('t-id', n.id));
+  if (folder) {
+    const cnt = countAll(n);
+    const sub = n.desc || (cnt ? cnt + ' item' : 'Kosong');
+    txt.appendChild(span('sub', sub));
+  } else if (showPath) {
+    txt.appendChild(span('sub', showPath));
+  }
+  root.appendChild(txt);
+
+  const end = el('span', 'end');
+  if (n.sem) end.appendChild(span('badge', 'Smt ' + n.sem));
+  else if (!folder && !soon) end.innerHTML = SVG.ext;
+  if (folder) end.insertAdjacentHTML('beforeend', ' ' + SVG.chev);
+  if (soon) end.appendChild(span('badge', 'Segera'));
+  root.appendChild(end);
+  return root;
+}
+
+function render() {
+  const path = currentPath();
+  const hit = nodeAt(path);
+  if (!hit) { go([]); return; }
+  const { node, trail } = hit;
+
+  // breadcrumb
+  crumbsEl.replaceChildren();
+  const home = el('button'); home.textContent = 'Beranda';
+  home.onclick = () => go([]);
+  if (path.length) {
+    crumbsEl.appendChild(home);
+    trail.forEach((t, i) => {
+      crumbsEl.appendChild(span('sep', '/'));
+      const name = t.id || t.ar;
+      if (i === trail.length - 1) {
+        crumbsEl.appendChild(span('cur', name));
+      } else {
+        const b = el('button'); b.textContent = name;
+        b.onclick = () => go(path.slice(0, i + 1));
+        crumbsEl.appendChild(b);
+      }
+    });
+  }
+
+  // judul bagian
+  titleEl.replaceChildren();
+  if (path.length) {
+    const t = trail[trail.length - 1];
+    if (t.ar) titleEl.appendChild(span('ar', t.ar));
+    if (t.id) titleEl.appendChild(span('id', t.id));
+    const links = countLinks(t);
+    titleEl.appendChild(el('small', null, links + ' dari ' + countAll(t) + ' materi sudah tersedia'));
+  }
+
+  // daftar
+  listEl.replaceChildren();
+  const kids = node.c;
+  if (!kids.length) {
+    listEl.appendChild(el('div', 'empty', 'Belum ada isi di sini.'));
+  } else {
+    kids.forEach((k, i) => listEl.appendChild(buildItem(k, path.concat(i))));
+  }
+  document.title = path.length ? (trail[trail.length - 1].id || trail[trail.length - 1].ar) + ' — Menerjemahkan Zigzag' : 'Menerjemahkan Zigzag';
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+// buang harakat/tatwil & samakan bentuk huruf Arab supaya pencarian longgar
+const norm = (s) => (s || '').toLowerCase()
+  .replace(/[ً-ٰٟـ]/g, '')
+  .replace(/[أإآٱ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
+  .replace(/[٠-٩]/g, (d) => d.charCodeAt(0) - 0x0660);
+
+function flatten(nodes, path = [], names = [], out = []) {
+  nodes.forEach((n, i) => {
+    const p = path.concat(i);
+    const name = n.id || n.ar;
+    out.push({ n, path: p, names });
+    if (isFolder(n)) flatten(n.c, p, names.concat(name), out);
+  });
+  return out;
+}
+const INDEX = flatten(DATA);
+
+function syncSearch() {
+  searchBox.classList.toggle('has-text', !!qEl.value);
+}
+
+function search() {
+  syncSearch();
+  const q = norm(qEl.value.trim());
+  if (!q) { render(); return; }
+  const terms = q.split(/\s+/);
+
+  const results = INDEX.filter(({ n, names }) => {
+    const hay = norm([n.ar, n.id, n.sem ? 'semester ' + n.sem : '', names.join(' ')].join(' '));
+    return terms.every((t) => hay.includes(t));
+  });
+
+  crumbsEl.replaceChildren();
+  titleEl.replaceChildren(el('small', null, results.length + ' hasil untuk “' + qEl.value.trim() + '”'));
+  listEl.replaceChildren();
+  if (!results.length) {
+    listEl.appendChild(el('div', 'empty', 'Tidak ada yang cocok.'));
+    return;
+  }
+  results.forEach(({ n, path, names }) => listEl.appendChild(buildItem(n, path, names.join(' › '))));
+}
+
+qEl.addEventListener('input', search);
+$('clearQ').addEventListener('click', () => { qEl.value = ''; search(); qEl.focus(); });
+
+/* ============================================================
+   LOGIN (tampilan saja; belum terhubung ke server)
+   ============================================================ */
+const overlay = $('overlay');
+const openLogin = () => { overlay.classList.add('open'); $('loginMsg').textContent = ''; $('user').focus(); };
+const closeLogin = () => overlay.classList.remove('open');
+$('btnLogin').addEventListener('click', openLogin);
+$('cancelLogin').addEventListener('click', closeLogin);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLogin(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLogin(); });
+$('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  $('loginMsg').textContent = 'Login belum dihubungkan ke server.';
+});
+
+window.addEventListener('hashchange', () => { if (!qEl.value) render(); else { qEl.value = ''; syncSearch(); render(); } });
+render();
+</script>
+</body>
+</html>
