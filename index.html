@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الْحَاسُوب — Terjemah Zigzag</title>
+<title>Menerjemahkan Zigzag</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,484 +11,659 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #f4f1e9;
-    --card: #fffdf7;
-    --border: #e4ddcb;
-    --ar-color: #23331f;
-    --id-color: #b0632a;
-    --heading: #1f4d3a;
-    --muted: #8a8270;
-    --rule: #e6dfcc;
+    --bg: #081327;
+    --bg-glow: #0f2a52;
+    --card: #11223f;
+    --card-hover: #17305a;
+    --border: #25416d;
+    --text: #eaf3ff;
+    --muted: #8fb0d9;
+    --accent: #7cc4ff;
+    --accent-strong: #4da3f5;
+    --on-accent: #06182f;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #16181a;
-      --card: #1f2124;
-      --border: #33363a;
-      --ar-color: #e9e6dc;
-      --id-color: #e0995f;
-      --heading: #7fc9a6;
-      --muted: #9a9384;
-      --rule: #33363a;
-    }
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
-    color: var(--ar-color);
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
-  }
-
-  /* ====== SATU-SATUNYA SECTION: ISI ====== */
-  .isi {
     min-height: 100vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+    background:
+      radial-gradient(900px 480px at 50% -120px, var(--bg-glow), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
   }
 
-  .isi__wrap {
+  .ar { font-family: 'Amiri', 'Traditional Arabic', serif; direction: rtl; unicode-bidi: isolate; }
+
+  .page {
     width: 100%;
-    max-width: 900px;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1rem 1rem 3rem;
+  }
+
+  /* ====== TOPBAR: search + login ====== */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: .6rem;
+    padding: .75rem 0;
+    background: linear-gradient(var(--bg) 70%, transparent);
+  }
+
+  .search {
+    flex: 1;
+    position: relative;
+  }
+  .search svg {
+    position: absolute;
+    left: .9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    stroke: var(--muted);
+    pointer-events: none;
+  }
+  .search input {
+    width: 100%;
+    height: 44px;
+    padding: 0 2.4rem 0 2.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    font: inherit;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .search input::placeholder { color: var(--muted); }
+  .search input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(124, 196, 255, .2);
+  }
+  .search .clear {
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    display: none;
+    place-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  .search .clear:hover { color: var(--text); background: var(--card-hover); }
+  .search.has-text .clear { display: grid; }
+
+  .btn-login {
+    flex: none;
+    height: 44px;
+    padding: 0 1.1rem;
+    background: var(--accent);
+    color: var(--on-accent);
+    border: 0;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+  }
+  .btn-login:hover { background: #a2d6ff; }
+  .btn-login:active { transform: scale(.97); }
+
+  /* ====== PROFIL ====== */
+  .profile {
+    text-align: center;
+    padding: 1.4rem 0 1.2rem;
+  }
+  .profile .logo {
+    width: 76px; height: 76px;
+    margin: 0 auto .8rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--accent), var(--accent-strong));
+    color: var(--on-accent);
+    font-family: 'Amiri', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(77, 163, 245, .35);
+  }
+  .profile h1 { font-size: 1.25rem; font-weight: 600; }
+  .profile p { color: var(--muted); font-size: .85rem; margin-top: .15rem; }
+
+  /* ====== BREADCRUMB ====== */
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem;
+    margin-bottom: .9rem;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+  .crumbs button {
+    background: none;
+    border: 0;
+    color: var(--accent);
+    font: inherit;
+    cursor: pointer;
+    padding: .15rem .25rem;
+    border-radius: 6px;
+  }
+  .crumbs button:hover { background: var(--card); }
+  .crumbs .cur { color: var(--text); padding: .15rem .25rem; }
+  .crumbs .sep { opacity: .5; }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .section-title .ar { font-size: 1.5rem; display: block; line-height: 1.5; }
+  .section-title .id { font-size: 1.05rem; font-weight: 600; }
+  .section-title small { display: block; color: var(--muted); font-size: .8rem; }
+
+  /* ====== DAFTAR LINK / FOLDER ====== */
+  .list { display: flex; flex-direction: column; gap: .65rem; }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    width: 100%;
+    min-height: 62px;
+    padding: .7rem 1rem;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: clamp(1.25rem, 5vw, 3.25rem);
-    box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09);
-  }
-
-  .isi__judul {
-    font-family: 'Amiri', serif;
-    font-weight: 700;
-    font-size: clamp(2rem, 1.3rem + 4vw, 3.2rem);
+    color: var(--text);
+    text-decoration: none;
+    font: inherit;
     text-align: center;
-    color: var(--heading);
-    margin-bottom: 0.35rem;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, transform .12s;
   }
-
-  .isi__ket {
-    direction: ltr;
-    text-align: center;
-    font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem);
+  .item:hover, .item:focus-visible {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .item .ico {
+    flex: none;
+    width: 38px; height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(124, 196, 255, .14);
+    color: var(--accent);
+  }
+  .item .ico svg { width: 20px; height: 20px; }
+  .item .txt { flex: 1; min-width: 0; }
+  .item .t-ar { display: block; font-size: 1.3rem; line-height: 1.5; }
+  .item .t-id { display: block; font-weight: 500; font-size: .95rem; }
+  .item .sub { display: block; color: var(--muted); font-size: .75rem; }
+  .item .end {
+    flex: none;
+    min-width: 38px;
+    text-align: right;
     color: var(--muted);
-    margin-bottom: clamp(1.75rem, 6vw, 3rem);
+    font-size: .8rem;
   }
+  .item .end svg { width: 18px; height: 18px; vertical-align: middle; }
 
-  .teks {
-    direction: rtl;
+  .item.folder .ico { background: rgba(124, 196, 255, .22); }
+  .item.soon {
+    cursor: default;
+    opacity: .6;
   }
-
-  /* satu baris = 7 kata Arab + terjemahannya */
-  .baris {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0.2em 0.75em;
-    padding: 1em 0 3.4em;
-    border-bottom: 1px dashed var(--rule);
-  }
-  .baris:last-child { border-bottom: none; padding-bottom: 2.4em; }
-
-  /* pasangan kata: Arab di atas, arti Indonesia miring (zigzag) di bawah */
-  .kata {
-    position: relative;
+  .item.soon:hover { transform: none; border-color: var(--border); background: var(--card); }
+  .badge {
     display: inline-block;
-    padding: 0 0.1em;
-  }
-
-  .kata .ar {
-    display: block;
-    white-space: nowrap;
-    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
-    font-weight: 700;
-    font-size: clamp(1.3rem, 1rem + 1.9vw, 1.9rem);
-    color: var(--ar-color);
-  }
-
-  .kata .id {
-    position: absolute;
-    top: 88%;
-    right: 0.3em;
-    transform: rotate(-18deg);
-    transform-origin: top right;
-    direction: ltr;
-    white-space: nowrap;
-    font-family: 'Poppins', sans-serif;
+    padding: .1rem .55rem;
+    border-radius: 999px;
+    background: rgba(124, 196, 255, .16);
+    color: var(--accent);
+    font-size: .7rem;
     font-weight: 500;
-    font-size: clamp(0.6rem, 0.5rem + 0.9vw, 0.8rem);
-    letter-spacing: 0.01em;
-    color: var(--id-color);
+    white-space: nowrap;
   }
 
-  .soal__judul {
-    font-family: 'Amiri', serif;
-    font-weight: 700;
-    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
-    color: var(--heading);
+  .empty {
     text-align: center;
-    margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem;
+    color: var(--muted);
+    padding: 2rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    font-size: .9rem;
   }
 
-  .baris.soal { align-items: center; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: .75rem;
+    margin-top: 2rem;
+    opacity: .8;
+  }
 
-  .baris.soal .no {
-    font-family: 'Amiri', serif;
-    font-weight: 700;
-    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.5rem);
-    color: var(--id-color);
+  /* ====== MODAL LOGIN ====== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    place-items: center;
+    padding: 1rem;
+    background: rgba(3, 9, 20, .7);
+    backdrop-filter: blur(4px);
+  }
+  .overlay.open { display: grid; }
+  .modal {
+    width: 100%;
+    max-width: 360px;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  }
+  .modal h2 { font-size: 1.1rem; margin-bottom: .2rem; }
+  .modal p.lead { color: var(--muted); font-size: .8rem; margin-bottom: 1rem; }
+  .modal label { display: block; font-size: .78rem; color: var(--muted); margin: .7rem 0 .25rem; }
+  .modal input {
+    width: 100%;
+    height: 42px;
+    padding: 0 .9rem;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 1.9em;
-    height: 1.9em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: none;
+    border-radius: 12px;
+    color: var(--text);
+    font: inherit;
+    outline: none;
   }
+  .modal input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124, 196, 255, .2); }
+  .modal .actions { display: flex; gap: .6rem; margin-top: 1.2rem; }
+  .modal .actions button {
+    flex: 1;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .modal .actions button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+  }
+  .modal .msg { min-height: 1.2rem; margin-top: .8rem; font-size: .78rem; color: var(--accent); text-align: center; }
 
-  @media (max-width: 480px) {
-    .baris { gap: 0.15em 0.55em; padding-bottom: 3em; }
-    .kata .id { transform: rotate(-16deg); }
+  @media (max-width: 420px) {
+    .item .t-ar { font-size: 1.2rem; }
+    .btn-login { padding: 0 .9rem; }
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<section class="isi">
-  <div class="isi__wrap">
-    <h1 class="isi__judul">الْحَاسُوبُ</h1>
-    <p class="isi__ket">Teks Arab tentang Komputer &middot; 201 kata &middot; Terjemah zigzag ke Bahasa Indonesia &middot; 7 kata per baris</p>
-
-    <div class="teks">
-
-      <div class="baris">
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">Komputer</span></span>
-        <span class="kata"><span class="ar">جِهَازٌ</span><span class="id">alat</span></span>
-        <span class="kata"><span class="ar">إِلِكْتْرُونِيٌّ</span><span class="id">elektronik</span></span>
-        <span class="kata"><span class="ar">مُتَطَوِّرٌ</span><span class="id">canggih</span></span>
-        <span class="kata"><span class="ar">يُسَاعِدُ</span><span class="id">membantu</span></span>
-        <span class="kata"><span class="ar">الْإِنْسَانَ</span><span class="id">manusia</span></span>
-        <span class="kata"><span class="ar">فِي</span><span class="id">dalam</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">إِنْجَازِ</span><span class="id">menyelesaikan</span></span>
-        <span class="kata"><span class="ar">أَعْمَالِهِ</span><span class="id">pekerjaannya</span></span>
-        <span class="kata"><span class="ar">الْيَوْمِيَّةِ</span><span class="id">sehari-hari</span></span>
-        <span class="kata"><span class="ar">بِسُرْعَةٍ</span><span class="id">dengan cepat</span></span>
-        <span class="kata"><span class="ar">وَدِقَّةٍ</span><span class="id">dan teliti</span></span>
-        <span class="kata"><span class="ar">عَالِيَةٍ</span><span class="id">tinggi</span></span>
-        <span class="kata"><span class="ar">جِدًّا</span><span class="id">sekali</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَيَتَكَوَّنُ</span><span class="id">dan tersusun</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
-        <span class="kata"><span class="ar">أَجْزَاءٍ</span><span class="id">bagian-bagian</span></span>
-        <span class="kata"><span class="ar">مَادِّيَّةٍ</span><span class="id">fisik</span></span>
-        <span class="kata"><span class="ar">تُسَمَّى</span><span class="id">disebut</span></span>
-        <span class="kata"><span class="ar">الْعَتَادَ</span><span class="id">perangkat keras</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَأَجْزَاءٍ</span><span class="id">dan bagian</span></span>
-        <span class="kata"><span class="ar">بَرْمَجِيَّةٍ</span><span class="id">program</span></span>
-        <span class="kata"><span class="ar">تُسَمَّى</span><span class="id">disebut</span></span>
-        <span class="kata"><span class="ar">الْبَرْمَجِيَّاتِ</span><span class="id">perangkat lunak</span></span>
-        <span class="kata"><span class="ar">وَكِلَاهُمَا</span><span class="id">dan keduanya</span></span>
-        <span class="kata"><span class="ar">ضَرُورِيٌّ</span><span class="id">penting</span></span>
-        <span class="kata"><span class="ar">لِلْعَمَلِ</span><span class="id">untuk kerja</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">فَالشَّاشَةُ</span><span class="id">maka layar</span></span>
-        <span class="kata"><span class="ar">تَعْرِضُ</span><span class="id">menampilkan</span></span>
-        <span class="kata"><span class="ar">الصُّوَرَ</span><span class="id">gambar</span></span>
-        <span class="kata"><span class="ar">وَالنُّصُوصَ</span><span class="id">dan teks</span></span>
-        <span class="kata"><span class="ar">وَلَوْحَةُ</span><span class="id">dan papan</span></span>
-        <span class="kata"><span class="ar">الْمَفَاتِيحِ</span><span class="id">tombol</span></span>
-        <span class="kata"><span class="ar">تُسْتَخْدَمُ</span><span class="id">dipakai</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">لِإِدْخَالِ</span><span class="id">untuk memasukkan</span></span>
-        <span class="kata"><span class="ar">الْحُرُوفِ</span><span class="id">huruf</span></span>
-        <span class="kata"><span class="ar">وَالْأَرْقَامِ</span><span class="id">dan angka</span></span>
-        <span class="kata"><span class="ar">أَمَّا</span><span class="id">adapun</span></span>
-        <span class="kata"><span class="ar">الْفَأْرَةُ</span><span class="id">mouse</span></span>
-        <span class="kata"><span class="ar">فَتُحَرِّكُ</span><span class="id">maka menggerakkan</span></span>
-        <span class="kata"><span class="ar">الْمُؤَشِّرَ</span><span class="id">kursor</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">عَلَى</span><span class="id">di atas</span></span>
-        <span class="kata"><span class="ar">الشَّاشَةِ</span><span class="id">layar</span></span>
-        <span class="kata"><span class="ar">وَتَخْتَارُ</span><span class="id">dan memilih</span></span>
-        <span class="kata"><span class="ar">الْأَوَامِرَ</span><span class="id">perintah</span></span>
-        <span class="kata"><span class="ar">بِسُهُولَةٍ</span><span class="id">dengan mudah</span></span>
-        <span class="kata"><span class="ar">وَيُسْرٍ</span><span class="id">dan lancar</span></span>
-        <span class="kata"><span class="ar">تَامٍّ</span><span class="id">sempurna</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَفِي</span><span class="id">dan di</span></span>
-        <span class="kata"><span class="ar">دَاخِلِ</span><span class="id">dalam</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبِ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">وَحْدَةُ</span><span class="id">unit</span></span>
-        <span class="kata"><span class="ar">مُعَالَجَةٍ</span><span class="id">pemroses</span></span>
-        <span class="kata"><span class="ar">مَرْكَزِيَّةٌ</span><span class="id">pusat</span></span>
-        <span class="kata"><span class="ar">تُعْتَبَرُ</span><span class="id">dianggap</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">عَقْلَ</span><span class="id">otak</span></span>
-        <span class="kata"><span class="ar">الْجِهَازِ</span><span class="id">perangkat</span></span>
-        <span class="kata"><span class="ar">الْحَقِيقِيَّ</span><span class="id">sejati</span></span>
-        <span class="kata"><span class="ar">لِأَنَّهَا</span><span class="id">karena ia</span></span>
-        <span class="kata"><span class="ar">تُنَفِّذُ</span><span class="id">menjalankan</span></span>
-        <span class="kata"><span class="ar">جَمِيعَ</span><span class="id">semua</span></span>
-        <span class="kata"><span class="ar">الْعَمَلِيَّاتِ</span><span class="id">operasi</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">الْحِسَابِيَّةِ</span><span class="id">hitung</span></span>
-        <span class="kata"><span class="ar">وَالْمَنْطِقِيَّةِ</span><span class="id">dan logika</span></span>
-        <span class="kata"><span class="ar">بِسُرْعَةٍ</span><span class="id">dengan kecepatan</span></span>
-        <span class="kata"><span class="ar">مَذْهِلَةٍ</span><span class="id">menakjubkan</span></span>
-        <span class="kata"><span class="ar">تُقَاسُ</span><span class="id">diukur</span></span>
-        <span class="kata"><span class="ar">بِمَلَايِينِ</span><span class="id">jutaan</span></span>
-        <span class="kata"><span class="ar">الْعَمَلِيَّاتِ</span><span class="id">operasi</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">فِي</span><span class="id">dalam</span></span>
-        <span class="kata"><span class="ar">الثَّانِيَةِ</span><span class="id">detik</span></span>
-        <span class="kata"><span class="ar">الْوَاحِدَةِ</span><span class="id">satu</span></span>
-        <span class="kata"><span class="ar">وَهُنَاكَ</span><span class="id">dan ada</span></span>
-        <span class="kata"><span class="ar">أَيْضًا</span><span class="id">juga</span></span>
-        <span class="kata"><span class="ar">ذَاكِرَةٌ</span><span class="id">memori</span></span>
-        <span class="kata"><span class="ar">مُؤَقَّتَةٌ</span><span class="id">sementara</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">تَحْفَظُ</span><span class="id">menyimpan</span></span>
-        <span class="kata"><span class="ar">الْبَيَانَاتِ</span><span class="id">data</span></span>
-        <span class="kata"><span class="ar">أَثْنَاءَ</span><span class="id">selama</span></span>
-        <span class="kata"><span class="ar">التَّشْغِيلِ</span><span class="id">dijalankan</span></span>
-        <span class="kata"><span class="ar">ثُمَّ</span><span class="id">kemudian</span></span>
-        <span class="kata"><span class="ar">تُفْقَدُ</span><span class="id">hilang</span></span>
-        <span class="kata"><span class="ar">عِنْدَ</span><span class="id">ketika</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">إِطْفَاءِ</span><span class="id">mematikan</span></span>
-        <span class="kata"><span class="ar">الْجِهَازِ</span><span class="id">perangkat</span></span>
-        <span class="kata"><span class="ar">بَيْنَمَا</span><span class="id">sedangkan</span></span>
-        <span class="kata"><span class="ar">الْقُرْصُ</span><span class="id">cakram</span></span>
-        <span class="kata"><span class="ar">الصَّلْبُ</span><span class="id">keras</span></span>
-        <span class="kata"><span class="ar">يَحْفَظُ</span><span class="id">menyimpan</span></span>
-        <span class="kata"><span class="ar">الْمَلَفَّاتِ</span><span class="id">berkas</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">بِشَكْلٍ</span><span class="id">secara</span></span>
-        <span class="kata"><span class="ar">دَائِمٍ</span><span class="id">permanen</span></span>
-        <span class="kata"><span class="ar">حَتَّى</span><span class="id">bahkan</span></span>
-        <span class="kata"><span class="ar">بَعْدَ</span><span class="id">setelah</span></span>
-        <span class="kata"><span class="ar">انْقِطَاعِ</span><span class="id">terputusnya</span></span>
-        <span class="kata"><span class="ar">الْكَهْرَبَاءِ</span><span class="id">listrik</span></span>
-        <span class="kata"><span class="ar">عَنْهُ</span><span class="id">darinya</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَيَسْتَطِيعُ</span><span class="id">dan mampu</span></span>
-        <span class="kata"><span class="ar">الْمُسْتَخْدِمُ</span><span class="id">pengguna</span></span>
-        <span class="kata"><span class="ar">تَثْبِيتَ</span><span class="id">memasang</span></span>
-        <span class="kata"><span class="ar">بَرَامِجَ</span><span class="id">program</span></span>
-        <span class="kata"><span class="ar">كَثِيرَةٍ</span><span class="id">banyak</span></span>
-        <span class="kata"><span class="ar">عَلَى</span><span class="id">pada</span></span>
-        <span class="kata"><span class="ar">حَاسُوبِهِ</span><span class="id">komputernya</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">مِثْلَ</span><span class="id">seperti</span></span>
-        <span class="kata"><span class="ar">بَرَامِجِ</span><span class="id">program</span></span>
-        <span class="kata"><span class="ar">الْكِتَابَةِ</span><span class="id">menulis</span></span>
-        <span class="kata"><span class="ar">وَالرَّسْمِ</span><span class="id">dan menggambar</span></span>
-        <span class="kata"><span class="ar">وَالْحِسَابِ</span><span class="id">dan hitung</span></span>
-        <span class="kata"><span class="ar">وَتَحْرِيرِ</span><span class="id">dan edit</span></span>
-        <span class="kata"><span class="ar">الصُّوَرِ</span><span class="id">gambar</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَمُشَاهَدَةِ</span><span class="id">dan menonton</span></span>
-        <span class="kata"><span class="ar">الْأَفْلَامِ</span><span class="id">film</span></span>
-        <span class="kata"><span class="ar">وَالِاسْتِمَاعِ</span><span class="id">dan mendengar</span></span>
-        <span class="kata"><span class="ar">إِلَى</span><span class="id">kepada</span></span>
-        <span class="kata"><span class="ar">الْمُوسِيقَى</span><span class="id">musik</span></span>
-        <span class="kata"><span class="ar">وَلَعِبِ</span><span class="id">dan main</span></span>
-        <span class="kata"><span class="ar">الْأَلْعَابِ</span><span class="id">permainan</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَقَدْ</span><span class="id">dan sungguh</span></span>
-        <span class="kata"><span class="ar">أَصْبَحَ</span><span class="id">telah jadi</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">وَسِيلَةً</span><span class="id">sarana</span></span>
-        <span class="kata"><span class="ar">مُهِمَّةً</span><span class="id">penting</span></span>
-        <span class="kata"><span class="ar">لِلتَّعَلُّمِ</span><span class="id">untuk belajar</span></span>
-        <span class="kata"><span class="ar">وَالْبَحْثِ</span><span class="id">dan meneliti</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">عَنِ</span><span class="id">tentang</span></span>
-        <span class="kata"><span class="ar">الْمَعْلُومَاتِ</span><span class="id">informasi</span></span>
-        <span class="kata"><span class="ar">فِي</span><span class="id">di</span></span>
-        <span class="kata"><span class="ar">جَمِيعِ</span><span class="id">semua</span></span>
-        <span class="kata"><span class="ar">الْمَجَالَاتِ</span><span class="id">bidang</span></span>
-        <span class="kata"><span class="ar">الْعِلْمِيَّةِ</span><span class="id">ilmiah</span></span>
-        <span class="kata"><span class="ar">وَالْأَدَبِيَّةِ</span><span class="id">dan sastra</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَعِنْدَمَا</span><span class="id">dan ketika</span></span>
-        <span class="kata"><span class="ar">يَتَّصِلُ</span><span class="id">terhubung</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">بِالْإِنْتَرْنِتْ</span><span class="id">ke internet</span></span>
-        <span class="kata"><span class="ar">يَفْتَحُ</span><span class="id">ia membuka</span></span>
-        <span class="kata"><span class="ar">لِلْمُسْتَخْدِمِ</span><span class="id">bagi pengguna</span></span>
-        <span class="kata"><span class="ar">نَوَافِذَ</span><span class="id">jendela</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَاسِعَةً</span><span class="id">luas</span></span>
-        <span class="kata"><span class="ar">عَلَى</span><span class="id">ke</span></span>
-        <span class="kata"><span class="ar">الْعَالَمِ</span><span class="id">dunia</span></span>
-        <span class="kata"><span class="ar">كُلِّهِ</span><span class="id">seluruhnya</span></span>
-        <span class="kata"><span class="ar">فَيُمْكِنُهُ</span><span class="id">maka ia bisa</span></span>
-        <span class="kata"><span class="ar">إِرْسَالُ</span><span class="id">mengirim</span></span>
-        <span class="kata"><span class="ar">الرَّسَائِلِ</span><span class="id">pesan</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَتَبَادُلُ</span><span class="id">dan bertukar</span></span>
-        <span class="kata"><span class="ar">الْمَعْرِفَةِ</span><span class="id">pengetahuan</span></span>
-        <span class="kata"><span class="ar">مَعَ</span><span class="id">dengan</span></span>
-        <span class="kata"><span class="ar">أَصْدِقَاءَ</span><span class="id">teman-teman</span></span>
-        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
-        <span class="kata"><span class="ar">دُوَلٍ</span><span class="id">negara</span></span>
-        <span class="kata"><span class="ar">بَعِيدَةٍ</span><span class="id">jauh</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَلَكِنْ</span><span class="id">akan tetapi</span></span>
-        <span class="kata"><span class="ar">يَجِبُ</span><span class="id">wajib</span></span>
-        <span class="kata"><span class="ar">عَلَى</span><span class="id">atas</span></span>
-        <span class="kata"><span class="ar">الْمُسْتَخْدِمِ</span><span class="id">pengguna</span></span>
-        <span class="kata"><span class="ar">أَنْ</span><span class="id">untuk</span></span>
-        <span class="kata"><span class="ar">يَحْذَرَ</span><span class="id">berhati-hati</span></span>
-        <span class="kata"><span class="ar">مِنْ</span><span class="id">dari</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">الْمَوَاقِعِ</span><span class="id">situs-situs</span></span>
-        <span class="kata"><span class="ar">الضَّارَّةِ</span><span class="id">berbahaya</span></span>
-        <span class="kata"><span class="ar">وَأَنْ</span><span class="id">dan agar</span></span>
-        <span class="kata"><span class="ar">يَحْمِيَ</span><span class="id">melindungi</span></span>
-        <span class="kata"><span class="ar">جِهَازَهُ</span><span class="id">perangkatnya</span></span>
-        <span class="kata"><span class="ar">بِبَرَامِجِ</span><span class="id">dengan program</span></span>
-        <span class="kata"><span class="ar">الْحِمَايَةِ</span><span class="id">proteksi</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">مِنَ</span><span class="id">dari</span></span>
-        <span class="kata"><span class="ar">الْفَيْرُوسَاتِ</span><span class="id">virus</span></span>
-        <span class="kata"><span class="ar">الَّتِي</span><span class="id">yang</span></span>
-        <span class="kata"><span class="ar">قَدْ</span><span class="id">terkadang</span></span>
-        <span class="kata"><span class="ar">تُتْلِفُ</span><span class="id">merusak</span></span>
-        <span class="kata"><span class="ar">الْمَلَفَّاتِ</span><span class="id">berkas</span></span>
-        <span class="kata"><span class="ar">الْمُهِمَّةَ</span><span class="id">penting</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَيَنْبَغِي</span><span class="id">dan sepatutnya</span></span>
-        <span class="kata"><span class="ar">أَيْضًا</span><span class="id">juga</span></span>
-        <span class="kata"><span class="ar">أَنْ</span><span class="id">agar</span></span>
-        <span class="kata"><span class="ar">يَجْلِسَ</span><span class="id">duduk</span></span>
-        <span class="kata"><span class="ar">الْمُسْتَخْدِمُ</span><span class="id">pengguna</span></span>
-        <span class="kata"><span class="ar">بِطَرِيقَةٍ</span><span class="id">dengan cara</span></span>
-        <span class="kata"><span class="ar">صَحِيحَةٍ</span><span class="id">benar</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">وَأَنْ</span><span class="id">dan agar</span></span>
-        <span class="kata"><span class="ar">يُرِيحَ</span><span class="id">mengistirahatkan</span></span>
-        <span class="kata"><span class="ar">عَيْنَيْهِ</span><span class="id">matanya</span></span>
-        <span class="kata"><span class="ar">كُلَّ</span><span class="id">setiap</span></span>
-        <span class="kata"><span class="ar">فَتْرَةٍ</span><span class="id">selang waktu</span></span>
-        <span class="kata"><span class="ar">حَتَّى</span><span class="id">supaya</span></span>
-        <span class="kata"><span class="ar">لَا</span><span class="id">tidak</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">يُصَابَ</span><span class="id">terkena</span></span>
-        <span class="kata"><span class="ar">بِالتَّعَبِ</span><span class="id">kelelahan</span></span>
-        <span class="kata"><span class="ar">أَوِ</span><span class="id">atau</span></span>
-        <span class="kata"><span class="ar">الصُّدَاعِ</span><span class="id">sakit kepala</span></span>
-        <span class="kata"><span class="ar">فَالْحَاسُوبُ</span><span class="id">maka komputer</span></span>
-        <span class="kata"><span class="ar">خَادِمٌ</span><span class="id">pelayan</span></span>
-        <span class="kata"><span class="ar">مُفِيدٌ</span><span class="id">bermanfaat</span></span>
-      </div>
-
-      <div class="baris">
-        <span class="kata"><span class="ar">إِذَا</span><span class="id">jika</span></span>
-        <span class="kata"><span class="ar">أَحْسَنَ</span><span class="id">memperbaiki</span></span>
-        <span class="kata"><span class="ar">الْإِنْسَانُ</span><span class="id">manusia</span></span>
-        <span class="kata"><span class="ar">اسْتِخْدَامَهُ</span><span class="id">penggunaannya</span></span>
-        <span class="kata"><span class="ar">دَائِمًا</span><span class="id">selalu</span></span>
-      </div>
-
-      <h2 class="soal__judul">الْأَسْئِلَةُ</h2>
-
-      <div class="baris soal">
-        <span class="no">١</span>
-        <span class="kata"><span class="ar">مَا</span><span class="id">apa</span></span>
-        <span class="kata"><span class="ar">هُوَ</span><span class="id">itu</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">وَمَا</span><span class="id">dan apa</span></span>
-        <span class="kata"><span class="ar">فَائِدَتُهُ</span><span class="id">manfaatnya</span></span>
-        <span class="kata"><span class="ar">لِلْإِنْسَانِ؟</span><span class="id">bagi manusia?</span></span>
-      </div>
-
-      <div class="baris soal">
-        <span class="no">٢</span>
-        <span class="kata"><span class="ar">مِمَّ</span><span class="id">dari apa</span></span>
-        <span class="kata"><span class="ar">يَتَكَوَّنُ</span><span class="id">tersusun</span></span>
-        <span class="kata"><span class="ar">الْحَاسُوبُ</span><span class="id">komputer</span></span>
-        <span class="kata"><span class="ar">وَمَا</span><span class="id">dan apa</span></span>
-        <span class="kata"><span class="ar">وَظِيفَةُ</span><span class="id">fungsi</span></span>
-        <span class="kata"><span class="ar">الشَّاشَةِ؟</span><span class="id">layar?</span></span>
-      </div>
-
-      <div class="baris soal">
-        <span class="no">٣</span>
-        <span class="kata"><span class="ar">مَاذَا</span><span class="id">apa</span></span>
-        <span class="kata"><span class="ar">يَجِبُ</span><span class="id">wajib</span></span>
-        <span class="kata"><span class="ar">عَلَى</span><span class="id">atas</span></span>
-        <span class="kata"><span class="ar">الْمُسْتَخْدِمِ</span><span class="id">pengguna</span></span>
-        <span class="kata"><span class="ar">أَنْ</span><span class="id">untuk</span></span>
-        <span class="kata"><span class="ar">يَحْذَرَهُ؟</span><span class="id">mewaspadainya?</span></span>
-      </div>
-
+  <!-- Paling atas: search + login -->
+  <header class="topbar">
+    <div class="search" id="searchBox">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari">
+      <button class="clear" id="clearQ" aria-label="Hapus pencarian">&times;</button>
     </div>
-  </div>
-</section>
+    <button class="btn-login" id="btnLogin">Login</button>
+  </header>
 
+  <!-- Linktree -->
+  <section class="profile">
+    <div class="logo ar">ز</div>
+    <h1>Menerjemahkan Zigzag</h1>
+    <p>Kumpulan terjemah &amp; materi perkuliahan</p>
+  </section>
+
+  <nav class="crumbs" id="crumbs" aria-label="Lokasi"></nav>
+  <div class="section-title" id="sectionTitle"></div>
+  <main class="list" id="list"></main>
+
+  <footer>&copy; Menerjemahkan Zigzag</footer>
+</div>
+
+<!-- Login -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <form class="modal" id="loginForm">
+    <h2 id="loginTitle">Masuk</h2>
+    <p class="lead">Login untuk mengakses materi pribadi.</p>
+    <label for="user">Email / Username</label>
+    <input id="user" type="text" autocomplete="username" required>
+    <label for="pass">Password</label>
+    <input id="pass" type="password" autocomplete="current-password" required>
+    <div class="msg" id="loginMsg"></div>
+    <div class="actions">
+      <button type="button" id="cancelLogin">Batal</button>
+      <button type="submit" class="primary">Masuk</button>
+    </div>
+  </form>
+</div>
+
+<script>
+/* ============================================================
+   DATA
+   f(ar, id, children, desc)  -> folder
+   l(ar, semester, href)      -> link (href kosong = belum ada, tampil "Segera")
+   Isi folder bebas campur folder & link. Tinggal tambah/ubah di sini.
+   ============================================================ */
+const f = (ar, id, c = [], desc = '') => ({ ar, id, c, desc });
+const l = (ar, sem, href = '') => ({ ar, sem, href });
+
+const DATA = [
+  f('', 'Data Lughoh', [
+    f('النحو & التطبيقات', 'Nahwu & Aplikasi', [
+      l('مقرر النحو (1)', 1),
+      l('مقرر النحو (2)', 2),
+      l('مقرر النحو (3)', 3),
+      l('مقرر النحو (5)', 5),
+      l('مقرر النحو (7)', 6),
+      l('مقرر تطبيقات نحوية', 6),
+    ]),
+    f('الصرف', 'Saraf', [
+      l('مقرر الصرف (1)', 2),
+      l('مقرر صرف (2)', 3),
+      l('مقرر صرف (3)', 4),
+      l('مقرر صرف (4)', 5),
+    ]),
+    f('البلاغة', 'Balaghah', [
+      l('مقرر البلاغة (1)', 1),
+      l('مقرر البلاغة (2)', 2),
+      l('مقرر البلاغة (3)', 3),
+      l('مقرر البلاغة (4)', 4),
+      l('مقرر البلاغة (5)', 5, 'ringkasan-balaghah-m5-biasa.html'),
+      l('مقرر البلاغة (7)', 6),
+      l('مقرر البلاغة القرآنية والنبوية', 6),
+    ]),
+    f('الأدب & التاريخ الأدبي', 'Sastra & Sejarah Sastra', [
+      l('مقرر تاريخ الأدب العربي (1)', 1),
+      l('مقرر تاريخ الأدب العربي (2)', 2),
+      l('مقرر تاريخ الأدب العربي (3)', 3),
+      l('مقرر تاريخ الأدب العربي (4)', 4),
+      l('مقرر تاريخ الأدب العربي (5)', 5),
+      l('مقرر تاريخ الأدب العربي (7)', 6),
+      l('مقرر النصوص الأدبية (1)', 2),
+      l('مقرر النصوص الأدبية (2)', 3),
+      l('مقرر النصوص الأدبية (4)', 5),
+      l('مقرر النصوص الأدبية (6)', 6),
+    ]),
+    f('النقد الأدبي & النظرية', 'Kritik Sastra & Teori', [
+      l('مقرر النقد الأدبي (1)', 4),
+      l('مقرر النقد الأدبي (2)', 5),
+      l('مقرر النقد الأدبي (3)', 6),
+      l('مقرر المناهج النقدية', 6),
+      l('مقرر نظرية الأدب', 6),
+    ]),
+    f('علم اللغة', 'Linguistik / Linguistik Terapan', [
+      l('مقرر علم اللغة (1)', 3),
+      l('مقرر علم اللغة (2)', 4),
+      l('مقرر علم اللغة (3)', 5, 'ilmu-lughah-3-biasa.html'),
+      l('مقرر علم اللغة (5)', 6),
+      l('مقرر علم اللغة (6)', 6),
+    ]),
+    f('المهارات & العروض', 'Mahārāt (Skill Bahasa) & Arud', [
+      l('مقرر مهارات الكتابة (1)', 1),
+      l('مقرر مهارات الكتابة (2)', 2),
+      l('مقرر مهارات الكتابة (3)', 4),
+      l('مقرر مهارات القراءة والاستماع (1)', 1),
+      l('مقرر مهارات القراءة (2)', 2),
+      l('مقرر مهارات القراءة (3)', 4),
+      l('مقرر مهارات التحدث', 3),
+      l('مقرر العروض (1)', 5),
+      l('مقرر الترجمة', 6),
+    ]),
+    f('القرآن الكريم', "Al-Qur'an", [
+      l('مقرر القرآن الكريم (1)', 1),
+      l('مقرر القرآن الكريم (2)', 2),
+      l('مقرر القرآن الكريم (3)', 3),
+      l('مقرر القرآن الكريم (4)', 4),
+      l('مقرر القرآن الكريم (5)', 5),
+      l('مقرر القرآن الكريم (7)', 6),
+      l('مقرر القرآن الكريم (8)', 6),
+    ]),
+    f('', 'Studi Islam, Hukum & Kewarganegaraan', [
+      // item boleh berupa folder: التوحيد berisi 4 bab
+      Object.assign(f('مقرر التوحيد (1)', '', [
+        l('الباب الأول: التوحيد للصف الأول الثانوي', 1, 'tauhid-bab1-biasa.html'),
+        l('الباب الثاني: براهين وحدانية الله', 1, 'tauhid-bab2-biasa.html'),
+        l('الباب الثالث: شمول العبادة', 1, 'tauhid-bab3-biasa.html'),
+        l('الباب الرابع: في الإيمان بأسماء الله وصفاته', 1, 'tauhid-bab4-biasa.html'),
+      ]), { sem: 1 }),
+      l('مقرر فقه (203)', 2),
+      l('مقرر السيرة النبوية', 2),
+      l('مقرر الثقافة الإسلامية', 4),
+      l('مقرر التربية الوطنية الإندونيسية', 1),
+      l('مقرر اللغة الإندونيسية', 1),
+    ]),
+    f('', 'Keguruan, Metode Pengajaran & Riset', [
+      l('مقرر طرق تدريس اللغة العربية للناطقين بغيرها', 6),
+      l('مقرر الإدارة والتخطيط التربوي', 6),
+      l('مقرر التدريب العملي التربوي', 6),
+      l('مقرر البحث والمصادر', 6),
+    ]),
+  ], 'Materi bahasa Arab per mata kuliah'),
+
+  f('', 'Data Thawalib MPI', [], 'Segera diisi'),
+  f('', 'My Apps', [], 'Segera diisi'),
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+const listEl = $('list'), crumbsEl = $('crumbs'), titleEl = $('sectionTitle');
+const qEl = $('q'), searchBox = $('searchBox');
+
+const isFolder = (n) => Array.isArray(n.c);
+const SVG = {
+  folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
+  ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+};
+
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+function span(cls, text) { const s = el('span', cls); s.textContent = text; return s; }
+
+function countLinks(n) {
+  if (!isFolder(n)) return n.href ? 1 : 0;
+  return n.c.reduce((a, x) => a + countLinks(x), 0);
+}
+function countAll(n) {
+  if (!isFolder(n)) return 1;
+  return n.c.reduce((a, x) => a + countAll(x), 0);
+}
+
+function nodeAt(path) {
+  let node = { c: DATA }, trail = [];
+  for (const i of path) {
+    node = node.c && node.c[i];
+    if (!node) return null;
+    trail.push(node);
+  }
+  return { node, trail };
+}
+
+function go(path) {
+  location.hash = path.length ? '#/' + path.join('/') : '#/';
+}
+function currentPath() {
+  const m = location.hash.replace(/^#\/?/, '');
+  return m ? m.split('/').map(Number).filter((n) => Number.isInteger(n) && n >= 0) : [];
+}
+
+function buildItem(n, path, showPath) {
+  const folder = isFolder(n);
+  const soon = !folder && !n.href;
+  const root = el(folder ? 'button' : soon ? 'div' : 'a', 'item' + (folder ? ' folder' : '') + (soon ? ' soon' : ''));
+  if (folder) {
+    root.type = 'button';
+    root.addEventListener('click', () => { qEl.value = ''; syncSearch(); go(path); });
+  } else if (!soon) {
+    root.href = n.href;
+  }
+
+  root.appendChild(el('span', 'ico', folder ? SVG.folder : SVG.doc));
+
+  const txt = el('span', 'txt');
+  if (n.ar) txt.appendChild(span('t-ar ar', n.ar));
+  if (n.id) txt.appendChild(span('t-id', n.id));
+  if (folder) {
+    const cnt = countAll(n);
+    const sub = n.desc || (cnt ? cnt + ' item' : 'Kosong');
+    txt.appendChild(span('sub', sub));
+  } else if (showPath) {
+    txt.appendChild(span('sub', showPath));
+  }
+  root.appendChild(txt);
+
+  const end = el('span', 'end');
+  if (n.sem) end.appendChild(span('badge', 'Smt ' + n.sem));
+  else if (!folder && !soon) end.innerHTML = SVG.ext;
+  if (folder) end.insertAdjacentHTML('beforeend', ' ' + SVG.chev);
+  if (soon) end.appendChild(span('badge', 'Segera'));
+  root.appendChild(end);
+  return root;
+}
+
+function render() {
+  const path = currentPath();
+  const hit = nodeAt(path);
+  if (!hit) { go([]); return; }
+  const { node, trail } = hit;
+
+  // breadcrumb
+  crumbsEl.replaceChildren();
+  const home = el('button'); home.textContent = 'Beranda';
+  home.onclick = () => go([]);
+  if (path.length) {
+    crumbsEl.appendChild(home);
+    trail.forEach((t, i) => {
+      crumbsEl.appendChild(span('sep', '/'));
+      const name = t.id || t.ar;
+      if (i === trail.length - 1) {
+        crumbsEl.appendChild(span('cur', name));
+      } else {
+        const b = el('button'); b.textContent = name;
+        b.onclick = () => go(path.slice(0, i + 1));
+        crumbsEl.appendChild(b);
+      }
+    });
+  }
+
+  // judul bagian
+  titleEl.replaceChildren();
+  if (path.length) {
+    const t = trail[trail.length - 1];
+    if (t.ar) titleEl.appendChild(span('ar', t.ar));
+    if (t.id) titleEl.appendChild(span('id', t.id));
+    const links = countLinks(t);
+    titleEl.appendChild(el('small', null, links + ' dari ' + countAll(t) + ' materi sudah tersedia'));
+  }
+
+  // daftar
+  listEl.replaceChildren();
+  const kids = node.c;
+  if (!kids.length) {
+    listEl.appendChild(el('div', 'empty', 'Belum ada isi di sini.'));
+  } else {
+    kids.forEach((k, i) => listEl.appendChild(buildItem(k, path.concat(i))));
+  }
+  document.title = path.length ? (trail[trail.length - 1].id || trail[trail.length - 1].ar) + ' — Menerjemahkan Zigzag' : 'Menerjemahkan Zigzag';
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+// buang harakat/tatwil & samakan bentuk huruf Arab supaya pencarian longgar
+const norm = (s) => (s || '').toLowerCase()
+  .replace(/[ً-ٰٟـ]/g, '')
+  .replace(/[أإآٱ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
+  .replace(/[٠-٩]/g, (d) => d.charCodeAt(0) - 0x0660);
+
+function flatten(nodes, path = [], names = [], out = []) {
+  nodes.forEach((n, i) => {
+    const p = path.concat(i);
+    const name = n.id || n.ar;
+    out.push({ n, path: p, names });
+    if (isFolder(n)) flatten(n.c, p, names.concat(name), out);
+  });
+  return out;
+}
+const INDEX = flatten(DATA);
+
+function syncSearch() {
+  searchBox.classList.toggle('has-text', !!qEl.value);
+}
+
+function search() {
+  syncSearch();
+  const q = norm(qEl.value.trim());
+  if (!q) { render(); return; }
+  const terms = q.split(/\s+/);
+
+  const results = INDEX.filter(({ n, names }) => {
+    const hay = norm([n.ar, n.id, n.sem ? 'semester ' + n.sem : '', names.join(' ')].join(' '));
+    return terms.every((t) => hay.includes(t));
+  });
+
+  crumbsEl.replaceChildren();
+  titleEl.replaceChildren(el('small', null, results.length + ' hasil untuk “' + qEl.value.trim() + '”'));
+  listEl.replaceChildren();
+  if (!results.length) {
+    listEl.appendChild(el('div', 'empty', 'Tidak ada yang cocok.'));
+    return;
+  }
+  results.forEach(({ n, path, names }) => listEl.appendChild(buildItem(n, path, names.join(' › '))));
+}
+
+qEl.addEventListener('input', search);
+$('clearQ').addEventListener('click', () => { qEl.value = ''; search(); qEl.focus(); });
+
+/* ============================================================
+   LOGIN (tampilan saja; belum terhubung ke server)
+   ============================================================ */
+const overlay = $('overlay');
+const openLogin = () => { overlay.classList.add('open'); $('loginMsg').textContent = ''; $('user').focus(); };
+const closeLogin = () => overlay.classList.remove('open');
+$('btnLogin').addEventListener('click', openLogin);
+$('cancelLogin').addEventListener('click', closeLogin);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLogin(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLogin(); });
+$('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  $('loginMsg').textContent = 'Login belum dihubungkan ke server.';
+});
+
+window.addEventListener('hashchange', () => { if (!qEl.value) render(); else { qEl.value = ''; syncSearch(); render(); } });
+render();
+</script>
 </body>
 </html>
