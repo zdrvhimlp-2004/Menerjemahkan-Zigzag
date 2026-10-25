@@ -372,8 +372,10 @@
 const f = (name, c = []) => ({ name, c });
 const arDigits = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
 // mata kuliah = folder (isi menyusul); semester digabung ke nama: النحو (1) (م١)
-const l = (name, sem) => ({ name: name + ' (م' + arDigits(sem) + ')', key: name, sem, c: [] });
-const link = (name, sem, href) => ({ name, sem, href }); // untuk nanti, kalau sudah ada file
+const l = (name, sem, c = []) => ({ name: name + ' (م' + arDigits(sem) + ')', key: name, sem, c });
+const link = (name, sem, href) => ({ name, sem, href }); // link ke file
+
+const S5 = 'Data Lughoh per Semester/Semester 5/'; // folder asli di repo
 
 const DATA = [
   f('Data Lughoh', [
@@ -381,7 +383,9 @@ const DATA = [
       l('النحو (1)', 1),
       l('النحو (2)', 2),
       l('النحو (3)', 3),
-      l('النحو (5)', 5),
+      l('النحو (5)', 5, [
+        link('شرح ابن عقيل', 5, S5 + 'النحو (5)/syarh-ibnu-aqil-biasa.html'),
+      ]),
       l('النحو (7)', 6),
       l('تطبيقات نحوية', 6),
     ]),
@@ -389,14 +393,21 @@ const DATA = [
       l('الصرف (1)', 2),
       l('صرف (2)', 3),
       l('صرف (3)', 4),
-      l('صرف (4)', 5),
+      l('صرف (4)', 5, [
+        link('الإعلال والإبدال', 5, S5 + 'صرف (4)/ilal-ibdal-biasa.html'),
+      ]),
     ]),
     f('البلاغة', [
       l('البلاغة (1)', 1),
       l('البلاغة (2)', 2),
       l('البلاغة (3)', 3),
       l('البلاغة (4)', 4),
-      l('البلاغة (5)', 5),
+      l('البلاغة (5)', 5, [
+        link('ملخص البلاغة', 5, S5 + 'البلاغة (5)/ringkasan-balaghah-m5-biasa.html'),
+        link('أحوال المسند', 5, S5 + 'البلاغة (5)/ahwal-al-musnad-biasa.html'),
+        link('أحوال المسند إليه (١)', 5, S5 + 'البلاغة (5)/ahwal-al-musnad-ilayh-1-biasa.html'),
+        link('أحوال المسند إليه (٢)', 5, S5 + 'البلاغة (5)/ahwal-al-musnad-ilayh-2-biasa.html'),
+      ]),
       l('البلاغة (7)', 6),
       l('البلاغة القرآنية والنبوية', 6),
     ]),
@@ -422,7 +433,9 @@ const DATA = [
     f('علم اللغة', [
       l('علم اللغة (1)', 3),
       l('علم اللغة (2)', 4),
-      l('علم اللغة (3)', 5),
+      l('علم اللغة (3)', 5, [
+        link('علم اللغة ٣', 5, S5 + 'علم اللغة (3)/ilmu-lughah-3-biasa.html'),
+      ]),
       l('علم اللغة (5)', 6),
       l('علم اللغة (6)', 6),
     ]),
