@@ -365,11 +365,13 @@
 /* ============================================================
    DATA
    f(nama, isi)             -> folder (satu nama saja)
-   l(nama, semester, href)  -> link (href kosong = belum ada, tampil "Segera")
+   l(nama, semester)        -> mata kuliah (folder kosong, isi menyusul)
+   link(nama, semester, href) -> link ke file; tinggal pakai di dalam folder mata kuliah
    Isi folder bebas campur folder & link. Tinggal tambah/ubah di sini.
    ============================================================ */
 const f = (name, c = []) => ({ name, c });
-const l = (name, sem, href = '') => ({ name, sem, href });
+const l = (name, sem) => ({ name, sem, c: [] }); // mata kuliah = folder (isi menyusul)
+const link = (name, sem, href) => ({ name, sem, href }); // untuk nanti, kalau sudah ada file
 
 const DATA = [
   f('Data Lughoh', [
@@ -392,7 +394,7 @@ const DATA = [
       l('مقرر البلاغة (2)', 2),
       l('مقرر البلاغة (3)', 3),
       l('مقرر البلاغة (4)', 4),
-      l('مقرر البلاغة (5)', 5, 'ringkasan-balaghah-m5-biasa.html'),
+      l('مقرر البلاغة (5)', 5),
       l('مقرر البلاغة (7)', 6),
       l('مقرر البلاغة القرآنية والنبوية', 6),
     ]),
@@ -418,7 +420,7 @@ const DATA = [
     f('علم اللغة', [
       l('مقرر علم اللغة (1)', 3),
       l('مقرر علم اللغة (2)', 4),
-      l('مقرر علم اللغة (3)', 5, 'ilmu-lughah-3-biasa.html'),
+      l('مقرر علم اللغة (3)', 5),
       l('مقرر علم اللغة (5)', 6),
       l('مقرر علم اللغة (6)', 6),
     ]),
@@ -443,13 +445,7 @@ const DATA = [
       l('مقرر القرآن الكريم (8)', 6),
     ]),
     f('الدراسات الإسلامية والقانون والتربية الوطنية', [
-      // item boleh berupa folder: التوحيد berisi 4 bab
-      Object.assign(f('مقرر التوحيد (1)', [
-        l('الباب الأول: التوحيد للصف الأول الثانوي', 1, 'tauhid-bab1-biasa.html'),
-        l('الباب الثاني: براهين وحدانية الله', 1, 'tauhid-bab2-biasa.html'),
-        l('الباب الثالث: شمول العبادة', 1, 'tauhid-bab3-biasa.html'),
-        l('الباب الرابع: في الإيمان بأسماء الله وصفاته', 1, 'tauhid-bab4-biasa.html'),
-      ]), { sem: 1 }),
+      l('مقرر التوحيد (1)', 1),
       l('مقرر فقه (203)', 2),
       l('مقرر السيرة النبوية', 2),
       l('مقرر الثقافة الإسلامية', 4),
@@ -471,8 +467,8 @@ const DATA = [
 /* ============================================================
    DATA LUGHOH PER SEMESTER
    Dibangun otomatis dari DATA di atas (cari berdasarkan nama),
-   jadi link yang sudah ada ikut muncul. Nama yang belum ada di
-   Data Lughoh dibuat sebagai item "Segera".
+   jadi isi yang nanti ditambah di Data Lughoh ikut muncul. Nama yang
+   belum ada di Data Lughoh dibuat sebagai folder kosong.
    ============================================================ */
 const BY_SEMESTER = {
   1: [
