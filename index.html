@@ -468,6 +468,104 @@ const DATA = [
   f('My Apps', []),
 ];
 
+/* ============================================================
+   DATA LUGHOH PER SEMESTER
+   Dibangun otomatis dari DATA di atas (cari berdasarkan nama),
+   jadi link yang sudah ada ikut muncul. Nama yang belum ada di
+   Data Lughoh dibuat sebagai item "Segera".
+   ============================================================ */
+const BY_SEMESTER = {
+  1: [
+    'مقرر النحو (1)',
+    'مقرر تاريخ الأدب العربي (1)',
+    'مقرر مهارات الكتابة (1)',
+    'مقرر مهارات القراءة والاستماع (1)',
+    'مقرر البلاغة (1)',
+    'مقرر التربية الوطنية الإندونيسية',
+    'مقرر التوحيد (1)',
+    'مقرر القرآن الكريم (1)',
+    'مقرر اللغة الإندونيسية',
+  ],
+  2: [
+    'مقرر القرآن الكريم (2)',
+    'مقرر النحو (2)',
+    'مقرر النصوص الأدبية (1)',
+    'مقرر تاريخ الأدب العربي (2)',
+    'مقرر مهارات الكتابة (2)',
+    'مقرر مهارات القراءة (2)',
+    'مقرر البلاغة (2)',
+    'مقرر السيرة النبوية',
+    'مقرر الصرف (1)',
+    'مقرر فقه (203)',
+  ],
+  3: [
+    'مقرر علم اللغة (1)',
+    'مقرر مهارات التحدث',
+    'مقرر البلاغة (3)',
+    'مقرر القرآن الكريم (3)',
+    'مقرر النحو (3)',
+    'مقرر النصوص الأدبية (2)',
+    'مقرر تاريخ الأدب العربي (3)',
+    'مقرر صرف (2)',
+  ],
+  4: [
+    'مقرر صرف (3)',
+    'مقرر علم اللغة (2)',
+    'مقرر مهارات القراءة (3)',
+    'مقرر مهارات الكتابة (3)',
+    'مقرر البلاغة (4)',
+    'مقرر الثقافة الإسلامية',
+    'مقرر القرآن الكريم (4)',
+    'مقرر النقد الأدبي (1)',
+    'مقرر تاريخ الأدب العربي (4)',
+  ],
+  5: [
+    'مقرر العروض (1)',
+    'مقرر صرف (4)',
+    'مقرر علم اللغة (3)',
+    'مقرر تاريخ الأدب العربي (5)',
+    'مقرر النصوص الأدبية (4)',
+    'مقرر القرآن الكريم (5)',
+    'مقرر النحو (5)',
+    'مقرر البلاغة (5)',
+    'مقرر النقد الأدبي (2)',
+  ],
+  6: [
+    'مقرر تطبيقات نحوية',
+    'مقرر علم اللغة (6)',
+    'مقرر نظرية الأدب',
+    'مقرر الإدارة والتخطيط التربوي',
+    'مقرر التدريب العملي التربوي',
+    'مقرر القرآن الكريم (8)',
+    'مقرر المناهج النقدية',
+    'مقرر البلاغة القرآنية والنبوية',
+    'مقرر النقد الأدبي (3)',
+    'مقرر تاريخ الأدب العربي (7)',
+    'مقرر طرق تدريس اللغة العربية للناطقين بغيرها',
+    'مقرر علم اللغة (5)',
+    'مقرر البحث والمصادر',
+    'مقرر البلاغة (7)',
+    'مقرر الترجمة',
+    'مقرر القرآن الكريم (7)',
+    'مقرر النحو (7)',
+    'مقرر النصوص الأدبية (6)',
+  ],
+};
+
+const isFolder = (n) => Array.isArray(n.c);
+(function buildBySemester() {
+  const byName = {};
+  (function walk(nodes) {
+    nodes.forEach((n) => { byName[n.name] = byName[n.name] || n; if (isFolder(n)) walk(n.c); });
+  })(DATA[0].c);
+
+  const semFolders = Object.keys(BY_SEMESTER).map((s) => f('Semester ' + s,
+    BY_SEMESTER[s].map((name) => Object.assign({}, byName[name] || l(name, s), { sem: undefined }))));
+  const root = f('Data Lughoh per Semester', semFolders);
+  root.noDeep = true; // isi tidak ikut diindeks pencarian (duplikat dari Data Lughoh)
+  DATA.splice(1, 0, root);
+})();
+
 // Kata kunci Indonesia untuk pencarian saja (tidak ditampilkan di kartu)
 const ALIAS = {
   'النحو والتطبيقات': 'nahwu nahu aplikasi',
@@ -489,7 +587,6 @@ const $ = (id) => document.getElementById(id);
 const listEl = $('list'), crumbsEl = $('crumbs'), titleEl = $('sectionTitle');
 const qEl = $('q'), searchBox = $('searchBox');
 
-const isFolder = (n) => Array.isArray(n.c);
 const SVG = {
   folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
   doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
@@ -612,7 +709,7 @@ function flatten(nodes, path = [], names = [], out = []) {
     const p = path.concat(i);
     const name = n.name;
     out.push({ n, path: p, names });
-    if (isFolder(n)) flatten(n.c, p, names.concat(name), out);
+    if (isFolder(n) && !n.noDeep) flatten(n.c, p, names.concat(name), out);
   });
   return out;
 }
