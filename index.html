@@ -365,16 +365,16 @@
 <script>
 /* ============================================================
    DATA
-   f(ar, id, children, desc)  -> folder
-   l(ar, semester, href)      -> link (href kosong = belum ada, tampil "Segera")
+   f(nama, isi)             -> folder (satu nama saja)
+   l(nama, semester, href)  -> link (href kosong = belum ada, tampil "Segera")
    Isi folder bebas campur folder & link. Tinggal tambah/ubah di sini.
    ============================================================ */
-const f = (ar, id, c = [], desc = '') => ({ ar, id, c, desc });
-const l = (ar, sem, href = '') => ({ ar, sem, href });
+const f = (name, c = []) => ({ name, c });
+const l = (name, sem, href = '') => ({ name, sem, href });
 
 const DATA = [
-  f('', 'Data Lughoh', [
-    f('النحو & التطبيقات', 'Nahwu & Aplikasi', [
+  f('Data Lughoh', [
+    f('النحو والتطبيقات', [
       l('مقرر النحو (1)', 1),
       l('مقرر النحو (2)', 2),
       l('مقرر النحو (3)', 3),
@@ -382,13 +382,13 @@ const DATA = [
       l('مقرر النحو (7)', 6),
       l('مقرر تطبيقات نحوية', 6),
     ]),
-    f('الصرف', 'Saraf', [
+    f('الصرف', [
       l('مقرر الصرف (1)', 2),
       l('مقرر صرف (2)', 3),
       l('مقرر صرف (3)', 4),
       l('مقرر صرف (4)', 5),
     ]),
-    f('البلاغة', 'Balaghah', [
+    f('البلاغة', [
       l('مقرر البلاغة (1)', 1),
       l('مقرر البلاغة (2)', 2),
       l('مقرر البلاغة (3)', 3),
@@ -397,7 +397,7 @@ const DATA = [
       l('مقرر البلاغة (7)', 6),
       l('مقرر البلاغة القرآنية والنبوية', 6),
     ]),
-    f('الأدب & التاريخ الأدبي', 'Sastra & Sejarah Sastra', [
+    f('الأدب والتاريخ الأدبي', [
       l('مقرر تاريخ الأدب العربي (1)', 1),
       l('مقرر تاريخ الأدب العربي (2)', 2),
       l('مقرر تاريخ الأدب العربي (3)', 3),
@@ -409,21 +409,21 @@ const DATA = [
       l('مقرر النصوص الأدبية (4)', 5),
       l('مقرر النصوص الأدبية (6)', 6),
     ]),
-    f('النقد الأدبي & النظرية', 'Kritik Sastra & Teori', [
+    f('النقد الأدبي والنظرية', [
       l('مقرر النقد الأدبي (1)', 4),
       l('مقرر النقد الأدبي (2)', 5),
       l('مقرر النقد الأدبي (3)', 6),
       l('مقرر المناهج النقدية', 6),
       l('مقرر نظرية الأدب', 6),
     ]),
-    f('علم اللغة', 'Linguistik / Linguistik Terapan', [
+    f('علم اللغة', [
       l('مقرر علم اللغة (1)', 3),
       l('مقرر علم اللغة (2)', 4),
       l('مقرر علم اللغة (3)', 5, 'ilmu-lughah-3-biasa.html'),
       l('مقرر علم اللغة (5)', 6),
       l('مقرر علم اللغة (6)', 6),
     ]),
-    f('المهارات & العروض', 'Mahārāt (Skill Bahasa) & Arud', [
+    f('المهارات والعروض', [
       l('مقرر مهارات الكتابة (1)', 1),
       l('مقرر مهارات الكتابة (2)', 2),
       l('مقرر مهارات الكتابة (3)', 4),
@@ -434,7 +434,7 @@ const DATA = [
       l('مقرر العروض (1)', 5),
       l('مقرر الترجمة', 6),
     ]),
-    f('القرآن الكريم', "Al-Qur'an", [
+    f('القرآن الكريم', [
       l('مقرر القرآن الكريم (1)', 1),
       l('مقرر القرآن الكريم (2)', 2),
       l('مقرر القرآن الكريم (3)', 3),
@@ -443,9 +443,9 @@ const DATA = [
       l('مقرر القرآن الكريم (7)', 6),
       l('مقرر القرآن الكريم (8)', 6),
     ]),
-    f('', 'Studi Islam, Hukum & Kewarganegaraan', [
+    f('الدراسات الإسلامية والقانون والتربية الوطنية', [
       // item boleh berupa folder: التوحيد berisi 4 bab
-      Object.assign(f('مقرر التوحيد (1)', '', [
+      Object.assign(f('مقرر التوحيد (1)', [
         l('الباب الأول: التوحيد للصف الأول الثانوي', 1, 'tauhid-bab1-biasa.html'),
         l('الباب الثاني: براهين وحدانية الله', 1, 'tauhid-bab2-biasa.html'),
         l('الباب الثالث: شمول العبادة', 1, 'tauhid-bab3-biasa.html'),
@@ -457,17 +457,31 @@ const DATA = [
       l('مقرر التربية الوطنية الإندونيسية', 1),
       l('مقرر اللغة الإندونيسية', 1),
     ]),
-    f('', 'Keguruan, Metode Pengajaran & Riset', [
+    f('التربية وطرق التدريس والبحث', [
       l('مقرر طرق تدريس اللغة العربية للناطقين بغيرها', 6),
       l('مقرر الإدارة والتخطيط التربوي', 6),
       l('مقرر التدريب العملي التربوي', 6),
       l('مقرر البحث والمصادر', 6),
     ]),
-  ], 'Materi bahasa Arab per mata kuliah'),
+  ]),
 
-  f('', 'Data Thawalib MPI', [], 'Segera diisi'),
-  f('', 'My Apps', [], 'Segera diisi'),
+  f('Data Thawalib MPI', []),
+  f('My Apps', []),
 ];
+
+// Kata kunci Indonesia untuk pencarian saja (tidak ditampilkan di kartu)
+const ALIAS = {
+  'النحو والتطبيقات': 'nahwu nahu aplikasi',
+  'الصرف': 'saraf sharaf',
+  'البلاغة': 'balaghah balagah',
+  'الأدب والتاريخ الأدبي': 'sastra sejarah sastra adab',
+  'النقد الأدبي والنظرية': 'kritik sastra teori',
+  'علم اللغة': 'linguistik linguistik terapan',
+  'المهارات والعروض': 'mahrat maharat skill bahasa arud',
+  'القرآن الكريم': 'quran alquran',
+  'الدراسات الإسلامية والقانون والتربية الوطنية': 'studi islam hukum kewarganegaraan',
+  'التربية وطرق التدريس والبحث': 'keguruan metode pengajaran riset',
+};
 
 /* ============================================================
    RENDER
@@ -489,6 +503,10 @@ function el(tag, cls, html) {
   if (cls) e.className = cls;
   if (html != null) e.innerHTML = html;
   return e;
+}
+const isArabic = (t) => /[\u0600-\u06FF]/.test(t);
+function titleSpan(name) {
+  return span(isArabic(name) ? 't-ar ar' : 't-id', name);
 }
 function span(cls, text) { const s = el('span', cls); s.textContent = text; return s; }
 
@@ -533,15 +551,8 @@ function buildItem(n, path, showPath) {
   root.appendChild(el('span', 'ico', folder ? SVG.folder : SVG.doc));
 
   const txt = el('span', 'txt');
-  if (n.ar) txt.appendChild(span('t-ar ar', n.ar));
-  if (n.id) txt.appendChild(span('t-id', n.id));
-  if (folder) {
-    const cnt = countAll(n);
-    const sub = n.desc || (cnt ? cnt + ' item' : 'Kosong');
-    txt.appendChild(span('sub', sub));
-  } else if (showPath) {
-    txt.appendChild(span('sub', showPath));
-  }
+  txt.appendChild(titleSpan(n.name));
+  if (showPath) txt.appendChild(span('sub', showPath));
   root.appendChild(txt);
 
   const end = el('span', 'end');
@@ -567,7 +578,7 @@ function render() {
     crumbsEl.appendChild(home);
     trail.forEach((t, i) => {
       crumbsEl.appendChild(span('sep', '/'));
-      const name = t.id || t.ar;
+      const name = t.name;
       if (i === trail.length - 1) {
         crumbsEl.appendChild(span('cur', name));
       } else {
@@ -582,8 +593,7 @@ function render() {
   titleEl.replaceChildren();
   if (path.length) {
     const t = trail[trail.length - 1];
-    if (t.ar) titleEl.appendChild(span('ar', t.ar));
-    if (t.id) titleEl.appendChild(span('id', t.id));
+    titleEl.appendChild(span(isArabic(t.name) ? 'ar' : 'id', t.name));
     const links = countLinks(t);
     titleEl.appendChild(el('small', null, links + ' dari ' + countAll(t) + ' materi sudah tersedia'));
   }
@@ -596,7 +606,7 @@ function render() {
   } else {
     kids.forEach((k, i) => listEl.appendChild(buildItem(k, path.concat(i))));
   }
-  document.title = path.length ? (trail[trail.length - 1].id || trail[trail.length - 1].ar) + ' — Menerjemahkan Zigzag' : 'Menerjemahkan Zigzag';
+  document.title = path.length ? trail[trail.length - 1].name + ' — Menerjemahkan Zigzag' : 'Menerjemahkan Zigzag';
 }
 
 /* ============================================================
@@ -611,7 +621,7 @@ const norm = (s) => (s || '').toLowerCase()
 function flatten(nodes, path = [], names = [], out = []) {
   nodes.forEach((n, i) => {
     const p = path.concat(i);
-    const name = n.id || n.ar;
+    const name = n.name;
     out.push({ n, path: p, names });
     if (isFolder(n)) flatten(n.c, p, names.concat(name), out);
   });
@@ -630,7 +640,7 @@ function search() {
   const terms = q.split(/\s+/);
 
   const results = INDEX.filter(({ n, names }) => {
-    const hay = norm([n.ar, n.id, n.sem ? 'semester ' + n.sem : '', names.join(' ')].join(' '));
+    const hay = norm([n.name, ALIAS[n.name] || '', n.sem ? 'semester ' + n.sem : '', names.map((x) => x + ' ' + (ALIAS[x] || '')).join(' ')].join(' '));
     return terms.every((t) => hay.includes(t));
   });
 
