@@ -169,8 +169,7 @@
     text-align: center;
     margin-bottom: 1rem;
   }
-  .section-title .ar { font-size: 1.5rem; display: block; line-height: 1.5; }
-  .section-title .id { font-size: 1.05rem; font-weight: 600; }
+  .section-title:empty { display: none; }
   .section-title small { display: block; color: var(--muted); font-size: .8rem; }
 
   /* ====== DAFTAR LINK / FOLDER ====== */
@@ -673,12 +672,7 @@ function render() {
     });
   }
 
-  // judul bagian
   titleEl.replaceChildren();
-  if (path.length) {
-    const t = trail[trail.length - 1];
-    titleEl.appendChild(span(isArabic(t.name) ? 'ar' : 'id', t.name));
-  }
 
   // daftar
   listEl.replaceChildren();
