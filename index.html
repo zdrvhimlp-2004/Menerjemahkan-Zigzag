@@ -509,14 +509,6 @@ function titleSpan(name) {
 }
 function span(cls, text) { const s = el('span', cls); s.textContent = text; return s; }
 
-function countLinks(n) {
-  if (!isFolder(n)) return n.href ? 1 : 0;
-  return n.c.reduce((a, x) => a + countLinks(x), 0);
-}
-function countAll(n) {
-  if (!isFolder(n)) return 1;
-  return n.c.reduce((a, x) => a + countAll(x), 0);
-}
 
 function nodeAt(path) {
   let node = { c: DATA }, trail = [];
@@ -593,8 +585,6 @@ function render() {
   if (path.length) {
     const t = trail[trail.length - 1];
     titleEl.appendChild(span(isArabic(t.name) ? 'ar' : 'id', t.name));
-    const links = countLinks(t);
-    titleEl.appendChild(el('small', null, links + ' dari ' + countAll(t) + ' materi sudah tersedia'));
   }
 
   // daftar
