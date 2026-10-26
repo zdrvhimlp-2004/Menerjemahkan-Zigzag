@@ -2,6 +2,31 @@
 (function () {
   'use strict';
 
+  /* Tinggi popup dihitung dari tinggi layar yang benar-benar terlihat (visualViewport),
+     supaya tidak melebihi layar di browser HP yang unit vh/dvh-nya tidak akurat. */
+  var BATAS = [['dialog.modal--wide', 0.62, 560], ['dialog.pos-modal', 0.7, 640], ['dialog.pg-modal', 0.8, 660]];
+  var tinggiLihat = function () {
+    var h = window.innerHeight;
+    if (window.visualViewport) h = Math.min(h, window.visualViewport.height);
+    return Math.min(h, document.documentElement.clientHeight || h);
+  };
+  var pasKan = function (d) {
+    BATAS.forEach(function (b) {
+      if (d.matches(b[0])) {
+        var h = Math.min(tinggiLihat() * b[1], b[2]);
+        d.style.setProperty('max-height', h + 'px', 'important');
+        d.style.setProperty('height', 'auto', 'important');
+      }
+    });
+  };
+  var pasKanSemua = function () { Array.prototype.forEach.call(document.querySelectorAll('dialog[open]'), pasKan); };
+  if (window.HTMLDialogElement) {
+    var asliShow = HTMLDialogElement.prototype.showModal;
+    HTMLDialogElement.prototype.showModal = function () { asliShow.apply(this, arguments); pasKan(this); };
+  }
+  window.addEventListener('resize', pasKanSemua);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', pasKanSemua);
+
   var $ = function (id) { return document.getElementById(id); };
   var norm = function (s) {
     return (s || '').toLowerCase()
