@@ -159,6 +159,7 @@
         <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option></select>
       </label>
       <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis setelah menjawab</label>
+      <div><button class="btn" id="btnTest" type="button">🔊 Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
     </div>
     <div class="note" id="voiceNote">Memeriksa suara Arab di browser…</div>
     <button class="btn btn--main" id="btnStart">Mulai Ujian</button>
@@ -252,7 +253,7 @@ const S = {
 /* ============================ SUARA ============================ */
 const synth = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) ? window.speechSynthesis : null;
 let voices = [];
-const isAr = (v) => /^ar([-_]|$)/i.test(v.lang);
+const isAr = (v) => /^ar([-_]|$)/i.test(v.lang) || /arab|عرب/i.test(v.name);
 const isId = (v) => /^id([-_]|$)/i.test(v.lang);
 
 function refreshVoices() {
@@ -285,18 +286,22 @@ function stopSpeech() {
   S.token++; S.speaking = false;
   if (synth) { try { synth.cancel(); } catch (e) {} }
 }
-/* Bacakan beberapa potongan teks berurutan; done() dipanggil sekali saat selesai / gagal. */
-function say(parts, lang, done) {
+/* Bacakan beberapa potongan teks berurutan; done() dipanggil sekali saat selesai / gagal.
+   report(hasil) opsional: 'ok' | 'senyap' | 'galat:<kode>' */
+function say(parts, lang, done, report) {
+  const busy = !!(synth && (synth.speaking || synth.pending));
   stopSpeech();
   const my = S.token;
-  let finished = false;
-  const finish = () => { if (finished || my !== S.token) return; finished = true; S.speaking = false; clearTimeout(guard); clearTimeout(boot); done && done(); };
-  // tanpa suara / dibisukan / tidak ada suara Arab (hindari bacaan Arab yang kacau): lewati langsung
-  if (!synth || S.mute || (lang === 'ar' && voices.length && !pickVoice('ar'))) { setTimeout(finish, 0); return; }
-  const total = parts.join(' ').length;
-  const guard = setTimeout(finish, 6000 + total * 130);   // pengaman bila onend tidak terpanggil
-  let started = false;
-  const boot = setTimeout(() => { if (!started && !synth.speaking) finish(); }, 1800);
+  let finished = false, started = false, err = '';
+  const finish = () => {
+    if (finished || my !== S.token) return;
+    finished = true; S.speaking = false; clearTimeout(guard); clearTimeout(boot);
+    if (report) report(started ? 'ok' : (err ? 'galat:' + err : 'senyap'));
+    done && done();
+  };
+  const guard = setTimeout(finish, 6000 + parts.join(' ').length * 130);   // pengaman bila onend tidak terpanggil
+  const boot = setTimeout(() => { if (!started && !synth.speaking) finish(); }, 2500);
+  if (!synth || S.mute) { clearTimeout(guard); clearTimeout(boot); setTimeout(finish, 0); return; }
   S.speaking = true;
   const go = (k) => {
     if (my !== S.token) return;
@@ -307,10 +312,16 @@ function say(parts, lang, done) {
     u.rate = lang === 'ar' ? S.rate : 1;
     u.onstart = () => { started = true; };
     u.onend = () => go(k + 1);
-    u.onerror = () => { if (my === S.token) go(k + 1); };
+    u.onerror = (e) => {
+      if (my !== S.token) return;
+      err = (e && e.error) || 'error';
+      if (err === 'not-allowed') toast('Suara diblokir browser — ketuk tombol 🔁 untuk membunyikan');
+      go(k + 1);
+    };
     synth.speak(u);
   };
-  setTimeout(() => go(0), 60);
+  // Chrome kadang membuang ucapan yang dipanggil tepat setelah cancel(): beri jeda hanya bila tadi sedang bicara
+  if (busy) setTimeout(() => go(0), 80); else go(0);
 }
 const clean = (t) => t.replace(/[«»"]/g, '').replace(/\(([٠-٩0-9]+)\)/g, ' $1 ');
 function speakQuestion(i, done) {
@@ -466,6 +477,16 @@ $('rateSel').addEventListener('change', (e) => { S.rate = parseFloat(e.target.va
 $('voiceSel').addEventListener('change', (e) => { S.voiceURI = e.target.value; });
 $('autoExp').addEventListener('change', (e) => { S.autoExp = e.target.checked; });
 
+$('btnTest').addEventListener('click', () => {
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.mute = false;
+  const r = $('testRes'); r.style.color = 'var(--muted)'; r.textContent = 'Memutar…';
+  const v = pickVoice('ar');
+  say(['مَرْحَبًا بِكُمْ فِي اخْتِبَارِ النَّقْدِ الْأَدَبِيِّ'], 'ar', null, (h) => {
+    if (h === 'ok') { r.style.color = 'var(--ok)'; r.textContent = 'Terbaca' + (v ? ' (' + v.name + ')' : ' (suara bawaan)'); }
+    else if (h === 'senyap') { r.style.color = 'var(--warn)'; r.textContent = 'Tidak ada suara keluar — pilih suara lain atau pasang suara Arab di perangkat'; }
+    else { r.style.color = 'var(--bad)'; r.textContent = 'Gagal: ' + h.slice(6) + (h.indexOf('language') > -1 ? ' (suara Arab belum terpasang)' : ''); }
+  });
+});
 $('btnStart').addEventListener('click', () => {
   S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.autoExp = $('autoExp').checked;
   if (synth) { try { synth.cancel(); const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {} }  // buka izin suara lewat klik
