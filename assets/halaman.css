@@ -39,7 +39,7 @@ dialog.pos-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .pos__btn--utama:hover:not(:disabled) { color: var(--card, #fffdf7); filter: brightness(1.1); }
 
 /* ---------- fihris (daftar isi) ---------- */
-dialog.modal.modal--wide { position: fixed; inset: 0; margin: auto; width: min(560px, 94vw); max-width: none; max-height: min(78vh, 640px); max-height: min(78dvh, 640px); padding: 0; border: none; border-radius: 20px; overflow: hidden; background: var(--card, #fffdf7); color: var(--ar-color, #23331f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38); }
+dialog.modal.modal--wide { position: fixed; inset: 0; margin: auto; width: min(560px, 94vw); max-width: none; max-height: min(86vh, 720px); max-height: min(86dvh, 720px); padding: 0; border: none; border-radius: 20px; overflow: hidden; background: var(--card, #fffdf7); color: var(--ar-color, #23331f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38); }
 dialog.modal.modal--wide[open] { display: flex; flex-direction: column; height: auto; }
 dialog.modal.modal--wide .modal__close { top: 0.8rem; right: 0.9rem; }
 .daftar-isi { display: flex; flex-direction: column; min-height: 0; flex: 1; background: transparent; border: none; border-radius: 0; padding: 0; margin: 0; }
