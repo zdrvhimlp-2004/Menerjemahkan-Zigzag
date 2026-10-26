@@ -8,14 +8,23 @@
   var tinggiLihat = function () {
     var h = window.innerHeight;
     if (window.visualViewport) h = Math.min(h, window.visualViewport.height);
-    return Math.min(h, document.documentElement.clientHeight || h);
+    h = Math.min(h, document.documentElement.clientHeight || h);
+    /* di sebagian WebView/aplikasi, innerHeight lebih besar dari layar fisik */
+    if (window.screen && screen.height && window.matchMedia && matchMedia('(pointer: coarse)').matches) h = Math.min(h, screen.height * 0.88);
+    return h;
   };
   var pasKan = function (d) {
     BATAS.forEach(function (b) {
       if (d.matches(b[0])) {
-        var h = Math.min(tinggiLihat() * b[1], b[2]);
+        var hv = tinggiLihat();
+        var h = Math.min(hv * b[1], b[2]);
         d.style.setProperty('max-height', h + 'px', 'important');
         d.style.setProperty('height', 'auto', 'important');
+        d.style.setProperty('bottom', 'auto', 'important');
+        d.style.setProperty('margin', '0 auto', 'important');
+        var nyata = d.getBoundingClientRect().height || h;
+        var off = window.visualViewport ? window.visualViewport.offsetTop : 0;
+        d.style.setProperty('top', Math.max(12, off + (hv - nyata) / 2) + 'px', 'important');
       }
     });
   };
