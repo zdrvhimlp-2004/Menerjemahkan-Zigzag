@@ -30,6 +30,11 @@
   .topik__butir { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 0.45rem; margin-top: 0.2rem; }
   .topik__butir li { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); line-height: 1.9; background: var(--chip); border-radius: 10px; padding: 0 0.7rem; color: var(--ar-color); }
   .topik mark { background: var(--hit); color: inherit; border-radius: 3px; }
+  .topik__kids { grid-column: 2; list-style: none; display: grid; gap: 0.55rem; margin-top: 0.35rem; padding-inline-start: 0.2rem; border-inline-start: 2px solid var(--border); }
+  .topik__kids > li { padding-inline-start: 0.8rem; }
+  .kid__j { font-family: 'Amiri', 'Traditional Arabic', serif; font-weight: 700; font-size: clamp(1.1rem, 1rem + 0.7vw, 1.4rem); line-height: 1.8; color: var(--ar-color); }
+  .kid__t { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem); line-height: 1.9; color: var(--ar-color); }
+  .kid__j + .topik__butir { margin-top: 0; }
   .kosong { display: none; text-align: center; color: var(--muted); padding: 1rem; font-size: 0.9rem; direction: ltr; }
 </style>
 </head>
@@ -37,23 +42,16 @@
 <section class="isi"><div class="isi__wrap">
   <h1 class="isi__judul">اللغة الإندونيسية</h1>
   <p class="isi__sub">موضوعات المقرر &mdash; الفصل الدراسي الأول</p>
-  <p class="isi__ket">Semester 1 &middot; 14 topik / pertemuan (maudhu&rsquo;at)</p>
+  <p class="isi__ket">Semester 1 &middot; 7 topik / pertemuan (maudhu&rsquo;at)</p>
   <label class="cari"><input id="cari" type="search" placeholder="Cari topik" autocomplete="off" aria-label="Cari topik"><span id="jml"></span></label>
   <ol class="daftar">
-<li class="topik"><span class="topik__no">١</span><div></div><ul class="topik__butir" style="grid-column:2"><li>اللغة الإندونيسية أهميتها والأسباب الداعية إلى تعلمها</li><li>دوافع تعلم اللغة الإندونيسية</li><li>فهم اللغة على أنها أهم الأدوات للتواصل مع الآخرين</li></ul></li>
-<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">اللغة من حيث وظائفها وأنواعها</div><ul class="topik__butir" style="grid-column:2"><li>فهم وظائف اللغة</li><li>معرفة أنواع اللغة</li></ul></li>
-<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">التهجئة المحسنة للحروف الإندونيسية</div><ul class="topik__butir" style="grid-column:2"><li>التعرف على اللغة الإندونيسية الجيدة والصحيحة</li><li>معرفة التهجئة المحسنة وفهمها واستخدامها</li></ul></li>
-<li class="topik"><span class="topik__no">٤</span><div class="topik__judul">الأسلوبية</div><ul class="topik__butir" style="grid-column:2"><li>المفهوم الصحيح للأسلوبية</li><li>الطريقة الصحيحة لاستخدام الأسلوبية في الكتابة</li></ul></li>
-<li class="topik"><span class="topik__no">٥</span><div class="topik__judul">الجملة</div><ul class="topik__butir" style="grid-column:2"><li>التراكيب في اللغة الإندونيسية</li><li>الجملة الفعالة علاماتها وطريقة صياغتها</li><li>أنواع أخطاء الجمل الفعالة</li><li>الجملة غير الفعالة علاماتها وطريقة صياغتها</li><li>أنواع أخطاء الجمل غير الفعالة</li></ul></li>
-<li class="topik"><span class="topik__no">٦</span><div class="topik__judul">الفقرة</div><ul class="topik__butir" style="grid-column:2"><li>المراد بالفقرة</li><li>أشكالها وأنواعها</li></ul></li>
-<li class="topik"><span class="topik__no">٧</span><div class="topik__judul">علامات الترقيم واستخداماتها</div><ul class="topik__butir" style="grid-column:2"><li>أنواع علامات الترقيم في اللغة المكتوبة</li><li>الاستخدام الصحيح لها وفوائدها في اللغة المكتوبة</li></ul></li>
-<li class="topik"><span class="topik__no">٨</span><div class="topik__judul">حروف الجر والظروف في اللغة الإندونيسية</div><ul class="topik__butir" style="grid-column:2"><li>أنواعها والطريقة المثلى لاستخداماتها</li></ul></li>
-<li class="topik"><span class="topik__no">٩</span><div class="topik__judul">أنواع الكتابة</div><ul class="topik__butir" style="grid-column:2"><li>الكتابة التفسيرية (التوضيحية)</li><li>الكتابة الوصفية</li><li>الكتابة التعبيرية</li><li>الكتابة الإقناعية</li><li>الكتابة الحجاجية</li><li>الكتابة الروائية</li></ul></li>
-<li class="topik"><span class="topik__no">١٠</span><div class="topik__judul">موضوع البحث وعنوانه وخطته</div><ul class="topik__butir" style="grid-column:2"><li>المراد بموضوع البحث وعنوانه والفرق بينهما</li><li>شروط البحث وخصائصها</li><li>طريقة صياغة خطة البحث بطريقة منتظمة</li></ul></li>
-<li class="topik"><span class="topik__no">١١</span><div class="topik__judul">كتابة البحث العلمي</div><ul class="topik__butir" style="grid-column:2"><li>ما يتعلق بموضوع البحث وصياغة المشكلة</li><li>المقدمة</li><li>محتوى البحث</li><li>قائمة المصادر والمراجع</li></ul></li>
-<li class="topik"><span class="topik__no">١٢</span><div class="topik__judul">كتابة الملخص والمختصر</div></li>
-<li class="topik"><span class="topik__no">١٣</span><div class="topik__judul">الاقتباس ونظام الإحالة</div></li>
-<li class="topik"><span class="topik__no">١٤</span><div></div><ul class="topik__butir" style="grid-column:2"><li>أنواع اللقاءات العلمية (السيمنار/الندوة، ورش العمل، المحاضرات العامة)</li><li>عرض المقالة العلمية أو البحث العلمي</li></ul></li>
+<li class="topik"><span class="topik__no">١</span><div class="topik__judul">أهمية اللغة الإندونيسية ووظائفها وأنواعها</div></li>
+<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">التهجئة المحسنة للحروف الإندونيسية (EYD) والأسلوبية</div></li>
+<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">بناء الجملة الفعالة وغير الفعالة وتراكيبها</div></li>
+<li class="topik"><span class="topik__no">٤</span><div></div><ul class="topik__butir" style="grid-column:2"><li>الفقرة (أشكالها وأنواعها)</li><li>علامات الترقيم</li><li>وحروف الجر والظروف</li></ul></li>
+<li class="topik"><span class="topik__no">٥</span><div></div><ul class="topik__butir" style="grid-column:2"><li>أنواع الكتابة (تفسيرية، وصفية، تعبيرية، إقناعية، حجاجية، روائية)</li></ul></li>
+<li class="topik"><span class="topik__no">٦</span><div></div><ul class="topik__butir" style="grid-column:2"><li>خطوات كتابة البحث العلمي (الموضوع، العنوان، الخطة، المشكلة، والمراجع)</li></ul></li>
+<li class="topik"><span class="topik__no">٧</span><div></div><ul class="topik__butir" style="grid-column:2"><li>كتابة الملخص والمختصر</li><li>الاقتباس ونظام الإحالة</li><li>وأنواع اللقاءات العلمية</li></ul></li>
   </ol>
   <p class="kosong" id="kosong">Tidak ada topik yang cocok.</p>
 </div></section>

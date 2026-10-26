@@ -30,6 +30,11 @@
   .topik__butir { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 0.45rem; margin-top: 0.2rem; }
   .topik__butir li { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); line-height: 1.9; background: var(--chip); border-radius: 10px; padding: 0 0.7rem; color: var(--ar-color); }
   .topik mark { background: var(--hit); color: inherit; border-radius: 3px; }
+  .topik__kids { grid-column: 2; list-style: none; display: grid; gap: 0.55rem; margin-top: 0.35rem; padding-inline-start: 0.2rem; border-inline-start: 2px solid var(--border); }
+  .topik__kids > li { padding-inline-start: 0.8rem; }
+  .kid__j { font-family: 'Amiri', 'Traditional Arabic', serif; font-weight: 700; font-size: clamp(1.1rem, 1rem + 0.7vw, 1.4rem); line-height: 1.8; color: var(--ar-color); }
+  .kid__t { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem); line-height: 1.9; color: var(--ar-color); }
+  .kid__j + .topik__butir { margin-top: 0; }
   .kosong { display: none; text-align: center; color: var(--muted); padding: 1rem; font-size: 0.9rem; direction: ltr; }
 </style>
 </head>
@@ -37,15 +42,19 @@
 <section class="isi"><div class="isi__wrap">
   <h1 class="isi__judul">البلاغة (4)</h1>
   <p class="isi__sub">موضوعات المقرر &mdash; الفصل الدراسي الرابع</p>
-  <p class="isi__ket">Semester 4 &middot; 6 topik / pertemuan (maudhu&rsquo;at)</p>
+  <p class="isi__ket">Semester 4 &middot; 10 topik / pertemuan (maudhu&rsquo;at)</p>
   <label class="cari"><input id="cari" type="search" placeholder="Cari topik" autocomplete="off" aria-label="Cari topik"><span id="jml"></span></label>
   <ol class="daftar">
 <li class="topik"><span class="topik__no">١</span><div class="topik__judul">علم المعاني</div><ul class="topik__butir" style="grid-column:2"><li>تعريفه</li><li>أهميته</li><li>وظيفته</li><li>علاقته بالنحو</li><li>منزلته في البلاغة</li></ul></li>
-<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">أحوال الإسناد</div><ul class="topik__butir" style="grid-column:2"><li>مفهومه</li><li>بناء الجملة (المسند إليه والمسند والقيود)</li><li>الإسناد الحقيقي</li><li>والإسناد المجازي (المجاز العقلي وعلاقاته)</li></ul></li>
-<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">الإسناد الخبري</div><ul class="topik__butir" style="grid-column:2"><li>تعريف الخبر والفرق بينه وبين الإنشاء</li><li>أغراض الخبر</li><li>أضرب الخبر</li><li>ومجيئه على خلاف مقتضى الظاهر</li></ul></li>
-<li class="topik"><span class="topik__no">٤</span><div class="topik__judul">الأساليب الإنشائية الطلبية</div><ul class="topik__butir" style="grid-column:2"><li>الأمر</li><li>النهي</li><li>الاستفهام</li><li>النداء</li><li>التمني (صيغها، معانيها، وأسرارها البلاغية)</li></ul></li>
-<li class="topik"><span class="topik__no">٥</span><div class="topik__judul">الأساليب الإنشائية غير الطلبية</div><ul class="topik__butir" style="grid-column:2"><li>القسم</li><li>التعجب</li></ul></li>
-<li class="topik"><span class="topik__no">٦</span><div></div><ul class="topik__butir" style="grid-column:2"><li>نصوص تطبيقية على أساليب الخبر والإنشاء</li><li>ومراجعات عامة</li></ul></li>
+<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">أحوال الإسناد</div><ul class="topik__butir" style="grid-column:2"><li>مفهومه</li><li>بناء الجملة (المسند إليه والمسند والقيود والمتعلقات)</li><li>الإسناد الحقيقي</li><li>الإسناد المجازي (المجاز العقلي وعلاقاته)</li></ul></li>
+<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">نصوص تطبيقية على أسلوب المجاز العقلي في النص الواحد</div></li>
+<li class="topik"><span class="topik__no">٤</span><div class="topik__judul">الإسناد الخبري</div><ul class="topik__butir" style="grid-column:2"><li>تعريف الخبر والفرق بينه وبين الإنشاء</li><li>أغراض الخبر</li></ul></li>
+<li class="topik"><span class="topik__no">٥</span><div></div><ul class="topik__butir" style="grid-column:2"><li>أضرب الخبر</li><li>أغراض مجيئه على خلاف مقتضى الظاهر</li></ul></li>
+<li class="topik"><span class="topik__no">٦</span><div class="topik__judul">نصوص تطبيقية على أسلوب الخبر في النص الواحد</div></li>
+<li class="topik"><span class="topik__no">٧</span><div class="topik__judul">الأساليب الإنشائية الطلبية</div><ul class="topik__kids"><li><div class="kid__j">الأمر</div><ul class="topik__butir"><li>تعريفه</li><li>صيغه ومعانيه وأسراره البلاغية</li></ul></li><li><div class="kid__j">النهي</div><ul class="topik__butir"><li>تعريفه</li><li>صيغته ومعانيه وأسراره البلاغية</li></ul></li><li><div class="kid__j">الاستفهام</div><ul class="topik__butir"><li>تعريفه</li><li>صيغه ومعانيه وأسراره البلاغية</li></ul></li><li><div class="kid__j">النداء</div><ul class="topik__butir"><li>تعريفه</li><li>صيغه ومعانيه وأسراره البلاغية</li></ul></li><li><div class="kid__j">التمني</div><ul class="topik__butir"><li>تعريفه</li><li>صيغه ومعانيه وأسراره البلاغية</li></ul></li></ul></li>
+<li class="topik"><span class="topik__no">٨</span><div class="topik__judul">الأساليب الإنشائية غير الطلبية وأسرارها البلاغية</div><ul class="topik__butir" style="grid-column:2"><li>القسم</li><li>التعجب</li></ul></li>
+<li class="topik"><span class="topik__no">٩</span><div class="topik__judul">نصوص تطبيقية على أساليب الإنشاء في النص الواحد</div></li>
+<li class="topik"><span class="topik__no">١٠</span><div class="topik__judul">مراجعات وتطبيقات عامة</div></li>
   </ol>
   <p class="kosong" id="kosong">Tidak ada topik yang cocok.</p>
 </div></section>

@@ -38,6 +38,35 @@ def uraikan(baris):
     return judul, butir
 
 
+def anak_baris(teks):
+    """Anak kelompok: 'judul: butir، butir' -> (judul, butir); tanpa titik dua -> teks utuh satu baris."""
+    j, bt = uraikan(teks)
+    if ':' in teks and j:
+        return j, bt, ''
+    return '', [], teks.strip().rstrip('.').strip()
+
+
+def baca(teks):
+    """Teks -> daftar topik. Baris yang diikuti baris '- ...' menjadi kelompok berisi anak."""
+    baris = [b.strip() for b in teks.strip().splitlines() if b.strip()]
+    out, i = [], 0
+    while i < len(baris):
+        b = baris[i]
+        if b.startswith('- '):  # anak tanpa kelompok: perlakukan sebagai topik biasa
+            b = b[2:]
+        j = i + 1
+        anak = []
+        while j < len(baris) and baris[j].startswith('- '):
+            anak.append(anak_baris(baris[j][2:])); j += 1
+        if anak:
+            out.append({'j': b.rstrip(':').strip(), 'b': [], 'kids': anak})
+        else:
+            h, bt = uraikan(b)
+            out.append({'j': h, 'b': bt, 'kids': []})
+        i = j
+    return out
+
+
 CSS = """
   * { margin: 0; padding: 0; box-sizing: border-box; }
   a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
@@ -60,6 +89,11 @@ CSS = """
   .topik__butir { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 0.45rem; margin-top: 0.2rem; }
   .topik__butir li { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); line-height: 1.9; background: var(--chip); border-radius: 10px; padding: 0 0.7rem; color: var(--ar-color); }
   .topik mark { background: var(--hit); color: inherit; border-radius: 3px; }
+  .topik__kids { grid-column: 2; list-style: none; display: grid; gap: 0.55rem; margin-top: 0.35rem; padding-inline-start: 0.2rem; border-inline-start: 2px solid var(--border); }
+  .topik__kids > li { padding-inline-start: 0.8rem; }
+  .kid__j { font-family: 'Amiri', 'Traditional Arabic', serif; font-weight: 700; font-size: clamp(1.1rem, 1rem + 0.7vw, 1.4rem); line-height: 1.8; color: var(--ar-color); }
+  .kid__t { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem); line-height: 1.9; color: var(--ar-color); }
+  .kid__j + .topik__butir { margin-top: 0; }
   .kosong { display: none; text-align: center; color: var(--muted); padding: 1rem; font-size: 0.9rem; direction: ltr; }
 """
 
@@ -79,14 +113,27 @@ JS = """
 """
 
 
+def butir_html(bt, extra=''):
+    return '<ul class="topik__butir"%s>' % extra + ''.join('<li>%s</li>' % html.escape(x) for x in bt) + '</ul>'
+
+
 def halaman(sem, judul, teks):
-    rows = [uraikan(b) for b in teks.strip().splitlines() if b.strip()]
+    rows = baca(teks)
     kartu = []
-    for i, (j, bt) in enumerate(rows, 1):
+    for i, r in enumerate(rows, 1):
         h = '<li class="topik"><span class="topik__no">%s</span>' % str(i).translate(AR_DIGITS)
-        h += '<div class="topik__judul">%s</div>' % html.escape(j) if j else '<div></div>'
-        if bt:
-            h += '<ul class="topik__butir" style="grid-column:2">' + ''.join('<li>%s</li>' % html.escape(x) for x in bt) + '</ul>'
+        h += '<div class="topik__judul">%s</div>' % html.escape(r['j']) if r['j'] else '<div></div>'
+        if r['b']:
+            h += butir_html(r['b'], ' style="grid-column:2"')
+        if r['kids']:
+            h += '<ul class="topik__kids">'
+            for kj, kb, kt in r['kids']:
+                h += '<li>'
+                if kt: h += '<div class="kid__t">%s</div>' % html.escape(kt)
+                if kj: h += '<div class="kid__j">%s</div>' % html.escape(kj)
+                if kb: h += butir_html(kb)
+                h += '</li>'
+            h += '</ul>'
         h += '</li>'
         kartu.append(h)
     return """<!DOCTYPE html>
