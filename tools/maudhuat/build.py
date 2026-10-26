@@ -1,0 +1,133 @@
+#!/usr/bin/env python3
+"""Bangun halaman maudhuat.html tiap mata kuliah dari semN.py.
+Pakai:  python3 tools/maudhuat/build.py        (dari root repo; semua semN.py di folder ini)
+Tiap semN.py berisi SEM dan COURSES = [(judul, nama_folder, teks), ...]."""
+import glob, html, importlib.util, os, re, sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+AR_DIGITS = str.maketrans('0123456789', '٠١٢٣٤٥٦٧٨٩')
+SEM_NAMA = {1: 'الأول', 2: 'الثاني', 3: 'الثالث', 4: 'الرابع', 5: 'الخامس', 6: 'السادس'}
+OPEN, CLOSE = '(', ')'
+
+
+def pisah(teks):
+    """Pisah di koma Arab, kecuali di dalam tanda kurung."""
+    out, cur, d = [], '', 0
+    for ch in teks:
+        if ch == OPEN: d += 1
+        elif ch == CLOSE: d = max(0, d - 1)
+        if ch == '،' and d == 0:
+            out.append(cur); cur = ''
+        else:
+            cur += ch
+    out.append(cur)
+    return [x.strip().rstrip('.').strip() for x in out if x.strip().strip('.')]
+
+
+def uraikan(baris):
+    baris = baris.strip()
+    judul, sisa = '', baris
+    if ':' in baris:
+        a, b = baris.split(':', 1)
+        if a.count(OPEN) <= a.count(CLOSE):
+            judul, sisa = a.strip(), b
+    butir = pisah(sisa) if judul or '،' in sisa else []
+    if not judul and not butir:
+        judul = baris.rstrip('.').strip()
+    return judul, butir
+
+
+CSS = """
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
+  :root { --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb; --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea; --chip: #eef2ea; --hit: #fbf0cf; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420; --chip: #232a26; --hit: #33280f; } }
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.7rem, 1.1rem + 3vw, 2.6rem); text-align: center; color: var(--heading); margin-bottom: 0.25rem; line-height: 1.5; }
+  .isi__sub { font-family: 'Amiri', serif; text-align: center; font-size: clamp(1.1rem, 0.95rem + 0.8vw, 1.4rem); color: var(--id-color); }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin: 0.4rem 0 clamp(1.1rem, 3vw, 1.6rem); }
+  .cari { direction: ltr; display: flex; align-items: center; gap: 0.6rem; border: 1px solid var(--border); background: var(--pasal-bg); border-radius: 999px; padding: 0.5rem 1rem; margin-bottom: 1.2rem; }
+  .cari input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; }
+  .cari span { color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+  .daftar { list-style: none; display: grid; gap: 0.8rem; }
+  .topik { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.9rem; align-items: start; border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem clamp(0.8rem, 2.5vw, 1.2rem); background: var(--card); }
+  .topik[hidden] { display: none; }
+  .topik__no { grid-row: 1 / span 2; width: 2.3rem; height: 2.3rem; border-radius: 999px; background: var(--chip); color: var(--heading); display: flex; align-items: center; justify-content: center; font-family: 'Amiri', serif; font-weight: 700; font-size: 1.1rem; margin-top: 0.15rem; }
+  .topik__judul { font-family: 'Amiri', 'Traditional Arabic', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.2vw, 1.7rem); line-height: 1.8; color: var(--heading); }
+  .topik__butir { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 0.45rem; margin-top: 0.2rem; }
+  .topik__butir li { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); line-height: 1.9; background: var(--chip); border-radius: 10px; padding: 0 0.7rem; color: var(--ar-color); }
+  .topik mark { background: var(--hit); color: inherit; border-radius: 3px; }
+  .kosong { display: none; text-align: center; color: var(--muted); padding: 1rem; font-size: 0.9rem; direction: ltr; }
+"""
+
+JS = """
+(function () {
+  var inp = document.getElementById('cari'), jml = document.getElementById('jml'), kosong = document.getElementById('kosong');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.topik'));
+  var norm = function (s) { return (s || '').toLowerCase().replace(/[\\u064B-\\u0652\\u0670\\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه'); };
+  var teks = items.map(function (e) { return norm(e.textContent); });
+  inp.addEventListener('input', function () {
+    var q = norm(inp.value.trim()), n = 0;
+    items.forEach(function (e, i) { var ok = !q || teks[i].indexOf(q) > -1; e.hidden = !ok; if (ok) n++; });
+    jml.textContent = q ? n + ' / ' + items.length : '';
+    kosong.style.display = n ? 'none' : 'block';
+  });
+})();
+"""
+
+
+def halaman(sem, judul, teks):
+    rows = [uraikan(b) for b in teks.strip().splitlines() if b.strip()]
+    kartu = []
+    for i, (j, bt) in enumerate(rows, 1):
+        h = '<li class="topik"><span class="topik__no">%s</span>' % str(i).translate(AR_DIGITS)
+        h += '<div class="topik__judul">%s</div>' % html.escape(j) if j else '<div></div>'
+        if bt:
+            h += '<ul class="topik__butir" style="grid-column:2">' + ''.join('<li>%s</li>' % html.escape(x) for x in bt) + '</ul>'
+        h += '</li>'
+        kartu.append(h)
+    return """<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>%(t)s — الموضوعات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>%(css)s</style>
+</head>
+<body>
+<section class="isi"><div class="isi__wrap">
+  <h1 class="isi__judul">%(t)s</h1>
+  <p class="isi__sub">موضوعات المقرر &mdash; الفصل الدراسي %(sn)s</p>
+  <p class="isi__ket">Semester %(s)d &middot; %(n)d topik / pertemuan (maudhu&rsquo;at)</p>
+  <label class="cari"><input id="cari" type="search" placeholder="Cari topik" autocomplete="off" aria-label="Cari topik"><span id="jml"></span></label>
+  <ol class="daftar">
+%(k)s
+  </ol>
+  <p class="kosong" id="kosong">Tidak ada topik yang cocok.</p>
+</div></section>
+<script>%(js)s</script>
+</body>
+</html>
+""" % dict(t=html.escape(judul), css=CSS, sn=SEM_NAMA.get(sem, ''), s=sem, n=len(rows), k='\n'.join(kartu), js=JS)
+
+
+def main():
+    for f in sorted(glob.glob(os.path.join(HERE, 'sem*.py'))):
+        spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+        for judul, folder, teks in m.COURSES:
+            d = os.path.join(ROOT, 'Data Lughoh per Semester', 'Semester %d' % m.SEM, folder)
+            os.makedirs(d, exist_ok=True)
+            with open(os.path.join(d, 'maudhuat.html'), 'w', encoding='utf-8') as fh:
+                fh.write(halaman(m.SEM, judul, teks))
+            print('ok', m.SEM, folder)
+
+
+if __name__ == '__main__':
+    main()
