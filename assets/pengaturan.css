@@ -3,6 +3,8 @@
 /* ---------- tombol gigi (kanan atas) ---------- */
 .fab--set { top: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--card, #fffdf7); color: var(--heading, #1f4d3a); }
 .fab--set i { font-size: 1.2rem; }
+.fab--fs { top: calc(clamp(0.8rem, 2vw, 1.4rem) + 3.1rem + 0.55rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--card, #fffdf7); color: var(--heading, #1f4d3a); }
+.fab--fs i { font-size: 1.1rem; }
 
 /* ---------- panel pengaturan ---------- */
 dialog.pg-modal { position: fixed; inset: 0; margin: auto; width: min(480px, 94vw); max-height: min(78vh, 640px); max-height: min(78dvh, 640px); padding: 0; border: none; border-radius: 20px; overflow: hidden; background: var(--card, #fffdf7); color: var(--ar-color, #23331f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; }

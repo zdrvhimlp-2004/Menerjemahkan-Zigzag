@@ -245,6 +245,29 @@
   var fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'fab fab--set'; fab.id = 'btn-set'; fab.title = 'Pengaturan teks'; fab.setAttribute('aria-label', 'Pengaturan teks');
   fab.innerHTML = I('fa-gear'); document.body.appendChild(fab);
+  /* tombol layar penuh (di bawah tombol gigi) */
+  var de = document.documentElement;
+  var fsReq = de.requestFullscreen || de.webkitRequestFullscreen;
+  if (fsReq) {
+    var fsBtn = document.createElement('button');
+    fsBtn.type = 'button'; fsBtn.className = 'fab fab--fs'; fsBtn.id = 'btn-fs';
+    var fsOn = function () { return !!(document.fullscreenElement || document.webkitFullscreenElement); };
+    var fsIkon = function () {
+      var on = fsOn();
+      fsBtn.innerHTML = I(on ? 'fa-compress' : 'fa-expand');
+      fsBtn.title = on ? 'Keluar layar penuh' : 'Layar penuh';
+      fsBtn.setAttribute('aria-label', fsBtn.title);
+    };
+    fsBtn.addEventListener('click', function () {
+      try {
+        if (fsOn()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        else { var r = fsReq.call(de); if (r && r.catch) r.catch(function () { toast('Layar penuh tidak diizinkan di sini.'); }); }
+      } catch (e) { toast('Layar penuh tidak didukung.'); }
+    });
+    document.addEventListener('fullscreenchange', fsIkon);
+    document.addEventListener('webkitfullscreenchange', fsIkon);
+    fsIkon(); document.body.appendChild(fsBtn);
+  }
   var dlg = document.createElement('dialog');
   dlg.className = 'pg-modal'; dlg.setAttribute('aria-label', 'Pengaturan teks');
   dlg.innerHTML =
