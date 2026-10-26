@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujian Kritik Sastra 2 — Bab 1–6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #071225; --bg2: #0d2347; --card: #10223f; --card2: #17325c; --border: #25416d;
+    --text: #eaf3ff; --muted: #8fb0d9; --accent: #7cc4ff; --accent2: #4da3f5; --on-accent: #06182f;
+    --ok: #34d399; --ok-bg: rgba(52, 211, 153, .16); --bad: #fb7185; --bad-bg: rgba(251, 113, 133, .16);
+    --warn: #fbbf24; --warn-bg: rgba(251, 191, 36, .14);
+  }
+  html, body { height: 100%; }
+  body { background: radial-gradient(900px 500px at 50% -150px, var(--bg2), transparent 70%), var(--bg); color: var(--text); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.55; -webkit-tap-highlight-color: transparent; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  [hidden] { display: none !important; }
+  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; }
+
+  .app { max-width: 860px; margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; padding: 0.9rem 1rem 1.2rem; }
+
+  /* ---------- tombol umum ---------- */
+  .btn { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 0.65rem 1rem; font-weight: 500; font-size: 0.92rem; transition: background .15s, border-color .15s, transform .1s; }
+  .btn:hover:not(:disabled) { background: var(--card2); border-color: var(--accent); }
+  .btn:active:not(:disabled) { transform: scale(.97); }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .btn--main { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+  .btn--main:hover:not(:disabled) { background: #a2d6ff; }
+  .icon { width: 2.5rem; height: 2.5rem; display: inline-grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); background: var(--card); font-size: 1.1rem; }
+  .icon:hover { background: var(--card2); border-color: var(--accent); }
+  .icon[aria-pressed="false"] { opacity: .55; }
+
+  /* ---------- layar mulai ---------- */
+  .start { margin: auto; width: 100%; max-width: 560px; text-align: center; padding: 1.5rem 0; }
+  .start .logo { width: 84px; height: 84px; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg, var(--accent), var(--accent2)); color: var(--on-accent); font-size: 2.7rem; font-weight: 700; box-shadow: 0 8px 30px rgba(77, 163, 245, .35); }
+  .start h1 { font-size: clamp(1.9rem, 1.2rem + 3vw, 2.6rem); line-height: 1.8; }
+  .start .sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+  .info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin: 1.2rem 0; text-align: left; }
+  .info div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.7rem 0.9rem; font-size: 0.85rem; color: var(--muted); }
+  .info b { display: block; color: var(--text); font-size: 1.15rem; font-weight: 600; }
+  .set { text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem 1rem; margin-bottom: 1.2rem; display: grid; gap: 0.7rem; }
+  .set label { display: grid; gap: 0.25rem; font-size: 0.8rem; color: var(--muted); }
+  .set select { height: 2.5rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font: inherit; padding: 0 0.7rem; }
+  .set .chk { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--text); }
+  .set .chk input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+  .note { font-size: 0.8rem; color: var(--warn); background: var(--warn-bg); border-radius: 10px; padding: 0.55rem 0.8rem; text-align: left; margin-bottom: 1rem; }
+  .note.ok { color: var(--ok); background: var(--ok-bg); }
+  .start .btn--main { width: 100%; padding: 0.9rem; font-size: 1.05rem; border-radius: 14px; }
+
+  /* ---------- layar ujian ---------- */
+  .top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+  .top .spacer { flex: 1; }
+  .count { font-weight: 600; font-size: 0.95rem; }
+  .count small { color: var(--muted); font-weight: 400; }
+  .chip { display: inline-block; padding: 0.15rem 0.7rem; border-radius: 999px; background: rgba(124, 196, 255, .14); color: var(--accent); font-size: 0.74rem; font-weight: 500; }
+  .bar { height: 6px; background: var(--card); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s; }
+
+  .timer { display: flex; align-items: center; gap: 0.8rem; margin: 0.9rem 0 0.5rem; }
+  .ring { --p: 100; width: 3.4rem; height: 3.4rem; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 1.15rem; background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--card) 0); position: relative; flex: none; }
+  .ring::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--bg); }
+  .ring span { position: relative; }
+  .ring.low { background: conic-gradient(var(--bad) calc(var(--p) * 1%), var(--card) 0); color: var(--bad); }
+  .tstate { font-size: 0.85rem; color: var(--muted); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: clamp(1rem, 3.5vw, 1.8rem); }
+  .qno { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .qtext { font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.5rem); line-height: 2.2; text-align: right; font-weight: 700; padding: 0.3rem 0 0.9rem; }
+  .opts { display: grid; gap: 0.7rem; }
+  .opt { display: flex; align-items: center; gap: 0.9rem; flex-direction: row-reverse; text-align: right; width: 100%; padding: 0.9rem 1.1rem; min-height: 4.4rem; border: 1.5px solid var(--border); border-radius: 16px; background: var(--card2); transition: border-color .15s, background .15s, transform .1s; }
+  .opt:hover:not(:disabled) { border-color: var(--accent); }
+  .opt:active:not(:disabled) { transform: scale(.99); }
+  .opt .lt { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--bg); color: var(--accent); font-size: 1.5rem; font-weight: 700; font-family: 'Amiri', serif; }
+  .opt .tx { flex: 1; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.4rem, 1.1rem + 1.6vw, 1.95rem); line-height: 2.1; direction: rtl; }
+  .opt:disabled { cursor: default; }
+  .opt.is-ok { border-color: var(--ok); background: var(--ok-bg); }
+  .opt.is-ok .lt { background: var(--ok); color: #05261a; }
+  .opt.is-bad { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.is-bad .lt { background: var(--bad); color: #2a0610; }
+  .opt.is-dim { opacity: .55; }
+
+  .exp { margin-top: 1rem; border-radius: 16px; padding: 0.9rem 1.05rem; border: 1px solid var(--border); background: var(--bg); }
+  .exp.ok { border-color: var(--ok); }
+  .exp.bad { border-color: var(--bad); }
+  .exp.warn { border-color: var(--warn); }
+  .exp h3 { font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .exp.ok h3 { color: var(--ok); } .exp.bad h3 { color: var(--bad); } .exp.warn h3 { color: var(--warn); }
+  .exp p { font-size: 0.95rem; color: var(--text); }
+  .exp .row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; }
+  .exp .ans { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .exp .ans b { color: var(--ok); font-family: 'Amiri', serif; font-size: 1.2rem; font-weight: 700; margin-left: 0.3rem; direction: rtl; unicode-bidi: isolate; }
+
+  .nav { display: flex; gap: 0.6rem; margin-top: 1rem; }
+  .nav .btn { flex: 1; }
+  .nav .mid { flex: 0 0 auto; }
+  .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%) translateY(20px); background: var(--card2); border: 1px solid var(--warn); color: var(--warn); padding: 0.6rem 1.1rem; border-radius: 999px; font-size: 0.88rem; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 60; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- daftar soal (dialog) ---------- */
+  dialog { border: none; border-radius: 20px; padding: 0; background: var(--card); color: var(--text); width: min(560px, 94vw); max-height: 86vh; overflow: auto; box-shadow: 0 24px 70px rgba(0, 0, 0, .55); }
+  dialog::backdrop { background: rgba(3, 9, 20, .72); }
+  .dh { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); font-weight: 600; position: sticky; top: 0; background: var(--card); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 0.45rem; padding: 1rem 1.2rem; }
+  .cell { height: 2.7rem; border-radius: 10px; border: 1.5px solid var(--border); background: var(--card2); font-weight: 600; font-size: 0.9rem; }
+  .cell.ok { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+  .cell.bad { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+  .cell.to { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+  .cell.cur { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; padding: 0 1.2rem 1rem; font-size: 0.75rem; color: var(--muted); }
+  .legend i { display: inline-block; width: .75rem; height: .75rem; border-radius: 4px; margin-right: .35rem; vertical-align: -1px; }
+
+  /* ---------- hasil ---------- */
+  .res { max-width: 640px; margin: auto; width: 100%; text-align: center; padding: 1rem 0; }
+  .score { font-size: clamp(3.4rem, 2rem + 8vw, 5.5rem); font-weight: 600; color: var(--accent); line-height: 1.1; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 1.2rem 0; }
+  .stats div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.8rem; font-size: 0.8rem; color: var(--muted); }
+  .stats b { display: block; font-size: 1.6rem; color: var(--text); }
+  .stats .ok b { color: var(--ok); } .stats .bad b { color: var(--bad); } .stats .to b { color: var(--warn); }
+  .rlist { text-align: left; display: grid; gap: 0.4rem; margin: 1rem 0; }
+  .rrow { display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 0.7rem; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.5rem 0.8rem; width: 100%; text-align: left; }
+  .rrow:hover { border-color: var(--accent); }
+  .rrow .n { font-weight: 600; color: var(--muted); }
+  .rrow .t { font-family: 'Amiri', serif; direction: rtl; text-align: right; font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rrow .s { font-size: 0.75rem; font-weight: 600; }
+  .rrow .s.ok { color: var(--ok); } .rrow .s.bad { color: var(--bad); } .rrow .s.to { color: var(--warn); } .rrow .s.na { color: var(--muted); }
+  .res .acts { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+
+  @media (max-width: 520px) {
+    .app { padding: 0.7rem 0.7rem 1rem; }
+    .info { grid-template-columns: 1fr 1fr; }
+    .nav .btn { padding: 0.65rem 0.4rem; font-size: 0.85rem; }
+  }
+  :fullscreen body, body:fullscreen { background: var(--bg); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- MULAI -->
+  <section class="start" id="start">
+    <div class="logo ar">ن</div>
+    <h1 class="ar">اخْتِبَارُ النَّقْدِ الْأَدَبِيِّ (٢)</h1>
+    <p class="sub">Ujian pilihan ganda &middot; Bab 1 sampai Bab 6 &middot; Tingkat 5</p>
+    <div class="info">
+      <div><b id="nSoal">71</b>soal</div>
+      <div><b>2</b>pilihan jawaban</div>
+      <div><b>10 detik</b>waktu menjawab</div>
+      <div><b>Suara</b>dibacakan otomatis</div>
+    </div>
+    <div class="set">
+      <label>Suara pembaca (suara Arab dari browser)
+        <select id="voiceSel"><option value="">Otomatis (suara Arab)</option></select>
+      </label>
+      <label>Kecepatan baca
+        <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option></select>
+      </label>
+      <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis setelah menjawab</label>
+    </div>
+    <div class="note" id="voiceNote">Memeriksa suara Arab di browser…</div>
+    <button class="btn btn--main" id="btnStart">Mulai Ujian</button>
+  </section>
+
+  <!-- UJIAN -->
+  <section id="quiz" hidden style="display:flex;flex-direction:column;flex:1;">
+    <div class="top">
+      <button class="icon" id="btnGrid" title="Daftar soal" aria-label="Daftar soal">☰</button>
+      <div class="count"><span id="cur">1</span><small> / <span id="tot">71</span></small></div>
+      <span class="chip" id="babChip">Bab 1</span>
+      <div class="spacer"></div>
+      <button class="icon" id="btnMute" title="Suara aktif / mati" aria-label="Suara" aria-pressed="true">🔊</button>
+      <button class="icon" id="btnFull" title="Layar penuh" aria-label="Layar penuh">⛶</button>
+    </div>
+    <div class="bar"><i id="prog"></i></div>
+
+    <div class="timer">
+      <div class="ring" id="ring"><span id="sec">10</span></div>
+      <div class="tstate" id="tstate">Menyiapkan…</div>
+    </div>
+
+    <div class="card">
+      <div class="qno">
+        <span class="chip" id="babName"></span>
+        <button class="icon" id="btnRead" title="Bacakan lagi" aria-label="Bacakan lagi">🔁</button>
+      </div>
+      <div class="qtext ar" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+      <div class="exp" id="exp" hidden>
+        <h3 id="expH"></h3>
+        <div class="ans" id="expA"></div>
+        <p id="expP"></p>
+        <div class="row"><button class="btn" id="btnSpeakExp">🔊 Dengarkan penjelasan</button></div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn" id="btnPrev">← Sebelumnya</button>
+      <button class="btn mid" id="btnFinish">Selesai</button>
+      <button class="btn btn--main" id="btnNext">Berikutnya →</button>
+    </div>
+  </section>
+
+  <!-- HASIL -->
+  <section class="res" id="result" hidden>
+    <h1 class="ar" style="font-size:2rem;line-height:1.8">نَتِيجَةُ الِاخْتِبَارِ</h1>
+    <div class="score" id="score">0</div>
+    <div style="color:var(--muted)">dari 100</div>
+    <div class="stats">
+      <div class="ok"><b id="sOk">0</b>benar</div>
+      <div class="bad"><b id="sBad">0</b>salah</div>
+      <div class="to"><b id="sTo">0</b>waktu habis / kosong</div>
+    </div>
+    <div class="acts">
+      <button class="btn btn--main" id="btnRedo">Ulangi dari awal</button>
+      <button class="btn" id="btnBack">Kembali ke soal</button>
+    </div>
+    <div class="rlist" id="rlist"></div>
+  </section>
+</div>
+
+<dialog id="dlgGrid">
+  <div class="dh"><span>Daftar soal</span><button class="icon" id="gridX" aria-label="Tutup">×</button></div>
+  <div class="grid" id="grid"></div>
+  <div class="legend">
+    <span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>benar</span>
+    <span><i style="background:var(--bad-bg);border:1px solid var(--bad)"></i>salah</span>
+    <span><i style="background:var(--warn-bg);border:1px solid var(--warn)"></i>waktu habis</span>
+    <span><i style="background:var(--card2);border:1px solid var(--border)"></i>belum</span>
+  </div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {"items": [{"b": 1, "q": "مَا اسْمُ الْمُقَرَّرِ الَّذِي تَتَنَاوَلُهُ هَذِهِ الْخُطَّةُ التَّدْرِيسِيَّةُ؟", "o": ["الْعَرُوضُ وَالْقَوَافِي (١)", "النَّقْدُ الْأَدَبِيُّ (٢)"], "a": 1, "e": "Rencana pengajaran ini milik mata kuliah Kritik Sastra (2) untuk tingkat kelima di jurusan Bahasa Arab. Mata kuliah ini membahas sejarah kritik sastra Arab beserta tokoh dan isu-isu utamanya."}, {"b": 1, "q": "عَنْ أَيِّ شَيْءٍ يُقَدِّمُ هَذَا الْمُقَرَّرُ مَعْلُومَاتٍ تَارِيخِيَّةً؟", "o": ["عَنِ النَّقْدِ الْأَدَبِيِّ عُمُومًا", "عَنِ النَّحْوِ وَالصَّرْفِ"], "a": 0, "e": "Deskripsi mata kuliah menyebut bahwa ia menyajikan informasi historis tentang kritik sastra secara umum, mencakup konsep, fungsi, awal mula, perkembangan, serta para kritikus paling terkenal pada setiap masa. Begitu penjelasan materi."}, {"b": 1, "q": "أَيُّ الْعِبَارَاتِ الْآتِيَةِ هَدَفٌ رَئِيسٌ مِنْ أَهْدَافِ الْمُقَرَّرِ؟", "o": ["حِفْظُ دَوَاوِينِ الشِّعْرِ كُلِّهَا", "مَعْرِفَةُ أَهَمِّ اتِّجَاهَاتِ النَّقْدِ الْعَرَبِيِّ الْقَدِيمِ"], "a": 1, "e": "Tujuan utama mata kuliah ialah mengetahui arah-arah terpenting kritik Arab klasik, menjelaskan isu-isu menonjol beserta faktor pemengaruhnya, mengenal perseteruan kritik, dan mengetahui para kritikus yang berkontribusi dalam kritik klasik."}, {"b": 1, "q": "إِلَى أَيِّ مُؤَسَّسَةٍ تَنْتَمِي هَذِهِ الْخُطَّةُ التَّدْرِيسِيَّةُ؟", "o": ["جَامِعَةِ الْإِمَامِ مُحَمَّدِ بْنِ سُعُودٍ الْإِسْلَامِيَّةِ", "جَامِعَةِ الْأَزْهَرِ الشَّرِيفِ"], "a": 0, "e": "Pada bagian identitas tertulis lembaganya adalah Universitas Imam Muhammad bin Sa'ud Islam, melalui Institut Ilmu-ilmu Islam dan Arab di Indonesia, bukan Universitas al-Azhar sebagaimana pilihan lainnya. Demikian uraian materi bab ini."}, {"b": 1, "q": "كَمْ سَاعَةَ اتِّصَالٍ خُصِّصَتْ لِلِاتِّجَاهِ التَّوْفِيقِيِّ فِي جَدْوَلِ الْمَوْضُوعَاتِ؟", "o": ["سِتُّ سَاعَاتٍ", "ثَلَاثُ سَاعَاتٍ"], "a": 0, "e": "Dalam tabel topik, aliran kompromi dengan tokoh al-Jahizh, Ibnu Qutaybah, dan al-Qadhi al-Jurjani mendapat enam jam kontak, sedangkan aliran pendukung penyair modern hanya tiga jam. Oleh sebab itu jawaban ini benar."}, {"b": 1, "q": "أَيُّ الْمَوْضُوعَاتِ الْآتِيَةِ مِنْ قَضَايَا النَّقْدِ الْعَرَبِيِّ فِي الْخُطَّةِ؟", "o": ["اللَّفْظُ وَالْمَعْنَى", "الْمَسْرَحُ الْحَدِيثُ"], "a": 0, "e": "Bagian kedua tabel topik berjudul dari isu-isu kritik Arab, berisi lafaz dan makna, pilar puisi, pencurian puisi, serta tinjauan ulang dan praktik. Teater modern tidak termasuk di dalamnya. Begitu penjelasan materi."}, {"b": 2, "q": "مَنْ مُؤَلِّفُ كِتَابِ «الشِّعْرِ وَالشُّعَرَاءِ»؟", "o": ["ابْنُ رَشِيقٍ", "ابْنُ قُتَيْبَةَ"], "a": 1, "e": "Kitab asy-Syi'r wa asy-Syu'ara' termasuk referensi utama dan merupakan karya Ibnu Qutaybah. Adapun Ibnu Rasyiq al-Qairawani menulis kitab lain yang berjudul al-'Umdah dalam daftar sumber yang sama. Maka jawaban ini tepat."}, {"b": 2, "q": "مَنْ صَاحِبُ كِتَابِ «نَقْدِ الشِّعْرِ»؟", "o": ["الْجَاحِظُ", "قُدَامَةُ بْنُ جَعْفَرٍ"], "a": 1, "e": "Kitab Naqd asy-Syi'r adalah karya Qudamah bin Ja'far dengan tahqiq Kamal Mushthafa. Al-Jahizh dikenal dengan kitab al-Bayan wa at-Tabyin dan al-Hayawan, bukan kitab ini. Hal ini tertulis jelas dalam materi kuliah."}, {"b": 2, "q": "مَنْ مُؤَلِّفُ كِتَابِ «الْمُوَازَنَةِ بَيْنَ شِعْرِ أَبِي تَمَّامٍ وَالْبُحْتُرِيِّ»؟", "o": ["الْآمِدِيُّ", "الصُّولِيُّ"], "a": 0, "e": "Al-Muwazanah antara puisi Abu Tammam dan al-Buhturi ditulis oleh al-Amidi. Sementara ash-Shuli menulis Akhbar Abi Tammam, yakni kitab yang berbeda meskipun sama-sama membahas tokoh Abu Tammam. Karena itu jawaban ini benar."}, {"b": 2, "q": "«أَخْبَارُ أَبِي تَمَّامٍ» كِتَابٌ لِمَنْ؟", "o": ["لِلصُّولِيِّ", "لِلْمَرْزُوقِيِّ"], "a": 0, "e": "Daftar referensi mencatat Akhbar Abi Tammam sebagai karya ash-Shuli. Al-Marzuqi justru dicatat sebagai penulis pengantar syarah al-Hamasah, sehingga ia bukan pengarang kitab tentang kisah-kisah Abu Tammam ini. Hal ini sesuai materi."}, {"b": 2, "q": "مَنْ مُؤَلِّفُ كِتَابِ «الْوَسَاطَةِ بَيْنَ الْمُتَنَبِّي وَخُصُومِهِ»؟", "o": ["الْقَاضِي الْجُرْجَانِيُّ", "الْآمِدِيُّ"], "a": 0, "e": "Al-Wasathah antara al-Mutanabbi dan lawan-lawannya adalah karya al-Qadhi al-Jurjani, ditahqiq Muhammad Abu al-Fadhl Ibrahim dan 'Ali al-Bijawi. Al-Amidi dikenal lewat kitabnya yang membandingkan Abu Tammam dan al-Buhturi. Maka jawaban ini tepat."}, {"b": 2, "q": "«الْعُمْدَةُ» كِتَابٌ لِمَنْ؟", "o": ["لِابْنِ الْأَثِيرِ", "لِابْنِ رَشِيقٍ الْقَيْرَوَانِيِّ"], "a": 1, "e": "Al-'Umdah ditulis oleh Ibnu Rasyiq al-Qairawani. Adapun Ibnu al-Atsir adalah penulis kitab al-Matsal as-Sa'ir, yang juga termasuk dalam daftar referensi utama mata kuliah ini. Hal ini tertulis jelas dalam materi kuliah."}, {"b": 2, "q": "مَنْ حَقَّقَ كِتَابَ «الْمُوَازَنَةِ» لِلْآمِدِيِّ؟", "o": ["أَحْمَدُ مُحَمَّدٌ شَاكِرٌ", "السَّيِّدُ أَحْمَدُ صَقْرٌ"], "a": 1, "e": "Daftar referensi menyebut al-Muwazanah ditahqiq oleh as-Sayyid Ahmad Shaqr. Sedangkan Ahmad Muhammad Syakir adalah muhaqqiq kitab asy-Syi'r wa asy-Syu'ara' karya Ibnu Qutaybah, sehingga keduanya tidak tertukar. Karena itu jawaban ini benar."}, {"b": 2, "q": "مَنْ أَلَّفَ كِتَابًا بِعُنْوَانِ «تَارِيخُ النَّقْدِ الْأَدَبِيِّ عِنْدَ الْعَرَبِ»؟", "o": ["إِحْسَانُ عَبَّاسٍ", "الْمَرْزُوقِيُّ"], "a": 0, "e": "Referensi utama mencatat dua kitab berjudul Tarikh an-Naqd al-Adabi 'inda al-'Arab, yaitu karya al-Ihsan 'Abbas dan karya Thaha Ahmad Ibrahim. Al-Marzuqi tidak menulis kitab dengan judul tersebut. Hal ini sesuai materi."}, {"b": 3, "q": "مَا مَعْنَى النَّقْدِ لُغَةً؟", "o": ["جَمْعُ الْأَشْعَارِ وَرِوَايَتُهَا", "تَمْيِيزُ الدَّرَاهِمِ وَإِخْرَاجُ الزَّائِفِ مِنْهَا"], "a": 1, "e": "Secara bahasa, kritik berarti membedakan dirham dan mengeluarkan yang palsu darinya, lalu bermakna memeriksa sesuatu dan menyingkap cacatnya. Jadi maknanya berkaitan dengan menyeleksi yang baik dari yang buruk. Jawaban ini benar."}, {"b": 3, "q": "مَا تَعْرِيفُ النَّقْدِ اصْطِلَاحًا؟", "o": ["تَمْحِيصُ الْعَمَلِ الْأَدَبِيِّ وَتَقْدِيرُ جَوْدَتِهِ وَقِيمَتِهِ", "كِتَابَةُ الْأَعْمَالِ الْأَدَبِيَّةِ وَنَشْرُهَا"], "a": 0, "e": "Secara istilah, kritik adalah penelitian seksama terhadap karya sastra secara menyeluruh, menilai teksnya dengan tepat, menyingkap kualitas baik dan buruknya, lalu menghukumi dengan standar tertentu, bukan menulis atau menerbitkan karya."}, {"b": 3, "q": "مَتَى يَتِمُّ النَّقْدُ بِحَسَبِ التَّعْرِيفِ الِاصْطِلَاحِيِّ؟", "o": ["حَالَ الِانْتِهَاءِ مِنْ كِتَابَةِ الْعَمَلِ", "قَبْلَ الْبَدْءِ فِي كِتَابَتِهِ"], "a": 0, "e": "Definisi istilah menyebut kritik meneliti karya sastra ketika selesai penulisannya. Tidak mungkin menilai teks yang belum ditulis, sebab penilaian membutuhkan karya utuh untuk dikaji kualitas dan nilainya. Maka jawaban ini tepat."}, {"b": 3, "q": "هَلْ تَتَّفِقُ مَعَايِيرُ النَّقْدِ فِي جَمِيعِ الْفُنُونِ؟", "o": ["نَعَمْ، هِيَ وَاحِدَةٌ فِي كُلِّ الْفُنُونِ", "لَا، تَخْتَلِفُ بِاخْتِلَافِ الْفَنِّ الَّذِي يُمَارَسُ فِيهِ النَّقْدُ"], "a": 1, "e": "Standar dan penilaian kritik berbeda sesuai bidang yang digeluti. Kritik untuk sastrawan berbeda dari kritik untuk ahli fikih, dan kritik para ahli ushul berbeda dari kritik para ahli hadis."}, {"b": 3, "q": "مَا الْقَاسِمُ الْمُشْتَرَكُ بَيْنَ أَنْوَاعِ النَّقْدِ عَلَى اخْتِلَافِهَا؟", "o": ["اتِّبَاعُ مَعَايِيرَ وَاحِدَةٍ فِي كُلِّ مَجَالٍ", "النَّظَرُ فِي الْأَثَرِ الْأَدَبِيِّ وَتَحْلِيلُهُ ثُمَّ الْحُكْمُ عَلَيْهِ"], "a": 1, "e": "Meski berbeda gaya dan penilaian, semua kritik bersama dalam mengkaji karya, menganalisis isi dan bentuknya, lalu menghukumi dan menilainya. Kesamaan standar di semua bidang justru tidak ada menurut teks."}, {"b": 3, "q": "كَمْ مَرْحَلَةً تَمُرُّ بِهَا الْعَمَلِيَّةُ النَّقْدِيَّةُ؟", "o": ["خَمْسَ مَرَاحِلَ", "ثَلَاثَ مَرَاحِلَ"], "a": 1, "e": "Teks menyebut kritik melewati tiga tahap, yaitu tahap penafsiran, tahap analisis, dan tahap penilaian. Jumlah lima tahap tidak disebutkan dalam materi, sehingga pilihan tiga tahap adalah jawaban yang benar."}, {"b": 3, "q": "فِي أَيِّ مَرْحَلَةٍ يُوَضَّحُ مَضْمُونُ النَّصِّ وَالْمَعْنَى الْعَامُّ الَّذِي أَرَادَهُ الْكَاتِبُ؟", "o": ["مَرْحَلَةِ التَّفْسِيرِ", "مَرْحَلَةِ التَّقْوِيمِ"], "a": 0, "e": "Pada tahap penafsiran dijelaskan isi teks dan makna umum yang dimaksud penulis untuk disampaikan kepada pembaca. Tahap penilaian berbeda, karena ia berkaitan dengan hukum atas keberhasilan atau kegagalan karya."}, {"b": 3, "q": "فِي أَيِّ مَرْحَلَةٍ يُشْرَحُ أُسْلُوبُ الْأَدِيبِ فِي التَّعْبِيرِ عَنْ أَفْكَارِهِ وَعَوَاطِفِهِ؟", "o": ["مَرْحَلَةِ التَّحْلِيلِ", "مَرْحَلَةِ التَّفْسِيرِ"], "a": 0, "e": "Tahap analisis ialah tahap ketika gaya sastrawan dijelaskan dalam mengungkapkan pikiran dan perasaannya. Penafsiran hanya menerangkan isi dan makna umum, sedangkan analisis membedah cara pengungkapannya. Hal ini ditegaskan dalam materi kuliah."}, {"b": 3, "q": "مَا الْمَرْحَلَةُ الْأَخِيرَةُ فِي الْعَمَلِيَّةِ النَّقْدِيَّةِ؟", "o": ["التَّحْلِيلُ", "التَّقْوِيمُ"], "a": 1, "e": "Tahap terakhir proses kritik adalah penilaian, yang berarti menghukumi karya sastra, entah dengan keberhasilannya atau kegagalannya. Analisis berada sebelum penilaian, karena hukum baru dijatuhkan setelah karya dipahami dan dibedah."}, {"b": 3, "q": "مَا هُوَ النَّقْدُ الْبَنَّاءُ؟", "o": ["نَقْدٌ يَسْعَى فِيهِ النَّاقِدُ إِلَى تَقْوِيمِ الْخَطَأِ وَإِصْلَاحِهِ بِأُسُسٍ عِلْمِيَّةٍ", "نَقْدٌ غَايَتُهُ النَّيْلُ مِنَ الْآخَرِينَ وَتَشْوِيهُ سُمْعَتِهِمْ"], "a": 0, "e": "Kritik membangun berupaya meluruskan kesalahan dan memperbaikinya dengan landasan ilmiah, menjauhi fanatisme dan vonis prasangka. Adapun menjatuhkan orang lain dan mencoreng reputasi mereka adalah ciri kritik destruktif. Hal ini sesuai materi."}, {"b": 3, "q": "مَا هَدَفُ النَّاقِدِ فِي النَّقْدِ الْهَدَّامِ؟", "o": ["تَصْوِيبُ الْأَوْضَاعِ وَتَقْدِيمُ النُّصْحِ", "الِانْتِصَارُ وَالثَّأْرُ مِنَ الْآخَرِينَ"], "a": 1, "e": "Dalam kritik destruktif, kritikus bertujuan menang dan membalas dendam kepada orang lain, tanpa peduli benar atau salah. Membenahi keadaan dan memberi nasihat justru tujuan utama kritik yang membangun. Jawaban ini benar."}, {"b": 3, "q": "كَيْفَ يَنْظُرُ النَّاقِدُ فِي النَّقْدِ الْبَنَّاءِ إِلَى رَأْيِهِ؟", "o": ["يَرَى أَنَّهُ قَدْ يُؤْخَذُ بِهِ وَقَدْ يُرْفَضُ", "يَرَاهُ الْحَقِيقَةَ الْمُطْلَقَةَ الَّتِي لَا تُنْقَضُ"], "a": 0, "e": "Kritikus dalam kritik konstruktif menyadari pendapatnya mungkin diterima atau ditolak. Sebaliknya, kritikus destruktif menganggap pendapatnya kebenaran mutlak yang tidak dapat dibantah, sehingga ia menolak masukan dari siapa pun. Begitu penjelasan materi."}, {"b": 3, "q": "أَيُّ الصِّفَاتِ الْآتِيَةِ مِنْ شُرُوطِ النَّاقِدِ؟", "o": ["التَّعَصُّبُ لِفِكْرَةٍ وَاحِدَةٍ", "الْمَوْهِبَةُ النَّقْدِيَّةُ"], "a": 1, "e": "Di antara syarat kritikus adalah bakat kritik yang membuatnya mampu menilai dengan tepat, membedakan karya baik dari karya buruk. Fanatisme pada satu gagasan justru ciri kritik destruktif yang tercela."}, {"b": 3, "q": "مَا الْمَقْصُودُ بِالْعَدَالَةِ وَالْإِنْصَافِ فِي شُرُوطِ النَّاقِدِ؟", "o": ["إِصْدَارُ الْأَحْكَامِ بِشَفَافِيَّةٍ وَنَزَاهَةٍ بَعِيدًا عَنِ الْهَوَى وَالتَّعَصُّبِ", "مُجَامَلَةُ الْأَدِيبِ لِيَسْتَرْضِيَهُ"], "a": 0, "e": "Keadilan dan kejujuran berarti menjatuhkan penilaian secara transparan, jauh dari hawa nafsu dan fanatisme, dengan alasan ilmiah. Memihak seseorang demi menyenangkannya bertentangan dengan syarat ini, sebab kritikus tidak boleh berat sebelah."}, {"b": 4, "q": "مَا النَّقْدُ الْمَنْهَجِيُّ؟", "o": ["نَقْدٌ يَعْتَمِدُ عَلَى الذَّوْقِ الشَّخْصِيِّ وَحْدَهُ", "نَقْدٌ يَقُومُ عَلَى مَنْهَجٍ تَدْعَمُهُ أُسُسٌ نَظَرِيَّةٌ أَوْ تَطْبِيقِيَّةٌ عَامَّةٌ"], "a": 1, "e": "Kritik metodis adalah kritik yang berdiri di atas metode dan didukung landasan teoretis atau praktis umum. Ia mengkaji aliran, penyair, atau perseteruan secara rinci, bukan sekadar bersandar pada selera pribadi."}, {"b": 4, "q": "أَيُّ قَرْنٍ كَانَ مُهِمًّا فِي تَارِيخِ النَّقْدِ الْعَرَبِيِّ، إِذِ اتَّجَهَ الْعُلَمَاءُ فِيهِ إِلَى الْكِتَابَةِ فِي الْأَدَبِ وَالنَّقْدِ؟", "o": ["الْقَرْنُ الْأَوَّلُ", "الْقَرْنُ الرَّابِعُ"], "a": 1, "e": "Materi menyebut abad keempat sebagai abad penting dalam sejarah kritik Arab, karena para ulama dan sastrawan mulai menulis tentang sastra dan kritik serta mengambil manfaat besar dari kajian kritik."}, {"b": 4, "q": "مَا الِاسْمُ الْكَامِلُ لِلْأَصْمَعِيِّ؟", "o": ["عَبْدُ اللهِ بْنُ مُسْلِمِ بْنِ قُتَيْبَةَ", "عَبْدُ الْمَلِكِ بْنُ قُرَيْبٍ"], "a": 1, "e": "Al-Ashma'i bernama lengkap 'Abdul Malik bin Quraib, salah satu kritikus dan penyair paling menonjol pada masa Abbasiyah. Nama 'Abdullah bin Muslim bin Qutaybah adalah nama Ibnu Qutaybah, bukan al-Ashma'i."}, {"b": 4, "q": "بِمَاذَا اهْتَمَّ الْأَصْمَعِيُّ اهْتِمَامًا كَبِيرًا؟", "o": ["جَمْعِ الشِّعْرِ الْعَرَبِيِّ مِنْ مَصَادِرِهِ الْأَصْلِيَّةِ وَتَدْوِينِهِ", "تَرْجَمَةِ الشِّعْرِ إِلَى لُغَاتٍ أُخْرَى"], "a": 0, "e": "Al-Ashma'i berperan besar dalam mengumpulkan puisi Arab dari sumber aslinya dan membukukannya, dengan perhatian khusus pada puisi Jahiliah dan Islam. Ia juga berupaya membenahi silsilah nasab dan kosakata. Begitu penjelasan materi."}, {"b": 4, "q": "مَاذَا كَانَ الْأَصْمَعِيُّ يُقَدِّرُ فِي الشِّعْرِ؟", "o": ["الْغُمُوضَ وَالتَّعْقِيدَ", "جَزَالَةَ اللِّسَانِ وَنَقَاءَ اللُّغَةِ"], "a": 1, "e": "Al-Ashma'i menghargai kekuatan bahasa dan kemurnian lisan, serta memandang puisi baik adalah yang bergaya fasih dan sastrawi. Kekaburan dan kerumitan justru ia kritik karena menyulitkan pemahaman. Karena itu jawaban ini benar."}, {"b": 4, "q": "مَا مَوْقِفُ الْأَصْمَعِيِّ مِنَ الشِّعْرِ الْغَامِضِ؟", "o": ["كَانَ يَنْتَقِدُهُ وَيُؤَكِّدُ وُضُوحَ الْمَعَانِي", "كَانَ يُفَضِّلُهُ وَيَدْعُو إِلَيْهِ"], "a": 0, "e": "Al-Ashma'i mengkritik puisi yang mengandung kekaburan atau sulit dipahami, dan menegaskan pentingnya kejelasan makna dalam puisi. Karena itu ia tidak menyukai kekaburan, apalagi menyerukannya kepada para penyair. Hal ini sesuai materi."}, {"b": 4, "q": "لِمَاذَا رَفَضَ الْأَصْمَعِيُّ شِعْرَ بَشَّارِ بْنِ بُرْدٍ؟", "o": ["بِسَبَبِ اللَّحْنِ", "بِسَبَبِ قِصَرِ الْقَصَائِدِ"], "a": 0, "e": "Contoh kritik al-Ashma'i yang membela kefasihan dan bahasa menunjukkan ia menolak puisi Basysyar bin Burd karena kekeliruan bahasa. Ia menilai kesalahan kebahasaan semacam itu tidak terjadi pada penyair fasih terdahulu."}, {"b": 4, "q": "مَاذَا قَالَ الْأَصْمَعِيُّ عَنْ أَبِي نُوَاسٍ؟", "o": ["هُوَ أَفْحَلُ شُعَرَاءِ الْعَرَبِ جَزَالَةً", "هُوَ صَاحِبُ دِيبَاجَةٍ وَمَذْهَبٍ حَسَنٍ، لَكِنْ لَيْسَ لَهُ مَادَّةٌ"], "a": 1, "e": "Ketika ditanya tentang Abu Nuwas, al-Ashma'i menjawab bahwa ia pemilik keindahan gaya dan mazhab yang baik, tetapi tidak punya materi. Puisinya dianggap perkotaan dan halus, tidak menandingi kekuatan para terdahulu."}, {"b": 4, "q": "مَا الْمُرَادُ بِـ«الْمَادَّةِ» عِنْدَ الْأَصْمَعِيِّ فِي حُكْمِهِ عَلَى أَبِي نُوَاسٍ؟", "o": ["كَثْرَةُ الْمَدِيحِ وَالْهِجَاءِ", "غَرِيبُ اللُّغَةِ وَالسُّنَنُ الْبَدَوِيَّةُ"], "a": 1, "e": "Al-Ashma'i memaksudkan materi sebagai kata-kata asing bahasa dan tradisi badui. Karena Abu Nuwas bergaya perkotaan dan halus, ia dianggap kurang kuat menandingi kekuatan bahasa penyair-penyair terdahulu yang kuat. Jawaban ini benar."}, {"b": 4, "q": "بِمَاذَا اشْتُهِرَ الْآمِدِيُّ فِي النَّقْدِ؟", "o": ["بِدِقَّتِهِ فِي النَّقْدِ وَتَحْلِيلِهِ الْعَمِيقِ لِلْأَدَبِ", "بِجَمْعِ الْأَشْعَارِ الْجَاهِلِيَّةِ فَقَطْ"], "a": 0, "e": "Al-Amidi, yang bernama Abu al-Qasim 'Abdullah bin 'Ali bin 'Isa, terkenal karena ketelitiannya dalam kritik dan analisisnya yang mendalam terhadap sastra, terutama puisi pada abad keempat dan kelima Hijriah."}, {"b": 4, "q": "مَا أَشْهَرُ أَعْمَالِ الْآمِدِيِّ النَّقْدِيَّةِ؟", "o": ["«الْمُوَازَنَةُ»", "«الْبَيَانُ وَالتَّبْيِينُ»"], "a": 0, "e": "Karya al-Amidi yang paling terkenal adalah al-Muwazanah. Adapun al-Bayan wa at-Tabyin merupakan karya al-Jahizh, tokoh aliran kompromi yang hidup pada masa Abbasiyah dan juga dibahas dalam materi. Maka jawaban ini tepat."}, {"b": 4, "q": "بَيْنَ مَنْ قَارَنَ الْآمِدِيُّ فِي كِتَابِ «الْمُوَازَنَةِ»؟", "o": ["بَيْنَ الشُّعَرَاءِ الْقُدَامَى وَالْمُحْدَثِينَ", "بَيْنَ الْخُطَبَاءِ وَالْكُتَّابِ"], "a": 0, "e": "Dalam al-Muwazanah, al-Amidi membandingkan para penyair terdahulu dengan para penyair modern, yaitu al-Buhturi mewakili mazhab klasik dan Abu Tammam mewakili mazhab modern, bukan antara orator dan penulis. Hal ini sesuai materi."}, {"b": 4, "q": "لِمَنِ انْتَصَرَ الْآمِدِيُّ فِي كِتَابِهِ «الْمُوَازَنَةِ»؟", "o": ["لِأَبِي تَمَّامٍ", "لِلْبُحْتُرِيِّ"], "a": 1, "e": "Al-Amidi membela al-Buhturi karena puisinya dinilai alami, mudah diambil, kuat susunannya, dan sejalan dengan para penyair Jahiliah dan Islam. Abu Tammam justru ia anggap keluar dari pilar puisi. Jawaban ini benar."}, {"b": 4, "q": "مَاذَا يُمَثِّلُ الْبُحْتُرِيُّ عِنْدَ الْآمِدِيِّ؟", "o": ["مَذْهَبَ الْقُدَمَاءِ فِي الطَّبْعِ", "مَذْهَبَ الْمُحْدَثِينَ فِي التَّكَلُّفِ"], "a": 0, "e": "Menurut al-Amidi, al-Buhturi mewakili mazhab para terdahulu dalam watak alami. Sebaliknya, Abu Tammam mewakili mazhab penyair modern yang ia nilai penuh kepura-puraan dan kekaburan dalam puisinya. Demikian uraian materi bab ini."}, {"b": 4, "q": "مَا الْعَيْبُ الَّذِي أَخَذَهُ الْآمِدِيُّ عَلَى أَبِي تَمَّامٍ؟", "o": ["الضَّعْفُ فِي الْوَزْنِ وَالْقَافِيَةِ", "الْغُمُوضُ وَالتَّكَلُّفُ"], "a": 1, "e": "Al-Amidi mengkritik kekaburan dan filsafat pada Abu Tammam serta menilainya penuh kepura-puraan. Kritik itu bukan soal lemahnya wazan dan qafiyah, melainkan tentang gaya dan kejelasan makna dalam puisinya. Jawaban ini benar."}, {"b": 4, "q": "كَيْفَ عَابَ الْآمِدِيُّ بَيْتَ أَبِي تَمَّامٍ «لَا تَسْقِنِي مَاءَ الْمَلَامِ»؟", "o": ["رَأَى فِيهِ أَجْوَدَ التَّشْبِيهَاتِ وَأَوْضَحَهَا", "رَأَى فِي اسْتِعَارَةِ الْمَاءِ لِلْمَلَامِ تَكَلُّفًا قَبِيحًا"], "a": 1, "e": "Al-Amidi mencela bait itu dengan keras karena celaan tidak punya air untuk diminumkan. Ia memandang penggunaan majas air untuk celaan sebagai kepura-puraan buruk yang keluar dari kejelasan perumpamaan balaghah Arab."}, {"b": 4, "q": "مَاذَا يُفَضِّلُ الْآمِدِيُّ فِي الشِّعْرِ؟", "o": ["الْبَسَاطَةَ وَالْوُضُوحَ وَالْبَلَاغَةَ", "الْإِغْرَابَ وَالْفَلْسَفَةَ"], "a": 0, "e": "Al-Amidi lebih menyukai puisi yang bercirikan kesederhanaan, kejelasan, dan balaghah, serta memandang puisi klasik sebagai tolok ukur sastra yang baik. Pengasingan kata dan filsafat bertentangan dengan selera kritiknya. Jawaban ini benar."}, {"b": 5, "q": "مَا الِاتِّجَاهُ التَّوْفِيقِيُّ فِي النَّقْدِ؟", "o": ["نَهْجٌ يَرْفُضُ الْقَدِيمَ كُلَّهُ وَيَتَمَسَّكُ بِالْجَدِيدِ", "نَهْجٌ نَقْدِيٌّ يَدْمُجُ بَيْنَ أَسَالِيبَ مُتَعَدِّدَةٍ وَيَهْدِفُ إِلَى التَّوَازُنِ بَيْنَ التَّقْلِيدِيِّ وَالْحَدِيثِ"], "a": 1, "e": "Aliran kompromi memadukan beragam metode dalam sastra dan kritik, bertujuan menyeimbangkan yang tradisional dengan yang modern, serta menghimpun yang terbaik dari berbagai periode. Ia tidak menolak yang lama seluruhnya."}, {"b": 5, "q": "مَنْ أَبْرَزُ نُقَّادِ الِاتِّجَاهِ التَّوْفِيقِيِّ؟", "o": ["الْجَاحِظُ وَابْنُ قُتَيْبَةَ وَالْقَاضِي الْجُرْجَانِيُّ", "الْأَصْمَعِيُّ وَالْآمِدِيُّ"], "a": 0, "e": "Tokoh aliran kompromi adalah al-Jahizh, Ibnu Qutaybah, dan al-Qadhi al-Jurjani. Al-Ashma'i dan al-Amidi termasuk aliran para kritikus pendukung puisi klasik, yaitu aliran yang dibahas pada bab sebelumnya. Maka jawaban ini tepat."}, {"b": 5, "q": "مَا الِاسْمُ الْكَامِلُ لِلْجَاحِظِ؟", "o": ["أَبُو عُثْمَانَ عَمْرُو بْنُ بَحْرٍ", "أَبُو الْعَبَّاسِ قُدَامَةُ بْنُ جَعْفَرٍ"], "a": 0, "e": "Al-Jahizh bernama lengkap Abu 'Utsman 'Amr bin Bahr, salah satu sastrawan dan kritikus terbesar pada masa Abbasiyah. Abu al-'Abbas Qudamah bin Ja'far adalah tokoh kritik yang terpengaruh logika. Begitu penjelasan materi."}, {"b": 5, "q": "أَيُّ الْكِتَابَيْنِ الْآتِيَيْنِ مِنْ تَأْلِيفِ الْجَاحِظِ؟", "o": ["«الشِّعْرُ وَالشُّعَرَاءُ»", "«الْبَيَانُ وَالتَّبْيِينُ»"], "a": 1, "e": "Al-Jahizh terkenal dengan kitab al-Bayan wa at-Tabyin dan al-Hayawan. Adapun asy-Syi'r wa asy-Syu'ara' adalah karya Ibnu Qutaybah, sehingga kedua tokoh aliran kompromi ini jangan sampai tertukar. Karena itu jawaban ini benar."}, {"b": 5, "q": "كَيْفَ كَانَ مَنْهَجُ الْجَاحِظِ فِي نَقْدِهِ؟", "o": ["مُتَشَدِّدًا يَرْفُضُ كُلَّ جَدِيدٍ", "تَوْفِيقِيًّا يَجْمَعُ بَيْنَ تَقَالِيدِ الْأَدَبِ الْقَدِيمِ وَالِابْتِكَارَاتِ الْجَدِيدَةِ"], "a": 1, "e": "Al-Jahizh menempuh pendekatan kompromistis dalam kritiknya, memadukan tradisi sastra Arab klasik dengan inovasi baru. Ia menghargai puisi klasik namun menyerukan pembaruannya agar sesuai dengan selera kontemporer. Demikian uraian materi bab ini."}, {"b": 5, "q": "مَاذَا شَجَّعَ الْجَاحِظُ فِي الْأَدَبِ؟", "o": ["الِابْتِكَارَ وَالتَّمَيُّزَ", "التَّقْلِيدَ الْمَحْضَ"], "a": 0, "e": "Al-Jahizh mendorong inovasi dan keunggulan, serta menegaskan bahwa sastra yang baik memadukan orisinalitas dan inovasi. Karena itu ia tidak membatasi diri pada taklid murni terhadap karya orang-orang terdahulu. Jawaban ini benar."}, {"b": 5, "q": "مَا الِاسْمُ الْكَامِلُ لِابْنِ قُتَيْبَةَ؟", "o": ["أَبُو مُحَمَّدٍ عَبْدُ اللهِ بْنُ مُسْلِمِ بْنِ قُتَيْبَةَ", "أَبُو الْقَاسِمِ عَبْدُ اللهِ بْنُ عَلِيِّ بْنِ عِيسَى"], "a": 0, "e": "Ibnu Qutaybah bernama lengkap Abu Muhammad 'Abdullah bin Muslim bin Qutaybah, kritikus, sejarawan, dan sastrawan. Nama Abu al-Qasim 'Abdullah bin 'Ali bin 'Isa adalah nama al-Amidi dalam materi. Begitu penjelasan materi."}, {"b": 5, "q": "أَيُّ كِتَابٍ لِابْنِ قُتَيْبَةَ يُعْنَى بِمُشْكِلِ الْقُرْآنِ؟", "o": ["«تَأْوِيلُ مُشْكِلِ الْقُرْآنِ»", "«نَقْدُ الشِّعْرِ»"], "a": 0, "e": "Di antara karya terpenting Ibnu Qutaybah adalah asy-Syi'r wa asy-Syu'ara' dan Ta'wil Musykil al-Qur'an. Adapun Naqd asy-Syi'r adalah karya Qudamah bin Ja'far yang terpengaruh oleh logika. Karena itu jawaban ini benar."}, {"b": 5, "q": "عَلَى مَاذَا رَكَّزَ ابْنُ قُتَيْبَةَ فِي نَقْدِهِ؟", "o": ["الْعَرُوضِ وَالْقَوَافِي فَقَطْ", "تَفْسِيرِ الشِّعْرِ وَتَحْلِيلِهِ وَدَمْجِ الْأُطُرِ الْقَدِيمَةِ بِالْأَفْكَارِ الْجَدِيدَةِ"], "a": 1, "e": "Dalam kritiknya, Ibnu Qutaybah menitikberatkan penafsiran dan analisis puisi, serta memperhatikan pemaduan kerangka lama dengan gagasan baru. Perhatiannya tidak terbatas pada arudh dan qafiyah semata. Hal ini ditegaskan dalam materi kuliah."}, {"b": 5, "q": "كَيْفَ قَيَّمَ ابْنُ قُتَيْبَةَ الشُّعَرَاءَ؟", "o": ["اقْتَصَرَ عَلَى تَقْيِيمِ الْقُدَمَاءِ فَقَطْ", "قَيَّمَ الْقُدَمَاءَ وَالْمُحْدَثِينَ عَلَى حَدٍّ سَوَاءٍ"], "a": 1, "e": "Ibnu Qutaybah memakai kriteria kritik yang mencakup penilaian para penyair terdahulu dan modern pada sisi yang sama, dengan penekanan pada keunggulan sastra dan kritik. Ia tidak hanya menilai yang klasik."}, {"b": 5, "q": "مَاذَا قَدَّرَ ابْنُ قُتَيْبَةَ فِي الشِّعْرِ مَعَ تَشْجِيعِهِ عَلَى التَّجْدِيدِ؟", "o": ["الْغُمُوضَ", "الْأَصَالَةَ"], "a": 1, "e": "Ibnu Qutaybah menghargai orisinalitas dalam puisi, tetapi juga mendorong pembaruan. Sikap ini mencerminkan orientasi kompromistis dalam menilai sastra, sebab ia menjaga keseimbangan antara yang lama dan yang baru. Begitu penjelasan materi."}, {"b": 5, "q": "مَا الِاسْمُ الْكَامِلُ لِلْقَاضِي الْجُرْجَانِيِّ؟", "o": ["عَبْدُ الرَّحْمَنِ بْنُ عَلِيِّ بْنِ مُحَمَّدٍ", "عَبْدُ الْمَلِكِ بْنُ قُرَيْبٍ"], "a": 0, "e": "Dalam materi, al-Qadhi al-Jurjani bernama 'Abd ar-Rahman bin 'Ali bin Muhammad, seorang kritikus dan sastrawan. Nama 'Abdul Malik bin Quraib adalah nama al-Ashma'i, tokoh aliran pendukung puisi klasik. Jawaban ini benar."}, {"b": 5, "q": "مَا أَشْهَرُ كُتُبِ الْقَاضِي الْجُرْجَانِيِّ فِي النَّقْدِ؟", "o": ["«الْوَسَاطَةُ بَيْنَ الْمُتَنَبِّي وَخُصُومِهِ»", "«الْمُوَازَنَةُ»"], "a": 0, "e": "Al-Qadhi al-Jurjani terkenal dengan kitab al-Wasathah antara al-Mutanabbi dan lawan-lawannya. Adapun al-Muwazanah adalah karya al-Amidi yang membandingkan Abu Tammam dengan al-Buhturi dalam kritik klasik. Hal ini tertulis jelas dalam materi kuliah."}, {"b": 5, "q": "كَيْفَ كَانَ مَنْهَجُ الْقَاضِي الْجُرْجَانِيِّ فِي تَقْيِيمِ الْأَدَبِ؟", "o": ["يَقْتَصِرُ عَلَى مَعَايِيرِ الْقُدَمَاءِ وَحْدَهَا", "تَوْفِيقِيًّا يَدْمُجُ مَعَايِيرَ النَّقْدِ الْقَدِيمِ وَالِابْتِكَارَاتِ الْجَدِيدَةِ"], "a": 1, "e": "Al-Qadhi al-Jurjani menempuh pendekatan kompromistis dalam menilai sastra, berusaha memadukan kriteria kritik klasik dengan inovasi baru dalam sastra Arab, sehingga ia tidak membatasi diri pada kriteria terdahulu. Maka jawaban ini tepat."}, {"b": 5, "q": "أَيُّ النُّقَّادِ الثَّلَاثَةِ كَانَ يُرَكِّزُ عَلَى الْجَمْعِ بَيْنَ الْبَلَاغَةِ الْقَدِيمَةِ وَالِابْتِكَارِ؟", "o": ["الْجَاحِظُ", "ابْنُ قُتَيْبَةَ"], "a": 0, "e": "Pada bagian perbandingan, al-Jahizh disebut menitikberatkan penggabungan balaghah klasik dengan inovasi. Ibnu Qutaybah berupaya menyeimbangkan penilaian puisi klasik dan modern, sedangkan al-Jurjani menyajikan analisis balaghah dan kompromistis. Hal ini sesuai materi."}, {"b": 5, "q": "أَيُّ النُّقَّادِ قَدَّمَ تَحْلِيلَاتٍ بَلَاغِيَّةً وَتَوْفِيقِيَّةً لِلْجَمْعِ بَيْنَ تِقْنِيَّاتِ الْأَدَبِ التَّقْلِيدِيِّ وَالِابْتِكَارَاتِ الْحَدِيثَةِ؟", "o": ["قُدَامَةُ بْنُ جَعْفَرٍ", "الْقَاضِي الْجُرْجَانِيُّ"], "a": 1, "e": "Menurut perbandingan ketiga tokoh, al-Qadhi al-Jurjani menyajikan analisis balaghah dan kompromistis untuk menggabungkan teknik sastra tradisional dengan inovasi modern. Qudamah bin Ja'far termasuk aliran lain, yaitu kritik berbasis logika."}, {"b": 6, "q": "مَا النَّقْدُ الْمُتَأَثِّرُ بِالْمَنْطِقِ؟", "o": ["نَهْجٌ يَعْتَمِدُ عَلَى الْمَبَادِئِ الْمَنْطِقِيَّةِ وَالْعَقْلَانِيَّةِ لِتَحْلِيلِ الْأَدَبِ وَتَقْيِيمِهِ", "نَهْجٌ يَعْتَمِدُ عَلَى الْعَاطِفَةِ وَحْدَهَا"], "a": 0, "e": "Kritik yang terpengaruh logika bersandar pada prinsip-prinsip logis dan rasional untuk menganalisis serta menilai sastra, memakai alat berpikir logis dan prinsip akal. Perasaan semata bukan landasan utama aliran ini."}, {"b": 6, "q": "مَاذَا يَعْكِسُ الِاتِّجَاهُ الْمُتَأَثِّرُ بِالْمَنْطِقِ؟", "o": ["ابْتِعَادَ النَّقْدِ عَنِ الْعَقْلِ وَالْفِكْرِ", "تَأَثُّرَ النَّقْدِ الْأَدَبِيِّ بِالْفَلْسَفَةِ وَالْمَنْطِقِ"], "a": 1, "e": "Aliran ini mencerminkan terpengaruhnya kritik sastra oleh filsafat dan logika, sehingga memakai penalaran dalam memahami, menilai, dan menafsirkan teks sastra. Ia sama sekali tidak menjauhkan kritik dari akal dan pemikiran."}, {"b": 6, "q": "إِلَى مَاذَا يَهْدِفُ هَذَا الِاتِّجَاهُ فِي التَّحْلِيلِ الْأَدَبِيِّ؟", "o": ["تَحْقِيقِ مَوْضُوعِيَّةٍ وَدِقَّةٍ", "الِاعْتِمَادِ عَلَى الْأَهْوَاءِ وَالْمَيْلِ الشَّخْصِيِّ"], "a": 0, "e": "Tujuan aliran kritik berbasis logika adalah mewujudkan objektivitas dan ketelitian dalam analisis sastra. Mengikuti hawa nafsu dan kecenderungan pribadi bertentangan dengan sifat objektif yang menjadi ciri aliran ini. Begitu penjelasan materi."}, {"b": 6, "q": "أَيُّ نَاقِدٍ يُمَثِّلُ النَّقْدَ الْمُتَأَثِّرَ بِالْمَنْطِقِ؟", "o": ["قُدَامَةُ بْنُ جَعْفَرٍ", "الْأَصْمَعِيُّ"], "a": 0, "e": "Tokoh aliran kritik yang terpengaruh logika dalam materi adalah Qudamah bin Ja'far. Al-Ashma'i termasuk aliran pendukung puisi klasik, yang menitikberatkan kemurnian bahasa dan kekuatan lisan dalam menilai puisi. Jawaban ini benar."}, {"b": 6, "q": "مَا كُنْيَةُ قُدَامَةَ بْنِ جَعْفَرٍ؟", "o": ["أَبُو عُثْمَانَ", "أَبُو الْعَبَّاسِ"], "a": 1, "e": "Qudamah bin Ja'far berkunyah Abu al-'Abbas, kritikus sastra dan ahli fikih dari masa Abbasiyah. Kunyah Abu 'Utsman milik al-Jahizh, tokoh aliran kompromi yang disebut dalam bab sebelumnya. Hal ini sesuai materi."}, {"b": 6, "q": "فِي أَيِّ عَصْرٍ عَاشَ قُدَامَةُ بْنُ جَعْفَرٍ؟", "o": ["الْعَصْرِ الْأُمَوِيِّ", "الْعَصْرِ الْعَبَّاسِيِّ"], "a": 1, "e": "Materi menyebut Qudamah bin Ja'far sebagai kritikus sastra dan ahli fikih dari masa Abbasiyah, termasuk yang paling menonjol terpengaruh oleh filsafat dan logika, serta berpengaruh besar dalam perkembangan kritik."}, {"b": 6, "q": "مَا اسْمُ أَبْرَزِ كِتَابٍ لِقُدَامَةَ بْنِ جَعْفَرٍ فِي النَّقْدِ؟", "o": ["«نَقْدُ الشِّعْرِ»", "«الْعُمْدَةُ»"], "a": 0, "e": "Karya paling terkenal Qudamah bin Ja'far adalah Naqd asy-Syi'r, yang menyajikan analisis mendalam atas teks puisi berdasarkan kaidah logis dan rasional. Al-'Umdah adalah kitab Ibnu Rasyiq al-Qairawani. Hal ini sesuai materi."}, {"b": 6, "q": "أَيُّ الْمَبَادِئِ الْآتِيَةِ مِنْ مَبَادِئِ قُدَامَةَ بْنِ جَعْفَرٍ؟", "o": ["غُمُوضُ الْمَعَانِي وَتَعْقِيدُهَا", "وُضُوحُ النُّصُوصِ الْأَدَبِيَّةِ وَدِقَّتُهَا"], "a": 1, "e": "Di antara prinsip yang dipegang Qudamah adalah pentingnya kejelasan dan ketelitian teks sastra; ia meyakini teks harus bebas dari kekaburan dan maknanya jelas serta mudah dipahami. Kerumitan maknanya bertentangan dengan prinsip ini."}, {"b": 6, "q": "كَيْفَ رَأَى قُدَامَةُ تَحَقُّقَ الْجَوْدَةِ الْأَدَبِيَّةِ؟", "o": ["تَتَحَقَّقُ بِكَثْرَةِ الْمُحَسِّنَاتِ فَقَطْ", "تَتَحَقَّقُ بِالتَّوَازُنِ بَيْنَ الشَّكْلِ وَالْمَضْمُونِ"], "a": 1, "e": "Qudamah memandang kualitas sastra terwujud melalui keseimbangan antara bentuk, seperti wazan dan qafiyah, dengan isi, seperti makna dan gagasan. Ia memakai logika untuk menilai sejauh mana keseimbangan itu tercapai."}, {"b": 6, "q": "مَا مَوْقِفُ قُدَامَةَ بْنِ جَعْفَرٍ مِنَ الشِّعْرِ الْغَامِضِ؟", "o": ["مَدَحَ الشِّعْرَ الْمُلْتَبِسَ وَفَضَّلَهُ", "انْتَقَدَ الشِّعْرَ الَّذِي فِيهِ غُمُوضٌ أَوْ لَبْسٌ"], "a": 1, "e": "Qudamah mengkritik puisi yang mengandung kekaburan atau kerancuan, dan menegaskan pentingnya teks sastra dapat dipahami dan ditafsirkan dengan mudah. Karena itu ia tidak memuji atau mengutamakan puisi yang rancu."}], "bab": {"1": "Rencana Pengajaran", "2": "Sumber Belajar", "3": "Konsep Kritik", "4": "Al-Ashma'i dan al-Amidi", "5": "Aliran Kompromi", "6": "Kritik Berbasis Logika"}};
+const ITEMS = DATA.items, N = ITEMS.length, LIMIT = 10000;
+const BAB = DATA.bab;
+const $ = (id) => document.getElementById(id);
+const AR_LETTERS = ['أ', 'ب'];
+const AR_DIG = '٠١٢٣٤٥٦٧٨٩';
+const arNum = (n) => String(n).replace(/\d/g, (d) => AR_DIG[d]);
+
+const S = {
+  i: 0,
+  ans: new Array(N).fill(null),   // null = belum, 0/1 = pilihan, -1 = waktu habis
+  mute: false, rate: 0.85, voiceURI: '', autoExp: false,
+  token: 0, timerId: 0, remain: LIMIT, last: 0, speaking: false
+};
+
+/* ============================ SUARA ============================ */
+const synth = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) ? window.speechSynthesis : null;
+let voices = [];
+const isAr = (v) => /^ar([-_]|$)/i.test(v.lang);
+const isId = (v) => /^id([-_]|$)/i.test(v.lang);
+
+function refreshVoices() {
+  if (!synth) return;
+  voices = synth.getVoices();
+  const sel = $('voiceSel'), keep = sel.value;
+  sel.innerHTML = '<option value="">Otomatis (suara Arab)</option>';
+  voices.filter(isAr).concat(voices.filter((v) => !isAr(v))).forEach((v) => {
+    const o = document.createElement('option');
+    o.value = v.voiceURI; o.textContent = v.name + ' — ' + v.lang;
+    sel.appendChild(o);
+  });
+  sel.value = keep;
+  const n = voices.filter(isAr).length;
+  const note = $('voiceNote');
+  if (n) { note.className = 'note ok'; note.textContent = 'Suara Arab ditemukan (' + n + '). Soal akan dibacakan otomatis setelah kamu menekan Mulai.'; }
+  else { note.className = 'note'; note.textContent = 'Suara Arab belum terdeteksi di perangkat ini. Pasang suara Arab di pengaturan teks-ke-suara (text-to-speech) perangkat; jika tidak, soal tetap berjalan tanpa suara.'; }
+}
+if (synth) { refreshVoices(); synth.addEventListener('voiceschanged', refreshVoices); }
+else { const n = $('voiceNote'); n.textContent = 'Browser ini tidak mendukung suara (Speech Synthesis). Ujian tetap bisa dikerjakan tanpa suara.'; }
+
+function pickVoice(lang) {
+  if (lang === 'ar') {
+    if (S.voiceURI) { const v = voices.find((x) => x.voiceURI === S.voiceURI); if (v) return v; }
+    return voices.find(isAr) || null;
+  }
+  return voices.find(isId) || null;
+}
+function stopSpeech() {
+  S.token++; S.speaking = false;
+  if (synth) { try { synth.cancel(); } catch (e) {} }
+}
+/* Bacakan beberapa potongan teks berurutan; done() dipanggil sekali saat selesai / gagal. */
+function say(parts, lang, done) {
+  stopSpeech();
+  const my = S.token;
+  let finished = false;
+  const finish = () => { if (finished || my !== S.token) return; finished = true; S.speaking = false; clearTimeout(guard); clearTimeout(boot); done && done(); };
+  // tanpa suara / dibisukan / tidak ada suara Arab (hindari bacaan Arab yang kacau): lewati langsung
+  if (!synth || S.mute || (lang === 'ar' && voices.length && !pickVoice('ar'))) { setTimeout(finish, 0); return; }
+  const total = parts.join(' ').length;
+  const guard = setTimeout(finish, 6000 + total * 130);   // pengaman bila onend tidak terpanggil
+  let started = false;
+  const boot = setTimeout(() => { if (!started && !synth.speaking) finish(); }, 1800);
+  S.speaking = true;
+  const go = (k) => {
+    if (my !== S.token) return;
+    if (k >= parts.length) { finish(); return; }
+    const u = new SpeechSynthesisUtterance(parts[k]);
+    u.lang = lang === 'ar' ? 'ar-SA' : 'id-ID';
+    const v = pickVoice(lang); if (v) { u.voice = v; u.lang = v.lang; }
+    u.rate = lang === 'ar' ? S.rate : 1;
+    u.onstart = () => { started = true; };
+    u.onend = () => go(k + 1);
+    u.onerror = () => { if (my === S.token) go(k + 1); };
+    synth.speak(u);
+  };
+  setTimeout(() => go(0), 60);
+}
+const clean = (t) => t.replace(/[«»"]/g, '').replace(/\(([٠-٩0-9]+)\)/g, ' $1 ');
+function speakQuestion(i, done) {
+  const it = ITEMS[i];
+  say([clean(it.q), 'الْخِيَارُ الْأَوَّلُ: ' + clean(it.o[0]), 'الْخِيَارُ الثَّانِي: ' + clean(it.o[1])], 'ar', done);
+}
+
+/* ============================ TIMER ============================ */
+function stopTimer() { clearInterval(S.timerId); S.timerId = 0; }
+function setRing(ms, text) {
+  const p = Math.max(0, Math.min(100, ms / LIMIT * 100));
+  $('ring').style.setProperty('--p', p);
+  $('ring').classList.toggle('low', ms <= 3000);
+  $('sec').textContent = Math.ceil(ms / 1000);
+  if (text) $('tstate').textContent = text;
+}
+function startTimer(i) {
+  stopTimer();
+  S.remain = LIMIT; S.last = performance.now();
+  setRing(S.remain, 'Waktu menjawab berjalan…');
+  S.timerId = setInterval(() => {
+    if (S.i !== i || S.ans[i] !== null) { stopTimer(); return; }
+    const now = performance.now();
+    if (!document.hidden) S.remain -= now - S.last;
+    S.last = now;
+    setRing(S.remain);
+    if (S.remain <= 0) { stopTimer(); onTimeout(i); }
+  }, 100);
+}
+function onTimeout(i) {
+  if (S.ans[i] !== null) return;
+  stopSpeech();
+  S.ans[i] = -1;
+  toast('Waktu habis — lanjut ke soal berikutnya');
+  updateGrid();
+  if (i < N - 1) go(i + 1); else showResult();
+}
+
+/* ============================ TAMPILAN ============================ */
+let toastT = 0;
+function toast(t) { const e = $('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove('show'), 1600); }
+
+function statusOf(i) { const a = S.ans[i]; if (a === null) return 'na'; if (a === -1) return 'to'; return a === ITEMS[i].a ? 'ok' : 'bad'; }
+
+function render(i) {
+  const it = ITEMS[i], a = S.ans[i];
+  $('cur').textContent = i + 1;
+  $('babChip').textContent = 'Bab ' + it.b;
+  $('babName').textContent = 'Bab ' + it.b + ' · ' + BAB[it.b];
+  $('prog').style.width = ((i + 1) / N * 100) + '%';
+  $('qtext').textContent = it.q;
+  const box = $('opts'); box.innerHTML = '';
+  it.o.forEach((t, k) => {
+    const b = document.createElement('button');
+    b.className = 'opt'; b.type = 'button';
+    b.innerHTML = '<span class="lt"></span><span class="tx"></span>';
+    b.querySelector('.lt').textContent = AR_LETTERS[k];
+    b.querySelector('.tx').textContent = t;
+    b.addEventListener('click', () => answer(i, k));
+    if (a !== null) {
+      b.disabled = true;
+      if (k === it.a) b.classList.add('is-ok');
+      else if (k === a) b.classList.add('is-bad');
+      else b.classList.add('is-dim');
+    }
+    box.appendChild(b);
+  });
+  const exp = $('exp');
+  if (a === null) { exp.hidden = true; }
+  else {
+    exp.hidden = false;
+    const st = statusOf(i);
+    exp.className = 'exp ' + (st === 'ok' ? 'ok' : st === 'bad' ? 'bad' : 'warn');
+    $('expH').textContent = st === 'ok' ? '✔ Jawaban benar' : st === 'bad' ? '✘ Jawaban salah' : '⏱ Waktu habis';
+    $('expA').innerHTML = 'Jawaban yang benar: <b class="ar"></b>';
+    $('expA').querySelector('b').textContent = AR_LETTERS[it.a] + ' — ' + it.o[it.a];
+    $('expP').textContent = it.e;
+  }
+  $('btnPrev').disabled = i === 0;
+  $('btnNext').disabled = i === N - 1;
+  $('btnNext').classList.toggle('btn--main', true);
+  $('btnFinish').textContent = 'Selesai';
+  updateGrid();
+}
+
+function go(i) {
+  stopTimer(); stopSpeech();
+  S.i = Math.max(0, Math.min(N - 1, i));
+  render(S.i);
+  window.scrollTo({ top: 0 });
+  if (S.ans[S.i] === null) {
+    setRing(LIMIT, 'Soal sedang dibacakan…');
+    const my = S.i;
+    speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
+  } else {
+    setRing(0, S.ans[S.i] === -1 ? 'Waktu habis pada soal ini' : 'Sudah dijawab');
+    $('sec').textContent = '–';
+  }
+}
+
+function answer(i, k) {
+  if (S.ans[i] !== null) return;
+  stopTimer(); stopSpeech();
+  S.ans[i] = k;
+  render(i);
+  setRing(S.remain > 0 ? S.remain : 0, 'Dijawab — baca penjelasannya');
+  if (S.autoExp) speakExp(i);
+}
+function speakExp(i) { say([ITEMS[i].e], 'id', null); }
+
+function updateGrid() {
+  const g = $('grid');
+  if (!g.children.length) {
+    for (let i = 0; i < N; i++) {
+      const b = document.createElement('button');
+      b.className = 'cell'; b.type = 'button'; b.textContent = i + 1;
+      b.addEventListener('click', () => { $('dlgGrid').close(); if ($('result').hidden === false) showQuiz(); go(i); });
+      g.appendChild(b);
+    }
+  }
+  for (let i = 0; i < N; i++) {
+    const st = statusOf(i);
+    g.children[i].className = 'cell' + (st === 'na' ? '' : ' ' + st) + (i === S.i ? ' cur' : '');
+  }
+}
+
+function showQuiz() { $('start').hidden = true; $('result').hidden = true; $('quiz').hidden = false; }
+function showResult() {
+  stopTimer(); stopSpeech();
+  const c = { ok: 0, bad: 0, to: 0, na: 0 };
+  for (let i = 0; i < N; i++) c[statusOf(i)]++;
+  $('quiz').hidden = true; $('start').hidden = true; $('result').hidden = false;
+  $('score').textContent = Math.round(c.ok / N * 100);
+  $('sOk').textContent = c.ok; $('sBad').textContent = c.bad; $('sTo').textContent = c.to + c.na;
+  const L = $('rlist'); L.innerHTML = '';
+  const label = { ok: 'Benar', bad: 'Salah', to: 'Waktu habis', na: 'Belum' };
+  for (let i = 0; i < N; i++) {
+    const st = statusOf(i);
+    const r = document.createElement('button'); r.type = 'button'; r.className = 'rrow';
+    r.innerHTML = '<span class="n"></span><span class="t"></span><span class="s ' + st + '"></span>';
+    r.querySelector('.n').textContent = i + 1;
+    r.querySelector('.t').textContent = ITEMS[i].q;
+    r.querySelector('.s').textContent = label[st];
+    r.addEventListener('click', () => { showQuiz(); go(i); });
+    L.appendChild(r);
+  }
+  window.scrollTo({ top: 0 });
+}
+
+/* ============================ EVENT ============================ */
+$('nSoal').textContent = N; $('tot').textContent = N;
+$('rateSel').addEventListener('change', (e) => { S.rate = parseFloat(e.target.value); });
+$('voiceSel').addEventListener('change', (e) => { S.voiceURI = e.target.value; });
+$('autoExp').addEventListener('change', (e) => { S.autoExp = e.target.checked; });
+
+$('btnStart').addEventListener('click', () => {
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.autoExp = $('autoExp').checked;
+  if (synth) { try { synth.cancel(); const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {} }  // buka izin suara lewat klik
+  showQuiz(); go(0);
+});
+$('btnPrev').addEventListener('click', () => go(S.i - 1));
+$('btnNext').addEventListener('click', () => go(S.i + 1));
+$('btnFinish').addEventListener('click', () => {
+  const left = S.ans.filter((a) => a === null).length;
+  if (!left || confirm('Masih ada ' + left + ' soal yang belum dijawab. Tetap selesai?')) showResult();
+});
+$('btnRead').addEventListener('click', () => {
+  if (S.ans[S.i] !== null) { speakQuestion(S.i, null); return; }
+  stopTimer(); setRing(LIMIT, 'Soal sedang dibacakan…');
+  const my = S.i;
+  speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
+});
+$('btnSpeakExp').addEventListener('click', () => speakExp(S.i));
+$('btnMute').addEventListener('click', () => {
+  S.mute = !S.mute;
+  $('btnMute').setAttribute('aria-pressed', String(!S.mute));
+  $('btnMute').textContent = S.mute ? '🔇' : '🔊';
+  if (S.mute) stopSpeech();
+});
+$('btnGrid').addEventListener('click', () => { updateGrid(); $('dlgGrid').showModal(); });
+$('gridX').addEventListener('click', () => $('dlgGrid').close());
+$('dlgGrid').addEventListener('click', (e) => { const r = e.currentTarget.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.currentTarget.close(); });
+$('btnRedo').addEventListener('click', () => { S.ans.fill(null); $('grid').innerHTML = ''; showQuiz(); go(0); });
+$('btnBack').addEventListener('click', () => { showQuiz(); go(S.i); });
+
+/* layar penuh */
+const fsEl = document.documentElement;
+const fsOK = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+if (!fsOK) $('btnFull').hidden = true;
+$('btnFull').addEventListener('click', () => {
+  const on = document.fullscreenElement || document.webkitFullscreenElement;
+  if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  else (fsEl.requestFullscreen || fsEl.webkitRequestFullscreen).call(fsEl);
+});
+const fsChange = () => { $('btnFull').textContent = (document.fullscreenElement || document.webkitFullscreenElement) ? '⤢' : '⛶'; };
+document.addEventListener('fullscreenchange', fsChange);
+document.addEventListener('webkitfullscreenchange', fsChange);
+
+/* papan ketik: 1/2 atau A/B memilih, panah pindah soal, spasi = bacakan lagi */
+document.addEventListener('keydown', (e) => {
+  if ($('quiz').hidden || $('dlgGrid').open) return;
+  if (e.key === '1' || e.key.toLowerCase() === 'a') answer(S.i, 0);
+  else if (e.key === '2' || e.key.toLowerCase() === 'b') answer(S.i, 1);
+  else if (e.key === 'ArrowRight') go(S.i + 1);
+  else if (e.key === 'ArrowLeft') go(S.i - 1);
+  else if (e.key === ' ') { e.preventDefault(); $('btnRead').click(); }
+});
+document.addEventListener('visibilitychange', () => { S.last = performance.now(); });
+window.addEventListener('beforeunload', stopSpeech);
+</script>
+</body>
+</html>
