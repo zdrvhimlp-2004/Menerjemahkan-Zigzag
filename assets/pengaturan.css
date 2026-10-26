@@ -36,10 +36,10 @@ dialog.pg-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .pg__sel { height: 2.3rem; border-radius: 10px; border: 1px solid var(--border, #e4ddcb); background: var(--card, #fffdf7); color: inherit; font: inherit; font-size: 0.88rem; padding: 0 0.6rem; }
 
 /* ---------- mode tampilan teks ---------- */
-body.t-sembunyi .ayat .id, body.t-sembunyi .ringkasan__id, body.t-sembunyi .sub__id, body.t-sembunyi .bab__id,
-body.t-klik .ayat .id, body.t-klik .ringkasan__id, body.t-klik .sub__id, body.t-klik .bab__id { display: none !important; }
-body.t-klik .ayat { cursor: pointer; }
-body.t-klik .ayat.show-id .id { display: block !important; animation: pg-muncul .2s ease; }
+body.t-sembunyi .ayat .id, body.t-sembunyi .kata .id, body.t-sembunyi .ringkasan__id, body.t-sembunyi .sub__id, body.t-sembunyi .bab__id,
+body.t-klik .ayat .id, body.t-klik .kata .id, body.t-klik .ringkasan__id, body.t-klik .sub__id, body.t-klik .bab__id { display: none !important; }
+body.t-klik .ayat, body.t-klik .baris { cursor: pointer; }
+body.t-klik .show-id .id { display: block !important; animation: pg-muncul .2s ease; }
 @keyframes pg-muncul { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
 
 /* ---------- collapse / expand ---------- */
@@ -63,7 +63,7 @@ body.mode-collapse .sec.is-collapsed > .sec__head .sec__chev { transform: transl
 .ayat.cari-now, .sec__head.cari-now { background: var(--c-bg, #fddce8); outline: 2px solid var(--c, #a8204f); }
 
 /* ---------- pemutar baca ---------- */
-.ayat.is-reading { background: var(--isi-bg, #f1f6ee); border-radius: 10px; outline: 2px solid var(--heading, #1f4d3a); outline-offset: 2px; }
+.ayat.is-reading, .baris.is-reading { background: var(--isi-bg, #f1f6ee); border-radius: 10px; outline: 2px solid var(--heading, #1f4d3a); outline-offset: 2px; }
 .pemutar { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 46; display: none; align-items: center; gap: 0.35rem; padding: 0.4rem 0.6rem; background: var(--card, #fffdf7); border: 1px solid var(--border, #e4ddcb); border-radius: 999px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; max-width: calc(100vw - 1.2rem); }
 .pemutar.is-open { display: flex; }
 .pemutar button { width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: transparent; color: var(--heading, #1f4d3a); cursor: pointer; font-size: 1rem; }
