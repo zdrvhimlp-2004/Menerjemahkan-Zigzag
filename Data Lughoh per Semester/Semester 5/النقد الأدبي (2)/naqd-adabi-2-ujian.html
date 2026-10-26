@@ -170,7 +170,7 @@
       <label>Kecepatan baca
         <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option><option value="1.3">Cepat</option><option value="1.7">Cepat sekali</option></select>
       </label>
-      <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis setelah menjawab</label>
+      <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis (setelah menjawab atau waktu habis)</label>
       <label class="chk"><input type="checkbox" id="tickOn" checked> Bunyi detik saat hitung mundur berganti angka</label>
       <div><button class="btn" id="btnTest" type="button">🔊 Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
     </div>
@@ -185,6 +185,7 @@
       <div class="count"><span id="cur">1</span><small> / <span id="tot">71</span></small></div>
       <span class="chip" id="babChip">Bab 1</span>
       <div class="spacer"></div>
+      <button class="icon" id="btnExpT" title="Bacakan penjelasan otomatis: aktif / mati" aria-label="Bacakan penjelasan otomatis" aria-pressed="false">📖</button>
       <button class="icon" id="btnMute" title="Suara aktif / mati" aria-label="Suara" aria-pressed="true">🔊</button>
       <button class="icon" id="btnFull" title="Layar penuh" aria-label="Layar penuh">⛶</button>
     </div>
@@ -275,7 +276,7 @@ const isId = (v) => /^id([-_]|$)/i.test(v.lang);
 function refreshVoices() {
   if (!synth) return;
   voices = synth.getVoices();
-  const sel = $('voiceSel'), keep = sel.value;
+  const sel = $('voiceSel'), keep = sel.value || S.voiceURI;
   sel.innerHTML = '<option value="">Otomatis (suara Arab)</option>';
   voices.filter(isAr).concat(voices.filter((v) => !isAr(v))).forEach((v) => {
     const o = document.createElement('option');
@@ -402,9 +403,13 @@ function onTimeout(i) {
   $('sec').textContent = '0';
   $('tstate').textContent = 'Waktu habis — dijawab otomatis (salah). Jawaban benar dibacakan…';
   const letter = AR_LETTERS[it.a];
-  say(['الْجَوَابُ الصَّحِيحُ: ' + clean(it.o[it.a])], 'ar', () => {
-    const wait = S.heard ? 900 : 2600;     // bila tanpa suara, beri waktu membaca jawaban di layar
+  const lanjut = (wait) => {
     S.advT = setTimeout(() => { if (S.i !== i) return; if (i < N - 1) go(i + 1); else showResult(); }, wait);
+  };
+  say(['الْجَوَابُ الصَّحِيحُ: ' + clean(it.o[it.a])], 'ar', () => {
+    const heard = S.heard;                 // bila tanpa suara, beri waktu membaca jawaban di layar
+    if (S.autoExp) { $('tstate').textContent = 'Penjelasan dibacakan…'; say([it.e], 'id', () => lanjut(S.heard2 ? 900 : (heard ? 900 : 4000)), (h) => { S.heard2 = h === 'ok'; }); }
+    else lanjut(heard ? 900 : 2600);
   }, (h) => { S.heard = h === 'ok'; });
 }
 
@@ -532,6 +537,7 @@ function setLimit(sec) {
   const known = [...$('limSel').options].some((o) => o.value === String(sec));
   $('limSel').value = known ? String(sec) : 'custom';
   $('limNum').hidden = known;
+  saveSet();
   return sec;
 }
 $('limSel').addEventListener('change', (e) => {
@@ -543,9 +549,19 @@ $('limNum').addEventListener('change', (e) => setLimit(e.target.value));
 $('limQuick').addEventListener('change', (e) => setLimit(e.target.value));
 $('limQuick').addEventListener('keydown', (e) => e.stopPropagation());
 $('limNum').addEventListener('keydown', (e) => e.stopPropagation());
-$('rateSel').addEventListener('change', (e) => { S.rate = parseFloat(e.target.value); });
-$('voiceSel').addEventListener('change', (e) => { S.voiceURI = e.target.value; });
-$('autoExp').addEventListener('change', (e) => { S.autoExp = e.target.checked; });
+$('rateSel').addEventListener('change', (e) => { S.rate = parseFloat(e.target.value); saveSet(); });
+$('voiceSel').addEventListener('change', (e) => { S.voiceURI = e.target.value; saveSet(); });
+function setAutoExp(v, notify) {
+  S.autoExp = !!v;
+  $('autoExp').checked = S.autoExp;
+  $('btnExpT').setAttribute('aria-pressed', String(S.autoExp));
+  $('btnExpT').title = 'Bacakan penjelasan otomatis: ' + (S.autoExp ? 'aktif' : 'mati');
+  if (notify) toast('Penjelasan dibacakan otomatis: ' + (S.autoExp ? 'aktif' : 'mati'));
+  saveSet();
+}
+$('autoExp').addEventListener('change', (e) => setAutoExp(e.target.checked));
+$('btnExpT').addEventListener('click', () => setAutoExp(!S.autoExp, true));
+$('tickOn').addEventListener('change', (e) => { S.tick = e.target.checked; saveSet(); });
 
 $('btnTest').addEventListener('click', () => {
   S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.mute = false;
@@ -558,7 +574,7 @@ $('btnTest').addEventListener('click', () => {
   });
 });
 $('btnStart').addEventListener('click', () => {
-  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.autoExp = $('autoExp').checked; S.tick = $('tickOn').checked;
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.tick = $('tickOn').checked; setAutoExp($('autoExp').checked);
   setLimit($('limSel').value === 'custom' ? $('limNum').value : $('limSel').value);
   try { const AC = window.AudioContext || window.webkitAudioContext; if (AC && !S.audio) S.audio = new AC(); if (S.audio && S.audio.state === 'suspended') S.audio.resume(); } catch (e) {}
   if (synth) { try { synth.cancel(); const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {} }  // buka izin suara lewat klik
@@ -582,6 +598,7 @@ $('btnMute').addEventListener('click', () => {
   $('btnMute').setAttribute('aria-pressed', String(!S.mute));
   $('btnMute').textContent = S.mute ? '🔇' : '🔊';
   if (S.mute) stopSpeech();
+  saveSet();
 });
 $('btnGrid').addEventListener('click', () => { updateGrid(); $('dlgGrid').showModal(); });
 $('gridX').addEventListener('click', () => $('dlgGrid').close());
@@ -611,6 +628,23 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowLeft') go(S.i - 1);
   else if (e.key === ' ') { e.preventDefault(); $('btnRead').click(); }
 });
+/* ---- pengaturan tersimpan di browser ---- */
+const KEY = 'naqd2.pengaturan';
+function saveSet() {
+  try { localStorage.setItem(KEY, JSON.stringify({ rate: S.rate, limit: Math.round(S.limit / 1000), autoExp: S.autoExp, tick: S.tick, mute: S.mute, voiceURI: S.voiceURI })); } catch (e) {}
+}
+function loadSet() {
+  let o = null;
+  try { o = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (!o) return;
+  if (o.rate && [...$('rateSel').options].some((x) => x.value === String(o.rate))) { $('rateSel').value = String(o.rate); S.rate = o.rate; }
+  if (o.limit) setLimit(o.limit);
+  S.tick = o.tick !== false; $('tickOn').checked = S.tick;
+  setAutoExp(!!o.autoExp);
+  if (o.mute) { S.mute = true; $('btnMute').setAttribute('aria-pressed', 'false'); $('btnMute').textContent = '🔇'; }
+  if (o.voiceURI) { S.voiceURI = o.voiceURI; $('voiceSel').value = o.voiceURI; }
+}
+loadSet();
 document.addEventListener('visibilitychange', () => { S.last = performance.now(); });
 window.addEventListener('beforeunload', stopSpeech);
 </script>
