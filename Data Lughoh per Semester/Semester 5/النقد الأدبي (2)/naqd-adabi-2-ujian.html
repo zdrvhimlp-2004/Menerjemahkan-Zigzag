@@ -156,9 +156,10 @@
         <select id="voiceSel"><option value="">Otomatis (suara Arab)</option></select>
       </label>
       <label>Kecepatan baca
-        <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option></select>
+        <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option><option value="1.3">Cepat</option><option value="1.7">Cepat sekali</option></select>
       </label>
       <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis setelah menjawab</label>
+      <label class="chk"><input type="checkbox" id="tickOn" checked> Bunyi detik saat hitung mundur berganti angka</label>
       <div><button class="btn" id="btnTest" type="button">🔊 Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
     </div>
     <div class="note" id="voiceNote">Memeriksa suara Arab di browser…</div>
@@ -212,8 +213,9 @@
     <div class="stats">
       <div class="ok"><b id="sOk">0</b>benar</div>
       <div class="bad"><b id="sBad">0</b>salah</div>
-      <div class="to"><b id="sTo">0</b>waktu habis / kosong</div>
+      <div class="to"><b id="sTo">0</b>belum dijawab</div>
     </div>
+    <p id="resNote" style="color:var(--muted);font-size:.85rem;margin-bottom:1rem"></p>
     <div class="acts">
       <button class="btn btn--main" id="btnRedo">Ulangi dari awal</button>
       <button class="btn" id="btnBack">Kembali ke soal</button>
@@ -228,7 +230,7 @@
   <div class="legend">
     <span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>benar</span>
     <span><i style="background:var(--bad-bg);border:1px solid var(--bad)"></i>salah</span>
-    <span><i style="background:var(--warn-bg);border:1px solid var(--warn)"></i>waktu habis</span>
+    <span><i style="background:var(--warn-bg);border:1px solid var(--warn)"></i>waktu habis (dihitung salah)</span>
     <span><i style="background:var(--card2);border:1px solid var(--border)"></i>belum</span>
   </div>
 </dialog>
@@ -246,7 +248,7 @@ const arNum = (n) => String(n).replace(/\d/g, (d) => AR_DIG[d]);
 const S = {
   i: 0,
   ans: new Array(N).fill(null),   // null = belum, 0/1 = pilihan, -1 = waktu habis
-  mute: false, rate: 0.85, voiceURI: '', autoExp: false,
+  to: [], mute: false, rate: 0.85, voiceURI: '', autoExp: false, tick: true, audio: null, advT: 0, lastSec: 0,
   token: 0, timerId: 0, remain: LIMIT, last: 0, speaking: false
 };
 
@@ -324,13 +326,34 @@ function say(parts, lang, done, report) {
   if (busy) setTimeout(() => go(0), 80); else go(0);
 }
 const clean = (t) => t.replace(/[«»"]/g, '').replace(/\(([٠-٩0-9]+)\)/g, ' $1 ');
+const ONES = ['', 'وَاحِدٍ', 'اثْنَيْنِ', 'ثَلَاثَةٍ', 'أَرْبَعَةٍ', 'خَمْسَةٍ', 'سِتَّةٍ', 'سَبْعَةٍ', 'ثَمَانِيَةٍ', 'تِسْعَةٍ', 'عَشَرَةٍ',
+  'أَحَدَ عَشَرَ', 'اثْنَيْ عَشَرَ', 'ثَلَاثَةَ عَشَرَ', 'أَرْبَعَةَ عَشَرَ', 'خَمْسَةَ عَشَرَ', 'سِتَّةَ عَشَرَ', 'سَبْعَةَ عَشَرَ', 'ثَمَانِيَةَ عَشَرَ', 'تِسْعَةَ عَشَرَ'];
+const TENS = ['', '', 'عِشْرِينَ', 'ثَلَاثِينَ', 'أَرْبَعِينَ', 'خَمْسِينَ', 'سِتِّينَ', 'سَبْعِينَ', 'ثَمَانِينَ', 'تِسْعِينَ'];
+function arNumber(n) {
+  if (n < 20) return ONES[n];
+  const t = Math.floor(n / 10), u = n % 10;
+  return u ? ONES[u].replace(/ٍ$/, '') + ' وَ' + TENS[t] : TENS[t];
+}
+const numPhrase = (i) => 'السُّؤَالُ رَقْمُ ' + arNumber(i + 1);
+
 function speakQuestion(i, done) {
   const it = ITEMS[i];
-  say([clean(it.q), 'الْخِيَارُ الْأَوَّلُ: ' + clean(it.o[0]), 'الْخِيَارُ الثَّانِي: ' + clean(it.o[1])], 'ar', done);
+  say([numPhrase(i), clean(it.q), 'الْخِيَارُ الْأَوَّلُ: ' + clean(it.o[0]), 'الْخِيَارُ الثَّانِي: ' + clean(it.o[1])], 'ar', done);
 }
 
 /* ============================ TIMER ============================ */
 function stopTimer() { clearInterval(S.timerId); S.timerId = 0; }
+function beep(freq, dur) {
+  if (!S.audio || !S.tick || S.mute) return;
+  try {
+    const a = S.audio, o = a.createOscillator(), g = a.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, a.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.12, a.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
+    o.connect(g); g.connect(a.destination); o.start(); o.stop(a.currentTime + dur + 0.02);
+  } catch (e) {}
+}
 function setRing(ms, text) {
   const p = Math.max(0, Math.min(100, ms / LIMIT * 100));
   $('ring').style.setProperty('--p', p);
@@ -340,7 +363,7 @@ function setRing(ms, text) {
 }
 function startTimer(i) {
   stopTimer();
-  S.remain = LIMIT; S.last = performance.now();
+  S.remain = LIMIT; S.last = performance.now(); S.lastSec = 10;
   setRing(S.remain, 'Waktu menjawab berjalan…');
   S.timerId = setInterval(() => {
     if (S.i !== i || S.ans[i] !== null) { stopTimer(); return; }
@@ -348,23 +371,34 @@ function startTimer(i) {
     if (!document.hidden) S.remain -= now - S.last;
     S.last = now;
     setRing(S.remain);
+    const sec = Math.max(0, Math.ceil(S.remain / 1000));
+    if (sec !== S.lastSec) { S.lastSec = sec; if (sec > 0) beep(sec <= 3 ? 988 : 660, sec <= 3 ? 0.16 : 0.07); }
     if (S.remain <= 0) { stopTimer(); onTimeout(i); }
   }, 100);
 }
 function onTimeout(i) {
   if (S.ans[i] !== null) return;
-  stopSpeech();
-  S.ans[i] = -1;
-  toast('Waktu habis — lanjut ke soal berikutnya');
+  stopSpeech(); clearTimeout(S.advT);
+  const it = ITEMS[i];
+  S.ans[i] = 1 - it.a;       // dijawab otomatis dengan pilihan yang salah
+  S.to[i] = true;            // ditandai: waktu habis (dihitung salah)
+  beep(300, 0.35);
+  if (S.i === i) render(i);
   updateGrid();
-  if (i < N - 1) go(i + 1); else showResult();
+  $('sec').textContent = '0';
+  $('tstate').textContent = 'Waktu habis — dijawab otomatis (salah). Jawaban benar dibacakan…';
+  const letter = AR_LETTERS[it.a];
+  say(['الْجَوَابُ الصَّحِيحُ: ' + clean(it.o[it.a])], 'ar', () => {
+    const wait = S.heard ? 900 : 2600;     // bila tanpa suara, beri waktu membaca jawaban di layar
+    S.advT = setTimeout(() => { if (S.i !== i) return; if (i < N - 1) go(i + 1); else showResult(); }, wait);
+  }, (h) => { S.heard = h === 'ok'; });
 }
 
 /* ============================ TAMPILAN ============================ */
 let toastT = 0;
 function toast(t) { const e = $('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove('show'), 1600); }
 
-function statusOf(i) { const a = S.ans[i]; if (a === null) return 'na'; if (a === -1) return 'to'; return a === ITEMS[i].a ? 'ok' : 'bad'; }
+function statusOf(i) { const a = S.ans[i]; if (a === null) return 'na'; if (S.to[i]) return 'to'; return a === ITEMS[i].a ? 'ok' : 'bad'; }
 
 function render(i) {
   const it = ITEMS[i], a = S.ans[i];
@@ -395,7 +429,7 @@ function render(i) {
     exp.hidden = false;
     const st = statusOf(i);
     exp.className = 'exp ' + (st === 'ok' ? 'ok' : st === 'bad' ? 'bad' : 'warn');
-    $('expH').textContent = st === 'ok' ? '✔ Jawaban benar' : st === 'bad' ? '✘ Jawaban salah' : '⏱ Waktu habis';
+    $('expH').textContent = st === 'ok' ? '✔ Jawaban benar' : st === 'bad' ? '✘ Jawaban salah' : '⏱ Waktu habis — dijawab otomatis, dihitung salah';
     $('expA').innerHTML = 'Jawaban yang benar: <b class="ar"></b>';
     $('expA').querySelector('b').textContent = AR_LETTERS[it.a] + ' — ' + it.o[it.a];
     $('expP').textContent = it.e;
@@ -408,7 +442,7 @@ function render(i) {
 }
 
 function go(i) {
-  stopTimer(); stopSpeech();
+  stopTimer(); stopSpeech(); clearTimeout(S.advT);
   S.i = Math.max(0, Math.min(N - 1, i));
   render(S.i);
   window.scrollTo({ top: 0 });
@@ -417,7 +451,7 @@ function go(i) {
     const my = S.i;
     speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
   } else {
-    setRing(0, S.ans[S.i] === -1 ? 'Waktu habis pada soal ini' : 'Sudah dijawab');
+    setRing(0, S.to[S.i] ? 'Waktu habis pada soal ini (dihitung salah)' : 'Sudah dijawab');
     $('sec').textContent = '–';
   }
 }
@@ -455,9 +489,10 @@ function showResult() {
   for (let i = 0; i < N; i++) c[statusOf(i)]++;
   $('quiz').hidden = true; $('start').hidden = true; $('result').hidden = false;
   $('score').textContent = Math.round(c.ok / N * 100);
-  $('sOk').textContent = c.ok; $('sBad').textContent = c.bad; $('sTo').textContent = c.to + c.na;
+  $('sOk').textContent = c.ok; $('sBad').textContent = c.bad + c.to; $('sTo').textContent = c.na;
+  $('resNote').textContent = 'Waktu habis (dijawab otomatis, dihitung salah): ' + c.to + ' soal';
   const L = $('rlist'); L.innerHTML = '';
-  const label = { ok: 'Benar', bad: 'Salah', to: 'Waktu habis', na: 'Belum' };
+  const label = { ok: 'Benar', bad: 'Salah', to: 'Waktu habis (salah)', na: 'Belum' };
   for (let i = 0; i < N; i++) {
     const st = statusOf(i);
     const r = document.createElement('button'); r.type = 'button'; r.className = 'rrow';
@@ -488,7 +523,8 @@ $('btnTest').addEventListener('click', () => {
   });
 });
 $('btnStart').addEventListener('click', () => {
-  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.autoExp = $('autoExp').checked;
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.autoExp = $('autoExp').checked; S.tick = $('tickOn').checked;
+  try { const AC = window.AudioContext || window.webkitAudioContext; if (AC && !S.audio) S.audio = new AC(); if (S.audio && S.audio.state === 'suspended') S.audio.resume(); } catch (e) {}
   if (synth) { try { synth.cancel(); const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {} }  // buka izin suara lewat klik
   showQuiz(); go(0);
 });
@@ -514,7 +550,7 @@ $('btnMute').addEventListener('click', () => {
 $('btnGrid').addEventListener('click', () => { updateGrid(); $('dlgGrid').showModal(); });
 $('gridX').addEventListener('click', () => $('dlgGrid').close());
 $('dlgGrid').addEventListener('click', (e) => { const r = e.currentTarget.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.currentTarget.close(); });
-$('btnRedo').addEventListener('click', () => { S.ans.fill(null); $('grid').innerHTML = ''; showQuiz(); go(0); });
+$('btnRedo').addEventListener('click', () => { S.ans.fill(null); S.to = []; clearTimeout(S.advT); $('grid').innerHTML = ''; showQuiz(); go(0); });
 $('btnBack').addEventListener('click', () => { showQuiz(); go(S.i); });
 
 /* layar penuh */
