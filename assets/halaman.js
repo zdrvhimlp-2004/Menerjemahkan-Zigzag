@@ -4,7 +4,7 @@
 
   /* Tinggi popup dihitung dari tinggi layar yang benar-benar terlihat (visualViewport),
      supaya tidak melebihi layar di browser HP yang unit vh/dvh-nya tidak akurat. */
-  var BATAS = [['dialog.modal--wide', 0.78, 640], ['dialog.pos-modal', 0.7, 640], ['dialog.pg-modal', 0.8, 660]];
+  var BATAS = [['dialog.modal--wide', 0.86, 720], ['dialog.pos-modal', 0.7, 640], ['dialog.pg-modal', 0.8, 660]];
   var tinggiLihat = function () {
     var h = window.innerHeight;
     if (window.visualViewport) h = Math.min(h, window.visualViewport.height);
