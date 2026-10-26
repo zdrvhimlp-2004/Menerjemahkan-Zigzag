@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ujian Kritik Sastra 2 — Bab 1–6</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,7 +50,7 @@
   .set .chk input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
   .note { font-size: 0.8rem; color: var(--warn); background: var(--warn-bg); border-radius: 10px; padding: 0.55rem 0.8rem; text-align: left; margin-bottom: 1rem; }
   .note.ok { color: var(--ok); background: var(--ok-bg); }
-  .start .btn--main { width: 100%; padding: 0.9rem; font-size: 1.05rem; border-radius: 14px; }
+  .start .btn--main { padding: 0.95rem; font-size: 1.05rem; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; }
 
   /* ---------- layar ujian ---------- */
   .top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
@@ -96,10 +97,15 @@
   .exp .ans { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
   .exp .ans b { color: var(--ok); font-family: 'Amiri', serif; font-size: 1.2rem; font-weight: 700; margin-left: 0.3rem; direction: rtl; unicode-bidi: isolate; }
 
-  .nav { display: flex; gap: 0.6rem; margin-top: 1rem; }
-  .nav .btn { flex: 1; }
+  #quiz { padding-bottom: 5.6rem; }
+  .nav, .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0.9rem 1rem calc(0.9rem + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, rgba(7, 18, 37, 0), var(--bg) 38%); }
+  .nav { display: flex; gap: 0.6rem; justify-content: center; }
+  .nav .btn { flex: 1; max-width: 300px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 0.8rem; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
   .nav .mid { flex: 0 0 auto; }
-  .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%) translateY(20px); background: var(--card2); border: 1px solid var(--warn); color: var(--warn); padding: 0.6rem 1.1rem; border-radius: 999px; font-size: 0.88rem; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 60; }
+  .dock { display: flex; justify-content: center; }
+  .dock .btn { width: 100%; max-width: 560px; box-shadow: 0 8px 24px rgba(0, 0, 0, .4); }
+  .start { padding-bottom: 6rem; }
+  .toast { position: fixed; left: 50%; bottom: 5.8rem; transform: translateX(-50%) translateY(20px); background: var(--card2); border: 1px solid var(--warn); color: var(--warn); padding: 0.6rem 1.1rem; border-radius: 999px; font-size: 0.88rem; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 60; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   /* ---------- daftar soal (dialog) ---------- */
@@ -134,7 +140,8 @@
   @media (max-width: 520px) {
     .app { padding: 0.7rem 0.7rem 1rem; }
     .info { grid-template-columns: 1fr 1fr; }
-    .nav .btn { padding: 0.65rem 0.4rem; font-size: 0.85rem; }
+    .nav .btn { padding: 0.75rem 0.4rem; font-size: 0.85rem; }
+    .nav .btn span { white-space: nowrap; }
   }
   :fullscreen body, body:fullscreen { background: var(--bg); }
 </style>
@@ -172,22 +179,22 @@
       </label>
       <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis (setelah menjawab atau waktu habis)</label>
       <label class="chk"><input type="checkbox" id="tickOn" checked> Bunyi detik saat hitung mundur berganti angka</label>
-      <div><button class="btn" id="btnTest" type="button">🔊 Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
+      <div><button class="btn" id="btnTest" type="button"><i class="fa-solid fa-volume-high" aria-hidden="true"></i> Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
     </div>
     <div class="note" id="voiceNote">Memeriksa suara Arab di browser…</div>
-    <button class="btn btn--main" id="btnStart">Mulai Ujian</button>
+    <div class="dock"><button class="btn btn--main" id="btnStart"><i class="fa-solid fa-play" aria-hidden="true"></i> Mulai Ujian</button></div>
   </section>
 
   <!-- UJIAN -->
   <section id="quiz" hidden style="display:flex;flex-direction:column;flex:1;">
     <div class="top">
-      <button class="icon" id="btnGrid" title="Daftar soal" aria-label="Daftar soal">☰</button>
+      <button class="icon" id="btnGrid" title="Daftar soal" aria-label="Daftar soal"><i class="fa-solid fa-table-cells" aria-hidden="true"></i></button>
       <div class="count"><span id="cur">1</span><small> / <span id="tot">71</span></small></div>
       <span class="chip" id="babChip">Bab 1</span>
       <div class="spacer"></div>
-      <button class="icon" id="btnExpT" title="Bacakan penjelasan otomatis: aktif / mati" aria-label="Bacakan penjelasan otomatis" aria-pressed="false">📖</button>
-      <button class="icon" id="btnMute" title="Suara aktif / mati" aria-label="Suara" aria-pressed="true">🔊</button>
-      <button class="icon" id="btnFull" title="Layar penuh" aria-label="Layar penuh">⛶</button>
+      <button class="icon" id="btnExpT" title="Bacakan penjelasan otomatis: aktif / mati" aria-label="Bacakan penjelasan otomatis" aria-pressed="false"><i class="fa-solid fa-book-open" aria-hidden="true"></i></button>
+      <button class="icon" id="btnMute" title="Suara aktif / mati" aria-label="Suara" aria-pressed="true"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></button>
+      <button class="icon" id="btnFull" title="Layar penuh" aria-label="Layar penuh"><i class="fa-solid fa-expand" aria-hidden="true"></i></button>
     </div>
     <div class="bar"><i id="prog"></i></div>
 
@@ -200,7 +207,7 @@
     <div class="card">
       <div class="qno">
         <span class="chip" id="babName"></span>
-        <button class="icon" id="btnRead" title="Bacakan lagi" aria-label="Bacakan lagi">🔁</button>
+        <button class="icon" id="btnRead" title="Bacakan lagi" aria-label="Bacakan lagi"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></button>
       </div>
       <div class="qtext ar" id="qtext"></div>
       <div class="opts" id="opts"></div>
@@ -208,14 +215,13 @@
         <h3 id="expH"></h3>
         <div class="ans" id="expA"></div>
         <p id="expP"></p>
-        <div class="row"><button class="btn" id="btnSpeakExp">🔊 Dengarkan penjelasan</button></div>
       </div>
     </div>
 
     <div class="nav">
-      <button class="btn" id="btnPrev">← Sebelumnya</button>
-      <button class="btn mid" id="btnFinish">Selesai</button>
-      <button class="btn btn--main" id="btnNext">Berikutnya →</button>
+      <button class="btn" id="btnPrev"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span>Sebelumnya</span></button>
+      <button class="btn mid" id="btnFinish"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> <span>Selesai</span></button>
+      <button class="btn btn--main" id="btnNext"><span>Berikutnya</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
     </div>
   </section>
 
@@ -231,15 +237,15 @@
     </div>
     <p id="resNote" style="color:var(--muted);font-size:.85rem;margin-bottom:1rem"></p>
     <div class="acts">
-      <button class="btn btn--main" id="btnRedo">Ulangi dari awal</button>
-      <button class="btn" id="btnBack">Kembali ke soal</button>
+      <button class="btn btn--main" id="btnRedo"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Ulangi dari awal</button>
+      <button class="btn" id="btnBack"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Kembali ke soal</button>
     </div>
     <div class="rlist" id="rlist"></div>
   </section>
 </div>
 
 <dialog id="dlgGrid">
-  <div class="dh"><span>Daftar soal</span><button class="icon" id="gridX" aria-label="Tutup">×</button></div>
+  <div class="dh"><span>Daftar soal</span><button class="icon" id="gridX" aria-label="Tutup"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
   <div class="grid" id="grid"></div>
   <div class="legend">
     <span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>benar</span>
@@ -255,6 +261,7 @@ const DATA = {"items": [{"b": 1, "q": "مَا اسْمُ الْمُقَرَّر�
 const ITEMS = DATA.items, N = ITEMS.length;
 const BAB = DATA.bab;
 const $ = (id) => document.getElementById(id);
+const setIcon = (btn, cls) => { btn.innerHTML = '<i class="fa-solid ' + cls + '" aria-hidden="true"></i>'; };
 const AR_LETTERS = ['أ', 'ب'];
 const AR_DIG = '٠١٢٣٤٥٦٧٨٩';
 const arNum = (n) => String(n).replace(/\d/g, (d) => AR_DIG[d]);
@@ -332,7 +339,7 @@ function say(parts, lang, done, report) {
     u.onerror = (e) => {
       if (my !== S.token) return;
       err = (e && e.error) || 'error';
-      if (err === 'not-allowed') toast('Suara diblokir browser — ketuk tombol 🔁 untuk membunyikan');
+      if (err === 'not-allowed') toast('Suara diblokir browser — ketuk tombol bacakan ulang (ikon panah)');
       go(k + 1);
     };
     synth.speak(u);
@@ -448,7 +455,9 @@ function render(i) {
     exp.hidden = false;
     const st = statusOf(i);
     exp.className = 'exp ' + (st === 'ok' ? 'ok' : st === 'bad' ? 'bad' : 'warn');
-    $('expH').textContent = st === 'ok' ? '✔ Jawaban benar' : st === 'bad' ? '✘ Jawaban salah' : '⏱ Waktu habis — dijawab otomatis, dihitung salah';
+    $('expH').innerHTML = st === 'ok' ? '<i class="fa-solid fa-circle-check"></i> Jawaban benar'
+      : st === 'bad' ? '<i class="fa-solid fa-circle-xmark"></i> Jawaban salah'
+      : '<i class="fa-solid fa-hourglass-end"></i> Waktu habis — dijawab otomatis, dihitung salah';
     $('expA').innerHTML = 'Jawaban yang benar: <b class="ar"></b>';
     $('expA').querySelector('b').textContent = AR_LETTERS[it.a] + ' — ' + it.o[it.a];
     $('expP').textContent = it.e;
@@ -456,7 +465,6 @@ function render(i) {
   $('btnPrev').disabled = i === 0;
   $('btnNext').disabled = i === N - 1;
   $('btnNext').classList.toggle('btn--main', true);
-  $('btnFinish').textContent = 'Selesai';
   updateGrid();
 }
 
@@ -592,11 +600,10 @@ $('btnRead').addEventListener('click', () => {
   const my = S.i;
   speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
 });
-$('btnSpeakExp').addEventListener('click', () => speakExp(S.i));
 $('btnMute').addEventListener('click', () => {
   S.mute = !S.mute;
   $('btnMute').setAttribute('aria-pressed', String(!S.mute));
-  $('btnMute').textContent = S.mute ? '🔇' : '🔊';
+  setIcon($('btnMute'), S.mute ? 'fa-volume-xmark' : 'fa-volume-high');
   if (S.mute) stopSpeech();
   saveSet();
 });
@@ -615,7 +622,7 @@ $('btnFull').addEventListener('click', () => {
   if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
   else (fsEl.requestFullscreen || fsEl.webkitRequestFullscreen).call(fsEl);
 });
-const fsChange = () => { $('btnFull').textContent = (document.fullscreenElement || document.webkitFullscreenElement) ? '⤢' : '⛶'; };
+const fsChange = () => setIcon($('btnFull'), (document.fullscreenElement || document.webkitFullscreenElement) ? 'fa-compress' : 'fa-expand');
 document.addEventListener('fullscreenchange', fsChange);
 document.addEventListener('webkitfullscreenchange', fsChange);
 
@@ -641,7 +648,7 @@ function loadSet() {
   if (o.limit) setLimit(o.limit);
   S.tick = o.tick !== false; $('tickOn').checked = S.tick;
   setAutoExp(!!o.autoExp);
-  if (o.mute) { S.mute = true; $('btnMute').setAttribute('aria-pressed', 'false'); $('btnMute').textContent = '🔇'; }
+  if (o.mute) { S.mute = true; $('btnMute').setAttribute('aria-pressed', 'false'); setIcon($('btnMute'), 'fa-volume-xmark'); }
   if (o.voiceURI) { S.voiceURI = o.voiceURI; $('voiceSel').value = o.voiceURI; }
 }
 loadSet();
