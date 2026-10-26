@@ -4,7 +4,7 @@
 
   /* Tinggi popup dihitung dari tinggi layar yang benar-benar terlihat (visualViewport),
      supaya tidak melebihi layar di browser HP yang unit vh/dvh-nya tidak akurat. */
-  var BATAS = [['dialog.modal--wide', 0.86, 720], ['dialog.pos-modal', 0.7, 640], ['dialog.pg-modal', 0.8, 660]];
+  var BATAS = [['dialog.modal--wide', 0.86, 720], ['dialog.pos-modal', 0.7, 640], ['dialog.lg-modal', 0.7, 560], ['dialog.pg-modal', 0.8, 660]];
   var tinggiLihat = function () {
     var h = window.innerHeight;
     if (window.visualViewport) h = Math.min(h, window.visualViewport.height);
@@ -274,4 +274,43 @@
       }
     });
   }
+})();
+
+/* Tombol "?" (kode tampilan): dibuat otomatis di halaman yang belum punya, dari jenis teks yang ada di halaman. */
+(function () {
+  'use strict';
+  if (document.getElementById('btn-legend')) return;
+  var wrap = document.querySelector('.isi__wrap');
+  if (!wrap) return;
+  var has = function (s) { return !!wrap.querySelector(s); };
+  var demo = function (cls, ar) { return '<div class="ayat ' + cls + ' lg-demo"><p class="ar" lang="ar">' + ar + '</p></div>'; };
+  var E = [];
+  if (has('.kata')) {
+    E.push(['<span class="lg-kata"><span class="kata"><span class="ar" lang="ar">كَلِمَةٌ</span><span class="id">kata</span></span></span>', 'Kata Arab, dengan arti Indonesia miring di bawahnya']);
+    E.push(['<span style="font-size:1.6rem;line-height:1;color:var(--heading,#1f4d3a)">&larr;</span>', 'Satu baris maksimal 7 kata, dibaca dari kanan ke kiri']);
+  } else {
+    if (has('.ayat:not([class~="quran"]):not([class~="footnote-row"]):not([class~="list-item"]):not([class~="poem"]):not([class~="numbered"])')) E.push([demo('', 'الشَّرْحُ'), 'Isi &mdash; penjelasan materi, Arab di atas dan terjemah di bawahnya']);
+    if (has('.ayat.quran')) E.push([demo('quran', 'آيَةٌ'), 'Ayat Al-Qur&rsquo;an atau dalil']);
+    if (has('.ayat.poem')) E.push([demo('poem', 'شِعْرٌ'), 'Syair &mdash; contoh bait']);
+    if (has('.ayat.list-item')) E.push([demo('list-item', 'نُقْطَةٌ'), 'Poin &mdash; daftar dan butir materi']);
+    if (has('.ayat.numbered')) E.push([demo('numbered', 'بَنْدٌ'), 'Butir bernomor']);
+    if (has('.ayat.footnote-row')) E.push([demo('footnote-row', 'حَاشِيَةٌ'), 'Catatan kaki &mdash; keterangan tambahan']);
+    if (has('.ayat .ref')) E.push(['<span class="ayat lg-ref"><span class="ar ref" lang="ar">[البقرة: ٢]</span></span>', 'Rujukan &mdash; nama surat dan nomor ayat atau sumber']);
+  }
+  if (!E.length) return;
+
+  var fab = document.createElement('button');
+  fab.type = 'button'; fab.className = 'fab fab--legend'; fab.id = 'btn-legend'; fab.title = 'Kode Tampilan'; fab.setAttribute('aria-label', 'Kode Tampilan');
+  fab.setAttribute('aria-haspopup', 'dialog'); fab.textContent = '?';
+  document.body.appendChild(fab);
+  var dlg = document.createElement('dialog');
+  dlg.className = 'lg-modal'; dlg.setAttribute('aria-label', 'Kode Tampilan');
+  dlg.innerHTML = '<div class="lg__head"><h2>Kode Tampilan</h2><button type="button" class="lg__x" aria-label="Tutup">&times;</button></div>' +
+    '<ul class="lg__list">' + E.map(function (e) { return '<li><div class="lg__sw">' + e[0] + '</div><span class="lg__t">' + e[1] + '</span></li>'; }).join('') + '</ul>';
+  document.body.appendChild(dlg);
+  fab.addEventListener('click', function () { dlg.showModal(); });
+  dlg.addEventListener('click', function (e) {
+    var r = dlg.getBoundingClientRect();
+    if (e.target.closest('.lg__x') || e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
 })();

@@ -100,3 +100,23 @@ mark.toc__hit { background: var(--q-bg, #fbf0cf); color: inherit; border-radius:
   .toc__sy .toc__a { grid-column: 2; justify-self: start; text-align: left; }
   .toc__sy .toc__ref { grid-column: 2; }
 }
+
+/* ---------- tombol "?" dan popup kode tampilan (dibuat otomatis) ---------- */
+.fab--legend { top: clamp(0.8rem, 2vw, 1.4rem); left: clamp(0.8rem, 2vw, 1.4rem); background: var(--card, #fffdf7); color: var(--heading, #1f4d3a); }
+dialog.lg-modal { position: fixed; inset: 0; margin: auto; width: min(480px, 94vw); max-height: min(78vh, 640px); max-height: min(78dvh, 640px); padding: 0; border: none; border-radius: 20px; overflow: hidden; background: var(--card, #fffdf7); color: var(--ar-color, #23331f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; }
+dialog.lg-modal[open] { display: flex; flex-direction: column; }
+dialog.lg-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+.lg__head { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border, #e4ddcb); }
+.lg__head h2 { font-size: 1.05rem; font-weight: 600; color: var(--heading, #1f4d3a); }
+.lg__x { width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border, #e4ddcb); background: transparent; color: var(--id-color, #5a5343); font-size: 1.2rem; line-height: 1; cursor: pointer; }
+.lg__list { list-style: none; margin: 0; padding: 0.6rem 1.1rem 1.1rem; overflow-y: auto; min-height: 0; }
+.lg__list li { display: flex; align-items: center; gap: 0.9rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border, #e4ddcb); }
+.lg__list li:last-child { border-bottom: none; }
+.lg__sw { flex: 0 0 6.2rem; display: flex; justify-content: center; }
+.lg__t { font-size: 0.86rem; line-height: 1.45; color: var(--id-color, #5a5343); }
+.lg__t * { font-size: inherit; }
+.lg-demo { margin: 0 !important; width: 100%; min-width: 0; text-align: center; }
+.lg-demo .ar { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.lg-demo::before, .lg-demo::after { content: none; }
+.lg-ref { margin: 0; padding: 0; background: none; }
+.lg-kata .kata { margin-bottom: 1.6em; }
