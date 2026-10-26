@@ -16,18 +16,23 @@
   try { var raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if (raw) Object.assign(S, raw); } catch (e) {}
   var save = function () { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
 
-  var wrapEl = $('.isi__wrap') || document.body;
+  var wrapEl = $('.isi__wrap .teks') || $('.isi__wrap') || document.body;
   var toastEl = document.createElement('div');
   toastEl.className = 'pg-toast'; document.body.appendChild(toastEl);
   var toastT = 0;
   var toast = function (t) { toastEl.textContent = t; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2200); };
 
   /* ======================= HARAKAT ======================= */
+  /* satuan teks: .ayat (halaman biasa) atau .baris zigzag (di luar judul) */
+  var UNIT = '.ayat, .baris';
+  var units = function () { return $$(UNIT).filter(function (el) { return !el.closest('.sec__head, h1, header.bab, h3.sub, .cover'); }); };
+  var idTeks = function (u) { return $$('.id', u).map(function (e) { return e.textContent.trim(); }).filter(Boolean).join(' '); };
   var arTexts = [];   // {node, asli}
+  var asliMap = new Map();
   (function collect() {
-    $$('.ayat .ar, h2.bab__ar, h3.sub, .ringkasan__ar, .toc__ar, .toc__a, .bab__ar, .sub__ar, .tag__k').forEach(function (el) {
+    $$('.ayat .ar, .kata .ar, h2.bab__ar, h3.sub, .ringkasan__ar, .toc__ar, .toc__a, .bab__ar, .sub__ar, .tag__k').forEach(function (el) {
       var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-      var n; while ((n = w.nextNode())) { if (/[؀-ۿ]/.test(n.nodeValue)) arTexts.push({ node: n, asli: n.nodeValue }); }
+      var n; while ((n = w.nextNode())) { if (/[؀-ۿ]/.test(n.nodeValue) && !asliMap.has(n)) { asliMap.set(n, n.nodeValue); arTexts.push({ node: n, asli: n.nodeValue }); } }
     });
   })();
   function terapkanHarakat() {
@@ -36,7 +41,7 @@
   var asliArab = function (ayat) {
     return $$('.ar', ayat).map(function (p) {
       var w = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, null), t = '', n;
-      while ((n = w.nextNode())) { var f = arTexts.filter(function (o) { return o.node === n; })[0]; t += f ? f.asli : n.nodeValue; }
+      while ((n = w.nextNode())) { t += asliMap.has(n) ? asliMap.get(n) : n.nodeValue; }
       return t;
     }).join(' ');
   };
@@ -45,13 +50,13 @@
   function terapkanTerjemahan() {
     document.body.classList.toggle('t-sembunyi', S.terj === 'sembunyi');
     document.body.classList.toggle('t-klik', S.terj === 'klik');
-    if (S.terj !== 'klik') $$('.ayat.show-id').forEach(function (a) { a.classList.remove('show-id'); });
+    if (S.terj !== 'klik') $$('.show-id').forEach(function (a) { a.classList.remove('show-id'); });
   }
   var revealT = new WeakMap();
   document.addEventListener('click', function (e) {
     if (S.terj !== 'klik') return;
-    var a = e.target.closest('.ayat');
-    if (!a || e.target.closest('a')) return;
+    var a = e.target.closest(UNIT);
+    if (!a || e.target.closest('a, .sec__head, dialog')) return;
     a.classList.add('show-id');
     clearTimeout(revealT.get(a));
     revealT.set(a, setTimeout(function () { a.classList.remove('show-id'); }, 3000));
@@ -60,7 +65,7 @@
   /* ======================= COLLAPSE / EXPAND ======================= */
   var secs = [];
   (function buildSections() {
-    var types = [['.bab__judul', null], ['header.bab', null], ['.pasal__judul', null], ['.bagian__judul', null], ['h3.sub', null], ['.sub__judul', null]];
+    var types = [['.bab__judul', null], ['header.bab', null], ['.pasal__judul', null], ['.bagian__judul', null], ['h3.sub', null], ['div.sub', null], ['.sub__judul', null]];
     var present = types.filter(function (t) { return $(t[0], wrapEl); });
     present.forEach(function (t, i) { t[1] = i + 1; });
     if (!present.length) return;
@@ -124,9 +129,9 @@
   var cInput = $('input', bar), cJml = $('.jml', bar);
   var hits = [], cur = -1, pool = null;
   function buildPool() {
-    pool = $$('.ayat, .sec__head').map(function (el) {
+    pool = $$('.ayat, .baris, .sec__head').filter(function (el) { return el.classList.contains('sec__head') || !el.closest('.sec__head, h1, .cover'); }).map(function (el) {
       var ar = $$('.ar', el).map(function (p) { return p.textContent; }).join(' ');
-      return { el: el, ar: norm(el.classList.contains('ayat') ? asliArab(el) : el.textContent), id: ($('.id', el) || { textContent: '' }).textContent.toLowerCase() + ' ' + (el.classList.contains('sec__head') ? el.textContent.toLowerCase() : '') };
+      return { el: el, ar: norm(el.classList.contains('sec__head') ? el.textContent : asliArab(el)), id: idTeks(el).toLowerCase() + ' ' + (el.classList.contains('sec__head') ? el.textContent.toLowerCase() : '') };
     });
   }
   function clearHits() { $$('.cari-hit, .cari-now').forEach(function (e) { e.classList.remove('cari-hit', 'cari-now'); }); hits = []; cur = -1; cJml.textContent = ''; }
@@ -188,7 +193,7 @@
     synth.speak(u);
   }
   function stopSpeech() { R.token++; if (synth) { try { synth.cancel(); } catch (e) {} } }
-  function tandai(a) { $$('.ayat.is-reading').forEach(function (e) { e.classList.remove('is-reading'); }); if (a) a.classList.add('is-reading'); }
+  function tandai(a) { $$('.is-reading').forEach(function (e) { e.classList.remove('is-reading'); }); if (a) a.classList.add('is-reading'); }
   function bacaBaris() {
     if (!R.on || R.paused) return;
     if (R.i >= R.list.length) { berhenti(true); return; }
@@ -199,10 +204,10 @@
     var my = ++R.token, idx = R.i;
     var lanjut = function () { if (my === R.token && R.on && !R.paused) { R.i = idx + 1; bacaBaris(); } };
     var ar = cleanTxt(asliArab(a));
-    var idEl = $('.id', a);
+    var idT = idTeks(a);
     synthDelay(function () {
       speak(ar, 'ar', function () {
-        if (R.terj && idEl && idEl.textContent.trim()) speak(idEl.textContent, 'id', lanjut); else lanjut();
+        if (R.terj && idT) speak(idT, 'id', lanjut); else lanjut();
       });
     });
   }
@@ -210,7 +215,7 @@
   function mulaiBaca(terj) {
     if (!synth) { toast('Browser ini tidak mendukung suara.'); return; }
     stopSpeech();
-    R.list = $$('.ayat'); R.terj = !!terj; R.on = true; R.paused = false;
+    R.list = units(); R.terj = !!terj; R.on = true; R.paused = false;
     var y = window.innerHeight * 0.25, start = 0;
     for (var i = 0; i < R.list.length; i++) { var r = R.list[i].getClientRects(); if (r.length && r[0].top >= 0) { start = i; break; } }
     R.i = start;
@@ -230,7 +235,7 @@
   });
   document.addEventListener('click', function (e) {
     if (!R.on) return;
-    var a = e.target.closest('.ayat');
+    var a = e.target.closest(UNIT);
     if (!a || e.target.closest('a')) return;
     var i = R.list.indexOf(a);
     if (i > -1) { stopSpeech(); R.i = i; R.paused = false; setIcon(pPlay, 'fa-pause'); bacaBaris(); }

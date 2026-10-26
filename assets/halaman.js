@@ -214,7 +214,7 @@
 
     var marks = function () {
       var y = window.scrollY + 120;
-      var babLinks = bars.map(function (li) { var a = li.querySelector('.toc__ar'); return a ? document.querySelector(a.getAttribute('href')) : null; });
+      var babLinks = bars.map(function (li) { var a = li.querySelector('.toc__ar'); return a ? document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))) : null; });
       var bi = -1;
       babLinks.forEach(function (el, i) { if (el && topOf(el) <= y) bi = i; });
       bars.forEach(function (li, i) { li.classList.toggle('is-now', i === bi); });
