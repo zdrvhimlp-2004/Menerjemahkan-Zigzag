@@ -1,0 +1,79 @@
+/* Pengaturan teks: tombol gigi, panel, bar cari, mode collapse, pemutar baca. */
+
+/* ---------- tombol gigi (kanan atas) ---------- */
+.fab--set { top: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--card, #fffdf7); color: var(--heading, #1f4d3a); }
+.fab--set i { font-size: 1.2rem; }
+
+/* ---------- panel pengaturan ---------- */
+dialog.pg-modal { position: fixed; inset: 0; margin: auto; width: min(480px, 94vw); max-height: min(78vh, 640px); max-height: min(78dvh, 640px); padding: 0; border: none; border-radius: 20px; overflow: hidden; background: var(--card, #fffdf7); color: var(--ar-color, #23331f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; }
+dialog.pg-modal[open] { display: flex; flex-direction: column; }
+dialog.pg-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+.pg__head { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border, #e4ddcb); }
+.pg__head h2 { font-size: 1.05rem; font-weight: 600; color: var(--heading, #1f4d3a); display: flex; align-items: center; gap: 0.5rem; }
+.pg__x { width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border, #e4ddcb); background: transparent; color: var(--id-color, #5a5343); cursor: pointer; }
+.pg__x:hover { color: var(--heading, #1f4d3a); border-color: var(--heading, #1f4d3a); }
+.pg__body { overflow-y: auto; padding: 0.4rem 1.1rem 1.1rem; }
+.pg__grup { padding: 0.85rem 0; border-bottom: 1px solid var(--border, #e4ddcb); }
+.pg__grup:last-child { border-bottom: none; }
+.pg__grup h3 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted, #8a8270); margin-bottom: 0.5rem; }
+.pg__baris { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.35rem 0; font-size: 0.92rem; }
+.pg__baris small { display: block; color: var(--muted, #8a8270); font-size: 0.74rem; }
+.pg__sw { position: relative; flex: none; width: 2.7rem; height: 1.5rem; }
+.pg__sw input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; z-index: 1; }
+.pg__sw span { position: absolute; inset: 0; border-radius: 999px; background: var(--border, #e4ddcb); transition: background .15s; }
+.pg__sw span::after { content: ''; position: absolute; top: 3px; left: 3px; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--card, #fff); transition: transform .15s; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+.pg__sw input:checked + span { background: var(--heading, #1f4d3a); }
+.pg__sw input:checked + span::after { transform: translateX(1.2rem); }
+.pg__radio { display: grid; gap: 0.3rem; }
+.pg__radio label { display: flex; align-items: center; gap: 0.6rem; padding: 0.45rem 0.6rem; border: 1px solid var(--border, #e4ddcb); border-radius: 10px; font-size: 0.9rem; cursor: pointer; }
+.pg__radio input { accent-color: var(--heading, #1f4d3a); }
+.pg__radio label:has(input:checked) { border-color: var(--heading, #1f4d3a); background: var(--pasal-bg, #eef2ea); }
+.pg__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.pg__btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.6rem 0.7rem; border-radius: 12px; border: 1px solid var(--border, #e4ddcb); background: var(--card, #fffdf7); color: var(--id-color, #5a5343); font: inherit; font-size: 0.85rem; cursor: pointer; }
+.pg__btn:hover { color: var(--heading, #1f4d3a); border-color: var(--heading, #1f4d3a); }
+.pg__btn--utama { background: var(--heading, #1f4d3a); border-color: var(--heading, #1f4d3a); color: var(--card, #fffdf7); font-weight: 500; }
+.pg__btn--utama:hover { color: var(--card, #fffdf7); filter: brightness(1.12); }
+.pg__sel { height: 2.3rem; border-radius: 10px; border: 1px solid var(--border, #e4ddcb); background: var(--card, #fffdf7); color: inherit; font: inherit; font-size: 0.88rem; padding: 0 0.6rem; }
+
+/* ---------- mode tampilan teks ---------- */
+body.t-sembunyi .ayat .id, body.t-sembunyi .ringkasan__id, body.t-sembunyi .sub__id, body.t-sembunyi .bab__id,
+body.t-klik .ayat .id, body.t-klik .ringkasan__id, body.t-klik .sub__id, body.t-klik .bab__id { display: none !important; }
+body.t-klik .ayat { cursor: pointer; }
+body.t-klik .ayat.show-id .id { display: block !important; animation: pg-muncul .2s ease; }
+@keyframes pg-muncul { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+
+/* ---------- collapse / expand ---------- */
+.sec { display: block; }
+.sec__head { position: relative; }
+.sec__chev { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--muted, #8a8270); transition: transform .2s; pointer-events: none; display: none; }
+body.mode-collapse .sec__head { cursor: pointer; padding-right: 2.4rem; }
+body.mode-collapse .sec__chev { display: block; }
+body.mode-collapse .sec.is-collapsed > .sec__body { display: none; }
+body.mode-collapse .sec.is-collapsed > .sec__head .sec__chev { transform: translateY(-50%) rotate(-90deg); }
+.sec__body { display: block; }
+
+/* ---------- bar cari ---------- */
+.cari-bar { position: fixed; top: 4.4rem; left: 50%; transform: translateX(-50%); z-index: 45; width: min(560px, calc(100vw - 1.6rem)); display: none; align-items: center; gap: 0.4rem; padding: 0.4rem 0.5rem 0.4rem 0.9rem; background: var(--card, #fffdf7); border: 1px solid var(--border, #e4ddcb); border-radius: 999px; box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; }
+.cari-bar.is-open { display: flex; }
+.cari-bar input { flex: 1; min-width: 0; height: 2.2rem; border: none; background: transparent; color: var(--ar-color, #23331f); font: inherit; font-size: 0.92rem; outline: none; }
+.cari-bar .jml { flex: none; font-size: 0.75rem; color: var(--muted, #8a8270); min-width: 3.2rem; text-align: center; }
+.cari-bar button { flex: none; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: transparent; color: var(--id-color, #5a5343); cursor: pointer; }
+.cari-bar button:hover { background: var(--pasal-bg, #eef2ea); color: var(--heading, #1f4d3a); }
+.ayat.cari-hit, .sec__head.cari-hit { background: var(--q-bg, #fbf0cf); border-radius: 10px; outline: 1px solid var(--q, #9a6a00); }
+.ayat.cari-now, .sec__head.cari-now { background: var(--c-bg, #fddce8); outline: 2px solid var(--c, #a8204f); }
+
+/* ---------- pemutar baca ---------- */
+.ayat.is-reading { background: var(--isi-bg, #f1f6ee); border-radius: 10px; outline: 2px solid var(--heading, #1f4d3a); outline-offset: 2px; }
+.pemutar { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 46; display: none; align-items: center; gap: 0.35rem; padding: 0.4rem 0.6rem; background: var(--card, #fffdf7); border: 1px solid var(--border, #e4ddcb); border-radius: 999px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28); direction: ltr; font-family: 'Poppins', system-ui, sans-serif; max-width: calc(100vw - 1.2rem); }
+.pemutar.is-open { display: flex; }
+.pemutar button { width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: transparent; color: var(--heading, #1f4d3a); cursor: pointer; font-size: 1rem; }
+.pemutar button:hover { background: var(--pasal-bg, #eef2ea); }
+.pemutar .utama { background: var(--heading, #1f4d3a); color: var(--card, #fffdf7); }
+.pemutar .utama:hover { background: var(--heading, #1f4d3a); filter: brightness(1.12); }
+.pemutar .info { font-size: 0.75rem; color: var(--muted, #8a8270); padding: 0 0.4rem; white-space: nowrap; }
+.pg-toast { position: fixed; left: 50%; bottom: 5.2rem; transform: translateX(-50%); z-index: 60; background: var(--heading, #1f4d3a); color: var(--card, #fffdf7); padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.84rem; opacity: 0; transition: opacity .2s; pointer-events: none; font-family: 'Poppins', system-ui, sans-serif; max-width: calc(100vw - 2rem); text-align: center; }
+.pg-toast.show { opacity: 1; }
+@media (max-width: 480px) {
+  .cari-bar { top: 4.2rem; }
+  .pemutar .info { display: none; }
+}
