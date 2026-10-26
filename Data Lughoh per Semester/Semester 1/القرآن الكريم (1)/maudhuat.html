@@ -30,6 +30,11 @@
   .topik__butir { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 0.45rem; margin-top: 0.2rem; }
   .topik__butir li { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); line-height: 1.9; background: var(--chip); border-radius: 10px; padding: 0 0.7rem; color: var(--ar-color); }
   .topik mark { background: var(--hit); color: inherit; border-radius: 3px; }
+  .topik__kids { grid-column: 2; list-style: none; display: grid; gap: 0.55rem; margin-top: 0.35rem; padding-inline-start: 0.2rem; border-inline-start: 2px solid var(--border); }
+  .topik__kids > li { padding-inline-start: 0.8rem; }
+  .kid__j { font-family: 'Amiri', 'Traditional Arabic', serif; font-weight: 700; font-size: clamp(1.1rem, 1rem + 0.7vw, 1.4rem); line-height: 1.8; color: var(--ar-color); }
+  .kid__t { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem); line-height: 1.9; color: var(--ar-color); }
+  .kid__j + .topik__butir { margin-top: 0; }
   .kosong { display: none; text-align: center; color: var(--muted); padding: 1rem; font-size: 0.9rem; direction: ltr; }
 </style>
 </head>
@@ -37,13 +42,12 @@
 <section class="isi"><div class="isi__wrap">
   <h1 class="isi__judul">القرآن الكريم (1)</h1>
   <p class="isi__sub">موضوعات المقرر &mdash; الفصل الدراسي الأول</p>
-  <p class="isi__ket">Semester 1 &middot; 4 topik / pertemuan (maudhu&rsquo;at)</p>
+  <p class="isi__ket">Semester 1 &middot; 3 topik / pertemuan (maudhu&rsquo;at)</p>
   <label class="cari"><input id="cari" type="search" placeholder="Cari topik" autocomplete="off" aria-label="Cari topik"><span id="jml"></span></label>
   <ol class="daftar">
-<li class="topik"><span class="topik__no">١</span><div class="topik__judul">مقدمة في أحكام التلاوة والتجويد</div><ul class="topik__butir" style="grid-column:2"><li>أحكام النون والميم المشددتين</li><li>أحكام النون الساكنة والتنوين</li><li>أحكام الميم الساكنة</li><li>أحكام اللامات السواكن</li><li>المدود: تعريفها وأسبابها وأنواعها ومراتبها</li></ul></li>
-<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">التلاوة</div><ul class="topik__butir" style="grid-column:2"><li>من أول (يس) إلى آخر سورة (الفتح)</li></ul></li>
-<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">حفظ الجزء الأول (الحزب الأول)</div></li>
-<li class="topik"><span class="topik__no">٤</span><div class="topik__judul">حفظ الجزء الأول (الحزب الثاني)</div></li>
+<li class="topik"><span class="topik__no">١</span><div class="topik__judul">مقدمة في أحكام التلاوة والتجويد</div><ul class="topik__butir" style="grid-column:2"><li>النون والميم المشددتين</li><li>النون الساكنة والتنوين</li><li>الميم الساكنة</li><li>اللامات السواكن</li><li>والمدود</li></ul></li>
+<li class="topik"><span class="topik__no">٢</span><div class="topik__judul">التلاوة</div><ul class="topik__butir" style="grid-column:2"><li>من أول سورة (يس) إلى آخر سورة (الفتح)</li></ul></li>
+<li class="topik"><span class="topik__no">٣</span><div class="topik__judul">الحفظ</div><ul class="topik__butir" style="grid-column:2"><li>حفظ الجزء الأول (الحزب الأول والثاني)</li></ul></li>
   </ol>
   <p class="kosong" id="kosong">Tidak ada topik yang cocok.</p>
 </div></section>
