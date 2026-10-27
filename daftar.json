@@ -389,29 +389,29 @@
                         "name": "البلاغة (5)",
                         "c": [
                             {
-                                "name": "ahwal-al-musnad-biasa",
-                                "ext": "html",
-                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/ahwal-al-musnad-biasa.html"
-                            },
-                            {
-                                "name": "ahwal-al-musnad-ilayh-1-biasa",
-                                "ext": "html",
-                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/ahwal-al-musnad-ilayh-1-biasa.html"
-                            },
-                            {
-                                "name": "ahwal-al-musnad-ilayh-2-biasa",
-                                "ext": "html",
-                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/ahwal-al-musnad-ilayh-2-biasa.html"
-                            },
-                            {
                                 "name": "daftar-isi-ilmu-maani",
                                 "ext": "html",
                                 "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/daftar-isi-ilmu-maani.html"
                             },
                             {
-                                "name": "ilmu-maani-hlm-209-260-biasa",
+                                "name": "Ilmu ma'ani dari hal 97 ke 131",
                                 "ext": "html",
-                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/ilmu-maani-hlm-209-260-biasa.html"
+                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/Ilmu%20ma%27ani%20dari%20hal%2097%20ke%20131.html"
+                            },
+                            {
+                                "name": "Ilmu ma'ani dari hal 132 ke 166",
+                                "ext": "html",
+                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/Ilmu%20ma%27ani%20dari%20hal%20132%20ke%20166.html"
+                            },
+                            {
+                                "name": "Ilmu ma'ani dari hal 167 ke 214",
+                                "ext": "html",
+                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/Ilmu%20ma%27ani%20dari%20hal%20167%20ke%20214.html"
+                            },
+                            {
+                                "name": "Ilmu ma'ani dari hal 209 ke 237",
+                                "ext": "html",
+                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/Ilmu%20ma%27ani%20dari%20hal%20209%20ke%20237.html"
                             },
                             {
                                 "name": "maudhuat",
@@ -419,9 +419,9 @@
                                 "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/maudhuat.html"
                             },
                             {
-                                "name": "ringkasan-balaghah-m5-biasa",
+                                "name": "Terjemahkan kitab mulakkhosul balaghoh",
                                 "ext": "html",
-                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/ringkasan-balaghah-m5-biasa.html"
+                                "href": "Data/Data%20Lughoh%20per%20Semester/Semester%205/%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%BA%D8%A9%20%285%29/Terjemahkan%20kitab%20mulakkhosul%20balaghoh.html"
                             },
                             {
                                 "name": "Transkripsi Kitab Ilmu Ma'ani hlm 209-260",
