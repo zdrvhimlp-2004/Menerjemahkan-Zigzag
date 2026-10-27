@@ -44,15 +44,20 @@
     padding: 1rem 1rem 3rem;
   }
 
-  /* ====== TOPBAR: search + login ====== */
+  /* ====== TOPBAR: search + fullscreen (kaca biru gelap tembus pandang) ====== */
   .topbar {
     position: sticky;
-    top: 0;
+    top: .5rem;
     z-index: 10;
     display: flex;
     gap: .6rem;
-    padding: .75rem 0;
-    background: linear-gradient(var(--bg) 70%, transparent);
+    padding: .6rem;
+    background: rgba(8, 19, 39, .55);
+    border: 1px solid rgba(124, 196, 255, .18);
+    border-radius: 22px;
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
   }
 
   .search {
@@ -104,22 +109,22 @@
   .search .clear:hover { color: var(--text); background: var(--card-hover); }
   .search.has-text .clear { display: grid; }
 
-  .btn-login {
+  .btn-full {
     flex: none;
-    height: 44px;
-    padding: 0 1.1rem;
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
     background: var(--accent);
     color: var(--on-accent);
     border: 0;
     border-radius: 999px;
-    font: inherit;
-    font-weight: 600;
-    font-size: .9rem;
     cursor: pointer;
     transition: background .15s, transform .1s;
   }
-  .btn-login:hover { background: #a2d6ff; }
-  .btn-login:active { transform: scale(.97); }
+  .btn-full svg { width: 20px; height: 20px; }
+  .btn-full:hover { background: #a2d6ff; }
+  .btn-full:active { transform: scale(.95); }
+  .btn-full[hidden] { display: none; }
 
   /* ====== PROFIL ====== */
   .profile {
@@ -256,79 +261,22 @@
     opacity: .8;
   }
 
-  /* ====== MODAL LOGIN ====== */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    display: none;
-    place-items: center;
-    padding: 1rem;
-    background: rgba(3, 9, 20, .7);
-    backdrop-filter: blur(4px);
-  }
-  .overlay.open { display: grid; }
-  .modal {
-    width: 100%;
-    max-width: 360px;
-    padding: 1.5rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-  }
-  .modal h2 { font-size: 1.1rem; margin-bottom: .2rem; }
-  .modal p.lead { color: var(--muted); font-size: .8rem; margin-bottom: 1rem; }
-  .modal label { display: block; font-size: .78rem; color: var(--muted); margin: .7rem 0 .25rem; }
-  .modal input {
-    width: 100%;
-    height: 42px;
-    padding: 0 .9rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    font: inherit;
-    outline: none;
-  }
-  .modal input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124, 196, 255, .2); }
-  .modal .actions { display: flex; gap: .6rem; margin-top: 1.2rem; }
-  .modal .actions button {
-    flex: 1;
-    height: 42px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    font: inherit;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .modal .actions button.primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--on-accent);
-    font-weight: 600;
-  }
-  .modal .msg { min-height: 1.2rem; margin-top: .8rem; font-size: .78rem; color: var(--accent); text-align: center; }
-
   @media (max-width: 420px) {
     .item .t-ar { font-size: 1.2rem; }
-    .btn-login { padding: 0 .9rem; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Paling atas: search + login -->
+  <!-- Paling atas: search + fullscreen -->
   <header class="topbar">
     <div class="search" id="searchBox">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Cari" autocomplete="off" aria-label="Cari">
       <button class="clear" id="clearQ" aria-label="Hapus pencarian">&times;</button>
     </div>
-    <button class="btn-login" id="btnLogin">Login</button>
+    <button class="btn-full" id="btnFull" type="button" aria-label="Layar penuh" title="Layar penuh"></button>
   </header>
 
   <!-- Linktree -->
@@ -344,23 +292,6 @@
   <footer>&copy; As-Salmaniyyah</footer>
 </div>
 
-<!-- Login -->
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-  <form class="modal" id="loginForm">
-    <h2 id="loginTitle">Masuk</h2>
-    <p class="lead">Login untuk mengakses materi pribadi.</p>
-    <label for="user">Email / Username</label>
-    <input id="user" type="text" autocomplete="username" required>
-    <label for="pass">Password</label>
-    <input id="pass" type="password" autocomplete="current-password" required>
-    <div class="msg" id="loginMsg"></div>
-    <div class="actions">
-      <button type="button" id="cancelLogin">Batal</button>
-      <button type="submit" class="primary">Masuk</button>
-    </div>
-  </form>
-</div>
-
-<script src="assets/beranda.js?v=8"></script>
+<script src="assets/beranda.js?v=9"></script>
 </body>
 </html>
