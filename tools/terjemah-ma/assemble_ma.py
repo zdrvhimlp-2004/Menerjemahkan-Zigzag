@@ -163,7 +163,7 @@ def assemble(tag, lo=None, hi=None, out=None):
           '      </nav>\n'
           '    </dialog>')
     body_html = '\n'.join(body)
-    tail = tpl[tpl.index('</section>'):]
+    tail = tpl[tpl.rindex('</section>'):]
     doc = head + '<body>\n\n<div id="crumb-bar" class="crumb" aria-hidden="true">\n  <span class="crumb__path"></span>\n  <span class="crumb__page"></span>\n</div>\n\n<section class="isi">\n  <div class="isi__wrap">\n' \
           + '    <h1 class="isi__judul" lang="ar">%s</h1>\n    <p class="isi__ket">%s</p>\n\n' % (esc(cfg['title']), cfg['ket']) + toc_head + fm + '\n\n' + body_html + '\n\n  </div>\n' + tail
     path = out or (OUTDIR + cfg['out'])
