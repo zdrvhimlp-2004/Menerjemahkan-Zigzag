@@ -37,6 +37,7 @@
   <div class="judul" id="judul">Viewer</div>
   <button class="tombol" id="kecil" type="button" aria-label="Perkecil">&minus;</button>
   <button class="tombol" id="besar" type="button" aria-label="Perbesar">+</button>
+  <button class="tombol utama" id="salin" type="button">Salin link</button>
 </div>
 <main>
   <div id="isi"><div class="pesan">Memuat dokumen…</div></div>
@@ -49,6 +50,28 @@
   var param = new URLSearchParams(location.search).get('f') || '';
   // hanya file di dalam folder Data/ yang boleh dibuka
   var path = decodeURIComponent(param).replace(/\\/g, '/');
+  // salin alamat viewer ini (bisa dibagikan, langsung membuka dokumen yang sama)
+  var salin = document.getElementById('salin');
+  var teksSalin = salin.textContent, timerSalin;
+  function selesaiSalin(ok) {
+    salin.textContent = ok ? 'Tersalin \u2713' : 'Gagal menyalin';
+    clearTimeout(timerSalin);
+    timerSalin = setTimeout(function () { salin.textContent = teksSalin; }, 1800);
+  }
+  salin.addEventListener('click', function () {
+    var link = location.href;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(link).then(function () { selesaiSalin(true); }, function () { selesaiSalin(false); });
+      return;
+    }
+    var t = document.createElement('textarea');
+    t.value = link; t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { /* abaikan */ }
+    t.remove();
+    selesaiSalin(ok);
+  });
   function pesan(html) { isi.innerHTML = '<div class="pesan">' + html + '</div>'; }
 
   if (!/^Data\//.test(path) || /(^|\/)\.\.(\/|$)/.test(path)) { pesan('Dokumen tidak ditemukan.'); return; }
