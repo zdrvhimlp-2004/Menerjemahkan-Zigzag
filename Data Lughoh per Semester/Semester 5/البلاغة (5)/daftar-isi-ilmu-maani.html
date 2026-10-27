@@ -12,26 +12,29 @@
     :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ink: #e9e6dc; --muted: #9a9384; --head: #7fc9a6; --pill: #1c2420; }
   }
   body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.6; padding: clamp(0.75rem, 3vw, 2rem); }
-  .wrap { max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1rem, 4vw, 2rem); }
-  h1 { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.6rem); color: var(--head); margin-bottom: 1rem; }
+  .wrap { direction: rtl; max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1rem, 4vw, 2rem); }
+  h1 { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.6rem); color: var(--head); margin-bottom: 1rem; line-height: 1.5; }
+  h1 .sub { display: block; direction: ltr; text-align: right; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
   ol { list-style: none; }
-  ol ol { margin: 0.2rem 0 0.4rem 1rem; padding-left: 0.8rem; border-left: 2px solid var(--border); }
+  ol ol { margin: 0.2rem 1rem 0.4rem 0; padding-right: 0.8rem; border-right: 2px solid var(--border); }
   li { padding: 0.35rem 0; }
   .baris { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; }
   .judul { min-width: 0; }
-  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
-  .id { font-size: 0.9rem; color: var(--ink); }
+  .ar { cursor: pointer; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
+  .id { display: none; direction: ltr; text-align: right; font-size: 0.9rem; color: var(--ink); }
+  .buka > .id, .tanpa-ar > .baris .id { display: block; }
   .bab > .baris .id { font-weight: 600; font-size: 1rem; }
-  .hal { flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: var(--pill); border: 1px solid var(--border); color: var(--head); white-space: nowrap; }
+  .hal { direction: ltr; unicode-bidi: isolate; flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: var(--pill); border: 1px solid var(--border); color: var(--head); white-space: nowrap; }
   .hal a { color: inherit; text-decoration: none; }
   .bab { padding: 0.55rem 0; border-bottom: 1px dashed var(--border); }
   .bab:last-child { border-bottom: none; }
-  .tanpa-ar .ar { display: none; }
+  .tanpa-ar > .baris .ar { display: none; }
+  .ar:focus-visible { outline: 2px solid var(--head); outline-offset: 2px; border-radius: 4px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Daftar Isi 'Ilm al-Ma'ani <span class="ar" style="display:inline">علم المعاني</span> &middot; hlm. 209&ndash;350</h1>
+  <h1><span class="ar" style="cursor:default">علم المعاني</span><span class="sub">Daftar isi &middot; hlm. 209&ndash;350 &middot; klik judul Arab untuk melihat terjemahan</span></h1>
   <ol>
 
     <li class="bab tanpa-ar"><div class="baris"><div class="judul"><span class="id">Lanjutan pembahasan sebelumnya</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">209&ndash;215</a></span></div>
@@ -113,5 +116,21 @@
     <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل السادس / أساليب الإنشاء</span><span class="id">Pasal 6: Gaya insya' (awal)</span></div><span class="hal">349&ndash;350</span></div></li>
   </ol>
 </div>
+<script>
+  document.querySelectorAll('.judul > .ar').forEach(function (a) {
+    if (a.closest('h1')) return;
+    a.setAttribute('role', 'button');
+    a.tabIndex = 0;
+    a.setAttribute('aria-expanded', 'false');
+    function toggle() {
+      var buka = a.parentNode.classList.toggle('buka');
+      a.setAttribute('aria-expanded', buka);
+    }
+    a.addEventListener('click', toggle);
+    a.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+</script>
 </body>
 </html>
