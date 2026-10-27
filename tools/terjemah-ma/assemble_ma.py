@@ -5,7 +5,7 @@ from render_align import render_page, fidelity, flag
 from prep import strip_page_a
 
 REPO = '/home/user/Menerjemahkan-Zigzag/'
-TEMPLATE = REPO + 'Data/Data Lughoh per Semester/Semester 5/النحو (5)/Terjemahan zigzag syarh ibnu 'aqil dari bab al Idlofah sampai Af'al at Tafdhil.html'
+TEMPLATE = REPO + 'Data/Data Lughoh per Semester/Semester 5/النحو (5)/Terjemahan zigzag syarh ibnu \'aqil dari bab al Idlofah sampai Af\'al at Tafdhil.html'
 OUTDIR = REPO + 'Data/Data Lughoh per Semester/Semester 5/البلاغة (5)/'
 esc = lambda s: html.escape(s, quote=False)
 
