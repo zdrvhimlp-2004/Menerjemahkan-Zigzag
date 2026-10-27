@@ -40,6 +40,25 @@ function el(tag, cls, html) {
   return e;
 }
 const isArabic = (t) => /[\u0600-\u06FF]/.test(t);
+// logo file: kertas dengan label jenis; warna mengikuti jenis file
+const JENIS = {
+  html: ['HTML', '#ff9f5a'], htm: ['HTML', '#ff9f5a'],
+  doc: ['DOC', '#6aa8ff'], docx: ['DOC', '#6aa8ff'], odt: ['DOC', '#6aa8ff'], rtf: ['DOC', '#6aa8ff'],
+  pdf: ['PDF', '#ff6b6b'],
+  xls: ['XLS', '#4fd18b'], xlsx: ['XLS', '#4fd18b'], csv: ['CSV', '#4fd18b'],
+  ppt: ['PPT', '#ff8a65'], pptx: ['PPT', '#ff8a65'],
+  md: ['MD', '#b6a6ff'], txt: ['TXT', '#aab4c0'], json: ['JSON', '#f2d15c'],
+  png: ['IMG', '#d98cf0'], jpg: ['IMG', '#d98cf0'], jpeg: ['IMG', '#d98cf0'], gif: ['IMG', '#d98cf0'], webp: ['IMG', '#d98cf0'], svg: ['SVG', '#d98cf0'],
+  mp3: ['MP3', '#5fd4d4'], mp4: ['MP4', '#5fd4d4'],
+  zip: ['ZIP', '#f2d15c'], rar: ['ZIP', '#f2d15c'],
+};
+function iconFor(ext) {
+  const [label, warna] = JENIS[ext] || [(ext || 'FILE').slice(0, 4).toUpperCase(), '#aab4c0'];
+  const svg = '<svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5v5h5"/>'
+    + '<text x="12" y="17" text-anchor="middle" font-family="system-ui,sans-serif" font-size="' + (label.length > 3 ? 4.6 : 5.8) + '" font-weight="700" fill="currentColor" stroke="none">' + label + '</text></svg>';
+  return { svg, warna };
+}
+
 function titleSpan(name) {
   return span(isArabic(name) ? 't-ar ar' : 't-id', name);
 }
@@ -75,7 +94,16 @@ function buildItem(n, path, showPath) {
     root.href = n.href;
   }
 
-  root.appendChild(el('span', 'ico', folder ? SVG.folder : SVG.doc));
+  const ico = el('span', 'ico');
+  if (folder) {
+    ico.innerHTML = SVG.folder;
+  } else {
+    const j = iconFor(n.ext);
+    ico.innerHTML = j.svg;
+    ico.style.color = j.warna;
+    ico.style.background = 'color-mix(in srgb, ' + j.warna + ' 16%, transparent)';
+  }
+  root.appendChild(ico);
 
   const txt = el('span', 'txt');
   txt.appendChild(titleSpan(n.name));
@@ -161,7 +189,7 @@ function search() {
   const terms = q.split(/\s+/);
 
   const results = INDEX.filter(({ n, names }) => {
-    const hay = norm([n.name, n.file || ''].concat(names).join(' '));
+    const hay = norm([n.name].concat(names).join(' '));
     return terms.every((t) => hay.includes(t));
   });
 
