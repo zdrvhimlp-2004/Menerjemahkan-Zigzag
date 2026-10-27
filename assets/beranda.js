@@ -222,19 +222,28 @@ qEl.addEventListener('input', search);
 $('clearQ').addEventListener('click', () => { qEl.value = ''; search(); qEl.focus(); });
 
 /* ============================================================
-   LOGIN (tampilan saja; belum terhubung ke server)
+   LAYAR PENUH
    ============================================================ */
-const overlay = $('overlay');
-const openLogin = () => { overlay.classList.add('open'); $('loginMsg').textContent = ''; $('user').focus(); };
-const closeLogin = () => overlay.classList.remove('open');
-$('btnLogin').addEventListener('click', openLogin);
-$('cancelLogin').addEventListener('click', closeLogin);
-overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLogin(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLogin(); });
-$('loginForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  $('loginMsg').textContent = 'Login belum dihubungkan ke server.';
-});
+const btnFull = $('btnFull');
+const IKON_FULL = {
+  masuk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  keluar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>',
+};
+function sinkronFull() {
+  const aktif = !!document.fullscreenElement;
+  btnFull.innerHTML = aktif ? IKON_FULL.keluar : IKON_FULL.masuk;
+  btnFull.title = btnFull.ariaLabel = aktif ? 'Keluar layar penuh' : 'Layar penuh';
+}
+if (document.fullscreenEnabled) {
+  btnFull.addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(() => {});
+  });
+  document.addEventListener('fullscreenchange', sinkronFull);
+  sinkronFull();
+} else {
+  btnFull.hidden = true; // mis. iPhone: browser tidak mendukung layar penuh untuk halaman web
+}
 
 window.addEventListener('hashchange', () => { if (!qEl.value) render(); else { qEl.value = ''; syncSearch(); render(); } });
 listEl.replaceChildren(el('div', 'empty', 'Memuat daftar…'));
