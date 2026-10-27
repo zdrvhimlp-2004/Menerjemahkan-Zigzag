@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="bar">
-  <a class="tombol" href="index.html" id="kembali">&larr; Beranda</a>
+  <a class="tombol" href="index.html" id="kembali">&larr; Folder</a>
   <div class="judul" id="judul">Viewer</div>
   <button class="tombol" id="kecil" type="button" aria-label="Perkecil">&minus;</button>
   <button class="tombol" id="besar" type="button" aria-label="Perbesar">+</button>
@@ -48,6 +48,9 @@
 
   if (!/^Data\//.test(path) || /(^|\/)\.\.(\/|$)/.test(path)) { pesan('Dokumen tidak ditemukan.'); return; }
 
+  // kembali ke folder tempat file ini berada
+  var folder = path.split('/').slice(1, -1);
+  document.getElementById('kembali').href = 'index.html#/' + folder.map(encodeURIComponent).join('/');
   var url = path.split('/').map(encodeURIComponent).join('/');
   var nama = path.split('/').pop().replace(/\.[^.]+$/, '').trim();
   document.getElementById('judul').textContent = nama;

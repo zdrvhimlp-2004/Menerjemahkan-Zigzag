@@ -75,12 +75,26 @@ function nodeAt(path) {
   return { node, trail };
 }
 
+// alamat memakai nama folder (bukan nomor urut) supaya tetap benar saat isi Data/ bertambah
 function go(path) {
-  location.hash = path.length ? '#/' + path.join('/') : '#/';
+  const names = [];
+  let node = { c: DATA };
+  for (const i of path) { node = node.c[i]; names.push(encodeURIComponent(node.name)); }
+  location.hash = '#/' + names.join('/');
 }
 function currentPath() {
-  const m = location.hash.replace(/^#\/?/, '');
-  return m ? m.split('/').map(Number).filter((n) => Number.isInteger(n) && n >= 0) : [];
+  const names = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  const path = [];
+  let kids = DATA;
+  for (const raw of names) {
+    let name = raw;
+    try { name = decodeURIComponent(raw); } catch (e) { /* pakai apa adanya */ }
+    const i = kids.findIndex((k) => isFolder(k) && k.name === name);
+    if (i < 0) return [];
+    path.push(i);
+    kids = kids[i].c;
+  }
+  return path;
 }
 
 function buildItem(n, path, showPath) {
