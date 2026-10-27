@@ -91,7 +91,8 @@ function buildItem(n, path, showPath) {
     root.type = 'button';
     root.addEventListener('click', () => { qEl.value = ''; syncSearch(); go(path); });
   } else if (!soon) {
-    root.href = n.href;
+    // dokumen Word dibuka di viewer, bukan diunduh
+    root.href = /^docx?$/.test(n.ext || '') ? 'viewer.html?f=' + encodeURIComponent(decodeURIComponent(n.href)) : n.href;
   }
 
   const ico = el('span', 'ico');
