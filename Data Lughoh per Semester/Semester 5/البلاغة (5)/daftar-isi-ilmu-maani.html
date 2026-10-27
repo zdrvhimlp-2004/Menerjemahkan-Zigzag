@@ -14,123 +14,102 @@
   body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.6; padding: clamp(0.75rem, 3vw, 2rem); }
   .wrap { direction: rtl; max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1rem, 4vw, 2rem); }
   h1 { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.6rem); color: var(--head); margin-bottom: 1rem; line-height: 1.5; }
-  h1 .sub { display: block; direction: ltr; text-align: right; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
   ol { list-style: none; }
   ol ol { margin: 0.2rem 1rem 0.4rem 0; padding-right: 0.8rem; border-right: 2px solid var(--border); }
   li { padding: 0.35rem 0; }
   .baris { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; }
   .judul { min-width: 0; }
-  .ar { cursor: pointer; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
-  .id { display: none; direction: ltr; text-align: right; font-size: 0.9rem; color: var(--ink); }
-  .buka > .id, .tanpa-ar > .baris .id { display: block; }
-  .bab > .baris .id { font-weight: 600; font-size: 1rem; }
+  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
   .hal { direction: ltr; unicode-bidi: isolate; flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: var(--pill); border: 1px solid var(--border); color: var(--head); white-space: nowrap; }
   .hal a { color: inherit; text-decoration: none; }
+  .bab > .baris .ar { font-weight: 700; }
   .bab { padding: 0.55rem 0; border-bottom: 1px dashed var(--border); }
   .bab:last-child { border-bottom: none; }
-  .tanpa-ar > .baris .ar { display: none; }
-  .ar:focus-visible { outline: 2px solid var(--head); outline-offset: 2px; border-radius: 4px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1><span class="ar" style="cursor:default">علم المعاني</span><span class="sub">Daftar isi &middot; hlm. 209&ndash;350 &middot; klik judul Arab untuk melihat terjemahan</span></h1>
+  <h1><span class="ar">علم المعاني</span></h1>
   <ol>
 
-    <li class="bab tanpa-ar"><div class="baris"><div class="judul"><span class="id">Lanjutan pembahasan sebelumnya</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">209&ndash;215</a></span></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">تتمة المبحث السابق</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">209&ndash;215</a></span></div>
       <ol>
-        <li><div class="baris"><div class="judul"><span class="ar">مجيء الماضي لفظا مع "إن"</span><span class="id">Fi'il madhi bersama "in"</span></div><span class="hal">209&ndash;212</span></div></li>
-        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Pemakaian "law"</span></div><span class="hal">212&ndash;215</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">مجيء الماضي لفظا مع "إن"</span></div><span class="hal">209&ndash;212</span></div></li>
+        <li ><div class="baris"><div class="judul"><span class="ar">استعمال «لو»</span></div><span class="hal">212&ndash;215</span></div></li>
       </ol></li>
 
-    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الرابع &middot; أحوال متعلقات الفعل</span><span class="id">Pasal 4: Keadaan pelengkap fi'il</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-216">216&ndash;245</a></span></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الرابع &middot; أحوال متعلقات الفعل</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-216">216&ndash;245</a></span></div>
       <ol>
-        <li><div class="baris"><div class="judul"><span class="ar">تقييد الفعل بمفعول ونحوه</span><span class="id">Membatasi fi'il dengan maf'ul dan semisalnya</span></div><span class="hal">217&ndash;222</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">حذف المفعول</span><span class="id">Pembuangan maf'ul</span></div><span class="hal">222&ndash;237</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">تقديم المفعول ونحوه من المتعلقات على العامل</span><span class="id">Mendahulukan maf'ul dan pelengkap atas 'amil</span></div><span class="hal">237&ndash;241</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">تقديم بعض المتعلقات على بعض</span><span class="id">Mendahulukan sebagian pelengkap atas yang lain</span></div><span class="hal">241&ndash;245</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">تقييد الفعل بمفعول ونحوه</span></div><span class="hal">217&ndash;222</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">حذف المفعول</span></div><span class="hal">222&ndash;237</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">تقديم المفعول ونحوه من المتعلقات على العامل</span></div><span class="hal">237&ndash;241</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">تقديم بعض المتعلقات على بعض</span></div><span class="hal">241&ndash;245</span></div></li>
       </ol></li>
 
-    <li class="bab"><div class="baris"><div class="judul"><span class="ar">خروج الكلام عن مقتضى الظاهر</span><span class="id">Ucapan keluar dari tuntutan lahiriah</span></div><span class="hal">246&ndash;280</span></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">خروج الكلام عن مقتضى الظاهر</span></div><span class="hal">246&ndash;280</span></div>
       <ol>
-        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Isim zhahir di tempat dhamir</span></div><span class="hal">246&ndash;253</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">صور الالتفات وما يكمن وراءها من أسرار بلاغية</span><span class="id">Iltifat dan bentuk-bentuknya</span></div><span class="hal">253&ndash;264</span></div>
+        <li ><div class="baris"><div class="judul"><span class="ar">وضع الاسم الظاهر موضع الضمير</span></div><span class="hal">246&ndash;253</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">صور الالتفات وما يكمن وراءها من أسرار بلاغية</span></div><span class="hal">253&ndash;264</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">الصورة الخامسة: الانتقال من الغيبة إلى التكلم</span><span class="id">Bentuk ke-5: dari ghaibah ke takallum</span></div><span class="hal">260&ndash;261</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">الصورة السادسة: الالتفات من الغيبة إلى الخطاب</span><span class="id">Bentuk ke-6: dari ghaibah ke khithab</span></div><span class="hal">262&ndash;264</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">الصورة الخامسة: الانتقال من الغيبة إلى التكلم</span></div><span class="hal">260&ndash;261</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">الصورة السادسة: الالتفات من الغيبة إلى الخطاب</span></div><span class="hal">262&ndash;264</span></div></li>
           </ol></li>
-        <li><div class="baris"><div class="judul"><span class="ar">أسلوب الحكيم</span><span class="id">Uslub al-hakim</span></div><span class="hal">265&ndash;267</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">أسلوب القلب</span><span class="id">Uslub al-qalb</span></div><span class="hal">268&ndash;273</span></div>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب الحكيم</span></div><span class="hal">265&ndash;267</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب القلب</span></div><span class="hal">268&ndash;273</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">قلب معنوي</span><span class="id">Pembalikan makna</span></div><span class="hal">268</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">قلب لفظي</span><span class="id">Pembalikan lafazh</span></div><span class="hal">269</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">آراء البلاغيين في أسلوب القلب</span><span class="id">Pendapat para ahli balaghah</span></div><span class="hal">270&ndash;272</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">هل يوجد أسلوب القلب في النظم الكريم؟</span><span class="id">Adakah uslub al-qalb dalam Al-Qur'an?</span></div><span class="hal">273</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قلب معنوي</span></div><span class="hal">268</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قلب لفظي</span></div><span class="hal">269</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">آراء البلاغيين في أسلوب القلب</span></div><span class="hal">270&ndash;272</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">هل يوجد أسلوب القلب في النظم الكريم؟</span></div><span class="hal">273</span></div></li>
           </ol></li>
-        <li><div class="baris"><div class="judul"><span class="ar">أسلوب التغليب</span><span class="id">Uslub at-taghlib</span></div><span class="hal">274&ndash;275</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">المخالفة في صيغ الأفعال</span><span class="id">Menyimpang dari bentuk fi'il</span></div><span class="hal">275&ndash;280</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب التغليب</span></div><span class="hal">274&ndash;275</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">المخالفة في صيغ الأفعال</span></div><span class="hal">275&ndash;280</span></div></li>
       </ol></li>
 
-    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الجزء الثاني &middot; أحوال الجملة والجمل</span><span class="id">Bagian 2: Keadaan kalimat dan rangkaian kalimat</span></div><span class="hal">281&ndash;282</span></div></li>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الجزء الثاني &middot; أحوال الجملة والجمل</span></div><span class="hal">281&ndash;282</span></div></li>
 
-    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الخامس / أساليب القصر</span><span class="id">Pasal 5: Gaya qashr (pembatasan)</span></div><span class="hal">283&ndash;348</span></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الخامس / أساليب القصر</span></div><span class="hal">283&ndash;348</span></div>
       <ol>
-        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Pengantar dan definisi qashr</span></div><span class="hal">283&ndash;285</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">القصر الحقيقي والقصر الإضافي</span><span class="id">Qashr haqiqi dan qashr idhafi</span></div><span class="hal">286&ndash;289</span></div></li>
-        <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد والقلب والتعيين</span><span class="id">Qashr ifrad, qalb, dan ta'yin</span></div><span class="hal">290&ndash;295</span></div>
+        <li ><div class="baris"><div class="judul"><span class="ar">مدخل وتعريف القصر</span></div><span class="hal">283&ndash;285</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">القصر الحقيقي والقصر الإضافي</span></div><span class="hal">286&ndash;289</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد والقلب والتعيين</span></div><span class="hal">290&ndash;295</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">قصر القلب</span><span class="id">Qashr qalb</span></div><span class="hal">291</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد</span><span class="id">Qashr ifrad</span></div><span class="hal">292</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">قصر التعيين</span><span class="id">Qashr ta'yin</span></div><span class="hal">293&ndash;295</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر القلب</span></div><span class="hal">291</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد</span></div><span class="hal">292</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر التعيين</span></div><span class="hal">293&ndash;295</span></div></li>
           </ol></li>
-        <li><div class="baris"><div class="judul"><span class="ar">قصر الصفة على الموصوف والموصوف على الصفة</span><span class="id">Qashr sifat atas maushuf dan sebaliknya</span></div><span class="hal">296&ndash;303</span></div>
+        <li><div class="baris"><div class="judul"><span class="ar">قصر الصفة على الموصوف والموصوف على الصفة</span></div><span class="hal">296&ndash;303</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">ما الفرق بين القصر الحقيقي الادعائي والقصر الإضافي</span><span class="id">Beda qashr haqiqi idda'i dan idhafi</span></div><span class="hal">303</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">ما الفرق بين القصر الحقيقي الادعائي والقصر الإضافي</span></div><span class="hal">303</span></div></li>
           </ol></li>
-        <li><div class="baris"><div class="judul"><span class="ar">طرق القصر</span><span class="id">Jalur-jalur qashr</span></div><span class="hal">304&ndash;330</span></div>
+        <li><div class="baris"><div class="judul"><span class="ar">طرق القصر</span></div><span class="hal">304&ndash;330</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">العطف بلا وبل ولكن</span><span class="id">Athaf dengan "laa", "bal", "laakin"</span></div><span class="hal">304&ndash;309</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">النفي والاستثناء</span><span class="id">Nafi dan istitsna'</span></div><span class="hal">310&ndash;317</span></div>
+            <li><div class="baris"><div class="judul"><span class="ar">العطف بلا وبل ولكن</span></div><span class="hal">304&ndash;309</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">النفي والاستثناء</span></div><span class="hal">310&ndash;317</span></div>
               <ol>
-                <li><div class="baris"><div class="judul"><span class="ar">وجه دلالة النفي والاستثناء على القصر</span><span class="id">Sisi dilalah nafi dan istitsna' atas qashr</span></div><span class="hal">314</span></div></li>
-                <li><div class="baris"><div class="judul"><span class="ar">هل يفيد الاستثناء التام القصر؟</span><span class="id">Apakah istitsna' tamm memberi faedah qashr?</span></div><span class="hal">315&ndash;316</span></div></li>
-                <li><div class="baris"><div class="judul"><span class="ar">هل يجوز اجتماع النفي والاستثناء والعطف بلا؟</span><span class="id">Bolehkah menggabungkan nafi-istitsna' dengan athaf "laa"?</span></div><span class="hal">317</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">وجه دلالة النفي والاستثناء على القصر</span></div><span class="hal">314</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">هل يفيد الاستثناء التام القصر؟</span></div><span class="hal">315&ndash;316</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">هل يجوز اجتماع النفي والاستثناء والعطف بلا؟</span></div><span class="hal">317</span></div></li>
               </ol></li>
-            <li><div class="baris"><div class="judul"><span class="ar">إنما</span><span class="id">"Innama"</span></div><span class="hal">317&ndash;323</span></div>
+            <li><div class="baris"><div class="judul"><span class="ar">إنما</span></div><span class="hal">317&ndash;323</span></div>
               <ol>
-                <li><div class="baris"><div class="judul"><span class="ar">هل تفيد «أنما» القصر؟</span><span class="id">Apakah "anna-maa" memberi faedah qashr?</span></div><span class="hal">323</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">هل تفيد «أنما» القصر؟</span></div><span class="hal">323</span></div></li>
               </ol></li>
-            <li><div class="baris"><div class="judul"><span class="ar">التقديم</span><span class="id">Taqdim (mendahulukan)</span></div><span class="hal">323&ndash;326</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">ضمير الفصل</span><span class="id">Dhamir fashl</span></div><span class="hal">326&ndash;328</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">تعريف المسند أو المسند إليه «بأل»</span><span class="id">Ta'rif musnad atau musnad ilayh dengan "al"</span></div><span class="hal">328&ndash;330</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">التقديم</span></div><span class="hal">323&ndash;326</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">ضمير الفصل</span></div><span class="hal">326&ndash;328</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">تعريف المسند أو المسند إليه «بأل»</span></div><span class="hal">328&ndash;330</span></div></li>
           </ol></li>
-        <li><div class="baris"><div class="judul"><span class="ar">فروق طرق القصر وأوجه الاختلاف بينها</span><span class="id">Perbedaan jalur-jalur qashr</span></div><span class="hal">330&ndash;348</span></div>
+        <li><div class="baris"><div class="judul"><span class="ar">فروق طرق القصر وأوجه الاختلاف بينها</span></div><span class="hal">330&ndash;348</span></div>
           <ol>
-            <li><div class="baris"><div class="judul"><span class="ar">اجتماع طريقين من طرق القصر</span><span class="id">Menggabungkan dua jalur qashr</span></div><span class="hal">332&ndash;335</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">بين «إنما» و«النفي والاستثناء»</span><span class="id">Beda "innama" dan nafi-istitsna'</span></div><span class="hal">336&ndash;344</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">تحديد موقع المقصور والمقصور عليه</span><span class="id">Menentukan letak yang dibatasi dan yang membatasi</span></div><span class="hal">345</span></div></li>
-            <li><div class="baris"><div class="judul"><span class="ar">جمال التعريض «بإنما»</span><span class="id">Keindahan sindiran dengan "innama"</span></div><span class="hal">346&ndash;348</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">اجتماع طريقين من طرق القصر</span></div><span class="hal">332&ndash;335</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">بين «إنما» و«النفي والاستثناء»</span></div><span class="hal">336&ndash;344</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">تحديد موقع المقصور والمقصور عليه</span></div><span class="hal">345</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">جمال التعريض «بإنما»</span></div><span class="hal">346&ndash;348</span></div></li>
           </ol></li>
       </ol></li>
 
-    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل السادس / أساليب الإنشاء</span><span class="id">Pasal 6: Gaya insya' (awal)</span></div><span class="hal">349&ndash;350</span></div></li>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل السادس / أساليب الإنشاء</span></div><span class="hal">349&ndash;350</span></div></li>
   </ol>
 </div>
-<script>
-  document.querySelectorAll('.judul > .ar').forEach(function (a) {
-    if (a.closest('h1')) return;
-    a.setAttribute('role', 'button');
-    a.tabIndex = 0;
-    a.setAttribute('aria-expanded', 'false');
-    function toggle() {
-      var buka = a.parentNode.classList.toggle('buka');
-      a.setAttribute('aria-expanded', buka);
-    }
-    a.addEventListener('click', toggle);
-    a.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
-  });
-</script>
 </body>
 </html>
