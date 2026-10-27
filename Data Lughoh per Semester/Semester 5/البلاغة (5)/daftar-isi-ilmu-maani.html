@@ -25,6 +25,14 @@
   .bab > .baris .ar { font-weight: 700; }
   .bab { padding: 0.55rem 0; border-bottom: 1px dashed var(--border); }
   .bab:last-child { border-bottom: none; }
+  li.punya-anak > .baris { cursor: pointer; }
+  li.punya-anak > .baris .judul { display: flex; align-items: center; gap: 0.55rem; }
+  li.punya-anak > .baris .judul::before { content: ""; flex: none; width: 0.6em; height: 0.6em; margin-top: -0.25em; border: solid var(--muted); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .15s; }
+  li.punya-anak.tutup > .baris .judul::before { transform: rotate(135deg); }
+  li.punya-anak.tutup > ol { display: none; }
+  .baris:focus-visible { outline: 2px solid var(--head); outline-offset: 2px; border-radius: 6px; }
+  .fab { position: fixed; left: 1rem; bottom: 1rem; z-index: 10; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.6rem 1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--head); color: var(--card); font: 600 0.85rem system-ui, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25); direction: ltr; }
+  .fab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -159,5 +167,44 @@
     <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل السادس / أساليب الإنشاء</span></div><span class="hal">349&ndash;350</span></div></li>
   </ol>
 </div>
+<button class="fab" id="fab" type="button" aria-label="Collapse semua">Collapse semua</button>
+<script>
+  var items = document.querySelectorAll('li');
+  var fab = document.getElementById('fab');
+  function sinkron() {
+    var tutup = document.querySelectorAll('li.punya-anak.tutup').length;
+    var semua = document.querySelectorAll('li.punya-anak').length;
+    var buka = tutup < semua;
+    fab.textContent = buka ? 'Collapse semua' : 'Expand semua';
+    fab.setAttribute('aria-label', fab.textContent);
+  }
+  items.forEach(function (li) {
+    var anak = li.querySelector(':scope > ol');
+    if (!anak) return;
+    li.classList.add('punya-anak');
+    var baris = li.querySelector(':scope > .baris');
+    baris.tabIndex = 0;
+    baris.setAttribute('role', 'button');
+    baris.setAttribute('aria-expanded', 'true');
+    function toggle() {
+      var tutup = li.classList.toggle('tutup');
+      baris.setAttribute('aria-expanded', !tutup);
+      sinkron();
+    }
+    baris.addEventListener('click', function (e) { if (!e.target.closest('a')) toggle(); });
+    baris.addEventListener('keydown', function (e) {
+      if (e.target === baris && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(); }
+    });
+  });
+  fab.addEventListener('click', function () {
+    var tutup = fab.textContent === 'Collapse semua';
+    document.querySelectorAll('li.punya-anak').forEach(function (li) {
+      li.classList.toggle('tutup', tutup);
+      li.querySelector(':scope > .baris').setAttribute('aria-expanded', !tutup);
+    });
+    sinkron();
+  });
+  sinkron();
+</script>
 </body>
 </html>
