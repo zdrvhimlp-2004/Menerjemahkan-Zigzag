@@ -5,9 +5,7 @@
  *   file   -> {"name": "<nama file tanpa ekstensi>", "ext": "html", "href": "Data/.../file.html"}
  * Dipakai oleh assets/beranda.js (index.html).
  *
- * Di server dengan PHP : index.html memanggil daftar.php langsung (selalu terbaru).
- * Di hosting statis    : jalankan `php daftar.php > daftar.json` (otomatis lewat
- *                        .github/workflows/daftar.yml); beranda.js memakai daftar.json.
+ * Dipanggil index.html setiap dibuka, jadi isi folder Data/ selalu terbaru (butuh server PHP).
  */
 const DATA_DIR = 'Data';
 
