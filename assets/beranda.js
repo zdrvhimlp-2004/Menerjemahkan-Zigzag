@@ -1,22 +1,18 @@
 /* ============================================================
    DATA
    Pohon folder diambil otomatis dari folder Data/ lewat daftar.php
-   (atau daftar.json di hosting statis). Tidak ada yang ditulis manual.
+   . Tidak ada yang ditulis manual.
    ============================================================ */
 let DATA = [];
 let INDEX = [];
 const isFolder = (n) => Array.isArray(n.c);
 
 async function ambilDaftar() {
-  for (const url of ['daftar.php', 'daftar.json']) {
-    try {
-      const r = await fetch(url, { cache: 'no-cache' });
-      if (!r.ok) continue;
-      const d = await r.json();
-      if (Array.isArray(d)) return d;
-    } catch (e) { /* coba sumber berikutnya */ }
-  }
-  throw new Error('daftar tidak bisa dimuat');
+  const r = await fetch('daftar.php', { cache: 'no-cache' });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const d = await r.json();
+  if (!Array.isArray(d)) throw new Error('format daftar tidak dikenal');
+  return d;
 }
 
 /* ============================================================
@@ -252,6 +248,6 @@ ambilDaftar().then((d) => {
   INDEX = flatten(DATA);
   render();
 }).catch(() => {
-  listEl.replaceChildren(el('div', 'empty', 'Daftar tidak bisa dimuat. Jalankan lewat server (PHP) atau pastikan daftar.json ada.'));
+  listEl.replaceChildren(el('div', 'empty', 'Daftar tidak bisa dimuat. Pastikan situs berjalan di server yang mendukung PHP (daftar.php).'));
 });
 
