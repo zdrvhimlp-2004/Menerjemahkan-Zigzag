@@ -47,6 +47,8 @@ def assemble(tag, lo=None, hi=None, out=None):
         babs.append(cur_bab)
         body.append('<header class="bab" id="bab-%d"><h2 class="bab__ar" lang="ar">%s</h2><p class="bab__id">%s</p></header>' % (cnt['bab'], esc(ar), esc(idn)))
     first_page = pages[0][0]
+    last_page = pages[-1][0]
+    cfg = dict(cfg, ket=cfg['ket'].replace('209&ndash;260', '%d&ndash;%d' % (first_page, last_page)))
     if cfg['start'] and not (pages[0][1] and pages[0][1][0]['k'] == 'h1'):
         new_bab(cfg['start'][0], cfg['start'][1], first_page)
     open_p = False

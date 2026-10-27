@@ -39,7 +39,7 @@ FIXES = []
 def units_from_text(main, heads):
     for a, c in FIXES:
         if a.startswith('~'):
-            pat = '[\u064b-\u0652\u0670]*'.join(re.escape(ch) if ch != ' ' else ' ' for ch in a[1:])
+            pat = '[\u064b-\u0652\u0670]*'.join(re.escape(ch) if ch != ' ' else ' ' for ch in a[1:]) + '[\u064b-\u0652\u0670]*'
             main = re.sub(pat, lambda m: c.replace('\\0', m.group(0)), main, count=1)
         else:
             main = main.replace(a, c)
@@ -49,6 +49,10 @@ def units_from_text(main, heads):
     for (a, b, inner, ref) in verses:
         out.append(main[last:a]); out.append('\x01%d\x01' % len(ph)); ph.append(('q', inner, ref)); last = b
     out.append(main[last:]); t = ''.join(out)
+    def _force(m):
+        ph.append(({'H': 'h', 'S': 'sy', 'Q': 'q'}[m.group(1)], m.group(2).strip(), None))
+        return '\x02%d\x02' % (len(ph) - 1)
+    t = re.sub(r'§([HSQ])§(.*?)§/\1§', _force, t, flags=re.S)
     for h, kind in heads:
         if h in t:
             t = t.replace(h, '\x02%d\x02' % len(ph), 1); ph.append((kind, h, None))
@@ -60,7 +64,7 @@ def units_from_text(main, heads):
         m = re.fullmatch(r'[\x01\x02](\d+)[\x01\x02]', p)
         if m:
             kind, a, b = ph[int(m.group(1))]; units.append((kind, a, b)); continue
-        if not p.strip(): continue
+        if not p.strip() or re.fullmatch(r'[\s().…\"«»،:-]+', p): continue
         toks = tokens(p)
         regs = find_poems(toks)
         pos = 0
@@ -69,14 +73,15 @@ def units_from_text(main, heads):
             units.append(('sy', [' '.join(h) for h in poem_lines(toks[l:r + 1])], None))
             pos = r + 1
         if pos < len(toks): units.append(('p', ' '.join(toks[pos:]), None))
+    units = [u for u in units if not (u[0] == 'p' and re.fullmatch(r'[\s().…"«»،:-]*', u[1]))]
     return units
 
 def lines_of(unit):
     k, a, b = unit
     if k in ('h1', 'h2', 'h3'): return [a]
-    if k == 'q':
+    if k in ('q', 'h'):
         return [' '.join(l) for l in chunk_words(a.split(), 7)]
-    if k == 'sy': return a
+    if k == 'sy': return a if isinstance(a, list) else [' '.join(x) for x in poem_lines(tokens(a))]
     if k in ('p', 'fn'): return split_prose(a)
     raise ValueError(k)
 
