@@ -15,7 +15,13 @@
   .bar .judul { flex: 1; min-width: 0; font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .tombol { flex: none; display: inline-flex; align-items: center; padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--accent); font-family: inherit; font-size: .85rem; font-weight: 500; text-decoration: none; cursor: pointer; }
   .tombol.utama { background: var(--accent); border-color: var(--accent); color: var(--btn-ink); }
-  main { padding: 1rem 0 3rem; overflow-x: auto; }
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; overflow: hidden; }
+  main { flex: 1; min-height: 0; padding: 1rem 0 3rem; overflow: auto; }
+  body.mode-html main { padding: 0; overflow: hidden; }
+  body.mode-html #isi { height: 100%; }
+  #isi iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+  .tombol[hidden] { display: none; }
   .tombol[aria-label] { padding: .4rem .75rem; font-size: 1rem; line-height: 1.2; }
   /* docx-preview: halaman putih seperti di Word, latar sekitarnya mengikuti situs */
   #isi { display: flow-root; }
@@ -31,7 +37,6 @@
   <div class="judul" id="judul">Viewer</div>
   <button class="tombol" id="kecil" type="button" aria-label="Perkecil">&minus;</button>
   <button class="tombol" id="besar" type="button" aria-label="Perbesar">+</button>
-  <a class="tombol utama" id="unduh" href="#" download hidden>Unduh</a>
 </div>
 <main>
   <div id="isi"><div class="pesan">Memuat dokumen…</div></div>
@@ -55,8 +60,18 @@
   var nama = path.split('/').pop().replace(/\.[^.]+$/, '').trim();
   document.getElementById('judul').textContent = nama;
   document.title = nama + ' — As-Salmaniyyah';
-  var unduh = document.getElementById('unduh');
-  unduh.href = url; unduh.hidden = false;
+
+  // halaman HTML materi dibuka di dalam bingkai (iframe), bar atas tetap ada
+  if (/\.html?$/i.test(path)) {
+    document.body.classList.add('mode-html');
+    document.getElementById('kecil').hidden = true;
+    document.getElementById('besar').hidden = true;
+    var f = document.createElement('iframe');
+    f.src = url;
+    f.title = nama;
+    isi.replaceChildren(f);
+    return;
+  }
 
   if (!/\.docx$/i.test(path)) {
     pesan('Format ini (.' + path.split('.').pop() + ') tidak bisa ditampilkan di viewer. Silakan <a href="' + url + '" download>unduh filenya</a>.');
