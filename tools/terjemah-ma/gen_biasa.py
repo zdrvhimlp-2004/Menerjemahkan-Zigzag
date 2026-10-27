@@ -1,6 +1,6 @@
 import re, html, zipfile, difflib
 SP='/tmp/claude-0/-home-user-Menerjemahkan-Zigzag/f395751c-a639-5518-8174-6a8772e78be1/scratchpad/'
-F='/home/user/Menerjemahkan-Zigzag/Data/Data Lughoh per Semester/Semester 5/النحو (5)/syarh-ibnu-aqil-biasa.html'
+F='/home/user/Menerjemahkan-Zigzag/Data/Data Lughoh per Semester/Semester 5/النحو (5)/Terjemahan zigzag syarh ibnu 'aqil dari bab al Idlofah sampai Af'al at Tafdhil.html'
 DOCX="/home/user/Menerjemahkan-Zigzag/Data/Data Lughoh per Semester/Semester 5/النحو (5)/af'al at tafdhil.docx"
 esc=lambda s: html.escape(s,quote=False)
 tr={}
