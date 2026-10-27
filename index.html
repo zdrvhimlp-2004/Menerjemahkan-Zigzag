@@ -375,14 +375,14 @@ const arDigits = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d
 const l = (name, sem, c = []) => ({ name: name + ' (م' + arDigits(sem) + ')', key: name, sem, c });
 const link = (name, sem, href) => ({ name, sem, href }); // link ke file
 
-const S1 = 'Data Lughoh per Semester/Semester 1/'; // folder asli di repo
-const S2 = 'Data Lughoh per Semester/Semester 2/'; // folder asli di repo
-const S3 = 'Data Lughoh per Semester/Semester 3/'; // folder asli di repo
-const S4 = 'Data Lughoh per Semester/Semester 4/'; // folder asli di repo
-const S6 = 'Data Lughoh per Semester/Semester 6/'; // folder asli di repo
-const S7 = 'Data Lughoh per Semester/Semester 7/'; // folder asli di repo
-const S8 = 'Data Lughoh per Semester/Semester 8/'; // folder asli di repo
-const S5 = 'Data Lughoh per Semester/Semester 5/'; // folder asli di repo
+const S1 = 'Data/Data Lughoh per Semester/Semester 1/'; // folder asli di repo
+const S2 = 'Data/Data Lughoh per Semester/Semester 2/'; // folder asli di repo
+const S3 = 'Data/Data Lughoh per Semester/Semester 3/'; // folder asli di repo
+const S4 = 'Data/Data Lughoh per Semester/Semester 4/'; // folder asli di repo
+const S6 = 'Data/Data Lughoh per Semester/Semester 6/'; // folder asli di repo
+const S7 = 'Data/Data Lughoh per Semester/Semester 7/'; // folder asli di repo
+const S8 = 'Data/Data Lughoh per Semester/Semester 8/'; // folder asli di repo
+const S5 = 'Data/Data Lughoh per Semester/Semester 5/'; // folder asli di repo
 
 const DATA = [
   f('Data Lughoh', [
@@ -643,8 +643,8 @@ const DATA = [
 /* ============================================================
    DATA LUGHOH PER SEMESTER
    Dibangun otomatis dari DATA di atas (cari berdasarkan nama),
-   jadi isi yang nanti ditambah di Data Lughoh ikut muncul. Nama yang
-   belum ada di Data Lughoh dibuat sebagai folder kosong.
+   jadi isi yang nanti ditambah di DATA ikut muncul. Nama yang
+   belum ada di DATA dibuat sebagai folder kosong.
    ============================================================ */
 const BY_SEMESTER = {
   1: [
@@ -750,8 +750,7 @@ const isFolder = (n) => Array.isArray(n.c);
       return Object.assign({}, n, { name: n.key || n.name }); // tanpa (م١): sudah jelas dari foldernya
     })));
   const root = f('Data Lughoh per Semester', semFolders);
-  root.noDeep = true; // isi tidak ikut diindeks pencarian (duplikat dari Data Lughoh)
-  DATA.splice(1, 0, root);
+  DATA.splice(0, 1, root); // menu "Data Lughoh" (per mata kuliah) diganti menu per semester
 })();
 
 // Kata kunci Indonesia untuk pencarian saja (tidak ditampilkan di kartu)
