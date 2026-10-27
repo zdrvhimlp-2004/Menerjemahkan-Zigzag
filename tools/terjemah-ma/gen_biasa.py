@@ -75,9 +75,10 @@ for ln in open(SP+'bab10.txt',encoding='utf-8'):
         if bait: body.append('</div>'); bait=False
         body.append('</div>')
     elif cmd=='HAL':
-        body.append('<div class="hal" id="hal-%s"><span>Juz 3 &middot; Hlm. %s</span></div>'%(rest,rest))
+        body.append('<div class="hal hal--akhir" id="hal-%s"><span>Juz 3 &middot; Hlm. %s</span></div>'%(rest,rest))
+        if int(rest)<189: body.append('<div class="hal-awal"><span>Halaman %d</span></div>'%(int(rest)+1))
 assert n==256 and sorted(tr)==list(range(1,257)),(n,len(tr))
-newbody='\n'.join(body)+'\n'
+newbody='<div class="hal-awal"><span>Halaman 174</span></div>\n'+'\n'.join(body)+'\n'
 
 # --- validasi kata Arab terhadap docx (urutan kata sama persis)
 HAR=re.compile('[ً-ٰٟـ]')
@@ -103,7 +104,8 @@ j_end=s.index('<div class="hal" id="hal-189">'); j_end=s.index('</div>',j_end)+l
 seg=s[i:j_end]
 ring=re.search(r'<div class="ringkasan">.*?</div>\n',seg,flags=re.S).group(0)
 newhdr='<header class="bab" id="bab-10"><h2 class="bab__ar" lang="ar">أفعل التفضيل</h2><p class="bab__id">Bab 10 &middot; Af\'al at-Tafdhil (Bentuk Perbandingan: &lsquo;lebih&rsquo; dan &lsquo;paling&rsquo;)</p></header>\n'
-s=s[:i]+newhdr+ring+newbody.rstrip('\n')+s[j_end:]
+note173='<div class="hal" id="hal-173"><span style="color:#c0392b">&#9888; Hlm. 173 tidak ada di data sumber (file ini berhenti di hlm. 172, bab ini mulai dari hlm. 174)</span></div>\n'
+s=s[:i]+newhdr+note173+ring+newbody.rstrip('\n')+s[j_end:]
 # buang CSS zigzag, legenda zigzag, kata 'zigzag'
 if '/* ---------- zigzag (bab 10)' in s:
     a=s.index('  /* ---------- zigzag (bab 10)'); b=s.index('  .kata.k .id { color: var(--k); }\n')+len('  .kata.k .id { color: var(--k); }\n')
@@ -111,5 +113,12 @@ if '/* ---------- zigzag (bab 10)' in s:
 s=re.sub(r'\s*<li><span class="sw" lang="ar">كَلِمَةٌ</span> Bab 10 \(zigzag\).*?</li>\n','\n',s,flags=re.S)
 s=re.sub(r'<p class="isi__ket">.*?</p>','<p class="isi__ket">Syarh Ibnu &lsquo;Aqil &lsquo;ala Alfiyyah Ibni Malik &middot; Juz 3, Hlm. 42&ndash;172 &amp; 174&ndash;189 &middot; 10 bab &middot; 88 kelompok nazham &middot; 66 syahid syair &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia</p>',s,count=1,flags=re.S)
 s=s.replace("Af'al at-Tafdhil (Bentuk Perbandingan) &middot; zigzag","Af'al at-Tafdhil (Bentuk Perbandingan)")
+if '.hal-awal' not in s:
+    css="""  .hal--akhir { height: 0; margin: 0; overflow: hidden; }
+  .hal-awal { display: flex; align-items: center; gap: 0.8rem; margin: 1.6rem 0 0.9rem; direction: ltr; color: var(--heading); }
+  .hal-awal::before, .hal-awal::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .hal-awal span { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; background: var(--pasal-bg); padding: 0.15rem 1rem; border-radius: 999px; }
+"""
+    s=s.replace('</style>',css+'</style>',1)
 open(F,'w',encoding='utf-8').write(s)
 print('zigzag tersisa:',len(re.findall('zigzag|baris tengah|class="kata',s)))
