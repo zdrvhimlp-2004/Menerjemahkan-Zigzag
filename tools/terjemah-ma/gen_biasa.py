@@ -8,6 +8,11 @@ for l in open(SP+'trans_b10.txt',encoding='utf-8'):
     l=l.rstrip('\n')
     if l.strip():
         k,_,v=l.partition('|'); tr[int(k)]=v
+har={}
+for l_ in open(SP+'harakat_b10.txt',encoding='utf-8'):
+    l_=l_.rstrip('\n')
+    if l_.strip():
+        k_,_,v_=l_.partition('|'); har[int(k_)]=v_.split()
 cnt={'q':33,'h':2,'k':24}
 state=None; first=False
 n=0; body=[]; bait=False; allar=[]
@@ -45,7 +50,7 @@ for ln in open(SP+'bab10.txt',encoding='utf-8'):
         body.append('<div class="bait">'); bait=True
     elif cmd=='L':
         n+=1
-        toks=[]
+        toks=[]; ti=0
         for t in rest.split():
             if t.startswith('@'):
                 if t=='@/': state=None
@@ -59,9 +64,10 @@ for ln in open(SP+'bab10.txt',encoding='utf-8'):
                 continue
             ar=t.partition('=')[0]
             allar.append(ar)
+            arv=har[n][ti]; ti+=1
             if state:
-                toks.append((ar,state[0],state[1] if first else None)); first=False
-            else: toks.append((ar,None,None))
+                toks.append((arv,state[0],state[1] if first else None)); first=False
+            else: toks.append((arv,None,None))
         whole=len(set(t[1] for t in toks))==1 and toks[0][1] in ('q','h','k')
         cls='ayat'+(' r'+toks[0][1] if whole else '')
         body.append('<div class="%s"><p class="ar" lang="ar">%s</p><p class="id" lang="id">%s</p></div>'%(cls,line_html(toks),esc(tr[n])))
@@ -99,8 +105,9 @@ ring=re.search(r'<div class="ringkasan">.*?</div>\n',seg,flags=re.S).group(0)
 newhdr='<header class="bab" id="bab-10"><h2 class="bab__ar" lang="ar">أفعل التفضيل</h2><p class="bab__id">Bab 10 &middot; Af\'al at-Tafdhil (Bentuk Perbandingan: &lsquo;lebih&rsquo; dan &lsquo;paling&rsquo;)</p></header>\n'
 s=s[:i]+newhdr+ring+newbody.rstrip('\n')+s[j_end:]
 # buang CSS zigzag, legenda zigzag, kata 'zigzag'
-a=s.index('  /* ---------- zigzag (bab 10)'); b=s.index('  .kata.k .id { color: var(--k); }\n')+len('  .kata.k .id { color: var(--k); }\n')
-s=s[:a]+s[b:]
+if '/* ---------- zigzag (bab 10)' in s:
+    a=s.index('  /* ---------- zigzag (bab 10)'); b=s.index('  .kata.k .id { color: var(--k); }\n')+len('  .kata.k .id { color: var(--k); }\n')
+    s=s[:a]+s[b:]
 s=re.sub(r'\s*<li><span class="sw" lang="ar">كَلِمَةٌ</span> Bab 10 \(zigzag\).*?</li>\n','\n',s,flags=re.S)
 s=re.sub(r'<p class="isi__ket">.*?</p>','<p class="isi__ket">Syarh Ibnu &lsquo;Aqil &lsquo;ala Alfiyyah Ibni Malik &middot; Juz 3, Hlm. 42&ndash;172 &amp; 174&ndash;189 &middot; 10 bab &middot; 88 kelompok nazham &middot; 66 syahid syair &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia</p>',s,count=1,flags=re.S)
 s=s.replace("Af'al at-Tafdhil (Bentuk Perbandingan) &middot; zigzag","Af'al at-Tafdhil (Bentuk Perbandingan)")
