@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg: #081327; --card: #11223f; --border: #25416d; --ink: #eaf3ff; --muted: #8fb0d9; --accent: #7cc4ff; --btn-ink: #06182f; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Poppins', system-ui, sans-serif; line-height: 1.6; }
+  .bar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: .6rem; padding: .6rem clamp(.75rem, 3vw, 1.5rem); background: var(--bg); border-bottom: 1px solid var(--border); }
+  .bar .judul { flex: 1; min-width: 0; font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tombol { flex: none; display: inline-flex; align-items: center; padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--accent); font-family: inherit; font-size: .85rem; font-weight: 500; text-decoration: none; cursor: pointer; }
+  .tombol.utama { background: var(--accent); border-color: var(--accent); color: var(--btn-ink); }
+  main { max-width: 820px; margin: 1rem auto 3rem; padding: 0 clamp(.75rem, 3vw, 1.5rem); }
+  .kertas { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: clamp(1rem, 4vw, 2.2rem); font-family: 'Amiri', 'Traditional Arabic', 'Poppins', serif; font-size: 1.2rem; line-height: 2; overflow-wrap: anywhere; }
+  .kertas p, .kertas li, .kertas td, .kertas th, .kertas h1, .kertas h2, .kertas h3, .kertas h4, .kertas h5, .kertas h6 { unicode-bidi: plaintext; text-align: start; }
+  .kertas p { margin: 0 0 .7em; }
+  .kertas h1, .kertas h2, .kertas h3, .kertas h4 { color: var(--accent); line-height: 1.5; margin: 1.1em 0 .5em; }
+  .kertas ul, .kertas ol { margin: 0 0 .8em; padding-inline-start: 1.6em; }
+  .kertas table { border-collapse: collapse; margin: .6em 0 1em; max-width: 100%; display: block; overflow-x: auto; }
+  .kertas td, .kertas th { border: 1px solid var(--border); padding: .35em .6em; vertical-align: top; }
+  .kertas img { max-width: 100%; height: auto; }
+  .pesan { text-align: center; color: var(--muted); padding: 2rem 1rem; font-family: 'Poppins', sans-serif; font-size: .95rem; }
+  .pesan a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="tombol" href="index.html" id="kembali">&larr; Beranda</a>
+  <div class="judul" id="judul">Viewer</div>
+  <a class="tombol utama" id="unduh" href="#" download hidden>Unduh</a>
+</div>
+<main>
+  <div class="kertas" id="isi"><div class="pesan">Memuat dokumen…</div></div>
+</main>
+<script src="assets/mammoth/mammoth.browser.min.js"></script>
+<script>
+(function () {
+  var isi = document.getElementById('isi');
+  var param = new URLSearchParams(location.search).get('f') || '';
+  // hanya file di dalam folder Data/ yang boleh dibuka
+  var path = decodeURIComponent(param).replace(/\\/g, '/');
+  function pesan(html) { isi.innerHTML = '<div class="pesan">' + html + '</div>'; }
+
+  if (!/^Data\//.test(path) || /(^|\/)\.\.(\/|$)/.test(path)) { pesan('Dokumen tidak ditemukan.'); return; }
+
+  var url = path.split('/').map(encodeURIComponent).join('/');
+  var nama = path.split('/').pop().replace(/\.[^.]+$/, '').trim();
+  document.getElementById('judul').textContent = nama;
+  document.title = nama + ' — As-Salmaniyyah';
+  var unduh = document.getElementById('unduh');
+  unduh.href = url; unduh.hidden = false;
+
+  if (!/\.docx$/i.test(path)) {
+    pesan('Format ini (.' + path.split('.').pop() + ') tidak bisa ditampilkan di viewer. Silakan <a href="' + url + '" download>unduh filenya</a>.');
+    return;
+  }
+
+  fetch(url).then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.arrayBuffer();
+  }).then(function (buf) {
+    return mammoth.convertToHtml({ arrayBuffer: buf });
+  }).then(function (res) {
+    isi.innerHTML = res.value || '<div class="pesan">Dokumen kosong.</div>';
+    // arah tiap paragraf mengikuti isinya (Arab = kanan ke kiri)
+    isi.querySelectorAll('p, li, td, th, h1, h2, h3, h4, h5, h6').forEach(function (e) { e.setAttribute('dir', 'auto'); });
+  }).catch(function () {
+    pesan('Dokumen tidak bisa ditampilkan. Silakan <a href="' + url + '" download>unduh filenya</a>.');
+  });
+})();
+</script>
+</body>
+</html>
