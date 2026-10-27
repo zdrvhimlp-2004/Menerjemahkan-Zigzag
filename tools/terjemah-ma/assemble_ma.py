@@ -1,6 +1,8 @@
 import re, json, sys, html, subprocess, os
 from build2 import *
 import build2
+from render_align import render_page, fidelity, flag
+from prep import strip_page_a
 
 REPO = '/home/user/Menerjemahkan-Zigzag/'
 TEMPLATE = REPO + 'Data Lughoh per Semester/Semester 5/النحو (5)/syarh-ibnu-aqil-biasa.html'
@@ -8,9 +10,9 @@ OUTDIR = REPO + 'Data Lughoh per Semester/Semester 5/البلاغة (5)/'
 esc = lambda s: html.escape(s, quote=False)
 
 CFG = {
- 'a': dict(out='ilmu-maani-hlm-209-260-biasa.html', title='علم المعاني — صفحات ٢٠٩–٢٦٠',
-           ket="'Ilm al-Ma'ani &middot; Dr. Basyuni 'Abdul Fattah Faid (?) &middot; Hlm. 209&ndash;260 &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia, maksimal 7 kata Arab per baris",
-           start=('الفصل الثالث: أحوال المسند (تتمة)', 'Pasal Ketiga: Keadaan-Keadaan Musnad (lanjutan)')),
+ 'a': dict(out='ilmu-maani-hlm-209-260-biasa.html', title='علم المعاني - دراسة بلاغية ونقدية لمسائل المعاني',
+           ket="Dari file: &laquo;&#x639;&#x644;&#x645; &#x627;&#x644;&#x645;&#x639;&#x627;&#x646;&#x64a; - &#x62f;&#x631;&#x627;&#x633;&#x629; &#x628;&#x644;&#x627;&#x63a;&#x64a;&#x629; &#x648;&#x646;&#x642;&#x62f;&#x64a;&#x629; &#x644;&#x645;&#x633;&#x627;&#x626;&#x644; &#x627;&#x644;&#x645;&#x639;&#x627;&#x646;&#x64a; Halaman 209 - 260&raquo; &middot; Hlm. 209&ndash;260 &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia, maksimal 7 kata Arab per baris &middot; teks Arab = transkrip sumber apa adanya; tanda &#9888; = ada masalah di teks sumber",
+           start=('', 'Bagian awal (sebelum judul pasal pertama di file ini)')),
 }
 
 def load_tr(tag):
@@ -40,17 +42,20 @@ def assemble(tag, lo=None, hi=None, out=None):
     body = []
     cnt = {'q': 0, 'sy': 0, 'sub': 0, 'bab': 0}
     cur_bab = None
-    def new_bab(ar, idn, pg):
+    def new_bab(ar, idn, pg, ar_html=None):
         nonlocal cur_bab
         cnt['bab'] += 1
         cur_bab = {'n': cnt['bab'], 'ar': ar, 'id': idn, 'pg': pg, 'pg2': pg, 'subs': [], 'syahid': []}
         babs.append(cur_bab)
-        body.append('<header class="bab" id="bab-%d"><h2 class="bab__ar" lang="ar">%s</h2><p class="bab__id">%s</p></header>' % (cnt['bab'], esc(ar), esc(idn)))
+        if ar:
+            body.append('<header class="bab" id="bab-%d"><h2 class="bab__ar" lang="ar">%s</h2><p class="bab__id">%s</p></header>' % (cnt['bab'], ar_html or esc(ar), esc(idn)))
+        else:
+            body.append('<div id="bab-%d"></div>' % cnt['bab'])
     first_page = pages[0][0]
     last_page = pages[-1][0]
     cfg = dict(cfg, ket=cfg['ket'].replace('209&ndash;260', '%d&ndash;%d' % (first_page, last_page)))
     if cfg['start'] and not (pages[0][1] and pages[0][1][0]['k'] == 'h1'):
-        new_bab(cfg['start'][0], cfg['start'][1], first_page)
+        new_bab('', cfg['start'][1], first_page)
     open_p = False
     def close_p():
         nonlocal open_p
@@ -58,34 +63,60 @@ def assemble(tag, lo=None, hi=None, out=None):
     def line(i, ar, extra_ar='', extra_id='', cls='ayat'):
         t = tr.get(i)
         if t is None: raise SystemExit('belum diterjemahkan: ' + i)
-        return '<div class="%s"><p class="ar" lang="ar">%s%s</p><p class="id" lang="id">%s%s</p></div>' % (cls, esc(ar), extra_ar, esc(t), extra_id)
+        return '<div class="%s"><p class="ar" lang="ar">%s%s</p><p class="id" lang="id">%s%s</p></div>' % (cls, R[i][0], extra_ar, esc(t), extra_id)
+    srcpages = dict((n_, t_) for n_, t_ in json.load(open(SP + ('a_pages.json' if tag == 'a' else 'b_pages.json'), encoding='utf-8')))
+    fid_bad = []
+    flags_total = 0
     for n, us in pages:
         cur_bab and cur_bab.update(pg2=n)
+        S, _cnt = strip_page_a(srcpages[n], n)
+        flat_ids, flat_txt = [], []
+        for u in us:
+            for j_, (i_, l_) in enumerate(zip(u['ids'], u['lines'])):
+                t_ = l_
+                if u['k'] == 'q' and u['ref'] and j_ == len(u['ids']) - 1:
+                    t_ = l_ + '\x05' + re.sub(r'\s+', ' ', u['ref'])
+                flat_ids.append(i_); flat_txt.append(t_)
+        rr = render_page(S, flat_txt)
+        R = {i_: r_ for i_, r_ in zip(flat_ids, rr)}
+        okf, A_, B_ = fidelity(S, [r_[1].replace('\x05', '') for r_ in rr])
+        if not okf: fid_bad.append(n)
+        flags_total += sum(r_[2] for r_ in rr)
         for u in us:
             k = u['k']
             if k != 'p': close_p()
             if k == 'h1':
-                new_bab(u['lines'][0], tr[u['ids'][0]], n)
+                new_bab(R[u['ids'][0]][1].replace('\x05', ''), tr[u['ids'][0]], n, ar_html=R[u['ids'][0]][0])
             elif k == 'h2':
                 cnt['sub'] += 1
-                if cur_bab is None: new_bab(cfg['start'][0], cfg['start'][1], n)
-                cur_bab['subs'].append((cnt['sub'], u['lines'][0], tr[u['ids'][0]], n))
-                body.append('<h3 class="sub" id="sub-%d" lang="ar">%s</h3><p class="sub__id">%s</p>' % (cnt['sub'], esc(u['lines'][0]), esc(tr[u['ids'][0]])))
+                if cur_bab is None: new_bab('', cfg['start'][1], n)
+                cur_bab['subs'].append((cnt['sub'], R[u['ids'][0]][1].replace('\x05', ''), tr[u['ids'][0]], n))
+                body.append('<h3 class="sub" id="sub-%d" lang="ar">%s</h3><p class="sub__id">%s</p>' % (cnt['sub'], R[u['ids'][0]][0], esc(tr[u['ids'][0]])))
             elif k == 'p':
                 if not open_p: body.append('<div class="blk blk-p">'); open_p = True
                 for i, l in zip(u['ids'], u['lines']): body.append(line(i, l))
             elif k == 'q':
                 cnt['q'] += 1; qid = 'qs-%d' % cnt['q']
-                rid, ok = ref_id(u['ref']) if u['ref'] else ('', False)
                 body.append('<div class="blk blk-q" id="%s">' % qid)
+                lastp = R[u['ids'][-1]][1]
+                refp = lastp.split('\x05')[1].strip() if '\x05' in lastp else ''
+                rid = ref_id(refp)[0] if refp else ''
+                firstp = R[u['ids'][0]][1].strip()
+                verse_last = lastp.split('\x05')[0].strip()
+                op_ = firstp[:1]; cl_ = verse_last[-1:]
+                bad_br = not ((op_ == '\ufd3f' and cl_ == '\ufd3e') or (op_ == '(' and cl_ == ')') or (op_ == '[' and cl_ == ']'))
                 for j, (i, l) in enumerate(zip(u['ids'], u['lines'])):
                     last = j == len(u['ids']) - 1
-                    ea = (' <span class="ref">%s</span>' % esc(re.sub(r'\s+', ' ', u['ref']))) if (last and u['ref']) else ''
                     ei = (' <span class="ref">(%s)</span>' % esc(rid)) if (last and rid) else ''
-                    body.append(line(i, l, ea, ei, 'ayat rq'))
+                    if last and bad_br:
+                        # sisipkan tanda sebelum rujukan
+                        h_ = R[i][0]
+                        h_ = h_.replace('<span class="ref">', flag('kurung') + '<span class="ref">', 1) if '<span class="ref">' in h_ else h_ + flag('kurung')
+                        R[i] = (h_, R[i][1], R[i][2] + 1)
+                    body.append(line(i, l, '', ei, 'ayat rq'))
                 body.append('</div>')
                 if cur_bab is not None:
-                    cur_bab['syahid'].append(('q', qid, ' '.join(u['lines']).strip('﴿﴾ '), rid))
+                    cur_bab['syahid'].append(('q', qid, verse_last.strip('\ufd3f\ufd3e()[] '), rid))
             elif k == 'sy':
                 cnt['sy'] += 1; sid = 'sy-%d' % cnt['sy']
                 body.append('<div class="blk blk-sy" id="%s"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syair</span></div>' % sid)
@@ -94,16 +125,15 @@ def assemble(tag, lo=None, hi=None, out=None):
                     body.append('<div class="bait">' + ''.join(line(i, l) for i, l in ls[a:a + 2]) + '</div>')
                 body.append('</div>')
                 if cur_bab is not None:
-                    cur_bab['syahid'].append(('sy', sid, u['lines'][0], ''))
+                    cur_bab['syahid'].append(('sy', sid, R[u['ids'][0]][1], ''))
             elif k == 'fn':
-                if not (body and body[-1].startswith('<div class="ayat fn')) and not (body and body[-1] == '<!--fn-->'):
-                    pass
                 body.append('<div class="blk blk-fn">')
                 for i, l in zip(u['ids'], u['lines']): body.append(line(i, l, cls='ayat fn'))
                 body.append('</div>')
         close_p()
         body.append('<div class="hal" id="hal-%d"><span>Hlm. %d</span></div>' % (n, n))
 
+    print('halaman dengan teks berbeda dari sumber:', fid_bad, '| jumlah tanda:', flags_total)
     # ---- Fihris
     def short(t, k=7):
         w = t.split(); return ' '.join(w[:k]) + (' …' if len(w) > k else '')
@@ -136,13 +166,13 @@ def assemble(tag, lo=None, hi=None, out=None):
   .blk-sy .ayat .ar { color: var(--sy-ink); }
   .blk-sy .ayat .id { color: var(--sy-id); }
   .blk-sy .bait { padding: 0.15rem 0 0.25rem; }
-  .blk-sy .bait + .bait { margin-top: 0.45rem; }
-"""
+  .blk-sy .bait + .bait { margin-top: 0.45rem; }\n  mark.tanda { background: none; color: #c0392b; font-size: 0.75em; margin: 0 0.15em; cursor: help; }\n"""
     head = head.replace('</style>', css + '</style>', 1)
     legend = ('<li><span class="sw sw--isi" lang="ar">الشَّرْحُ</span> Isi &mdash; penjelasan penulis</li>\n'
               '          <li><span class="sw q" lang="ar">﴿آيَةٌ﴾</span> Ayat Al-Qur&rsquo;an (lengkap dengan nama surat dan nomor ayat)</li>\n'
               '          <li><span class="sw sw--sy" lang="ar">شَاهِدٌ</span> Syahid syair &mdash; bait atau sebagian bait</li>\n'
-              '          <li><span class="sw" lang="ar" style="opacity:.8">حَاشِيَةٌ</span> Catatan kaki</li>\n')
+              '          <li><span class="sw" lang="ar" style="opacity:.8">حَاشِيَةٌ</span> Catatan kaki</li>\n'
+              '          <li><span class="sw" style="color:#c0392b">&#9888;</span> Ada masalah di teks sumber (kata menempel, tanda kurung atau rujukan ayat tidak lengkap, dsb.). Teks Arab tetap ditampilkan apa adanya; arahkan kursor ke tanda untuk penjelasan.</li>\n')
     toc_head = '''    <dialog id="legend-modal" class="modal" aria-label="Kode Warna">
       <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
       <section class="legend" aria-label="Kode warna">

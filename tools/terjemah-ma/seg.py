@@ -49,7 +49,7 @@ def find_verses(text):
         ws = inner.split()
         brackets = m.group(1) == '﴿' or m.group(3) == '﴾'
         if len(ws) >= 2 and ((sum(1 for w in ws if nharak(w) >= 2) >= max(2, len(ws) // 2)) or (brackets and m.group(4) and len(ws) >= 3)):
-            res.append((m.start(), m.end(), inner.strip(), m.group(4)))
+            res.append((m.start(), m.end(), m.group(1) + inner.strip() + m.group(3), m.group(4)))
     return res
 
 # ---- puisi: run kata bertasykil (di luar ayat)
