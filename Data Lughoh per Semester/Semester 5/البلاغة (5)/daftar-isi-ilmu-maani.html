@@ -7,236 +7,111 @@
 <title>Daftar Isi 'Ilm al-Ma'ani (hlm. 209–350)</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb; --ink: #23331f; --muted: #7a7360;
-    --head: #1f4d3a; --pill-bg: #eef2ea; --acc: #2f6b4f; --warn: #c0392b; --warn-bg: #fdecea;
-    --a: #2f6b4f; --b: #1f5fae; --c: #a8204f;
-  }
+  :root { --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb; --ink: #23331f; --muted: #7a7360; --head: #1f4d3a; --pill: #eef2ea; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ink: #e9e6dc; --muted: #9a9384;
-      --head: #7fc9a6; --pill-bg: #1c2420; --acc: #7fc9a6; --warn: #ff8a7a; --warn-bg: #3a1f1c;
-      --a: #7fc9a6; --b: #7fb2f2; --c: #ff9cbc; }
+    :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ink: #e9e6dc; --muted: #9a9384; --head: #7fc9a6; --pill: #1c2420; }
   }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.65; padding: clamp(0.75rem, 3vw, 2rem); }
-  .wrap { max-width: 920px; margin: 0 auto; }
-  h1 { font-size: clamp(1.25rem, 1rem + 1.4vw, 1.8rem); color: var(--head); margin-bottom: 0.3rem; }
-  .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
-  .cari { width: 100%; padding: 0.65rem 0.9rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--ink); font: inherit; margin-bottom: 1rem; }
-  .info { background: var(--warn-bg); border: 1px solid var(--warn); color: var(--ink); border-radius: 12px; padding: 0.7rem 0.9rem; font-size: 0.85rem; margin-bottom: 1.2rem; }
-  .info b { color: var(--warn); }
-  .nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-  .nav a { text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--pill-bg); border: 1px solid var(--border); color: var(--head); }
-  .sumber { margin: 1.8rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--border); scroll-margin-top: 1rem; }
-  .sumber h2 { font-size: 1.05rem; color: var(--head); }
-  .sumber p { font-size: 0.8rem; color: var(--muted); direction: ltr; word-break: break-word; }
-  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; }
-  .item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.8rem 1rem; margin: 0.6rem 0; display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 0.9rem; align-items: start; }
-  .item.sub2 { margin-left: clamp(0.8rem, 4vw, 2rem); border-style: dashed; }
-  .hal { grid-row: 1 / span 3; font-size: 0.78rem; font-weight: 600; white-space: nowrap; padding: 0.15rem 0.7rem; border-radius: 999px; background: var(--pill-bg); border: 1px solid var(--border); color: var(--head); align-self: start; }
+  body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.6; padding: clamp(0.75rem, 3vw, 2rem); }
+  .wrap { max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1rem, 4vw, 2rem); }
+  h1 { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.6rem); color: var(--head); margin-bottom: 1rem; }
+  ol { list-style: none; }
+  ol ol { margin: 0.2rem 0 0.4rem 1rem; padding-left: 0.8rem; border-left: 2px solid var(--border); }
+  li { padding: 0.35rem 0; }
+  .baris { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; }
+  .judul { min-width: 0; }
+  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
+  .id { font-size: 0.9rem; color: var(--ink); }
+  .bab > .baris .id { font-weight: 600; font-size: 1rem; }
+  .hal { flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: var(--pill); border: 1px solid var(--border); color: var(--head); white-space: nowrap; }
   .hal a { color: inherit; text-decoration: none; }
-  .judul-ar { font-size: 1.3rem; line-height: 1.8; color: var(--head); }
-  .judul-id { font-weight: 600; font-size: 0.95rem; }
-  .ket { font-size: 0.88rem; color: var(--ink); opacity: 0.88; }
-  .tanda { color: var(--warn); font-size: 0.8rem; }
-  .sembunyi { display: none; }
-  .foot { margin-top: 2rem; font-size: 0.78rem; color: var(--muted); }
-  @media (max-width: 520px) { .item { grid-template-columns: 1fr; } .hal { grid-row: auto; justify-self: start; } }
+  .bab { padding: 0.55rem 0; border-bottom: 1px dashed var(--border); }
+  .bab:last-child { border-bottom: none; }
+  .tanpa-ar .ar { display: none; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Daftar Isi 'Ilm al-Ma'ani <span class="ar">علم المعاني</span> &middot; hlm. 209&ndash;350</h1>
-  <p class="sub">Tiga file docx (Balaghah semester 5). Nomor halaman diambil dari penanda halaman di file; judul Arab ditulis persis seperti judul di sumber. Uraian singkatnya ringkasan saya dari judul dan pembuka tiap bagian.</p>
+  <h1>Daftar Isi 'Ilm al-Ma'ani <span class="ar" style="display:inline">علم المعاني</span> &middot; hlm. 209&ndash;350</h1>
+  <ol>
 
-  <div class="info"><b>&#9888; Catatan data:</b> (1) hlm. 260 ada di file 1 dan file 2; hlm. 304&ndash;308 ada di file 2 dan file 3, jadi tumpang tindih. (2) File 1 tidak punya judul bab untuk hlm. 209&ndash;215 (potongan lanjutan pembahasan sebelumnya). (3) Judul di file 1 menempel dengan teks, jadi hanya judul yang jelas yang ditulis dalam huruf Arab di sini. (4) Halaman yang sudah menjadi HTML terjemah: hlm. 209&ndash;237 saja.</div>
+    <li class="bab tanpa-ar"><div class="baris"><div class="judul"><span class="id">Lanjutan pembahasan sebelumnya</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">209&ndash;215</a></span></div>
+      <ol>
+        <li><div class="baris"><div class="judul"><span class="ar">مجيء الماضي لفظا مع "إن"</span><span class="id">Fi'il madhi bersama "in"</span></div><span class="hal">209&ndash;212</span></div></li>
+        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Pemakaian "law"</span></div><span class="hal">212&ndash;215</span></div></li>
+      </ol></li>
 
-  <input class="cari" id="cari" type="search" placeholder="Cari judul atau pembahasan...">
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الرابع &middot; أحوال متعلقات الفعل</span><span class="id">Pasal 4: Keadaan pelengkap fi'il</span></div><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-216">216&ndash;245</a></span></div>
+      <ol>
+        <li><div class="baris"><div class="judul"><span class="ar">تقييد الفعل بمفعول ونحوه</span><span class="id">Membatasi fi'il dengan maf'ul dan semisalnya</span></div><span class="hal">217&ndash;222</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">حذف المفعول</span><span class="id">Pembuangan maf'ul</span></div><span class="hal">222&ndash;237</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">تقديم المفعول ونحوه من المتعلقات على العامل</span><span class="id">Mendahulukan maf'ul dan pelengkap atas 'amil</span></div><span class="hal">237&ndash;241</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">تقديم بعض المتعلقات على بعض</span><span class="id">Mendahulukan sebagian pelengkap atas yang lain</span></div><span class="hal">241&ndash;245</span></div></li>
+      </ol></li>
 
-  <nav class="nav">
-    <a href="#f1">File 1 &middot; hlm. 209&ndash;260</a>
-    <a href="#f2">File 2 &middot; hlm. 260&ndash;308</a>
-    <a href="#f3">File 3 &middot; hlm. 304&ndash;350</a>
-  </nav>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">خروج الكلام عن مقتضى الظاهر</span><span class="id">Ucapan keluar dari tuntutan lahiriah</span></div><span class="hal">246&ndash;280</span></div>
+      <ol>
+        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Isim zhahir di tempat dhamir</span></div><span class="hal">246&ndash;253</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">صور الالتفات وما يكمن وراءها من أسرار بلاغية</span><span class="id">Iltifat dan bentuk-bentuknya</span></div><span class="hal">253&ndash;264</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">الصورة الخامسة: الانتقال من الغيبة إلى التكلم</span><span class="id">Bentuk ke-5: dari ghaibah ke takallum</span></div><span class="hal">260&ndash;261</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">الصورة السادسة: الالتفات من الغيبة إلى الخطاب</span><span class="id">Bentuk ke-6: dari ghaibah ke khithab</span></div><span class="hal">262&ndash;264</span></div></li>
+          </ol></li>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب الحكيم</span><span class="id">Uslub al-hakim</span></div><span class="hal">265&ndash;267</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب القلب</span><span class="id">Uslub al-qalb</span></div><span class="hal">268&ndash;273</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">قلب معنوي</span><span class="id">Pembalikan makna</span></div><span class="hal">268</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قلب لفظي</span><span class="id">Pembalikan lafazh</span></div><span class="hal">269</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">آراء البلاغيين في أسلوب القلب</span><span class="id">Pendapat para ahli balaghah</span></div><span class="hal">270&ndash;272</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">هل يوجد أسلوب القلب في النظم الكريم؟</span><span class="id">Adakah uslub al-qalb dalam Al-Qur'an?</span></div><span class="hal">273</span></div></li>
+          </ol></li>
+        <li><div class="baris"><div class="judul"><span class="ar">أسلوب التغليب</span><span class="id">Uslub at-taghlib</span></div><span class="hal">274&ndash;275</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">المخالفة في صيغ الأفعال</span><span class="id">Menyimpang dari bentuk fi'il</span></div><span class="hal">275&ndash;280</span></div></li>
+      </ol></li>
 
-  <section id="f1">
-    <div class="sumber"><h2 style="color:var(--a)">File 1 &middot; hlm. 209&ndash;260</h2><p>علم المعاني - دراسة بلاغية ونقدية لمسائل المعاني Halaman 209 - 260.docx</p></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الجزء الثاني &middot; أحوال الجملة والجمل</span><span class="id">Bagian 2: Keadaan kalimat dan rangkaian kalimat</span></div><span class="hal">281&ndash;282</span></div></li>
 
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">Hlm. 209</a></span>
-      <div class="judul-id">"In" dan "idzaa" pada perkara yang hanya diandaikan</div>
-      <div class="ket">Lanjutan pembahasan: huruf syarat dipakai untuk perkara mustahil yang dipastikan tidak terjadi, demi tujuan balaghah seperti membungkam lawan, dengan contoh ayat dan ucapan sehari-hari.</div></div>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل الخامس / أساليب القصر</span><span class="id">Pasal 5: Gaya qashr (pembatasan)</span></div><span class="hal">283&ndash;348</span></div>
+      <ol>
+        <li class="tanpa-ar"><div class="baris"><div class="judul"><span class="id">Pengantar dan definisi qashr</span></div><span class="hal">283&ndash;285</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">القصر الحقيقي والقصر الإضافي</span><span class="id">Qashr haqiqi dan qashr idhafi</span></div><span class="hal">286&ndash;289</span></div></li>
+        <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد والقلب والتعيين</span><span class="id">Qashr ifrad, qalb, dan ta'yin</span></div><span class="hal">290&ndash;295</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر القلب</span><span class="id">Qashr qalb</span></div><span class="hal">291</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر الإفراد</span><span class="id">Qashr ifrad</span></div><span class="hal">292</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">قصر التعيين</span><span class="id">Qashr ta'yin</span></div><span class="hal">293&ndash;295</span></div></li>
+          </ol></li>
+        <li><div class="baris"><div class="judul"><span class="ar">قصر الصفة على الموصوف والموصوف على الصفة</span><span class="id">Qashr sifat atas maushuf dan sebaliknya</span></div><span class="hal">296&ndash;303</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">ما الفرق بين القصر الحقيقي الادعائي والقصر الإضافي</span><span class="id">Beda qashr haqiqi idda'i dan idhafi</span></div><span class="hal">303</span></div></li>
+          </ol></li>
+        <li><div class="baris"><div class="judul"><span class="ar">طرق القصر</span><span class="id">Jalur-jalur qashr</span></div><span class="hal">304&ndash;330</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">العطف بلا وبل ولكن</span><span class="id">Athaf dengan "laa", "bal", "laakin"</span></div><span class="hal">304&ndash;309</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">النفي والاستثناء</span><span class="id">Nafi dan istitsna'</span></div><span class="hal">310&ndash;317</span></div>
+              <ol>
+                <li><div class="baris"><div class="judul"><span class="ar">وجه دلالة النفي والاستثناء على القصر</span><span class="id">Sisi dilalah nafi dan istitsna' atas qashr</span></div><span class="hal">314</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">هل يفيد الاستثناء التام القصر؟</span><span class="id">Apakah istitsna' tamm memberi faedah qashr?</span></div><span class="hal">315&ndash;316</span></div></li>
+                <li><div class="baris"><div class="judul"><span class="ar">هل يجوز اجتماع النفي والاستثناء والعطف بلا؟</span><span class="id">Bolehkah menggabungkan nafi-istitsna' dengan athaf "laa"?</span></div><span class="hal">317</span></div></li>
+              </ol></li>
+            <li><div class="baris"><div class="judul"><span class="ar">إنما</span><span class="id">"Innama"</span></div><span class="hal">317&ndash;323</span></div>
+              <ol>
+                <li><div class="baris"><div class="judul"><span class="ar">هل تفيد «أنما» القصر؟</span><span class="id">Apakah "anna-maa" memberi faedah qashr?</span></div><span class="hal">323</span></div></li>
+              </ol></li>
+            <li><div class="baris"><div class="judul"><span class="ar">التقديم</span><span class="id">Taqdim (mendahulukan)</span></div><span class="hal">323&ndash;326</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">ضمير الفصل</span><span class="id">Dhamir fashl</span></div><span class="hal">326&ndash;328</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">تعريف المسند أو المسند إليه «بأل»</span><span class="id">Ta'rif musnad atau musnad ilayh dengan "al"</span></div><span class="hal">328&ndash;330</span></div></li>
+          </ol></li>
+        <li><div class="baris"><div class="judul"><span class="ar">فروق طرق القصر وأوجه الاختلاف بينها</span><span class="id">Perbedaan jalur-jalur qashr</span></div><span class="hal">330&ndash;348</span></div>
+          <ol>
+            <li><div class="baris"><div class="judul"><span class="ar">اجتماع طريقين من طرق القصر</span><span class="id">Menggabungkan dua jalur qashr</span></div><span class="hal">332&ndash;335</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">بين «إنما» و«النفي والاستثناء»</span><span class="id">Beda "innama" dan nafi-istitsna'</span></div><span class="hal">336&ndash;344</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">تحديد موقع المقصور والمقصور عليه</span><span class="id">Menentukan letak yang dibatasi dan yang membatasi</span></div><span class="hal">345</span></div></li>
+            <li><div class="baris"><div class="judul"><span class="ar">جمال التعريض «بإنما»</span><span class="id">Keindahan sindiran dengan "innama"</span></div><span class="hal">346&ndash;348</span></div></li>
+          </ol></li>
+      </ol></li>
 
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-209">Hlm. 209&ndash;212</a></span>
-      <div class="judul-ar ar">مجيء الماضي لفظا مع "إن"</div>
-      <div class="judul-id">Fi'il madhi bersama "in"</div>
-      <div class="ket">Mengapa fi'il madhi dipakai setelah "in" padahal bermakna masa depan: optimisme, sindiran, keinginan agar terjadi, dan kepastian terjadi. Ditutup dengan catatan bahwa "in" dan "idzaa" kadang hanya penghubung dan hukumnya bersifat umum, bukan mutlak.</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-212">Hlm. 212&ndash;215</a></span>
-      <div class="judul-id">Pemakaian "law"</div>
-      <div class="ket">Hukum dasar "law" (syarat masa lalu, terhalangnya jawab karena syarat), alasan "law" kadang masuk ke mudhari', dan memakai mudhari' untuk menghadirkan gambaran peristiwa.</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-216">Hlm. 216</a></span>
-      <div class="judul-ar ar">الفصل الرابع &middot; أحوال متعلقات الفعل</div>
-      <div class="judul-id">Pasal 4: keadaan pelengkap fi'il</div>
-      <div class="ket">Pengantar: arti muta'alliqat al-fi'l dan empat pokok bahasan pasal ini (pembatasan fi'il, maf'ul dan pembuangannya, mendahulukan ma'mul atas 'amil, dan antar-ma'mul).</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-217">Hlm. 217&ndash;222</a></span>
-      <div class="judul-ar ar">تقييد الفعل بمفعول ونحوه</div>
-      <div class="judul-id">Membatasi fi'il dengan maf'ul dan semisalnya</div>
-      <div class="ket">Faedah menambah maf'ul, jar-majrur, maf'ul muthlaq, dan hal pada fi'il (kaidah Abdul Qahir dan al-Khathib), disertai contoh ayat tentang tambahan batasan yang punya tujuan.</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-222">Hlm. 222&ndash;237</a></span>
-      <div class="judul-ar ar">حذف المفعول</div>
-      <div class="judul-id">Pembuangan maf'ul</div>
-      <div class="ket">Tujuan membuang maf'ul menurut Abdul Qahir dan al-Khathib; dirinci di bawah.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 222&ndash;224</span><div class="judul-id">Menetapkan makna bagi pelaku</div><div class="ket">Fi'il lazim dan muta'addi; maf'ul dilipat karena yang dimaksud hanya perbuatan itu sendiri.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 224&ndash;228</span><div class="judul-id">Maf'ul dibuang sebagai kinayah</div><div class="ket">Contoh syair al-Buhturi, 'Amr bin Ma'di Yakrib, dan Thufail; perbedaan penjelasan al-Khathib dan Abdul Qahir.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 228&ndash;230</span><div class="judul-id">Penjelasan setelah ketidakjelasan</div><div class="ket">Terutama maf'ul masyi'ah dan iradah setelah "law" dan "in", dengan banyak ayat.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 230&ndash;233</span><div class="judul-id">Kapan maf'ul justru wajib disebut</div><div class="ket">Bila maf'ulnya aneh atau jauh (perlu penegasan), serta pembuangan agar penafian jatuh pada lafazh yang jelas.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 233&ndash;235</span><div class="judul-id">Menolak sangkaan keliru dan memberi keumuman</div><div class="ket">Pembuangan agar makna jatuh tepat sejak awal, dan agar mencakup semua (ta'mim).</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 235&ndash;237</span><div class="judul-id">Fashilah, adab, dan ringkas</div><div class="ket">Menjaga fashilah ayat, enggan menyebutkan sesuatu terang-terangan, meringkas, atau karena sudah tertentu.</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-237">Hlm. 237&ndash;241</a></span>
-      <div class="judul-ar ar">تقديم المفعول ونحوه من المتعلقات على العامل</div>
-      <div class="judul-id">Mendahulukan maf'ul dan pelengkap atas 'amil</div>
-      <div class="ket">Umumnya memberi faedah ikhtishash (pembatasan); contoh "iyyaaka na'budu", kesalahan menggabungkannya dengan "wa laa ghairahu", serta tujuan lain: tempat pengingkaran, penegasan, dan menjaga fashilah.</div></div>
-
-    <div class="item"><span class="hal"><a href="ilmu-maani-hlm-209-260-biasa.html#hal-241">Hlm. 241&ndash;245</a></span>
-      <div class="judul-ar ar">تقديم بعض المتعلقات على بعض</div>
-      <div class="judul-id">Mendahulukan sebagian pelengkap atas yang lain</div>
-      <div class="ket">Urutan asal dan alasan menyimpang darinya: perhatian utama pembicara, celaan dan teguran, menghindari salah paham, menjaga bunyi, serta urutan keutamaan.</div></div>
-
-    <div class="item"><span class="hal">Hlm. 246&ndash;253</span>
-      <div class="judul-ar ar">خروج الكلام عن مقتضى الظاهر</div>
-      <div class="judul-id">Ucapan keluar dari tuntutan lahiriah: isim zhahir di tempat dhamir</div>
-      <div class="ket">Tujuan menaruh isim zhahir sebagai ganti dhamir (penjelasan setelah ketidakjelasan, penegasan, pengagungan, penghinaan), dengan contoh ayat dan syair.</div></div>
-
-    <div class="item"><span class="hal">Hlm. 253&ndash;260</span>
-      <div class="judul-ar ar">صور الالتفات وما يكمن وراءها من أسرار بلاغية</div>
-      <div class="judul-id">Iltifat: definisi dan bentuk-bentuknya</div>
-      <div class="ket">Pendapat tentang definisi iltifat (jumhur dan as-Sakkaki), enam bentuk iltifat, serta rahasia balaghah tiap contoh. Berlanjut ke file 2.</div></div>
-  </section>
-
-  <section id="f2">
-    <div class="sumber"><h2 style="color:var(--b)">File 2 &middot; hlm. 260&ndash;308</h2><p>علم المعاني - دراسة بلاغية ونقدية لمسائل المعاني (الصفحات 260-308).docx</p></div>
-
-    <div class="item"><span class="hal">Hlm. 260&ndash;261</span>
-      <div class="judul-ar ar">الصورة الخامسة: الانتقال من الغيبة إلى التكلم</div>
-      <div class="judul-id">Bentuk ke-5 iltifat: dari ghaibah ke takallum</div>
-      <div class="ket">Contoh dan rahasia balaghah perpindahan dari orang ketiga ke orang pertama.</div></div>
-    <div class="item"><span class="hal">Hlm. 262&ndash;264</span>
-      <div class="judul-ar ar">الصورة السادسة: الالتفات من الغيبة إلى الخطاب</div>
-      <div class="judul-id">Bentuk ke-6 iltifat: dari ghaibah ke khithab</div>
-      <div class="ket">Contoh dari Al-Fatihah dan ayat lain, dengan penjelasan manfaat balaghahnya.</div></div>
-    <div class="item"><span class="hal">Hlm. 265&ndash;267</span>
-      <div class="judul-ar ar">أسلوب الحكيم</div>
-      <div class="judul-id">Uslub al-hakim</div>
-      <div class="ket">Menjawab lawan bicara dengan sesuatu yang tidak ia tunggu, dengan mengalihkan maksud ucapannya; definisi dan contoh.</div></div>
-    <div class="item"><span class="hal">Hlm. 268&ndash;273</span>
-      <div class="judul-ar ar">أسلوب القلب</div>
-      <div class="judul-id">Uslub al-qalb (pembalikan)</div>
-      <div class="ket">Menukar kedudukan bagian kalimat.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 268</span><div class="judul-ar ar">١ - قلب معنوي</div><div class="judul-id">Pembalikan makna</div><div class="ket">Pembalikan yang dituntut oleh makna.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 269</span><div class="judul-ar ar">٢ - قلب لفظي</div><div class="judul-id">Pembalikan lafazh</div><div class="ket">Pembalikan yang dituntut oleh lafazh; contoh mubtada' nakirah dan khabar ma'rifah.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 270&ndash;272</span><div class="judul-ar ar">آراء البلاغيين في أسلوب القلب</div><div class="judul-id">Pendapat para ahli balaghah</div><div class="ket">Yang menerima secara mutlak (seperti as-Sakkaki) dan yang menolak, dengan contoh pembalikan yang ditolak.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 273</span><div class="judul-ar ar">هل يوجد أسلوب القلب في النظم الكريم؟</div><div class="judul-id">Adakah uslub al-qalb dalam Al-Qur'an?</div><div class="ket">Sebagian menjawab ya dengan contoh ayat; dibahas dan dibantah.</div></div>
-    <div class="item"><span class="hal">Hlm. 274&ndash;275</span>
-      <div class="judul-ar ar">أسلوب التغليب</div>
-      <div class="judul-id">Uslub at-taghlib</div>
-      <div class="ket">Memberi salah satu dari dua hal yang berdampingan atau serupa hukum yang lain; definisi dan contoh.</div></div>
-    <div class="item"><span class="hal">Hlm. 275&ndash;280</span>
-      <div class="judul-ar ar">المخالفة في صيغ الأفعال</div>
-      <div class="judul-id">Menyimpang dari bentuk fi'il</div>
-      <div class="ket">Mengungkapkan masa depan dengan madhi, isim fa'il, atau isim maf'ul; masa lalu dengan mudhari'; dan seterusnya, beserta tujuan balaghahnya.</div></div>
-    <div class="item"><span class="hal">Hlm. 281&ndash;282</span>
-      <div class="judul-ar ar">الجزء الثاني &middot; أحوال الجملة والجمل</div>
-      <div class="judul-id">Bagian kedua: keadaan kalimat dan rangkaian kalimat</div>
-      <div class="ket">Pengantar bagian kedua dengan daftar pasal: qashr, insya', fashl dan washl, serta ijaz dan ithnab.</div></div>
-    <div class="item"><span class="hal">Hlm. 283&ndash;285</span>
-      <div class="judul-ar ar">الفصل الخامس / أساليب القصر</div>
-      <div class="judul-id">Pasal 5: gaya qashr (pembatasan)</div>
-      <div class="ket">Kedudukan dan keindahan qashr, serta definisinya secara bahasa dan istilah.</div></div>
-    <div class="item"><span class="hal">Hlm. 286&ndash;289</span>
-      <div class="judul-ar ar">القصر الحقيقي والقصر الإضافي</div>
-      <div class="judul-id">Qashr haqiqi dan qashr idhafi</div>
-      <div class="ket">Pembagian qashr menurut tujuan pembicara, dengan contoh masing-masing.</div></div>
-    <div class="item"><span class="hal">Hlm. 290&ndash;295</span>
-      <div class="judul-ar ar">قصر الإفراد والقلب والتعيين</div>
-      <div class="judul-id">Qashr ifrad, qalb, dan ta'yin</div>
-      <div class="ket">Tiga jenis qashr idhafi menurut keyakinan lawan bicara.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 291</span><div class="judul-ar ar">فقصر القلب</div><div class="judul-id">Qashr qalb</div><div class="ket">Untuk orang yang meyakini kebalikannya.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 292</span><div class="judul-ar ar">وقصر الإفراد</div><div class="judul-id">Qashr ifrad</div><div class="ket">Untuk orang yang meyakini keduanya bersekutu.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 293&ndash;295</span><div class="judul-ar ar">قصر التعيين</div><div class="judul-id">Qashr ta'yin</div><div class="ket">Untuk orang yang ragu di antara dua hal.</div></div>
-    <div class="item"><span class="hal">Hlm. 296&ndash;302</span>
-      <div class="judul-ar ar">قصر الصفة على الموصوف والموصوف على الصفة</div>
-      <div class="judul-id">Qashr sifat atas maushuf dan maushuf atas sifat</div>
-      <div class="ket">Pembagian qashr menurut kedua sisinya (yang dibatasi dan yang membatasi), dengan contoh.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 303</span><div class="judul-ar ar">ما الفرق بين القصر الحقيقي الادعائي والقصر الإضافي</div><div class="judul-id">Beda qashr haqiqi idda'i dan idhafi</div><div class="ket">Perbedaan cakupan yang dinafikan pada keduanya.</div></div>
-    <div class="item"><span class="hal">Hlm. 304&ndash;308</span>
-      <div class="judul-ar ar">طرق القصر</div>
-      <div class="judul-id">Jalur-jalur qashr</div>
-      <div class="ket">Empat jalur yang dikenal (athaf dengan "laa", "bal", "laakin"; nafi dan istitsna'; "innama"; taqdim) dan dua tambahan; mulai dengan athaf. Berlanjut ke file 3.</div></div>
-  </section>
-
-  <section id="f3">
-    <div class="sumber"><h2 style="color:var(--c)">File 3 &middot; hlm. 304&ndash;350</h2><p>✅علم المعاني - أساليب القصر 304 hingga halaman 350.docx</p></div>
-
-    <div class="item"><span class="hal">Hlm. 304&ndash;309</span>
-      <div class="judul-ar ar">طرق القصر &middot; العطف بلا وبل ولكن</div>
-      <div class="judul-id">Jalur qashr: athaf dengan "laa", "bal", "laakin"</div>
-      <div class="ket">Syarat dan contoh tiap huruf; tumpang tindih dengan akhir file 2.</div></div>
-    <div class="item"><span class="hal">Hlm. 310&ndash;317</span>
-      <div class="judul-ar ar">٢ - النفي والاستثناء</div>
-      <div class="judul-id">Nafi dan istitsna'</div>
-      <div class="ket">Jalur kedua qashr.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 314</span><div class="judul-ar ar">وجه دلالة النفي والاستثناء على القصر</div><div class="judul-id">Mengapa nafi dan istitsna' menunjukkan qashr</div><div class="ket">Penjelasan sisi dilalahnya.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 315&ndash;316</span><div class="judul-ar ar">هل يفيد الاستثناء التام القصر؟</div><div class="judul-id">Apakah istitsna' tamm memberi faedah qashr?</div><div class="ket">Perbandingan jenis istitsna'.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 317</span><div class="judul-ar ar">هل يجوز اجتماع النفي والاستثناء والعطف بلا؟</div><div class="judul-id">Bolehkah menggabungkan nafi-istitsna' dengan athaf "laa"?</div><div class="ket">Hukum penggabungan dua jalur.</div></div>
-    <div class="item"><span class="hal">Hlm. 317&ndash;323</span>
-      <div class="judul-ar ar">٣ - إنما</div>
-      <div class="judul-id">"Innama"</div>
-      <div class="ket">Jalur ketiga qashr: makna, syarat, dan contoh.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 323</span><div class="judul-ar ar">هل تفيد «أنما» القصر؟</div><div class="judul-id">Apakah "anna-maa" memberi faedah qashr?</div><div class="ket">Pembahasan tentang "anna-maa".</div></div>
-    <div class="item"><span class="hal">Hlm. 323&ndash;326</span>
-      <div class="judul-ar ar">٤ - التقديم</div>
-      <div class="judul-id">Taqdim (mendahulukan)</div>
-      <div class="ket">Jalur keempat: mendahulukan yang dibatasi untuk qashr.</div></div>
-    <div class="item"><span class="hal">Hlm. 326&ndash;328</span>
-      <div class="judul-ar ar">ضمير الفصل</div>
-      <div class="judul-id">Dhamir fashl</div>
-      <div class="ket">Jalur tambahan: dhamir pemisah sebagai penunjuk qashr. (Di sumber tertulis dengan nomor urut yang rusak.)</div></div>
-    <div class="item"><span class="hal">Hlm. 328&ndash;330</span>
-      <div class="judul-ar ar">٦ - تعريف المسند أو المسند إليه «بأل»</div>
-      <div class="judul-id">Ta'rif musnad atau musnad ilayh dengan "al"</div>
-      <div class="ket">Jalur tambahan lain: membatasi lewat kata berawalan "al".</div></div>
-    <div class="item"><span class="hal">Hlm. 330&ndash;349</span>
-      <div class="judul-ar ar">فروق طرق القصر وأوجه الاختلاف بينها</div>
-      <div class="judul-id">Perbedaan jalur-jalur qashr</div>
-      <div class="ket">Membandingkan jalur-jalur qashr; dirinci di bawah.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 332&ndash;335</span><div class="judul-ar ar">اجتماع طريقين من طرق القصر</div><div class="judul-id">Menggabungkan dua jalur qashr</div><div class="ket">Kapan dua jalur dipakai bersama dalam satu kalimat.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 336&ndash;344</span><div class="judul-ar ar">٤ - بين «إنما» و«النفي والاستثناء»</div><div class="judul-id">Beda "innama" dan nafi-istitsna'</div><div class="ket">Perbandingan dua jalur yang paling sering dibandingkan.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 345</span><div class="judul-ar ar">٥ - تحديد موقع المقصور والمقصور عليه</div><div class="judul-id">Menentukan letak yang dibatasi dan yang membatasi</div><div class="ket">Cara mengenali kedua unsur pada tiap jalur.</div></div>
-    <div class="item sub2"><span class="hal">Hlm. 346&ndash;348</span><div class="judul-ar ar">جمال التعريض «بإنما»</div><div class="judul-id">Keindahan sindiran dengan "innama"</div><div class="ket">Pemakaian "innama" untuk menyindir.</div></div>
-    <div class="item"><span class="hal">Hlm. 349&ndash;350</span>
-      <div class="judul-ar ar">الفصل السادس / أساليب الإنشاء</div>
-      <div class="judul-id">Pasal 6: gaya insya' (awal)</div>
-      <div class="ket">Judul pasal berikutnya; file berakhir di awal pasal ini.</div></div>
-  </section>
-
-  <p class="foot">Rentang halaman tiap bagian dihitung dari penanda halaman dan judul di docx. Judul Arab ditulis sama seperti di sumber (termasuk nomor urut yang kadang rusak, ditandai &#9888; pada keterangannya). Uraian singkat disusun dari judul dan pembuka bagian.</p>
+    <li class="bab"><div class="baris"><div class="judul"><span class="ar">الفصل السادس / أساليب الإنشاء</span><span class="id">Pasal 6: Gaya insya' (awal)</span></div><span class="hal">349&ndash;350</span></div></li>
+  </ol>
 </div>
-<script>
-(function () {
-  var q = document.getElementById('cari');
-  var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
-  q.addEventListener('input', function () {
-    var v = q.value.trim().toLowerCase();
-    items.forEach(function (it) {
-      var t = it.textContent.toLowerCase();
-      it.classList.toggle('sembunyi', v && t.indexOf(v) === -1);
-    });
-  });
-})();
-</script>
 </body>
 </html>
