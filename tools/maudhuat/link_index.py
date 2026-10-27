@@ -14,7 +14,7 @@ for f in sorted(glob.glob(os.path.join(HERE, 'sem*.py'))):
 # konstanta folder per semester
 for m in mods:
     if "const S%d = " % m.SEM not in s:
-        s = s.replace("const S5 = ", "const S%d = 'Data Lughoh per Semester/Semester %d/'; // folder asli di repo\nconst S5 = " % (m.SEM, m.SEM), 1) if m.SEM != 5 else s
+        s = s.replace("const S5 = ", "const S%d = 'Data/Data Lughoh per Semester/Semester %d/'; // folder asli di repo\nconst S5 = " % (m.SEM, m.SEM), 1) if m.SEM != 5 else s
 
 for m in mods:
     for judul, folder, _ in m.COURSES:

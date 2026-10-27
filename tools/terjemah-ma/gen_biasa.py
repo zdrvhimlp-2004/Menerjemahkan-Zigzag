@@ -1,7 +1,7 @@
 import re, html, zipfile, difflib
 SP='/tmp/claude-0/-home-user-Menerjemahkan-Zigzag/f395751c-a639-5518-8174-6a8772e78be1/scratchpad/'
-F='/home/user/Menerjemahkan-Zigzag/Data Lughoh per Semester/Semester 5/النحو (5)/syarh-ibnu-aqil-biasa.html'
-DOCX="/home/user/Menerjemahkan-Zigzag/Data Lughoh per Semester/Semester 5/النحو (5)/af'al at tafdhil.docx"
+F='/home/user/Menerjemahkan-Zigzag/Data/Data Lughoh per Semester/Semester 5/النحو (5)/syarh-ibnu-aqil-biasa.html'
+DOCX="/home/user/Menerjemahkan-Zigzag/Data/Data Lughoh per Semester/Semester 5/النحو (5)/af'al at tafdhil.docx"
 esc=lambda s: html.escape(s,quote=False)
 tr={}
 for l in open(SP+'trans_b10.txt',encoding='utf-8'):

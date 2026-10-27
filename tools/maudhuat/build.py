@@ -169,7 +169,7 @@ def main():
     for f in sorted(glob.glob(os.path.join(HERE, 'sem*.py'))):
         spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
         for judul, folder, teks in m.COURSES:
-            d = os.path.join(ROOT, 'Data Lughoh per Semester', 'Semester %d' % m.SEM, folder)
+            d = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester %d' % m.SEM, folder)
             os.makedirs(d, exist_ok=True)
             with open(os.path.join(d, 'maudhuat.html'), 'w', encoding='utf-8') as fh:
                 fh.write(halaman(m.SEM, judul, teks))
