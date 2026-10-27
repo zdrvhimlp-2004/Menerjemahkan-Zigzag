@@ -7,27 +7,31 @@
 <title>Daftar Isi 'Ilm al-Ma'ani (hlm. 97–350)</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root { --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb; --ink: #23331f; --muted: #7a7360; --head: #1f4d3a; --pill: #eef2ea; }
+  :root { --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb; --ink: #23331f; --muted: #7a7360; --head: #1f4d3a; --pill: #eef2ea; --l0: #1f6b4a; --l1: #1d5fa8; --l2: #a5560f; --l3: #8a2f7a; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ink: #e9e6dc; --muted: #9a9384; --head: #7fc9a6; --pill: #1c2420; }
+    :root { --bg: #16181a; --card: #1f2124; --border: #33363a; --ink: #e9e6dc; --muted: #9a9384; --head: #7fc9a6; --pill: #1c2420; --l0: #7fc9a6; --l1: #7db4ee; --l2: #e8a867; --l3: #d89ad0; }
   }
   body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.6; padding: clamp(0.75rem, 3vw, 2rem); }
   .wrap { direction: rtl; max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1rem, 4vw, 2rem); }
   h1 { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.6rem); color: var(--head); margin-bottom: 1rem; line-height: 1.5; }
   ol { list-style: none; }
-  ol ol { margin: 0.2rem 1rem 0.4rem 0; padding-right: 0.8rem; border-right: 2px solid var(--border); }
+  .bab { --lv: var(--l0); }
+  .bab ol > li { --lv: var(--l1); }
+  .bab ol ol > li { --lv: var(--l2); }
+  .bab ol ol ol > li { --lv: var(--l3); }
+  ol ol { margin: 0.2rem 1rem 0.4rem 0; padding-right: 0.8rem; border-right: 3px solid var(--lv); }
   li { padding: 0.35rem 0; }
   .baris { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; }
   .judul { min-width: 0; }
-  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--head); font-size: 1.2rem; line-height: 1.7; }
-  .hal { direction: ltr; unicode-bidi: isolate; flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: var(--pill); border: 1px solid var(--border); color: var(--head); white-space: nowrap; }
+  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; display: block; color: var(--lv, var(--head)); font-size: 1.2rem; line-height: 1.7; }
+  .hal { direction: ltr; unicode-bidi: isolate; flex: none; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.7rem; border-radius: 999px; background: color-mix(in srgb, var(--lv, var(--head)) 12%, transparent); border: 1px solid color-mix(in srgb, var(--lv, var(--head)) 45%, transparent); color: var(--lv, var(--head)); white-space: nowrap; }
   .hal a { color: inherit; text-decoration: none; }
   .bab > .baris .ar { font-weight: 700; }
   .bab { padding: 0.55rem 0; border-bottom: 1px dashed var(--border); }
   .bab:last-child { border-bottom: none; }
   li.punya-anak > .baris { cursor: pointer; }
   li.punya-anak > .baris .judul { display: flex; align-items: center; gap: 0.55rem; }
-  li.punya-anak > .baris .judul::before { content: ""; flex: none; width: 0.6em; height: 0.6em; margin-top: -0.25em; border: solid var(--muted); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .15s; }
+  li.punya-anak > .baris .judul::before { content: ""; flex: none; width: 0.6em; height: 0.6em; margin-top: -0.25em; border: solid var(--lv); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .15s; }
   li.punya-anak.tutup > .baris .judul::before { transform: rotate(135deg); }
   li.punya-anak.tutup > ol { display: none; }
   .baris:focus-visible { outline: 2px solid var(--head); outline-offset: 2px; border-radius: 6px; }
