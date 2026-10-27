@@ -1,0 +1,390 @@
+# DSL bab 10 — أفعل التفضيل (zigzag, maks. 7 kata Arab per baris)
+# L = satu baris. Token: ar=id (spasi di id ditulis _). Token tanpa '=' diambil dari glosarium.
+# @c ... @/  = contoh | @q:ref ... @/ = ayat | @h ... @/ = hadis | @k ... @/ = kalam Arab
+BLK nz 82 Af'al_tafdhil_dibentuk_dari_fi'il_yang_boleh_dibuat_ta'ajjub
+BAIT
+L صغ=bentuklah من مصوغ=yang_dibentuk منه=darinya للتعجب=untuk_ta'ajjub
+L أفعل للتفضيل=untuk_tafdhil وأب=dan_tolaklah اللذ=yang_(alladzii) أبى=menolak
+END
+BLK p
+L يصاغ=dibentuk من الأفعال=fi'il-fi'il التي=yang يجوز=boleh التعجب=ta'ajjub منها=darinya
+L للدلالة=untuk_menunjukkan على التفضيل وصف=sifat على وزن=wazan أفعل
+L فتقول=maka_engkau_berkata @c زيد أفضل=lebih_utama من عمرو @/
+L @c وأكرم=dan_lebih_mulia من خالد=Khalid @/ كما=sebagaimana تقول=engkau_berkata ما=alangkah
+L @c أفضل=utamanya زيدا=Zaid وما=dan_alangkah أكرم=mulianya خالدا=Khalid @/
+END
+BLK p
+L وما=dan_apa_yang امتنع=terlarang بناء=pembentukan فعل=fi'il التعجب منه=darinya
+L امتنع=terlarang بناء=pembentukan أفعل التفضيل منه=darinya فلا=maka_tidak يبنى=dibentuk
+L من فعل=fi'il زائد=lebih على ثلاثة=tiga أحرف=huruf كدحرج=seperti_dahraja
+L واستخرج=dan_istakhraja ولا=dan_tidak من فعل=fi'il غير=bukan متصرف=mutasharrif
+L كنعم=seperti_ni'ma وبئس=dan_bi'sa ولا=dan_tidak من فعل=fi'il
+END
+HAL 174
+BLK p
+L لا=tidak يقبل=menerima المفاضلة=perbandingan كمات=seperti_mati وفنى=dan_binasa
+L ولا=dan_tidak من فعل=fi'il ناقص=naqish ككان=seperti_kaana وأخواتها=dan_saudara-saudaranya
+L ولا=dan_tidak من فعل=fi'il منفى=yang_dinafikan نحو=seperti
+L ما=tidak عاج=ia_menggunakan بالدواء=obat وما=dan_tidak ضرب=ia_memukul
+L ولا=dan_tidak من فعل=fi'il يأتى=datang الوصف=sifat منه=darinya
+L على أفعل نحو=seperti حمر=hamira_(merah) وعور=dan_'awira_(buta)
+L ولا=dan_tidak من فعل=fi'il مبنى=mabni للمفعول=untuk_maf'ul
+L نحو=seperti ضرب=dipukul وجن=dan_digila وشذ=dan_menyimpang منه=darinya قولهم=ucapan_mereka
+L @k:kl هو=dia أخصر=lebih_ringkas من كذا=begini @/
+L فبنوا=maka_mereka_bentuk أفعل التفضيل من اختصر=ikhtashara
+L وهو=padahal_ia زائد=lebih على ثلاثة=tiga أحرف=huruf
+L ومبني=dan_dibina للمفعول=untuk_maf'ul وقالوا=dan_mereka_berkata @k:kl أسود=lebih_hitam من حلك=pekatnya
+L الغراب=gagak @/ @k:kl وأبيض=dan_lebih_putih من اللبن=susu @/ فبنوا=maka_mereka_bentuk
+L أفعل التفضيل شذوذا=secara_syadz من فعل
+L الوصف=sifat منه=darinya على أفعل
+END
+BLK nz 83 Mencapai_tafdhil_dari_fi'il_yang_terhalang_dengan_cara_yang_dipakai_pada_ta'ajjub
+BAIT
+L وما=dan_apa_yang به=dengannya إلى تعجب=ta'ajjub وصل=dicapai
+L لمانع=bagi_yang_terhalang به إلى التفضيل صل=capailah
+END
+BLK p
+L تقدم=telah_lalu في باب=bab التعجب أنه=bahwa_ia
+L يتوصل=dicapai إلى التعجب من الأفعال=fi'il-fi'il
+L التي لم=tidak تستكمل=memenuhi_lengkap الشروط=syarat-syarat بأشد=dengan_asyadda
+L ونحوها=dan_semisalnya وأشار=dan_ia_mengisyaratkan هنا=di_sini إلى أنه=bahwa_ia
+L يتوصل=dicapai إلى التفضيل من الأفعال=fi'il-fi'il
+L التي لم تستكمل=memenuhi_lengkap الشروط=syarat-syarat بما=dengan_apa_yang
+L يتوصل=dicapai به=dengannya في التعجب فكما=maka_sebagaimana
+L تقول=engkau_berkata @c ما=alangkah أشد=sangat استخراجه=pengeluarannya @/ تقول=engkau_berkata
+L @c هو=dia أشد=lebih_sangat استخراجا=pengeluaran من زيد @/
+L وكما=dan_sebagaimana تقول=engkau_berkata @c ما=alangkah أشد=sangat حمرته=merahnya @/
+L تقول=engkau_berkata @c هو أشد حمرة=merah من زيد @/
+L لكن=tetapi المصدر=mashdar ينتصب=manshub في باب التعجب
+L بعد=setelah أشد مفعولا=sebagai_maf'ul وههنا=dan_di_sini ينتصب=manshub تمييزا=sebagai_tamyiz
+END
+HAL 175
+BLK nz 84 Af'al_tafdhil_yang_mujarrad_wajib_disambung_dengan_'min'_secara_lafazh_atau_taqdir
+BAIT
+L وأفعل=dan_af'ala التفضيل صله=sambungkanlah_ia أبدا=selalu
+L تقديرا=secara_taqdir أو=atau لفظا=secara_lafazh بمن=dengan_'min' إن=jika جردا=ia_mujarrad
+END
+BLK p
+L لا=tidak يخلو=kosong أفعل التفضيل عن=dari
+L أحد=salah_satu ثلاثة أحوال=keadaan
+END
+BLK p
+L الأول=pertama أن=bahwa يكون=ia_adalah مجردا=mujarrad
+END
+BLK p
+L الثاني=kedua أن يكون=ia_adalah مضافا=mudhaf
+END
+BLK p
+L الثالث=ketiga أن يكون=ia_adalah بالألف=berawalan_alif واللام=dan_lam
+END
+BLK p
+L فإن=maka_jika كان=ada مجردا=mujarrad فلا=maka_tidak بد=boleh_tidak
+L أن=bahwa يتصل=bersambung به=dengannya من=min لفظا=secara_lafazh أو=atau
+L تقديرا=secara_taqdir جارة=yang_menjarkan للمفضل=bagi_yang_dilebihi نحو=seperti @c زيد=Zaid
+L @c أفضل=lebih_utama من=dari عمرو=Amr @/ وقد=dan_kadang تحذف=dibuang من=min
+L ومجرورها=dan_majrurnya للدلالة=karena_ada_petunjuk عليهما=atas_keduanya كقوله=seperti_firman تعالى=Yang_Maha_Tinggi
+L @q:QS._Al-Kahf:_34 ﴿أَنَا=aku أَكْثَرُ=lebih_banyak مِنْكَ=darimu مَالًا=harta
+L وَأَعَزُّ=dan_lebih_mulia نَفَرًا﴾=pengikut @/ أي=yakni وأعز=dan_lebih_mulia منك=darimu نفرا=pengikut
+L وفهم=dan_dipahami من=dari كلامه=ucapannya أن=bahwa أفعل التفضيل
+L إذا=apabila كان=ada بأل=berawalan_al أو=atau مضافا=mudhaf لا=tidak
+L تصحبه=menyertainya من=min فلا=maka_tidak تقول=engkau_berkata @c زيد=Zaid الأفضل=yang_paling_utama
+L @c من عمرو ولا=dan_tidak زيد=Zaid أفضل=paling_utama @/
+L @c الناس=manusia من=dari عمرو @/
+END
+HAL 176
+BLK p
+L وأكثر=dan_kebanyakan ما=apa_yang يكون=terjadi ذلك=itu إذا=apabila كان=ada
+L أفعل التفضيل خبرا=sebagai_khabar كالآية=seperti_ayat الكريمة=yang_mulia
+L ونحوها=dan_semisalnya وهو=dan_ia كثير=banyak في القرآن
+L وقد=dan_kadang تحذف=dibuang منه=darinya وهو=padahal_ia غير=bukan خبر=khabar
+L كقوله=seperti_ucapannya
+END
+BLK sy 59 Syahid_syair_No._٢٧٩
+BAIT
+L دنوت=aku_mendekat وقد=padahal خلناك=kami_mengira_engkau كالبدر=seperti_bulan_purnama أجملا=lebih_indah
+L فظل=maka_tetaplah فؤادي=hatiku في هواك=cintamu مضللا=tersesat
+END
+BLK p
+L ف"أجمل"=maka_'ajmal' أفعل تفضيل=tafdhil وهو=dan_ia منصوب=manshub
+L على الحال=sebagai_hal من التاء=huruf_ta' في دنوت=danawtu
+L وحذفت=dan_dibuang منه=darinya من=min والتقدير=dan_taqdirnya دنوت=danawtu
+L أجمل=lebih_indah من البدر=bulan_purnama وقد خلناك=kami_mengira_engkau كالبدر=seperti_bulan_purnama
+END
+HAL 177
+BLK p
+L ويلزم=dan_wajib_bagi أفعل التفضيل المجرد=mujarrad الإفراد=mufrad
+L والتذكير=dan_mudzakkar وكذلك=demikian_pula المضاف=yang_dimudhafkan إلى نكرة=nakirah
+L وإلى=dan_kepada هذا=ini أشار=ia_mengisyaratkan بقوله=dengan_ucapannya
+END
+BLK nz 85 Mujarrad_atau_mudhaf_kepada_nakirah_wajib_mufrad_dan_mudzakkar
+BAIT
+L وإن=dan_jika لمنكور=kepada_nakirah يضف=ia_dimudhafkan أو=atau جردا=ia_dimujarradkan
+L ألزم=wajibkanlah تذكيرا=mudzakkar وأن=dan_agar يوحدا=ia_di-mufrad-kan
+END
+BLK p
+L فتقول=maka_engkau_berkata @c زيد أفضل من عمرو
+L وأفضل=dan_paling_utama رجل=lelaki وهند=dan_Hindun أفضل من
+L عمرو وأفضل امرأة=wanita والزيدان=dan_dua_Zaid أفضل @/
+L @c من عمرو وأفضل رجلين=dua_lelaki والهندان=dan_dua_Hindun
+L أفضل من عمرو وأفضل امرأتين=dua_wanita @/
+L @c والزيدون=dan_para_Zaid أفضل من عمرو وأفضل
+L رجال=lelaki-lelaki والهندات=dan_para_Hindun أفضل من عمرو @/
+L @c وأفضل نساء=wanita-wanita @/ فيكون=maka_adalah أفعل=af'ala في
+L هاتين=kedua الحالتين=keadaan_ini مذكرا=mudzakkar ومفردا=dan_mufrad
+L ولا=dan_tidak يؤنث=di-mu'annats-kan ولا يثنى=di-tatsniyah-kan ولا=dan_tidak يجمع=di-jamak-kan
+END
+BLK nz 86 Yang_berawalan_'al'_harus_sesuai;_yang_dimudhafkan_kepada_ma'rifah_punya_dua_bentuk
+BAIT
+L وتلو=dan_yang_mengiringi أل=al طبق=sesuaikanlah وما=dan_apa_yang لمعرفه=kepada_ma'rifah
+L أضيف=dimudhafkan ذو=memiliki وجهين=dua_bentuk عن=dari ذي=pemilik معرفه=ma'rifah
+END
+HAL 178
+BLK nzc
+BAIT
+L هذا=ini إذا=apabila نويت=engkau_niatkan معنى=makna من وإن=dan_jika
+L لم=tidak تنو=engkau_niatkan فهو=maka_ia طبق=sesuai ما=apa_yang به=dengannya قرن=menyertai
+END
+BLK p
+L إذا=apabila كان=ada أفعل التفضيل بأل=berawalan_al لزمت=wajib
+L مطابقته=kesesuaiannya لما=dengan_apa قبله=sebelumnya في الإفراد=mufrad
+L والتذكير=dan_mudzakkar وغيرهما=dan_selainnya فتقول=maka_engkau_berkata
+L @c زيد الأفضل=yang_paling_utama والزيدان=dan_dua_Zaid الأفضلان=dua_yang_paling_utama
+L والزيدون=dan_para_Zaid الأفضلون=para_yang_paling_utama وهند=dan_Hindun الفضلى=paling_utama_(f)
+L والهندان=dan_dua_Hindun الفضليان=dua_paling_utama_(f) والهندات=dan_para_Hindun الفضل=para_yang_utama @/
+L أو=atau @c الفضليات=para_paling_utama_(f) @/ ولا=dan_tidak يجوز=boleh عدم=tidak
+L مطابقته=kesesuaiannya لما=dengan_apa قبله=sebelumnya فلا=maka_tidak تقول=engkau_berkata
+L @c الزيدون الأفضل=yang_paling_utama ولا=dan_tidak الزيدان الأفضل @/
+L @c ولا هند الأفضل ولا الهندان @/
+L @c الأفضل ولا الهندات الأفضل @/
+L ولا=dan_tidak يجوز=boleh أن=bahwa تقترن=bersambung به=dengannya من=min
+L فلا=maka_tidak تقول=engkau_berkata @c زيد الأفضل من عمرو @/
+END
+BLK p
+L فأما=adapun قوله=ucapannya
+END
+HAL 179
+BLK sy 60 Syahid_syair_No._٢٨٠
+BAIT
+L ولست=dan_aku_bukan بالأكثر=yang_terbanyak منهم=dari_mereka حصى=jumlah
+L وإنما=dan_sesungguhnya العزة=kemuliaan للكاثر=bagi_yang_banyak
+END
+BLK p
+L فيخرج=maka_ditakhrij على زيادة=tambahan الالف=alif واللام=dan_lam
+L والاصل=dan_asalnya ولست=dan_aku_bukan بأكثر=yang_lebih_banyak منهم=dari_mereka أو=atau
+L جعل=dijadikan "منهم"=dari_mereka متعلقا=berkaitan بمحذوف=dengan_yang_dibuang مجرد=mujarrad
+L عن الالف=alif واللام=dan_lam لا=bukan بما=dengan_apa_yang دخلت=masuk
+L عليه=atasnya الالف=alif واللام=dan_lam والتقدير=dan_taqdirnya "ولست=dan_aku_bukan
+L بالاكثر=yang_terbanyak أكثر=lebih_banyak منهم"=dari_mereka
+END
+HAL 180
+BLK p
+L وأشار=dan_ia_mengisyaratkan بقوله=dengan_ucapannya وما=dan_apa_yang لمعرفة=kepada_ma'rifah أضيف=dimudhafkan
+L إلخ=dan_seterusnya إلى أن أفعل التفضيل
+L إذا=apabila أضيف=dimudhafkan إلى معرفة=ma'rifah وقصد=dan_dimaksudkan به=dengannya
+L التفضيل جاز=boleh فيه=padanya وجهان=dua_bentuk
+END
+BLK p
+L أحدهما=salah_satunya استعماله=penggunaannya كالمجرد=seperti_mujarrad فلا=maka_tidak يطابق=sesuai
+L ما=apa_yang قبله=sebelumnya فتقول=maka_engkau_berkata @c الزيدان=dua_Zaid أفضل=paling_utama
+L القوم=kaum والزيدون=dan_para_Zaid أفضل القوم وهند=dan_Hindun
+L أفضل=paling_utama النساء=wanita-wanita والهندان=dan_dua_Hindun أفضل النساء
+L والهندات=dan_para_Hindun أفضل النساء @/
+END
+BLK p
+L والثاني=dan_yang_kedua استعماله=penggunaannya كالمقرون=seperti_yang_disertai بالألف=alif واللام=dan_lam
+L فتجب=maka_wajib مطابقته=kesesuaiannya لما=dengan_apa قبله=sebelumnya فتقول=maka_engkau_berkata
+L @c الزيدان=dua_Zaid أفضلا=dua_paling_utama القوم=kaum والزيدون=dan_para_Zaid أفضلوا=para_paling_utama
+L القوم=kaum وأفاضل=dan_orang-orang_utama القوم وهند=dan_Hindun فضلى=paling_utama_(f)
+L النساء=wanita-wanita والهندان=dan_dua_Hindun فضليا=dua_paling_utama_(f) النساء
+L والهندات=dan_para_Hindun فضل=para_yang_utama النساء أو=atau فضليات=para_paling_utama_(f) @/
+L النساء=wanita-wanita ولا=dan_tidak يتعين=tertentu الاستعمال=penggunaan الأول=pertama
+L خلافا=berbeda_dengan لابن=Ibnu السراج=as-Sarraj وقد=dan_telah ورد=datang
+L الاستعمالان=kedua_penggunaan في القرآن فمن=maka_di_antaranya استعماله=penggunaannya
+L غير=tidak مطابق=sesuai قوله=firman_-Nya تعالى=Yang_Maha_Tinggi
+L @q:QS._Al-Baqarah:_96 ﴿وَلَتَجِدَنَّهُمْ=sungguh_engkau_dapati_mereka أَحْرَصَ=paling_rakus النَّاسِ=manusia عَلَى حَيَاةٍ﴾=kehidupan @/
+L ومن=dan_di_antaranya استعماله=penggunaannya مطابقا=sesuai قوله=firman_-Nya تعالى=Yang_Maha_Tinggi
+L @q:QS._Al-An'am:_123 ﴿وَكَذَلِكَ=dan_demikian جَعَلْنَا=Kami_jadikan فِي كُلِّ=setiap
+L قَرْيَةٍ=negeri أَكَابِرَ=pembesar-pembesar مُجْرِمِيهَا﴾=pendosanya @/
+L وقد=dan_telah اجتمع=berkumpul الاستعمالان=kedua_penggunaan في قوله=sabda_beliau
+L صلى=semoga_shalawat الله عليه=atasnya وآله=dan_keluarganya وسلم=dan_salam
+L @h "ألا=ingatlah أخبركم=kuberitahu_kalian بأحبكم=yang_paling_kucintai إلي=bagiku وأقربكم=dan_terdekat_dari_kalian
+L مني=dariku منازل=kedudukan يوم=hari القيامة=kiamat أحاسنكم=terbaik_dari_kalian
+L أخلاقا=akhlaknya الموطئون=yang_ramah أكنافا=sikapnya الذين=yang يألفون=bersahabat
+L ويؤلفون"=dan_disenangi @/
+END
+BLK p
+L والذين=dan_mereka_yang أجازوا=membolehkan الوجهين=kedua_bentuk قالوا=berkata الأفصح=yang_paling_fasih
+L المطابقة=kesesuaian ولهذا=dan_karena_itu عيب=dicela على صاحب=penulis
+L الفصيح=al-Fashih في قوله=ucapannya فاخترنا=maka_kami_memilih أفصحهن=paling_fasih_dari_mereka
+L قالوا=mereka_berkata فكان=maka_seharusnya ينبغي=patut أن يأتي=datang
+L بالفصحى=dengan_'fushha' فيقول=lalu_berkata فصحاهن=yang_fasih_dari_mereka فإن=maka_jika لم=tidak
+L يقصد=dimaksudkan التفضيل تعينت=menjadi_wajib المطابقة=kesesuaian كقولهم=seperti_ucapan_mereka
+L @k:kl الناقص=an-Naqish والأشج=dan_al-Asyajj أعدلا=dua_yang_paling_adil بني=Bani مروان=Marwan @/
+L أي=yakni عادلا=dua_yang_adil بني=Bani مروان=Marwan
+END
+BLK p
+L وإلى=dan_kepada ما=apa_yang ذكرناه=kami_sebutkan من قصد=maksud التفضيل
+L وعدم=dan_tidak_adanya قصده=maksudnya أشار=mengisyaratkan المصنف=penulis_matan بقوله=dengan_ucapannya
+L هذا=ini إذا=apabila نويت=engkau_niatkan معنى=makna من
+L البيت=bait أي=yakni جواز=bolehnya الوجهين=kedua_bentuk أعني=maksudku
+L المطابقة=kesesuaian وعدمها=dan_tidak_adanya
+END
+HAL 181
+BLK p
+L مشروط=disyaratkan بما=dengan_apa إذا=apabila نوى=diniatkan بالإضافة=dengan_idhafah
+L معنى=makna من أي=yakni إذا=apabila نوى=diniatkan التفضيل
+L وأما=adapun إذا=apabila لم=tidak ينو=diniatkan ذلك=itu
+L فيلزم=maka_wajib أن يكون=ia_adalah طبق=sesuai ما=apa_yang
+L اقترن=menyertai به=dengannya قيل=dikatakan ومن=dan_di_antara استعمال=penggunaan
+L صيغة=bentuk أفعل التفضيل قوله=firman_-Nya تعالى=Yang_Maha_Tinggi
+L @q:QS._Ar-Rum:_27 ﴿وَهُوَ=dan_Dia الَّذِي=yang يَبْدأُ=memulai الْخَلْقَ=penciptaan
+L ثُمَّ=kemudian يُعِيدُهُ=mengulanginya وَهُوَ=dan_itu أَهْوَنُ=lebih_mudah عَلَيْهِ﴾=bagi-Nya @/
+L وقوله=dan_firman_-Nya تعالى @q:QS._Al-Isra':_54 ﴿رَبُّكُمْ=Tuhan_kalian أَعْلَمُ=lebih_mengetahui بِكُمْ﴾=tentang_kalian @/
+L أي=yakni وهو=dan_Dia هين=mudah عليه=bagi-Nya وربكم=dan_Tuhan_kalian عالم=Maha_Mengetahui
+L بكم=tentang_kalian وقول=dan_ucapan الشاعر=penyair
+END
+BLK sy 61 Syahid_syair_(tanpa_nomor_di_sumber)
+BAIT
+L وإن=dan_jika مدت=diulurkan الأيدي=tangan-tangan إلى الزاد=bekal لم=tidak أكن=aku_adalah
+L بأعجلهم=paling_tergesa_dari_mereka إذ=ketika أجشع=yang_paling_rakus القوم=kaum أعجل=lebih_tergesa
+END
+BLK p
+L أي=yakni لم=tidak أكن=aku_adalah بعجلهم=yang_tergesa_dari_mereka وقوله=dan_ucapannya
+END
+BLK sy 62 Syahid_syair_No._٢٨١
+BAIT
+L إن=sesungguhnya الذي=yang سمك=meninggikan السماء=langit بنى=membangun لنا=untuk_kami
+L بيتا=rumah دعائمه=tiang-tiangnya أعز=lebih_kokoh وأطول=dan_lebih_tinggi
+END
+HAL 182
+BLK p
+L أي=yakni دعائمه=tiang-tiangnya عزيزة=kokoh طويلة=tinggi وهل=dan_apakah
+L ينقاس=dikiaskan ذلك=itu أم=atau لا=tidak قال=berkata
+L المبرد=al-Mubarrad ينقاس=dikiaskan وقال=dan_berkata غيره=selainnya لا=tidak
+L ينقاس=dikiaskan وهو=dan_ia الصحيح=yang_benar وذكر=dan_menyebutkan صاحب=penulis
+L الواضح=al-Wadhih أن=bahwa النحويين=para_ahli_nahwu لا=tidak يرون=berpendapat
+L ذلك=itu وأن=dan_bahwa أبا=Abu عبيدة=Ubaidah قال=berkata
+L في قوله=firman_-Nya تعالى=Yang_Maha_Tinggi @q:QS._Ar-Rum:_27 ﴿وَهُوَ=dan_itu أَهْوَنُ=lebih_mudah عَلَيْهِ﴾=bagi-Nya @/
+L إنه=bahwa_ia بمعنى=bermakna هين=mudah وفي=dan_dalam بيت=bait
+L الفرزدق=al-Farazdaq وهو=dan_ia الثاني=yang_kedua إن=bahwa المعنى=maknanya
+L عزيزة=kokoh طويلة=tinggi وإن=dan_bahwa النحويين=para_ahli_nahwu ردوا=menolak
+L على أبي=Abu عبيدة=Ubaidah ذلك=itu وقالوا=dan_mereka_berkata
+L لا=tidak حجة=dalil في ذلك=itu له=baginya
+END
+BLK nz 87 Jika_didahului_'min'_dan_istifham,_'min'_wajib_didahulukan
+BAIT
+L وإن=dan_jika تكن=ia_adalah بتلو=dengan_yang_mengiringi من مستفهما=istifham
+L فلهما=maka_bagi_keduanya كن=jadilah أبدا=selalu مقدما=didahulukan
+BAIT
+L كمثل=seperti_contoh ممن=dari_siapa أنت=engkau خير=lebih_baik ولدى=dan_pada_sisi
+L إخبار=khabar التقديم=pendahuluan نزرا=sedikit وردا=terdapat
+END
+HAL 183
+BLK p
+L تقدم=telah_lalu أن=bahwa أفعل التفضيل إذا=apabila
+L كان=ada مجردا=mujarrad جيء=didatangkan بعده=setelahnya بمن=dengan_'min'
+L جارة=yang_menjarkan للمفضل=bagi_yang_dilebihi عليه=atasnya نحو=seperti @c زيد=Zaid
+L أفضل من عمرو @/ ومن=dan_'min' ومجرورها=dan_majrurnya
+L معه=bersamanya بمنزلة=berkedudukan المضاف=mudhaf إليه=ilaih من
+L المضاف=mudhaf فلا=maka_tidak يجوز=boleh تقديمهما=mendahulukan_keduanya عليه=atasnya
+L كما=sebagaimana لا=tidak يجوز=boleh تقديم=mendahulukan المضاف=mudhaf
+L إليه=ilaih على المضاف=mudhaf إلا=kecuali إذا=apabila
+L كان=ada المجرور=yang_dijarkan بها=olehnya اسم=isim استفهام=istifham
+L أو=atau مضافا=dimudhafkan إلى اسم=isim استفهام=istifham
+L فإنه=maka_ia يجب=wajib حينئذ=ketika_itu تقديم=mendahulukan من
+L ومجرورها=dan_majrurnya نحو=seperti @c ممن=dari_siapa أنت=engkau خير=lebih_baik
+L ومن=dan_dari أيهم=siapa_di_antara_mereka أنت=engkau أفضل=lebih_utama ومن=dan_dari
+L غلام=pelayan أيهم=siapa_di_antara_mereka أنت=engkau أفضل @/ وقد=dan_telah
+L ورد=datang التقديم=pendahuluan شذوذا=secara_syadz في غير=selain
+L الاستفهام=istifham وإليه=dan_kepadanya أشار=ia_mengisyaratkan بقوله=dengan_ucapannya ولدى=dan_pada_sisi
+L إخبار=khabar التقديم=pendahuluan نزرا=sedikit وردا=terdapat ومن=dan_di_antara
+L ذلك=itu قوله=ucapannya
+END
+BLK sy 63 Syahid_syair_No._٢٨٢
+BAIT
+L فقالت=maka_ia_berkata لنا=kepada_kami أهلا=selamat_datang وسهلا=dan_mudah وزودت=dan_membekali
+L جنى=hasil_petikan النحل=lebah بل=bahkan ما=apa_yang زودت=ia_membekali منه=darinya أطيب=lebih_manis
+END
+HAL 184
+BLK p
+L والتقدير=dan_taqdirnya بل=bahkan ما=apa_yang زودت=ia_membekali أطيب=lebih_manis
+L منه=darinya وقول=dan_ucapan ذي=Dzur الرمة=Rummah يصف=menggambarkan
+L نسوة=wanita-wanita بالسمن=dengan_kegemukan والكسل=dan_kemalasan
+END
+BLK sy 64 Syahid_syair_No._٢٨٣
+BAIT
+L ولا=dan_tidak عيب=cela فيها=padanya غير=selain أن=bahwa سريعها=yang_tercepat_darinya
+L قطوف=lamban وأن=dan_bahwa لا=tidak شيء=sesuatu منهن=di_antara_mereka أكسل=lebih_malas
+END
+HAL 185
+BLK p
+L التقدير=taqdirnya وأن=dan_bahwa لا=tidak شيء=sesuatu أكسل=lebih_malas
+L منهن=dari_mereka وقوله=dan_ucapannya
+END
+BLK sy 65 Syahid_syair_No._٢٨٤
+BAIT
+L إذا=apabila سايرت=engkau_menemani أسماء=Asma' يوما=suatu_hari ظعينة=wanita_dalam_tandu
+L فأسماء=maka_Asma' من تلك=itu الظعينة=wanita_dalam_tandu أملح=lebih_menawan
+END
+BLK p
+L التقدير=taqdirnya فأسماء=maka_Asma' أصلح=lebih_baik من تلك=itu الظعينة=wanita_dalam_tandu
+END
+HAL 186
+BLK nz 88 Merafa'kan_isim_zhahir_jarang;_sering_bila_bisa_digantikan_fi'il
+BAIT
+L ورفعه=dan_perafa'annya الظاهر=isim_zhahir نزر=sedikit ومتى=dan_apabila
+L عاقب=bergantian_dengan فعلا=fi'il فكثيرا=maka_banyak ثبتا=ia_tetap
+BAIT
+L كلن=contoh_'lan' ترى=engkau_melihat في الناس=manusia من=seorang رفيق=teman
+L أولى=lebih_berhak به=dengannya الفضل=keutamaan من الصديق=sahabat
+END
+BLK p
+L لا=tidak يخلو=kosong أفعل التفضيل من أن
+L يصلح=layak لوقوع=untuk_menempati فعل=fi'il بمعناه=semakna_dengannya موقعه=tempatnya
+L أولا=atau_tidak فإن=maka_jika لم=tidak يصلح=layak لوقوع=untuk_menempati
+L فعل=fi'il بمعناه=semakna_dengannya موقعه=tempatnya لم=tidak يرفع=merafa'kan
+L ظاهرا=isim_zhahir وإنما=hanya يرفع=merafa'kan ضميرا=dhamir مستترا=tersembunyi
+L نحو=seperti @c زيد=Zaid أفضل=lebih_utama من عمرو=Amr @/
+L ففي=maka_di_dalam أفضل=afdhal ضمير=dhamir مستتر=tersembunyi عائد=kembali على
+END
+HAL 187
+BLK p
+L زيد=Zaid فلا=maka_tidak تقول=engkau_berkata @c مررت=aku_melewati برجل=seorang_lelaki أفضل=lebih_utama
+L منه=darinya أبوه=ayahnya @/ فترفع=maka_engkau_rafa'kan أبوه=ayahnya بأفضل=dengan_afdhal
+L إلا=kecuali في لغة=dialek ضعيفة=lemah حكاها=diriwayatkannya
+L سيبويه=Sibawaih فإن=maka_jika صلح=layak لوقوع=untuk_menempati فعل=fi'il
+L بمعناه=semakna_dengannya موقعه=tempatnya صح=sah أن يرفع=merafa'kan
+L ظاهرا=isim_zhahir قياسا=secara_kias مطردا=yang_berlaku_umum وذلك=dan_itu في
+L كل=setiap موضع=tempat وقع=terjadi فيه=padanya أفعل
+L بعد=setelah نفي=nafi أو=atau شبهه=yang_menyerupainya وكان=dan_adalah
+L مرفوعه=yang_dirafa'kannya أجنبيا=orang_asing مفضلا=diunggulkan على نفسه=dirinya
+L باعتبارين=dari_dua_sisi نحو=seperti @c ما=tidak رأيت=aku_melihat رجلا=seorang_lelaki
+L أحسن=lebih_indah في عينه=matanya الكحل=celak منه=darinya
+L في عين=mata زيد=Zaid @/ فالكحل=maka_celak مرفوع=marfu'
+L بأحسن=oleh_ahsan لصحة=karena_sahnya وقوع=terjadinya فعل=fi'il بمعناه=semakna_dengannya
+L موقعه=tempatnya نحو=seperti @c ما=tidak رأيت رجلا
+L يحسن=memperindah في عينه=matanya الكحل=celak كزيد=seperti_Zaid @/
+L ومثله=dan_semisalnya قوله=sabdanya صلى=semoga_shalawat الله عليه=atasnya
+L وآله=dan_keluarganya وسلم=dan_salam @h ما=tiada من أيام=hari-hari
+L أحب=lebih_dicintai إلى الله=Allah فيها=padanya الصوم=puasa
+L منه=darinya في عشر=sepuluh_hari ذي=Dzul الحجة=Hijjah @/
+L وقول=dan_ucapan الشاعر=penyair أنشده=yang_dilantunkan سيبويه=Sibawaih
+END
+BLK sy 66 Syahid_syair_No._٢٨٥
+BAIT
+L مررت=aku_melewati على وادي=lembah السباع=binatang_buas ولا=dan_tidak أرى=kulihat
+L كوادي=seperti_lembah السباع=binatang_buas حين=ketika يظلم=gelap واديا=sebuah_lembah
+END
+HAL 188
+BLK sycont
+BAIT
+L أقل=lebih_sedikit به=padanya ركب=rombongan أتوه=mendatanginya تئية=berhenti
+L وأخوف=dan_lebih_menakutkan إلا=kecuali ما=apa_yang وقى=melindungi الله ساريا=pejalan_malam
+END
+BLK p
+L ف"ركب"=maka_'rakb' مرفوع=marfu' بأقل=oleh_'aqalla' فقول=maka_ucapan
+L المصنف=penulis_matan ورفعه=dan_perafa'annya الظاهر=isim_zhahir نزر=sedikit إشارة=isyarat إلى
+L الحالة=keadaan الأولى=pertama وقوله=dan_ucapannya ومتى=dan_apabila عاقب=bergantian_dengan
+L فعلا=fi'il إشارة=isyarat إلى الحالة=keadaan الثانية=kedua
+END
+HAL 189
