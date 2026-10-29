@@ -101,8 +101,8 @@ function buildItem(n, path, showPath) {
     root.type = 'button';
     root.addEventListener('click', () => { qEl.value = ''; syncSearch(); go(path); });
   } else if (!soon) {
-    // dokumen Word dan halaman HTML dibuka di viewer
-    root.href = /^(docx?|html?)$/.test(n.ext || '') ? 'viewer.html?f=' + encodeURIComponent(decodeURIComponent(n.href)) : n.href;
+    // dokumen Word, HTML, teks, markdown, gambar, dan PDF dibuka di viewer
+    root.href = /^(docx|html?|txt|md|markdown|json|csv|tsv|log|xml|ya?ml|ini|pdf|png|jpe?g|gif|webp|svg|bmp|avif|ico)$/.test(n.ext || '') ? 'viewer.html?f=' + encodeURIComponent(decodeURIComponent(n.href)) : n.href;
   }
 
   const ico = el('span', 'ico');
