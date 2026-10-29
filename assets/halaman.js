@@ -451,7 +451,6 @@
         '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
         '<button type="button" class="ph__btn" data-k="claude">Buka di Claude</button>' +
         '<button type="button" class="ph__btn" data-k="chatgpt">Buka di ChatGPT</button>' +
-        '<button type="button" class="ph__btn" data-k="gemini">Buka di Gemini</button>' +
         '<button type="button" class="ph__btn" data-k="perplexity">Buka di Perplexity</button>' +
         '<button type="button" class="ph__btn" data-k="unduh">Unduh .txt</button>' +
         '<button type="button" class="ph__btn" data-k="bagi">Bagikan…</button>' +
@@ -539,8 +538,7 @@
   var SITUS = {
     claude: ['Claude', 'https://claude.ai/new', 'q'],
     chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q'],
-    perplexity: ['Perplexity', 'https://www.perplexity.ai/search', 'q'],
-    gemini: ['Gemini', 'https://gemini.google.com/app', null]
+    perplexity: ['Perplexity', 'https://www.perplexity.ai/search', 'q']
   };
   var BATAS_URL = 5500;
 
