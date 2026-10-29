@@ -122,7 +122,7 @@
   }
 
   var ext = (path.split('.').pop() || '').toLowerCase();
-  var GAMBAR = /^(png|jpe?g|gif|webp|svg|bmp|avif|ico)$/, TEKS = /^(txt|md|markdown|json|csv|tsv|log|xml|yml|yaml|ini|js|css|py|php|bat)$/;
+  var GAMBAR = /^(png|jpe?g|gif|webp|svg|bmp|avif|ico)$/, MEDIA = /^(mp3|wav|ogg|m4a|aac|flac|opus|mp4|webm|mov|m4v|ogv)$/;
 
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function inline(t) {
@@ -189,14 +189,26 @@
     return;
   }
 
-  if (TEKS.test(ext)) {
+  if (MEDIA.test(ext)) {
+    var mt = document.createElement(/^(mp3|wav|ogg|m4a|aac|flac|opus)$/.test(ext) ? 'audio' : 'video');
+    mt.controls = true; mt.src = url; mt.style.cssText = 'display:block;max-width:100%;margin:0 auto';
+    mt.onerror = function () { pesan('Media tidak bisa diputar. Silakan <a href="' + url + '" download>unduh filenya</a>.'); };
+    isi.replaceChildren(mt);
+    return;
+  }
+
+  if (ext !== 'docx') {
     var md = /^(md|markdown)$/.test(ext);
     fetch(url).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text();
-    }).then(function (t) {
+      return r.arrayBuffer();
+    }).then(function (buf) {
+      // file biner (zip, xlsx, dll) tidak bisa dibaca sebagai teks
+      var cek = new Uint8Array(buf, 0, Math.min(buf.byteLength, 8000));
+      for (var i = 0; i < cek.length; i++) if (cek[i] === 0) throw new Error('biner');
+      var t = new TextDecoder('utf-8').decode(buf);
       var d = document.createElement('div');
-      d.className = 'teks' + (md ? ' md' : '') + (/^(txt|log)$/.test(ext) ? '' : (md ? '' : ' kode'));
+      d.className = 'teks' + (md ? ' md' : '') + (md || /^(txt|log)$/.test(ext) ? '' : ' kode');
       if (md) d.innerHTML = markdown(t); else d.textContent = t;
       isi.replaceChildren(d);
       var z = 1;
@@ -204,13 +216,8 @@
       document.getElementById('kecil').onclick = function () { ubahTeks(1 / 1.15); };
       document.getElementById('besar').onclick = function () { ubahTeks(1.15); };
     }).catch(function () {
-      pesan('Dokumen tidak bisa ditampilkan. Silakan <a href="' + url + '" download>unduh filenya</a>.');
+      pesan('Format ini (.' + ext + ') berupa file biner dan tidak bisa ditampilkan di viewer. Silakan <a href="' + url + '" download>unduh filenya</a>.');
     });
-    return;
-  }
-
-  if (ext !== 'docx') {
-    pesan('Format ini (.' + ext + ') tidak bisa ditampilkan di viewer. Silakan <a href="' + url + '" download>unduh filenya</a>.');
     return;
   }
 
