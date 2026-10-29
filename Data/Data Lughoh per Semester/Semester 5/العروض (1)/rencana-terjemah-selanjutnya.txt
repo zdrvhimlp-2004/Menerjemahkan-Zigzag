@@ -77,3 +77,5 @@ PEMBARUAN (2026-10-29)
 - Pembagian baru kitab 'Ilm al-Ma'ani: satu file HTML berisi 2 bab (Fasal 2-3 hlm. 97-215 | Fasal 4 + Khuruj al-Kalam hlm. 216-280 | Juz 2: Ahwal al-Jumlah + Uslub al-Qashr hlm. 281-348 | Uslub al-Insya').
 - SELESAI: البلاغة (5)/maani-fasal4-khuruj-216-280-biasa.html (Fasal 4 + Khuruj al-Kalam, hlm. 216-280, terjemah biasa).
 - Item no. 1 (Nahwu af'al at-tafdhil) tidak perlu: bab itu sudah ada di file zigzag Ibnu 'Aqil (Bab 10, hlm. 172-189).
+- SELESAI: البلاغة (5)/maani-fasal2-3-97-215-biasa.html (Fasal 2-3, hlm. 97-215): gabungan tiga file terjemah lama (97-131, 132-166, 167-214), tanpa terjemah ulang.
+- BERIKUTNYA: Juz 2 hlm. 281-348 (Uslub al-Qashr) dan Uslub al-Insya'/Fashl-Washl/Ijaz-Ithnab.
