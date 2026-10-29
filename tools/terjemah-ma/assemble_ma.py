@@ -5,12 +5,12 @@ from render_align import render_page, fidelity, flag
 from prep import strip_page_a
 
 REPO = '/home/user/Menerjemahkan-Zigzag/'
-TEMPLATE = REPO + 'Data/Data Lughoh per Semester/Semester 5/النحو (5)/Terjemahan zigzag syarh ibnu \'aqil dari bab al Idlofah sampai Af\'al at Tafdhil.html'
+TEMPLATE = REPO + 'Data/Data Lughoh per Semester/Semester 5/النحو (5)/Kitab Syarh Ibnu Aqil (Bab Al Idlofah-Afal At Tafdhil).html'
 OUTDIR = REPO + 'Data/Data Lughoh per Semester/Semester 5/البلاغة (5)/'
 esc = lambda s: html.escape(s, quote=False)
 
 CFG = {
- 'a': dict(out="Ilmu ma'ani dari hal 209 ke 237.html", title='علم المعاني - دراسة بلاغية ونقدية لمسائل المعاني',
+ 'a': dict(out="Kitab Ilmu Al Maani (Hlm 209-237)(Bag 4).html", title='علم المعاني - دراسة بلاغية ونقدية لمسائل المعاني',
            ket="Dari file: &laquo;&#x639;&#x644;&#x645; &#x627;&#x644;&#x645;&#x639;&#x627;&#x646;&#x64a; - &#x62f;&#x631;&#x627;&#x633;&#x629; &#x628;&#x644;&#x627;&#x63a;&#x64a;&#x629; &#x648;&#x646;&#x642;&#x62f;&#x64a;&#x629; &#x644;&#x645;&#x633;&#x627;&#x626;&#x644; &#x627;&#x644;&#x645;&#x639;&#x627;&#x646;&#x64a; Halaman 209 - 260&raquo; &middot; Hlm. 209&ndash;260 &middot; Terjemah biasa &middot; 1 baris Arab + 1 baris Indonesia, maksimal 7 kata Arab per baris &middot; teks Arab = transkrip sumber apa adanya; tanda &#9888; = ada masalah di teks sumber",
            start=('', 'Bagian awal (sebelum judul pasal pertama di file ini)')),
 }
