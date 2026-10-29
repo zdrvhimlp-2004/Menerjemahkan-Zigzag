@@ -12,7 +12,7 @@ PRIORITAS 1 - 'ARUDH (folder العروض (1)) - MASIH ADA YANG BELUM
   b. Hlm. 43-51 (Bahr ath-Thawil): docx 1-51 hanya memuat sebagian.
   c. Hlm. 78 kitab: tidak ada docx (docx 51-77 lalu 79-103).
 - Tindak lanjut: tunggu pengguna mengirim halaman-halaman itu (docx/teks), lalu konversi dan sisipkan ke file yang ada
-  (arudh-taqdim-madkhol-biasa.html dan arudh-bahr-1-6-biasa.html). Jika tidak ada, tulis kekosongan ini di kotak
+  (arudh-taqdim-madkhol-biasa (hlm 5-38).html dan arudh-bahr-1-6-biasa (hlm 43-77).html). Jika tidak ada, tulis kekosongan ini di kotak
   "Catatan kekurangan materi" paling atas kedua file itu.
 
 STATUS TERAKHIR
@@ -75,7 +75,7 @@ CATATAN / HAL YANG PERLU DIPERHATIKAN
 
 PEMBARUAN (2026-10-29)
 - Pembagian baru kitab 'Ilm al-Ma'ani: satu file HTML berisi 2 bab (Fasal 2-3 hlm. 97-215 | Fasal 4 + Khuruj al-Kalam hlm. 216-280 | Juz 2: Ahwal al-Jumlah + Uslub al-Qashr hlm. 281-348 | Uslub al-Insya').
-- SELESAI: البلاغة (5)/maani-fasal4-khuruj-216-280-biasa.html (Fasal 4 + Khuruj al-Kalam, hlm. 216-280, terjemah biasa).
+- SELESAI: البلاغة (5)/maani-fasal4-khuruj-biasa (hlm 216-280).html (Fasal 4 + Khuruj al-Kalam, hlm. 216-280, terjemah biasa).
 - Item no. 1 (Nahwu af'al at-tafdhil) tidak perlu: bab itu sudah ada di file zigzag Ibnu 'Aqil (Bab 10, hlm. 172-189).
-- SELESAI: البلاغة (5)/maani-fasal2-3-97-215-biasa.html (Fasal 2-3, hlm. 97-215): gabungan tiga file terjemah lama (97-131, 132-166, 167-214), tanpa terjemah ulang.
+- SELESAI: البلاغة (5)/maani-fasal2-3-biasa (hlm 97-215).html (Fasal 2-3, hlm. 97-215): gabungan tiga file terjemah lama (97-131, 132-166, 167-214), tanpa terjemah ulang.
 - BERIKUTNYA: Juz 2 hlm. 281-348 (Uslub al-Qashr) dan Uslub al-Insya'/Fashl-Washl/Ijaz-Ithnab.
