@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujian Sastra Masa Pertengahan — Bab 1–3</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #071225; --bg2: #0d2347; --card: #10223f; --card2: #17325c; --border: #25416d;
+    --text: #eaf3ff; --muted: #8fb0d9; --accent: #7cc4ff; --accent2: #4da3f5; --on-accent: #06182f;
+    --ok: #34d399; --ok-bg: rgba(52, 211, 153, .16); --bad: #fb7185; --bad-bg: rgba(251, 113, 133, .16);
+    --warn: #fbbf24; --warn-bg: rgba(251, 191, 36, .14);
+  }
+  html, body { height: 100%; }
+  body { background: radial-gradient(900px 500px at 50% -150px, var(--bg2), transparent 70%), var(--bg); color: var(--text); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.55; -webkit-tap-highlight-color: transparent; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  [hidden] { display: none !important; }
+  .ar { font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; direction: rtl; }
+
+  .app { max-width: 860px; margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; padding: 0.9rem 1rem 1.2rem; }
+
+  /* ---------- tombol umum ---------- */
+  .btn { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 0.65rem 1rem; font-weight: 500; font-size: 0.92rem; transition: background .15s, border-color .15s, transform .1s; }
+  .btn:hover:not(:disabled) { background: var(--card2); border-color: var(--accent); }
+  .btn:active:not(:disabled) { transform: scale(.97); }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .btn--main { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+  .btn--main:hover:not(:disabled) { background: #a2d6ff; }
+  .icon { width: 2.5rem; height: 2.5rem; display: inline-grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); background: var(--card); font-size: 1.1rem; }
+  .icon:hover { background: var(--card2); border-color: var(--accent); }
+  .icon[aria-pressed="false"] { opacity: .55; }
+
+  /* ---------- layar mulai ---------- */
+  .start { margin: auto; width: 100%; max-width: 560px; text-align: center; padding: 1.5rem 0; }
+  .start .logo { width: 84px; height: 84px; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg, var(--accent), var(--accent2)); color: var(--on-accent); font-size: 2.7rem; font-weight: 700; box-shadow: 0 8px 30px rgba(77, 163, 245, .35); }
+  .start h1 { font-size: clamp(1.9rem, 1.2rem + 3vw, 2.6rem); line-height: 1.8; }
+  .start .sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+  .info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin: 1.2rem 0; text-align: left; }
+  .info div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.7rem 0.9rem; font-size: 0.85rem; color: var(--muted); }
+  .info b { display: block; color: var(--text); font-size: 1.15rem; font-weight: 600; }
+  .set { text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem 1rem; margin-bottom: 1.2rem; display: grid; gap: 0.7rem; }
+  .set label { display: grid; gap: 0.25rem; font-size: 0.8rem; color: var(--muted); }
+  .set select { height: 2.5rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font: inherit; padding: 0 0.7rem; }
+  .set .chk { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--text); }
+  .set .chk input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+  .note { font-size: 0.8rem; color: var(--warn); background: var(--warn-bg); border-radius: 10px; padding: 0.55rem 0.8rem; text-align: left; margin-bottom: 1rem; }
+  .note.ok { color: var(--ok); background: var(--ok-bg); }
+  .start .btn--main { padding: 0.95rem; font-size: 1.05rem; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; }
+
+  /* ---------- layar ujian ---------- */
+  .top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+  .top .spacer { flex: 1; }
+  .count { font-weight: 600; font-size: 0.95rem; }
+  .count small { color: var(--muted); font-weight: 400; }
+  .chip { display: inline-block; padding: 0.15rem 0.7rem; border-radius: 999px; background: rgba(124, 196, 255, .14); color: var(--accent); font-size: 0.74rem; font-weight: 500; }
+  .bar { height: 6px; background: var(--card); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s; }
+
+  .timer { display: flex; align-items: center; gap: 0.8rem; margin: 0.9rem 0 0.5rem; }
+  .ring { --p: 100; width: 3.4rem; height: 3.4rem; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 1.15rem; background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--card) 0); position: relative; flex: none; }
+  .ring::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--bg); }
+  .ring span { position: relative; }
+  .ring.low { background: conic-gradient(var(--bad) calc(var(--p) * 1%), var(--card) 0); color: var(--bad); }
+  .tstate { font-size: 0.85rem; color: var(--muted); flex: 1; }
+  .lim { display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--muted); }
+  .lim input { width: 4.2rem; height: 2.2rem; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; text-align: center; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: clamp(1rem, 3.5vw, 1.8rem); }
+  .qno { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .qtext { font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.5rem); line-height: 2.2; text-align: right; font-weight: 700; padding: 0.3rem 0 0.9rem; }
+  .opts { display: grid; gap: 0.7rem; }
+  .opt { display: flex; align-items: center; gap: 0.9rem; flex-direction: row-reverse; text-align: right; width: 100%; padding: 0.9rem 1.1rem; min-height: 4.4rem; border: 1.5px solid var(--border); border-radius: 16px; background: var(--card2); transition: border-color .15s, background .15s, transform .1s; }
+  .opt:hover:not(:disabled) { border-color: var(--accent); }
+  .opt:active:not(:disabled) { transform: scale(.99); }
+  .opt .lt { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--bg); color: var(--accent); font-size: 1.5rem; font-weight: 700; font-family: 'Amiri', serif; }
+  .opt .tx { flex: 1; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.4rem, 1.1rem + 1.6vw, 1.95rem); line-height: 2.1; direction: rtl; }
+  .opt:disabled { cursor: default; }
+  .opt.is-ok { border-color: var(--ok); background: var(--ok-bg); }
+  .opt.is-ok .lt { background: var(--ok); color: #05261a; }
+  .opt.is-bad { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.is-bad .lt { background: var(--bad); color: #2a0610; }
+  .opt.is-dim { opacity: .55; }
+
+  .exp { margin-top: 1rem; border-radius: 16px; padding: 0.9rem 1.05rem; border: 1px solid var(--border); background: var(--bg); }
+  .exp.ok { border-color: var(--ok); }
+  .exp.bad { border-color: var(--bad); }
+  .exp.warn { border-color: var(--warn); }
+  .exp h3 { font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .exp.ok h3 { color: var(--ok); } .exp.bad h3 { color: var(--bad); } .exp.warn h3 { color: var(--warn); }
+  .exp p { font-size: 0.95rem; color: var(--text); }
+  .exp .row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; }
+  .exp .ans { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .exp .ans b { color: var(--ok); font-family: 'Amiri', serif; font-size: 1.2rem; font-weight: 700; margin-left: 0.3rem; direction: rtl; unicode-bidi: isolate; }
+
+  #quiz { padding-bottom: 5.6rem; }
+  .nav, .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0.9rem 1rem calc(0.9rem + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, rgba(7, 18, 37, 0), var(--bg) 38%); }
+  .nav { display: flex; gap: 0.6rem; justify-content: center; }
+  .nav .btn { flex: 1; max-width: 300px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 0.8rem; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+  .nav .mid { flex: 0 0 auto; }
+  .dock { display: flex; justify-content: center; }
+  .dock .btn { width: 100%; max-width: 560px; box-shadow: 0 8px 24px rgba(0, 0, 0, .4); }
+  .start { padding-bottom: 6rem; }
+  .toast { position: fixed; left: 50%; bottom: 5.8rem; transform: translateX(-50%) translateY(20px); background: var(--card2); border: 1px solid var(--warn); color: var(--warn); padding: 0.6rem 1.1rem; border-radius: 999px; font-size: 0.88rem; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 60; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- daftar soal (dialog) ---------- */
+  dialog { border: none; border-radius: 20px; padding: 0; background: var(--card); color: var(--text); width: min(560px, 94vw); max-height: 86vh; overflow: auto; box-shadow: 0 24px 70px rgba(0, 0, 0, .55); }
+  dialog::backdrop { background: rgba(3, 9, 20, .72); }
+  .dh { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); font-weight: 600; position: sticky; top: 0; background: var(--card); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 0.45rem; padding: 1rem 1.2rem; }
+  .cell { height: 2.7rem; border-radius: 10px; border: 1.5px solid var(--border); background: var(--card2); font-weight: 600; font-size: 0.9rem; }
+  .cell.ok { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+  .cell.bad { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+  .cell.to { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+  .cell.cur { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; padding: 0 1.2rem 1rem; font-size: 0.75rem; color: var(--muted); }
+  .legend i { display: inline-block; width: .75rem; height: .75rem; border-radius: 4px; margin-right: .35rem; vertical-align: -1px; }
+
+  /* ---------- hasil ---------- */
+  .res { max-width: 640px; margin: auto; width: 100%; text-align: center; padding: 1rem 0; }
+  .score { font-size: clamp(3.4rem, 2rem + 8vw, 5.5rem); font-weight: 600; color: var(--accent); line-height: 1.1; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 1.2rem 0; }
+  .stats div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.8rem; font-size: 0.8rem; color: var(--muted); }
+  .stats b { display: block; font-size: 1.6rem; color: var(--text); }
+  .stats .ok b { color: var(--ok); } .stats .bad b { color: var(--bad); } .stats .to b { color: var(--warn); }
+  .rlist { text-align: left; display: grid; gap: 0.4rem; margin: 1rem 0; }
+  .rrow { display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 0.7rem; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.5rem 0.8rem; width: 100%; text-align: left; }
+  .rrow:hover { border-color: var(--accent); }
+  .rrow .n { font-weight: 600; color: var(--muted); }
+  .rrow .t { font-family: 'Amiri', serif; direction: rtl; text-align: right; font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rrow .s { font-size: 0.75rem; font-weight: 600; }
+  .rrow .s.ok { color: var(--ok); } .rrow .s.bad { color: var(--bad); } .rrow .s.to { color: var(--warn); } .rrow .s.na { color: var(--muted); }
+  .res .acts { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+
+  @media (max-width: 520px) {
+    .app { padding: 0.7rem 0.7rem 1rem; }
+    .info { grid-template-columns: 1fr 1fr; }
+    .nav .btn { padding: 0.75rem 0.4rem; font-size: 0.85rem; }
+    .nav .btn span { white-space: nowrap; }
+  }
+  :fullscreen body, body:fullscreen { background: var(--bg); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- MULAI -->
+  <section class="start" id="start">
+    <div class="logo ar">أ</div>
+    <h1 class="ar">اخْتِبَارُ أَدَبِ الْعَصْرِ الْوَسِيطِ</h1>
+    <p class="sub">Ujian pilihan ganda &middot; Bab 1 sampai Bab 3 &middot; Tingkat 5</p>
+    <div class="info">
+      <div><b id="nSoal">70</b>soal</div>
+      <div><b>2</b>pilihan jawaban</div>
+      <div><b id="infoLim">10 detik</b>waktu menjawab</div>
+      <div><b>Suara</b>dibacakan otomatis</div>
+    </div>
+    <div class="set">
+      <label>Suara pembaca (suara Arab dari browser)
+        <select id="voiceSel"><option value="">Otomatis (suara Arab)</option></select>
+      </label>
+      <label>Waktu menjawab per soal (detik)
+        <span style="display:flex;gap:.5rem">
+          <select id="limSel" style="flex:1">
+            <option value="3">3 detik</option><option value="5">5 detik</option><option value="7">7 detik</option>
+            <option value="10" selected>10 detik</option><option value="15">15 detik</option><option value="20">20 detik</option>
+            <option value="30">30 detik</option><option value="60">60 detik</option><option value="custom">Atur sendiri…</option>
+          </select>
+          <input type="number" id="limNum" min="1" max="300" step="1" value="10" inputmode="numeric" aria-label="Detik" style="width:6rem;height:2.5rem;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;padding:0 .7rem" hidden>
+        </span>
+      </label>
+      <label>Kecepatan baca
+        <select id="rateSel"><option value="0.7">Pelan</option><option value="0.85" selected>Sedang</option><option value="1">Normal</option><option value="1.3">Cepat</option><option value="1.7">Cepat sekali</option></select>
+      </label>
+      <label class="chk"><input type="checkbox" id="autoExp"> Bacakan penjelasan otomatis (setelah menjawab atau waktu habis)</label>
+      <label class="chk"><input type="checkbox" id="tickOn" checked> Bunyi detik saat hitung mundur berganti angka</label>
+      <div><button class="btn" id="btnTest" type="button"><i class="fa-solid fa-volume-high" aria-hidden="true"></i> Tes suara Arab</button> <span id="testRes" style="font-size:.82rem;color:var(--muted);margin-left:.5rem"></span></div>
+    </div>
+    <div class="note" id="voiceNote">Memeriksa suara Arab di browser…</div>
+    <div class="dock"><button class="btn btn--main" id="btnStart"><i class="fa-solid fa-play" aria-hidden="true"></i> Mulai Ujian</button></div>
+  </section>
+
+  <!-- UJIAN -->
+  <section id="quiz" hidden style="display:flex;flex-direction:column;flex:1;">
+    <div class="top">
+      <button class="icon" id="btnGrid" title="Daftar soal" aria-label="Daftar soal"><i class="fa-solid fa-table-cells" aria-hidden="true"></i></button>
+      <div class="count"><span id="cur">1</span><small> / <span id="tot">70</span></small></div>
+      <span class="chip" id="babChip">Bab 1</span>
+      <div class="spacer"></div>
+      <button class="icon" id="btnExpT" title="Bacakan penjelasan otomatis: aktif / mati" aria-label="Bacakan penjelasan otomatis" aria-pressed="false"><i class="fa-solid fa-book-open" aria-hidden="true"></i></button>
+      <button class="icon" id="btnMute" title="Suara aktif / mati" aria-label="Suara" aria-pressed="true"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></button>
+      <button class="icon" id="btnFull" title="Layar penuh" aria-label="Layar penuh"><i class="fa-solid fa-expand" aria-hidden="true"></i></button>
+    </div>
+    <div class="bar"><i id="prog"></i></div>
+
+    <div class="timer">
+      <div class="ring" id="ring"><span id="sec">10</span></div>
+      <div class="tstate" id="tstate">Menyiapkan…</div>
+      <label class="lim" title="Waktu menjawab per soal; berlaku mulai hitungan berikutnya"><input type="number" id="limQuick" min="1" max="300" step="1" value="10" inputmode="numeric" aria-label="Detik per soal"> dtk</label>
+    </div>
+
+    <div class="card">
+      <div class="qno">
+        <span class="chip" id="babName"></span>
+        <button class="icon" id="btnRead" title="Bacakan lagi" aria-label="Bacakan lagi"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></button>
+      </div>
+      <div class="qtext ar" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+      <div class="exp" id="exp" hidden>
+        <h3 id="expH"></h3>
+        <div class="ans" id="expA"></div>
+        <p id="expP"></p>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn" id="btnPrev"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span>Sebelumnya</span></button>
+      <button class="btn mid" id="btnFinish"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> <span>Selesai</span></button>
+      <button class="btn btn--main" id="btnNext"><span>Berikutnya</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </section>
+
+  <!-- HASIL -->
+  <section class="res" id="result" hidden>
+    <h1 class="ar" style="font-size:2rem;line-height:1.8">نَتِيجَةُ الِاخْتِبَارِ</h1>
+    <div class="score" id="score">0</div>
+    <div style="color:var(--muted)">dari 100</div>
+    <div class="stats">
+      <div class="ok"><b id="sOk">0</b>benar</div>
+      <div class="bad"><b id="sBad">0</b>salah</div>
+      <div class="to"><b id="sTo">0</b>belum dijawab</div>
+    </div>
+    <p id="resNote" style="color:var(--muted);font-size:.85rem;margin-bottom:1rem"></p>
+    <div class="acts">
+      <button class="btn btn--main" id="btnRedo"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Ulangi dari awal</button>
+      <button class="btn" id="btnBack"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Kembali ke soal</button>
+    </div>
+    <div class="rlist" id="rlist"></div>
+  </section>
+</div>
+
+<dialog id="dlgGrid">
+  <div class="dh"><span>Daftar soal</span><button class="icon" id="gridX" aria-label="Tutup"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+  <div class="grid" id="grid"></div>
+  <div class="legend">
+    <span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>benar</span>
+    <span><i style="background:var(--bad-bg);border:1px solid var(--bad)"></i>salah</span>
+    <span><i style="background:var(--warn-bg);border:1px solid var(--warn)"></i>waktu habis (dihitung salah)</span>
+    <span><i style="background:var(--card2);border:1px solid var(--border)"></i>belum</span>
+  </div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {"items": [{"b": 1, "q": "مَا الْمُرَادُ بِالْحُرُوبِ الصَّلِيبِيَّةِ؟", "o": ["حُرُوبٌ دَاخِلِيَّةٌ بَيْنَ الْقَبَائِلِ الْعَرَبِيَّةِ", "حُرُوبٌ بَيْنَ الْمُسْلِمِينَ وَالصَّلِيبِيِّينَ الْقَادِمِينَ مِنْ أُورُوبَّا"], "a": 1, "e": "Perang Salib adalah perang antara kaum Muslimin di Timur Arab dan orang-orang Salib yang datang dari Eropa untuk menduduki Baitul Maqdis dan negeri Syam."}, {"b": 1, "q": "كَمِ اسْتَمَرَّتِ الْحُرُوبُ الصَّلِيبِيَّةُ؟", "o": ["قَرْنًا وَاحِدًا فَقَطْ", "قَرْنَيْنِ مِنَ الزَّمَانِ"], "a": 1, "e": "Perang Salib berlangsung selama dua abad, yaitu tahun 490 sampai 690 H."}, {"b": 1, "q": "لِاحْتِلَالِ أَيِّ بِلَادٍ جَاءَ الصَّلِيبِيُّونَ؟", "o": ["بِلَادِ الْمَغْرِبِ وَالْأَنْدَلُسِ", "بَيْتِ الْمَقْدِسِ وَبِلَادِ الشَّامِ"], "a": 1, "e": "Orang-orang Salib datang untuk menduduki Baitul Maqdis dan negeri Syam."}, {"b": 1, "q": "أَيُّ غَرَضٍ يُعَدُّ لُبَّ الشِّعْرِ فِي عَصْرِ الْحُرُوبِ الصَّلِيبِيَّةِ؟", "o": ["الدَّعْوَةُ إِلَى الْجِهَادِ", "الْهِجَاءُ وَالسُّخْرِيَةُ"], "a": 0, "e": "Seruan jihad adalah inti puisi masa ini dan titik tolak para penyair untuk semua makna dan gagasan yang mereka garap."}, {"b": 1, "q": "أَيُّ غَرَضٍ يَتَنَاوَلُ مَعْرَكَةَ حِطِّينَ وَحِصَارَ عَكَّا؟", "o": ["وَصْفُ الْمَعَارِكِ الْحَرْبِيَّةِ", "الْغَزَلُ وَالنَّسِيبُ"], "a": 0, "e": "Pelukisan pertempuran memuat Pertempuran Hittin, penaklukan Baitul Maqdis, pengepungan Akka, dan penawanan Louis IX di Dumyat."}, {"b": 1, "q": "مَاذَا تَبِعَ وَصْفَ الْمَعَارِكِ فِي الشِّعْرِ؟", "o": ["وَصْفُ الْحَدَائِقِ وَالْأَزْهَارِ", "وَصْفُ أَدَوَاتِ الْقِتَالِ"], "a": 1, "e": "Setelah melukiskan pertempuran, penyair melukiskan alat perang seperti kuda, alat pengepungan, dan pertempuran laut."}, {"b": 1, "q": "مَنِ الَّذِي أُسِرَ فِي دِمْيَاطَ؟", "o": ["لُوِيسُ التَّاسِعُ", "صَلَاحُ الدِّينِ"], "a": 0, "e": "Yang ditawan di Dumyat adalah Louis IX, salah satu peristiwa yang dilukiskan penyair."}, {"b": 1, "q": "بِمَاذَا امْتَازَ شِعْرُ الْمَدِيحِ وَالرِّثَاءِ فِي هَذِهِ الْفَتْرَةِ؟", "o": ["بِأَنَّهُ صَادِقٌ يُمَجِّدُ الْبُطُولَةَ", "بِأَنَّهُ يَطْلُبُ الْمَالَ وَالْعَطَاءَ غَالِبًا"], "a": 0, "e": "Puisi pujian dan elegi pada masa ini jujur; dorongannya pada umumnya kekaguman pada kepahlawanan, bukan mencari harta."}, {"b": 1, "q": "هَلْ كَانَ الرِّثَاءُ مَقْصُورًا عَلَى الْأَشْخَاصِ؟", "o": ["نَعَمْ، كَانَ لِلْأَشْخَاصِ فَقَطْ", "لَا، فَقَدْ رَثَوُا الْمُدُنَ الْإِسْلَامِيَّةَ الَّتِي سَقَطَتْ"], "a": 1, "e": "Elegi tidak terbatas pada orang; ada pula elegi untuk kota-kota Islam yang jatuh ke tangan orang Salib."}, {"b": 1, "q": "أَيُّ مُصِيبَةٍ كَانَتْ مِنْ أَشَدِّ مَا وَقَعَ عَلَى الْمُسْلِمِينَ؟", "o": ["ازْدِهَارُ التِّجَارَةِ مَعَ أُورُوبَّا", "اسْتِيلَاءُ الصَّلِيبِيِّينَ عَلَى بَيْتِ الْمَقْدِسِ"], "a": 1, "e": "Dikuasainya Baitul Maqdis adalah bencana terberat sehingga para penyair mengucapkan syair penuh duka dan seruan menuntut balas."}, {"b": 1, "q": "عَلَى يَدِ مَنْ أَتَمَّ اللهُ اسْتِرْدَادَ بَيْتِ الْمَقْدِسِ؟", "o": ["صَلَاحِ الدِّينِ", "أُسَامَةَ بْنِ مُنْقِذٍ"], "a": 0, "e": "Allah menyempurnakan perebutan kembali kota itu di tangan Shalahuddin."}, {"b": 1, "q": "مَا الْأَغْرَاضُ الْعَامَّةُ لِلشِّعْرِ الَّتِي ذُكِرَتْ مَعَ الْأَغْرَاضِ الْأُخْرَى؟", "o": ["الْوَصْفُ وَالْغَزَلُ وَالْإِخْوَانِيَّاتُ", "الْهِجَاءُ وَالْفَخْرُ وَالْحِمَاسَةُ فَقَطْ"], "a": 0, "e": "Tujuan umum puisi pada setiap masa disebut: pelukisan, ghazal, dan ikhwaniyyat (puisi persahabatan)."}, {"b": 1, "q": "مَاذَا تُشْبِهُ الْقَصَائِدُ الطَّوِيلَةُ فِي هَذَا الْعَصْرِ؟", "o": ["الْمَلَاحِمَ", "الْمَقْطُوعَاتِ الْقَصِيرَةَ"], "a": 0, "e": "Salah satu ciri sastra masa ini adalah panjangnya qasidah dan munculnya yang menyerupai epos, akibat besarnya peristiwa."}, {"b": 1, "q": "لِمَاذَا يُعَدُّ هَذَا الشِّعْرُ مَرْجِعًا تَارِيخِيًّا مُهِمًّا؟", "o": ["لِأَنَّهُ خَالٍ مِنْ ذِكْرِ الْأَحْدَاثِ", "لِأَنَّهُ سِجِلٌّ حَافِلٌ بِالْأَحْدَاثِ"], "a": 1, "e": "Puisi ini catatan penuh peristiwa, memuat musibah dan kemenangan, sehingga menjadi rujukan sejarah penting."}, {"b": 1, "q": "لِمَاذَا كَثُرَ عَدَدُ الشُّعَرَاءِ فِي هَذَا الْعَصْرِ؟", "o": ["لِأَنَّ الشِّعْرَ اقْتَصَرَ عَلَى الْمُحْتَرِفِينَ", "لِأَنَّ الشِّعْرَ صَارَ تَعْبِيرًا عَنْ رُوحِ الْجِهَادِ"], "a": 1, "e": "Puisi tidak lagi terbatas pada penyair pujian profesional, melainkan ungkapan semangat jihad, sehingga jumlah penyair banyak."}, {"b": 1, "q": "كَيْفَ كَانَتْ لُغَةُ الشِّعْرِ فِي الْغَالِبِ؟", "o": ["سَلِسَةً وَاضِحَةً مَعَ كَثْرَةِ التَّشْبِيهَاتِ", "غَرِيبَةً مُعَقَّدَةً دَائِمًا"], "a": 0, "e": "Pada umumnya ungkapannya lancar, jelas, dan banyak tasybih, isti'arah, dan kinayah, meski ada juga yang aneh dan rumit."}, {"b": 1, "q": "مَاذَا دَخَلَ فِي الشِّعْرِ نَتِيجَةَ الِاحْتِكَاكِ بِالصَّلِيبِيِّينَ؟", "o": ["بَعْضُ الْأَلْفَاظِ الْإِفْرِنْجِيَّةِ", "أَلْفَاظٌ يُونَانِيَّةٌ قَدِيمَةٌ"], "a": 0, "e": "Persinggungan dengan orang Salib memasukkan beberapa kata Eropa ke dalam puisi."}, {"b": 1, "q": "مَا شَأْنُ بَعْضِ الْقَصَائِدِ الرَّائِعَةِ فِي هَذَا الْعَصْرِ؟", "o": ["هِيَ لِشُعَرَاءَ مَجْهُولِينَ", "هِيَ كُلُّهَا لِشُعَرَاءَ مَشْهُورِينَ"], "a": 0, "e": "Banyak qasidah indah muncul, tetapi milik penyair-penyair yang tak dikenal."}, {"b": 1, "q": "مَا هَدَفُ شِعْرِ الْمَدِيحِ وَالرِّثَاءِ فِي صُورَةِ الْمَمْدُوحِ؟", "o": ["إِبْرَازُ صُورَةِ الْمُدَافِعِ عَنِ الْمُسْلِمِينَ", "إِبْرَازُ الْغِنَى وَالتَّرَفِ"], "a": 0, "e": "Puisi itu bertujuan menonjolkan sosok pembela kaum Muslimin yang merebut kembali negeri dan menghalau penyerang."}, {"b": 1, "q": "كَيْفَ تَأَثَّرَتِ الْأَغْرَاضُ الْعَامَّةُ كَالْغَزَلِ وَالْوَصْفِ؟", "o": ["تَأَثَّرَتْ بِالْجَوِّ الْعَامِّ زَمَنَ الْحُرُوبِ", "لَمْ تَتَأَثَّرْ بِالْحُرُوبِ أَبَدًا"], "a": 0, "e": "Tujuan umum itu, walau jauh dari pertikaian, tetap terpengaruh suasana umum Syam dan Mesir pada masa Perang Salib."}, {"b": 2, "q": "بِمَاذَا لُقِّبَ أَبُو الْمُظَفَّرِ الْأَبِيوَرْدِيُّ؟", "o": ["الْمُتَنَبِّي الصَّغِيرِ", "شَاعِرِ النِّيلِ"], "a": 0, "e": "Al-Abiwardi dijuluki al-Mutanabbi kecil karena menjadi salah satu penyair besar masanya."}, {"b": 2, "q": "كَيْفَ تُوُفِّيَ الْأَبِيوَرْدِيُّ؟", "o": ["مَسْمُومًا فِي بَغْدَادَ", "فِي سَاحَةِ الْمَعْرَكَةِ"], "a": 0, "e": "Ia wafat diracun di Baghdad tahun 507 H."}, {"b": 2, "q": "مَاذَا وَصَفَ الْأَبِيوَرْدِيُّ فِي قَصِيدَتِهِ؟", "o": ["تَفَرُّقَ الْمُسْلِمِينَ وَاسْتِيلَاءَ الصَّلِيبِيِّينَ عَلَى الْقُدْسِ", "انْتِصَارَ الْمُسْلِمِينَ فِي حِطِّينَ"], "a": 0, "e": "Syairnya melukiskan perpecahan kaum Muslimin dan dikuasainya Al-Quds oleh orang Salib pada tahun 492 H."}, {"b": 2, "q": "مَنِ الَّذِي مَدَحَهُ ابْنُ الْقَيْسَرَانِيِّ فِي قَصِيدَتِهِ؟", "o": ["الْخَلِيفَةَ الْمُسْتَعْصِمَ", "نُورَ الدِّينِ"], "a": 1, "e": "Ibnu al-Qaisarani memuji Nuruddin dan melukiskan jihad serta kemenangannya atas orang Salib."}, {"b": 2, "q": "أَيْنَ وُلِدَ ابْنُ الْقَيْسَرَانِيِّ؟", "o": ["فِي بَغْدَادَ", "فِي عَكَّا بِفِلَسْطِينَ"], "a": 1, "e": "Ia lahir di Akka, Palestina, tahun 478 H."}, {"b": 2, "q": "مَنْ شَيْخُ ابْنِ الْقَيْسَرَانِيِّ فِي الشِّعْرِ؟", "o": ["أَبُو تَمَّامٍ", "ابْنُ الْخَيَّاطِ"], "a": 1, "e": "Ibnu al-Qaisarani berguru syair kepada Ibnu al-Khayyath."}, {"b": 2, "q": "مَنْ كَاتِبُ صَلَاحِ الدِّينِ وَرَئِيسُ دِيوَانِ الْإِنْشَاءِ؟", "o": ["الْعِمَادُ الْأَصْفَهَانِيُّ", "أُسَامَةُ بْنُ مُنْقِذٍ"], "a": 0, "e": "Al-'Imad al-Ishfahani adalah sekretaris Shalahuddin al-Ayyubi dan kepala Diwan Insya' pada masanya."}, {"b": 2, "q": "أَيُّ هَذِهِ الْكُتُبِ مِنْ تَأْلِيفِ الْعِمَادِ الْأَصْفَهَانِيِّ؟", "o": ["الْفَتْحُ الْقُسِّيُّ فِي الْفَتْحِ الْقُدْسِيِّ", "الِاعْتِبَارُ"], "a": 0, "e": "Al-Fath al-Qussi fi al-Fath al-Qudsi karya al-'Imad; adapun al-I'tibar karya Usamah bin Munqidz."}, {"b": 2, "q": "مَا كِتَابُ (الِاعْتِبَارِ) لِأُسَامَةَ بْنِ مُنْقِذٍ؟", "o": ["مُعْجَمٌ لُغَوِيٌّ", "تَرْجَمَةٌ ذَاتِيَّةٌ لِحَيَاتِهِ"], "a": 1, "e": "Al-I'tibar dianggap otobiografi hidup Usamah bin Munqidz."}, {"b": 2, "q": "أَيْنَ وُلِدَ أُسَامَةُ بْنُ مُنْقِذٍ؟", "o": ["فِي الْمَوْصِلِ", "فِي شَيْزَرَ قُرْبَ حَمَاةَ"], "a": 1, "e": "Usamah lahir di Syaizar dekat Hamah, Suriah, tahun 488 H."}, {"b": 2, "q": "مَنِ الْجُوسْلِينُ الَّذِي ذُكِرَ فِي شِعْرِ أُسَامَةَ؟", "o": ["أَحَدُ قَادَةِ الصَّلِيبِيِّينَ الَّذِينَ وَقَعُوا فِي الْأَسْرِ", "أَحَدُ قَادَةِ الْمُسْلِمِينَ"], "a": 0, "e": "Jocelin adalah salah satu panglima Salib yang jatuh tawanan, demikian pula Baldwin."}, {"b": 2, "q": "مَنْ قَائِلُ: «جُنْدُ السَّمَاءِ لِهَذَا الْمَلْكِ أَعْوَانُ»؟", "o": ["أَبُو عَلِيٍّ الْجُوَيْنِيُّ", "ابْنُ نُبَاتَةَ الْمِصْرِيُّ"], "a": 0, "e": "Syair itu karya Abu 'Ali al-Hasan bin 'Ali al-Juwaini tentang penaklukan Baitul Maqdis oleh Shalahuddin."}, {"b": 2, "q": "كَمْ عَامًا صَرَخَتْ بِلَادُ اللهِ حَتَّى لَبَّى صَلَاحُ الدِّينِ دَعْوَتَهُمْ؟", "o": ["عَشْرَ سَنَوَاتٍ", "تِسْعِينَ عَامًا"], "a": 1, "e": "Dalam syair al-Juwaini: sembilan puluh tahun negeri Allah menjerit sebelum Shalahuddin memenuhi seruan mereka."}, {"b": 2, "q": "بِمَ شَبَّهَ الْجُوَيْنِيُّ فَتْحَ بَيْتِ الْمَقْدِسِ؟", "o": ["بِغَزَوَاتِ الْمُلُوكِ الْجَبَابِرَةِ", "بِفُتُوحِ الْأَنْبِيَاءِ"], "a": 1, "e": "Ia berkata: inilah penaklukan para nabi, yang harganya tak lain syukur dengan perbuatan."}, {"b": 2, "q": "فِي أَيِّ مَعْرَكَةٍ قَالَ الْعِمَادُ: «وَنِعْمَ مَجَالُ الْخَيْلِ»؟", "o": ["دِمْيَاطَ", "حِطِّينَ"], "a": 1, "e": "Al-'Imad menyebut Hittin sebagai sebaik-baik medan kuda dalam syair pujiannya kepada Shalahuddin."}, {"b": 2, "q": "مَا رَأْيُ صَلَاحِ الدِّينِ فِي خُطْبَتِهِ عَنِ الْعَدُوِّ؟", "o": ["مُنَاجَزَتُهُ", "الصُّلْحُ مَعَهُ"], "a": 0, "e": "Dalam khutbahnya ia berkata: pendapatku adalah menghadapinya segera."}, {"b": 2, "q": "إِلَى مَنْ كَتَبَ الْعِمَادُ رِسَالَةً عَلَى لِسَانِ صَلَاحِ الدِّينِ؟", "o": ["الْخَلِيفَةِ الْفَاطِمِيِّ", "الْخَلِيفَةِ الْعَبَّاسِيِّ النَّاصِرِ"], "a": 1, "e": "Surat itu kepada khalifah Abbasiyah an-Nashir, memberinya kabar gembira penaklukan Al-Quds."}, {"b": 2, "q": "بِمَاذَا بَشَّرَتْ رِسَالَةُ الْعِمَادِ الْخَلِيفَةَ؟", "o": ["بِسُقُوطِ دِمَشْقَ", "بِفَتْحِ الْقُدْسِ"], "a": 1, "e": "Isi surat itu kabar gembira penaklukan Al-Quds."}, {"b": 2, "q": "أَيْنَ أَلْقَى مُحْيِي الدِّينِ الْقُرَشِيُّ خُطْبَتَهُ؟", "o": ["فِي الْمَسْجِدِ الْأَقْصَى", "فِي الْجَامِعِ الْأُمَوِيِّ"], "a": 0, "e": "Khutbah itu di Masjid al-Aqsha setelah Shalahuddin merebutnya kembali."}, {"b": 2, "q": "فِي أَيِّ عَامٍ وُلِدَ مُحْيِي الدِّينِ الْقُرَشِيُّ؟", "o": ["عَامَ ٦٥٠ هـ", "عَامَ ٥٥٠ هـ"], "a": 1, "e": "Muhyiddin lahir tahun 550 H dan wafat di Damaskus tahun 598 H."}, {"b": 3, "q": "مَا الْمُرَادُ بِالدُّوَلِ الْمُتَتَابِعَةِ؟", "o": ["الدُّوَلُ بَيْنَ سُقُوطِ بَغْدَادَ وَعَصْرِ النَّهْضَةِ الْحَدِيثَةِ", "الدُّوَلُ الَّتِي قَامَتْ قَبْلَ الْإِسْلَامِ"], "a": 0, "e": "Dinasti berturut-turut adalah dinasti yang muncul antara jatuhnya Baghdad ke tangan Tatar dan masa kebangkitan modern."}, {"b": 3, "q": "فِي أَيِّ عَامٍ سَقَطَتْ بَغْدَادُ فِي يَدِ التَّتَارِ؟", "o": ["٦٥٦ هـ", "٧٥٦ هـ"], "a": 0, "e": "Baghdad jatuh ke tangan Tatar tahun 656 H."}, {"b": 3, "q": "مَا أَشْهَرُ الدُّوَلِ فِي هَذَا الْعَصْرِ؟", "o": ["الْمَمَالِيكُ وَالْعُثْمَانِيُّونَ", "الْأُمَوِيُّونَ وَالْعَبَّاسِيُّونَ"], "a": 0, "e": "Dinasti paling terkenal pada masa ini adalah Mamluk dan Utsmani."}, {"b": 3, "q": "أَيْنَ انْحَصَرَ النَّشَاطُ الْأَدَبِيُّ تَقْرِيبًا؟", "o": ["فِي الْعِرَاقِ وَفَارِسَ", "فِي الشَّامِ وَمِصْرَ"], "a": 1, "e": "Kegiatan sastra hampir terbatas pada Syam dan Mesir, karena Irak dihancurkan Tatar."}, {"b": 3, "q": "مَاذَا فَعَلَ التَّتَارُ بِمَظَاهِرِ الثَّقَافَةِ فِي الْعِرَاقِ؟", "o": ["أَحْرَقُوا الْكُتُبَ وَهَدَمُوا الْمَدَارِسَ", "بَنَوُا الْمَدَارِسَ وَجَمَعُوا الْكُتُبَ"], "a": 0, "e": "Tatar membakar buku, meruntuhkan sekolah, dan mengusir para ulama."}, {"b": 3, "q": "مَنِ الْحَافِظُ الَّذِي وَصَفَ مَجْزَرَةَ بَغْدَادَ فِي (الْبِدَايَةِ وَالنِّهَايَةِ)؟", "o": ["ابْنُ خَلْدُونَ", "ابْنُ كَثِيرٍ"], "a": 1, "e": "Al-Hafizh Ibnu Katsir menguraikannya dalam al-Bidayah wan-Nihayah."}, {"b": 3, "q": "كَمْ يَوْمًا ظَلَّ السَّيْفُ يَقْتُلُ أَهْلَ بَغْدَادَ؟", "o": ["سَبْعَةَ أَيَّامٍ", "أَرْبَعِينَ يَوْمًا"], "a": 1, "e": "Pedang terus membunuh penduduk Baghdad selama empat puluh hari."}, {"b": 3, "q": "مَنِ الْخَلِيفَةُ الَّذِي قُتِلَ عِنْدَ سُقُوطِ بَغْدَادَ؟", "o": ["الْمُسْتَعْصِمُ بِاللهِ", "الْمَأْمُونُ"], "a": 0, "e": "Khalifah al-Musta'shim billah dibunuh pada hari Rabu tanggal empat belas Shafar."}, {"b": 3, "q": "مَاذَا يُسَمِّي بَعْضُهُمْ هَذَا الْعَصْرَ؟", "o": ["عَصْرَ الِانْحِطَاطِ", "عَصْرَ الْعِزِّ"], "a": 0, "e": "Sebagian menyebutnya masa kemunduran; penilaian itu benar pada beberapa sisi, tetapi menzalimi jasa ulama dan sastrawan masa ini."}, {"b": 3, "q": "مَا الزَّوْرَاءُ؟", "o": ["اسْمٌ مِنْ أَسْمَاءِ بَغْدَادَ", "اسْمٌ مِنْ أَسْمَاءِ دِمَشْقَ"], "a": 0, "e": "Az-Zaura' termasuk nama kota Baghdad."}, {"b": 3, "q": "مَنْ قَائِلُ: «قِفْ فِي دِيَارِ الظَّاعِنِينَ وَنَادِهَا»؟", "o": ["شَمْسُ الدِّينِ الْكُوفِيُّ", "تَقِيُّ الدِّينِ التَّنُوخِيُّ"], "a": 0, "e": "Syair itu milik Shamsuddin al-Kufi; adapun at-Tanukhi mengawali dengan «Li sa'ili ad-dam'i 'an Baghdad»."}, {"b": 3, "q": "مَنْ هُوَ سَعْدِيٌّ الشِّيرَازِيُّ؟", "o": ["شَاعِرٌ فَارِسِيٌّ كَبِيرٌ لَهُ شِعْرٌ بِالْعَرَبِيَّةِ أَيْضًا", "شَاعِرٌ عَرَبِيٌّ لَمْ يَكْتُبْ بِالْفَارِسِيَّةِ"], "a": 0, "e": "Sa'di asy-Syirazi penyair besar Persia yang punya syair berbahasa Persia dan Arab."}, {"b": 3, "q": "مَا مِنْ خَصَائِصِ الشِّعْرِ فِي عَصْرِ الدُّوَلِ الْمُتَتَابِعَةِ؟", "o": ["الْعِنَايَةُ بِالْمُحَسِّنَاتِ الْبَدِيعِيَّةِ", "قُوَّةُ الِابْتِكَارِ وَقِلَّةُ السَّرِقَاتِ"], "a": 0, "e": "Puisi masa ini cenderung pada keterampilan lafal dan seni badi' seperti jinas dan thibaq, sementara inovasi melemah dan pencurian syair banyak."}, {"b": 3, "q": "أَيُّ حِرْفَةٍ كَانَ يَعْمَلُ بِهَا بَعْضُ الشُّعَرَاءِ؟", "o": ["الْوِزَارَةُ وَالْقَضَاءُ", "الْخِيَاطَةُ وَالنِّجَارَةُ"], "a": 1, "e": "Penyair bekerja pada kerajinan untuk mencari nafkah, di antaranya tukang jagal, penjahit, dan tukang kayu."}, {"b": 3, "q": "مَنْ أَشْهَرُ شُعَرَاءِ هَذَا الْعَصْرِ؟", "o": ["التَّلَعْفَرِيُّ", "صَفِيُّ الدِّينِ الْحِلِّيُّ"], "a": 1, "e": "Shafiyyuddin al-Hilli dianggap penyair paling terkenal pada masa ini."}, {"b": 3, "q": "مَاذَا كَانَ أَكْثَرُ شِعْرِ التَّلَعْفَرِيِّ؟", "o": ["الْحِكْمَةَ", "الْغَزَلَ"], "a": 1, "e": "Kebanyakan syair at-Tal'afari tentang ghazal."}, {"b": 3, "q": "بِمَ اشْتُهِرَ شِعْرُ عُمَرَ بْنِ الْوَرْدِيِّ؟", "o": ["بِالْغَزَلِ", "بِالْحِكْمَةِ"], "a": 1, "e": "Syair 'Umar bin al-Wardi penuh hikmah."}, {"b": 3, "q": "أَيْنَ وُلِدَ ابْنُ نُبَاتَةَ الْمِصْرِيُّ؟", "o": ["فِي الْقَاهِرَةِ", "فِي حَلَبَ"], "a": 0, "e": "Ibnu Nubatah lahir di Kairo tahun 686 H."}, {"b": 3, "q": "مَا أَهَمُّ أَسْبَابِ كَثْرَةِ الْمُؤَلَّفَاتِ فِي هَذَا الْعَصْرِ؟", "o": ["الْغَيْرَةُ الدِّينِيَّةُ وَالْحِرْصُ عَلَى التُّرَاثِ", "قِلَّةُ الْمَدَارِسِ وَخَزَائِنِ الْكُتُبِ"], "a": 0, "e": "Di antara sebab terpenting: banyak lembaga, semangat keagamaan, upaya mengganti yang dibakar di Baghdad, penghormatan sultan, dan persaingan ulama."}, {"b": 3, "q": "مَنْ مُؤَلِّفُ (الدُّرِّ الْمَنْثُورِ فِي التَّفْسِيرِ بِالْمَأْثُورِ)؟", "o": ["الْبَيْضَاوِيُّ", "السُّيُوطِيُّ"], "a": 1, "e": "Ad-Durr al-Mantsur karya as-Suyuthi; adapun Anwar at-Tanzil karya al-Baidhawi."}, {"b": 3, "q": "مَنْ مُؤَلِّفُ (صُبْحِ الْأَعْشَى فِي صِنَاعَةِ الْإِنْشَا)؟", "o": ["النُّوَيْرِيُّ", "الْقَلْقَشَنْدِيُّ"], "a": 1, "e": "Shubh al-A'sya karya Ahmad bin 'Ali al-Qalqasyandi."}, {"b": 3, "q": "مَنْ مُؤَلِّفُ (نِهَايَةِ الْأَرَبِ فِي فُنُونِ الْأَدَبِ)؟", "o": ["النُّوَيْرِيُّ", "ابْنُ مَنْظُورٍ"], "a": 0, "e": "Nihayah al-Arab fi Funun al-Adab karya Syihabuddin an-Nuwairi."}, {"b": 3, "q": "إِلَى كَمْ فَنًّا قُسِّمَ كِتَابُ (نِهَايَةِ الْأَرَبِ)؟", "o": ["ثَلَاثَةِ فُنُونٍ", "خَمْسَةِ فُنُونٍ"], "a": 1, "e": "Kitab itu dibagi lima seni: langit dan bumi, manusia, hewan, tumbuhan, serta sejarah dan berita."}, {"b": 3, "q": "عَلَى أَيِّ نِظَامٍ رُتِّبَ مُعْجَمُ (لِسَانِ الْعَرَبِ)؟", "o": ["حَسَبَ أَوَّلِ حُرُوفِ الْكَلِمَةِ", "حَسَبَ آخِرِ حُرُوفِ الْكَلِمَةِ"], "a": 1, "e": "Ibnu Manzhur mengikuti sistem al-Jauhari dalam ash-Shihah: urutan menurut huruf terakhir kata."}, {"b": 3, "q": "مَاذَا يُسَمَّى رَئِيسُ دِيوَانِ الْإِنْشَاءِ؟", "o": ["كَاتِبَ السِّرِّ", "كَاتِبَ الدَّرْجِ"], "a": 0, "e": "Kepala Diwan al-Insya' disebut Kātib as-Sirr dan punya kedudukan tertinggi dalam negara."}, {"b": 3, "q": "مَنْ كُتَّابُ (الدَّرْجِ)؟", "o": ["مَنْ يُحَرِّرُونَ الرَّسَائِلَ السُّلْطَانِيَّةَ", "مَنْ يُجِيدُونَ الْخَطَّ فَيَنْقُلُونَ الرَّسَائِلَ"], "a": 1, "e": "Juru tulis ad-Darj mahir tulisan lebih daripada karang-mengarang, sehingga bertugas menyalin surat; penyusun naskah adalah juru tulis ad-Dast."}, {"b": 3, "q": "مَاذَا يَغْلِبُ عَلَى الْكِتَابَةِ الْإِخْوَانِيَّةِ؟", "o": ["التَّكَلُّفُ وَالسَّجْعُ", "الْبَسَاطَةُ وَالْإِيجَازُ"], "a": 0, "e": "Tulisan persahabatan didominasi kepura-puraan, saja', dan muhassinat lafzhiyyah."}, {"b": 3, "q": "فِي مَدْحِ مَنْ قَالَ الْحِلِّيُّ: «لَا يَمْتَطِي الْمَجْدَ مَنْ لَمْ يَرْكَبِ الْخَطَرَا»؟", "o": ["الْمَلِكِ الصَّالِحِ", "السُّلْطَانِ النَّاصِرِ"], "a": 0, "e": "Syair itu al-Hilli memuji al-Malik ash-Shalih."}, {"b": 3, "q": "مَنْ رَثَاهُ ابْنُ نُبَاتَةَ الْمِصْرِيُّ فِي قَصِيدَتِهِ؟", "o": ["وَلَدُهُ", "أَبُوهُ"], "a": 0, "e": "Ibnu Nubatah meratapi putranya."}, {"b": 3, "q": "بَيْنَ أَيِّ شَيْئَيْنِ دَارَتْ مُنَاظَرَةُ ابْنِ نُبَاتَةَ؟", "o": ["السَّيْفِ وَالْقَلَمِ", "الشِّعْرِ وَالنَّثْرِ"], "a": 0, "e": "Perdebatan terkenal Ibnu Nubatah berlangsung antara pedang dan pena."}], "bab": {"1": "Sastra Perang Salib", "2": "Contoh Sastra Perang Salib", "3": "Sastra Dinasti Berturut-turut"}};
+const ITEMS = DATA.items, N = ITEMS.length;
+const BAB = DATA.bab;
+const $ = (id) => document.getElementById(id);
+const setIcon = (btn, cls) => { btn.innerHTML = '<i class="fa-solid ' + cls + '" aria-hidden="true"></i>'; };
+const AR_LETTERS = ['أ', 'ب'];
+const AR_DIG = '٠١٢٣٤٥٦٧٨٩';
+const arNum = (n) => String(n).replace(/\d/g, (d) => AR_DIG[d]);
+
+const S = {
+  limit: 10000,
+  i: 0,
+  ans: new Array(N).fill(null),   // null = belum, 0/1 = pilihan, -1 = waktu habis
+  to: [], mute: false, rate: 0.85, voiceURI: '', autoExp: false, tick: true, audio: null, advT: 0, lastSec: 0,
+  token: 0, timerId: 0, remain: 10000, last: 0, speaking: false
+};
+
+/* ============================ SUARA ============================ */
+const synth = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) ? window.speechSynthesis : null;
+let voices = [];
+const isAr = (v) => /^ar([-_]|$)/i.test(v.lang) || /arab|عرب/i.test(v.name);
+const isId = (v) => /^id([-_]|$)/i.test(v.lang);
+
+function refreshVoices() {
+  if (!synth) return;
+  voices = synth.getVoices();
+  const sel = $('voiceSel'), keep = sel.value || S.voiceURI;
+  sel.innerHTML = '<option value="">Otomatis (suara Arab)</option>';
+  voices.filter(isAr).concat(voices.filter((v) => !isAr(v))).forEach((v) => {
+    const o = document.createElement('option');
+    o.value = v.voiceURI; o.textContent = v.name + ' — ' + v.lang;
+    sel.appendChild(o);
+  });
+  sel.value = keep;
+  const n = voices.filter(isAr).length;
+  const note = $('voiceNote');
+  if (n) { note.className = 'note ok'; note.textContent = 'Suara Arab ditemukan (' + n + '). Soal akan dibacakan otomatis setelah kamu menekan Mulai.'; }
+  else { note.className = 'note'; note.textContent = 'Suara Arab belum terdeteksi di perangkat ini. Pasang suara Arab di pengaturan teks-ke-suara (text-to-speech) perangkat; jika tidak, soal tetap berjalan tanpa suara.'; }
+}
+if (synth) { refreshVoices(); synth.addEventListener('voiceschanged', refreshVoices); }
+else { const n = $('voiceNote'); n.textContent = 'Browser ini tidak mendukung suara (Speech Synthesis). Ujian tetap bisa dikerjakan tanpa suara.'; }
+
+function pickVoice(lang) {
+  if (lang === 'ar') {
+    if (S.voiceURI) { const v = voices.find((x) => x.voiceURI === S.voiceURI); if (v) return v; }
+    return voices.find(isAr) || null;
+  }
+  return voices.find(isId) || null;
+}
+function stopSpeech() {
+  S.token++; S.speaking = false;
+  if (synth) { try { synth.cancel(); } catch (e) {} }
+}
+/* Bacakan beberapa potongan teks berurutan; done() dipanggil sekali saat selesai / gagal.
+   report(hasil) opsional: 'ok' | 'senyap' | 'galat:<kode>' */
+function say(parts, lang, done, report) {
+  const busy = !!(synth && (synth.speaking || synth.pending));
+  stopSpeech();
+  const my = S.token;
+  let finished = false, started = false, err = '';
+  const finish = () => {
+    if (finished || my !== S.token) return;
+    finished = true; S.speaking = false; clearTimeout(guard); clearTimeout(boot);
+    if (report) report(started ? 'ok' : (err ? 'galat:' + err : 'senyap'));
+    done && done();
+  };
+  const guard = setTimeout(finish, 6000 + parts.join(' ').length * 130);   // pengaman bila onend tidak terpanggil
+  const boot = setTimeout(() => { if (!started && !synth.speaking) finish(); }, 2500);
+  if (!synth || S.mute) { clearTimeout(guard); clearTimeout(boot); setTimeout(finish, 0); return; }
+  S.speaking = true;
+  const go = (k) => {
+    if (my !== S.token) return;
+    if (k >= parts.length) { finish(); return; }
+    const u = new SpeechSynthesisUtterance(parts[k]);
+    u.lang = lang === 'ar' ? 'ar-SA' : 'id-ID';
+    const v = pickVoice(lang); if (v) { u.voice = v; u.lang = v.lang; }
+    u.rate = lang === 'ar' ? S.rate : 1;
+    u.onstart = () => { started = true; };
+    u.onend = () => go(k + 1);
+    u.onerror = (e) => {
+      if (my !== S.token) return;
+      err = (e && e.error) || 'error';
+      if (err === 'not-allowed') toast('Suara diblokir browser — ketuk tombol bacakan ulang (ikon panah)');
+      go(k + 1);
+    };
+    synth.speak(u);
+  };
+  // Chrome kadang membuang ucapan yang dipanggil tepat setelah cancel(): beri jeda hanya bila tadi sedang bicara
+  if (busy) setTimeout(() => go(0), 80); else go(0);
+}
+const clean = (t) => t.replace(/[«»"]/g, '').replace(/\(([٠-٩0-9]+)\)/g, ' $1 ');
+const ONES = ['', 'وَاحِدٍ', 'اثْنَيْنِ', 'ثَلَاثَةٍ', 'أَرْبَعَةٍ', 'خَمْسَةٍ', 'سِتَّةٍ', 'سَبْعَةٍ', 'ثَمَانِيَةٍ', 'تِسْعَةٍ', 'عَشَرَةٍ',
+  'أَحَدَ عَشَرَ', 'اثْنَيْ عَشَرَ', 'ثَلَاثَةَ عَشَرَ', 'أَرْبَعَةَ عَشَرَ', 'خَمْسَةَ عَشَرَ', 'سِتَّةَ عَشَرَ', 'سَبْعَةَ عَشَرَ', 'ثَمَانِيَةَ عَشَرَ', 'تِسْعَةَ عَشَرَ'];
+const TENS = ['', '', 'عِشْرِينَ', 'ثَلَاثِينَ', 'أَرْبَعِينَ', 'خَمْسِينَ', 'سِتِّينَ', 'سَبْعِينَ', 'ثَمَانِينَ', 'تِسْعِينَ'];
+function arNumber(n) {
+  if (n < 20) return ONES[n];
+  const t = Math.floor(n / 10), u = n % 10;
+  return u ? ONES[u].replace(/ٍ$/, '') + ' وَ' + TENS[t] : TENS[t];
+}
+const numPhrase = (i) => 'السُّؤَالُ رَقْمُ ' + arNumber(i + 1);
+
+function speakQuestion(i, done) {
+  const it = ITEMS[i];
+  say([numPhrase(i), clean(it.q), 'الْخِيَارُ الْأَوَّلُ: ' + clean(it.o[0]), 'الْخِيَارُ الثَّانِي: ' + clean(it.o[1])], 'ar', done);
+}
+
+/* ============================ TIMER ============================ */
+function stopTimer() { clearInterval(S.timerId); S.timerId = 0; }
+function beep(freq, dur) {
+  if (!S.audio || !S.tick || S.mute) return;
+  try {
+    const a = S.audio, o = a.createOscillator(), g = a.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, a.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.12, a.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
+    o.connect(g); g.connect(a.destination); o.start(); o.stop(a.currentTime + dur + 0.02);
+  } catch (e) {}
+}
+function setRing(ms, text) {
+  const p = Math.max(0, Math.min(100, ms / S.limit * 100));
+  $('ring').style.setProperty('--p', p);
+  $('ring').classList.toggle('low', ms <= 3000);
+  $('sec').textContent = Math.ceil(ms / 1000);
+  if (text) $('tstate').textContent = text;
+}
+function startTimer(i) {
+  stopTimer();
+  S.remain = S.limit; S.last = performance.now(); S.lastSec = Math.round(S.limit / 1000);
+  setRing(S.remain, 'Waktu menjawab berjalan…');
+  S.timerId = setInterval(() => {
+    if (S.i !== i || S.ans[i] !== null) { stopTimer(); return; }
+    const now = performance.now();
+    if (!document.hidden) S.remain -= now - S.last;
+    S.last = now;
+    setRing(S.remain);
+    const sec = Math.max(0, Math.ceil(S.remain / 1000));
+    if (sec !== S.lastSec) { S.lastSec = sec; if (sec > 0) beep(sec <= 3 ? 988 : 660, sec <= 3 ? 0.16 : 0.07); }
+    if (S.remain <= 0) { stopTimer(); onTimeout(i); }
+  }, 100);
+}
+function onTimeout(i) {
+  if (S.ans[i] !== null) return;
+  stopSpeech(); clearTimeout(S.advT);
+  const it = ITEMS[i];
+  S.ans[i] = 1 - it.a;       // dijawab otomatis dengan pilihan yang salah
+  S.to[i] = true;            // ditandai: waktu habis (dihitung salah)
+  beep(300, 0.35);
+  if (S.i === i) render(i);
+  updateGrid();
+  $('sec').textContent = '0';
+  $('tstate').textContent = 'Waktu habis — dijawab otomatis (salah). Jawaban benar dibacakan…';
+  const letter = AR_LETTERS[it.a];
+  const lanjut = (wait) => {
+    S.advT = setTimeout(() => { if (S.i !== i) return; if (i < N - 1) go(i + 1); else showResult(); }, wait);
+  };
+  say(['الْجَوَابُ الصَّحِيحُ: ' + clean(it.o[it.a])], 'ar', () => {
+    const heard = S.heard;                 // bila tanpa suara, beri waktu membaca jawaban di layar
+    if (S.autoExp) { $('tstate').textContent = 'Penjelasan dibacakan…'; say([it.e], 'id', () => lanjut(S.heard2 ? 900 : (heard ? 900 : 4000)), (h) => { S.heard2 = h === 'ok'; }); }
+    else lanjut(heard ? 900 : 2600);
+  }, (h) => { S.heard = h === 'ok'; });
+}
+
+/* ============================ TAMPILAN ============================ */
+let toastT = 0;
+function toast(t) { const e = $('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove('show'), 1600); }
+
+function statusOf(i) { const a = S.ans[i]; if (a === null) return 'na'; if (S.to[i]) return 'to'; return a === ITEMS[i].a ? 'ok' : 'bad'; }
+
+function render(i) {
+  const it = ITEMS[i], a = S.ans[i];
+  $('cur').textContent = i + 1;
+  $('babChip').textContent = 'Bab ' + it.b;
+  $('babName').textContent = 'Bab ' + it.b + ' · ' + BAB[it.b];
+  $('prog').style.width = ((i + 1) / N * 100) + '%';
+  $('qtext').textContent = it.q;
+  const box = $('opts'); box.innerHTML = '';
+  it.o.forEach((t, k) => {
+    const b = document.createElement('button');
+    b.className = 'opt'; b.type = 'button';
+    b.innerHTML = '<span class="lt"></span><span class="tx"></span>';
+    b.querySelector('.lt').textContent = AR_LETTERS[k];
+    b.querySelector('.tx').textContent = t;
+    b.addEventListener('click', () => answer(i, k));
+    if (a !== null) {
+      b.disabled = true;
+      if (k === it.a) b.classList.add('is-ok');
+      else if (k === a) b.classList.add('is-bad');
+      else b.classList.add('is-dim');
+    }
+    box.appendChild(b);
+  });
+  const exp = $('exp');
+  if (a === null) { exp.hidden = true; }
+  else {
+    exp.hidden = false;
+    const st = statusOf(i);
+    exp.className = 'exp ' + (st === 'ok' ? 'ok' : st === 'bad' ? 'bad' : 'warn');
+    $('expH').innerHTML = st === 'ok' ? '<i class="fa-solid fa-circle-check"></i> Jawaban benar'
+      : st === 'bad' ? '<i class="fa-solid fa-circle-xmark"></i> Jawaban salah'
+      : '<i class="fa-solid fa-hourglass-end"></i> Waktu habis — dijawab otomatis, dihitung salah';
+    $('expA').innerHTML = 'Jawaban yang benar: <b class="ar"></b>';
+    $('expA').querySelector('b').textContent = AR_LETTERS[it.a] + ' — ' + it.o[it.a];
+    $('expP').textContent = it.e;
+  }
+  $('btnPrev').disabled = i === 0;
+  $('btnNext').disabled = i === N - 1;
+  $('btnNext').classList.toggle('btn--main', true);
+  updateGrid();
+}
+
+function go(i) {
+  stopTimer(); stopSpeech(); clearTimeout(S.advT);
+  S.i = Math.max(0, Math.min(N - 1, i));
+  render(S.i);
+  window.scrollTo({ top: 0 });
+  if (S.ans[S.i] === null) {
+    setRing(S.limit, 'Soal sedang dibacakan…');
+    const my = S.i;
+    speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
+  } else {
+    setRing(0, S.to[S.i] ? 'Waktu habis pada soal ini (dihitung salah)' : 'Sudah dijawab');
+    $('sec').textContent = '–';
+  }
+}
+
+function answer(i, k) {
+  if (S.ans[i] !== null) return;
+  stopTimer(); stopSpeech();
+  S.ans[i] = k;
+  render(i);
+  setRing(S.remain > 0 ? S.remain : 0, 'Dijawab — baca penjelasannya');
+  if (S.autoExp) speakExp(i);
+}
+function speakExp(i) { say([ITEMS[i].e], 'id', null); }
+
+function updateGrid() {
+  const g = $('grid');
+  if (!g.children.length) {
+    for (let i = 0; i < N; i++) {
+      const b = document.createElement('button');
+      b.className = 'cell'; b.type = 'button'; b.textContent = i + 1;
+      b.addEventListener('click', () => { $('dlgGrid').close(); if ($('result').hidden === false) showQuiz(); go(i); });
+      g.appendChild(b);
+    }
+  }
+  for (let i = 0; i < N; i++) {
+    const st = statusOf(i);
+    g.children[i].className = 'cell' + (st === 'na' ? '' : ' ' + st) + (i === S.i ? ' cur' : '');
+  }
+}
+
+function showQuiz() { $('start').hidden = true; $('result').hidden = true; $('quiz').hidden = false; }
+function showResult() {
+  stopTimer(); stopSpeech();
+  const c = { ok: 0, bad: 0, to: 0, na: 0 };
+  for (let i = 0; i < N; i++) c[statusOf(i)]++;
+  $('quiz').hidden = true; $('start').hidden = true; $('result').hidden = false;
+  $('score').textContent = Math.round(c.ok / N * 100);
+  $('sOk').textContent = c.ok; $('sBad').textContent = c.bad + c.to; $('sTo').textContent = c.na;
+  $('resNote').textContent = 'Waktu habis (dijawab otomatis, dihitung salah): ' + c.to + ' soal';
+  const L = $('rlist'); L.innerHTML = '';
+  const label = { ok: 'Benar', bad: 'Salah', to: 'Waktu habis (salah)', na: 'Belum' };
+  for (let i = 0; i < N; i++) {
+    const st = statusOf(i);
+    const r = document.createElement('button'); r.type = 'button'; r.className = 'rrow';
+    r.innerHTML = '<span class="n"></span><span class="t"></span><span class="s ' + st + '"></span>';
+    r.querySelector('.n').textContent = i + 1;
+    r.querySelector('.t').textContent = ITEMS[i].q;
+    r.querySelector('.s').textContent = label[st];
+    r.addEventListener('click', () => { showQuiz(); go(i); });
+    L.appendChild(r);
+  }
+  window.scrollTo({ top: 0 });
+}
+
+/* ============================ EVENT ============================ */
+$('nSoal').textContent = N; $('tot').textContent = N;
+function setLimit(sec) {
+  sec = Math.round(Number(sec));
+  if (!isFinite(sec) || sec < 1) sec = 1;
+  if (sec > 300) sec = 300;
+  S.limit = sec * 1000;
+  $('infoLim').textContent = sec + ' detik';
+  $('limNum').value = sec; $('limQuick').value = sec;
+  const known = [...$('limSel').options].some((o) => o.value === String(sec));
+  $('limSel').value = known ? String(sec) : 'custom';
+  $('limNum').hidden = known;
+  saveSet();
+  return sec;
+}
+$('limSel').addEventListener('change', (e) => {
+  if (e.target.value === 'custom') { $('limNum').hidden = false; $('limNum').focus(); $('limNum').select(); }
+  else setLimit(e.target.value);
+});
+$('limNum').addEventListener('input', (e) => { if (e.target.value !== '') { const sec = Math.max(1, Math.min(300, Math.round(Number(e.target.value)) || 1)); S.limit = sec * 1000; $('infoLim').textContent = sec + ' detik'; $('limQuick').value = sec; } });
+$('limNum').addEventListener('change', (e) => setLimit(e.target.value));
+$('limQuick').addEventListener('change', (e) => setLimit(e.target.value));
+$('limQuick').addEventListener('keydown', (e) => e.stopPropagation());
+$('limNum').addEventListener('keydown', (e) => e.stopPropagation());
+$('rateSel').addEventListener('change', (e) => { S.rate = parseFloat(e.target.value); saveSet(); });
+$('voiceSel').addEventListener('change', (e) => { S.voiceURI = e.target.value; saveSet(); });
+function setAutoExp(v, notify) {
+  S.autoExp = !!v;
+  $('autoExp').checked = S.autoExp;
+  $('btnExpT').setAttribute('aria-pressed', String(S.autoExp));
+  $('btnExpT').title = 'Bacakan penjelasan otomatis: ' + (S.autoExp ? 'aktif' : 'mati');
+  if (notify) toast('Penjelasan dibacakan otomatis: ' + (S.autoExp ? 'aktif' : 'mati'));
+  saveSet();
+}
+$('autoExp').addEventListener('change', (e) => setAutoExp(e.target.checked));
+$('btnExpT').addEventListener('click', () => setAutoExp(!S.autoExp, true));
+$('tickOn').addEventListener('change', (e) => { S.tick = e.target.checked; saveSet(); });
+
+$('btnTest').addEventListener('click', () => {
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.mute = false;
+  const r = $('testRes'); r.style.color = 'var(--muted)'; r.textContent = 'Memutar…';
+  const v = pickVoice('ar');
+  say(['مَرْحَبًا بِكُمْ فِي اخْتِبَارِ أَدَبِ الْعَصْرِ الْوَسِيطِ'], 'ar', null, (h) => {
+    if (h === 'ok') { r.style.color = 'var(--ok)'; r.textContent = 'Terbaca' + (v ? ' (' + v.name + ')' : ' (suara bawaan)'); }
+    else if (h === 'senyap') { r.style.color = 'var(--warn)'; r.textContent = 'Tidak ada suara keluar — pilih suara lain atau pasang suara Arab di perangkat'; }
+    else { r.style.color = 'var(--bad)'; r.textContent = 'Gagal: ' + h.slice(6) + (h.indexOf('language') > -1 ? ' (suara Arab belum terpasang)' : ''); }
+  });
+});
+$('btnStart').addEventListener('click', () => {
+  S.rate = parseFloat($('rateSel').value); S.voiceURI = $('voiceSel').value; S.tick = $('tickOn').checked; setAutoExp($('autoExp').checked);
+  setLimit($('limSel').value === 'custom' ? $('limNum').value : $('limSel').value);
+  try { const AC = window.AudioContext || window.webkitAudioContext; if (AC && !S.audio) S.audio = new AC(); if (S.audio && S.audio.state === 'suspended') S.audio.resume(); } catch (e) {}
+  if (synth) { try { synth.cancel(); const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {} }  // buka izin suara lewat klik
+  showQuiz(); go(0);
+});
+$('btnPrev').addEventListener('click', () => go(S.i - 1));
+$('btnNext').addEventListener('click', () => go(S.i + 1));
+$('btnFinish').addEventListener('click', () => {
+  const left = S.ans.filter((a) => a === null).length;
+  if (!left || confirm('Masih ada ' + left + ' soal yang belum dijawab. Tetap selesai?')) showResult();
+});
+$('btnRead').addEventListener('click', () => {
+  if (S.ans[S.i] !== null) { speakQuestion(S.i, null); return; }
+  stopTimer(); setRing(S.limit, 'Soal sedang dibacakan…');
+  const my = S.i;
+  speakQuestion(my, () => { if (S.i === my && S.ans[my] === null) startTimer(my); });
+});
+$('btnMute').addEventListener('click', () => {
+  S.mute = !S.mute;
+  $('btnMute').setAttribute('aria-pressed', String(!S.mute));
+  setIcon($('btnMute'), S.mute ? 'fa-volume-xmark' : 'fa-volume-high');
+  if (S.mute) stopSpeech();
+  saveSet();
+});
+$('btnGrid').addEventListener('click', () => { updateGrid(); $('dlgGrid').showModal(); });
+$('gridX').addEventListener('click', () => $('dlgGrid').close());
+$('dlgGrid').addEventListener('click', (e) => { const r = e.currentTarget.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.currentTarget.close(); });
+$('btnRedo').addEventListener('click', () => { S.ans.fill(null); S.to = []; clearTimeout(S.advT); $('grid').innerHTML = ''; showQuiz(); go(0); });
+$('btnBack').addEventListener('click', () => { showQuiz(); go(S.i); });
+
+/* layar penuh */
+const fsEl = document.documentElement;
+const fsOK = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+if (!fsOK) $('btnFull').hidden = true;
+$('btnFull').addEventListener('click', () => {
+  const on = document.fullscreenElement || document.webkitFullscreenElement;
+  if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  else (fsEl.requestFullscreen || fsEl.webkitRequestFullscreen).call(fsEl);
+});
+const fsChange = () => setIcon($('btnFull'), (document.fullscreenElement || document.webkitFullscreenElement) ? 'fa-compress' : 'fa-expand');
+document.addEventListener('fullscreenchange', fsChange);
+document.addEventListener('webkitfullscreenchange', fsChange);
+
+/* papan ketik: 1/2 atau A/B memilih, panah pindah soal, spasi = bacakan lagi */
+document.addEventListener('keydown', (e) => {
+  if ($('quiz').hidden || $('dlgGrid').open) return;
+  if (e.key === '1' || e.key.toLowerCase() === 'a') answer(S.i, 0);
+  else if (e.key === '2' || e.key.toLowerCase() === 'b') answer(S.i, 1);
+  else if (e.key === 'ArrowRight') go(S.i + 1);
+  else if (e.key === 'ArrowLeft') go(S.i - 1);
+  else if (e.key === ' ') { e.preventDefault(); $('btnRead').click(); }
+});
+/* ---- pengaturan tersimpan di browser ---- */
+const KEY = 'adabwasith.pengaturan';
+function saveSet() {
+  try { localStorage.setItem(KEY, JSON.stringify({ rate: S.rate, limit: Math.round(S.limit / 1000), autoExp: S.autoExp, tick: S.tick, mute: S.mute, voiceURI: S.voiceURI })); } catch (e) {}
+}
+function loadSet() {
+  let o = null;
+  try { o = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (!o) return;
+  if (o.rate && [...$('rateSel').options].some((x) => x.value === String(o.rate))) { $('rateSel').value = String(o.rate); S.rate = o.rate; }
+  if (o.limit) setLimit(o.limit);
+  S.tick = o.tick !== false; $('tickOn').checked = S.tick;
+  setAutoExp(!!o.autoExp);
+  if (o.mute) { S.mute = true; $('btnMute').setAttribute('aria-pressed', 'false'); setIcon($('btnMute'), 'fa-volume-xmark'); }
+  if (o.voiceURI) { S.voiceURI = o.voiceURI; $('voiceSel').value = o.voiceURI; }
+}
+loadSet();
+document.addEventListener('visibilitychange', () => { S.last = performance.now(); });
+window.addEventListener('beforeunload', stopSpeech);
+</script>
+</body>
+</html>
