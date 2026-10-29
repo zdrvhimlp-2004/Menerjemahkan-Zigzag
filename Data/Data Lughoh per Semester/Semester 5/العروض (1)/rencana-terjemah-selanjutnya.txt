@@ -72,3 +72,8 @@ CATATAN / HAL YANG PERLU DIPERHATIKAN
 - Teks Arab di sumber sering tanpa harakat / hasil OCR; harakat penuh ditambahkan saat konversi dan bisa ada kekeliruan kecil.
 - Pertanyaan terbuka: bagaimana server pengguna menarik dari GitHub (salinan .docx lama di root tidak ikut terhapus karena
   penghapusan tidak tersinkron).
+
+PEMBARUAN (2026-10-29)
+- Pembagian baru kitab 'Ilm al-Ma'ani: satu file HTML berisi 2 bab (Fasal 2-3 hlm. 97-215 | Fasal 4 + Khuruj al-Kalam hlm. 216-280 | Juz 2: Ahwal al-Jumlah + Uslub al-Qashr hlm. 281-348 | Uslub al-Insya').
+- SELESAI: البلاغة (5)/maani-fasal4-khuruj-216-280-biasa.html (Fasal 4 + Khuruj al-Kalam, hlm. 216-280, terjemah biasa).
+- Item no. 1 (Nahwu af'al at-tafdhil) tidak perlu: bab itu sudah ada di file zigzag Ibnu 'Aqil (Bab 10, hlm. 172-189).
