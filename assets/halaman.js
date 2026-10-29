@@ -4,7 +4,7 @@
 
   /* Tinggi popup dihitung dari tinggi layar yang benar-benar terlihat (visualViewport),
      supaya tidak melebihi layar di browser HP yang unit vh/dvh-nya tidak akurat. */
-  var BATAS = [['dialog.modal--wide', 0.86, 720], ['dialog.pos-modal', 0.7, 640], ['dialog.lg-modal', 0.7, 560], ['dialog.pg-modal', 0.8, 660]];
+  var BATAS = [['dialog.modal--wide', 0.86, 720], ['dialog.pos-modal', 0.7, 640], ['dialog.lg-modal', 0.7, 560], ['dialog.pg-modal', 0.8, 660], ['dialog.ph-modal', 0.9, 780]];
   var tinggiLihat = function () {
     var h = window.innerHeight;
     if (window.visualViewport) h = Math.min(h, window.visualViewport.height);
@@ -312,5 +312,304 @@
   dlg.addEventListener('click', function (e) {
     var r = dlg.getBoundingClientRect();
     if (e.target.closest('.lg__x') || e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+})();
+
+/* Tombol "Pilih Halaman": daftar semua halaman (Hlm.) dengan kotak centang, lalu salin atau kirim teksnya
+   (Arab saja, Indonesia saja, atau keduanya) ke papan klip, Claude, ChatGPT, dan lainnya. */
+(function () {
+  'use strict';
+  var wrap = document.querySelector('.isi__wrap');
+  if (!wrap || !document.createRange) return;
+
+  /* ---------- 1. penanda halaman -> daftar halaman ---------- */
+  var angka = function (el) { var m = (el.textContent || '').match(/(\d+)\s*$/); return m ? parseInt(m[1], 10) : null; };
+  var penanda = Array.prototype.slice.call(wrap.querySelectorAll('.hal, .hal-awal')).map(function (el) {
+    return { el: el, n: angka(el), akhir: el.classList.contains('hal--akhir') };
+  }).filter(function (m) { return m.n !== null; });
+  if (!penanda.length) return;
+
+  var SEL_AR = 'p.ar, h2.bab__ar, h2.pasal__judul, h3.bagian__judul, h3.sub, h4.sub__judul, .ringkasan__ar';
+  var SEL_ID = 'p.id, p.bab__id, .judul__id, .sub__id, .ringkasan__id';
+  var HARAKAT = /[ً-ْٰٕ]/g;
+
+  var adaIsi = function (frag) { return !!frag.querySelector('.ar, .id, .shatr'); };
+  var rentang = function (dari, sampai) {
+    var r = document.createRange();
+    if (dari) r.setStartAfter(dari); else r.setStart(wrap, 0);
+    if (sampai) r.setEndBefore(sampai); else r.setEndAfter(wrap.lastChild);
+    var frag = r.cloneContents();
+    Array.prototype.forEach.call(frag.querySelectorAll('dialog, script, style, nav, button, .catatan, .legend, .toc, mark'), function (x) { x.remove(); });
+    return frag;
+  };
+  /* awal isi sebelum penanda pertama: lewati header, catatan, dan dialog di bagian atas */
+  var awalIsi = null;
+  Array.prototype.forEach.call(wrap.querySelectorAll('dialog, .catatan, .isi__ket, .isi__judul'), function (x) {
+    if (x.compareDocumentPosition(penanda[0].el) & Node.DOCUMENT_POSITION_FOLLOWING) awalIsi = x;
+  });
+
+  var halaman = [];
+  var tambah = function (n, frag) {
+    if (n === null || n < 1 || !adaIsi(frag)) return;
+    for (var i = 0; i < halaman.length; i++) if (halaman[i].n === n) { halaman[i].frags.push(frag); return; }
+    halaman.push({ n: n, frags: [frag] });
+  };
+  for (var i = -1; i < penanda.length; i++) {
+    var a = i >= 0 ? penanda[i] : null;
+    var b = i + 1 < penanda.length ? penanda[i + 1] : null;
+    var frag = rentang(a ? a.el : awalIsi, b ? b.el : null);
+    var n;
+    if (a && !a.akhir) n = a.n;                       /* sesudah penanda awal: halaman itu */
+    else if (b && b.akhir) n = b.n;                   /* sebelum penanda akhir: halaman itu */
+    else if (b && !b.akhir) n = b.n - 1;              /* sisa sebelum penanda awal pertama */
+    else n = a ? a.n + 1 : null;
+    tambah(n, frag);
+  }
+  if (!halaman.length) return;
+  halaman.sort(function (x, y) { return x.n - y.n; });
+
+  /* ---------- 2. ambil teks ---------- */
+  var bersih = function (t) { return t.replace(/[ \t ]+/g, ' ').replace(/ *\n */g, '\n').trim(); };
+  var teksEl = function (el) {
+    var c = el.cloneNode(true);
+    Array.prototype.forEach.call(c.querySelectorAll('br'), function (br) { br.replaceWith('\n'); });
+    var sh = c.querySelectorAll('.shatr');
+    if (sh.length) Array.prototype.forEach.call(sh, function (x, k) { if (k) x.insertAdjacentText('beforebegin', '    '); });
+    return bersih(c.textContent);
+  };
+  /* baris tiap halaman: [{t:'ar'|'id', s:'...'}] sesuai urutan di halaman */
+  var baris = function (h) {
+    if (h.baris) return h.baris;
+    var out = [];
+    h.frags.forEach(function (f) {
+      Array.prototype.forEach.call(f.querySelectorAll(SEL_AR + ', ' + SEL_ID), function (el) {
+        var t = el.matches(SEL_AR) ? 'ar' : 'id';
+        var s = teksEl(el);
+        if (s) out.push({ t: t, s: s });
+      });
+    });
+    h.baris = out; return out;
+  };
+  var cuplikan = function (h) {
+    var b = baris(h).filter(function (x) { return x.t === 'ar'; });
+    return b.length ? b[0].s.replace(HARAKAT, '').slice(0, 70) : '';
+  };
+
+  /* ---------- 3. tombol dan popup ---------- */
+  var fab = document.createElement('button');
+  fab.type = 'button'; fab.className = 'fab fab--ph'; fab.id = 'btn-ph';
+  fab.title = 'Pilih halaman'; fab.setAttribute('aria-label', 'Pilih halaman'); fab.setAttribute('aria-haspopup', 'dialog');
+  fab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg>';
+  document.body.appendChild(fab);
+
+  var PROMPT = [
+    ['', 'Tanpa instruksi (teks saja)'],
+    ['Jelaskan isi teks berikut dengan bahasa Indonesia yang sederhana dan runtut. Sebutkan istilah penting beserta artinya.', 'Jelaskan isinya'],
+    ['Terjemahkan teks Arab berikut ke bahasa Indonesia yang natural dan mudah dipahami. Pertahankan istilah teknis, dan beri catatan pada bagian yang sulit.', 'Terjemahkan teks Arab'],
+    ['Periksa terjemahan Indonesia berikut terhadap teks Arabnya. Tunjukkan bagian yang keliru atau kurang tepat, lalu beri perbaikannya.', 'Koreksi terjemahan'],
+    ['Buatkan 10 soal pilihan ganda dengan 2 pilihan jawaban dari teks berikut, lengkap dengan kunci jawaban dan penjelasan singkat.', 'Buat soal pilihan ganda'],
+    ['Ringkas teks berikut menjadi poin-poin utama yang mudah dihafal.', 'Ringkas'],
+    ['Lakukan i\'rab dan analisis nahwu/sharaf untuk teks Arab berikut, kalimat demi kalimat.', 'I\'rab dan analisis nahwu'],
+    ['Jelaskan aspek balaghah (ilmu ma\'ani, bayan, badi\') pada teks berikut beserta contohnya.', 'Analisis balaghah'],
+    ['__kustom__', 'Instruksi sendiri…']
+  ];
+  var simpan = function (k, v) { try { localStorage.setItem('ph.' + k, v); } catch (e) { /* abaikan */ } };
+  var muat = function (k, d) { try { var v = localStorage.getItem('ph.' + k); return v === null ? d : v; } catch (e) { return d; } };
+
+  var dlg = document.createElement('dialog');
+  dlg.className = 'ph-modal'; dlg.setAttribute('aria-label', 'Pilih halaman');
+  dlg.innerHTML =
+    '<div class="ph__head"><h2>Pilih Halaman <small class="ph__jml"></small></h2><button type="button" class="ph__x" aria-label="Tutup">&times;</button></div>' +
+    '<div class="ph__cepat">' +
+      '<div class="ph__baris">' +
+        '<button type="button" class="ph__chip" data-a="semua">Semua</button>' +
+        '<button type="button" class="ph__chip" data-a="kosong">Kosongkan</button>' +
+        '<button type="button" class="ph__chip" data-a="balik">Balik</button>' +
+        '<button type="button" class="ph__chip" data-a="sini">Halaman saat ini</button>' +
+        '<button type="button" class="ph__chip" data-a="lanjut">+ Lanjut 5 hlm</button>' +
+      '</div>' +
+      '<div class="ph__baris ph__rentang">' +
+        '<label>Dari <select class="ph__dari" aria-label="Dari halaman"></select></label>' +
+        '<label>sampai <select class="ph__sampai" aria-label="Sampai halaman"></select></label>' +
+        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang">Centang rentang</button>' +
+        '<button type="button" class="ph__chip" data-a="lepas">Lepas rentang</button>' +
+      '</div>' +
+      '<p class="ph__tip">Tips: tahan Shift lalu klik dua halaman untuk mencentang semua di antaranya.</p>' +
+    '</div>' +
+    '<ul class="ph__daftar"></ul>' +
+    '<div class="ph__aksi" hidden>' +
+      '<div class="ph__opsi">' +
+        '<label>Isi <select class="ph__fmt" aria-label="Isi yang disalin">' +
+          '<option value="ar">Arab saja</option><option value="id">Indonesia saja</option><option value="dua">Arab + Indonesia (berselang)</option><option value="arid">Arab dulu, lalu Indonesia</option>' +
+        '</select></label>' +
+        '<label class="ph__cek"><input type="checkbox" class="ph__tanpa"> Tanpa harakat</label>' +
+        '<label class="ph__cek"><input type="checkbox" class="ph__hlm" checked> Sertakan nomor halaman</label>' +
+      '</div>' +
+      '<div class="ph__opsi"><label>Instruksi untuk AI <select class="ph__prompt" aria-label="Instruksi untuk AI"></select></label></div>' +
+      '<textarea class="ph__kustom" rows="3" placeholder="Tulis instruksi sendiri, misalnya: Jelaskan i\'rab kalimat berikut…" hidden></textarea>' +
+      '<div class="ph__tombol">' +
+        '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
+        '<button type="button" class="ph__btn" data-k="claude">Buka di Claude</button>' +
+        '<button type="button" class="ph__btn" data-k="chatgpt">Buka di ChatGPT</button>' +
+        '<button type="button" class="ph__btn" data-k="gemini">Buka di Gemini</button>' +
+        '<button type="button" class="ph__btn" data-k="perplexity">Buka di Perplexity</button>' +
+        '<button type="button" class="ph__btn" data-k="unduh">Unduh .txt</button>' +
+        '<button type="button" class="ph__btn" data-k="bagi">Bagikan…</button>' +
+        '<button type="button" class="ph__btn" data-k="lihat">Lihat hasil</button>' +
+      '</div>' +
+      '<p class="ph__info" aria-live="polite"></p>' +
+      '<pre class="ph__pratinjau" hidden></pre>' +
+    '</div>';
+  document.body.appendChild(dlg);
+
+  var q = function (s) { return dlg.querySelector(s); };
+  var daftar = q('.ph__daftar'), aksi = q('.ph__aksi'), jml = q('.ph__jml'), info = q('.ph__info');
+  var dari = q('.ph__dari'), sampai = q('.ph__sampai'), fmt = q('.ph__fmt'), tanpa = q('.ph__tanpa'), hlm = q('.ph__hlm');
+  var sel = q('.ph__prompt'), kustom = q('.ph__kustom'), pra = q('.ph__pratinjau');
+  var kotak = [], terakhir = -1;
+
+  PROMPT.forEach(function (p, k) { var o = document.createElement('option'); o.value = k; o.textContent = p[1]; sel.appendChild(o); });
+  halaman.forEach(function (h, k) {
+    var li = document.createElement('li'); li.className = 'ph__item';
+    var lb = document.createElement('label');
+    var cb = document.createElement('input'); cb.type = 'checkbox'; cb.value = k; cb.setAttribute('aria-label', 'Halaman ' + h.n);
+    var no = document.createElement('b'); no.textContent = 'Hlm. ' + h.n;
+    var cp = document.createElement('span'); cp.className = 'ph__cup'; cp.setAttribute('lang', 'ar'); cp.textContent = cuplikan(h);
+    lb.appendChild(cb); lb.appendChild(no); lb.appendChild(cp);
+    var go = document.createElement('button'); go.type = 'button'; go.className = 'ph__go'; go.title = 'Lompat ke halaman ini'; go.setAttribute('aria-label', 'Lompat ke halaman ' + h.n); go.setAttribute('data-k', k); go.innerHTML = '&#8599;';
+    li.appendChild(lb); li.appendChild(go); daftar.appendChild(li);
+    kotak.push(cb);
+    [dari, sampai].forEach(function (s2) { var o = document.createElement('option'); o.value = k; o.textContent = h.n; s2.appendChild(o); });
+  });
+  sampai.value = String(halaman.length - 1);
+
+  var terpilih = function () { return kotak.map(function (c, k) { return c.checked ? k : -1; }).filter(function (k) { return k >= 0; }); };
+  var segarkan = function () {
+    var t = terpilih();
+    kotak.forEach(function (c) { c.closest('.ph__item').classList.toggle('is-on', c.checked); });
+    jml.textContent = t.length ? t.length + ' dari ' + halaman.length + ' dipilih' : halaman.length + ' halaman';
+    aksi.hidden = !t.length; pra.hidden = true; info.textContent = '';
+    if (t.length) {
+      var h1 = halaman[t[0]].n, h2 = halaman[t[t.length - 1]].n;
+      info.textContent = 'Terpilih: ' + (t.length === 1 ? 'Hlm. ' + h1 : 'Hlm. ' + h1 + '–' + h2 + ' (' + t.length + ' halaman)');
+    }
+  };
+  var set = function (k0, k1, on) { for (var k = Math.min(k0, k1); k <= Math.max(k0, k1); k++) kotak[k].checked = on; };
+  var halamanSekarang = function () {
+    var y = window.scrollY + 96, cur = 0;
+    penanda.forEach(function (m) { if (m.el.getBoundingClientRect().top + window.scrollY <= y) cur = m.n; });
+    var k = 0; halaman.forEach(function (h, i) { if (h.n <= cur) k = i; });
+    return k;
+  };
+
+  var ambilPrompt = function () {
+    var p = PROMPT[parseInt(sel.value, 10)];
+    if (!p) return '';
+    return p[0] === '__kustom__' ? kustom.value.trim() : p[0];
+  };
+  var susun = function () {
+    var out = [];
+    terpilih().forEach(function (k) {
+      var h = halaman[k], b = baris(h), f = fmt.value;
+      var ar = b.filter(function (x) { return x.t === 'ar'; }).map(function (x) { return x.s; });
+      var id = b.filter(function (x) { return x.t === 'id'; }).map(function (x) { return x.s; });
+      var bagian;
+      if (f === 'ar') bagian = ar; else if (f === 'id') bagian = id;
+      else if (f === 'dua') bagian = b.map(function (x) { return x.s; });
+      else bagian = ar.concat(['']).concat(id);
+      var teks = bagian.join('\n');
+      if (tanpa.checked) teks = teks.replace(HARAKAT, '');
+      out.push((hlm.checked ? '[Hlm. ' + h.n + ']\n' : '') + teks);
+    });
+    var isi = out.join('\n\n');
+    var p = ambilPrompt();
+    return p ? p + '\n\n' + isi : isi;
+  };
+
+  var salinKe = function (teks) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(teks);
+    return new Promise(function (ok, gagal) {
+      var t = document.createElement('textarea'); t.value = teks; t.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+      document.body.appendChild(t); t.select();
+      var b = false; try { b = document.execCommand('copy'); } catch (e) { /* abaikan */ }
+      t.remove(); b ? ok() : gagal(new Error('gagal'));
+    });
+  };
+  var kabar = function (t) { info.textContent = t; };
+  var SITUS = {
+    claude: ['Claude', 'https://claude.ai/new', 'q'],
+    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q'],
+    perplexity: ['Perplexity', 'https://www.perplexity.ai/search', 'q'],
+    gemini: ['Gemini', 'https://gemini.google.com/app', null]
+  };
+  var BATAS_URL = 5500;
+
+  dlg.addEventListener('click', function (e) {
+    var r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { dlg.close(); return; }
+    var x = e.target.closest('button'); if (!x) return;
+    if (x.classList.contains('ph__x')) { dlg.close(); return; }
+    var go = x.classList.contains('ph__go') ? parseInt(x.getAttribute('data-k'), 10) : -1;
+    if (go >= 0) {
+      var m = penanda.filter(function (p) { return p.n === halaman[go].n && !p.akhir; })[0] || penanda.filter(function (p) { return p.n === halaman[go].n; })[0];
+      dlg.close();
+      if (m) window.scrollTo({ top: m.el.getBoundingClientRect().top + window.scrollY - 70 });
+      return;
+    }
+    var a = x.getAttribute('data-a');
+    if (a) {
+      var d = parseInt(dari.value, 10), s = parseInt(sampai.value, 10);
+      if (a === 'semua') kotak.forEach(function (c) { c.checked = true; });
+      else if (a === 'kosong') kotak.forEach(function (c) { c.checked = false; });
+      else if (a === 'balik') kotak.forEach(function (c) { c.checked = !c.checked; });
+      else if (a === 'sini') { var k = halamanSekarang(); kotak.forEach(function (c) { c.checked = false; }); kotak[k].checked = true; daftar.children[k].scrollIntoView({ block: 'center' }); }
+      else if (a === 'lanjut') { var t = terpilih(); var from = t.length ? t[t.length - 1] + 1 : halamanSekarang(); set(from, Math.min(from + 4, kotak.length - 1), true); }
+      else if (a === 'rentang') set(d, s, true);
+      else if (a === 'lepas') set(d, s, false);
+      segarkan(); return;
+    }
+    var k2 = x.getAttribute('data-k');
+    if (!k2) return;
+    var teks = susun();
+    if (k2 === 'lihat') { pra.textContent = teks; pra.hidden = !pra.hidden; return; }
+    if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); }); return; }
+    if (k2 === 'unduh') {
+      var t2 = terpilih(), nama = (document.title.split(' — ')[0] || 'teks').replace(/[\\/:*?"<>|]+/g, '').slice(0, 60).trim();
+      var blob = new Blob([teks], { type: 'text/plain;charset=utf-8' }), u = URL.createObjectURL(blob);
+      var el = document.createElement('a'); el.href = u; el.download = nama + ' hlm ' + halaman[t2[0]].n + (t2.length > 1 ? '-' + halaman[t2[t2.length - 1]].n : '') + '.txt';
+      document.body.appendChild(el); el.click(); el.remove(); setTimeout(function () { URL.revokeObjectURL(u); }, 2000);
+      kabar('File .txt diunduh.'); return;
+    }
+    if (k2 === 'bagi') {
+      if (navigator.share) navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
+      else salinKe(teks).then(function () { kabar('Berbagi tidak didukung di browser ini; teks disalin.'); });
+      return;
+    }
+    var st = SITUS[k2]; if (!st) return;
+    var lewat = st[2] && encodeURIComponent(teks).length <= BATAS_URL;
+    var url = lewat ? st[1] + '?' + st[2] + '=' + encodeURIComponent(teks) : st[1];
+    var w = window.open(url, '_blank', 'noopener');
+    salinKe(teks).then(function () {
+      kabar(lewat ? 'Teks dikirim ke ' + st[0] + ' (juga tersalin).' : 'Teks tersalin. Tempel (Tahan lama atau Ctrl+V) di kolom chat ' + st[0] + '.');
+    }, function () { kabar(lewat ? 'Teks dikirim ke ' + st[0] + '.' : 'Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); });
+    if (!w) kabar('Pop-up diblokir browser. Izinkan pop-up lalu coba lagi.');
+  });
+  daftar.addEventListener('click', function (e) {
+    var c = e.target.closest('input[type="checkbox"]'); if (!c) return;
+    var k = parseInt(c.value, 10);
+    if (e.shiftKey && terakhir >= 0) set(terakhir, k, c.checked);
+    terakhir = k; segarkan();
+  });
+  sel.addEventListener('change', function () { kustom.hidden = PROMPT[parseInt(sel.value, 10)][0] !== '__kustom__'; simpan('prompt', sel.value); });
+  kustom.addEventListener('input', function () { simpan('kustom', kustom.value); });
+  fmt.addEventListener('change', function () { simpan('fmt', fmt.value); });
+  tanpa.addEventListener('change', function () { simpan('tanpa', tanpa.checked ? '1' : '0'); });
+  hlm.addEventListener('change', function () { simpan('hlm', hlm.checked ? '1' : '0'); });
+  fmt.value = muat('fmt', 'ar'); tanpa.checked = muat('tanpa', '0') === '1'; hlm.checked = muat('hlm', '1') === '1';
+  sel.value = muat('prompt', '0'); kustom.value = muat('kustom', ''); kustom.hidden = PROMPT[parseInt(sel.value, 10) || 0][0] !== '__kustom__';
+
+  fab.addEventListener('click', function () {
+    segarkan(); dlg.showModal();
+    var k = halamanSekarang(); if (daftar.children[k]) daftar.children[k].scrollIntoView({ block: 'center' });
   });
 })();
