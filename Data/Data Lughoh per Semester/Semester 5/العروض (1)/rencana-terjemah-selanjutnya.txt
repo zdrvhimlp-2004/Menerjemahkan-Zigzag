@@ -12,7 +12,7 @@ PRIORITAS 1 - 'ARUDH (folder العروض (1)) - MASIH ADA YANG BELUM
   b. Hlm. 43-51 (Bahr ath-Thawil): docx 1-51 hanya memuat sebagian.
   c. Hlm. 78 kitab: tidak ada docx (docx 51-77 lalu 79-103).
 - Tindak lanjut: tunggu pengguna mengirim halaman-halaman itu (docx/teks), lalu konversi dan sisipkan ke file yang ada
-  (arudh-taqdim-madkhol-biasa (hlm 5-38).html dan arudh-bahr-1-6-biasa (hlm 43-77).html). Jika tidak ada, tulis kekosongan ini di kotak
+  (kitab al mursyid al wafi fil arudh (taqdim-madkhol)(hlm 5-38)(bag 1).html dan kitab al mursyid al wafi fil arudh (bahr 1-6)(hlm 43-77)(bag 2).html). Jika tidak ada, tulis kekosongan ini di kotak
   "Catatan kekurangan materi" paling atas kedua file itu.
 
 STATUS TERAKHIR
