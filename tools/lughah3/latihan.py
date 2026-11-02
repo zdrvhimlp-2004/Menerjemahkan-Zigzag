@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Bangun 'Ilmu Lughah 3 (Latihan Bab 8-9 dan 11).html' memakai template ujian Tarikh Al Adab 5.
+"""Bangun 'Ilmu Lughah 3 (Latihan Bab 8-11).html' memakai template ujian Tarikh Al Adab 5.
 Soal: (bab, pertanyaan, jawaban benar, jawaban salah, penjelasan). Posisi jawaban diacak tetap (seed)."""
 import json, os, random, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 S5 = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester 5')
 TPL = os.path.join(S5, 'تاريخ الأدب العربي (5)', 'Muqarrar Tarikh Al Adab Al Arabi 5 (Latihan Bab 1-4).html')
-OUT = os.path.join(S5, 'علم اللغة (3)', 'Ilmu Lughah 3 (Latihan Bab 8-9 dan 11).html')
+OUT = os.path.join(S5, 'علم اللغة (3)', 'Ilmu Lughah 3 (Latihan Bab 8-11).html')
 
-BAB = {'8': 'Pembagian Bunyi menurut Makhraj', '9': 'Sifat-Sifat Bunyi', '11': 'Performa Vokal'}
-BMAP = {1: 8, 2: 9, 3: 11}   # nomor bab di halaman materi
+BAB = {'8': 'Pembagian Bunyi menurut Makhraj', '9': 'Sifat-Sifat Bunyi', '10': 'Suku Kata (Silabel)', '11': 'Performa Vokal'}
+BMAP = {1: 8, 2: 9, 4: 10, 3: 11}   # nomor bab di halaman materi
 
 Q = []
 def q(b, t, ok, no, e): Q.append((b, t, ok, no, e))
@@ -97,11 +97,36 @@ q(3, 'مَا التَّزْمِينُ؟', 'التَّبَايُنُ فِي سُ�
 q(3, 'مَا السَّكْتَةُ؟', 'أَخَفُّ مِنَ الْوَقْفَةِ، وَيُمْكِنُ إِعْمَالُهَا أَوْ إِهْمَالُهَا', 'أَطْوَلُ مِنَ الْوَقْفَةِ وَلَا بُدَّ مِنْهَا', 'Saktah lebih ringan daripada waqfah; boleh diterapkan atau diabaikan, menerapkannya lebih utama.')
 q(3, 'مَا الْقَوَاعِدُ الضَّابِطَةُ لِلِاسْتِرَاحَةِ أَوْ أَخْذِ النَّفَسِ؟', 'لَا قَوَاعِدَ ضَابِطَةً لَهَا، وَتَعْتَمِدُ عَلَى قُدْرَةِ الْمُتَكَلِّمِ', 'لَهَا قَوَاعِدُ ثَابِتَةٌ لَا تَتَغَيَّرُ', 'Tidak ada kaidah baku; bergantung pemahaman pembicara atas teks dan kaidah bahasa.')
 
+# ---------------- Bab 10: suku kata
+q(4, 'مَا الْمَقْطَعُ فِي الِاصْطِلَاحِ؟', 'أَصْغَرُ وَحْدَةٍ فِي تَرْكِيبِ الْكَلِمَةِ', 'أَكْبَرُ وَحْدَةٍ فِي تَرْكِيبِ الْجُمْلَةِ', 'Suku kata (maqtha\') secara istilah adalah satuan terkecil dalam struktur kata.')
+q(4, 'مَا الْمَقْطَعُ فِي اللُّغَةِ؟', 'الْقَطْعُ، وَهُوَ إِبَانَةُ بَعْضِ أَجْزَاءِ الشَّيْءِ', 'الْجَمْعُ وَالضَّمُّ', 'Secara bahasa maqtha\' bermakna pemotongan, yaitu memisahkan sebagian bagian dari sesuatu.')
+q(4, 'الْمَقْطَعُ وَحْدَةٌ أَكْبَرُ مِنْ:', 'الْحَرْفِ وَالْحَرَكَةِ', 'الْكَلِمَةِ وَالْجُمْلَةِ', 'Suku kata lebih besar dari huruf dan harakat karena ia gabungan huruf dengan satu harakat atau lebih.')
+q(4, 'يُقَسَّمُ الْكَلَامُ إِلَى مَقَاطِعَ بِسَبَبِ تَتَابُعِ:', 'الْحَرْفِ الصَّامِتِ وَالْحَرَكَةِ الصَّائِتَةِ', 'الْفِعْلِ وَالْفَاعِلِ', 'Pembagian suku kata didasarkan pergantian konsonan (K) dan vokal (V).')
+q(4, 'الْحَرْفُ مَعَ الْحَرَكَةِ الَّتِي تَحَرَّكَ بِهَا يُصْبِحُ:', 'مَقْطَعًا صَوْتِيًّا', 'كَلِمَةً مُسْتَقِلَّةً', 'Huruf beserta harakatnya telah menjadi satu suku kata.')
+q(4, 'التَّنْوِينُ فِي أَصْلِهِ يَعُودُ إِلَى:', 'نُونٍ سَاكِنَةٍ تُضَافُ إِلَى حَرَكَةِ الْحَرْفِ', 'هَمْزَةِ وَصْلٍ', 'Tanwin kembali kepada nun sukun yang ditambahkan pada harakat huruf.')
+q(4, 'فِي التَّقْطِيعِ، الْحَرْفُ الْمُتَحَرِّكُ مَعَ نُونِ التَّنْوِينِ السَّاكِنَةِ:', 'مَقْطَعٌ صَوْتِيٌّ وَاحِدٌ', 'مَقْطَعَانِ', 'Huruf berharakat beserta nun sukun tanwin menjadi satu suku kata.')
+q(4, 'كَيْفَ تُقَطَّعُ كَلِمَةُ «حَقِيبَةً»؟', 'حَ / قِي / بَ / تَنْ', 'حَقِ / يبَ / تً', 'Ha / qii / ba / tan; tanwin menjadi nun sukun yang menyatu dengan ta.')
+q(4, 'حَرْفُ الْمَدِّ مَعَ الْحَرْفِ الَّذِي قَبْلَهُ:', 'مَقْطَعٌ صَوْتِيٌّ وَاحِدٌ', 'مَقْطَعَانِ مُنْفَصِلَانِ', 'Huruf mad beserta huruf sebelumnya satu suku kata.')
+q(4, 'كَيْفَ تُقَطَّعُ كَلِمَةُ «مَلْجَآنِ»؟', 'مَلْ / جَ / آ / نِ', 'مَ / لْجَ / آنِ', 'Mal / ja / aa / ni.')
+q(4, 'الْحَرْفُ الْمُشَدَّدُ يُعَدُّ بِمَثَابَةِ:', 'تَكْرَارٍ لِلْحَرْفِ نَفْسِهِ', 'حَذْفٍ لِلْحَرْفِ', 'Tasydid dianggap pengulangan huruf; saat diurai, huruf pertama sukun menyatu dengan huruf sebelumnya.')
+q(4, 'الْحَرْفُ السَّاكِنُ وَحْدَهُ:', 'لَا يَسْتَطِيعُ تَشْكِيلَ الْمَقْطَعِ الصَّوْتِيِّ', 'يُشَكِّلُ مَقْطَعًا كَامِلًا', 'Huruf sukun harus bergabung dengan huruf sebelumnya untuk membentuk suku kata.')
+q(4, 'اللَّامُ الْقَمَرِيَّةُ مَعَ هَمْزَةِ الْوَصْلِ الَّتِي قَبْلَهَا:', 'مَقْطَعٌ صَوْتِيٌّ وَاحِدٌ', 'مَقْطَعَانِ', 'Lam qamariyyah sukun bergabung dengan hamzah washal yang berharakat, seperti pada «al-jabalu».')
+q(4, 'كَيْفَ تُقَطَّعُ كَلِمَةُ «الْوَطَنُ»؟', 'الـ / وَ / طَ / نُ', 'الْوَ / طَنُ', 'Al / wa / tha / nu.')
+q(4, 'لِمَاذَا لَا تُنْطَقُ اللَّامُ الشَّمْسِيَّةُ؟', 'لِأَنَّ الْحَرْفَ بَعْدَهَا مُشَدَّدٌ', 'لِأَنَّهَا حَرْفٌ زَائِدٌ دَائِمًا', 'Lam syamsiyyah tidak dilafalkan karena huruf setelahnya bertasydid.')
+q(4, 'كَيْفَ تُقَطَّعُ كَلِمَةُ «الصَّبَاحُ»؟', 'أَصْ / صَ / بَا / حُ', 'الـ / صَّ / بَا / حُ', 'Ash / sha / baa / hu: syin/shad bertasydid terurai menjadi sukun dan berharakat.')
+q(4, 'مَاذَا يُرْمَزُ بِـ (ص) وَ(ح) فِي التَّعْبِيرِ الْمَقْطَعِيِّ؟', 'ص: صَامِتٌ، ح: حَرَكَةٌ صَائِتَةٌ', 'ص: صَائِتٌ، ح: صَامِتٌ', 'Dalam notasi suku kata, ص = konsonan (K) dan ح = vokal (V).')
+q(4, 'الْمَقْطَعُ الْقَصِيرُ يَتَكَوَّنُ مِنْ:', 'صَامِتٍ وَحَرَكَةٍ (ص ح)', 'صَامِتٍ وَحَرَكَةٍ وَصَامِتٍ (ص ح ص)', 'Suku kata pendek: K-V, misalnya «a».')
+q(4, 'الْمَقْطَعُ الْمُتَوَسِّطُ الْمُغْلَقُ تَعْبِيرُهُ الْمَقْطَعِيُّ:', 'ص ح ص، مِثْلَ «قَدْ»', 'ص ح ح، مِثْلَ «مَا»', 'Sedang tertutup: berakhiran konsonan, K-V-K, contoh «qad».')
+q(4, 'الْمَقْطَعُ الْمُتَوَسِّطُ الْمَفْتُوحُ تَعْبِيرُهُ الْمَقْطَعِيُّ:', 'ص ح ح، مِثْلَ «مَا»', 'ص ح ص، مِثْلَ «قَدْ»', 'Sedang terbuka: berakhiran vokal panjang, K-V-V, contoh «maa».')
+q(4, 'مَا تَعْبِيرُ مَقْطَعِ «مِين» فِي «الْعَالَمِينَ»؟', 'ص ح ح ص', 'ص ح ص ص', 'Suku kata berakhiran V-K: K-V-V-K.')
+q(4, 'مَا تَعْبِيرُ مَقْطَعِ «خَوْفٌ»؟', 'ص ح ص ص', 'ص ح ح ص', 'Suku kata berakhiran K-K: K-V-K-K.')
+q(4, 'الْمَقْطَعُ الطَّوِيلُ فِي اللُّغَةِ الْعَرَبِيَّةِ:', 'قَلِيلٌ، وَتَهْرُبُ مِنْهُ اللُّغَةُ بِأَسَالِيبَ مُتَنَوِّعَةٍ', 'كَثِيرٌ جِدًّا وَهُوَ الْأَصْلُ', 'Suku kata panjang jarang dalam bahasa Arab; bahasa ini menghindarinya dengan berbagai gaya.')
+
 
 def main():
     rnd = random.Random(20260502)
     items = []
-    for b, t, ok, no, e in Q:
+    for b, t, ok, no, e in sorted(Q, key=lambda x: BMAP[x[0]]):
         o = [ok, no]
         a = 0
         if rnd.random() < 0.5:
@@ -109,10 +134,10 @@ def main():
         items.append({'b': BMAP[b], 'q': t, 'o': o, 'a': a, 'e': e})
     n = len(items)
     s = open(TPL, encoding='utf8').read()
-    s = s.replace('<title>Ujian Sejarah Sastra Arab 5 — Bab 1–4</title>', '<title>Latihan Ilmu Lughah 3 — Bab 8–9 dan 11</title>')
+    s = s.replace('<title>Ujian Sejarah Sastra Arab 5 — Bab 1–4</title>', '<title>Latihan Ilmu Lughah 3 — Bab 8–11</title>')
     s = s.replace('<div class="logo ar">ت</div>', '<div class="logo ar">ع</div>')
     s = s.replace('اخْتِبَارُ تَارِيخِ الْأَدَبِ الْعَرَبِيِّ (٥)', 'اخْتِبَارُ عِلْمِ اللُّغَةِ (٣)')
-    s = s.replace('Ujian pilihan ganda &middot; Bab 1 sampai Bab 4 &middot; Tingkat 5', 'Latihan pilihan ganda &middot; Bab 8, 9, dan 11 &middot; Tingkat 5')
+    s = s.replace('Ujian pilihan ganda &middot; Bab 1 sampai Bab 4 &middot; Tingkat 5', 'Latihan pilihan ganda &middot; Bab 8 sampai Bab 11 &middot; Tingkat 5')
     s = s.replace('<b id="nSoal">92</b>', '<b id="nSoal">%d</b>' % n).replace('<span id="tot">92</span>', '<span id="tot">%d</span>' % n)
     s = s.replace('اخْتِبَارِ تَارِيخِ الْأَدَبِ الْعَرَبِيِّ', 'اخْتِبَارِ عِلْمِ اللُّغَةِ')
     s = s.replace("'tarikhadab5.pengaturan'", "'ilmulughah3.pengaturan'")
