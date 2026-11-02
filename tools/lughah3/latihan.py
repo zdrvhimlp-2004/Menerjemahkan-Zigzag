@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Bangun 'Ilmu Lughah 3 (Latihan Bab 1-3).html' memakai template ujian Tarikh Al Adab 5.
+"""Bangun 'Ilmu Lughah 3 (Latihan Bab 8-9 dan 11).html' memakai template ujian Tarikh Al Adab 5.
 Soal: (bab, pertanyaan, jawaban benar, jawaban salah, penjelasan). Posisi jawaban diacak tetap (seed)."""
 import json, os, random, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 S5 = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester 5')
 TPL = os.path.join(S5, 'تاريخ الأدب العربي (5)', 'Muqarrar Tarikh Al Adab Al Arabi 5 (Latihan Bab 1-4).html')
-OUT = os.path.join(S5, 'علم اللغة (3)', 'Ilmu Lughah 3 (Latihan Bab 1-3).html')
+OUT = os.path.join(S5, 'علم اللغة (3)', 'Ilmu Lughah 3 (Latihan Bab 8-9 dan 11).html')
 
-BAB = {'1': 'Pembagian Bunyi menurut Makhraj', '2': 'Sifat-Sifat Bunyi', '3': 'Performa Vokal'}
+BAB = {'8': 'Pembagian Bunyi menurut Makhraj', '9': 'Sifat-Sifat Bunyi', '11': 'Performa Vokal'}
+BMAP = {1: 8, 2: 9, 3: 11}   # nomor bab di halaman materi
 
 Q = []
 def q(b, t, ok, no, e): Q.append((b, t, ok, no, e))
@@ -105,13 +106,13 @@ def main():
         a = 0
         if rnd.random() < 0.5:
             o.reverse(); a = 1
-        items.append({'b': b, 'q': t, 'o': o, 'a': a, 'e': e})
+        items.append({'b': BMAP[b], 'q': t, 'o': o, 'a': a, 'e': e})
     n = len(items)
     s = open(TPL, encoding='utf8').read()
-    s = s.replace('<title>Ujian Sejarah Sastra Arab 5 — Bab 1–4</title>', '<title>Latihan Ilmu Lughah 3 — Bab 1–3</title>')
+    s = s.replace('<title>Ujian Sejarah Sastra Arab 5 — Bab 1–4</title>', '<title>Latihan Ilmu Lughah 3 — Bab 8–9 dan 11</title>')
     s = s.replace('<div class="logo ar">ت</div>', '<div class="logo ar">ع</div>')
     s = s.replace('اخْتِبَارُ تَارِيخِ الْأَدَبِ الْعَرَبِيِّ (٥)', 'اخْتِبَارُ عِلْمِ اللُّغَةِ (٣)')
-    s = s.replace('Ujian pilihan ganda &middot; Bab 1 sampai Bab 4 &middot; Tingkat 5', 'Latihan pilihan ganda &middot; Bab 1 sampai Bab 3 &middot; Tingkat 5')
+    s = s.replace('Ujian pilihan ganda &middot; Bab 1 sampai Bab 4 &middot; Tingkat 5', 'Latihan pilihan ganda &middot; Bab 8, 9, dan 11 &middot; Tingkat 5')
     s = s.replace('<b id="nSoal">92</b>', '<b id="nSoal">%d</b>' % n).replace('<span id="tot">92</span>', '<span id="tot">%d</span>' % n)
     s = s.replace('اخْتِبَارِ تَارِيخِ الْأَدَبِ الْعَرَبِيِّ', 'اخْتِبَارِ عِلْمِ اللُّغَةِ')
     s = s.replace("'tarikhadab5.pengaturan'", "'ilmulughah3.pengaturan'")
