@@ -1,0 +1,85 @@
+@u077
+Bunyi: adalah efek auditif
+yang ditimbulkan oleh fenomena fisika yang terjadi akibat getaran
+suatu benda, yang menyebabkan udara di sekitarnya ikut bergetar,
+lalu getaran tersebut menyebar ke segala arah
+berupa gelombang yang menjauh dari sumbernya.
+Ketika sampai ke telinga kita, gelombang itu diteruskan ke otak
+yang menerjemahkannya menjadi bunyi.
+Dengan demikian, bunyi membutuhkan tiga unsur:
+sumber yang bergetar, medium penghantar, dan penerima.
+@u079
+Buku-buku khusus menyebutkan bahwa bunyi adalah:
+"serangkaian gangguan (gelombang tekanan) dalam medium
+material, yang terhadapnya telinga manusia peka."
+@u080
+Ada pula definisi lain yang menyatakan bahwa bunyi adalah:
+fenomena alam yang diindra dengan indra pendengaran,
+terjadi akibat gesekan satu benda dengan benda lain, sehingga timbul
+dari gesekan itu getaran-getaran bunyi yang merambat
+dalam medium di sekitar sumber tersebut,
+hingga sampai ke telinga para pendengar.
+@u081
+Kita dapat memberi contoh yang sangat sederhana untuk menunjukkan
+hal itu: jika kita mengambil ujung papan kayu
+atau lempeng baja tipis dan menetapkan papan itu
+di tempat yang tetap pada satu sisi,
+kemudian membiarkan ujung lainnya bebas bergerak,
+lalu kita memukul ujung yang bebas itu,
+maka kita akan melihat ujung tersebut bergetar dengan cepat,
+dan getaran itu menimbulkan getaran ringan,
+yakni terjadinya suatu bunyi.
+@u082
+Percobaan ini serupa dengan semua percobaan lain, seperti memetik
+senar biola...
+atau getaran kulit tipis rebana atau gendang......
+dan seterusnya.
+@u083
+Percobaan ini menegaskan bahwa bunyi-bunyi dengan segala perbedaan
+dan jenisnya.. serta tinggi-rendah dan kekuatannya timbul dari getaran materi.
+@u084
+Getaran papan atau lempeng baja tipis
+sebagaimana disebutkan di atas memerlukan terjadinya "kerja" (usaha fisika),
+dan kerja ini bergantung pada amplitudo getaran papan tersebut.
+Semakin besar energi papan itu, semakin besar
+pula amplitudo getarannya, dan amplitudo gelombang panjang
+yang ditimbulkannya pun ikut membesar.
+@u085
+Perlu dicatat bahwa bunyi terjadi ketika
+ada benda yang bergetar sebagai akibatnya,
+dan bahwa getaran yang ditimbulkan oleh suatu benda
+terkadang tidak dapat terlihat oleh mata dalam beberapa kasus.
+Getaran-getaran itu juga merambat dalam medium
+gas (udara), cairan (air), atau benda
+padat (seperti kawat) hingga sampai ke telinga manusia.
+@u086
+Tidak diragukan lagi bahwa udara
+adalah medium yang melaluinya getaran-getaran merambat
+berupa gelombang dari sumber bunyi
+hingga sampai ke telinga manusia
+pada sebagian besar kesempatan.
+@u087
+Jadi, harus tersedia
+medium material agar getaran-getaran itu dapat merambat
+berupa gelombang menuju telinga manusia,
+dan getaran-getaran itu tidak mungkin merambat
+atau gelombang-gelombang itu dalam ruang hampa.
+@u089
+Semua gelombang memiliki karakteristik tertentu, namun
+karakteristik terpenting gelombang bunyi adalah sebagai berikut:
+@u090
+a. Panjang gelombang:
+yaitu jarak antara titik mana pun
+yang terdapat pada salah satu fase gelombang
+dengan titik ekuivalennya yang terdapat pada fase berikutnya;
+dengan kata lain, inilah panjang gelombang itu sendiri.
+@u091
+b. Tinggi gelombang (amplitudo):
+merepresentasikan kekuatan sinyal gelombang,
+dan juga merupakan tinggi itu sendiri
+yang tampak pada gelombang ketika digambarkan
+dalam bentuk grafik.
+Ketika gelombang memiliki tinggi yang besar
+maka ini menunjukkan bahwa nilainya tinggi.
+Perlu diketahui bahwa ada alat yang disebut "pengeras suara"
+yang tugasnya meningkatkan tinggi gelombang.

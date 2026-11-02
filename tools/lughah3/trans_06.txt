@@ -1,0 +1,93 @@
+@u113
+Mengkaji bagaimana bunyi digunakan
+dalam bahasa untuk membedakan kata-kata dan makna.
+@u114
+Mengkaji bagaimana perubahan satu bunyi
+dalam sebuah kata — seperti mengganti "b" dengan "t"
+pada kata "bait" — dapat mengubah makna.
+@u115
+Bunyi sebagai entitas abstrak:
+fonologi tidak berfokus pada bagaimana bunyi diucapkan secara fisik,
+dan hal itu termasuk ranah fonetik artikulatoris,
+melainkan mengkajinya sebagai satuan-satuan linguistik yang abstrak.
+@u116
+Satuan bunyi dasar (fonem): fonologi berfokus
+pada penentuan satuan bunyi pembeda terkecil
+dalam bahasa, yaitu fonem — dan fonem adalah satuan
+bunyi terkecil yang mampu mengubah makna kata.
+@u117
+Distribusi dan pola bunyi:
+mengkaji bagaimana bunyi terdistribusi dalam kata dan kalimat,
+serta bagaimana ia berubah dalam konteks-konteks yang berbeda.
+@u118
+Relasi antarbunyi:
+mengkaji relasi-relasi antara bunyi-bunyi yang berbeda dalam bahasa
+dan bagaimana interaksinya menghasilkan makna.
+@u120
+Alat ucap (organ artikulasi)
+pada manusia terdiri dari organ-organ berikut:
+@u122
+Paru-paru adalah dua organ dasar dalam artikulasi,
+dan tanpa keduanya tidak akan ada pernapasan,
+dan tanpa pernapasan tidak akan ada bunyi
+maupun ujaran — bahkan kehidupan itu sendiri tidak akan ada.
+@u123
+Paru-paru terletak di rongga dada,
+dipisahkan dari rongga perut oleh diafragma.
+Jaringan paru-paru memiliki kemampuan mengembang dan mengempis akibat pengaruh
+gerakan diafragma serta mengembang-mengempisnya otot-otot dada,
+yang menyebabkan terjadinya proses inspirasi (tarik napas)
+dan ekspirasi (buang napas) selama proses bernapas.
+@u124
+Inspirasi adalah masuknya udara ke dalam tubuh,
+sedangkan ekspirasi adalah: keluarnya udara dari tubuh.
+Udara ekspirasi inilah yang penting bagi kita,
+karena itulah materi tempat bunyi dihasilkan.
+@u126
+Batang tenggorokan (trakea) adalah sebuah tabung yang tersusun
+dari tulang rawan berbentuk cincin-cincin
+tidak sempurna yang menopang sisi depan trakea.
+Trakea terbagi di bagian bawahnya menjadi dua cabang
+udara (bronkus), masing-masing terhubung dengan satu paru-paru.
+Di dalam trakea inilah napas mengambil jalurnya
+sebelum bergerak menuju laring,
+dan pengerutan trakea diperlukan untuk mengubah udara ekspirasi
+menjadi arus yang memungkinkan pita suara
+menghasilkan bunyi.
+@u128
+Laring adalah sebuah rongga yang agak lebar, tersusun
+dari tulang rawan, terletak di ujung trakea.
+Ia merupakan bagian depan leher,
+melebar di bagian atasnya, dan di atasnya terdapat struktur mirip
+lidah yang disebut epiglotis (lidah glotis).
+Struktur ini menyerupai penutup, berfungsi melindungi laring
+dan seluruh jalur pernapasan saat menelan makanan,
+sehingga melindungi manusia dari tersedak,
+dan tampaknya ia tidak memiliki
+fungsi dalam produksi bunyi.
+@u129
+Laring merupakan alat dasar dalam produksi bunyi,
+karena di dalamnya terdapat sepasang pita suara yang
+berperan dasar dalam menghasilkan bunyi-bunyi bersuara (majhur).
+@u131
+Pita suara adalah sepasang jaringan ikat elastis yang menyerupai sepasang bibir, terbentang
+horizontal dalam laring dari belakang ke depan,
+bertemu pada tonjolan yang menonjol di leher (jakun).
+@u132
+Celah antara kedua pita suara disebut glotis.
+Panjang pita suara berkisar
+antara 23-27 mm, dengan jumlah getarannya
+antara 60-200 getaran per detik.
+@u133
+Kedua pita suara memiliki kemampuan bergerak dan
+mengambil berbagai posisi yang memengaruhi produksi bunyi,
+dan posisi terpenting di antaranya ada tiga, yaitu:
+@u134
+Kedua pita suara dapat terbuka lebar secara nyata
+saat udara yang didorong dari paru-paru melewatinya,
+sehingga mengizinkannya keluar tanpa menghalangi jalannya,
+sementara kedua pita itu tetap diam (tidak bergetar).
+Posisi inilah yang diambil oleh kedua pita suara
+ketika menghasilkan bunyi tak bersuara (mahmus),
+dan itu pula posisi
+yang diambilnya saat bernapas normal.

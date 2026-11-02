@@ -1,0 +1,130 @@
+@u092
+c. Frekuensi gelombang:
+merepresentasikan jumlah pengulangan gelombang
+dalam satu detik; satuan ukur frekuensi adalah kilohertz.
+Semakin cepat sumber bunyi bekerja dengan getaran,
+semakin besar frekuensi gelombangnya,
+dan frekuensi tinggi teramati melalui
+puncak-puncak gelombang yang tinggi. Definisi gelombang bunyi:
+gelombang bunyi adalah gelombang yang timbul
+dari getaran dan gangguan yang terjadi di udara.
+Ketika suatu benda mengeluarkan bunyi,
+ia menimbulkan gangguan pada partikel-partikel udara
+yang pada gilirannya mengirimkan serangkaian
+reaksi melalui udara
+hingga sampai ke gendang telinga pendengar.
+Saat telinga menangkap bunyi itu,
+berlangsung proses pengiriman sinyal ke otak untuk menafsirkannya
+dan memahami apa yang didengar.
+Selain itu, dapat dikatakan bahwa
+gelombang adalah proses pemampatan dan perenggangan
+di udara, sehingga bunyi merambat melalui medium
+fluida seperti udara.
+@u093
+d. Kecepatan bunyi:
+bergantung pada hal berikut:
+jenis medium tempat bunyi merambat:
+kecepatannya lebih tinggi dalam benda padat,
+lebih rendah dalam cairan, dan jauh lebih rendah lagi dalam gas.
+Karakteristik medium: yaitu kepadatan (densitas),
+dan kemampatan; kecepatan bunyi berkurang seiring bertambahnya keduanya.
+@u094
+e. Intensitas bunyi:
+intensitas bunyi pada suatu titik tertentu bergantung
+pada faktor-faktor berikut: jarak titik dari sumber:
+intensitas bunyi berbanding terbalik dengan kuadrat
+jarak titik dari sumber bunyi.
+Amplitudo getaran sumber dan frekuensinya:
+intensitas berbanding lurus dengan frekuensi sumber,
+dan juga dengan kuadrat amplitudo getaran sumber bunyi.
+Luas permukaan benda yang bergetar:
+intensitas bertambah seiring bertambahnya luas permukaan yang bergetar,
+karena bertambahnya massa udara yang bergetar.
+Kepadatan medium perambatan:
+bertambah seiring bertambahnya kepadatan sumber, dan hal itu
+karena jumlah energi yang berpindah dari sumber
+ke medium bertambah pada setiap osilasi.
+@u095
+f. Kekerasan bunyi (loudness):
+kekerasan bunyi bergantung pada hal berikut:
+intensitas bunyi yang terdengar. Frekuensi gelombang bunyi:
+kepekaan telinga berkurang terhadap gelombang bunyi
+yang frekuensinya kurang dari 1.000 Hz,
+dan terhadap gelombang yang memiliki frekuensi lebih tinggi
+dari 10.000 Hz. Adapun bunyi-bunyi yang memiliki
+frekuensi kurang dari 20 Hz atau lebih besar
+dari 20.000 Hz tidak dapat didengar oleh telinga.
+@u096
+g. Pitch (tinggi-rendah nada):
+melalui karakteristik ini dapat dibedakan
+antara bunyi nyaring (tinggi) dan bunyi berat (rendah),
+karena bergantung pada frekuensi gelombang bunyi
+yang sampai ke telinga — bunyi
+nyaring memiliki frekuensi lebih tinggi daripada bunyi berat.
+Contoh terbaiknya adalah suara perempuan dan laki-laki,
+di mana nada suara perempuan lebih tinggi
+daripada laki-laki, karena frekuensi suara perempuan
+lebih tinggi daripada frekuensi suara laki-laki. Jenis bunyi:
+jenis bunyi bergantung pada jenis materi
+yang menjadi sumbernya dan cara pembangkitannya,
+dan melaluinya dapat dibedakan
+dua bunyi yang memiliki pitch dan loudness yang sama,
+tetapi berasal dari sumber yang berbeda.
+Pitch terkait dengan kecepatan getaran,
+semakin cepat getaran,
+dan semakin banyak jumlahnya per detik, semakin tinggi pitch-nya,
+dan sebaliknya: semakin sedikit jumlah
+getarannya, bunyi yang dihasilkan menjadi berat (tebal),
+dan pitch bunyi ini disebut nada suara
+atau register suara.
+@u098
+Bunyi musikal: yaitu bunyi-bunyi
+yang mengandung getaran teratur,
+seperti vokal, serta huruf lam, nun, dan mim.
+@u099
+Bunyi bising (noise): yaitu bunyi-bunyi
+yang tidak mengandung getaran teratur,
+seperti konsonan tak bersuara:
+ta, tsa, ha, kha, syin, sin,
+shad, tha, fa, qaf, kaf, dan ha.
+@u100
+Bunyi yang mengandung getaran teratur sekaligus bising:
+yaitu konsonan bersuara:
+ba, jim, dal, dzal, ra, za,
+dhad, 'ain, ghain, lam, mim, dan nun.
+@u102
+Fonologi — atau ilmu pembagusan bunyi, atau phonology
+atau ilmu bunyi bahasa atau morfofonemik
+atau bunyi ujaran — adalah salah satu cabang linguistik,
+yang memperhatikan penataan bunyi-bunyi dalam bahasa-bahasa.
+Ilmu ini secara tradisional sangat berfokus
+pada kajian sistem bunyi dalam bahasa-bahasa tertentu.
+@u103
+Fonologi adalah salah satu cabang
+ilmu bahasa yang mengkaji bunyi-bunyi bahasa dari segi
+fungsinya dalam bahasa dan cara penggunaannya untuk membentuk kata-kata
+dan kalimat. Fonologi berfokus pada kajian bunyi sebagai unsur yang berdiri sendiri
+terlepas dari artikulasi fisiknya, melainkan mengkajinya dari segi
+bagaimana ia digunakan untuk membedakan makna dalam bahasa.
+@u105
+Fonetik:
+ilmu eksperimental yang mengkaji bunyi bahasa sebagai fenomena material,
+bagaimana bunyi dihasilkan, merambat, dan diterima dari sudut pandang fisik,
+organik (artikulatoris), atau auditif.
+@u106
+Fonologi: mengkaji bunyi
+dalam konteks sistem bahasa,
+dengan fokus pada fungsinya dalam membedakan kata-kata,
+seperti perbedaan antara "bait" (rumah) dan "tait" (tidak bermakna),
+dan menggunakan satuan-satuan abstrak untuk mendeskripsikannya.
+@u108
+Fonem: satuan bunyi terkecil yang mampu
+mengubah makna dalam suatu bahasa tertentu (misalnya,
+/b/ dan /t/ adalah fonem pembeda dalam bahasa Arab).
+@u109
+Alofon:
+variasi-variasi dalam pengucapan sebuah fonem yang tidak mengubah makna
+(seperti pengucapan ra tebal/tafkhim dan ra tipis/tarqiq dalam bahasa Arab).
+@u110
+Tekanan (stress) dan intonasi: aspek-aspek bunyi suprasegmental yang memengaruhi
+makna (seperti gaya kalimat tanya atau kalimat seru).
