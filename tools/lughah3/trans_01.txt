@@ -1,0 +1,160 @@
+@u009
+Mata kuliah ini menyajikan pengetahuan tentang ilmu bunyi ('Ilm al-Aswat/fonetik),
+mencakup sejarah kemunculannya serta bidang-bidang kajian yang terkait dengannya.
+@u011
+Mengetahui prinsip-prinsip umum ilmu bunyi,
+sejarah kemunculan kajian fonetik, dan bidang-bidang kajiannya.
+@u019
+Ilmu bunyi mempelajari bunyi-bunyi bahasa,
+dari segi makhraj (tempat keluarnya), sifat-sifatnya, dan cara terbentuknya.
+Ilmu ini juga disebut:
+fonetik ("ash-shawtiyyat"), atau "'ilm ash-shawtiyyat",
+dan merupakan salah satu cabang dari cabang-cabang ilmu bahasa (linguistik).
+@u020
+Ilmu bunyi memandang bahasa sebagai sekumpulan
+bunyi yang dihasilkan manusia melalui alat
+ucapnya (organ artikulasi), yang telah dibawa sejak lahir,
+dan alat ini pada dasarnya terdiri dari paru-paru dan batang tenggorokan (trakea),
+kemudian tekak, laring, dan pita suara (selaput suara),
+anak tekak (uvula), lidah, kedua langit-langit, dan kedua bibir,
+beserta rongga mulut dan rongga hidung.
+@u021
+Cara alat ini menghasilkan bunyi, berlangsung
+melalui proses sederhana yang timbul dari gesekan udara
+di antara otot-otot, sehingga terdengar dengungan,
+yang keluar setiap kali dengan bentuk berbeda dari
+kali yang lain. Udara ini didorong oleh paru-paru menuju area
+tempat udara hendak dikeluarkan,
+sehingga dari situ terbentuklah apa yang kita sebut "bunyi".
+@u022
+Para ahli fonetik mengkaji dua hal, yaitu:
+makhraj bunyi, yakni menentukan area setiap bunyi
+pada alat ucap, dan mereka menamai bunyi berdasarkan makhrajnya,
+sehingga mereka berkata: ini bunyi gusi (litsawi), itu bunyi gigi (asnani),
+yang lain bunyi bibir (syafawi), yang keempat bunyi anak tekak (lahawi), dan seterusnya....
+Hal kedua adalah sifat-sifat bunyi,
+di sini mereka mendeskripsikan bunyi berdasarkan pengamatan terhadap
+cara gesekan udara dengan otot-otot alat ucap,
+dan cara pengucapan berubah-ubah (cara gesekan udara
+dan cara peletakan organ pengucap pada makhraj yang sama),
+sehingga bunyi memiliki
+ciri-ciri yang berbeda-beda, yang menentukan sifat artikulasinya,
+maka dikatakan: ini bunyi tak bersuara (mahmus), itu bersuara (majhur),
+yang ketiga frikatif/lunak (rikhw), yang keempat letup/keras (syadid), dan seterusnya.
+@u024
+Proses berbicara melewati lima tahap,
+atau peristiwa yang berurutan dan saling terkait,
+yang satu mengantarkan kepada yang lain,
+hingga terjalin komunikasi antara pembicara dan pendengar.
+Peristiwa-peristiwa itu, menurut urutan terjadinya, adalah:
+@u025
+Peristiwa psikologis dan proses mental yang berlangsung
+dalam benak pembicara sebelum berbicara atau selama berbicara.
+@u026
+Proses mengeluarkan ujaran yang terwujud
+dalam bunyi-bunyi yang dihasilkan oleh alat yang disebut alat ucap.
+@u027
+Gelombang dan getaran bunyi yang berlangsung
+antara mulut pembicara dan telinga pendengar.
+@u028
+Proses-proses organik
+yang dialami oleh sistem pendengaran pada diri pendengar.
+@u029
+Peristiwa psikologis dan proses yang berlangsung dalam benak
+pendengar ketika ia mendengar ujaran dan menerima gelombang
+serta getaran bunyi yang disalurkan kepadanya melalui udara.
+@u030
+Idealnya, seorang ahli fonetik meninjau
+kelima tahap yang disebutkan itu,
+agar mencakup seluruh sisi objek kajiannya.
+Namun, sebagian besar
+peneliti dari kalangan ahli fonetik
+memandang perlu mengabaikan sisi pertama dan kelima serta tidak membahasnya, karena
+kedua sisi yang disebutkan itu bersifat psikologis dan mental,
+sedangkan objek kajian linguistik adalah
+peristiwa-peristiwa kebahasaan yang benar-benar diucapkan secara lisan,
+dan karena proses-proses psikologis mental ini rumit dan kabur.
+@u031
+Dari uraian di atas jelaslah bahwa bunyi-bunyi ujaran
+memiliki tiga sisi yang saling berkaitan, yang satu tidak dapat
+dibayangkan tanpa yang lain. Ketiga sisi ini adalah:
+@u032
+Sisi pengeluaran bunyi, atau sisi artikulatoris,
+yang juga disebut sisi fisiologis atau organik dari bunyi.
+@u033
+Sisi perambatan atau penyebaran di udara,
+atau sisi akustik/fisika.
+@u034
+Sisi penerimaan bunyi,
+atau sisi auditif, yang terwujud dalam getaran-getaran
+yang memengaruhi gendang telinga pendengar.
+@u036
+Ketiga sisi tersebut termasuk dalam ranah
+ilmu bunyi, yang khusus mengkajinya dan menelaahnya
+tanpa melibatkan cabang-cabang linguistik yang lain.
+Banyaknya sisi tersebut menuntut keragaman metode,
+sehingga masing-masing metode mengkaji satu sisi
+dari sisi-sisi itu. Akibat keragaman ini,
+muncullah berbagai cabang ilmu bunyi yang berbeda
+tujuan dan sarananya. Di antara cabang-cabang terpenting tersebut adalah:
+@u037
+Fonetik artikulatoris:
+mengkaji proses produksi bunyi bahasa,
+tempat pengucapannya, dan cara pengeluarannya.
+Ilmu ini juga disebut fonetik fisiologis,
+atau fonetik fungsional.
+@u038
+Fonetik akustik: mengkaji
+bunyi bahasa dari segi karakteristik fisiknya,
+atau sifat fisikanya selama perambatan dari pembicara
+kepada pendengar; ilmu ini membahas frekuensi bunyi,
+amplitudo getaran, sifat gelombang bunyi,
+tinggi-rendah bunyi (nada) dan jenisnya (timbre).
+@u039
+Fonetik auditif: mengkaji
+sistem pendengaran manusia dan proses mendengar,
+serta cara penerimaan dan persepsi bunyi bahasa.
+@u040
+Fonetik umum:
+mengkaji bunyi bahasa secara umum,
+yaitu tanpa mengaitkannya dengan bahasa tertentu.
+@u041
+Fonetik khusus:
+mengkaji bunyi-bunyi suatu bahasa tertentu saja,
+seperti bunyi-bunyi bahasa Arab.
+@u042
+Fonetik instrumental:
+mengkaji bunyi bahasa dengan menggunakan metode eksperimental,
+serta menggunakan alat-alat elektronik untuk mengungkap
+karakteristik bunyi-bunyi ini, seperti alat spektrograf
+yang menentukan jenis, kekuatan, dan nada bunyi.
+Ilmu ini juga menggunakan langit-langit buatan (palatogram) untuk mengkaji bunyi-bunyi palatal.
+Ilmu ini juga disebut:
+fonetik laboratorium, atau fonetik eksperimental.
+@u043
+Fonetik komparatif:
+mengkaji sisi-sisi kesamaan dan perbedaan
+antara bunyi suatu bahasa dengan bunyi bahasa-bahasa lain.
+@u044
+Fonetik deskriptif: mengkaji bunyi
+bahasa yang digunakan pada periode waktu tertentu.
+Ilmu ini berlawanan dengan fonetik historis.
+@u045
+Fonetik historis:
+mengkaji bunyi suatu bahasa untuk mengetahui perubahan
+dan perkembangan yang dialaminya melalui tahapan-tahapan sejarah sebelumnya.
+@u046
+Fonetik segmental:
+mengkaji vokal dan konsonan saja.
+@u047
+Fonetik suprasegmental: mengkaji tekanan (stress),
+jeda, dan intonasi (fonem adalah satuan bunyi
+pembeda terkecil yang tidak memiliki makna gramatikal atau semantik).
+@u048
+Fonetik fungsional: mengkaji bunyi dari segi
+fungsinya, yaitu mengkaji fonem-fonem, distribusinya, dan alofon-alofonnya,
+dan disebut juga ilmu fonem (fonemik).
+@u049
+Patologi wicara (ilmu cacat ucap):
+mengkaji gangguan-gangguan artikulasi pada individu,
+penyebabnya, dan cara penanganannya.
