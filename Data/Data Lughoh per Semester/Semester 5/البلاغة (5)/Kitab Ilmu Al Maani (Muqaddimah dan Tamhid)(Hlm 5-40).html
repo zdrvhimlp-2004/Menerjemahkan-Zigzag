@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>المقدمات والتمهيد — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
+  .kosong { opacity: 0.55; font-style: italic; }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=11">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الْمُقَدِّمَاتُ وَالتَّمْهِيدُ</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Kata Pengantar dan Pendahuluan (Tamhid) &middot; hlm. 5&ndash;40 (hlm. 14 kosong) &middot; Terjemah biasa &middot; kerangka, isi terjemah belum diisi</p>
+
+    <dialog id="fihris-modal" class="modal" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li>
+            <a class="toc__ar" lang="ar" href="#muqaddimat">الْمُقَدِّمَاتُ</a><div class="toc__id">Kata Pengantar <span class="toc__meta">&middot; Hlm. 5</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#muqaddimah-3">مُقَدِّمَةُ الطَّبْعَةِ الثَّالِثَةِ</a><div class="toc__id">Kata Pengantar Edisi Ketiga <span class="toc__meta">&middot; Hlm. 5</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#muqaddimah-2">مُقَدِّمَةُ الطَّبْعَةِ الثَّانِيَةِ</a><div class="toc__id">Kata Pengantar Edisi Kedua <span class="toc__meta">&middot; Hlm. 10</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#muqaddimah-1">مُقَدِّمَةُ الطَّبْعَةِ الْأُولَى</a><div class="toc__id">Kata Pengantar Edisi Pertama <span class="toc__meta">&middot; Hlm. 12</span></div></li>
+</ul></li>
+<li>
+            <a class="toc__ar" lang="ar" href="#tamhid">تَمْهِيدٌ: مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ، مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ</a><div class="toc__id">Pendahuluan: Tolok Ukur Keunggulan antara Lafaz, Makna, dan Susunan; Pengertian Fashahah dan Balaghah <span class="toc__meta">&middot; Hlm. 15</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#manath-maziyyah">مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ</a><div class="toc__id">Tolok ukur keunggulan antara lafaz, makna, dan susunan (nazhm) <span class="toc__meta">&middot; Hlm. 15</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#mafhum-fashahah-balaghah">مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ</a><div class="toc__id">Pengertian fashahah dan balaghah <span class="toc__meta">&middot; Hlm. 22</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#fashahah-kalimah">فَصَاحَةُ الْكَلِمَةِ</a><div class="toc__id">Fashahah kata <span class="toc__meta">&middot; Hlm. 23</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#fashahah-kalam">فَصَاحَةُ الْكَلَامِ</a><div class="toc__id">Fashahah kalimat <span class="toc__meta">&middot; Hlm. 30</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#fashahah-mutakallim">فَصَاحَةُ الْمُتَكَلِّمِ</a><div class="toc__id">Fashahah pembicara <span class="toc__meta">&middot; Hlm. 38</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#balaghah-kalam">بَلَاغَةُ الْكَلَامِ</a><div class="toc__id">Balaghah kalimat <span class="toc__meta">&middot; Hlm. 38</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#balaghah-mutakallim">بَلَاغَةُ الْمُتَكَلِّمِ</a><div class="toc__id">Balaghah pembicara <span class="toc__meta">&middot; Hlm. 40</span></div></li>
+</ul></li>
+        </ol>
+      </nav>
+    </dialog>
+    <h2 class="pasal__judul" id="muqaddimat">الْمُقَدِّمَاتُ</h2>
+    <p class="judul__id">Kata Pengantar</p>
+    <h3 class="bagian__judul" id="muqaddimah-3">مُقَدِّمَةُ الطَّبْعَةِ الثَّالِثَةِ</h3>
+    <p class="judul__id">Kata Pengantar Edisi Ketiga</p>
+    <div class="hal" id="hal-5"><span>Hlm. 5</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 5: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 5: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-6"><span>Hlm. 6</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 6: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 6: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-7"><span>Hlm. 7</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 7: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 7: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-8"><span>Hlm. 8</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 8: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 8: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-9"><span>Hlm. 9</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 9: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 9: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="muqaddimah-2">مُقَدِّمَةُ الطَّبْعَةِ الثَّانِيَةِ</h3>
+    <p class="judul__id">Kata Pengantar Edisi Kedua</p>
+    <div class="hal" id="hal-10"><span>Hlm. 10</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 10: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 10: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-11"><span>Hlm. 11</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 11: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 11: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="muqaddimah-1">مُقَدِّمَةُ الطَّبْعَةِ الْأُولَى</h3>
+    <p class="judul__id">Kata Pengantar Edisi Pertama</p>
+    <div class="hal" id="hal-12"><span>Hlm. 12</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 12: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 12: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-13"><span>Hlm. 13</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 13: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 13: tulis di sini ]</p>
+    </div>
+    <h2 class="pasal__judul" id="tamhid">تَمْهِيدٌ: مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ، مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ</h2>
+    <p class="judul__id">Pendahuluan: Tolok Ukur Keunggulan antara Lafaz, Makna, dan Susunan; Pengertian Fashahah dan Balaghah</p>
+    <h3 class="bagian__judul" id="manath-maziyyah">مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ</h3>
+    <p class="judul__id">Tolok ukur keunggulan antara lafaz, makna, dan susunan (nazhm)</p>
+    <div class="hal" id="hal-15"><span>Hlm. 15</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 15: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 15: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-16"><span>Hlm. 16</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 16: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 16: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-17"><span>Hlm. 17</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 17: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 17: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-18"><span>Hlm. 18</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 18: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 18: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-19"><span>Hlm. 19</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 19: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 19: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-20"><span>Hlm. 20</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 20: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 20: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-21"><span>Hlm. 21</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 21: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 21: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="mafhum-fashahah-balaghah">مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ</h3>
+    <p class="judul__id">Pengertian fashahah dan balaghah</p>
+    <div class="hal" id="hal-22"><span>Hlm. 22</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 22: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 22: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="fashahah-kalimah">فَصَاحَةُ الْكَلِمَةِ</h3>
+    <p class="judul__id">Fashahah kata</p>
+    <div class="hal" id="hal-23"><span>Hlm. 23</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 23: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 23: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-24"><span>Hlm. 24</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 24: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 24: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-25"><span>Hlm. 25</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 25: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 25: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-26"><span>Hlm. 26</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 26: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 26: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-27"><span>Hlm. 27</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 27: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 27: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-28"><span>Hlm. 28</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 28: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 28: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-29"><span>Hlm. 29</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 29: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 29: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="fashahah-kalam">فَصَاحَةُ الْكَلَامِ</h3>
+    <p class="judul__id">Fashahah kalimat</p>
+    <div class="hal" id="hal-30"><span>Hlm. 30</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 30: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 30: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-31"><span>Hlm. 31</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 31: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 31: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-32"><span>Hlm. 32</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 32: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 32: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-33"><span>Hlm. 33</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 33: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 33: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-34"><span>Hlm. 34</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 34: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 34: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-35"><span>Hlm. 35</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 35: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 35: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-36"><span>Hlm. 36</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 36: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 36: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-37"><span>Hlm. 37</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 37: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 37: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="fashahah-mutakallim">فَصَاحَةُ الْمُتَكَلِّمِ</h3>
+    <p class="judul__id">Fashahah pembicara</p>
+    <h3 class="bagian__judul" id="balaghah-kalam">بَلَاغَةُ الْكَلَامِ</h3>
+    <p class="judul__id">Balaghah kalimat</p>
+    <div class="hal" id="hal-38"><span>Hlm. 38</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 38: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 38: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-39"><span>Hlm. 39</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 39: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 39: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="balaghah-mutakallim">بَلَاغَةُ الْمُتَكَلِّمِ</h3>
+    <p class="judul__id">Balaghah pembicara</p>
+    <div class="hal" id="hal-40"><span>Hlm. 40</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 40: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 40: tulis di sini ]</p>
+    </div>
+
+  </div>
+</section>
+
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+    pageEl.style.display = curPage ? '' : 'none';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script src="../../../../assets/halaman.js?v=12"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
