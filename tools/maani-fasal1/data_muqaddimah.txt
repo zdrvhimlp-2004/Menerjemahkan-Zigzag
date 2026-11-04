@@ -2,96 +2,1896 @@
 @meta title=المقدمات والتمهيد
 @meta h1=الْمُقَدِّمَاتُ وَالتَّمْهِيدُ
 @meta subtitle=Kata Pengantar dan Tamhid
-@meta note=ringkasan per halaman dan beberapa kutipan kunci berterjemah (hlm. 14 kosong)
-# Ringkasan per halaman + kutipan kunci pendek.
+@meta note=terjemah biasa penuh dari docx hlm. 5–40 (hlm. 14 kosong)
 @bab muqaddimat|الْمُقَدِّمَاتُ|Kata Pengantar|5
 @sub muqaddimah-3|مُقَدِّمَةُ الطَّبْعَةِ الثَّالِثَةِ|Kata pengantar edisi ketiga|5
 @hal 5
-~Pembuka kata pengantar edisi ketiga: pujian kepada Allah dan shalawat kepada Nabi, ilmu sebagai warisan para nabi, lalu pengantar tentang kitab ini. Halaman ini juga memuat catatan kaki rujukan.
+الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ|Segala puji bagi Allah, Tuhan semesta alam,
+رَفَعَ قَدْرَ الْعِلْمِ،|yang meninggikan kedudukan ilmu
+وَجَعَلَهُ مِيرَاثَ الْأَنْبِيَاءِ،|dan menjadikannya warisan para nabi.
+فَالْأَنْبِيَاءُ لَمْ يُوَرِّثُوا دِينَارًا|Para nabi tidak mewariskan dinar
+وَلَا دِرْهَمًا،|dan tidak pula dirham,
+وَإِنَّمَا وَرَّثُوا الْعِلْمَ،|mereka hanya mewariskan ilmu.
+فَمَنْ أَخَذَهُ أَخَذَ بِحَظٍّ وَافِرٍ،|Siapa mengambilnya, ia mengambil bagian yang banyak.
+وَالصَّلَاةُ وَالسَّلَامُ عَلَى الْمَبْعُوثِ|Shalawat dan salam semoga tercurah kepada yang diutus
+رَحْمَةً لِلْعَالَمِينَ|sebagai rahmat bagi semesta alam,
+مُحَمَّدِ بْنِ عَبْدِ اللَّهِ|Muhammad bin Abdullah,
+النَّبِيِّ الْأُمِّيِّ،|sang nabi yang ummi.
+قَالَ تَعَالَى:|Allah Ta'ala berfirman:
+﴿هُوَ الَّذِي بَعَثَ فِي الْأُمِّيِّينَ|Dialah yang mengutus kepada kaum yang buta huruf
+رَسُولًا مِنْهُمْ يَتْلُو عَلَيْهِمْ آيَاتِهِ|seorang rasul dari kalangan mereka yang membacakan ayat-ayat-Nya kepada mereka,
+وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ|menyucikan mereka, dan mengajarkan kepada mereka Kitab dan Hikmah,
+وَإِنْ كَانُوا مِنْ قَبْلُ|padahal sebelumnya
+لَفِي ضَلَالٍ مُبِينٍ﴾ [الجمعة: ٢]|mereka benar-benar dalam kesesatan yang nyata. (Al-Jumu'ah: 2)
+عَلَّمَ وَحَثَّ عَلَى الْعِلْمِ،|Beliau mengajar dan mendorong untuk berilmu,
+وَأَخْبَرَ أَنَّ هَذَا الْعِلْمَ|dan mengabarkan bahwa ilmu ini
+يَحْمِلُهُ عُدُولُ الْخَلَفِ، فَقَالَ:|dibawa oleh orang-orang adil dari generasi penerus. Beliau bersabda:
+"يَحْمِلُ هَذَا الْعِلْمَ مِنْ كُلِّ خَلَفٍ عُدُولُهُ"|"Ilmu ini dibawa dari setiap generasi oleh orang-orang yang adil,"
+"يَنْفُونَ عَنْهُ تَحْرِيفَ الْغَالِينَ"|"yang menyingkirkan darinya penyimpangan orang-orang yang berlebihan,"
+"وَانْتِحَالَ الْمُبْطِلِينَ"|"pemalsuan orang-orang yang batil,"
+"وَتَأْوِيلَ الْجَاهِلِينَ" (١)|"dan takwil orang-orang yang bodoh." (1)
+اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ|Ya Allah, limpahkanlah shalawat, salam, dan berkah
+عَلَى نَبِيِّنَا مُحَمَّدٍ وَعَلَى آلِهِ|kepada nabi kita Muhammad dan keluarganya,
+وَصَحَابَتِهِ وَالتَّابِعِينَ لَهُمْ بِإِحْسَانٍ|para sahabatnya, dan orang-orang yang mengikuti mereka dengan baik
+إِلَى يَوْمِ الدِّينِ.|sampai hari pembalasan.
+أَمَّا بَعْدُ،|Amma ba'du,
+فَهَذَا الْكِتَابُ: عِلْمُ الْمَعَانِي|kitab ini, Ilmu Ma'ani,
+دِرَاسَةٌ بَلَاغِيَّةٌ وَنَقْدِيَّةٌ لِمَسَائِلِ الْمَعَانِي|adalah kajian balaghah dan kritik atas masalah-masalah ma'ani.
+يَتَتَبَّعُ التَّرَاكِيبَ فَيُبْرِزُ خَصَائِصَهَا،|Ia menelusuri susunan kalimat lalu menampakkan kekhasannya,
+وَيُظْهِرُ دَلَالَاتِهَا فِي ضَوْءِ|dan memperlihatkan petunjuk maknanya berdasarkan
+مَا قَرَّرَهُ الْبَلَاغِيُّونَ،|apa yang ditetapkan para ahli balaghah.
+وَهُوَ لَا يَقِفُ عِنْدَ مَا قَالَهُ|Ia tidak berhenti pada apa yang dikatakan
+الْبَلَاغِيُّونَ فَيُحْسِنُ عَرْضَهُ فَحَسْبُ،|para ahli balaghah lalu sekadar menyajikannya dengan baik,
+بَلْ يَتَجَاوَزُ ذَلِكَ إِلَى مُنَاقَشَتِهِ|tetapi melampaui itu dengan mendiskusikannya,
+وَتَجْلِيَتِهِ وَإِبْدَاءِ الرَّأْيِ فِيهِ،|menjelaskannya, dan menyampaikan pendapat tentangnya.
+وَلِذَا آثَرْنَا لَهُ هَذَا الْعُنْوَانَ:|Karena itu kami memilihkan judul ini:
+"عِلْمُ الْمَعَانِي: دِرَاسَةٌ بَلَاغِيَّةٌ"|"Ilmu Ma'ani: Kajian Balaghah"
+"وَنَقْدِيَّةٌ لِمَسَائِلِ الْمَعَانِي"|"dan Kritik atas Masalah-Masalah Ma'ani".
+إِنَّ سَبْرَ أَغْوَارِ الْمَعَانِي|Menyelami kedalaman makna
+يَتَطَلَّبُ صَبْرًا وَتَأَمُّلًا وَتَدَبُّرًا|menuntut kesabaran, perenungan, dan penghayatan,
+وَمُرَاجَعَةً دَقِيقَةً مُتَأَنِّيَةً لِلتَّرَاكِيبِ|serta telaah yang cermat dan tidak tergesa terhadap susunan kalimat
+وَلِمَا قَالَهُ الْعُلَمَاءُ.|dan apa yang dikatakan para ulama.
+وَالْبَاحِثُ عِنْدَمَا يَكُونُ كَذَلِكَ،|Peneliti yang demikian,
+فَإِنَّهُ يَغُوصُ فِي بِحَارِ التَّرَاكِيبِ|ia menyelam ke lautan susunan kalimat
+وَيَسْتَخْرِجُ مِنْهَا دُرَرَهَا وَلَآلِئَهَا،|dan mengeluarkan mutiara-mutiaranya.
+وَهَذَا مَا أَلْزَمْنَا بِهِ أَنْفُسَنَا|Inilah yang kami wajibkan atas diri kami
+فِي هَذَا الْمُؤَلَّفِ:|dalam karya ini:
+الْغَوْصُ فِي بِحَارِ التَّرَاكِيبِ|menyelam ke lautan susunan kalimat,
+وَمُنَاقَشَةُ كَلَامِ الْعُلَمَاءِ|mendiskusikan ucapan para ulama,
+وَإِيضَاحُ مَا يَحْتَاجُ إِلَى إِيضَاحٍ|menjelaskan apa yang perlu dijelaskan,
+وَتَحْرِيرُ مَا يَحْتَاجُ إِلَى تَحْرِيرٍ|dan menyunting apa yang perlu disunting
+مِمَّا قَالُوهُ وَوَجَدْنَاهُ|dari ucapan mereka yang kami dapati
+يَتَجَافَى مَعَ التَّرَاكِيبِ وَسِيَاقَاتِهَا.|tidak sejalan dengan susunan kalimat dan konteksnya.
+هَذَا الْمُؤَلَّفُ انْتَهَيْنَا مِنْ تَأْلِيفِهِ|Karya ini selesai kami tulis
+فِي السَّابِعَ عَشَرَ مِنْ شَهْرِ|pada hari ke-17 bulan
+رَمَضَانَ الْمُبَارَكِ فِي سَنَةِ|Ramadhan yang diberkahi pada tahun
+-(١) صَحَّحَهُ الْإِمَامُ أَحْمَدُ بْنُ حَنْبَلٍ ...|(1) Hadits ini dinilai sahih oleh Imam Ahmad bin Hanbal ...
+-انْظُرِ الْإِصَابَةَ، الْقِسْمَ الرَّابِعَ|Lihat Al-Ishabah, bagian keempat,
+-تَرْجَمَةَ: إِبْرَاهِيمَ الْعُذْرِيِّ ...|biografi: Ibrahim Al-'Udzri ...
+-وَانْظُرْ أَيْضًا الْجَامِعَ الْكَبِيرَ لِلْإِمَامِ السُّيُوطِيِّ.|Lihat pula Al-Jami' Al-Kabir karya Imam As-Suyuthi.
 @hal 6
-~Riwayat cetakan kitab: cetakan pertama (1406 H dan penerbit di Kairo 1408 H), cetakan kedua (1418 H), lalu penjelasan perbaikan pada edisi ketiga ini.
+سِتٍّ وَأَرْبَعِمِائَةٍ وَأَلْفٍ مِنَ الْهِجْرَةِ|1406 H,
+فِي مَدِينَةِ عُنَيْزَةَ بِالْقَصِيمِ|di kota 'Unaizah, Qashim,
+مِنَ الْمَمْلَكَةِ الْعَرَبِيَّةِ السُّعُودِيَّةِ،|Kerajaan Arab Saudi.
+وَطَبَعَتْهُ مَطْبَعَةُ السَّعَادَةِ بِالْقَاهِرَةِ|Buku ini dicetak oleh Percetakan As-Sa'adah di Kairo,
+بِجُمْهُورِيَّةِ مِصْرَ الْعَرَبِيَّةِ|Republik Arab Mesir,
+سَنَةَ ١٤٠٨هـ - ١٩٨٨م، الطَّبْعَةَ الْأُولَى.|tahun 1408 H / 1988 M, sebagai cetakan pertama.
+وَلَمَّا نَفِدَتْ هَذِهِ الطَّبْعَةُ،|Ketika cetakan ini habis
+وَبَدَتْ حَاجَةُ طُلَّابِ الْعِلْمِ وَدَارِسِيهِ|dan tampak kebutuhan para penuntut ilmu dan pengkajinya
+إِلَى الْكِتَابِ، طُبِعَ طَبْعَةً ثَانِيَةً|akan buku ini, dicetaklah cetakan kedua
+سَنَةَ ١٤١٨هـ - ١٩٩٨م،|tahun 1418 H / 1998 M.
+نَهَضَتْ بِهَذِهِ الطَّبْعَةِ دَارُ الْمَعَالِمِ|Penerbitan cetakan ini ditangani Dar Al-Ma'alim
+الثَّقَافِيَّةِ لِلتَّوْزِيعِ وَالنَّشْرِ بِالْأَحْسَاءِ|Ats-Tsaqafiyyah untuk distribusi dan penerbitan di Al-Ahsa',
+بِالْمَمْلَكَةِ الْعَرَبِيَّةِ السُّعُودِيَّةِ|Kerajaan Arab Saudi,
+بِالْمُشَارَكَةِ مَعَ مُؤَسَّسَةِ الْمُخْتَارِ|bekerja sama dengan Yayasan Al-Mukhtar
+لِلنَّشْرِ وَالتَّوْزِيعِ بِالْقَاهِرَةِ|untuk penerbitan dan distribusi di Kairo,
+بِجُمْهُورِيَّةِ مِصْرَ الْعَرَبِيَّةِ،|Republik Arab Mesir.
+وَاسْتَمَرَّ الْكِتَابُ يُؤْتِي ثِمَارَهُ،|Buku ini terus berbuah,
+مُحَقِّقًا الْغَايَةَ الْمَرْجُوَّةَ مِنْهُ،|mewujudkan tujuan yang diharapkan darinya,
+جَنَاهُ دَانٍ وَأَثَرُهُ بَادٍ|buahnya dekat dan pengaruhnya tampak,
+حَتَّى نَفِدَتْ هَذِهِ الطَّبْعَةُ.|hingga cetakan ini pun habis.
+نَهَضَتْ مُؤَسَّسَةُ الْمُخْتَارِ لِلنَّشْرِ|Yayasan Al-Mukhtar untuk penerbitan
+وَالتَّوْزِيعِ بِطَبْعِهِ طَبْعَةً ثَانِيَةً أُخْرَى|dan distribusi mencetaknya sebagai cetakan kedua yang lain,
+انْفَرَدَتْ بِهَا دُونَ دَارِ الْمَعَالِمِ الثَّقَافِيَّةِ،|ia lakukan sendiri tanpa Dar Al-Ma'alim Ats-Tsaqafiyyah,
+وَكَانَ ذَلِكَ سَنَةَ ١٤٢٥هـ - ٢٠٠٤م،|yaitu pada tahun 1425 H / 2004 M.
+وَقَدْ أَرَادَتْ مُؤَسَّسَةُ الْمُخْتَارِ|Yayasan Al-Mukhtar ingin
+أَنْ تَزِيدَ مِنْ جَمَالِ الْكِتَابِ|menambah keindahan buku
+فَقَامَتْ بِضَبْطِ الْأَبْيَاتِ الشِّعْرِيَّةِ|lalu memberi harakat pada bait-bait syair
+وَضَبْطِ بَعْضِ النُّصُوصِ،|dan sebagian teks.
+وَهَذَا الضَّبْطُ جَاءَ خَاطِئًا فِي مُعْظَمِهِ،|Namun pemberian harakat itu sebagian besarnya keliru,
+فَأَفْسَدَ الْمَعْنَى، وَأَطْفَأَ الثَّمَرَةَ؛|sehingga merusak makna dan memadamkan buahnya;
+حَيْثُ صَارَ الْقَارِئُ لِلْكِتَابِ يَتَخَبَّطُ،|pembaca buku menjadi kebingungan
+وَلَا يَسْتَطِيعُ الْوُصُولَ إِلَى الْمَعْنَى،|dan tidak mampu sampai kepada makna.
+فَكَيْفَ يُدْرِكُ الْمَعْنَى،|Bagaimana ia dapat memahami makna
+وَيَصِلُ إِلَى الْمُرَادِ،|dan mencapai maksud,
+وَالْبَيْتُ مَضْبُوطٌ ضَبْطًا خَاطِئًا؟ ...|sedangkan bait itu diberi harakat secara keliru? ...
+أَنَّى لَهُ أَنْ يَفْهَمَ النَّصَّ،|Bagaimana ia dapat memahami teks
+وَيُدْرِكَ مَا وَرَاءَ تَرَاكِيبِهِ|dan menangkap apa di balik susunannya
+مِنْ أَسْرَارٍ وَلَطَائِفَ|berupa rahasia dan kehalusan
+وَالنَّصُّ غَيْرُ مُسْتَقِيمٍ؟ ...|sedangkan teksnya tidak lurus? ...
+لَا بُدَّ مِنْ تَصْحِيحٍ وَإِقَامَةِ النَّصِّ|Harus ada pembetulan dan penegakan teks
+حَتَّى يَتَمَكَّنَ الْقَارِئُ مِنَ الْفَهْمِ وَالْإِدْرَاكِ.|agar pembaca mampu memahami dan menangkapnya.
+اتَّصَلَ بِي كَثِيرُونَ مِمَّنْ يُرِيدُونَ|Banyak orang yang menginginkan
+الْكِتَابَ صَحِيحًا، وَشَكَوْا إِلَيَّ|buku ini dalam keadaan benar menghubungi saya dan mengadu kepada saya
+مَا صَارَ إِلَيْهِ حَالُ الْكِتَابِ|tentang keadaan buku ini.
+فَكَانَ لِزَامًا عَلَيَّ أَنْ أُعِيدَ|Maka wajib bagi saya untuk meninjau ulang
+النَّظَرَ فِي الْكِتَابِ،|buku ini,
+وَأَنْ أَنْهَضَ بِتَصْحِيحِهِ،|membenahinya,
+وَأَنْ أُقَوِّمَ مَا اعْوَجَّ مِنْهُ|dan meluruskan bagian yang bengkok
+حَتَّى يَسْتَقِيمَ،|hingga lurus.
+وَقَدْ وَفَّقَنِي اللَّهُ عَزَّ وَجَلَّ|Allah Azza wa Jalla telah memberi taufik kepada saya
+وَأَعَانَنِي لِلنَّهُوضِ بِذَلِكَ ....|dan menolong saya melaksanakannya ....
+ثُمَّ أَمَرْنَا بِإِعَادَةِ طَبْعِ الْكِتَابِ|Kemudian kami memerintahkan pencetakan ulang buku
+فَكَانَتْ هَذِهِ الطَّبْعَةُ الثَّالِثَةُ،|maka jadilah ini cetakan ketiga,
+وَهِيَ طَبْعَةٌ صَحِيحَةٌ مُصَوَّبَةٌ،|cetakan yang benar dan telah dikoreksi.
+نَسْأَلُ اللَّهَ تَعَالَى أَنْ تُؤْتِيَ ثِمَارَهَا،|Kami memohon kepada Allah Ta'ala agar cetakan ini berbuah
+وَأَنْ تَتَحَقَّقَ بِهَا الْغَايَةُ|dan agar terwujud dengannya tujuan
+الْمَرْجُوَّةُ مِنَ الْكِتَابِ.|yang diharapkan dari buku ini.
+نَهَضْنَا فِي هَذِهِ الطَّبْعَةِ بِتَصْحِيحِ|Dalam cetakan ini kami membetulkan
+كُلِّ مَا حَدَثَ مِنْ أَخْطَاءَ|semua kesalahan yang terjadi
+فِي الطَّبْعَةِ السَّابِقَةِ فَضَبَطْنَا الْأَبْيَاتَ|pada cetakan sebelumnya, lalu kami memberi harakat bait-bait
+ضَبْطًا صَحِيحًا دَقِيقًا|dengan harakat yang benar dan teliti.
+عُدْنَا فِيهِ إِلَى مَصَادِرِ الْأَبْيَاتِ|Kami merujuk pada sumber-sumber bait
+لِنَتَمَكَّنَ مِنْ ذَلِكَ،|agar dapat melakukannya.
+وَشَرَحْنَا مَا يَحْتَاجُ إِلَى شَرْحٍ|Kami menjelaskan apa yang perlu dijelaskan
+حَتَّى تَتِمَّ الْفَائِدَةُ الْمَرْجُوَّةُ،|agar sempurna manfaat yang diharapkan,
+وَنَسَبْنَا الْأَبْيَاتَ إِلَى|dan kami menisbatkan bait-bait kepada
 @hal 7
-~Perbaikan edisi ketiga: syair dinisbatkan kepada penyairnya, konteks bait dijelaskan bila perlu, hadits ditakhrij dan diberi harakat yang benar, serta rahasia balaghahnya ditambah.
+قَائِلِيهَا، وَكَشَفْنَا عَنِ الْمُنَاسَبَةِ|para penyairnya, dan menyingkap peristiwa
+الَّتِي قِيلَتْ فِيهَا تِلْكَ الْأَبْيَاتُ|yang melatarbelakangi bait-bait itu
+كُلَّمَا وَجَدْنَا أَنَّ ذَلِكَ كَانَ ضَرُورِيًّا؛|setiap kali kami anggap hal itu perlu;
+حَيْثُ تَتَجَلَّى مِنْ خِلَالِهِ|sebab melaluinya tampak
+الْأَسْرَارُ الْبَلَاغِيَّةُ الْكَامِنَةُ|rahasia-rahasia balaghah yang tersembunyi
+وَرَاءَ الْأَلْفَاظِ وَالتَّرَاكِيبِ.|di balik lafaz dan susunan kalimat.
+وَقَفْنَا وَقْفَةً مُتَأَنِّيَةً|Kami berhenti dengan saksama
+أَمَامَ الْأَحَادِيثِ النَّبَوِيَّةِ الْمَوْجُودَةِ فِي الْكِتَابِ،|di hadapan hadits-hadits nabawi dalam buku ini,
+فَقُمْنَا بِتَخْرِيجِ تِلْكَ الْأَحَادِيثِ،|lalu kami mentakhrij hadits-hadits itu,
+وَضَبَطْنَاهَا ضَبْطًا صَحِيحًا،|memberinya harakat yang benar,
+وَزِدْنَا الْخَصَائِصَ وَالْأَسْرَارَ الْبَلَاغِيَّةَ|dan menambahkan kekhasan dan rahasia balaghah
+الْكَامِنَةَ وَرَاءَ أَلْفَاظِهَا وَتَرَاكِيبِهَا|yang tersembunyi di balik lafaz dan susunannya
+تَجْلِيَةً وَإِيضَاحًا.|sebagai penjelasan dan penerangan.
+وَجَدْنَا تَدَاخُلًا بَيْنَ فَقَرَاتِ التَّعْبِيرَاتِ،|Kami mendapati tumpang tindih antarparagraf ungkapan,
+وَهَذَا التَّدَاخُلُ يَحُولُ بَيْنَ الْقَارِئِ|dan tumpang tindih ini menghalangi pembaca
+وَالْفَهْمِ الْجَيِّدِ لِأَوَّلِ وَهْلَةٍ|dari pemahaman yang baik pada pandangan pertama
+عِنْدَ الْقِرَاءَةِ، فَقُمْنَا بِإِعَادَةِ تَنْظِيمِ|saat membaca, maka kami menata ulang
+تِلْكَ الْفَقَرَاتِ حَسَبَ اتِّصَالِ الْمَعْنَى|paragraf-paragraf itu menurut bersambungnya makna,
+وَاسْتِمْرَارِهِ ثُمَّ انْتِهَائِهِ|kelanjutannya, lalu berakhirnya,
+وَالْوُصُولِ إِلَى آخِرِ الْمُرَادِ مِنْهُ وَأَقْصَاهُ ..|hingga sampai ke ujung maksudnya yang terjauh ..
+نَهَضْنَا بِهَذَا التَّنْظِيمِ وَالتَّنْسِيقِ|Kami melakukan penataan dan pengaturan ini
+بَيْنَ فَقَرَاتِ التَّعْبِيرَاتِ،|antarparagraf ungkapan,
+لِأَنَّ هَذَا يُسَاعِدُ الْقَارِئَ|karena ini membantu pembaca
+وَيُيَسِّرُ لَهُ الْوُقُوفَ عَلَى الْمُرَادِ،|dan memudahkannya memahami maksud,
+وَالْكِتَابُ كَانَ فِي حَاجَةٍ إِلَى هَذَا التَّنْظِيمِ.|dan buku ini memang memerlukan penataan tersebut.
+فِي كَثِيرٍ مِنَ الْمَوَاطِنِ وَجَدْنَا|Di banyak tempat kami menemukan
+مَسَائِلَ تَحْتَاجُ إِلَى إِضَافَاتٍ،|masalah yang butuh tambahan,
+وَأُخْرَى تَحْتَاجُ إِلَى إِيضَاحَاتٍ وَتَعْدِيلَاتٍ|dan yang lain butuh penjelasan dan perbaikan,
+فَلَمْ نَتَرَدَّدْ فِي النُّهُوضِ بِذَلِكَ،|maka kami tidak ragu melakukannya.
+وَقُمْنَا بِمُرَاجَعَةِ تِلْكَ الْمَسَائِلِ،|Kami meninjau ulang masalah-masalah itu,
+وَأَطَلْنَا الْوُقُوفَ أَمَامَهَا،|lama kami berhenti di hadapannya,
+نَتَأَمَّلُ وَنَتَدَبَّرُ،|merenung dan menghayati,
+وَنَبْحَثُ مَا يَحْتَاجُهُ الْقَارِئُ،|serta mengkaji apa yang dibutuhkan pembaca.
+ثُمَّ أَضَفْنَا مَا تَحْتَاجُهُ تِلْكَ الْمَسَائِلُ|Lalu kami menambahkan apa yang diperlukan masalah itu
+مِنْ إِضَافَاتٍ، وَأَوْضَحْنَا مَا هُوَ|berupa tambahan, dan menjelaskan apa yang
+فِي حَاجَةٍ إِلَى إِيضَاحٍ.|memerlukan penjelasan.
+إِنَّ هَذَا الْكِتَابَ يَتَنَاوَلُ|Buku ini membahas
+مَسَائِلَ عِلْمِ الْمَعَانِي،|masalah-masalah ilmu ma'ani,
+وَهَذَا الْعِلْمُ كَمَا عَرَّفَهُ الْبَلَاغِيُّونَ (١)|dan ilmu ini sebagaimana didefinisikan para ahli balaghah (1)
+"عِلْمٌ يُعْرَفُ بِهِ أَحْوَالُ اللَّفْظِ"|"ilmu yang dengannya diketahui keadaan lafaz"
+"الْعَرَبِيِّ الَّتِي بِهَا يُطَابِقُ"|"Arab yang dengannya ia sesuai"
+"مُقْتَضَى الْحَالِ"|"dengan tuntutan keadaan."
+وَلِذَا فَإِنَّ الْكِتَابَ يَمْضِي|Karena itu buku ini bergerak
+وَرَاءَ اللَّفْظِ الْعَرَبِيِّ الْمُفْرَدِ|menelusuri lafaz Arab yang tunggal
+فَيَدْرُسُ أَحْوَالَهُ فِي جُمْلَتِهِ|lalu mengkaji keadaannya dalam kalimatnya
+الَّتِي سُبِكَ بِهَا،|yang menjalinnya,
+وَالَّتِي جَاءَتْ فِي سِيَاقٍ حَوَاهَا|dan yang hadir dalam konteks yang memuatnya
+وَحَوَى غَيْرَهَا مِنَ الْجُمَلِ،|dan memuat kalimat-kalimat lain.
+يَمْضِي الْكِتَابُ وَرَاءَ هَذِهِ الْأَلْفَاظِ|Buku ini menelusuri lafaz-lafaz ini
+فِي جُمَلِهَا مِنْ سِيَاقَاتِهَا|dalam kalimat dan konteksnya
+فَيَدْرُسُ أَحْوَالَهَا وَمَا تَفِيضُ بِهِ|lalu mengkaji keadaannya dan apa yang dilimpahkan
+هَذِهِ الْأَحْوَالُ مِنْ خَصَائِصَ|keadaan-keadaan ini berupa kekhasan,
+وَأَسْرَارٍ وَمَزَايَا بَلَاغِيَّةٍ.|rahasia, dan keunggulan balaghah.
+وَقَدْ نَهَضَ الْكِتَابُ فِي هَذَا الْمَيْدَانِ|Dalam bidang ini buku ini mengkaji
+بِدِرَاسَةِ أَحْوَالِ الْإِسْنَادِ الْخَبَرِيِّ|keadaan isnad khabari,
+وَأَحْوَالِ الْمُسْنَدِ إِلَيْهِ|keadaan musnad ilaih,
+وَأَحْوَالِ الْمُسْنَدِ|keadaan musnad,
+وَأَحْوَالِ مُتَعَلِّقَاتِ الْفِعْلِ|dan keadaan pelengkap fi'il,
+مُجَلِّيًا مَا يَكْمُنُ وَرَاءَهَا|seraya menjelaskan apa yang tersembunyi di baliknya
+مِنْ أَسْرَارٍ وَخَصَائِصَ،|berupa rahasia dan kekhasan,
+وَمَا هُوَ مُسْتَكِنٌّ وَرَاءَ الْعُدُولِ|dan apa yang terkandung di balik penyimpangan
+عَنْ مُقْتَضَى الظَّاهِرِ فِيهَا|dari tuntutan zahir padanya
+مِنْ أَغْرَاضٍ وَنُكَاتٍ بَلَاغِيَّةٍ.|berupa tujuan dan nuansa balaghah.
+-(١) الْإِيضَاحُ، ج١ ص ٣٥.|(1) Al-Idhah, jilid 1 hlm. 35.
 @hal 8
-~Gambaran isi bagian kitab berikutnya (Jilid 2): qashr, insya' dan jenisnya, fashl dan washl, serta ijaz dan ithnab, dengan rujukan ke pasal-pasalnya.
+كَمَا يَمْضِي الْكِتَابُ فِي تَتَبُّعِهِ|Buku ini juga melanjutkan penelusurannya
+لِلَّفْظِ الْعَرَبِيِّ وَرَاءَ الْجُمْلَةِ|terhadap lafaz Arab di luar tingkat kalimat,
+فَيَدْرُسُ "الْقَصْرَ": طُرُقَهُ وَأَغْرَاضَهُ|lalu mengkaji "qashr": cara-caranya, tujuannya,
+وَفُرُوقَهُ وَدَقَائِقَهُ وَأَسْرَارَهُ،|perbedaannya, kehalusannya, dan rahasianya.
+وَيَدْرُسُ الْجُمْلَةَ الْإِنْشَائِيَّةَ|Ia mengkaji kalimat insya'i
+مُفَرِّقًا بَيْنَهَا وَبَيْنَ الْجُمْلَةِ الْخَبَرِيَّةِ،|dengan membedakannya dari kalimat khabari,
+مُجَلِّيًا فِي ذَلِكَ أَنْوَاعَ الْإِنْشَاءِ الطَّلَبِيِّ|menjelaskan jenis-jenis insya' thalabi
+مِنْ أَمْرٍ وَنَهْيٍ وَاسْتِفْهَامٍ|yaitu perintah, larangan, pertanyaan,
+وَتَمَنٍّ وَنِدَاءٍ،|harapan, dan seruan,
+كَاشِفًا عَنْ وِجْهَةِ نَظَرِ الْبَلَاغِيِّينَ|serta menyingkap pandangan para ahli balaghah
+فِي التَّفْرِقَةِ بَيْنَ الْإِنْشَاءِ الطَّلَبِيِّ|dalam membedakan insya' thalabi
+وَالْإِنْشَاءِ غَيْرِ الطَّلَبِيِّ،|dari insya' ghairu thalabi,
+مُوصِيًا بِضَرُورَةِ دِرَاسَةِ الْإِنْشَاءِ غَيْرِ الطَّلَبِيِّ|dan menganjurkan perlunya mengkaji insya' ghairu thalabi
+لِمَا يَكْمُنُ وَرَاءَهُ مِنْ دَقَائِقَ وَلَطَائِفَ|karena kehalusan dan keindahan yang tersembunyi di baliknya
+يَقِفُ عَلَيْهَا الدَّارِسُ لِهَذِهِ الْأَنْمَاطِ مِنَ الْكَلَامِ،|yang dapat dicapai pengkaji ragam tuturan ini.
+وَنَقْصِدُ بِهَا: أَنْوَاعَ الْإِنْشَاءِ غَيْرِ الطَّلَبِيِّ،|Maksud kami: jenis-jenis insya' ghairu thalabi,
+وَالَّتِي مِنْهَا: الْقَسَمُ وَالرَّجَاءُ|di antaranya: sumpah, pengharapan,
+وَالتَّعَجُّبُ وَالْمَدْحُ وَالذَّمُّ وَغَيْرُهَا (١).|takjub, pujian, celaan, dan lainnya (1).
+وَيَمْضِي الْكِتَابُ كَذَلِكَ فِي تَتَبُّعِهِ|Buku ini juga melanjutkan penelusurannya
+لِلَّفْظِ الْعَرَبِيِّ وَرَاءَ الْجُمَلِ الْمُلْتَقِيَةِ|terhadap lafaz Arab di balik kalimat-kalimat yang bertemu,
+فَيَدْرُسُ الْعَلَاقَاتِ بَيْنَ تِلْكَ الْجُمَلِ|lalu mengkaji hubungan antara kalimat-kalimat itu
+مُتَتَبِّعًا الْمَوَاضِعَ الَّتِي تَتَطَلَّبُ الْوَصْلَ|dengan menelusuri tempat yang menuntut washl
+وَالْمَوَاضِعَ الْأُخْرَى الَّتِي تَقْتَضِي الْفَصْلَ،|dan tempat lain yang menuntut fashl,
+فَيَكْشِفُ عَنْ تِلْكَ الْمَوَاضِعِ ..|sehingga menyingkap tempat-tempat itu ..
+كَمَا يَدْرُسُ مَا يَقْتَضِيهِ الْمَقَامُ|Ia juga mengkaji apa yang dituntut oleh situasi
+مِنْ إِيجَازٍ أَوْ إِطْنَابٍ|berupa ijaz atau ithnab
+عِنْدَ الْتِقَاءِ تِلْكَ الْجُمَلِ،|ketika kalimat-kalimat itu bertemu,
+فَيَتَتَبَّعُ مَوَاضِعَ الْإِيجَازِ|lalu menelusuri tempat-tempat ijaz
+وَمَوَاطِنَ الْإِطْنَابِ مُفَرِّقًا بَيْنَهَا|dan tempat-tempat ithnab dengan membedakannya
+وَمُجَلِّيًا مَا يَسْتَكِنُّ فِيهَا|serta menjelaskan apa yang terkandung di dalamnya
+مِنْ أَسْرَارٍ وَلَطَائِفَ وَمَزَايَا بَلَاغِيَّةٍ.|berupa rahasia, keindahan, dan keunggulan balaghah.
+هَذَا وَالْكِتَابُ فِي تَتَبُّعِهِ ذَلِكَ|Dalam penelusuran itu buku ini
+لَمْ يَقِفْ عِنْدَ عَرْضِ مَا قَالَهُ|tidak berhenti pada pemaparan apa yang dikatakan
+الْبَلَاغِيُّونَ فَحَسْبُ، بَلْ يَتَجَاوَزُ ذَلِكَ|para ahli balaghah saja, tetapi melampaui itu
+إِلَى تَجْلِيَةِ مَسَائِلَ وَقَضَايَا|dengan menjelaskan masalah dan persoalan
+تُهِمُّ الدَّارِسَ وَتُفِيدُهُ،|yang penting dan bermanfaat bagi pengkaji.
+إِنَّ الْكِتَابَ يُحْسِنُ عَرْضَ مَا قَرَّرَهُ|Buku ini menyajikan dengan baik apa yang ditetapkan
+الْبَلَاغِيُّونَ مُوَضِّحًا إِيَّاهُ بِالشَّوَاهِدِ،|para ahli balaghah sambil menjelaskannya dengan contoh,
+ثُمَّ يُنَاقِشُ هَذِهِ الْمُقَرَّرَاتِ الْبَلَاغِيَّةَ ..|lalu mendiskusikan ketetapan-ketetapan balaghah ini ..
+مَا يَحْتَاجُ مِنْهَا إِلَى إِيضَاحٍ يُوَضِّحُهُ ..|yang perlu penjelasan ia jelaskan ..
+مَا اخْتَلَفَ فِيهِ الْبَلَاغِيُّونَ يُنَاقِشُهُ|yang diperselisihkan para ahli balaghah ia diskusikan,
+وَيُبْدِي فِيهِ رَأْيَهُ|ia sampaikan pendapatnya,
+وَيُرَجِّحُ مَا يَرَاهُ أَهْلًا لِلتَّرْجِيحِ ..|dan ia menguatkan yang dinilainya layak dikuatkan ..
+مَا قَصَّرَ فِيهِ الْبَلَاغِيُّونَ يُكَمِّلُهُ وَيَسْتَوْفِيهِ ..|yang kurang dari para ahli balaghah ia lengkapi dan tuntaskan ..
+مَا يَحْتَاجُ إِلَى تَحْرِيرٍ يُحَرِّرُهُ|yang perlu disunting ia sunting,
+وَيُصْلِحُهُ وَيُقِيمُهُ وَيُصَوِّبُهُ|ia perbaiki, luruskan, dan benarkan,
+مُسْتَنِدًا فِي ذَلِكَ|dengan bersandar dalam hal itu
+إِلَى مَا تَفِيضُ بِهِ التَّرَاكِيبُ.|pada apa yang dilimpahkan oleh susunan kalimat.
+وَالْكِتَابُ فِي تَنَاوُلِهِ لِكُلِّ|Dalam membahas semua
+هَذِهِ الْقَضَايَا الْبَلَاغِيَّةِ|persoalan balaghah ini,
+يُثْبِتُ مَا يُقَرِّرُهُ بِالْبَرَاهِينِ وَالْأَدِلَّةِ،|buku ini menetapkan yang diputuskannya dengan bukti dan dalil,
+وَيُوَضِّحُهُ بِالشَّوَاهِدِ حَتَّى يَثْبُتَ فِي الْأَذْهَانِ،|dan menjelaskannya dengan contoh hingga tertanam dalam pikiran
+وَيَسْتَقِرَّ بِالْوِجْدَانِ،|dan menetap dalam perasaan.
+فَلَمْ يَعْرِضِ الْمُقَرَّرَاتِ الْبَلَاغِيَّةَ|Ia tidak menyajikan ketetapan-ketetapan balaghah
+عَرْضًا جَافًّا، بَلْ يَرْوِيهِ|dengan cara kering, tetapi menyiraminya
+بِالشَّوَاهِدِ الَّتِي تُوَضِّحُهُ وَتُرَطِّبُهُ،|dengan contoh yang menjelaskan dan menyegarkannya,
+فَيَسْتَسِيغُهُ الْقَارِئُ وَيُقْبِلُ عَلَيْهِ|sehingga pembaca menerimanya, menghadapinya,
+وَيَسْتَوْعِبُهُ وَيُثْلَجُ بِهِ صَدْرُهُ؛|memahaminya, dan lega hatinya karenanya;
+حَيْثُ يَجِدُ فِيهِ بُغْيَتَهُ وَمَآرِبَهُ.|sebab ia mendapati di dalamnya apa yang dicari dan dihajatkannya.
+-(١) ارْجِعْ إِلَى هَذِهِ الْأَنْمَاطِ فِي الْفَصْلِ|(1) Rujuklah ragam-ragam ini dalam bab
+-الثَّانِي مِنَ الْجُزْءِ الثَّانِي مِنْ هَذَا الْكِتَابِ.|kedua dari jilid kedua buku ini.
 @hal 9
-~Penutup edisi ketiga: penulis menyebut edisi ini menyempurnakan bentuk dan isi serta berharap bermanfaat. Bertanggal 15 Jumadil Ula 1429 H (20 Mei 2008).
+إِنَّ هَذِهِ الطَّبْعَةَ بِمَا نَهَضَتْ بِهِ|Cetakan ini dengan pembenahan yang dilakukannya
+مِنْ إِصْلَاحٍ لِلْكِتَابِ، عَلَى نَحْوِ مَا ذَكَرْنَا،|terhadap buku, sebagaimana kami sebutkan,
+شَكْلًا وَمَضْمُونًا، جَعَلَتْهُ يَسْتَوِي عَلَى عُودِهِ،|dari segi bentuk dan isi, membuatnya tegak kokoh
+وَيُؤْتِي ثِمَارَهُ، فَجَنَاهُ|dan berbuah; buahnya
+إِنْ شَاءَ اللَّهُ تَعَالَى سَيَكُونُ دَانِيًا،|insya Allah akan dekat,
+وَأَثَرُهُ سَيَكُونُ بَادِيًا،|dan pengaruhnya akan tampak.
+وَسَيُعْجَبُ، إِنْ شَاءَ اللَّهُ، الْقُرَّاءُ؛|Insya Allah para pembaca akan kagum,
+حَيْثُ يَجِدُونَ فِيهِ بُغْيَتَهُمُ الَّتِي عَهِدُوهَا،|sebab mereka mendapati di dalamnya apa yang biasa mereka cari,
+وَضَالَّتَهُمُ الَّتِي يَنْشُدُونَهَا ..|dan yang hilang yang mereka dambakan ..
+لَقَدْ نَحَّيْنَا عَنْهُ مَا عَلِقَ بِهِ|Kami telah menyingkirkan darinya apa yang melekat
+مِنْ أَدْرَانٍ فِي الطَّبْعَةِ السَّابِقَةِ،|berupa kotoran pada cetakan sebelumnya,
+فَصَحَّ وَاسْتَقَامَ؛|maka ia menjadi benar dan lurus;
+إِذِ انْتَفَضَ كَمَا انْتَفَضَ الْعُصْفُورُ|ia mengibaskan diri seperti burung gereja mengibas
+بَلَّلَهُ الْقَطْرُ،|ketika dibasahi hujan.
+وَكَانَ نَتِيجَةَ هَذِهِ الِانْتِفَاضَةِ|Hasil kibasan ini
+أَنْ زَالَتْ عَنْهُ أَدْرَانُهُ،|ialah hilangnya kotoran darinya,
+فَبَدَا صَحِيحًا مُسْتَقِيمًا|maka ia tampak benar dan lurus,
+جَنَاهُ دَانٍ وَأَثَرُهُ بَادٍ.|buahnya dekat dan pengaruhnya tampak.
+نَسْأَلُ اللَّهَ تَبَارَكَ وَتَعَالَى|Kami memohon kepada Allah Tabaraka wa Ta'ala
+أَنْ يَنْفَعَ بِهِ طُلَّابَ الْعِلْمِ|agar buku ini bermanfaat bagi para penuntut ilmu,
+وَدَارِسِيهِ وَمُحِبِّيهِ،|pengkajinya, dan pecintanya,
+وَأَنْ يَجْزِيَنَا بِهِ خَيْرَ الْجَزَاءِ،|agar membalas kami dengannya dengan balasan terbaik,
+وَيَغْفِرَ زَلَّاتِنَا، وَيَمْحُوَ ذُنُوبَنَا،|mengampuni kekeliruan kami, menghapus dosa kami,
+وَيُكَفِّرَ عَنَّا سَيِّئَاتِنَا،|menghapus keburukan kami,
+وَيَرْحَمَ وَالِدَيْنَا، وَيَهْدِيَ أَبْنَاءَنَا،|merahmati kedua orang tua kami, menunjuki anak-anak kami,
+وَيَشْفِيَ مَرْضَانَا، وَيَحْفَظَنَا|menyembuhkan orang sakit kami, dan menjaga kami,
+فَهُوَ خَيْرٌ حَافِظًا،|sebab Dia sebaik-baik penjaga,
+وَيَهْدِيَنَا سَوَاءَ السَّبِيلِ،|serta menunjuki kami ke jalan yang lurus.
+إِنَّهُ خَيْرُ مَسْؤُولٍ|Sesungguhnya Dia sebaik-baik tempat memohon
+وَهُوَ نِعْمَ الْمَوْلَى وَنِعْمَ النَّصِيرُ،|dan Dialah sebaik-baik pelindung dan penolong.
+وَصَلَّى اللَّهُ وَسَلَّمَ وَبَارَكَ|Semoga Allah melimpahkan shalawat, salam, dan berkah
+عَلَى نَبِيِّنَا مُحَمَّدٍ|kepada nabi kita Muhammad,
+وَعَلَى آلِهِ وَصَحَابَتِهِ أَجْمَعِينَ،|keluarga, dan seluruh sahabatnya.
+وَآخِرُ دَعْوَانَا أَنِ الْحَمْدُ|Akhir doa kami ialah segala puji
+لِلَّهِ رَبِّ الْعَالَمِينَ.|bagi Allah, Tuhan semesta alam.
+*الْمُؤَلِّفُ|Penulis
+*بَسْيُونِي عَبْدُ الْفَتَّاحِ فَيُّودٌ|Basyuni Abdul Fattah Fayyud
+الْجِيزَةُ، جُمْهُورِيَّةُ مِصْرَ الْعَرَبِيَّةِ|Giza, Republik Arab Mesir
+١٥ مِنْ جُمَادَى الْأُولَى ١٤٢٩هـ|15 Jumadil Ula 1429 H
+٢٠ مِنْ مَايُو سَنَةَ ٢٠٠٨م.|20 Mei 2008 M.
 @sub muqaddimah-2|مُقَدِّمَةُ الطَّبْعَةِ الثَّانِيَةِ|Kata pengantar edisi kedua|10
 @hal 10
-~Awal kata pengantar edisi kedua: pujian dan shalawat, ayat Al-'Alaq 1–5, serta penjelasan perbaikan dan tambahan agar tujuan kitab tercapai.
+الْحَمْدُ لِلَّهِ الْقَائِلِ:|Segala puji bagi Allah yang berfirman:
+﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ|Bacalah dengan nama Tuhanmu yang menciptakan.
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ|Dia menciptakan manusia dari segumpal darah.
+اقْرَأْ وَرَبُّكَ الْأَكْرَمُ|Bacalah, dan Tuhanmulah Yang Mahamulia,
+الَّذِي عَلَّمَ بِالْقَلَمِ|yang mengajar dengan pena.
+عَلَّمَ الْإِنْسَانَ مَا لَمْ يَعْلَمْ﴾ [العلق: ١-٥]|Dia mengajarkan manusia apa yang tidak diketahuinya. (Al-'Alaq: 1-5)
+وَالصَّلَاةُ وَالسَّلَامُ عَلَى مَنْ|Shalawat dan salam semoga tercurah kepada orang yang
+أُوتِيَ جَوَامِعَ الْكَلِمِ،|dianugerahi ucapan yang padat makna.
+اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَيْهِ|Ya Allah, limpahkan shalawat, salam, dan berkah kepadanya
+وَعَلَى آلِهِ وَأَصْحَابِهِ وَأَتْبَاعِهِ|dan keluarganya, sahabatnya, serta pengikutnya
+إِلَى يَوْمِ الدِّينِ.|sampai hari pembalasan.
+أَمَّا بَعْدُ:|Amma ba'du:
+فَكِتَابُنَا "عِلْمُ الْمَعَانِي" يَتَنَاوَلُ|Buku kami "Ilmu Ma'ani" membahas
+مَسَائِلَ الْمَعَانِي الَّتِي أَقَرَّهَا|masalah-masalah ma'ani yang ditetapkan
+عُلَمَاءُ الْبَلَاغَةِ فَيُبْرِزُ|ulama balaghah, lalu menampakkan
+الْأَسْرَارَ الْبَلَاغِيَّةَ وَرَاءَ بِنَاءِ التَّرَاكِيبِ،|rahasia balaghah di balik bangunan susunan kalimat.
+وَيُعَالِجُ أَجْزَاءَ الْجُمْلَةِ|Ia menangani bagian-bagian kalimat
+مِنْ مُسْنَدٍ وَمُسْنَدٍ إِلَيْهِ وَمُتَعَلِّقَاتٍ،|yaitu musnad, musnad ilaih, dan pelengkap,
+وَيَكْشِفُ عَنْ أَحْوَالِ الْإِسْنَادِ الْخَبَرِيِّ،|menyingkap keadaan isnad khabari,
+وَيُجَلِّي الْأَسْرَارَ الْبَلَاغِيَّةَ|dan menjelaskan rahasia balaghah
+وَرَاءَ الْعُدُولِ عَنِ الْأَصْلِ|di balik penyimpangan dari asal
+وَالْخُرُوجِ عَنْ مُقْتَضَى الظَّاهِرِ.|dan keluar dari tuntutan zahir.
+كَمَا يُعَالِجُ الْجُمْلَةَ وَارْتِبَاطَهَا|Ia juga menangani kalimat dan kaitannya
+بِغَيْرِهَا مِنَ الْجُمَلِ،|dengan kalimat lain,
+فَيَكْشِفُ عَنْ دَقَائِقِ الْقَصْرِ|lalu menyingkap kehalusan qashr,
+وَطُرُقِهِ وَأَغْرَاضِهِ وَبِنَاءِ جُمَلِهِ،|cara, tujuan, dan bangunan kalimatnya,
+وَيُجَلِّي الْفَرْقَ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|menjelaskan perbedaan khabar dan insya',
+مُبْرِزًا الْأَسَالِيبَ الْإِنْشَائِيَّةَ وَأَنْوَاعَهَا|menampakkan gaya insya'i dan jenis-jenisnya
+وَمَا وَرَاءَهَا مِنْ مَعَانٍ وَأَسْرَارٍ،|serta makna dan rahasia di baliknya,
+وَيُظْهِرُ الْعَلَاقَاتِ بَيْنَ الْجُمَلِ الْمُلْتَقِيَةِ|memperlihatkan hubungan antarkalimat yang bertemu
+وَمَا وَرَاءَ أَبْنِيَتِهَا|dan apa di balik bangunannya
+مِنْ دَقَائِقَ وَمَزَايَا بَلَاغِيَّةٍ،|berupa kehalusan dan keunggulan balaghah.
+وَيَعْرِضُ الْمَقَامَاتِ وَالْمَقَالَاتِ|Ia memaparkan situasi dan ungkapan
+فَيَكْشِفُ عَنِ الْإِطْنَابِ|lalu menyingkap ithnab,
+وَأَلْوَانِهِ وَمَقَامَاتِهِ،|ragam dan situasinya,
+وَعَنِ الْإِيجَازِ وَأَنْوَاعِهِ|serta ijaz dan jenis-jenisnya,
+وَأَسْرَارِهِ وَدَقَائِقِهِ.|rahasia dan kehalusannya.
+وَقَدِ امْتَلَأَ الْكِتَابُ بِالشَّوَاهِدِ|Buku ini penuh dengan contoh
+مِنْ آيَاتِ الذِّكْرِ الْحَكِيمِ|dari ayat-ayat Al-Qur'an yang bijaksana,
+وَأَحَادِيثِ الْمُصْطَفَى ﷺ|hadits-hadits Nabi pilihan ﷺ,
+وَالشِّعْرِ الْجَيِّدِ،|dan syair yang baik.
+وَفِي تِلْكَ الشَّوَاهِدِ تَتَجَلَّى|Dalam contoh-contoh itu tampak jelas
+مَسَائِلُ الْمَعَانِي الَّتِي قُمْنَا بِمُعَالَجَتِهَا|masalah-masalah ma'ani yang kami tangani,
+حَيْثُ بَذَلْنَا الْجُهْدَ فِي تَحْلِيلِ|sebab kami mencurahkan upaya dalam menganalisis
+هَذِهِ الشَّوَاهِدِ، وَتَجْلِيَةِ مَا وَرَاءَ|contoh-contoh ini dan menjelaskan apa di balik
+بِنَاءِ تَرَاكِيبِهَا مِنْ أَسْرَارٍ وَلَطَائِفَ،|bangunan susunannya berupa rahasia dan keindahan,
+وَتَقْرِيبِ ذَلِكَ إِلَى أَذْهَانِ الدَّارِسِينَ|serta mendekatkannya ke pikiran para pengkaji
+بِضَرْبِ الْأَمْثِلَةِ لِيَتِمَّ الْغَرَضُ الْمَنْشُودُ|dengan membuat perumpamaan agar tercapai tujuan yang dicita-citakan
+وَتَتَحَقَّقَ الْفَائِدَةُ الْمَرْجُوَّةُ.|dan terwujud manfaat yang diharapkan.
+وَيَقَعُ الْكِتَابُ فِي جُزْأَيْنِ|Buku ini terdiri atas dua jilid
+نَفِدَتْ طَبْعَتُهُمَا الْأُولَى|yang cetakan pertamanya habis,
+وَبَدَتْ لَنَا حَاجَةُ الدَّارِسِينَ إِلَى الْكِتَابِ،|dan tampak bagi kami kebutuhan para pengkaji akan buku ini,
+فَقُمْنَا بِإِعَادَةِ النَّظَرِ فِيهِ|maka kami meninjau ulang buku ini
+فَحْصًا وَتَدْقِيقًا وَتَنْقِيحًا وَتَهْذِيبًا،|dengan pemeriksaan, ketelitian, penyuntingan, dan penyempurnaan.
+وَاقْتَضَتْ إِعَادَةُ النَّظَرِ فِي الْكِتَابِ|Peninjauan ulang itu menuntut
+أَنْ نُضِيفَ إِلَيْهِ مَا رَأَيْنَاهُ ضَرُورِيًّا،|agar kami menambahkan apa yang kami anggap perlu,
+وَأَنْ نُوَضِّحَ مَا وَجَدْنَاهُ|menjelaskan apa yang kami dapati
+فِي حَاجَةٍ إِلَى إِيضَاحٍ،|memerlukan penjelasan,
+وَنَبْسُطَ مَا هُوَ فِي حَاجَةٍ إِلَى بَسْطٍ|dan merinci apa yang memerlukan perincian
+لِيَكْتَمِلَ بِذَلِكَ، وَالْكَمَالُ لِلَّهِ وَحْدَهُ،|agar dengan itu sempurna, dan kesempurnaan hanya milik Allah,
+تَحْقِيقُ الْغَرَضِ وَالْفَائِدَةِ|terwujudnya tujuan dan manfaat
+الْمَرْجُوَّةِ مِنَ الْكِتَابِ.|yang diharapkan dari buku ini.
 @hal 11
-~Penutup edisi kedua: permohonan agar kitab bermanfaat dan permintaan maaf atas kekurangan. Bertanggal 23 Dzulqa'dah 1418 H.
+ثُمَّ أَمَرْنَا بِإِعَادَةِ طَبْعِهِ طَبْعَةً جَدِيدَةً|Lalu kami memerintahkan pencetakan ulangnya sebagai cetakan baru
+لِيَنْتَفِعَ الدَّارِسُ وَتَتَيَسَّرَ لَهُ الْإِفَادَةُ،|agar pengkaji mendapat manfaat dan mudah memetik faedah.
+وَاللَّهَ عَزَّ وَجَلَّ نَسْأَلُ|Kepada Allah Azza wa Jalla kami memohon
+أَنْ يَنْفَعَ بِهِ،|agar memberi manfaat dengannya,
+وَأَنْ يَجْزِيَنَا خَيْرَ الْجَزَاءِ،|membalas kami dengan balasan terbaik,
+وَأَنْ يَعْفُوَ عَمَّا يَكُونُ قَدْ جَرَى بِهِ|dan memaafkan apa yang mungkin telah dituliskan
+الْقَلَمُ فِي غَفْلَةٍ مِنَّا|oleh pena dalam kelalaian kami,
+فَخَطَّ مِنَّا مَا لَا يَلِيقُ|sehingga menorehkan hal yang tidak pantas,
+أَوْ كَتَبَ مَا لَا يَنْبَغِي|atau menulis apa yang tidak seharusnya
+أَنْ يُكْتَبَ|ditulis,
+أَوْ تَوَقَّفَ عَنْ كِتَابَةِ مَا كَانَ|atau berhenti menulis apa yang seharusnya
+يَنْبَغِي أَنْ يُكْتَبَ، وَإِيضَاحِ مَا كَانَ|ditulis, dan menjelaskan apa yang seharusnya
+يَجِبُ أَنْ يُوَضَّحَ ..|dijelaskan ..
+كَمَا نَضْرَعُ إِلَيْهِ تَعَالَى|Kami juga memohon dengan rendah hati kepada-Nya
+أَنْ يَرْحَمَ ضَعْفَنَا وَأَنْ يَغْفِرَ لَنَا|agar mengasihani kelemahan kami dan mengampuni kami,
+وَلِوَالِدَيْنَا وَلِمَشَايِخِنَا|orang tua kami, guru-guru kami,
+وَلِمَنْ سَبَقَنَا بِالْإِيمَانِ|dan orang-orang yang mendahului kami dalam keimanan.
+إِنَّهُ خَيْرُ مَسْؤُولٍ|Sesungguhnya Dia sebaik-baik tempat memohon
+وَهُوَ نِعْمَ الْمَوْلَى وَنِعْمَ النَّصِيرُ ..|dan Dialah sebaik-baik pelindung dan penolong ..
+وَصَلَّى اللَّهُ عَلَى نَبِيِّنَا مُحَمَّدٍ|Semoga Allah melimpahkan shalawat kepada nabi kita Muhammad,
+وَعَلَى آلِهِ وَصَحْبِهِ وَسَلَّمَ.|keluarga dan sahabatnya, serta salam.
+*الْمُؤَلِّفُ|Penulis
+*بَسْيُونِي عَبْدُ الْفَتَّاحِ|Basyuni Abdul Fattah
+الْهُفُوفُ، الْأَحْسَاءُ|Al-Hufuf, Al-Ahsa'
+٢٣ مِنْ ذِي الْقَعْدَةِ ١٤١٨هـ|23 Dzulqa'dah 1418 H
 @sub muqaddimah-1|مُقَدِّمَةُ الطَّبْعَةِ الْأُولَى|Kata pengantar edisi pertama|12
 @hal 12
-~Kata pengantar edisi pertama: kitab ini adalah jilid pertama 'Ilm al-Ma'ani yang mengkaji anggota kalimat, dibuka dengan tamhid tentang nazhm dan penyusunan kalimat. Bertanggal 17 Ramadhan 1406 H.
+أَحْمَدُ اللَّهَ تَعَالَى وَأُصَلِّي وَأُسَلِّمُ|Aku memuji Allah Ta'ala, berselawat, dan memohonkan salam
+عَلَى رَسُولِهِ الْأَمِينِ نَبِيِّنَا مُحَمَّدٍ|atas rasul-Nya yang terpercaya, nabi kita Muhammad,
+وَعَلَى آلِهِ وَصَحَابَتِهِ وَمَنْ نَهَجَ نَهْجَهُ|keluarga dan sahabatnya, serta siapa yang menempuh jalannya
+إِلَى يَوْمِ الدِّينِ.|sampai hari pembalasan.
+أَمَّا بَعْدُ:|Amma ba'du:
+فَهَذَا هُوَ الْجُزْءُ الْأَوَّلُ مِنْ كِتَابِ|Ini adalah jilid pertama dari kitab
+"عِلْمِ الْمَعَانِي" دِرَاسَةٌ بَلَاغِيَّةٌ وَنَقْدِيَّةٌ|"Ilmu Ma'ani": kajian balaghah dan kritik,
+وَقَدْ خَصَّصْتُهُ لِدِرَاسَةِ أَجْزَاءِ الْجُمْلَةِ،|yang saya khususkan untuk mengkaji bagian-bagian kalimat.
+فَبَدَأْتُهُ بِتَمْهِيدٍ تَنَاوَلَ الْحَدِيثَ|Saya mulai dengan pendahuluan yang membahas
+عَنِ النَّظْمِ وَصِيَاغَةِ الْجُمْلَةِ|nazhm dan penyusunan kalimat
+وَمَا وَرَاءَ ذَلِكَ مِنِ اعْتِبَارَاتٍ وَمُلَاحَظَاتٍ ..|serta pertimbangan dan catatan di baliknya ..
+كَمَا تَنَاوَلَ بَيَانَ مَفْهُومِ الْفَصَاحَةِ وَالْبَلَاغَةِ ..|Juga menjelaskan pengertian fashahah dan balaghah ..
+ثُمَّ أَتْبَعْتُهُ بِفُصُولِ الْكِتَابِ الْأَرْبَعَةِ وَهِيَ:|Lalu saya susul dengan empat bab buku, yaitu:
+-الْفَصْلُ الْأَوَّلُ: أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ.|Bab pertama: keadaan isnad khabari.
+-الْفَصْلُ الثَّانِي: أَحْوَالُ الْمُسْنَدِ إِلَيْهِ.|Bab kedua: keadaan musnad ilaih.
+-الْفَصْلُ الثَّالِثُ: أَحْوَالُ الْمُسْنَدِ.|Bab ketiga: keadaan musnad.
+-الْفَصْلُ الرَّابِعُ: أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ.|Bab keempat: keadaan pelengkap fi'il.
+وَسَيَتْلُوهُ الْجُزْءُ الثَّانِي بِمَشِيئَةِ اللَّهِ تَعَالَى|Jilid kedua akan menyusulnya, insya Allah Ta'ala,
+وَالَّذِي خَصَّصْتُهُ لِدِرَاسَةِ الْجُمْلَةِ|yang saya khususkan untuk mengkaji kalimat
+وَارْتِبَاطِهَا بِغَيْرِهَا مِنَ الْجُمَلِ ..|dan kaitannya dengan kalimat lain ..
+فَاللَّهَ عَزَّ وَجَلَّ أَسْأَلُ|Kepada Allah Azza wa Jalla saya memohon
+أَنْ يَنْفَعَ بِهِ وَأَنْ يَجْزِيَنَا خَيْرَ الْجَزَاءِ|agar memberi manfaat dengannya dan membalas kami dengan balasan terbaik,
+وَهُوَ الْهَادِي إِلَى سَوَاءِ السَّبِيلِ.|dan Dialah yang menunjuki ke jalan yang lurus.
+*الْمُؤَلِّفُ|Penulis
+*بَسْيُونِي عَبْدُ الْفَتَّاحِ فَيُّودٌ|Basyuni Abdul Fattah Fayyud
+عُنَيْزَةُ، الْقَصِيمُ، السُّعُودِيَّةُ|'Unaizah, Qashim, Arab Saudi
+فِي ١٧ رَمَضَانَ ١٤٠٦هـ|17 Ramadhan 1406 H
 @hal 13
-~Halaman pembuka Jilid 1 tentang keadaan anggota kalimat, dengan daftar bahasan: fashahah dan balaghah, isnad khabari, majaz dalam isnad, musnad ilaih, musnad, muta'alliq fi'il, dan khuruj dari tuntutan lahiriah. Hlm. 14 kosong.
+*الْجُزْءُ الْأَوَّلُ|Jilid Pertama
+*أَحْوَالُ أَجْزَاءِ الْجُمْلَةِ|Keadaan Bagian-Bagian Kalimat
+*الْمُسْنَدُ إِلَيْهِ وَالْمُسْنَدُ وَمُتَعَلِّقَاتُ الْفِعْلِ|Musnad Ilaih, Musnad, dan Pelengkap Fi'il
+-مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ.|Pengertian fashahah dan balaghah.
+-أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ.|Keadaan isnad khabari.
+-التَّجَوُّزُ فِي الْإِسْنَادِ.|Majas dalam isnad.
+-أَحْوَالُ أَجْزَاءِ الْجُمْلَةِ.|Keadaan bagian-bagian kalimat.
+-أَحْوَالُ الْمُسْنَدِ إِلَيْهِ.|Keadaan musnad ilaih.
+-أَحْوَالُ الْمُسْنَدِ.|Keadaan musnad.
+-أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ.|Keadaan pelengkap fi'il.
+-الْخُرُوجُ عَنْ مُقْتَضَى الظَّاهِرِ.|Keluar dari tuntutan zahir.
+@hal 14
 @bab tamhid|تَمْهِيدٌ: مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ، مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ|Pendahuluan: tolok ukur keunggulan antara lafaz, makna, dan susunan; pengertian fashahah dan balaghah|15
 @sub manath-maziyyah|مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ|Tolok ukur keunggulan antara lafaz, makna, dan susunan (nazhm)|15
 @hal 15
-الْأَلْفَاظُ قَوَالِبُ لِلْمَعَانِي،|Lafaz-lafaz adalah cetakan bagi makna-makna,
-~Awal tamhid: lafaz adalah wadah makna. Persoalan lafaz dan makna sudah lama menyita ulama, dengan pandangan Al-Jahizh tentang letak keunggulan ucapan dan arah menuju nazhm.
+الْأَلْفَاظُ قَوَالِبُ لِلْمَعَانِي،|Lafal adalah cetakan bagi makna,
+إِذِ الْكَلَامُ يَتَكَوَّنُ مِنْ لَفْظٍ حَامِلٍ|sebab kalam tersusun dari lafal pembawa,
+وَمَعْنًى بِهِ قَائِمٍ|makna yang tegak dengannya,
+وَرِبَاطٍ لَهُمَا نَاظِمٍ،|dan pengikat yang merangkai keduanya.
+وَقَدْ شَغَلَتْ قَضِيَّةُ اللَّفْظِ وَالْمَعْنَى|Persoalan lafal dan makna telah menyibukkan
+الدَّارِسِينَ مُنْذُ الْقِدَمِ،|para pengkaji sejak dahulu,
+وَاخْتَلَفَتْ وَجْهَاتُ نَظَرِهِمْ فِي رُجُوعِ الْمَزِيَّةِ،|dan pandangan mereka berbeda tentang kepada apa keistimewaan itu dikembalikan.
+فَنَرَى الْجَاحِظَ يَتَحَدَّثُ عَنِ اللَّفْظِ وَالْمَعْنَى|Kita lihat Al-Jahizh membicarakan lafal dan makna
+فِي مَوَاضِعَ كَثِيرَةٍ مِنْ كِتَابِهِ|di banyak tempat dalam kitabnya
+"الْبَيَانِ وَالتَّبْيِينِ"،|"Al-Bayan wa At-Tabyin",
+وَالَّذِي لَا يُنْعِمُ النَّظَرَ فِي كَلَامِ الْجَاحِظِ|dan orang yang tidak cermat menelaah ucapan Al-Jahizh
+يَتَوَهَّمُ أَنَّهُ قَدْ فَضَّلَ اللَّفْظَ عَلَى الْمَعْنَى|mengira ia mengunggulkan lafal atas makna
+أَوِ الْمَعْنَى عَلَى اللَّفْظِ.|atau makna atas lafal.
+انْظُرْ إِلَى قَوْلِهِ:|Perhatikan ucapannya:
+"ثُمَّ اعْلَمْ، حَفِظَكَ اللهُ،"|"Kemudian ketahuilah, semoga Allah menjagamu,"
+"أَنَّ حُكْمَ الْمَعَانِي خِلَافُ حُكْمِ الْأَلْفَاظِ،"|"bahwa hukum makna berbeda dengan hukum lafal,"
+"لِأَنَّ الْمَعَانِيَ مَبْسُوطَةٌ إِلَى غَيْرِ غَايَةٍ"|"karena makna itu terhampar tanpa batas"
+"وَمُمْتَدَّةٌ إِلَى غَيْرِ نِهَايَةٍ،"|"dan membentang tanpa ujung,"
+"وَأَسْمَاءُ الْمَعَانِي مَقْصُورَةٌ مَعْدُودَةٌ"|"sedangkan nama-nama makna itu terbatas dan terhitung"
+"وَمُحَصَّلَةٌ مَحْدُودَةٌ" (١)|"dan terkumpul lagi terbatas" (1)
+تَجِدُهُ قَدْ جَعَلَ الْمَعَانِيَ مَبْسُوطَةً مُمْتَدَّةً،|Engkau dapati ia menjadikan makna terhampar dan membentang,
+وَالْأَلْفَاظَ الَّتِي هِيَ أَسْمَاءُ الْمَعَانِي|sedangkan lafal yang merupakan nama-nama makna
+مَحْدُودَةً مَعْدُودَةً،|ia jadikan terbatas dan terhitung.
+فَهَلْ قَدَّمَ الْمَعَانِيَ هُنَا عَلَى الْأَلْفَاظِ؟|Apakah di sini ia mengunggulkan makna atas lafal?
+لَوْ كَانَ الْأَمْرُ كَذَلِكَ،|Andai demikian halnya,
+فَكَيْفَ يَقُولُ فِي مَوْضِعٍ آخَرَ:|bagaimana ia berkata di tempat lain:
+"الْمَعَانِي مَطْرُوحَةٌ فِي الطَّرِيقِ"|"Makna-makna itu berserakan di jalanan"
+"يَعْرِفُهَا الْعَجَمِيُّ وَالْعَرَبِيُّ"|"dikenal oleh orang non-Arab dan orang Arab,"
+"وَالْبَدَوِيُّ وَالْقَرَوِيُّ،"|"orang badui dan orang desa,"
+"وَإِنَّمَا الشَّأْنُ فِي إِقَامَةِ الْوَزْنِ"|"yang penting hanyalah menegakkan wazan"
+"وَتَخَيُّرِ اللَّفْظِ وَسُهُولَةِ الْمَخْرَجِ"|"memilih lafal dan mudahnya pengucapan"
+"وَكَثْرَةِ الْمَاءِ وَفِي صِحَّةِ الطَّبْعِ"|"banyaknya kesegaran dan sehatnya tabiat"
+"وَجَوْدَةِ السَّبْكِ،"|"serta bagusnya penyusunan,"
+"وَإِنَّمَا الشِّعْرُ صِيَاغَةٌ وَضَرْبٌ مِنَ التَّصْوِيرِ" (٢)؟|"sebab syair hanyalah penempaan dan sejenis penggambaran" (2)?
+إِنَّكَ تَشْعُرُ هُنَا بِأَنَّهُ يُقَدِّمُ|Engkau merasa di sini ia mengunggulkan
+اللَّفْظَ عَلَى الْمَعْنَى، وَلَيْسَ الْأَمْرُ كَذَلِكَ،|lafal atas makna, padahal tidak demikian.
+فَالَّذِي أَرَاهُ أَنَّ الْجَاحِظَ لَمْ يُقَدِّمِ|Menurut saya, Al-Jahizh tidak mengunggulkan
+اللَّفْظَ عَلَى الْمَعْنَى هُنَا|lafal atas makna di sini,
+وَلَا الْمَعَانِيَ عَلَى الْأَلْفَاظِ هُنَاكَ،|juga tidak makna atas lafal di sana,
+وَإِنَّمَا أَرْجَعَ الْمَزِيَّةَ لِلنَّظْمِ،|melainkan mengembalikan keistimewaan kepada nazhm,
+وَجَعَلَ التَّفَاضُلَ بِهِ.|dan menjadikan keunggulan itu dengannya.
+تَأَمَّلْ قَوْلَهُ:|Renungkan ucapannya:
+"إِنَّمَا الشَّأْنُ فِي إِقَامَةِ الْوَزْنِ،"|"Yang penting hanyalah menegakkan wazan,"
+"وَتَخَيُّرِ اللَّفْظِ، وَجَوْدَةِ السَّبْكِ،"|"memilih lafal, dan bagusnya penyusunan,"
+"وَإِنَّمَا الشِّعْرُ صِيَاغَةٌ وَضَرْبٌ مِنَ التَّصْوِيرِ"..|"sebab syair hanyalah penempaan dan sejenis penggambaran"..
+فَهُوَ يُرِيدُ بِذَلِكَ النَّظْمَ|Ia dengan itu memaksudkan nazhm,
+لَا الْأَلْفَاظَ الْمُجَرَّدَةَ،|bukan lafal-lafal yang terlepas.
+وَهُوَ عِنْدَمَا جَعَلَ الْمَعَانِيَ مَطْرُوحَةً|Ketika ia menjadikan makna berserakan,
+أَرَادَ الْمَعَانِيَ الْعَامَّةَ|yang ia maksud makna-makna umum
+الَّتِي هِيَ كَأَغْرَاضِ الشِّعْرِ،|yang seperti tema-tema syair.
+وَعِنْدَمَا جَعَلَهَا مُمْتَدَّةً وَمَبْسُوطَةً|Ketika ia menjadikannya membentang dan terhampar,
+أَرَادَ الْمَعَانِيَ الْمُرَكَّبَةَ،|yang ia maksud makna-makna majemuk,
+الْمَعَانِيَ الْخَاصَّةَ الْمُنْبَعِثَةَ مِنَ النَّظْمِ الْجَيِّدِ|yakni makna khusus yang terpancar dari nazhm yang baik
+وَالتَّرَاكِيبِ الرَّفِيعَةِ،|dan susunan yang tinggi.
+وَعِنْدَمَا جَعَلَ الْأَلْفَاظَ مَحْصُورَةً مَحْدُودَةً،|Ketika ia menjadikan lafal terbatas dan terhitung,
+أَرَادَ الْأَلْفَاظَ الْمُجَرَّدَةَ لَا الْمَنْظُومَةَ،|yang ia maksud lafal terlepas, bukan yang tersusun.
+إِذَنِ الْجَاحِظُ لَمْ يُقَدِّمْ|Jadi Al-Jahizh tidak mengunggulkan
+لَا اللَّفْظَ وَلَا الْمَعْنَى،|baik lafal maupun makna,
+وَإِنَّمَا أَرْجَعَ الْمَزِيَّةَ إِلَى النَّظْمِ.|melainkan mengembalikan keistimewaan kepada nazhm.
+-(١) الْبَيَانُ وَالتَّبْيِينُ ١/٦٧|(1) Al-Bayan wa At-Tabyin, 1/67.
+-(٢) الْحَيَوَانُ ٣/١٣١.|(2) Al-Hayawan, 3/131.
 @hal 16
-~Perbedaan nazhm Al-Qur'an dengan nazhm ucapan lain, kitab Al-Jahizh "Nazhm Al-Qur'an" yang hilang, dan rujukan pada pendapat ulama termasuk 'Abdul Jabbar dan 'Abdul Qahir.
+فَيَنْبَغِي عَلَى الدَّارِسِ أَنْ يَعْرِفَ|Maka pengkaji hendaknya mengetahui
+الْفُرُوقَ الدَّقِيقَةَ الَّتِي تَكْمُنُ وَرَاءَ النَّظْمِ،|perbedaan-perbedaan halus yang tersimpan di balik nazhm,
+إِذْ بِهِ يَفْضُلُ الْكَلَامُ الْكَلَامَ وَيَتَقَدَّمُ عَلَيْهِ،|karena dengannya satu kalam mengungguli kalam lain dan mendahuluinya.
+وَفَرْقٌ مَا بَيْنَ نَظْمِ الْقُرْآنِ وَتَأْلِيفِهِ|Ada perbedaan antara nazhm Al-Qur'an dan susunannya
+وَنَظْمِ سَائِرِ الْكَلَامِ وَتَأْلِيفِهِ.|dengan nazhm kalam lainnya dan susunannya.
+وَلِلْجَاحِظِ كِتَابٌ فِي النَّظْمِ|Al-Jahizh memiliki sebuah kitab tentang nazhm
+سَمَّاهُ "نَظْمَ الْقُرْآنِ"|yang ia namai "Nazhm Al-Qur'an",
+وَلَكِنَّهُ فُقِدَ ضِمْنَ مَا فُقِدَ|tetapi kitab itu hilang bersama yang hilang
+مِنْ تُرَاثِ الْمُسْلِمِينَ،|dari warisan kaum muslimin.
+وَنَرَى الْجَاحِظَ يُشِيرُ إِلَيْهِ|Kita lihat Al-Jahizh merujuk kepadanya
+فِي كَثِيرٍ مِنْ كِتَابَاتِهِ|dalam banyak tulisannya
+فِي الْبَيَانِ وَالتَّبْيِينِ وَغَيْرِهِ،|di Al-Bayan wa At-Tabyin dan lainnya,
+وَيُحِيلُ عَلَيْهِ فِي كَثِيرٍ مِنَ الْأُمُورِ|dan mengalihkan kepadanya dalam banyak urusan
+وَالْقَضَايَا.|dan persoalan.
+فَمَا هُوَ النَّظْمُ إِذًا|Lalu apakah nazhm itu
+الَّذِي أَرْجَعَ الْجَاحِظُ إِلَيْهِ الْمَزِيَّةَ؟|yang dijadikan Al-Jahizh tempat kembalinya keistimewaan?
+إِنَّهُ ضَمُّ الْكَلِمَاتِ بَعْضِهَا إِلَى بَعْضٍ|Ia adalah menggabungkan kata satu dengan yang lain
+عَلَى طَرِيقَةٍ مَخْصُوصَةٍ،|menurut cara tertentu,
+وَهَذِهِ الطَّرِيقَةُ الْمَخْصُوصَةُ تَكُونُ|dan cara tertentu ini terwujud
+كَمَا يَرَى الْقَاضِي عَبْدُ الْجَبَّارِ|sebagaimana pendapat Al-Qadhi 'Abdul Jabbar
+فِي كِتَابِهِ الْمُغْنِي|dalam kitabnya Al-Mughni
+بِالْإِبْدَالِ الَّذِي تَخْتَصُّ بِهِ الْكَلِمَاتُ،|melalui pergantian yang khusus pada kata-kata,
+أَوِ التَّقْدِيمِ وَالتَّأْخِيرِ|atau pendahuluan dan pengakhiran
+الَّذِي تَخْتَصُّ بِهِ مَوَاقِعُ الْكَلِمَاتِ|yang khusus pada kedudukan kata-kata,
+أَوِ الْحَرَكَاتِ الَّتِي تَخْتَصُّ بِالْإِعْرَابِ (١).|atau harakat yang khusus pada i'rab (1).
+وَقَدْ أَفَادَ الْإِمَامُ عَبْدُ الْقَاهِرِ|Imam 'Abdul Qahir telah memanfaatkan
+مِنْ إِشَارَاتِ الْقَاضِي عَبْدِ الْجَبَّارِ|isyarat-isyarat Al-Qadhi 'Abdul Jabbar
+وَكِتَابَاتِ الْجَاحِظِ، فَشَرَحَ نَظَرِيَّةَ النَّظْمِ|dan tulisan Al-Jahizh, lalu menjelaskan teori nazhm
+وَحَلَّلَ الشَّوَاهِدَ الْكَثِيرَةَ|dan menganalisis banyak contoh
+الَّتِي يَتَّضِحُ فِيهَا مَفْهُومُ النَّظْمِ.|yang memperjelas pengertian nazhm.
+وَيَرَى الشَّيْخُ عَبْدُ الْقَاهِرِ:|Syekh 'Abdul Qahir berpendapat:
+أَنَّ النَّاظِمَ إِذَا أَرَادَ أَنْ يَنْظِمَ كَلَامًا|bahwa penyusun, bila hendak menyusun kalam
+فِي أَيِّ غَرَضٍ،|untuk tujuan apa pun,
+يَبْدَأُ فَيُرَتِّبُ الْمَعَانِيَ فِي نَفْسِهِ أَوَّلًا|mulai dengan menata makna dalam jiwanya terlebih dahulu
+وَيَبْذُلُ جُهْدًا فِي تَرْتِيبِهَا،|dan mencurahkan upaya dalam menatanya,
+ثُمَّ يَحْذُو عَلَى تَرْتِيبِهَا الْأَلْفَاظَ،|lalu mengikutkan lafal pada urutannya.
+فَإِذَا وَجَبَ لِمَعْنًى|Bila suatu makna harus
+أَنْ يَكُونَ أَوَّلًا فِي النَّفْسِ،|berada lebih dahulu dalam jiwa,
+وَجَبَ لِلَّفْظِ الدَّالِّ عَلَيْهِ|maka lafal yang menunjukkannya wajib
+أَنْ يَكُونَ مِثْلَهُ أَوَّلًا فِي النُّطْقِ،|pula berada lebih dahulu dalam ucapan.
+وَيُفَرِّقُ عَبْدُ الْقَاهِرِ بَيْنَ حُرُوفٍ مَنْظُومَةٍ|'Abdul Qahir membedakan antara huruf yang tersusun
+وَكَلِمٍ مَنْظُومٍ،|dan kata yang tersusun,
+وَذَلِكَ أَنَّ نَظْمَ الْحُرُوفِ|yaitu bahwa nazhm huruf
+هُوَ تَوَالِيهَا فِي النُّطْقِ فَقَطْ،|hanyalah berurutannya dalam ucapan saja,
+وَلَيْسَ نَظْمُهَا بِمُقْتَضًى عَنْ مَعْنًى،|bukan karena dituntut oleh suatu makna,
+وَلَا النَّاظِمُ لَهَا بِمُقْتَضٍ فِي ذَلِكَ|dan penyusunnya tidak menuruti dalam hal itu
+رَسْمًا مِنَ الْعَقْلِ اقْتَضَى|suatu kaidah akal yang menuntut
+أَنْ يَتَحَرَّى فِي نَظْمِهِ لَهَا مَا تَحَرَّاهُ،|agar ia menempuh dalam menyusunnya apa yang ditempuhnya.
+فَلَوْ أَنَّ وَاضِعَ اللُّغَةِ كَانَ قَدْ قَالَ:|Andai pencipta bahasa telah mengatakan:
+"رَبَضَ" مَكَانَ "ضَرَبَ"|"rabadha" sebagai ganti "dharaba",
+لَمَا كَانَ فِي ذَلِكَ|tentu tidak ada dalam hal itu
+مَا يُؤَدِّي إِلَى فَسَادٍ،|sesuatu yang membawa kerusakan.
+أَمَّا نَظْمُ الْكَلِمِ|Adapun nazhm kata-kata
+فَلَيْسَ الْأَمْرُ فِيهِ كَذَلِكَ،|maka tidaklah demikian halnya,
+لِأَنَّكَ تَقْتَفِي فِي نَظْمِهَا آثَارَ الْمَعَانِي|sebab engkau mengikuti jejak makna dalam menyusunnya,
+فَتُرَتِّبُ أَلْفَاظَ الْكَلَامِ|sehingga engkau menata lafal kalam
+عَلَى حَسَبِ تَرْتِيبِ الْمَعَانِي فِي النَّفْسِ (٢).|sesuai urutan makna dalam jiwa (2).
+فَالْمَعَانِي الَّتِي يَتَعَلَّقُ بِهَا الْفِكْرُ|Makna yang menjadi pegangan pikiran
+وَالَّتِي تُرَتَّبُ أَلْفَاظُهَا|dan yang lafalnya ditata
+عَلَى حَسَبِ تَرْتِيبِهَا فِي النَّفْسِ،|sesuai urutannya dalam jiwa,
+إِنَّمَا هِيَ مَعَانِي النَّحْوِ،|tidak lain adalah makna-makna nahwu,
+وَلَيْسَتِ الْمَعَانِيَ اللُّغَوِيَّةَ لِلْمُفْرَدَاتِ.|bukan makna kebahasaan bagi kata-kata tunggal.
+-(١) انْظُرِ الْمُغْنِي فِي أَبْوَابِ|(1) Lihat Al-Mughni dalam bab-bab
+-التَّوْحِيدِ وَالْعَدْلِ ١٦ / ١٩٩ وَمَا بَعْدَهَا.|Tauhid dan Keadilan, 16/199 dan seterusnya.
+-(٢) انْظُرْ دَلَائِلَ الْإِعْجَازِ ص ٩٦.|(2) Lihat Dala'il Al-I'jaz, hlm. 96.
 @hal 17
-"لَيْسَ النَّظْمُ إِلَّا أَنْ تَضَعَ|"Nazhm tidak lain adalah engkau menempatkan
-كَلَامَكَ الْوَضْعَ الَّذِي يَقْتَضِيهِ|ucapanmu pada penempatan yang dituntut oleh
-عِلْمُ النَّحْوِ".|ilmu nahwu." (kutipan dari 'Abdul Qahir)
-~Kutipan 'Abdul Qahir tentang hakikat nazhm: menempatkan ucapan sesuai tuntutan ilmu nahwu dan makna-maknanya.
+يَقُولُ عَبْدُ الْقَاهِرِ:|'Abdul Qahir berkata:
+"وَاعْلَمْ أَنْ لَيْسَ النَّظْمُ"|"Ketahuilah bahwa nazhm tidak lain"
+"إِلَّا أَنْ تَضَعَ كَلَامَكَ"|"kecuali engkau meletakkan kalammu"
+"الْوَضْعَ الَّذِي يَقْتَضِيهِ عِلْمُ النَّحْوِ"|"pada kedudukan yang dituntut ilmu nahwu,"
+"وَتَعْمَلَ عَلَى قَوَانِينِهِ وَأُصُولِهِ"|"engkau bekerja menurut kaidah dan asas-asasnya,"
+"وَتَعْرِفَ مَنَاهِجَهُ الَّتِي نُهِجَتْ"|"engkau mengenal jalur-jalurnya yang telah ditempuh"
+"فَلَا تَزِيغَ عَنْهَا"|"sehingga tidak menyimpang darinya,"
+"وَتَحْفَظَ الرُّسُومَ الَّتِي رُسِمَتْ لَكَ"|"engkau menjaga kaidah yang digariskan untukmu"
+"فَلَا تُخِلَّ بِشَيْءٍ مِنْهَا"|"sehingga tidak mengabaikan sesuatu pun darinya."
+"وَذَلِكَ أَنَّا لَا نَعْلَمُ شَيْئًا"|"Sebab kita tidak mengetahui sesuatu"
+"يَبْتَغِيهِ النَّاظِمُ بِنَظْمِهِ"|"yang dicari penyusun dengan nazhmnya"
+"غَيْرَ أَنْ يَنْظُرَ فِي وُجُوهِ"|"selain ia memperhatikan ragam"
+"كُلِّ بَابٍ وَفُرُوقِهِ،"|"setiap bab dan perbedaannya,"
+"فَيَنْظُرَ فِي الْخَبَرِ إِلَى الْوُجُوهِ"|"maka pada khabar ia melihat ragam"
+"الَّتِي تَرَاهَا فِي قَوْلِكَ:"|"yang engkau lihat dalam ucapanmu:"
+"زَيْدٌ مُنْطَلِقٌ وَزَيْدٌ يَنْطَلِقُ"|"Zaid munthaliq dan Zaid yanthaliq"
+"وَيَنْطَلِقُ زَيْدٌ وَمُنْطَلِقٌ زَيْدٌ"|"dan yanthaliq Zaid dan munthaliq Zaid"
+"وَزَيْدٌ الْمُنْطَلِقُ وَالْمُنْطَلِقُ زَيْدٌ"|"dan Zaid al-munthaliq dan al-munthaliq Zaid"
+"وَزَيْدٌ هُوَ الْمُنْطَلِقُ."|"dan Zaid huwa al-munthaliq."
+"وَفِي الْحَالِ إِلَى الْوُجُوهِ"|"Pada hal ia melihat ragam"
+"الَّتِي تَرَاهَا فِي قَوْلِكَ:"|"yang engkau lihat dalam ucapanmu:"
+"جَاءَنِي زَيْدٌ مُسْرِعًا"|"Zaid datang kepadaku dengan bergegas"
+"وَجَاءَنِي يُسْرِعُ"|"dan ia datang kepadaku sambil bergegas"
+"وَجَاءَنِي وَهُوَ مُسْرِعٌ أَوْ وَهُوَ يُسْرِعُ"|"dan ia datang padahal ia bergegas atau sedang bergegas"
+"وَجَاءَنِي وَقَدْ أَسْرَعَ،"|"dan ia datang padahal telah bergegas,"
+"فَيَعْرِفَ لِكُلٍّ مِنْ ذَلِكَ مَوْضِعَهُ"|"lalu ia mengetahui tempat bagi masing-masing"
+"وَيَجِيءَ بِهِ حَيْثُ يَنْبَغِي لَهُ."|"dan mendatangkannya di tempat yang semestinya."
+"وَيَنْظُرَ فِي الْحُرُوفِ الَّتِي تَشْتَرِكُ فِي مَعْنًى"|"Ia memperhatikan huruf-huruf yang sama maknanya"
+"ثُمَّ يَنْفَرِدَ كُلُّ وَاحِدٍ مِنْهَا"|"lalu masing-masing menyendiri"
+"بِخُصُوصِيَّةٍ فِي الْمَعْنَى"|"dengan kekhususan dalam makna,"
+"فَيَضَعَ كُلًّا مِنْ ذَلِكَ فِي خَاصِّ مَعْنَاهُ"|"maka ia meletakkan masing-masing pada makna khasnya,"
+"نَحْوَ أَنْ تَأْتِيَ بِمَا فِي نَفْيِ الْحَالِ"|"seperti engkau memakai ma untuk menafikan masa kini,"
+"وَبِلَا إِذَا أَرَادَ نَفْيَ الِاسْتِقْبَالِ"|"dan la bila hendak menafikan masa depan,"
+"وَبِإِنْ فِيمَا يَتَرَجَّحُ"|"dan in untuk yang diragukan"
+"بَيْنَ أَنْ يَكُونَ وَأَلَّا يَكُونَ"|"antara terjadi dan tidak terjadi,"
+"وَبِإِذَا فِيمَا عُلِمَ أَنَّهُ كَائِنٌ."|"dan idza untuk yang diketahui pasti terjadi."
+"وَيَنْظُرَ فِي الْجُمَلِ الَّتِي تُسْرَدُ"|"Ia memperhatikan kalimat-kalimat yang dirangkai"
+"فَيَعْرِفَ مَوْضِعَ الْفَصْلِ فِيهَا"|"lalu mengetahui tempat fashl di dalamnya"
+"مِنْ مَوْضِعِ الْوَصْلِ،"|"dari tempat washl,"
+"ثُمَّ يَعْرِفَ فِيمَا حَقُّهُ الْوَصْلُ"|"kemudian mengetahui pada yang semestinya washl"
+"مَوْضِعَ الْوَاوِ مِنْ مَوْضِعِ الْفَاءِ"|"tempat wawu dibanding tempat fa',"
+"وَمَوْضِعَ الْفَاءِ مِنْ مَوْضِعِ ثُمَّ"|"tempat fa' dibanding tempat tsumma,"
+"وَمَوْضِعَ أَوْ مِنْ مَوْضِعِ أَمْ"|"tempat aw dibanding tempat am,"
+"وَمَوْضِعَ لَكِنْ مِنْ مَوْضِعِ بَلْ"|"tempat lakin dibanding tempat bal,"
+"وَيَتَصَرَّفَ فِي التَّعْرِيفِ وَالتَّنْكِيرِ"|"dan ia piawai dalam ta'rif dan tankir,"
+"وَالتَّقْدِيمِ وَالتَّأْخِيرِ فِي الْكَلَامِ"|"taqdim dan ta'khir dalam kalam,"
+"وَفِي الْحَذْفِ وَالتَّكْرَارِ"|"serta dalam hadzf dan pengulangan,"
+"وَالْإِظْهَارِ وَالْإِضْمَارِ"|"izhhar dan idhmar,"
+"فَيَضَعَ كُلًّا مِنْ ذَلِكَ مَكَانَهُ"|"lalu meletakkan masing-masing pada tempatnya"
+"وَيَسْتَعْمِلَهُ عَلَى الصِّحَّةِ"|"dan memakainya dengan benar"
+"وَعَلَى مَا يَنْبَغِي لَهُ."|"dan sebagaimana semestinya."
+"هَذَا هُوَ السَّبِيلُ"|"Inilah jalannya."
+"فَلَسْتَ بِوَاجِدٍ شَيْئًا يَرْجِعُ صَوَابُهُ"|"Engkau tidak akan mendapati sesuatu yang benarnya kembali"
+"إِنْ كَانَ صَوَابًا وَخَطَؤُهُ إِنْ كَانَ خَطَأً"|"jika benar, dan salahnya jika salah,"
+"إِلَى النَّظْمِ وَيَدْخُلُ تَحْتَ هَذَا الِاسْمِ"|"kepada nazhm dan termasuk di bawah nama ini"
+"إِلَّا وَهُوَ مَعْنًى مِنْ مَعَانِي النَّحْوِ"|"melainkan ia adalah salah satu makna nahwu"
+"قَدْ أَصَبْتَ بِهِ مَوْضِعَهُ"|"yang engkau tepat menempatkannya"
+"وَوَضَعْتَهُ فِي حَقِّهِ"|"dan engkau letakkan pada haknya,"
+"أَوْ عُومِلَ بِخِلَافِ هَذِهِ الْمُعَامَلَةِ"|"atau diperlakukan secara berlawanan dengan itu,"
+"فَأُزِيلَ عَنْ مَوْضِعِهِ"|"sehingga dipindahkan dari tempatnya"
+"وَاسْتُعْمِلَ فِي غَيْرِ مَا يَنْبَغِي لَهُ"|"dan dipakai pada yang tidak semestinya."
+"فَلَا تَرَى كَلَامًا قَدْ وُصِفَ"|"Maka engkau tidak melihat kalam yang disifati"
+"بِصِحَّةِ نَظْمٍ أَوْ فَسَادِهِ"|"dengan benarnya nazhm atau rusaknya,"
+"أَوْ وُصِفَ بِمَزِيَّةٍ وَفَضْلٍ فِيهِ"|"atau disifati dengan keistimewaan dan keutamaan padanya,"
+"إِلَّا وَأَنْتَ تَجِدُ مَرْجِعَ تِلْكَ الصِّحَّةِ"|"melainkan engkau mendapati kembalinya kebenaran itu,"
+"وَذَلِكَ الْفَسَادِ، وَتِلْكَ الْمَزِيَّةِ"|"kerusakan itu, keistimewaan itu,"
+"وَذَلِكَ الْفَضْلِ إِلَى مَعَانِي النَّحْوِ"|"dan keutamaan itu, kepada makna-makna nahwu"
+"وَأَحْكَامِهِ، وَوَجَدْتَهُ فِي أَصْلٍ مِنْ أُصُولِهِ"|"dan hukum-hukumnya, dan engkau mendapatinya dalam salah satu asasnya"
+"وَيَتَّصِلُ بِبَابٍ مِنْ أَبْوَابِهِ" (١)|"dan bersambung dengan salah satu babnya." (1)
 @hal 18
-~'Abdul Qahir menyajikan contoh yang menunjukkan keindahan atau kerusakan nazhm, dengan analisis ayat Hud 44 ("ya ardhu ibla'i ma'aki").
+ثُمَّ يَأْخُذُ بَعْدَ ذَلِكَ فِي عَرْضِ الشَّوَاهِدِ|Kemudian setelah itu ia mulai memaparkan contoh-contoh
+الَّتِي يَتَّضِحُ فِيهَا مَا ذَكَرَهُ|yang memperjelas apa yang ia sebutkan,
+مُحَلِّلًا لِتِلْكَ الشَّوَاهِدِ،|seraya menganalisis contoh-contoh itu
+وَمُبْرِزًا مَوْطِنَ الْحُسْنِ أَوِ الْفَسَادِ فِيهَا،|dan menonjolkan letak keindahan atau kerusakannya.
+فَيَعْرِضُ لِقَوْلِهِ تَعَالَى:|Ia membahas firman Allah Ta'ala:
+﴿وَقِيلَ يَٰٓأَرْضُ ٱبْلَعِي مَآءَكِ﴾|Dan difirmankan: Hai bumi, telanlah airmu,
+﴿وَيَٰسَمَآءُ أَقْلِعِي وَغِيضَ ٱلْمَآءُ﴾|dan hai langit, berhentilah, dan air pun disurutkan,
+﴿وَقُضِيَ ٱلْأَمْرُ وَٱسْتَوَتْ عَلَى ٱلْجُودِيِّ﴾|dan perkara pun diselesaikan, dan bahtera berlabuh di atas bukit Judi,
+﴿وَقِيلَ بُعْدًا لِّلْقَوْمِ ٱلظَّٰلِمِينَ﴾ [هُودٍ: ٤٤]|dan difirmankan: Binasalah kaum yang zalim. (QS. Hud: 44)
+قَائِلًا: "هَلْ تَشُكُّ إِذَا فَكَّرْتَ"|Ia berkata: "Apakah engkau ragu bila merenungkan"
+"فِي هَذِهِ الْآيَةِ فَتَجَلَّى لَكَ مِنْهَا الْإِعْجَازُ"|"ayat ini, lalu tampak bagimu kemukjizatannya"
+"وَبَهَرَكَ الَّذِي تَرَى وَتَسْمَعُ"|"dan engkau terpukau oleh apa yang kaulihat dan kaudengar,"
+"أَنَّكَ لَمْ تَجِدْ مَا وَجَدْتَ"|"bahwa engkau tidak mendapati apa yang kaudapati"
+"مِنَ الْمَزِيَّةِ الظَّاهِرَةِ وَالْفَضِيلَةِ الْقَاهِرَةِ"|"berupa keistimewaan nyata dan keutamaan yang menaklukkan"
+"إِلَّا لِأَمْرٍ يَرْجِعُ إِلَى ارْتِبَاطِ"|"kecuali karena hal yang kembali pada keterkaitan"
+"هَذِهِ الْكَلِمِ بَعْضِهَا بِبَعْضٍ،"|"kata-kata ini satu sama lain,"
+"وَأَنْ لَمْ يَعْرِضْ لَهَا الْحُسْنُ وَالشَّرَفُ"|"dan bahwa keindahan dan kemuliaan tidak menimpanya"
+"إِلَّا مِنْ حَيْثُ لَاقَتِ الْأُولَى بِالثَّانِيَةِ"|"kecuali karena yang pertama selaras dengan yang kedua"
+"وَالثَّالِثَةُ بِالرَّابِعَةِ، وَهَكَذَا"|"dan yang ketiga dengan yang keempat, demikian seterusnya"
+"إِلَى أَنْ تَسْتَقْرِيَهَا إِلَى آخِرِهَا،"|"hingga engkau menelusurinya sampai akhir,"
+"وَأَنَّ الْفَضْلَ حَصَلَ مِنْ مَجْمُوعِهَا."|"dan bahwa keutamaan itu timbul dari keseluruhannya."
+"وَإِنْ شَكَكْتَ فَتَأَمَّلْ هَلْ تَرَى لَفْظَةً مِنْهَا"|"Jika engkau ragu, renungkan, adakah engkau lihat satu lafal darinya"
+"بِحَيْثُ لَوْ أُخِذَتْ مِنْ بَيْنِ أَخَوَاتِهَا"|"yang andai diambil dari antara saudara-saudaranya"
+"وَأُفْرِدَتْ لَأَدَّتْ مِنَ الْفَصَاحَةِ"|"dan dipisahkan, tetap menunaikan fashahah"
+"مَا تُؤَدِّيهِ وَهِيَ فِي مَكَانِهَا مِنَ الْآيَةِ؟"|"seperti yang ditunaikannya di tempatnya dalam ayat?"
+"قُلِ: ابْلَعِي، وَاعْتَبِرْهَا وَحْدَهَا"|"Ucapkanlah: ibla'i, dan perhatikan ia sendirian"
+"مِنْ غَيْرِ أَنْ تَنْظُرَ إِلَى مَا قَبْلَهَا"|"tanpa melihat apa yang sebelumnya"
+"وَإِلَى مَا بَعْدَهَا، وَكَذَلِكَ فَاعْتَبِرْ"|"dan apa yang sesudahnya; demikian pula perhatikan"
+"سَائِرَ مَا يَلِيهَا."|"seluruh kata sesudahnya."
+"وَكَيْفَ بِالشَّكِّ فِي ذَلِكَ"|"Bagaimana mungkin ragu dalam hal itu,"
+"وَمَعْلُومٌ أَنَّ مَبْدَأَ الْعَظَمَةِ"|"padahal diketahui bahwa awal keagungan"
+"فِي أَنْ نُودِيَتِ الْأَرْضُ ثُمَّ أُمِرَتْ،"|"ialah bumi diseru kemudian diperintah,"
+"ثُمَّ فِي أَنْ كَانَ النِّدَاءُ بِيَا"|"lalu bahwa seruan itu memakai ya"
+"دُونَ أَيْ، نَحْوَ: يَا أَيَّتُهَا الْأَرْضُ،"|"bukan ayyu, seperti: ya ayyatuhal ardh,"
+"ثُمَّ إِضَافَةِ الْمَاءِ إِلَى الْكَافِ"|"lalu penyandaran air kepada kaf"
+"دُونَ أَنْ يُقَالَ: ابْلَعِي الْمَاءَ،"|"tanpa dikatakan: telanlah air,"
+"ثُمَّ أَنْ أُتْبِعَ نِدَاءُ الْأَرْضِ وَأَمْرُهَا"|"lalu seruan kepada bumi dan perintahnya diikuti"
+"بِمَا هُوَ مِنْ شَأْنِهَا نِدَاءَ السَّمَاءِ"|"dengan yang sesuai dengannya, yaitu seruan kepada langit"
+"وَأَمْرَهَا كَذَلِكَ بِمَا يَخُصُّهَا،"|"dan perintahnya pula dengan yang khusus baginya,"
+"ثُمَّ أَنْ قِيلَ: وَغِيضَ الْمَاءُ،"|"lalu difirmankan: wa ghidha al-ma',"
+"فَجَاءَ الْفِعْلُ عَلَى صِيغَةِ فُعِلَ"|"maka kata kerja datang dalam bentuk fu'ila"
+"الدَّالَّةِ عَلَى أَنَّهُ لَمْ يَغِضْ"|"yang menunjukkan bahwa air tidak surut"
+"إِلَّا بِأَمْرِ آمِرٍ وَقُدْرَةِ قَادِرٍ،"|"kecuali dengan perintah Sang Pemerintah dan kuasa Sang Mahakuasa,"
+"ثُمَّ تَأْكِيدِ ذَلِكَ وَتَقْرِيرِهِ"|"kemudian menegaskan dan memantapkan hal itu"
+"بِقَوْلِهِ تَعَالَى: وَقُضِيَ الْأَمْرُ،"|"dengan firman-Nya: wa qudhiya al-amr,"
+"ثُمَّ ذِكْرِ مَا هُوَ فَائِدَةُ هَذِهِ الْأُمُورِ"|"lalu menyebut yang menjadi faedah hal-hal ini"
+"وَهُوَ: وَاسْتَوَتْ عَلَى الْجُودِيِّ،"|"yaitu: wastawat 'ala al-Judi,"
+"ثُمَّ إِضْمَارِ السَّفِينَةِ قَبْلَ الذِّكْرِ"|"lalu menyembunyikan (nama) bahtera sebelum disebut"
+"كَمَا هُوَ شَرْطُ الْفَخَامَةِ"|"sebagaimana syarat kemegahan"
+"وَالدَّلَالَةِ عَلَى عِظَمِ الشَّأْنِ،"|"dan petunjuk atas besarnya perkara,"
+"ثُمَّ مُقَابَلَةِ قِيلَ فِي الْخَاتِمَةِ"|"kemudian membandingkan qila di penutup"
+"بِقِيلَ فِي الْفَاتِحَةِ"|"dengan qila di pembuka."
+"أَفَتَرَى لِشَيْءٍ مِنْ هَذِهِ الْخَصَائِصِ"|"Adakah engkau lihat sesuatu dari ciri-ciri ini"
+"الَّتِي تَمْلَؤُكَ بِالْإِعْجَازِ رَوْعَةً،"|"yang memenuhimu dengan kekaguman akan kemukjizatan,"
+"وَتُحْضِرُكَ عِنْدَ تَصَوُّرِهَا هَيْبَةً"|"dan menghadirkan wibawa ketika membayangkannya"
+"تُحِيطُ بِالنَّفْسِ مِنْ أَقْطَارِهَا"|"yang meliputi jiwa dari segala penjuru,"
+"تَعَلُّقًا بِاللَّفْظِ مِنْ حَيْثُ هُوَ صَوْتٌ مَسْمُوعٌ"|"bertalian dengan lafal sebagai bunyi yang terdengar"
+"وَحُرُوفٌ تَتَوَالَى فِي النُّطْقِ،"|"dan huruf-huruf yang berurutan dalam ucapan,"
+"أَمْ كُلُّ ذَلِكَ لِمَا بَيْنَ مَعَانِي الْأَلْفَاظِ"|"ataukah semua itu karena yang ada di antara makna lafal"
+"مِنَ الِاتِّسَاقِ الْعَجِيبِ؟"|"berupa keselarasan yang menakjubkan?"
+-(١) دَلَائِلُ الْإِعْجَازِ ص ١١٧، ١١٨.|(1) Dala'il Al-I'jaz, hlm. 117-118.
 @hal 19
-~Kesimpulan bahwa kata tidak unggul karena dirinya sendiri, tetapi karena kecocokan maknanya dengan kata di sekitarnya. 'Abdul Qahir melanjutkan dengan contoh.
+"فَقَدِ اتَّضَحَ إِذًا اتِّضَاحًا"|"Telah jelas, dengan kejelasan"
+"لَا يَدَعُ مَجَالًا لِلشَّكِّ"|"yang tidak menyisakan ruang untuk ragu,"
+"أَنَّ الْأَلْفَاظَ لَا تَتَفَاضَلُ"|"bahwa lafal tidak saling mengungguli"
+"مِنْ حَيْثُ هِيَ أَلْفَاظٌ مُجَرَّدَةٌ"|"sebagai lafal yang terlepas,"
+"وَلَا مِنْ حَيْثُ هِيَ كَلِمٌ مُفْرَدَةٌ"|"dan tidak pula sebagai kata tunggal,"
+"وَأَنَّ الْأَلْفَاظَ تَثْبُتُ لَهَا الْفَضِيلَةُ وَخِلَافُهَا"|"dan bahwa keutamaan atau kebalikannya bagi lafal ditetapkan"
+"مِنْ مُلَاءَمَةِ مَعْنَى اللَّفْظَةِ"|"dari keselarasan makna suatu lafal"
+"لِمَعْنَى الَّتِي تَلِيهَا"|"dengan makna lafal sesudahnya"
+"أَوْ مَا أَشْبَهَ ذَلِكَ"|"atau yang semisalnya,"
+"مِمَّا لَا تَعَلُّقَ لَهُ بِصَرِيحِ اللَّفْظِ" (١)|"yang tidak berkaitan dengan wujud lafal itu sendiri." (1)
+وَيَسْتَمِرُّ عَبْدُ الْقَاهِرِ فِي سَوْقِ الشَّوَاهِدِ|'Abdul Qahir terus mengemukakan contoh-contoh
+فَيَقُولُ:|lalu berkata:
+"وَمِمَّا يَشْهَدُ لِذَلِكَ"|"Di antara yang menjadi bukti hal itu"
+"أَنَّكَ تَرَى الْكَلِمَةَ تَرُوقُكَ وَتُؤْنِسُكَ"|"ialah engkau melihat kata yang menyenangkan dan menenteramkanmu"
+"فِي مَوْضِعٍ ثُمَّ تَرَاهَا بِعَيْنِهَا"|"di satu tempat, lalu melihat kata yang sama"
+"تَثْقُلُ عَلَيْكَ وَتُوحِشُكَ فِي مَوْضِعٍ آخَرَ"|"terasa berat dan membuatmu risih di tempat lain,"
+"كَلَفْظِ الْأَخْدَعِ فِي بَيْتِ الْحَمَاسَةِ"|"seperti lafal al-akhda' dalam bait Al-Hamasah"
+"لِلصِّمَّةِ بْنِ عَبْدِ اللهِ الْقُشَيْرِيِّ:"|"karya Ash-Shimmah bin 'Abdillah Al-Qusyairi:"
+تَلَفَّتُّ نَحْوَ الْحَيِّ حَتَّى وَجَدْتُنِي|Aku menoleh ke arah kampung hingga mendapati diriku
+وَجِعْتُ مِنَ الْإِصْغَاءِ لِيتًا وَأَخْدَعَا|sakit di leher dan tengkuk karena terus menyimak
+"وَبَيْتِ الْبُحْتُرِيِّ:"|"dan bait Al-Buhturi:"
+وَإِنِّي وَإِنْ بَلَّغْتَنِي شَرَفَ الْغِنَى|Sungguh, meski engkau mengantarkanku pada kemuliaan kekayaan
+وَأَعْتَقْتَ مِنْ رِقِّ الْمَطَامِعِ أَخْدَعِي|dan memerdekakan leherku dari perbudakan ketamakan
+"فَإِنَّكَ تَجِدُ لَهَا فِي هَذَيْنِ الْمَكَانَيْنِ"|"maka engkau mendapati pada kata itu di dua tempat ini"
+"مَا لَا يَخْفَى مِنَ الْحُسْنِ"|"keindahan yang tidak tersembunyi,"
+"ثُمَّ إِنَّكَ تَتَأَمَّلُهَا فِي بَيْتِ أَبِي تَمَّامٍ:"|"lalu engkau menelaahnya dalam bait Abu Tammam:"
+يَا دَهْرُ قَوِّمْ مِنْ أَخْدَعَيْكَ فَقَدْ|Wahai zaman, luruskanlah kedua lehermu, sungguh
+أَضْجَجْتَ هَذَا الْأَنَامَ مِنْ خُرُقِكَ|engkau telah membuat manusia ini berteriak karena kebodohanmu
+"فَتَجِدُ لَهَا مِنَ الثِّقَلِ عَلَى النَّفْسِ"|"maka engkau mendapati padanya beban bagi jiwa"
+"وَمِنَ التَّنْغِيصِ وَالتَّكْدِيرِ أَضْعَافَ"|"dan kejengkelan serta keruh berlipat-lipat"
+"مَا وَجَدْتَ هُنَاكَ مِنَ الرَّوْحِ وَالْخِفَّةِ"|"dari kelapangan dan keringanan yang kaudapati di sana,"
+"وَالْإِيْنَاسِ وَالْبَهْجَةِ."|"juga dari rasa akrab dan keriangan."
+"وَمِنْ أَعْجَبِ ذَلِكَ لَفْظَةُ الشَّيْءِ"|"Dan yang paling menakjubkan ialah lafal asy-syai'"
+"فَإِنَّكَ تَرَاهَا مَقْبُولَةً حَسَنَةً فِي مَوْضِعٍ"|"yang engkau lihat diterima dan indah di satu tempat"
+"وَضَعِيفَةً مُسْتَكْرَهَةً فِي مَوْضِعٍ آخَرَ"|"dan lemah lagi tidak disukai di tempat lain."
+"وَإِنْ أَرَدْتَ أَنْ تَعْرِفَ ذَلِكَ"|"Jika engkau ingin mengetahuinya,"
+"فَانْظُرْ إِلَى قَوْلِ"|"perhatikan ucapan"
+"عُمَرَ بْنِ أَبِي رَبِيعَةَ الْمَخْزُومِيِّ:"|"'Umar bin Abi Rabi'ah Al-Makhzumi:"
+وَمِنْ مَالِئٍ عَيْنَيْهِ مِنْ شَيْءٍ غَيْرِهِ|Siapa yang memenuhi matanya dengan sesuatu selain dia
+إِذَا رَاحَ نَحْوَ الْجَمْرَةِ الْبِيضُ كَالدُّمَى|bila para wanita putih bak patung menuju jumrah
+"وَإِلَى قَوْلِ أَبِي حَيَّةَ النُّمَيْرِيِّ:"|"dan ucapan Abu Hayyah An-Numairi:"
+إِذَا مَا تَقَاضَى الْمَرْءَ يَوْمٌ وَلَيْلَةٌ|Bila seorang insan ditagih oleh siang dan malam
+تَقَاضَاهُ شَيْءٌ لَا يَمَلُّ التَّقَاضِيَا|ia ditagih sesuatu yang tak jemu menagih
+-(١) دَلَائِلُ الْإِعْجَازِ ص ٨٩، ٩٠|(1) Dala'il Al-I'jaz, hlm. 89-90.
 @hal 20
-~Contoh bait Al-Mutanabbi dan perbandingan susunan yang buruk dengan yang baik.
+"فَإِنَّكَ تَعْرِفُ حُسْنَهَا"|"maka engkau mengetahui keindahannya"
+"وَمَكَانَهَا مِنَ الْقَبُولِ."|"dan kedudukannya dalam penerimaan."
+"ثُمَّ انْظُرْ إِلَيْهَا فِي بَيْتِ الْمُتَنَبِّي:"|"Lalu perhatikan ia dalam bait Al-Mutanabbi:"
+لَوِ الْفَلَكُ الدَّوَّارُ أَبْغَضْتَ سَعْيَهُ|Andai falak yang berputar itu engkau benci gerakannya
+لَعَوَّقَهُ شَيْءٌ عَنِ الدَّوَرَانِ|niscaya sesuatu akan menghalanginya dari berputar
+"فَإِنَّكَ تَرَاهَا تَقِلُّ وَتَضْؤُلُ"|"maka engkau melihatnya menyusut dan mengecil"
+"بِحَسَبِ نُبْلِهَا وَحُسْنِهَا فِيمَا تَقَدَّمَ" (١)|"sesuai dengan kemuliaan dan keindahannya pada contoh terdahulu." (1)
+وَهَكَذَا يَسْتَمِرُّ عَبْدُ الْقَاهِرِ فِي عَرْضِ|Demikian 'Abdul Qahir terus memaparkan
+الْعَدِيدِ مِنْ شَوَاهِدِ النَّظْمِ الرَّدِيءِ|banyak contoh nazhm yang buruk
+وَالْآخَرِ الْجَيِّدِ، فَمِنَ الْأَوَّلِ:|dan yang baik; yang pertama:
+*قَوْلُ الْفَرَزْدَقِ:|Ucapan Al-Farazdaq:
+وَمَا مِثْلُهُ فِي النَّاسِ إِلَّا مُمَلَّكًا|Tak ada yang seperti dia di antara manusia kecuali seorang raja
+أَبُو أُمِّهِ حَيٌّ أَبُوهُ يُقَارِبُهُ|yang ayah ibunya adalah kerabat ayahnya yang masih hidup
+*وَقَوْلُ الْمُتَنَبِّي:|Ucapan Al-Mutanabbi:
+وَلِذَا اسْمُ أَغْطِيَةِ الْعُيُونِ جُفُونَهَا|Maka nama penutup mata itu kelopaknya
+مِنْ أَنَّهَا عَمَلَ السُّيُوفِ عَوَامِلُ|karena ia, seperti kerja pedang, adalah pelaku
+*وَقَوْلُ أَبِي تَمَّامٍ:|Ucapan Abu Tammam:
+ثَانِيهِ فِي كَبِدِ السَّمَاءِ وَلَمْ يَكُنْ|Yang kedua berada di tengah langit, dan tidaklah
+لِاثْنَيْنِ ثَانٍ إِذْ هُمَا فِي الْغَارِ|bagi dua orang ada yang kedua ketika keduanya di gua
+وَمِنَ الثَّانِي:|Dan yang kedua (yang baik):
+*قَوْلُ إِبْرَاهِيمَ بْنِ الْعَبَّاسِ الصُّولِيِّ|Ucapan Ibrahim bin Al-'Abbas Ash-Shuli
+يَمْدَحُ مُحَمَّدَ بْنَ عَبْدِ الْمَلِكِ الزَّيَّاتِ:|memuji Muhammad bin 'Abdul Malik Az-Zayyat:
+فَلَوْ إِذْ نَبَا دَهْرٌ وَأُنْكِرَ صَاحِبٌ|Andai ketika zaman memusuhi dan sahabat diingkari
+وَسُلِّطَ أَعْدَاءٌ وَغَابَ نَصِيرُ|musuh dikuasakan dan penolong menghilang,
+تَكُونُ عَنِ الْأَهْوَازِ دَارِي بِنَجْوَةٍ|rumahku berada jauh dari Ahwaz di tempat tinggi
+وَلَكِنْ مَقَادِيرٌ جَرَتْ وَأُمُورُ|namun ketentuan-ketentuan dan urusan telah berjalan
+وَإِنِّي لَأَرْجُو بَعْدَ هَذَا مُحَمَّدًا|Sungguh sesudah ini aku berharap pada Muhammad
+لِأَفْضَلِ مَا يُرْجَى أَخٌ وَوَزِيرُ|demi sebaik-baik yang diharapkan: saudara dan menteri
+*وَقَوْلُ الْبُحْتُرِيِّ:|Ucapan Al-Buhturi:
+بَلَوْنَا ضَرَائِبَ مَنْ قَدْ نَرَى|Kami telah menguji tabiat orang-orang yang kami lihat
+فَمَا إِنْ رَأَيْنَا لِفَتْحٍ ضَرِيبَا|dan tak kami temui yang sepadan dengan Fath
+هُوَ الْمَرْءُ أَبْدَتْ لَهُ الْحَادِثَاتُ|Dialah lelaki yang oleh peristiwa-peristiwa ditampakkan baginya
+عَزْمًا وَشِيكًا وَرَأْيًا صَلِيبَا|tekad yang cepat dan pendapat yang kokoh
+تَنَقَّلَ فِي خُلُقَيْ سُؤْدَدٍ|Ia berpindah di antara dua watak kemuliaan
+سَمَاحًا مُرَجًّى وَبَأْسًا مَهِيبًا|kedermawanan yang diharapkan dan keperkasaan yang disegani
+فَكَالسَّيْفِ إِنْ جِئْتَهُ صَارِخًا|Ia bagai pedang bila engkau datang meminta pertolongan
+وَكَالْبَحْرِ إِنْ جِئْتَهُ مُسْتَثِيبَا|dan bagai lautan bila engkau datang mengharap pemberian
+-(١) دَلَائِلُ الْإِعْجَازِ ص ٩١، ٩٢|(1) Dala'il Al-I'jaz, hlm. 91-92.
 @hal 21
-~Contoh bait Kutsayyir 'Azzah dan penegasan bahwa kajian nazhm akan diuraikan dalam pasal-pasal kitab.
+*وَقَوْلُ كُثَيِّرِ عَزَّةَ:|Ucapan Kutsayyir 'Azzah:
+وَلَمَّا قَضَيْنَا مِنْ مِنًى كُلَّ حَاجَةٍ|Ketika kami telah menunaikan semua hajat di Mina
+وَمَسَّحَ بِالْأَرْكَانِ مَنْ هُوَ مَاسِحُ|dan yang hendak mengusap telah mengusap rukun-rukun
+وَشُدَّتْ عَلَى دُهْمِ الْمَطَايَا رِحَالُنَا|dan pelana kami diikat pada unta-unta hitam
+وَلَمْ يَنْظُرِ الْغَادِي الَّذِي هُوَ رَائِحُ|dan yang berangkat pagi tak menanti yang berangkat sore
+أَخَذْنَا بِأَطْرَافِ الْأَحَادِيثِ بَيْنَنَا|Kami bertukar ujung-ujung percakapan di antara kami
+وَسَالَتْ بِأَعْنَاقِ الْمَطِيِّ الْأَبَاطِحُ|dan lembah-lembah mengalir di leher-leher tunggangan
+إِلَى غَيْرِ ذَلِكَ مِنَ الشَّوَاهِدِ|Dan contoh-contoh lain
+الَّتِي يَعْرِضُ لَهَا عَبْدُ الْقَاهِرِ مُحَلِّلًا لَهَا|yang dibahas 'Abdul Qahir dengan menganalisisnya
+وَمُبْرِزًا لِمَا فِيهَا مِنْ جَمَالٍ|dan menonjolkan keindahan padanya
+مَرَدُّهُ إِلَى النَّظْمِ وَمَعْرِفَةِ مَا لَهُ|yang kembali pada nazhm dan pengetahuan tentang
+مِنْ رُسُومٍ وَمَنَاهِجَ،|kaidah dan jalurnya,
+أَوْ مِنْ قُبْحٍ وَعَيْبٍ مَرَدُّهُمَا|atau keburukan dan cela yang keduanya kembali
+إِلَى الْخُرُوجِ عَنْ رُسُومِ النَّظْمِ وَمَنَاهِجِهِ (١).|pada penyimpangan dari kaidah dan jalur nazhm (1).
+ثُمَّ يَأْخُذُ عَبْدُ الْقَاهِرِ|Kemudian 'Abdul Qahir
+بَعْدَ أَنْ وَضَّحَ نَظَرِيَّةَ النَّظْمِ|setelah menjelaskan teori nazhm
+وَحَلَّلَ الْعَدِيدَ مِنْ شَوَاهِدِهَا،|dan menganalisis banyak contohnya,
+وَبَيَّنَ مَا يَنْبَغِي عَلَى الْبَلِيغِ|serta menerangkan apa yang semestinya bagi ahli balaghah
+أَنْ يَلْتَزِمَ بِهِ|untuk dipegangnya
+فِي بِنَاءِ جُمَلِهِ وَعِنْدَ صِيَاغَةِ عِبَارَاتِهِ|dalam membangun kalimat dan menyusun ungkapan,
+يَأْخُذُ بَعْدَ ذَلِكَ فِي بَيَانِ قَوَانِينِ النَّحْوِ|mulai menerangkan kaidah-kaidah nahwu
+وَأُصُولِهِ وَمَنَاهِجِهِ الَّتِي يَنْبَغِي|beserta asas dan jalur-jalurnya yang semestinya
+عَلَى النَّاظِمِ أَنْ يَضَعَ كَلَامَهُ|bagi penyusun untuk menempatkan kalamnya
+الْوَضْعَ الَّذِي تَقْتَضِيهِ تِلْكَ الْمَنَاهِجُ،|pada kedudukan yang dituntut oleh jalur-jalur itu,
+فَلَا يَزِيغَ عَنْهَا وَلَا يَحِيدَ،|sehingga tidak menyimpang dan tidak berpaling darinya.
+وَهِيَ تَشْمَلُ كُلَّ أَبْوَابِ عِلْمِ الْمَعَانِي|Itu mencakup semua bab ilmu ma'ani
+الَّتِي سَنَعْرِضُ لَهَا فِي فُصُولِ هَذَا الْكِتَابِ|yang akan kita bahas dalam pasal-pasal kitab ini
+إِنْ شَاءَ اللهُ تَعَالَى.|insya Allah Ta'ala.
+-(١) دَلَائِلُ الْإِعْجَازِ ص ١٢٠ وَمَا بَعْدَهَا.|(1) Dala'il Al-I'jaz, hlm. 120 dan seterusnya.
 @sub mafhum-fashahah-balaghah|مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ|Pengertian fashahah dan balaghah|22
 @hal 22
-الْفَصَاحَةُ فِي اللُّغَةِ مَعْنَاهَا الظُّهُورُ وَالْبَيَانُ|Fashahah menurut bahasa maknanya kemunculan dan kejelasan.
-~Mulai bagian pengertian fashahah dan balaghah: makna fashahah menurut bahasa (kejelasan, contoh susu yang bening), lalu pembahasan balaghah.
+الْفَصَاحَةُ فِي اللُّغَةِ مَعْنَاهَا الظُّهُورُ وَالْبَيَانُ.|Fashahah secara bahasa bermakna tampak dan jelas.
+يُقَالُ: يَوْمٌ مُفْصِحٌ، لَا غَيْمَ فِيهِ،|Dikatakan: hari yang mufshih, tiada awan di dalamnya,
+وَأَفْصَحَ اللَّبَنُ وَفَصُحَ،|dan susu itu afshaha dan fashuha,
+ذَهَبَتْ عَنْهُ الرَّغْوَةُ،|yakni buihnya telah hilang.
+قَالَ نَضْلَةُ السُّلَمِيُّ:|Nadhlah As-Sulami berkata:
+وَتَحْتَ الرَّغْوَةِ اللَّبَنُ الْفَصِيحُ|Di bawah buih itu ada susu yang murni
+وَيُقَالُ: أَفْصَحَتِ الشَّاةُ وَالنَّاقَةُ،|Dikatakan: kambing dan unta betina afshahat,
+أَيْ خَلُصَ لَبَنُهَا،|yakni susunya murni.
+وَأَفْصَحَ الصُّبْحُ: بَدَا ضَوْؤُهُ وَاسْتَبَانَ.|Subuh afshaha: cahayanya tampak dan jelas.
+وَيُقَالُ: رَجُلٌ فَصِيحٌ وَامْرَأَةٌ فَصِيحَةٌ،|Dikatakan: lelaki fashih dan perempuan fashihah,
+وَقَوْمٌ فُصَحَاءُ وَكَلَامٌ فَصِيحٌ،|kaum fushaha' dan kalam fashih,
+أَيْ بَلِيغٌ،|yakni baligh.
+وَلِسَانٌ فَصِيحٌ، أَيْ طَلْقٌ،|Lisan yang fashih, yakni lancar,
+وَأَفْصَحَ الرَّجُلُ عَنِ الشَّيْءِ إِفْصَاحًا،|dan seseorang afshaha tentang sesuatu dengan ifshah,
+إِذَا بَيَّنَهُ وَكَشَفَهُ،|bila ia menjelaskan dan menyingkapnya.
+وَيُقَالُ: تَفَصَّحَ، أَيِ:|Dikatakan: tafashshaha, yakni
+ازْدَادَ فَصَاحَةً وَاسْتَعْمَلَ الْفَصَاحَةَ،|bertambah fashahahnya dan memakai fashahah,
+أَوْ تَكَلَّفَ الْفَصَاحَةَ وَتَشَبَّهَ بِالْفُصَحَاءِ.|atau memaksakan fashahah dan menyerupai orang fashih.
+وَالْفَصِيحُ: الْمُنْطَلِقُ اللِّسَانِ فِي الْقَوْلِ،|Al-fashih ialah yang lancar lisannya dalam berbicara,
+الَّذِي يَعْرِفُ جَيِّدَ الْكَلَامِ مِنْ رَدِيئِهِ.|yang dapat membedakan kalam baik dari yang buruk.
+قَالَ اللهُ عَزَّ وَجَلَّ:|Allah 'Azza wa Jalla berfirman:
+﴿وَأَخِي هَٰرُونُ هُوَ أَفْصَحُ مِنِّي لِسَانًا﴾|Dan saudaraku Harun, dia lebih fasih lidahnya daripadaku.
+[الْقَصَصِ: ٣٤]|(QS. Al-Qashash: 34)
+وَقَالَ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ:|Beliau shallallahu 'alaihi wasallam bersabda:
+"أَنَا أَفْصَحُ الْعَرَبِ"|"Aku orang Arab yang paling fasih,"
+"بَيْدَ أَنِّي مِنْ قُرَيْشٍ" (١)...|"hanya saja aku dari Quraisy" (1)...
+فَمَعْنَى الْفَصَاحَةِ فِي الْآيَةِ وَالْحَدِيثِ:|Makna fashahah dalam ayat dan hadits:
+الظُّهُورُ وَالْبَيَانُ (٢).|tampak dan jelas (2).
+وَالْبَلَاغَةُ فِي اللُّغَةِ تَعْنِي: الِانْتِهَاءَ وَالْوُصُولَ|Balaghah secara bahasa berarti sampai dan tiba,
+وَتَعْنِي أَيْضًا الْفَصَاحَةَ وَحُسْنَ الْكَلَامِ.|dan juga berarti fashahah dan indahnya tutur.
+يُقَالُ: بَلَغَ الشَّيْءُ يَبْلُغُ بُلُوغًا وَبَلَاغًا:|Dikatakan: sesuatu balagha, yablughu, bulughan dan balaghan:
+وَصَلَ وَانْتَهَى إِلَى مُرَادِهِ.|ia tiba dan sampai pada tujuannya.
+وَالْبَلَاغُ: مَا يُتَبَلَّغُ بِهِ|Al-balagh ialah apa yang dijadikan bekal
+وَيُتَوَصَّلُ إِلَى الشَّيْءِ الْمَطْلُوبِ.|dan sarana mencapai hal yang dituju.
+وَالْبَلَاغَةُ: الْفَصَاحَةُ.|Balaghah itu fashahah.
+وَرَجُلٌ بَلِيغٌ وَبَلْغٌ وَبِلْغٌ:|Lelaki baligh, balgh, dan bilgh:
+حَسَنُ الْكَلَامِ فَصِيحُهُ،|indah tuturnya dan fasih,
+يَبْلُغُ بِعِبَارَةِ لِسَانِهِ كُنْهَ مَا فِي قَلْبِهِ،|dengan ungkapan lisannya ia menjangkau hakikat isi hatinya.
+وَالْجَمْعُ: بُلَغَاءُ،|Bentuk jamaknya: bulagha',
+وَقَدْ بَلُغَ بَلَاغَةً: صَارَ بَلِيغًا (٣).|dan ia balugha balaghah: menjadi baligh (3).
+قَالَ اللهُ عَزَّ وَجَلَّ:|Allah 'Azza wa Jalla berfirman:
+﴿وَقُل لَّهُمْ فِيٓ أَنفُسِهِمْ|Dan katakanlah kepada mereka tentang diri mereka
+قَوْلًۢا بَلِيغًا﴾ [النِّسَاءِ: ٦٣]،|perkataan yang berbekas. (QS. An-Nisa': 63)
+ذَهَبَ الزَّمَخْشَرِيُّ إِلَى أَنَّ الْقَوْلَ الْبَلِيغَ|Az-Zamakhsyari berpendapat bahwa ucapan yang baligh itu
+الْمُؤَثِّرُ فِي قُلُوبِهِمْ،|ialah yang berpengaruh pada hati mereka,
+فَيَغْتَمُّونَ بِهِ اغْتِمَامًا|sehingga mereka sangat bersedih karenanya
+وَيَسْتَشْعِرُونَ مِنَ الْخَوْفِ اسْتِشْعَارًا (٤).|dan benar-benar merasakan ketakutan (4).
+-(١) رَوَاهُ الطَّبَرَانِيُّ فِي الْمُعْجَمِ الْكَبِيرِ:|(1) Diriwayatkan Ath-Thabrani dalam Al-Mu'jam Al-Kabir:
+-[٦/٣٥ بِرَقْمِ ٥٤٣٧].|[6/35, nomor 5437].
+-(٢) انْظُرْ لِسَانَ الْعَرَبِ مَادَّةَ فَصَحَ.|(2) Lihat Lisan Al-'Arab, bahan fa-sha-ha.
+-(٣) انْظُرْ لِسَانَ الْعَرَبِ مَادَّةَ بَلَغَ.|(3) Lihat Lisan Al-'Arab, bahan ba-la-gha.
+-(٤) انْظُرِ الْكَشَّافَ ج١ ص ٤٠٧.|(4) Lihat Al-Kasysyaf, jilid 1, hlm. 407.
 @sub fashahah-kalimah|فَصَاحَةُ الْكَلِمَةِ|Fashahah kata|23
 @hal 23
-~Menurut bahasa fashahah dan balaghah sepadan, tetapi menurut istilah dibedakan. Dimulai syarat fashahah kata: bebas dari ketidakserasian huruf, dengan contoh kata ganjil.
+وَبِهَذَا يَتَّضِحُ لَنَا|Dengan ini jelas bagi kita
+أَنَّ مَفْهُومَ الْفَصَاحَةِ فِي اللُّغَةِ|bahwa makna fashahah secara bahasa
+لَا يَخْتَلِفُ عَنْ مَفْهُومِ الْبَلَاغَةِ|tidak berbeda dari makna balaghah
+فَهُمَا مُتَرَادِفَانِ|sehingga keduanya sinonim
+وَالْمَقْصُودُ مِنْهُمَا الظُّهُورُ وَالْبَيَانُ|dan maksud keduanya adalah kejelasan dan penjelasan
+وَالِانْتِهَاءُ إِلَى الْمَعْنَى|sampai kepada makna
+وَبُلُوغُ الْمُرَادِ بِاللَّفْظِ الْجَيِّدِ|dan tercapainya maksud dengan lafal yang baik
+وَالْقَوْلِ الْبَلِيغِ الْمُؤَثِّرِ|ucapan yang balig lagi berkesan
+وَالتَّعْبِيرِ الْحَسَنِ الْفَصِيحِ|dan ungkapan yang indah lagi fasih
+وَلِذَا فَإِنَّ أَكْثَرَ الْبَلَاغِيِّينَ|Karena itu kebanyakan ahli balaghah
+يَرَوْنَ أَنَّ الْفَصَاحَةَ وَالْبَلَاغَةَ|berpendapat bahwa fashahah dan balaghah
+تَرْجِعَانِ إِلَى مَعْنًى وَاحِدٍ|kembali kepada satu makna
+وَإِنِ اخْتَلَفَ أَصْلُهُمَا|meskipun asal keduanya berbeda
+لِأَنَّ الْمُرَادَ بِكُلٍّ مِنْهُمَا|sebab yang dimaksud dengan masing-masing
+الْإِبَانَةُ عَنِ الْمَعْنَى وَالْإِظْهَارُ لَهُ|adalah menjelaskan makna dan menampakkannya
+وَحُسْنُ التَّعْبِيرِ عَنْهُ|serta bagusnya pengungkapannya
+وَيَرَى بَعْضُهُمْ أَنَّ الْفَصَاحَةَ|Sebagian lain berpendapat bahwa fashahah
+تَمَامُ آلَةِ الْبَيَانِ|adalah kesempurnaan perangkat penjelasan
+فَهِيَ تَخْتَلِفُ عَنِ الْبَلَاغَةِ|maka ia berbeda dari balaghah
+لِأَنَّ الْآلَةَ تَتَعَلَّقُ بِاللَّفْظِ دُونَ الْمَعْنَى|sebab perangkat berkaitan dengan lafal, bukan makna
+أَمَّا الْبَلَاغَةُ فَتَتَعَلَّقُ بِالْمَعْنَى|adapun balaghah berkaitan dengan makna
+دُونَ اللَّفْظِ|bukan lafal
+إِذِ الْمُرَادُ مِنْهَا|sebab yang dimaksud darinya
+إِنْهَاءُ الْمَعْنَى إِلَى الْقَلْبِ|ialah menyampaikan makna ke dalam hati
+وَقَدِ اخْتَارَ الْمُتَأَخِّرُونَ هَذَا الرَّأْيَ|Ulama belakangan memilih pendapat ini
+فَقَالُوا الْفَصَاحَةُ تَقَعُ وَصْفًا|mereka berkata: fashahah menjadi sifat
+لِلْكَلِمَةِ وَلِلْكَلَامِ وَلِلْمُتَكَلِّمِ|bagi kata, kalam, dan penutur
+فَيُقَالُ كَلِمَةٌ فَصِيحَةٌ|maka dikatakan kata yang fasih
+وَكَلَامٌ فَصِيحٌ وَمُتَكَلِّمٌ فَصِيحٌ|kalam yang fasih, dan penutur yang fasih
+أَمَّا الْبَلَاغَةُ فَتَقَعُ وَصْفًا|adapun balaghah menjadi sifat
+لِلْكَلَامِ وَلِلْمُتَكَلِّمِ|bagi kalam dan penutur
+فَيُقَالُ كَلَامٌ بَلِيغٌ وَمُتَكَلِّمٌ بَلِيغٌ|maka dikatakan kalam balig dan penutur balig
+وَلَا تَقَعُ وَصْفًا لِلْكَلِمَةِ|dan tidak menjadi sifat bagi kata
+فَلَا يُقَالُ كَلِمَةٌ بَلِيغَةٌ|maka tidak dikatakan kata yang balig
+ثُمَّ رَاحُوا يُفَسِّرُونَ ذَلِكَ|lalu mereka menjelaskan hal itu
+عَلَى النَّحْوِ الْآتِي|sebagai berikut
+الْكَلِمَةُ الْفَصِيحَةُ هِيَ الْكَلِمَةُ الَّتِي|Kata yang fasih ialah kata yang
+تَخْلُو مِنْ تَنَافُرِ الْحُرُوفِ وَالْغَرَابَةِ|bebas dari tanafur huruf dan keganjilan
+وَمُخَالَفَةِ الْقِيَاسِ اللُّغَوِيِّ أَوِ الصَّرْفِيِّ|dan menyalahi kaidah kebahasaan atau sharaf
+وَمِنَ الْكَرَاهَةِ فِي السَّمْعِ|serta dari kejanggalan di telinga
+*فَتَنَافُرُ الْحُرُوفِ|Tanafur huruf
+وَصْفٌ فِي الْكَلِمَةِ|adalah sifat pada kata
+يُوجِبُ ثِقَلَهَا عَلَى السَّمْعِ|yang menimbulkan beratnya di pendengaran
+وَصُعُوبَةَ نُطْقِ اللِّسَانِ بِهَا|dan sulitnya lidah mengucapkannya
+وَهَذَا التَّنَافُرُ قَدْ يَكُونُ شَدِيدًا|Tanafur ini bisa sangat kuat
+مُتَنَاهِيًا فِي الثِّقَلِ|mencapai puncak keberatan
+كَمَا فِي قَوْلِ الْأَعْرَابِيِّ|seperti ucapan seorang Arab badui
+عِنْدَمَا سُئِلَ عَنْ نَاقَتِهِ|ketika ditanya tentang untanya
+"تَرَكْتُهَا تَرْعَى الْهُعْخُعَ"|"Kutinggalkan ia sedang memakan al-hu'khu'"
+فَكَلِمَةُ "الْهُعْخُعِ" كَلِمَةٌ|Kata "al-hu'khu'" adalah kata
+شَدِيدَةُ الثِّقَلِ عَلَى الْأُذُنِ|yang sangat berat di telinga
+شَدِيدَةُ الصُّعُوبَةِ فِي اللِّسَانِ|dan sangat sulit di lidah
+وَقَدْ قَالُوا إِنَّهَا اسْمُ شَجَرٍ|Mereka berkata: ia nama sejenis pohon
+مُرِّ الْمَذَاقِ كَرِيهِ الرَّائِحَةِ|yang pahit rasanya dan busuk baunya
+كَأَنَّهُ هَذِهِ الْكَلِمَةُ|seakan-akan ia adalah kata ini
+الَّتِي لَا يُطَاقُ النُّطْقُ بِهَا|yang tak tertahankan untuk diucapkan
+وَقِيلَ إِنَّهَا كَلِمَةٌ لِلْمُعَايَاةِ|Ada yang berkata: ia kata untuk mengelabui
+لَا أَصْلَ لَهَا|yang tidak punya asal-usul
+وَهُمْ كَثِيرًا مَا يَخْتَرِعُونَ كَلِمَاتٍ|dan mereka sering mengarang kata-kata
+لِلْمُعَايَاةِ|untuk mengelabui
+وَمِثْلُهَا كَلِمَةُ "الْعُقْجُقِ" وَ"الظِّشِّ"|Semisalnya kata "al-'uqjuq" dan "azh-zhisy"
+وَ"الشَّصَاصَاءِ" وَنَحْوِ ذَلِكَ|dan "asy-syashashā'" dan sejenisnya
 @hal 24
-~Ketidakserasian ringan, misalnya kata "mustasyzirat" dalam bait Imru'ul Qais, dan tanafur yang makin berat.
+وَقَدْ يَكُونُ التَّنَافُرُ خَفِيفًا|Tanafur bisa juga ringan
+وَالثِّقَلُ ضَئِيلًا|dan keberatannya kecil
+كَمَا فِي قَوْلِ امْرِئِ الْقَيْسِ|seperti ucapan Imru' al-Qais
+-وَفَرْعٍ يُغَشَّى الْمَتْنَ أَسْوَدَ فَاحِمٍ|Dan rambut yang menutupi punggung, hitam pekat
+-أَثِيثٍ كَقِنْوِ النَّخْلَةِ الْمُتَعَثْكِلِ|lebat bagai tandan kurma yang bergelantung
+-غَدَائِرُهُ مُسْتَشْزِرَاتٌ إِلَى الْعُلَا|Jalinan rambutnya terangkat ke atas
+-تَضِلُّ الْمَدَارَى فِي مُثَنًّى وَمُرْسَلِ|sisir tersesat di antara yang dipilin dan terurai
+فَكَلِمَةُ "مُسْتَشْزِرَاتٌ" كَلِمَةٌ ثَقِيلَةٌ|Kata "mustasyziratun" adalah kata yang berat
+فِي السَّمْعِ|di pendengaran
+يَتَعَثَّرُ اللِّسَانُ عِنْدَ النُّطْقِ بِهَا|lidah tersandung saat mengucapkannya
+وَلَكِنَّ ثِقَلَهَا أَقَلُّ مِنْ ثِقَلِ "الْهُعْخُعِ"|tetapi beratnya lebih ringan dari "al-hu'khu'"
+وَمِثْلُهُ قَوْلُ الْمُتَنَبِّي|Semisal itu ucapan al-Mutanabbi
+-إِنَّ الْكِرَامَ بِلَا كِرَامٍ مِنْهُمُ|Sungguh orang mulia tanpa orang mulia di antara mereka
+-مِثْلُ الْقُلُوبِ بِلَا سُوَيْدَاوَاتِهَا|bagaikan hati tanpa bintik hitamnya
+فَكَلِمَةُ "سُوَيْدَاوَاتِهَا" كَلِمَةٌ ثَقِيلَةٌ|Kata "suwaidawatiha" adalah kata yang berat
+عَلَى اللِّسَانِ|di lidah
+وَقَدْ نَشَأَ هَذَا الثِّقَلُ مِنْ طُولِ الْكَلِمَةِ|Beratnya ini timbul dari panjang kata
+كَمَا نَشَأَ الثِّقَلُ فِي كَلِمَةِ "مُسْتَشْزِرَاتٍ"|sebagaimana timbul pada kata "mustasyzirat"
+مِنْ طُولِهَا أَيْضًا|dari panjangnya juga
+وَمِنْ تَوَسُّطِ الشِّينِ الْمَهْمُوسَةِ الرِّخْوَةِ|dan dari terletaknya syin yang mahmus rakhwah
+بَيْنَ التَّاءِ الشَّدِيدَةِ وَالزَّايِ الْمَجْهُورَةِ|di antara ta' yang syadid dan zai yang majhur
+وَمَعَ كُلٍّ فَالثِّقَلُ فِي الْكَلِمَتَيْنِ|Namun demikian, beratnya pada kedua kata
+أَقَلُّ مِنَ الثِّقَلِ فِي كَلِمَةِ "الْهُعْخُعِ"|lebih ringan daripada pada kata "al-hu'khu'"
+وَيُرْجِعُ الْبَلَاغِيُّونَ السَّبَبَ|Para ahli balaghah mengembalikan sebab
+فِي تَنَافُرِ الْحُرُوفِ وَثِقَلِهَا|tanafur huruf dan beratnya
+فِي الْأُذُنِ وَاللِّسَانِ|di telinga dan di lidah
+إِلَى قُرْبِ مَخَارِجِ الْحُرُوفِ|kepada dekatnya makhraj huruf
+أَوْ بُعْدِهَا بُعْدًا شَدِيدًا|atau jauhnya yang sangat jauh
+وَقَالُوا إِنَّ الْبُعْدَ الشَّدِيدَ|Mereka berkata: jarak yang sangat jauh
+بَيْنَ مَخَارِجِ الْحُرُوفِ|antara makhraj huruf
+يَكُونُ بِمَنْزِلَةِ الطَّفْرِ|setara dengan melompat
+وَالْقُرْبُ الشَّدِيدُ بَيْنَهَا|dan kedekatan yang sangat di antaranya
+يَكُونُ بِمَنْزِلَةِ مَشْيِ الْمُقَيَّدِ|setara dengan jalannya orang terbelenggu
+الَّذِي يُثْقِلُهُ الْقَيْدُ|yang diberatkan oleh belenggunya
+وَالْعَرَبُ قَدْ بُنِيَتْ لُغَتُهُمْ عَلَى الْخِفَّةِ|Bahasa orang Arab dibangun di atas keringanan
+وَلِذَا رَأَيْنَاهُمْ يَعْمِدُونَ إِلَى إِدْغَامِ|karena itu kita lihat mereka mengidgamkan
+الْمِثْلَيْنِ وَالْمُتَقَارِبَيْنِ|dua huruf yang sama dan yang berdekatan
+نَحْوَ رَدَّ وَمَدَّ وَشَدَّ وَاضْطَرَّ|seperti radda, madda, syadda, dan idhtharra
+وَإِلَى الْإِبْدَالِ فِي نَحْوِ اصْطَبَرَ|dan menggantikan huruf seperti pada ishthabara
+وَذَلِكَ دَفْعًا لِلثِّقَلِ|yang demikian demi menolak keberatan
+وَمَعَ أَنَّهُ لَا يُمْكِنُ إِنْكَارُ|Meskipun tak dapat diingkari
+مَا لِمَخَارِجِ الْحُرُوفِ وَصِفَاتِهَا|apa yang dimiliki makhraj huruf dan sifatnya
+وَهَيْئَةِ تَأْلِيفِهَا مِنْ أَثَرٍ|serta bentuk susunannya berupa pengaruh
+فِي ثِقَلِ الْكَلِمَةِ وَخِفَّتِهَا|pada berat dan ringannya kata
+إِلَّا أَنَّهُ يَنْبَغِي أَنْ يَكُونَ|namun seharusnya
+الْمُعَوَّلُ عَلَيْهِ فِي ذَلِكَ|yang dijadikan pegangan dalam hal itu
+هُوَ الذَّوْقُ الصَّحِيحُ|adalah cita rasa yang benar
+-الْفَرْعُ الشَّعْرُ وَيُغَشَّى يُغَطَّى|Al-far' ialah rambut, dan yughsya berarti ditutupi
+-وَالْمَتْنُ الظَّهْرُ وَالْأَثِيثُ الْكَثِيرُ الشَّعْرِ|al-matn ialah punggung; al-atsits yang rambutnya lebat
+-وَقِنْوُ النَّخْلَةِ عُنْقُودُهَا|qinwu kurma ialah tandannya
+-وَالْمُتَعَثْكِلُ الْمُتَرَاكِمُ|al-muta'atskil ialah yang bertumpuk
+-وَالْغَدَائِرُ الذَّوَائِبُ|al-ghada'ir ialah jalinan rambut
+-وَمُسْتَشْزِرَاتٌ مُرْتَفِعَاتٌ|mustasyzirat berarti terangkat
+-وَالْمَدَارَى جَمْعُ مِدْرًى وَهُوَ الْأَمْشَاطُ|al-madara jamak midra, yaitu sisir
+-وَالْمُثَنَّى الْمَفْتُولُ وَالْمُرْسَلُ غَيْرُ الْمَفْتُولِ|al-mutsanna ialah yang dipilin, al-mursal yang tidak dipilin
+-الْمَعْنَى إِنَّ الْكِرَامَ مِنَ الْخَيْلِ|Maksudnya: kuda-kuda yang mulia
+-إِذَا لَمْ يَكُنْ عَلَيْهَا فُرْسَانٌ كِرَامٌ|bila tidak ditunggangi penunggang yang mulia
+-مِنْ هَؤُلَاءِ الْمَمْدُوحِينَ|dari para tokoh yang dipuji ini
+-صَارَتْ كَالْقَلْبِ بِلَا سُوَيْدَاءَ|menjadi bagai hati tanpa bintik hitam
 @hal 25
-~Ketidakserasian bukan semata dekatnya makhraj huruf, dengan contoh ayat surah Yasin 60 dan kata "dzuqtuhu bifamiy". Lalu bahasan kata asing (gharabah).
+فَنَحْنُ نَرَى الْكَلِمَةَ قَدْ تَأَلَّفَتْ|Kita melihat kata kadang tersusun
+مِنْ حُرُوفٍ مُتَقَارِبَةٍ وَلَيْسَتْ ثَقِيلَةً|dari huruf-huruf berdekatan namun tidak berat
+نَحْوَ قَوْلِهِ تَعَالَى|seperti firman Allah Ta'ala
+أَلَمْ أَعْهَدْ إِلَيْكُمْ يَا بَنِي آدَمَ|Bukankah Aku telah memerintahkan kepadamu wahai Bani Adam
+[سُورَةُ يس: ٦٠]|(QS. Yasin: 60)
+فَلَا ثِقَلَ فِي كَلِمَةِ "أَعْهَدْ"|Tidak ada keberatan pada kata "a'had"
+مَعَ قُرْبِ مَخْرَجِ الْهَمْزَةِ وَالْعَيْنِ وَالْهَاءِ|padahal makhraj hamzah, 'ain, dan ha' berdekatan
+وَكَمَا فِي قَوْلِنَا "ذُقْتُهُ بِفَمِي"|Juga seperti ucapan kita "kucicipi dengan mulutku"
+فَالْبَاءُ وَالْفَاءُ وَالْمِيمُ|huruf ba', fa', dan mim
+أَحْرُفٌ شَفَوِيَّةٌ مُتَقَارِبَةٌ|adalah huruf bibir yang berdekatan
+وَلَا ثِقَلَ فِيهَا|namun tidak ada keberatan padanya
+فَكَوْنُ قُرْبِ مَخَارِجِ الْحُرُوفِ|Maka dekatnya makhraj huruf
+أَوْ تَبَاعُدِهَا مُوجِبًا لِلثِّقَلِ وَالتَّنَافُرِ|atau jauhnya sebagai penyebab berat dan tanafur
+لَيْسَ مُطَّرِدًا|tidaklah berlaku umum
+وَلِذَا كَانَ الْمُعَوَّلُ عَلَيْهِ|karena itu yang dijadikan pegangan
+هُوَ الذَّوْقُ السَّلِيمُ وَالْحِسُّ الصَّادِقُ|adalah cita rasa yang sehat dan perasaan yang jujur
+هَذَا وَثِقَلُ الْكَلِمَةِ فِي النُّطْقِ|Selain itu, beratnya kata dalam pengucapan
+لَيْسَ مَعِيبًا فِي جَمِيعِ الْأَحْوَالِ|tidak tercela dalam semua keadaan
+وَعَلَى الْإِطْلَاقِ|dan secara mutlak
+بَلْ إِذَا اقْتَضَاهُ الْمَقَامُ|bahkan bila dituntut oleh situasi
+كَانَ مِنْ أَهَمِّ مَظَاهِرِ فَصَاحَةِ الْكَلِمَةِ|ia termasuk wujud terpenting fashahah kata
+وَلِذَا لَا أَجِدُ عَيْبًا|karena itu aku tak menemukan cela
+فِي كَلِمَةِ "مُسْتَشْزِرَاتٍ" فِي بَيْتِ امْرِئِ الْقَيْسِ|pada kata "mustasyzirat" dalam bait Imru' al-Qais
+لِأَنَّهَا لَاءَمَتِ الْمَقَامَ|karena ia sesuai dengan situasi
+حَيْثُ يَصِفُ شَعْرًا كَثِيفًا غَزِيرًا|sebab ia melukiskan rambut yang lebat dan banyak
+قَدْ تَرَاكَمَ وَصَارَ كَقِنْوِ|yang bertumpuk dan menjadi seperti tandan
+النَّخْلَةِ الْمُتَعَثْكِلِ|kurma yang bergelantung
+وَلَوْ قَالَ "مُرْتَفِعَاتٍ"|Seandainya ia berkata "murtafi'at"
+لَأَخَلَّ بِمَا يَقْتَضِيهِ السِّيَاقُ|niscaya merusak apa yang dituntut konteks
+وَيَتَلَاءَمُ مَعَ الْأَلْفَاظِ الَّتِي|dan keselarasan dengan lafal-lafal yang
+وَصَفَ بِهَا الشَّعْرَ|dipakai untuk melukiskan rambut
+كَمَا لَا أَرَى عَيْبًا|Aku juga tak melihat cela
+فِي قَوْلِ أَبِي تَمَّامٍ|pada ucapan Abu Tammam
+-قَدْ قُلْتُ لَمَّا اطْلَخَمَّ الْأَمْرُ|Kukatakan ketika urusan menjadi genting
+-وَانْبَعَثَتْ عَشْوَاءُ تَالِيَةٌ|dan bangkit bencana buta yang mengikuti
+-غُبْسًا دَهَارِيسَا|malam-malam gelap dan malapetaka
+لِأَنَّ الثِّقَلَ فِي كَلِمَةِ "اطْلَخَمَّ"|Karena beratnya kata "ithlakhamma"
+يَتَلَاءَمُ مَعَ الشِّدَّةِ وَالظَّلَامِ|selaras dengan kerasnya keadaan dan kegelapan
+وَالدَّوَاهِي الَّتِي يُصَوِّرُهَا الشَّاعِرُ|dan malapetaka yang digambarkan penyair
+أَبُو تَمَّامٍ فِي هَذَا الْبَيْتِ|yaitu Abu Tammam dalam bait ini
+يَقُولُ الدُّكْتُورُ مُحَمَّدٌ أَبُو مُوسَى|Dr. Muhammad Abu Musa berkata
+فَيَنْبَغِي أَنْ يُلَاحَظَ|Hendaknya diperhatikan
+أَنَّ اسْتِعْمَالَ هَذَا الْمِقْيَاسِ|bahwa penggunaan tolok ukur ini
+يَحْتَاجُ إِلَى وَعْيٍ وَذَوْقٍ|memerlukan kesadaran dan cita rasa
+لِأَنَّ هُنَاكَ كَلِمَاتٍ ثَقِيلَةً عَلَى اللِّسَانِ|sebab ada kata-kata yang berat di lidah
+وَلَكِنَّ ثِقَلَهَا مِنْ أَهَمِّ مَظَاهِرِ فَصَاحَتِهَا|tetapi beratnya termasuk wujud terpenting kefasihannya
+مِنْ حَيْثُ إِنَّ هَذَا الثِّقَلَ|karena beratnya ini
+يُصَوِّرُ مَعْنَاهَا بِحَقٍّ|menggambarkan maknanya dengan tepat
+انْظُرْ إِلَى كَلِمَةِ "اثَّاقَلْتُمْ"|Lihatlah kata "itstsaqaltum"
+فِي قَوْلِهِ تَعَالَى|dalam firman Allah Ta'ala
+يَا أَيُّهَا الَّذِينَ آمَنُوا مَا لَكُمْ|Wahai orang-orang beriman, mengapa kamu
+إِذَا قِيلَ لَكُمُ انْفِرُوا|apabila dikatakan kepadamu: berangkatlah
+فِي سَبِيلِ اللَّهِ اثَّاقَلْتُمْ إِلَى الْأَرْضِ|di jalan Allah kamu merasa berat tinggal di bumi
+أَرَضِيتُمْ بِالْحَيَاةِ الدُّنْيَا مِنَ الْآخِرَةِ|Apakah kamu puas dengan kehidupan dunia dibanding akhirat
+فَمَا مَتَاعُ الْحَيَاةِ الدُّنْيَا فِي الْآخِرَةِ|Padahal kenikmatan hidup dunia dibanding akhirat
+إِلَّا قَلِيلٌ|hanyalah sedikit
+[التَّوْبَةِ: ٣٨]|(QS. At-Taubah: 38)
+تَجِدُ فِيهَا قَدْرًا مِنَ الثِّقَلِ الْفَصِيحِ|Engkau dapati padanya kadar berat yang fasih
+لِأَنَّهُ يَصِفُ تَقَاعُسَهُمْ وَتَثَاقُلَهُمْ|sebab ia melukiskan kemalasan dan keberatan mereka
+وَخُلُودَهُمْ إِلَى الْأَرْضِ|dan kecenderungan mereka pada bumi
+وَاسْتِشْعَارَهُمْ مَشَقَّةَ الْجِهَادِ|dan perasaan mereka akan beratnya jihad
+وَعُزُوفَ أَرْوَاحِهِمْ عَنْهُ|serta jiwa mereka yang berpaling darinya
+وَقَدْ دُعُوا إِلَيْهِ فِي عَامِ|padahal mereka diseru kepadanya pada tahun
+-اطْلَخَمَّ الْأَمْرُ اشْتَدَّ|Ithlakhamma al-amr berarti menjadi genting
+-وَالْعَشْوَاءُ النَّاقَةُ لَا تُبْصِرُ لَيْلًا|al-'asywa' ialah unta yang tak melihat di malam hari
+-غُبْسًا الظَّلَامُ الشَّدِيدُ|ghubsan ialah kegelapan yang pekat
+-وَالدَّهَارِيسُ الدَّوَاهِي|dan ad-daharis ialah malapetaka
 @hal 26
-~Kata asing dan contohnya, termasuk ayat At-Taubah 39 dan kisah orang yang memakai kata ganjil sehingga tak dipahami.
+الْعُسْرَةِ|kesulitan
+فَكَانَ مِنْهُمْ مَا وَصَفَتِ الْآيَةُ|maka terjadilah dari mereka apa yang dilukiskan ayat
+وَلِذَا جَاءَ التَّهْدِيدُ الْبَالِغُ|karena itu datang ancaman yang keras
+لِيُوَاجِهَ تَخَاذُلَ أَرْوَاحِهِمْ|untuk menghadapi kelemahan jiwa mereka
+فَقَالَ سُبْحَانَهُ وَتَعَالَى|maka Allah Subhanahu wa Ta'ala berfirman
+إِلَّا تَنْفِرُوا يُعَذِّبْكُمْ عَذَابًا أَلِيمًا|Jika kamu tidak berangkat, Dia akan menyiksamu dengan azab pedih
+وَيَسْتَبْدِلْ قَوْمًا غَيْرَكُمْ|dan menggantimu dengan kaum lain
+وَلَا تَضُرُّوهُ شَيْئًا|dan kamu tak dapat merugikan-Nya sedikit pun
+وَاللَّهُ عَلَى كُلِّ شَيْءٍ قَدِيرٌ|Allah Mahakuasa atas segala sesuatu
+[التَّوْبَةِ: ٣٩]|(QS. At-Taubah: 39)
+وَخُذْ قَوْلَهُ تَعَالَى يَحْكِي|Ambillah firman-Nya yang menceritakan
+مَقَالَةَ سَيِّدِنَا نُوحٍ عَلَيْهِ السَّلَامُ لِقَوْمِهِ|ucapan Nabi kita Nuh 'alaihis salam kepada kaumnya
+قَالَ يَا قَوْمِ أَرَأَيْتُمْ إِنْ كُنْتُ|Dia berkata: wahai kaumku, bagaimana pendapatmu jika aku
+عَلَى بَيِّنَةٍ مِنْ رَبِّي|berada di atas bukti nyata dari Tuhanku
+وَآتَانِي رَحْمَةً مِنْ عِنْدِهِ|dan Dia memberiku rahmat dari sisi-Nya
+فَعُمِّيَتْ عَلَيْكُمْ أَنُلْزِمُكُمُوهَا|lalu ia disamarkan bagimu, apakah kami akan memaksamu menerimanya
+وَأَنْتُمْ لَهَا كَارِهُونَ|padahal kamu membencinya
+[هُودٍ: ٢٨]|(QS. Hud: 28)
+وَتَأَمَّلْ كَلِمَةَ "أَنُلْزِمُكُمُوهَا"|Renungkan kata "anulzimukumuuha"
+وَمَا فِيهَا مِنْ صُعُوبَةٍ فِي النُّطْقِ|dan kesulitan pengucapan di dalamnya
+تَحْكِي صُعُوبَةَ الْإِلْزَامِ بِالْآيَاتِ|yang menggambarkan sulitnya memaksakan ayat-ayat
+وَهُمْ لَهَا كَارِهُونَ|sedang mereka membencinya
+وَانْظُرْ إِلَى كَلِمَةِ "فَعُمِّيَتْ"|Lihat pula kata "fa'ummiyat"
+وَمَا فِيهَا مِنَ الْإِدْغَامِ وَالْمَجْهُولِ|dan idgam serta bentuk pasif di dalamnya
+وَكَيْفَ يَصِفَانِ مَعْنَى التَّعْمِيَةِ|dan bagaimana keduanya melukiskan makna penyamaran
+وَالْإِلْبَاسِ|dan pengaburan
+*وَالْغَرَابَةُ|Keganjilan (gharabah)
+أَنْ تَكُونَ الْكَلِمَةُ وَحْشِيَّةً|ialah kata itu asing
+لَا يَظْهَرُ مَعْنَاهَا|yang maknanya tidak jelas
+فَتَحْتَاجُ فِي مَعْرِفَتِهَا إِلَى النَّظَرِ|sehingga untuk mengetahuinya perlu menelaah
+وَالتَّنْقِيبِ عَنْهَا فِي كُتُبِ اللُّغَةِ الْمَبْسُوطَةِ|dan menelusurinya dalam kitab bahasa yang luas
+وَالْمَرْجِعُ فِي ذَلِكَ إِلَى الْعَرَبِ الْخُلَّصِ|Rujukan dalam hal itu ialah orang Arab asli
+فَلَا يُعَوَّلُ عَلَى غَيْرِهِمْ مِنَ الْمُحْدَثِينَ|maka tak dipegang selain mereka dari generasi belakangan
+الَّذِينَ ظَهَرُوا بَعْدَ فَسَادِ اللُّغَةِ|yang muncul setelah rusaknya bahasa
+وَضَعْفِ السَّلِيقَةِ|dan melemahnya naluri bahasa
+وَلِذَا قُيِّدَ التَّنْقِيبُ عَنْ تِلْكَ الْكَلِمَاتِ|Karena itu penelusuran kata-kata tersebut dibatasi
+الْغَرِيبَةِ بِكَوْنِهِ فِي كُتُبِ اللُّغَةِ|yang ganjil itu pada kitab bahasa
+الْمَبْسُوطَةِ الَّتِي حَوَتْ كَلِمَاتٍ|yang luas, yang memuat kata-kata
+قَدْ مَاتَتْ وَصَارَتْ غَيْرَ مُسْتَعْمَلَةٍ|yang telah mati dan tak lagi dipakai
+عِنْدَ الْفُصَحَاءِ مِنَ الْخُلَّصِ|oleh para fasih dari orang Arab asli
+كَمَا فِي الْأَلْفَاظِ|seperti pada lafal-lafal
+"زَرَجُونٌ" وَ"اسْفَنْطٌ" وَ"خَنْدَرِيسٌ"|"zarajun", "isfanth", dan "khandaris"
+الَّتِي تُطْلَقُ عَلَى الْخَمْرِ|yang dipakai untuk khamar
+وَ"فَدَوْكَسٌ" وَ"هِرْمَاسٌ" عَلَى الْأَسَدِ|dan "fadauks" serta "hirmas" untuk singa
+وَ"الْحَلْقَدُ" عَلَى سَيِّئِ الْخُلُقِ|"al-halqad" untuk orang yang buruk akhlak
+وَ"الطِّرْمُوقُ" عَلَى الطِّينِ|"ath-thirmuq" untuk lumpur
+وَ"الِاسْتِمْصَالُ" عَلَى الْإِسْهَالِ|"al-istimshal" untuk diare
+وَ"الْإِطْرِغْشَاشُ" وَ"الْإِبْرِغْشَاشُ" عَلَى الشِّفَاءِ|"al-ithrighsyasy" dan "al-ibrighsyasy" untuk kesembuhan
+وَ"الِابْتِشَاكُ" عَلَى الْكَذِبِ|dan "al-ibtisyak" untuk dusta
+يَقُولُ الشَّاعِرُ|Penyair berkata
+-وَمَا أَرْضَى لِمُقْلَتِهِ بِحُلْمٍ|Aku tak rela matanya bermimpi
+-إِذَا انْتَبَهَتْ تَوَهَّمَهُ ابْتِشَاكَا|karena bila terjaga ia mengiranya dusta
+وَكَمَا فِي قَوْلِ عِيسَى بْنِ عُمَرَ|Juga seperti ucapan Isa bin Umar
+النَّحْوِيِّ لِأُنَاسٍ قَدْ تَجَمَّعُوا حَوْلَهُ|ahli nahwu kepada orang-orang yang berkerumun
+عِنْدَمَا سَقَطَ عَنْ حِمَارِهِ|ketika ia jatuh dari keledainya
+"مَا لَكُمْ تَكَأْكَأْتُمْ عَلَيَّ"|"Mengapa kalian berkerumun di sekelilingku"
+"تَكَأْكُؤَكُمْ عَلَى ذِي جِنَّةٍ"|"seperti kerumunan kalian pada orang gila"
+"افْرَنْقِعُوا عَنِّي"|"Menyingkirlah dariku"
+فَقَدْ أَطْلَقَ "تَكَأْكَأَ" عَلَى الِاجْتِمَاعِ|Ia memakai "taka'ka'a" untuk berkumpul
+وَ"افْرَنْقَعَ" عَلَى التَّنَحِّي وَالِابْتِعَادِ|dan "afranqa'a" untuk menyingkir dan menjauh
+وَهُوَ يَهْدِفُ بِتَخَيُّرِ هَاتَيْنِ الْكَلِمَتَيْنِ|Ia bermaksud dengan memilih kedua kata
+الْغَرِيبَتَيْنِ الْمُزَاحَ|yang ganjil ini untuk bercanda
+وَمُدَاعَبَةَ مَنِ اجْتَمَعُوا حَوْلَهُ|dan menggoda mereka yang berkumpul di sekitarnya
+وَلِذَا قَالُوا دَعُوهُ فَإِنَّ|Karena itu mereka berkata: biarkan dia, sebab
+-خَصَائِصُ التَّرَاكِيبِ ص ٢٣|Khasha'ish at-Tarakib hlm. 23
 @hal 27
-~Makna kata yang tersembunyi bagi kita dalam Al-Qur'an, hadits, dan syair tidak boleh langsung disebut gharib. Contoh kata tentang unta dan majaz mursal.
+شَيْطَانَهُ يَتَكَلَّمُ بِالْهِنْدِيَّةِ|setannya berbicara bahasa Hindi
+فَمِثْلُ هَذِهِ الْكَلِمَاتِ لَا نَرَاهَا|Kata-kata seperti ini tak kita temui
+إِلَّا فِي كُتُبِ اللُّغَةِ الْمُطَوَّلَةِ|kecuali di kitab bahasa yang panjang
+وَلَا نَجِدُهَا مُسْتَعْمَلَةً|dan tak kita dapati dipakai
+عَلَى لِسَانِ الْخُلَّصِ|di lisan orang Arab asli
+وَلِذَا عُدَّتْ غَرِيبَةً|karena itu dianggap ganjil
+وَمُخِلَّةً بِالْفَصَاحَةِ|dan merusak fashahah
+وَلَا يَجُوزُ أَنْ نُطْلِقَ|Tidak boleh kita menyebut
+عَلَى مَا خَفِيَ عَلَيْنَا مَعْنَاهُ|apa yang maknanya tersembunyi bagi kita
+مِنَ النَّظْمِ الْكَرِيمِ وَأَحَادِيثِ الرَّسُولِ ﷺ|dari nazhm yang mulia dan hadits Rasul
+وَأَشْعَارِ الْفُحُولِ مِنَ الشُّعَرَاءِ|dan syair para penyair ulung
+بِأَنَّهُ غَرِيبٌ وَمُنَافٍ لِلْفَصَاحَةِ|sebagai ganjil dan bertentangan dengan fashahah
+لِأَنَّ الَّذِي يُعْتَدُّ بِهِ وَيُعَوَّلُ عَلَيْهِ|sebab yang dijadikan patokan dan pegangan
+فِي ذَلِكَ كَمَا قُلْتُ|dalam hal itu, seperti telah kukatakan
+إِنَّمَا هُمُ الْعَرَبُ الْخُلَّصُ|hanyalah orang Arab asli
+الَّذِينَ سَلِمَتْ سَلِيقَتُهُمْ|yang naluri bahasanya selamat
+وَلَمْ تَفْسُدْ طِبَاعُهُمْ|dan tabiatnya tidak rusak
+وَلَا نَبْعُدُ عَنِ الصَّوَابِ إِذَا قُلْنَا|Kita tak menyimpang dari kebenaran jika berkata
+إِنَّ الْغَرَابَةَ نَوْعَانِ|bahwa keganjilan ada dua jenis
+نَوْعٌ فَصِيحٌ وَهُوَ تِلْكَ الْأَلْفَاظُ|jenis fasih, yaitu lafal-lafal
+الْمُسْتَعْمَلَةُ الَّتِي جَرَتْ|yang dipakai, yang mengalir
+عَلَى أَلْسِنَةِ الْخُلَّصِ وَالْفُحُولِ|di lisan orang Arab asli dan penyair ulung
+وَإِنْ خَفِيَ عَلَيْنَا مَعْنَاهَا وَغَمَضَ|meski maknanya tersembunyi dan samar bagi kita
+وَمِنْ هَذَا النَّوْعِ غَرِيبُ الْقُرْآنِ|Termasuk jenis ini gharib Al-Qur'an
+وَغَرِيبُ الْحَدِيثِ وَالْأَثَرِ|gharib hadits dan atsar
+وَغَرِيبُ الشِّعْرِ|dan gharib syair
+وَنَوْعٌ مَعِيبٌ مُخِلٌّ بِالْفَصَاحَةِ|dan jenis tercela yang merusak fashahah
+وَهُوَ تِلْكَ الْأَلْفَاظُ|yaitu lafal-lafal
+الَّتِي أَهْمَلَهَا الْخُلَّصُ|yang ditinggalkan orang Arab asli
+وَهَجَرَهَا الْفُصَحَاءُ فَلَمْ يَسْتَعْمِلُوهَا|dan dijauhi para fasih sehingga tak dipakai
+وَبَقِيَتْ فِي بُطُونِ أُمَّهَاتِ كُتُبِ|dan tersisa di dalam induk kitab
+اللُّغَةِ الْمُطَوَّلَةِ|bahasa yang panjang
+عَلَى نَحْوِ مَا شَاهَدْنَا فِي الْأَمْثِلَةِ|seperti yang kita lihat dalam contoh-contoh
+وَذَكَرَ الْبَلَاغِيُّونَ أَنَّ الْكَلِمَةَ تُعَدُّ|Ahli balaghah menyebutkan bahwa kata dianggap
+غَرِيبَةً كَذَلِكَ غَرَابَةً|ganjil pula, dengan keganjilan
+تُخِلُّ بِفَصَاحَتِهَا إِذَا احْتَمَلَتْ|yang merusak fashahahnya, bila mengandung
+مَعْنَيَيْنِ أَوْ أَكْثَرَ|dua makna atau lebih
+وَاحْتَارَ السَّامِعُ فِي فَهْمِ الْمَعْنَى|dan pendengar bingung memahami makna
+الْمُرَادِ مِنْهَا لِعَدَمِ وُجُودِ الْقَرِينَةِ|yang dimaksud darinya karena tak ada qarinah
+الَّتِي تُعَيِّنُهُ وَتُحَدِّدُهُ|yang menentukan dan menetapkannya
+كَمَا فِي قَوْلِ رُؤْبَةَ بْنِ الْعَجَّاجِ|seperti ucapan Ru'bah bin al-'Ajjaj
+-أَيَّامَ أَبْدَتْ وَاضِحًا مُفَلَّجَا|Hari ketika ia tampakkan wajah cerah dan gigi renggang
+-أَغَرَّ بَرَّاقًا وَطَرْفًا أَبْرَجَا|putih berkilau, dan mata yang indah
+-وَمُقْلَةً وَحَاجِبًا مُزَجَّجَا|bola mata dan alis yang ramping
+-وَفَاحِمًا وَمَرْسِنًا مُسَرَّجَا|rambut hitam legam dan hidung yang musarraj
+فَإِنَّهُ لَمْ يُعْرَفْ مَا أَرَادَ|Tidak diketahui apa yang ia maksud
+بِقَوْلِهِ "مُسَرَّجًا"|dengan ucapannya "musarrajan"
+حَتَّى اخْتَلَفُوا فِي تَخْرِيجِهِ|sampai mereka berbeda dalam menafsirkannya
+فَقِيلَ إِنَّهُ أَرَادَ أَنْ يُشَبِّهَ|Ada yang berkata: ia ingin menyerupakan
+أَنْفَهَا بِالسَّيْفِ فِي الدِّقَّةِ وَالِاسْتِوَاءِ|hidungnya dengan pedang dalam ramping dan lurusnya
+وَعَلَيْهِ فَمُسَرَّجًا نِسْبَةً إِلَى سُرَيْجٍ|maka musarraj dinisbatkan kepada Suraij
+الَّذِي اشْتُهِرَ بِصِنَاعَةِ السُّيُوفِ|yang terkenal membuat pedang
+وَنُسِبَتْ إِلَيْهِ فَسُمِّيَتْ سُيُوفًا سُرَيْجِيَّةً|dan pedang dinisbatkan padanya, disebut pedang Suraijiyyah
+وَقِيلَ إِنَّهُ أَرَادَ أَنْ يُشَبِّهَ|Ada pula yang berkata: ia ingin menyerupakan
+أَنْفَهَا بِالسِّرَاجِ فِي الْبَرِيقِ وَاللَّمَعَانِ|hidungnya dengan pelita dalam kilau dan kemilaunya
+فَمُسَرَّجًا فِي الْبَيْتِ نِسْبَةً إِلَى السِّرَاجِ|maka musarraj dalam bait dinisbatkan kepada pelita
+-مُفَلَّجًا الْفَلَجُ تَبَاعُدُ مَا بَيْنَ الْأَسْنَانِ|Al-falaj ialah renggangnya jarak antargigi
+-وَالْأَغَرُّ الْأَبْيَضُ وَالطَّرْفُ الْعَيْنُ|al-aghar ialah yang putih, ath-tharf ialah mata
+-وَأَبْرَجُ الْبَرَجُ عِظَمُ الْعَيْنِ وَحُسْنُهَا|abraj: al-baraj ialah besar dan indahnya mata
+-وَمُزَجَّجًا مُدَقَّقًا|muzajjaj berarti dibuat ramping
+-وَفَاحِمًا شَعْرًا أَسْوَدَ كَالْفَحْمِ|fahim berarti rambut hitam seperti arang
+-وَمَرْسِنًا اسْمُ مَحَلِّ الرَّسَنِ مِنَ الْبَعِيرِ|mursin ialah nama tempat tali kekang pada unta
+-وَإِطْلَاقُهُ عَلَى أَنْفِ الْإِنْسَانِ|dan pemakaiannya untuk hidung manusia
+-مِنْ بَابِ الْمَجَازِ الْمُرْسَلِ|termasuk majaz mursal
 @hal 28
-~Contoh turunan kata dari isim jamid dalam bahasa Arab (misalnya "mudannirat"), lalu mulai bahasan kata yang menyalahi kaidah (mukhalafah qiyas).
+الْمُضِيءِ مِنْ قَوْلِهِمْ سَرُجَ وَجْهُهُ|yang bersinar, dari ucapan mereka: wajahnya sarruj
+أَيْ حَسُنَ|yakni menjadi indah
+وَسَرَّجَ اللَّهُ وَجْهَهُ أَيْ|dan Allah memperindah wajahnya, yakni
+حَسَّنَهُ وَبَهَّجَهُ|memperbagusnya dan mencerahkannya
+وَالِاشْتِقَاقُ مِنَ الِاسْمِ الْجَامِدِ|Penurunan kata dari isim jamid
+عَلَى جِهَةِ التَّشْبِيهِ|dengan jalan penyerupaan
+وَارِدٌ فِي كَلَامِ الْعَرَبِ|ada dalam ucapan orang Arab
+كَمَا فِي قَوْلِهِمْ|seperti ucapan mereka
+-وَبُرُودٍ مُدَنَّرَاتٍ وَقَزٍّ|Dan kain bercorak bagai dinar, serta sutra
+-وَمُلَاءٍ مِنْ أَعْتَقِ الْكَتَّانِ|dan selimut dari linen terbaik
+أَيْ وَبُرُودٍ وَشْيُهَا كَالدَّنَانِيرِ|yakni kain yang coraknya bagai dinar
+فَاشْتُقَّ مِنَ الدَّنَانِيرِ "مُدَنَّرَاتٌ"|maka "mudannarat" diturunkan dari "dananir"
+عَلَى جِهَةِ التَّشْبِيهِ بِهَا|dengan jalan menyerupakannya
+*وَمُخَالَفَةُ الْقِيَاسِ|Menyalahi kaidah (qiyas)
+أَنْ تَأْتِيَ الْكَلِمَةُ غَيْرَ جَارِيَةٍ|ialah kata itu datang tidak mengikuti
+عَلَى قَوَانِينِ اللُّغَةِ وَقَوَاعِدِ الصَّرْفِ|kaidah bahasa dan aturan sharaf
+كَمَا فِي قَوْلِ أَبِي عُبَادَةَ|seperti ucapan Abu Ubadah
+-تَشُقُّ عَلَيْهِ الرِّيحُ كُلَّ عَشِيَّةٍ|Angin merobek tiap petang
+-جُيُوبَ الْغَمَامِ بَيْنَ بِكْرٍ وَأَيِّمِ|kantong-kantong awan, antara perawan dan janda
+فَقَدِ اسْتَعْمَلَ "الْأَيِّمَ" فِي مَكَانِ "الثَّيِّبِ"|Ia memakai "al-ayyim" menggantikan "ats-tsayyib"
+وَالْأَيِّمُ مَنْ لَا زَوْجَ لَهَا|Al-ayyim ialah perempuan yang tak bersuami
+وَلَوْ كَانَتْ بِكْرًا|meski ia perawan
+وَكَحَذْفِ النُّونِ مِنْ "لَكِنْ"|Juga seperti membuang nun dari "lakin"
+فِي قَوْلِ النَّجَاشِيِّ|dalam ucapan an-Najasyi
+-فَلَسْتُ بِآتِيهِ وَلَا أَسْتَطِيعُهُ|Aku tak mendatanginya dan tak sanggup
+-وَلَاكِ اسْقِنِي إِنْ كَانَ مَاؤُكَ ذَا فَضْلِ|tetapi beri aku minum jika airmu berlebih
+أَرَادَ وَلَكِنِ اسْقِنِي|Maksudnya: tetapi beri aku minum
+وَكَفَكِّ الْإِدْغَامِ فِي قَوْلِ أَبِي النَّجْمِ|Juga seperti melepas idgam dalam ucapan Abu an-Najm
+-الْحَمْدُ لِلَّهِ الْعَلِيِّ الْأَجْلَلِ|Segala puji bagi Allah yang Mahatinggi lagi Mahamulia
+-الْوَاهِبِ الْفَضْلَ الْكَرِيمِ الْمُجْزِلِ|Pemberi karunia yang dermawan lagi melimpah
+وَكَقَوْلِ قَعْنَبِ بْنِ ضَمْرَةَ|Dan seperti ucapan Qa'nab bin Dhamrah
+-مَهْلًا أَعَاذِلُ قَدْ جَرَّبْتِ مِنْ خُلُقِي|Pelan-pelan wahai penegur, kau telah menguji akhlakku
+-أَنِّي أَجُودُ لِأَقْوَامٍ وَإِنْ ضَنِنُوا|bahwa aku dermawan pada kaum meski mereka kikir
+فَقَدْ فَكَّ الْإِدْغَامَ فِي كَلِمَتَيْ|Ia telah melepas idgam pada dua kata
+"الْأَجْلَلِ" وَ"ضَنِنُوا"|"al-ajlal" dan "dhaninu"
+وَقَوَانِينُ اللُّغَةِ تُوجِبُ إِدْغَامَ الْمِثْلَيْنِ|sedang kaidah bahasa mewajibkan idgam dua huruf yang sama
+وَكَصِيَاغَةِ أَفْعَلِ التَّفْضِيلِ|Juga seperti membentuk af'al tafdhil
+مِنْ "أَفْعَلَ فَعْلَاءُ"|dari wazan "af'al fa'la'"
+فِي قَوْلِ الْقَائِلِ|dalam ucapan seseorang
+-لَأَنْتَ أَسْوَدُ فِي عَيْنِي مِنَ الظُّلَمِ|Kau lebih hitam di mataku daripada kegelapan
+حَيْثُ اسْتَعْمَلَ أَفْعَلَ التَّفْضِيلِ|Di situ ia memakai af'al tafdhil
+مِنْ وَزْنِ "أَفْعَلَ" الَّذِي مُؤَنَّثُهُ|dari wazan "af'al" yang muannatsnya
+"فَعْلَاءُ" أَسْوَدُ وَسَوْدَاءُ|"fa'la'", yaitu aswad dan sauda'
+وَهَذَا لَا يَتِمُّ إِلَّا بِمُسَاعِدٍ|Ini tak sah kecuali dengan penolong
+كَأَنْ يُقَالَ "لَأَنْتَ أَشَدُّ سَوَادًا"|seperti dikatakan "engkau lebih pekat hitamnya"
+وَيُسْتَثْنَى مِنْ مُخَالَفَةِ الْقِيَاسِ|Dikecualikan dari menyalahi qiyas
+مَا ثَبَتَ اسْتِعْمَالُهُ لَدَى الْعَرَبِ|apa yang terbukti dipakai orang Arab
+فَهُوَ فَصِيحٌ وَإِنْ جَاءَ مُخَالِفًا|maka ia fasih meski datang menyalahi
+لِقَوَانِينِ اللُّغَةِ أَوْ قَوَاعِدِ الصَّرْفِ|kaidah bahasa atau aturan sharaf
+فَمِنْ ذَلِكَ إِبْدَالُ الْهَاءِ هَمْزَةً|Di antaranya mengganti ha' dengan hamzah
+فِي كَلِمَتَيْ "آلٍ" وَ"مَاءٍ"|pada kata "aal" dan "maa'"
+إِذْ أَصْلُهُمَا أَهْلٌ وَمَوَهٌ|sebab asalnya "ahl" dan "mawah"
+وَإِبْدَالُ الْهَاءِ هَمْزَةً فِي الْكَلِمَتَيْنِ|Penggantian ha' dengan hamzah pada kedua kata
+وَإِنْ كَانَ عَلَى|walaupun ia berlawanan
 @hal 29
-~Kata yang menyalahi qiyas tetapi dipakai orang Arab tetap fashih (misalnya "aba ya'ba"), serta contoh pujian dengan nama dan gelar.
+خِلَافِ الْقِيَاسِ إِلَّا أَنَّهُ ثَبَتَ|dengan qiyas, namun terbukti
+اسْتِعْمَالُهُ لَدَى الْعَرَبِ وَوَرَدَ عَنْهُمْ|dipakai orang Arab dan datang dari mereka
+فَهُوَ فَصِيحٌ وَإِنْ خَالَفَ الْقِيَاسَ|maka ia fasih meski menyalahi qiyas
+وَمِنْهُ "أَبَى يَأْبَى" بِفَتْحِ عَيْنِ الْمُضَارِعِ|Termasuk "aba ya'ba" dengan fathah 'ain mudhari'
+فَالْقِيَاسُ أَنَّ "فَعَلَ" بِفَتْحِ الْعَيْنِ|qiyasnya "fa'ala" dengan fathah 'ain
+لَا يَأْتِي مُضَارِعُهُ عَلَى "يَفْعَلُ" بِالْفَتْحِ|mudhari'nya tak datang atas "yaf'alu" dengan fathah
+إِلَّا إِذَا كَانَتْ عَيْنُ مَاضِيهِ أَوْ لَامُهُ|kecuali jika 'ain fi'il madhi atau lam-nya
+مِنْ حُرُوفِ الْحَلْقِ مِثْلَ|termasuk huruf halq, seperti
+ذَهَبَ وَسَأَلَ وَسَعَى وَنَفَعَ وَنَزَعَ|dzahaba, sa'ala, sa'a, nafa'a, dan naza'a
+فَمَجِيءُ الْمُضَارِعِ مِنْ "أَبِيَ"|Maka datangnya mudhari' dari "abiya"
+عَلَى وَزْنِ "يَأْبَى" بِالْفَتْحِ|atas wazan "ya'ba" dengan fathah
+وَلَيْسَتْ عَيْنُ مَاضِيهِ وَلَا لَامُهُ|padahal 'ain madhi maupun lam-nya bukan
+مِنْ حُرُوفِ الْحَلْقِ مُخَالِفٌ لِلْقِيَاسِ|termasuk huruf halq, ini menyalahi qiyas
+وَلَكِنْ قَدْ ثَبَتَ اسْتِعْمَالُهُ|tetapi telah terbukti dipakai
+وَوَرَدَ عَنِ الْعَرَبِ فَهُوَ فَصِيحٌ|dan datang dari orang Arab, maka ia fasih
+وَإِنْ خَالَفَ الْقِيَاسَ|meski menyalahi qiyas
+قَالَ تَعَالَى|Allah Ta'ala berfirman
+وَيَأْبَى اللَّهُ إِلَّا أَنْ يُتِمَّ نُورَهُ|Dan Allah menolak kecuali menyempurnakan cahaya-Nya
+[التَّوْبَةِ: ٣٢]|(QS. At-Taubah: 32)
+وَمِنْهُ عَوِرَ يَعْوَرُ وَاسْتَحْوَذَ يَسْتَحْوِذُ|Termasuk 'awira ya'waru dan istahwadza yastahwidzu
+فَالْقِيَاسُ عَارَ يَعَارُ|Qiyasnya 'ara ya'aru
+وَاسْتَحَاذَ يَسْتَحِيذُ|dan istahadza yastahidzu
+بِقَلْبِ الْوَاوِ أَلِفًا لِتَحَرُّكِهَا|dengan mengubah wawu menjadi alif karena berharakat
+وَانْفِتَاحِ مَا قَبْلَهَا|dan huruf sebelumnya berfathah
+أَوْ يَاءً لِتَحَرُّكِهَا وَكَسْرِ مَا قَبْلَهَا|atau ya' karena berharakat dan sebelumnya berkasrah
+فِي "يَسْتَحِيذُ"|pada "yastahidzu"
+وَلَكِنَّ هَذِهِ الْأَفْعَالَ وَرَدَتْ بِالْوَاوِ|tetapi fi'il-fi'il ini datang dengan wawu
+وَاسْتَعْمَلَهَا الْعَرَبُ بِدُونِ إِعْلَالٍ|dan dipakai orang Arab tanpa i'lal
+قَالَ عَزَّ وَجَلَّ|Allah 'Azza wa Jalla berfirman
+اسْتَحْوَذَ عَلَيْهِمُ الشَّيْطَانُ|Setan telah menguasai mereka
+فَأَنْسَاهُمْ ذِكْرَ اللَّهِ|lalu membuat mereka lupa mengingat Allah
+[الْمُجَادَلَةِ: ١٩]|(QS. Al-Mujadilah: 19)
+فَهِيَ فَصِيحَةٌ وَإِنْ خَالَفَتِ الْقِيَاسَ|Maka ia fasih meski menyalahi qiyas
+*وَالْكَرَاهَةُ فِي السَّمْعِ|Kejanggalan di telinga (karahah)
+أَنْ تَبْرَأَ الْأُذُنُ مِنْ سَمَاعِ الْكَلِمَةِ|ialah telinga menjauh dari mendengar kata
+وَلَا تَقْبَلَهَا لِمَجِيئِهَا غَيْرَ مُلَائِمَةٍ|dan tak menerimanya karena tak sesuai
+لِلسِّيَاقِ الَّذِي قِيلَتْ فِيهِ|dengan konteks tempat ia diucapkan
+وَلَوْ كَانَتْ هَذِهِ الْكَلِمَةُ فَصِيحَةً|walau kata ini fasih
+فِي حَدِّ ذَاتِهَا|pada dirinya sendiri
+كَمَا فِي قَوْلِ أَبِي الطَّيِّبِ الْمُتَنَبِّي|seperti ucapan Abu ath-Thayyib al-Mutanabbi
+-مُبَارَكُ الِاسْمِ أَغَرُّ اللَّقَبِ|Namanya penuh berkah, gelarnya mulia
+-كَرِيمُ الْجِرِشَّى شَرِيفُ النَّسَبِ|jiwanya dermawan, nasabnya terhormat
+فَكَلِمَةُ "الْجِرِشَّى" تَأْبَاهَا الْأُذُنُ|Kata "al-jirisya" ditolak oleh telinga
+فِي هَذَا السِّيَاقِ وَتَنْفِرُ مِنْ سَمَاعِهَا|dalam konteks ini dan menjauhi mendengarnya
+لِأَنَّ الْمَقَامَ مَقَامُ مَدْحٍ|karena situasinya situasi pujian
+وَمَقَامُ الْمَدْحِ هُنَا فِي هَذَا الْبَيْتِ|dan situasi pujian di sini dalam bait ini
+تُلَائِمُهُ الْكَلِمَةُ الْعَذْبَةُ الْخَفِيفَةُ|cocok dengan kata yang manis lagi ringan
+الَّتِي تَتَلَاءَمُ مَعَ بَقِيَّةِ الْأَلْفَاظِ|yang selaras dengan lafal-lafal lainnya
+الْمَذْكُورَةِ وَتَمْضِي مَعَهَا|yang disebutkan dan berjalan bersamanya
+فِي تَنَاسُقٍ تَامٍّ|dalam keselarasan sempurna
+وَلَوْ كَانَ الْمَقَامُ مَقَامَ هِجَاءٍ|Seandainya situasinya adalah celaan
+لَمَا نَفَرَتِ الْأُذُنُ مِنْ سَمَاعِ|telinga tak akan menolak mendengar
+هَذِهِ الْكَلِمَةِ|kata ini
+فَلَوْ قِيلَ فِي مَقَامِ ذَمٍّ|Jika dikatakan dalam situasi cela
+"لَئِيمُ الْجِرِشَّى قَبِيحُ النَّسَبِ"|"hina jiwanya, buruk nasabnya"
+لَاسْتَسَاغَتِ الْأُذُنُ ذَلِكَ|niscaya telinga menerimanya
+وَلَمْ تَنْفِرْ مِنْ قَبُولِ كَلِمَةِ "الْجِرِشَّى"|dan tak menolak kata "al-jirisya"
+وَبِهَذَا يَتَّضِحُ أَنَّ كَرَاهَةَ الْكَلِمَةِ|Dengan ini jelas bahwa janggalnya kata
+فِي السَّمْعِ يَتَوَقَّفُ عَلَى الْمَقَامِ|di telinga bergantung pada situasi
+وَسِيَاقَاتِ الْكَلَامِ|dan konteks-konteks kalam
+فَمَا تَكْرَهُهُ الْأُذُنُ فِي مَوْضِعٍ|Apa yang dibenci telinga di satu tempat
+وَتَأْبَى سَمَاعَهُ|dan ditolak pendengarannya
+قَدْ تَسْتَسِيغُهُ وَتَمِيلُ إِلَيْهِ|bisa diterima dan disukainya
+وَتَلَذُّ سَمَاعَهُ فِي سِيَاقٍ آخَرَ|dan nikmat didengar dalam konteks lain
+-الْجِرِشَّى النَّفْسُ|Al-jirisya ialah jiwa
+-وَالْأَغَرُّ أَصْلُهُ الْأَبْيَضُ مِنَ الْخَيْلِ|al-aghar asalnya kuda yang putih
+-وَيُطْلَقُ عَلَى الْأَبْيَضِ مِنْ كُلِّ شَيْءٍ|dan dipakai untuk yang putih dari segala sesuatu
+-وَاللَّقَبُ مَا دَلَّ عَلَى مَدْحٍ كَزَيْنِ الْعَابِدِينَ|laqab ialah yang menunjukkan pujian seperti Zainal Abidin
+-أَوْ ذَمٍّ كَأَنْفِ النَّاقَةِ|atau celaan seperti Anful Naqah
+-وَقَدْ مَدَحَ سَيْفَ الدَّوْلَةِ بِهَذَا|ia memuji Saif ad-Daulah dengan ini
+-لِأَنَّ اسْمَهُ عَلِيٌّ وَلَقَبَهُ سَيْفُ الدَّوْلَةِ|karena namanya Ali dan gelarnya Saif ad-Daulah
+-وَهُمَا مِمَّا يُمْتَدَحُ بِهِ|dan keduanya termasuk yang dipuji
 @sub fashahah-kalam|فَصَاحَةُ الْكَلَامِ|Fashahah kalimat|30
 @hal 30
-أَمَّا فَصَاحَةُ الْكَلَامِ فَهِيَ خُلُوصُهُ|Adapun fashahah kalimat, ia adalah bebasnya
-مِنْ تَنَافُرِ كَلِمَاتِهِ، وَمِنْ ضَعْفِ التَّأْلِيفِ،|dari ketidakserasian kata-katanya, dari lemahnya susunan,
-وَالتَّعْقِيدِ اللَّفْظِيِّ وَالْمَعْنَوِيِّ|dan dari kerumitan lafal maupun makna.
-~Mulai fashahah kalimat: bebas dari ketidakserasian kata, lemahnya susunan, kerumitan lafal dan makna, pengulangan berlebihan, dan beruntunnya idhafah. Dimulai dengan tanafur kata dalam kalimat.
+أَمَّا فَصَاحَةُ الْكَلَامِ فَهِيَ خُلُوصُهُ|Adapun fashahah kalam adalah terbebasnya kalam
+مِنْ تَنَافُرِ كَلِمَاتِهِ،|dari tanafur kata-katanya,
+وَمِنْ ضَعْفِ التَّأْلِيفِ،|dari lemahnya susunan (ta'lif),
+وَالتَّعْقِيدِ اللَّفْظِيِّ وَالْمَعْنَوِيِّ،|dari ta'qid lafzhi dan maknawi,
+وَكَثْرَةِ التَّكْرَارِ وَتَتَابُعِ الْإِضَافَاتِ،|dari banyaknya pengulangan dan beruntunnya idhafah,
+بِالْإِضَافَةِ إِلَى تَحَقُّقِ فَصَاحَةِ مُفْرَدَاتِهِ|ditambah terwujudnya fashahah kosakata tunggalnya
+الَّتِي يَتَأَلَّفُ مِنْهَا.|yang menjadi unsur penyusunnya.
+*فَتَنَافُرُ الْكَلِمَاتِ:|Tanafur kata-kata:
+أَنْ تَكُونَ بِتَأْلِيفِهَا وَنَظْمِهَا|yaitu kata-kata itu, dengan susunan dan nazhmnya
+الَّذِي سُلِكَ فِيهِ ثَقِيلَةً عَلَى اللِّسَانِ،|yang ditempuh, menjadi berat di lidah,
+يَتَعَسَّرُ النُّطْقُ بِهَا،|sulit mengucapkannya,
+وَإِنْ كَانَتْ كُلُّ كَلِمَةٍ فَصِيحَةً بِانْفِرَادِهَا|walaupun tiap kata fasih bila berdiri sendiri
+وَاسْتِقْلَالِهَا عَنْ هَذَا النَّظْمِ الْمُتَنَافِرِ،|dan lepas dari nazhm yang tanafur ini,
+كَمَا فِي قَوْلِ الشَّاعِرِ:|seperti pada ucapan penyair:
+وَقَبْرُ حَرْبٍ بِمَكَانٍ قَفْرٍ|Kubur Harb berada di tempat yang sunyi,
+وَلَيْسَ قُرْبَ قَبْرِ حَرْبٍ قَبْرُ|dan di dekat kubur Harb tak ada kubur lain
+فَالشَّطْرُ الثَّانِي فِي هَذَا الْبَيْتِ|Larik kedua pada bait ini
+شَدِيدُ الثِّقَلِ عَلَى اللِّسَانِ،|sangat berat di lidah,
+لَا يَسْتَطِيعُ أَنْ يَنْطِقَ بِهِ|orang tidak mampu mengucapkannya
+ثَلَاثَ مَرَّاتٍ مُتَتَالِيَاتٍ|tiga kali berturut-turut
+دُونَ أَنْ يَتَعَثَّرَ وَيُخْطِئَ،|tanpa tersandung dan salah,
+وَقَدْ زَعَمُوا أَنَّ قَائِلَ الْبَيْتِ جِنِّيٌّ،|dan konon pengucap bait itu adalah jin,
+صَاحَ بِهِ عَلَى حَرْبِ بْنِ أُمَيَّةَ|yang berteriak terhadap Harb bin Umayyah
+فِي فَلَاةٍ فَمَاتَ بِهَا،|di sebuah padang luas lalu ia mati di sana,
+وَمَرْجِعُ الثِّقَلِ وَالتَّنَافُرِ|dan sebab keberatan dan tanafur itu
+إِلَى النَّظْمِ الَّذِي عَلَيْهِ الْبَيْتُ،|kembali pada nazhm yang dimiliki bait tersebut,
+فَلَوْ جُرِّدَتِ الْكَلِمَاتُ مِنْ نَظْمِهَا|maka andai kata-kata itu dilepas dari nazhmnya
+لَصَارَتْ فَصِيحَةً خَالِيَةً مِنَ الثِّقَلِ:|niscaya menjadi fasih dan bebas dari keberatan:
+قُرْبَ. حَرْبٍ. قَبْرٍ.|dekat, Harb, kubur.
+وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ:|Dan di antaranya ucapan Abu Tammam:
+وَالْمَجْدُ لَا يَرْضَى بِأَنْ|Kemuliaan tidak rela bila
+تَرْضَى بِأَنْ يَرْضَى امْرُؤٌ|engkau rela jika seseorang rela
+يَرْجُوكَ إِلَّا بِالرِّضَا|yang mengharapkanmu, kecuali dengan rida
+وَقَوْلُ الْمُتَنَبِّي:|Dan ucapan al-Mutanabbi:
+فَقَلْقَلْتُ بِالْهَمِّ الَّذِي قَلْقَلَ الْحَشَا|Aku menggoncang dengan kegundahan yang mengguncang perut
+قَلَاقِلَ عِيسٍ كُلُّهُنَّ قَلَاقِلُ|unta-unta putih yang semuanya gesit
+وَمِنْهُ قَوْلُ الْآخَرِ:|Dan di antaranya ucapan penyair lain:
+فَلَمْ يَضِرْهَا وَالْحَمْدُ لِلَّهِ شَيْءٌ|Tak ada yang membahayakannya, segala puji bagi Allah,
+وَانْثَنَتْ نَحْوَ عَزْفِ نَفْسٍ ذَهُولِ|dan ia berbalik menuju lagu jiwa yang lalai
+فَأَلْفَاظُ النِّصْفِ الثَّانِي مِنَ الْبَيْتِ|Lafal-lafal separuh kedua bait itu
+-كَمَا يَقُولُ الْجَاحِظُ-|-sebagaimana kata al-Jahizh-
+يَتَبَرَّأُ بَعْضُهَا مِنْ بَعْضٍ،|saling berlepas diri satu sama lain,
+وَيَرْجِعُ ذَلِكَ إِلَى سُوءِ النَّظْمِ|dan itu kembali pada buruknya nazhm
+الَّذِي سُلِكَ فِيهِ.|yang ditempuh.
+-فَقَلْقَلْتُ: حَرَّكْتُ،|-"Qalqaltu" berarti menggerakkan,
+-وَقَلَاقِلُ الْأُولَى جَمْعُ قُلْقُلٍ،|-"qalaqil" yang pertama jamak dari qulqul,
+-وَهِيَ النَّاقَةُ السَّرِيعَةُ،|-yaitu unta betina yang cepat;
+-يُقَالُ: قُلْقُلٌ وَقَلَاقِلُ|-dikatakan: qulqul dan qalaqil
+-كَبُلْبُلٍ وَبَلَابِلَ،|-seperti bulbul dan balabil,
+-وَقَلَاقِلُ الثَّانِيَةُ جَمْعُ قَلْقَلَةٍ:|-"qalaqil" yang kedua jamak dari qalqalah:
+-وَهِيَ الْحَرَكَةُ الشَّدِيدَةُ.|-yaitu gerakan yang keras.
 @hal 31
-~Contoh bait Abu Tammam ("amdahuhu amdahuhu") sebagai tanafur akibat pengulangan, lalu bahasan lemahnya susunan (dha'f at-ta'lif).
+وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ:|Dan di antaranya ucapan Abu Tammam:
+كَرِيمٌ مَتَى أَمْدَحْهُ أَمْدَحْهُ|Dermawan; kapan kupuji, kupuji dia
+وَالْوَرَى مَعِي|dan seluruh manusia bersamaku,
+وَإِذَا مَا لُمْتُهُ لُمْتُهُ وَحْدِي|dan bila kucela, kucela dia seorang diri
+فَالتَّنَافُرُ الَّذِي نَرَاهُ فِي قَوْلِهِ:|Tanafur yang kita lihat pada ucapannya:
+أَمْدَحْهُ أَمْدَحْهُ،|"amdahuhu amdahuhu",
+قَدْ نَتَجَ عَنْ تَكْرَارِ اللَّفْظِ|timbul dari pengulangan lafal
+وَهُوَ أَقَلُّ مِنَ التَّنَافُرِ|dan itu lebih ringan daripada tanafur
+الَّذِي لَمَسْنَاهُ فِي الْأَبْيَاتِ قَبْلَهُ.|yang kita rasakan pada bait-bait sebelumnya.
+وَمِمَّا يُحْمَدُ لِلشَّاعِرِ فِي هَذَا الْبَيْتِ،|Yang terpuji bagi penyair dalam bait ini,
+إِيثَارُهُ التَّعْبِيرَ بِاللَّوْمِ فِي قَوْلِهِ "لُمْتُهُ"،|ia memilih ungkapan celaan pada "lumtuhu",
+دُونَ "الْهِجَاءِ" الْمُقَابِلِ لِلْمَدِيحِ،|bukan "hija'" (ejekan) lawan pujian,
+فَهُوَ يُفِيدُ أَنَّ الْمَمْدُوحَ رُبَّمَا يُلَامُ|sebab itu berarti sang terpuji mungkin dicela
+عَلَى شَيْءٍ وَقَعَ مِنْهُ عَفْوًا،|atas sesuatu yang terjadi tanpa sengaja,
+وَلَكِنَّهُ لَا يَفْعَلُ مَا يَسْتَحِقُّ عَلَيْهِ الْهِجَاءَ.|tetapi ia tak berbuat hal yang layak diejek.
+وَلَكِنْ يُؤْخَذُ عَلَى الشَّاعِرِ إِدْخَالُهُ "إِذَا"|Namun penyair dikritik karena memasukkan "idza"
+الَّتِي تُفِيدُ تَحَقُّقَ الْوُقُوعِ عَلَى اللَّوْمِ،|yang menunjukkan pastinya terjadi celaan,
+وَلَوْ عَبَّرَ بِـ"إِنْ" دُونَ "إِذَا"|dan andai ia memakai "in" bukan "idza"
+لَكَانَ أَوْلَى وَأَبْلَغَ فِي الْمَدِيحِ.|tentu lebih utama dan lebih balig dalam pujian.
+وَمِنْهُ قَوْلُ الْآخَرِ:|Dan di antaranya ucapan penyair lain:
+وَازْوَرَّ مَنْ كَانَ لَهُ زَائِرًا|Berpalinglah orang yang dahulu mengunjunginya,
+وَعَافَ عَافِي الْعُرْفِ عِرْفَانَهُ|dan pencari kebaikan enggan mengenalinya
+فَفِي الشَّطْرِ الثَّانِي تَنَافُرٌ لَا يَخْفَى|Pada larik kedua ada tanafur yang jelas
+بَيْنَ الْكَلِمَاتِ مَرْجِعُهُ إِلَى تَأْلِيفِهَا|antar kata, sebabnya pada susunan
+وَنَظْمِهَا الَّذِي وُضِعَتْ فِيهِ،|dan nazhm tempat kata-kata itu diletakkan,
+وَالْكَلِمَاتُ فِي حَدِّ ذَاتِهَا فَصِيحَةٌ|sedangkan kata-kata itu sendiri fasih
+لَا تَنَافُرَ بَيْنَ حُرُوفِهَا.|tanpa tanafur antar hurufnya.
+*وَضَعْفُ التَّأْلِيفِ:|Lemahnya susunan (dha'f at-ta'lif):
+أَنْ يَكُونَ الْكَلَامُ جَارِيًا|yaitu kalam berjalan
+عَلَى خِلَافِ طَرِيقَةِ الْعَرَبِ فِي التَّعْبِيرِ وَالْقَوْلِ،|menyalahi cara bangsa Arab dalam berungkap dan berucap,
+مُخَالِفًا لِقَوَانِينِ النَّحْوِ|bertentangan dengan kaidah nahwu
+الْمُعْتَبَرَةِ عِنْدَ جُمْهُورِ النُّحَاةِ،|yang diakui oleh jumhur ahli nahwu.
+أَمَّا إِذَا خَالَفَ الْكَلَامُ|Adapun bila kalam menyalahi
+مَا اتَّفَقَ عَلَيْهِ النُّحَاةُ وَأَجْمَعُوا عَلَيْهِ،|apa yang disepakati dan diijmakkan ahli nahwu,
+كَجَرِّ الْفَاعِلِ وَرَفْعِ الْمَفْعُولِ|seperti menjarkan fa'il dan merafa'kan maf'ul
+وَنَصْبِ الْمَجْرُورِ أَوْ رَفْعِهِ،|serta menashabkan atau merafa'kan yang majrur,
+فَلَيْسَ الْكَلَامُ عِنْدَئِذٍ مُخِلًّا بِالْفَصَاحَةِ فَقَطْ،|maka kalam itu bukan sekadar merusak fashahah,
+بَلْ هُوَ فَاسِدٌ وَغَيْرُ عَرَبِيٍّ،|melainkan rusak dan bukan bahasa Arab,
+لَا يُسْمَحُ بِهِ وَلَا يُقَالُ،|tidak diperbolehkan dan tidak diucapkan,
+فَضَعْفُ التَّأْلِيفِ الْمُخِلُّ بِفَصَاحَةِ الْكَلَامِ،|jadi lemahnya susunan yang merusak fashahah kalam,
+مَجِيءُ التَّأْلِيفِ عَلَى خِلَافِ|ialah susunan yang menyalahi
+مَا اشْتَهَرَ بَيْنَ جُمْهُورِ النُّحَاةِ،|apa yang masyhur di kalangan jumhur ahli nahwu,
+وَلَيْسَ عَلَى خِلَافِ مَا اتَّفَقُوا عَلَيْهِ.|bukan menyalahi apa yang mereka sepakati.
+مِنْ ذَلِكَ عَوْدُ الضَّمِيرِ عَلَى مُتَأَخِّرٍ|Di antaranya kembalinya dhamir pada yang terakhir
+فِي اللَّفْظِ وَالرُّتْبَةِ،|dalam lafal dan urutan,
+كَمَا فِي قَوْلِ حَسَّانَ بْنِ ثَابِتٍ:|seperti ucapan Hassan bin Tsabit:
+فَلَوْ أَنَّ مَجْدًا أَخْلَدَ الدَّهْرَ وَاحِدًا|Andai kemuliaan membuat abadi sepanjang masa seseorang
+مِنَ النَّاسِ أَبْقَى مَجْدُهُ الدَّهْرَ مُطْعِمَا|di antara manusia, kemuliaannya kekalkan Muth'im selamanya
+-مُطْعِمٌ هُوَ مُطْعِمُ بْنُ عَدِيٍّ،|-Muth'im adalah Muth'im bin Adi,
+-أَحَدُ رُؤَسَاءِ مَكَّةَ،|-salah satu pemuka Makkah,
+-وَكَانَ يُدَافِعُ عَنِ النَّبِيِّ ﷺ ضِدَّ الْمُشْرِكِينَ.|-yang membela Nabi saw. melawan kaum musyrik.
 @hal 32
-~Lemahnya susunan: dhamir kembali kepada kata yang disebut sesudahnya dalam lafal dan martabat, dengan contoh bait Zuhair dan An-Nabighah.
+فَالضَّمِيرُ فِي "مَجْدُهُ"|Dhamir pada "majduhu"
+يَعُودُ إِلَى الْمَفْعُولِ بِهِ "مُطْعِمًا"|kembali pada maf'ul bih "Muth'iman"
+وَهُوَ مُتَأَخِّرٌ فِي اللَّفْظِ وَفِي الرُّتْبَةِ.|yang terakhir dalam lafal dan urutan.
+وَكَمَا فِي قَوْلِ زُهَيْرٍ:|Dan seperti ucapan Zuhair:
+فَإِنْ تَلْقَ يَوْمًا عَلَى عِلَّاتِهِ هَرِمًا|Bila suatu hari engkau jumpai Harim dalam kekurangannya,
+تَلْقَ السَّمَاحَةَ مِنْهُ وَالنَّدَى خُلُقَا|engkau jumpai kemurahan dan kedermawanan sebagai tabiatnya
+فَالضَّمِيرُ فِي "عِلَّاتِهِ" يَعُودُ إِلَى الْمَفْعُولِ "هَرِمًا"|Dhamir pada "illatihi" kembali pada maf'ul "Harim"
+الْمُتَأَخِّرِ فِي اللَّفْظِ وَفِي الرُّتْبَةِ.|yang terakhir dalam lafal dan urutan.
+وَقَوْلُ النَّابِغَةِ الذُّبْيَانِيِّ:|Dan ucapan an-Nabighah adz-Dzubyani:
+جَزَى رَبُّهُ عَنِّي عَدِيَّ بْنَ حَاتِمٍ|Semoga Tuhannya membalas Adi bin Hatim untukku
+جَزَاءَ الْكِلَابِ الْعَاوِيَاتِ وَقَدْ فَعَلْ|dengan balasan anjing-anjing yang melolong, dan Dia telah berbuat
+فَالضَّمِيرُ فِي "رَبُّهُ" يَعُودُ إِلَى "عَدِيٍّ"|Dhamir pada "rabbuhu" kembali pada "Adi"
+الْمُتَأَخِّرِ لَفْظًا وَرُتْبَةً لِأَنَّهُ مَفْعُولٌ بِهِ.|yang terakhir lafal dan urutannya karena ia maf'ul bih.
+وَالْقَاعِدَةُ الْمَشْهُورَةُ بَيْنَ النُّحَاةِ|Kaidah masyhur di kalangan ahli nahwu
+أَنْ يَعُودَ الضَّمِيرُ عَلَى مُتَقَدِّمٍ|ialah dhamir kembali pada yang terdahulu
+فِي اللَّفْظِ وَالرُّتْبَةِ،|dalam lafal dan urutan,
+أَوْ فِي الرُّتْبَةِ دُونَ اللَّفْظِ،|atau dalam urutan tanpa lafal,
+أَوْ فِي اللَّفْظِ دُونَ الرُّتْبَةِ،|atau dalam lafal tanpa urutan,
+وَلَا يَعُودَ إِلَى مُتَأَخِّرٍ|dan tidak kembali pada yang terakhir
+فِي اللَّفْظِ وَالرُّتْبَةِ مَعًا،|dalam lafal dan urutan sekaligus,
+وَقَدْ أَجَازَ ذَلِكَ بَعْضُهُمْ|namun sebagian membolehkannya
+كَابْنِ جِنِّي وَابْنِ مَالِكٍ وَغَيْرِهِمَا.|seperti Ibnu Jinni, Ibnu Malik, dan lainnya.
+وَمِنْهُ وُقُوعُ الضَّمِيرِ الْمُتَّصِلِ بَعْدَ "إِلَّا"|Dan di antaranya dhamir muttashil jatuh setelah "illa"
+كَمَا فِي قَوْلِ الشَّاعِرِ:|seperti ucapan penyair:
+وَمَا عَلَيْنَا إِذَا مَا كُنْتِ جَارَتَنَا|Apa salah kami bila engkau tetangga kami
+أَلَّا يُجَاوِرَنَا إِلَّاكِ دَيَّارُ|bahwa tak ada penghuni bertetangga dengan kami selain engkau
+وَقَوْلُ الْآخَرِ:|Dan ucapan penyair lain:
+لَيْسَ إِلَّاكَ يَا عَلِيُّ هُمَامُ|Tak ada pemuka selain engkau, wahai Ali,
+سَيْفُهُ دُونَ عِرْضِهِ مَسْلُولُ|yang pedangnya terhunus demi membela kehormatannya
+وَمِنْهُ حَذْفُ أَدَاةِ النَّصْبِ "أَنْ"|Dan di antaranya membuang huruf nashab "an"
+مَعَ بَقَاءِ عَمَلِهَا،|dengan tetap berlakunya amalnya,
+فِي غَيْرِ الْمَوَاضِعِ الَّتِي تُضْمَرُ فِيهَا|di selain tempat-tempat "an" disembunyikan
+وُجُوبًا أَوْ جَوَازًا.|secara wajib atau boleh.
+كَمَا فِي قَوْلِ طَرَفَةَ:|Seperti ucapan Tharafah:
+أَلَا أَيُّهَذَا الزَّاجِرِي أَحْضُرَ الْوَغَى|Wahai yang melarangku menghadiri perang
+وَأَنْ أَشْهَدَ اللَّذَّاتِ هَلْ أَنْتَ مُخْلِدِي|dan menikmati kesenangan, apakah engkau mengekalkanku?
+وَالْقَاعِدَةُ الْمَشْهُورَةُ تَمْنَعُ|Kaidah masyhur melarang
+وُقُوعَ الضَّمِيرِ الْمُتَّصِلِ بَعْدَ "إِلَّا"،|jatuhnya dhamir muttashil setelah "illa",
+وَتَمْنَعُ حَذْفَ أَدَاةِ النَّصْبِ|dan melarang membuang huruf nashab
+مَعَ بَقَاءِ عَمَلِهَا إِلَّا فِي الْمَوَاضِعِ الْمَعْرُوفَةِ.|dengan tetap beramal kecuali pada tempat-tempat yang dikenal.
+-عَلَى عِلَّاتِهِ: عَلَى قِلَّةِ مَالٍ وَعَدَمٍ.|-"Ala illatihi": dalam keadaan sedikit harta dan miskin.
+-جَزَاءُ الْكِلَابِ الْعَاوِيَاتِ: أَيِ الْقَذْفُ بِالْحِجَارَةِ،|-Balasan anjing yang melolong: yakni dilempari batu,
+-دُعَاءٌ عَلَيْهِ بِهَذَا.|-doa keburukan atas dirinya dengan hal itu.
 @hal 33
-~Ta'qid (kerumitan): kalimat tak jelas menunjukkan maknanya, padahal orang Arab menyukai kejelasan. Contoh bait Al-Farazdaq.
+*وَالتَّعْقِيدُ:|Ta'qid:
+أَنْ يَكُونَ الْكَلَامُ غَيْرَ وَاضِحِ الدَّلَالَةِ|yaitu kalam tidak jelas penunjukannya
+عَلَى الْمَعْنَى الْمُرَادِ بِهِ|pada makna yang dimaksud
+فَيَحْتَاجَ إِلَى إِعْمَالِ الْفِكْرِ وَكَدِّ الذِّهْنِ|sehingga butuh pengerahan pikiran dan peras otak
+وَإِطَالَةِ النَّظَرِ وَالتَّأَمُّلِ|serta lama memandang dan merenung
+حَتَّى نَقِفَ عَلَى الْمَعْنَى الْمُرَادِ،|hingga kita sampai pada makna yang dimaksud.
+وَالْعَرَبِيُّ يَكْرَهُ الْغُمُوضَ الْمُؤَدِّيَ إِلَى اللَّبْسِ،|Orang Arab membenci kekaburan yang menimbulkan kerancuan
+وَيُحِبُّ الْوُضُوحَ وَالظُّهُورَ|dan menyukai kejelasan dan kegamblangan.
+فَمِنْ أَقْوَالِهِمْ:|Di antara ucapan mereka:
+"خَيْرُ الْكَلَامِ مَا كَانَ مَعْنَاهُ"|"Sebaik-baik kalam adalah yang maknanya"
+"إِلَى قَلْبِكَ أَسْبَقَ مِنْ لَفْظِهِ إِلَى سَمْعِكَ"،|"lebih dulu sampai ke hatimu daripada lafalnya ke telingamu",
+وَلَا يَعْنِي ذَلِكَ أَنَّهُمْ يَكْرَهُونَ|dan itu tidak berarti mereka membenci
+لَطَافَةَ الْمَعْنَى وَدِقَّتَهُ،|kehalusan dan ketelitian makna,
+كَيْفَ وَهُمْ يَرَوْنَ أَنَّ الْمَعْنَى|bagaimana mungkin, sedangkan mereka memandang makna
+إِذَا نِيلَ بَعْدَ طَلَبٍ لَهُ وَكَدٍّ|bila diraih setelah dicari dan diperas
+وَإِعْمَالِ فِكْرٍ|dan dipikirkan
+يَكُونُ أَوْقَعَ فِي النَّفْسِ وَأَشَدَّ تَأْثِيرًا؟|lebih membekas di jiwa dan lebih kuat pengaruhnya?
+وَلَكِنْ فَرْقٌ بَيْنَ إِعْمَالِ فِكْرٍ لَا يُثْمِرُ|Namun beda antara pengerahan pikiran yang tak berbuah
+وَهُوَ مَا كَانَ مَرْجِعُهُ|yakni yang sebabnya
+إِلَى غُمُوضِ الْمَعْنَى وَتَعْقِيدِهِ،|kekaburan dan kerumitan makna,
+وَبَيْنَ إِعْمَالِ فِكْرٍ يُثْمِرُ|dan pengerahan pikiran yang berbuah
+وَهُوَ مَا كَانَ مَرْجِعُهُ|yakni yang sebabnya
+إِلَى دِقَّةِ الْمَعْنَى وَلَطَافَتِهِ.|ketelitian dan kehalusan makna.
+وَالتَّعْقِيدُ إِمَّا أَنْ يَكُونَ تَعْقِيدًا لَفْظِيًّا|Ta'qid ada kalanya ta'qid lafzhi
+وَإِمَّا أَنْ يَكُونَ تَعْقِيدًا مَعْنَوِيًّا.|dan ada kalanya ta'qid maknawi.
+*فَالتَّعْقِيدُ اللَّفْظِيُّ|Ta'qid lafzhi
+مَا كَانَ سَبَبُهُ اخْتِلَالَ نَظْمِ الْكَلَامِ|ialah yang sebabnya kacaunya nazhm kalam
+بِالتَّقْدِيمِ وَالتَّأْخِيرِ بَيْنَ أَجْزَائِهِ،|karena taqdim dan ta'khir antar bagiannya,
+فَلَا يَدْرِي السَّامِعُ|sehingga pendengar tak tahu
+كَيْفَ يَتَوَصَّلُ مِنْهُ إِلَى مَعْنَاهُ.|cara sampai pada maknanya.
+كَمَا فِي قَوْلِ الْفَرَزْدَقِ يَمْدَحُ خَالَ الْخَلِيفَةِ:|Seperti ucapan al-Farazdaq memuji paman khalifah:
+وَمَا مِثْلُهُ فِي النَّاسِ إِلَّا مُمَلَّكًا|Tak ada yang serupa dia di antara manusia kecuali seorang raja
+أَبُو أُمِّهِ حَيٌّ أَبُوهُ يُقَارِبُهُ|yang ayah ibunya ialah ayahnya, orang hidup yang mendekatinya
+فَالْمَعْنَى الَّذِي يُرِيدُهُ الْفَرَزْدَقُ:|Makna yang dikehendaki al-Farazdaq:
+وَمَا مِثْلُهُ فِي النَّاسِ أَحَدٌ|tak ada seorang pun di antara manusia
+يُشْبِهُهُ فِي الْفَضَائِلِ|yang menyerupainya dalam keutamaan
+إِلَّا ابْنُ أُخْتِهِ هِشَامُ بْنُ عَبْدِ الْمَلِكِ،|kecuali anak saudarinya, Hisyam bin Abdul Malik.
+وَكَانَ يَنْبَغِي أَنْ يَكُونَ تَرْتِيبُ أَجْزَاءِ الْبَيْتِ:|Semestinya urutan bagian bait itu:
+وَمَا مِثْلُهُ فِي النَّاسِ حَيٌّ يُقَارِبُهُ|Tak ada yang serupa dia di antara manusia, orang hidup yang mendekatinya,
+إِلَّا مُمَلَّكًا أَبُو أُمِّهِ أَبُوهُ.|kecuali seorang raja yang ayah ibunya ialah ayahnya.
+فَالضَّمِيرُ فِي "أُمِّهِ" لِلْمَلِكِ وَفِي "أَبُوهُ" لِلْمَمْدُوحِ|Dhamir pada "ummihi" untuk sang raja dan pada "abuhu" untuk yang dipuji
+وَهُوَ إِبْرَاهِيمُ بْنُ هِشَامِ بْنِ إِسْمَاعِيلَ الْمَخْزُومِيُّ|yaitu Ibrahim bin Hisyam bin Ismail al-Makhzumi
+خَالُ هِشَامِ بْنِ عَبْدِ الْمَلِكِ بْنِ مَرْوَانَ،|paman Hisyam bin Abdul Malik bin Marwan.
+وَقَدْ قَدَّمَ الْفَرَزْدَقُ وَأَخَّرَ بَيْنَ أَجْزَاءِ الْبَيْتِ،|Al-Farazdaq mengedepankan dan mengakhirkan bagian bait,
+فَفَصَلَ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ بِأَجْنَبِيٍّ،|ia memisahkan mubtada dan khabar dengan kata asing,
+وَفَصَلَ بَيْنَ النَّعْتِ وَالْمَنْعُوتِ كَذَلِكَ،|memisahkan na'at dan man'ut demikian pula,
+وَقَدَّمَ الْمُسْتَثْنَى عَلَى الْمُسْتَثْنَى مِنْهُ|dan mendahulukan mustatsna atas mustatsna minhu
+فَصَارَ الْبَيْتُ فِي غَايَةِ التَّعْقِيدِ،|sehingga bait itu sangat rumit.
+وَلَعَلَّ الْفَرَزْدَقَ كَانَ يَقْصِدُ بِهَذَا الصَّنِيعِ|Mungkin al-Farazdaq bermaksud dengan perbuatan ini
+التَّهَكُّمَ بِالْمَمْدُوحِ وَالِاسْتِخْفَافَ بِهِ،|mengolok-olok yang dipuji dan meremehkannya,
+وَهَذَا لَا يَبْعُدُ إِذَا عَلِمْنَا|dan ini tidak jauh bila kita tahu
+وَلَاءَ الْفَرَزْدَقِ لِلْعَلَوِيِّينَ|kesetiaan al-Farazdaq kepada kaum Alawi
+وَعَدَاءَهُ لِبَنِي أُمَيَّةَ وَالْمَمْدُوحُ مِنْهُمْ.|dan permusuhannya pada Bani Umayyah, sedang yang dipuji dari mereka.
 @hal 34
-~Contoh ta'qid lafzhi pada bait Al-Farazdaq dan Abu Tammam, lalu ta'qid ma'nawi lewat kinayah yang tidak jelas.
+وَمِثْلُهُ قَوْلُ الْفَرَزْدَقِ أَيْضًا:|Semisalnya ucapan al-Farazdaq juga:
+إِلَى مَلِكٍ مَا أُمُّهُ مِنْ مُحَارِبٍ|Kepada raja yang ibunya bukan dari Muharib,
+أَبُوهُ وَلَا كَانَتْ كُلَيْبٌ تُصَاهِرُهُ|ayahnya, dan Kulaib tak pernah bermenantu dengannya
+يُرِيدُ: إِلَى مَلِكٍ أَبُوهُ|Maksudnya: kepada raja yang ayahnya
+لَيْسَتْ أُمُّهُ مِنْ مُحَارِبٍ،|ibunya bukan dari Muharib,
+أَيْ: إِلَى مَلِكٍ مَا أُمُّ أَبِيهِ|yakni: kepada raja yang ibu ayahnya
+مِنْ قَبِيلَةِ مُحَارِبٍ.|bukan dari kabilah Muharib.
+وَقَوْلُ أَبِي تَمَّامٍ:|Dan ucapan Abu Tammam:
+ثَانِيهِ فِي كَبِدِ السَّمَاءِ وَلَمْ يَكُنْ|Yang kedua baginya di tengah langit, dan tak ada
+كَاثْنَيْنِ ثَانٍ إِذْ هُمَا فِي الْغَارِ|yang kedua seperti dua orang ketika keduanya di gua
+يُرِيدُ أَنَّهُ لَمْ يَكُنْ كَثَانِي اثْنَيْنِ.|Maksudnya, ia tidak seperti yang kedua dari dua orang.
+وَقَوْلُ ذِي الرُّمَّةِ:|Dan ucapan Dzu ar-Rummah:
+كَأَنَّ أَصْوَاتَ مِنْ إِيغَالِهِنَّ بِنَا|Seakan suara-suara, karena lajunya mereka bersama kami,
+أَوَاخِرِ الْمَيْسِ إِنْقَاضُ الْفَرَارِيجِ|ujung-ujung pelana, adalah cicit anak-anak ayam
+يُرِيدُ: كَأَنَّ أَصْوَاتَ أَوَاخِرِ الْمَيْسِ|Maksudnya: seakan suara ujung-ujung pelana
+إِنْقَاضُ الْفَرَارِيجِ مِنْ إِيغَالِهِنَّ بِنَا.|adalah cicit anak ayam karena lajunya mereka bersama kami.
+وَقَوْلُ الْآخَرِ يَصِفُ دَارًا بَالِيَةً:|Dan ucapan penyair lain menggambarkan rumah usang:
+فَأَصْبَحَتْ بَعْدَ خَطِّ بَهْجَتِهَا|Rumah itu menjadi, setelah dituliskan keelokannya,
+كَأَنَّ قَفْرًا رُسُومَهَا قَلَمَا|seakan sunyi, sisa-sisanya ditulis pena
+يُرِيدُ: فَأَصْبَحَتْ قَفْرًا بَعْدَ بَهْجَتِهَا|Maksudnya: ia menjadi sunyi setelah keelokannya
+كَأَنَّ قَلَمًا خَطَّ رُسُومَهَا.|seakan pena menuliskan sisa-sisanya.
+هَذَا وَالتَّقْدِيمُ وَالتَّأْخِيرُ بَيْنَ أَجْزَاءِ الْكَلَامِ|Adapun taqdim dan ta'khir antar bagian kalam
+إِنَّمَا يُؤَدِّي إِلَى التَّعْقِيدِ|hanya menyebabkan ta'qid
+إِذَا انْعَدَمَتِ الْقَرِينَةُ الدَّالَّةُ|bila tak ada qarinah penunjuk
+الَّتِي تُعَيِّنُ الْمَعْنَى وَتُحَدِّدُ الْمُرَادَ مِنَ الْكَلَامِ|yang menentukan makna dan memastikan maksud kalam
+كَمَا فِي الشَّوَاهِدِ الْمَذْكُورَةِ،|seperti pada contoh-contoh tadi.
+أَمَّا إِذَا قَامَتِ الْقَرِينَةُ الدَّالَّةُ عَلَى الْمُرَادِ،|Bila ada qarinah yang menunjukkan maksud,
+فَعِنْدَئِذٍ لَا يُؤَدِّي التَّقْدِيمُ إِلَى التَّعْقِيدِ وَالْغُمُوضِ|maka taqdim tidak menimbulkan ta'qid dan kekaburan
+بَلْ يَكُونُ مِنْ أَسْبَابِ حُسْنِ الْمَعْنَى وَجَمَالِهِ،|bahkan menjadi sebab baik dan indahnya makna,
+وَدَاعِيًا مِنْ دَوَاعِي فَصَاحَتِهِ وَبَلَاغَتِهِ.|dan salah satu pendorong fashahah dan balaghahnya.
+*وَالتَّعْقِيدُ الْمَعْنَوِيُّ:|Ta'qid maknawi:
+مَا كَانَ سَبَبُهُ اخْتِلَالَ الْمَعْنَى|ialah yang sebabnya kacaunya makna
+وَذَلِكَ بِأَلَّا يَكُونَ انْتِقَالُ الذِّهْنِ|yakni perpindahan pikiran tidak
+مِنَ الْمَعْنَى الْأَصْلِيِّ لِلتَّرْكِيبِ|dari makna asal susunan
+إِلَى الْمَعْنَى الْمَقْصُودِ ظَاهِرًا بَيِّنًا.|menuju makna yang dituju secara nyata dan jelas.
+كَمَا فِي قَوْلِ الْعَبَّاسِ بْنِ الْأَحْنَفِ:|Seperti ucapan al-Abbas bin al-Ahnaf:
+سَأَطْلُبُ بُعْدَ الدَّارِ عَنْكُمْ لِتَقْرُبُوا|Akan kucari jauhnya rumah dari kalian agar kalian dekat,
+وَتَسْكُبُ عَيْنَايَ الدُّمُوعَ لِتَجْمُدَا|dan kedua mataku mencurahkan air mata agar membeku
+فَقَدْ كَنَّى بِسَكْبِ الدُّمُوعِ|Ia berkinayah dengan mencurahkan air mata
+عَمَّا يُوجِبُهُ الْفِرَاقُ وَالْبُعْدُ|tentang sedih dan pilu yang diakibatkan perpisahan
+مِنَ الْحُزْنِ وَالْأَلَمِ لِفِرَاقِ|dan jarak, karena berpisah dengan
 @hal 35
-~Kinayah yang masih lazim, misalnya meneteskan air mata untuk kesedihan perpisahan, tidak dianggap merusak fashahah. Contoh bait Al-Hamasi.
+الْأَحِبَّةِ، وَقَدْ أَصَابَ وَأَحْسَنَ|kekasih; dalam hal ini ia benar dan baik
+لِأَنَّ الْبُكَاءَ يَسْتَلْزِمُ الْحُزْنَ وَالْأَسَى،|karena tangis mengharuskan sedih dan duka,
+وَيَدُلُّ عَلَيْهِ دَلَالَةً بَيِّنَةً|dan menunjukkannya dengan jelas
+حَيْثُ جَرَى عَلَى أَلْسِنَتِهِمْ،|sebab telah biasa di lidah mereka,
+فَقَالُوا: أَبْكَانِي وَأَضْحَكَنِي أَيْ: سَاءَنِي وَسَرَّنِي.|mereka berkata: "abkani" dan "adhhakani", yakni menyusahkan dan menyenangkanku.
+وَقَالَ الْحَمَاسِيُّ:|Penyair Hamasah berkata:
+أَبْكَانِي الدَّهْرُ وَيَا رُبَّمَا|Zaman membuatku menangis, dan sering kali
+أَضْحَكَنِي الدَّهْرُ بِمَا يُرْضِي|zaman membuatku tertawa dengan yang menyenangkan
+كَنَّى بِإِبْكَاءِ الدَّهْرِ إِيَّاهُ عَنْ إِسَاءَتِهِ لَهُ|Ia berkinayah dengan tangisan dari zaman tentang keburukan zaman padanya
+وَبِإِضْحَاكِهِ عَنْ فَرَحِهِ وَسُرُورِهِ،|dan dengan tawanya tentang kegembiraan dan sukacitanya.
+فَدَلَالَةُ الْبُكَاءِ عَلَى الْحُزْنِ وَالْأَلَمِ وَالْأَسَى|Penunjukan tangis pada sedih, pilu, dan duka
+دَلَالَةٌ ظَاهِرَةٌ بَيِّنَةٌ،|adalah penunjukan yang nyata dan jelas,
+وَرَدَتْ فِي كَلَامِ الْعَرَبِ وَجَرَتْ عَلَى أَلْسِنَتِهِمْ.|terdapat dalam ucapan Arab dan berlaku di lidah mereka.
+ثُمَّ كَنَّى ابْنُ الْأَحْنَفِ بِجُمُودِ الْعَيْنَيْنِ|Lalu Ibnu al-Ahnaf berkinayah dengan membekunya kedua mata
+عَمَّا يُوجِبُهُ دَوَامُ التَّلَاقِي وَالْقُرْبِ|tentang apa yang diakibatkan terus bertemu dan dekat
+مِنَ الْفَرَحِ وَالسُّرُورِ،|berupa kegembiraan dan sukacita.
+وَقَدْ أَخْطَأَ فِي هَذَا وَأَسَاءَ؛|Dalam hal ini ia keliru dan buruk;
+حَيْثُ اعْتَقَدَ أَنَّ الْجُمُودَ|sebab ia mengira bahwa jumud
+هُوَ خُلُوُّ الْعَيْنِ مِنَ الْبُكَاءِ مُطْلَقًا|ialah kosongnya mata dari tangis secara mutlak
+دُونَ اعْتِبَارِ شَيْءٍ آخَرَ،|tanpa mempertimbangkan hal lain,
+لَكِنَّهُمْ أَطْلَقُوهُ عَلَى خُلُوِّهَا مِنْهُ|padahal mereka memakainya untuk kosongnya mata dari tangis
+عِنْدَ إِرَادَتِهِ وَطَلَبِهِ،|saat tangis diinginkan dan dituntut,
+فَكَنَّوْا بِجُمُودِ الْعَيْنِ عَنْ بُخْلِهَا بِالدَّمْعِ|maka mereka berkinayah dengan jumud mata tentang kikirnya mata dari air mata
+عِنْدَ الْحَاجَةِ إِلَيْهِ وَقْتَ الْحُزْنِ وَالْأَسَى.|ketika dibutuhkan pada waktu sedih dan duka.
+كَمَا فِي قَوْلِ الْخَنْسَاءِ:|Seperti ucapan al-Khansa':
+أَعَيْنَيَّ جُودَا وَلَا تَجْمُدَا|Wahai kedua mataku, curahkanlah dan jangan membeku,
+أَلَا تَبْكِيَانِ لِصَخْرِ النَّدَى|tidakkah kalian menangisi Shakhr yang dermawan?
+وَقَوْلِ أَبِي عَطَاءٍ السِّنْدِيِّ:|Dan ucapan Abu Atha' as-Sindi:
+أَلَا إِنَّ عَيْنًا لَمْ تَجُدْ يَوْمَ وَاسِطٍ|Sungguh mata yang tak mencurah pada hari Wasith
+عَلَيْكَ بِجَارِي دَمْعِهَا لَجَمُودُ|bagimu dengan air matanya yang mengalir, benar-benar membeku
+فَقَدْ كَنَّيَا بِجُمُودِ الْعَيْنِ عَنْ بُخْلِهَا بِالدَّمْعِ|Keduanya berkinayah dengan jumud mata tentang kikirnya dengan air mata
+عِنْدَ الْحَاجَةِ إِلَيْهِ وَطَلَبِهِ مِنْهَا|saat dibutuhkan dan dituntut darinya
+لِشِدَّةِ الْحُزْنِ وَالْأَسَى،|karena sangatnya sedih dan duka,
+فَهِيَ عَيْنٌ جَمُودٌ أَيْ لَا خَيْرَ فِيهَا،|maka ia mata jamud, yakni tak ada kebaikan padanya,
+كَمَا قَالُوا: سَنَةٌ جَمَادٌ.|seperti ucapan mereka: tahun jamad.
+أَيْ: لَا مَطَرَ فِيهَا|Yakni: tak ada hujan di dalamnya
+وَنَاقَةٌ جَمَادٌ لَا لَبَنَ فِيهَا،|dan unta jamad yang tak berair susu.
+وَلَوْ كَانَ الْجُمُودُ يَصْلُحُ أَنْ يُرَادَ بِهِ|Andai jumud boleh dimaksudkan
+عَدَمُ الْبُكَاءِ فِي حَالَةِ الْفَرَحِ وَالْمَسَرَّةِ،|sebagai tidak menangis saat gembira dan senang,
+لَجَازَ أَنْ يُدْعَى بِهِ لِلرَّجُلِ|tentu boleh didoakan baginya kepada seseorang
+فَيُقَالَ: "لَا زَالَتْ عَيْنُكَ جَامِدَةً"،|dengan berkata: "Semoga matamu senantiasa membeku",
+كَمَا يُقَالُ: "لَا أَبْكَى اللهُ عَيْنَكَ".|seperti dikatakan: "Semoga Allah tak membuat matamu menangis".
+فَالْكَلَامُ الْخَالِي مِنَ التَّعْقِيدِ الْمَعْنَوِيِّ،|Kalam yang bebas dari ta'qid maknawi,
+يَنْتَقِلُ فِيهِ الذِّهْنُ مِنَ الْمَعْنَى الْأَصْلِيِّ إِلَى|pikiran berpindah di dalamnya dari makna asal menuju
+-وَاسِطٌ: مَكَانٌ بَيْنَ الْبَصْرَةِ وَالْكُوفَةِ،|-Wasith: tempat antara Bashrah dan Kufah,
+-سُمِّيَ بِاسْمِ الْقَصْرِ الَّذِي بَنَاهُ الْحَجَّاجُ|-dinamai dengan nama istana yang dibangun al-Hajjaj
+-بَيْنَ الْكُوفَةِ وَالْبَصْرَةِ.|-antara Kufah dan Bashrah.
+-انْظُرْ لِسَانَ الْعَرَبِ مَادَّةَ وَسَطَ.|-Lihat Lisan al-Arab, bahan "wasatha".
+-وَالْبَيْتُ مِنْ قَصِيدَةٍ لِأَبِي عَطَاءٍ السِّنْدِيِّ|-Bait ini dari qasidah Abu Atha' as-Sindi
+-فِي رِثَاءِ ابْنِ هُبَيْرَةَ، وَقَدْ قَتَلَهُ الْمَنْصُورُ|-meratapi Ibnu Hubairah, yang dibunuh al-Manshur
+-بِوَاسِطٍ بَعْدَ أَنْ آمَنَهُ.|-di Wasith setelah memberinya jaminan aman.
+-انْظُرْ شَرْحَ الْحَمَاسَةِ لِلتَّبْرِيزِيِّ|-Lihat Syarh al-Hamasah karya at-Tibrizi,
+-الْجُزْءَ الثَّانِيَ صَفْحَةَ ١٥١.|-jilid 2 halaman 151.
 @hal 36
-~Kinayah atau majaz yang jelas hubungannya dan sesuai kebiasaan Arab tidak merusak fashahah. Lalu bahasan banyaknya pengulangan dan beruntunnya idhafah.
+الْمَعْنَى الْمَجَازِيِّ أَوِ الْكِنَائِيِّ الْمُرَادِ|makna majazi atau kinayah yang dimaksud
+فِي وُضُوحٍ وَدُونَ خَفَاءٍ|dengan jelas dan tanpa tersembunyi
+لِظُهُورِ الْعَلَاقَةِ بَيْنَ الْمَعْنَيَيْنِ|karena jelasnya hubungan antara dua makna
+وَجَرَيَانِ الِاسْتِعْمَالِ عَلَى لِسَانِ الْعَرَبِ،|dan berlakunya pemakaian pada lisan Arab,
+وَفْقَ عَادَاتِهِمْ وَعُرْفِهِمْ وَطَرَائِقِهِمْ فِي التَّعْبِيرِ|sesuai kebiasaan, adat, dan cara mereka berungkap,
+كَمَا فِي الْكِنَايَةِ بِكَثْرَةِ الرَّمَادِ،|seperti kinayah dengan banyaknya abu,
+وَجُبْنِ الْكَلْبِ، وَهُزَالِ الْفَصِيلِ،|penakutnya anjing, kurusnya anak unta,
+وَإِشْعَالِ النَّارِ فِي الْأَمَاكِنِ الْعَالِيَةِ عَنِ الْكَرَمِ.|dan menyalakan api di tempat tinggi untuk kedermawanan.
+أَمَّا إِذَا جَاءَ الْكَلَامُ|Adapun bila kalam datang
+عَلَى خِلَافِ مَا عُرِفَ عَنِ الْعَرَبِ،|menyalahi yang dikenal dari bangsa Arab,
+وَعَلَى خِلَافِ مَا قَدِ اسْتَعْمَلُوهُ|dan menyalahi yang telah mereka pakai
+وَجَرَى عَلَى أَلْسِنَتِهِمْ،|dan biasa di lidah mereka,
+فَعِنْدَئِذٍ يَصْعُبُ فَهْمُ الْمُرَادِ|maka sulit memahami maksudnya
+وَيَتَعَذَّرُ عَلَى الذِّهْنِ الْوُقُوفُ|dan pikiran tak dapat menangkap
+عَلَى مَرْمَى الْكَلَامِ وَالْمَقْصُودِ مِنْهُ|tujuan kalam dan yang dimaksud darinya
+فَيُوصَفُ بِالتَّعْقِيدِ الْمَعْنَوِيِّ.|sehingga disifati dengan ta'qid maknawi.
+كَمَا فِي بَيْتِ ابْنِ الْأَحْنَفِ السَّابِقِ|Seperti pada bait Ibnu al-Ahnaf tadi
+وَكَمَا فِي بَيْتِ أَبِي تَمَّامٍ:|dan pada bait Abu Tammam:
+مِنَ الْهِيفِ لَوْ أَنَّ الْخَلَاخِلَ صُيِّرَتْ|Wanita ramping; andai gelang kaki dijadikan
+لَهَا وُشُحًا جَالَتْ عَلَيْهَا الْخَلَاخِلُ|selempang baginya, gelang itu akan berputar padanya
+فَقَدْ كَنَّى عَنْ دِقَّةِ الْخَصْرِ وَضُمُورِ الْبَطْنِ|Ia berkinayah tentang rampingnya pinggang dan kempisnya perut
+بِجَوَلَانِ الْخَلَاخِلِ عَلَيْهَا لَوِ اتَّخَذَتْهَا وِشَاحًا|dengan berputarnya gelang kaki padanya bila dijadikan selempang
+فَأَخْطَأَ وَأَسَاءَ، لِأَنَّ جَوَلَانَ الْخَلَاخِلِ|namun ia keliru dan buruk, sebab berputarnya gelang
+الْمُتَّخَذَةِ وِشَاحًا، يَدُلُّ عَلَى بُلُوغِهَا غَايَةَ الْقِصَرِ،|yang dijadikan selempang menunjukkan sangat pendeknya,
+وَلَا يَدُلُّ عَلَى الدِّقَّةِ وَالضُّمُورِ،|dan tidak menunjukkan ramping dan kempis,
+إِذِ الْوِشَاحُ مَا يُضْرَبُ لِلْمَرْأَةِ|karena selempang itu yang dipasang bagi wanita
+مِنَ الْعَاتِقِ إِلَى الْكَشْحِ،|dari bahu sampai lambung,
+فَالْعَلَاقَةُ بَيْنَ الْمَعْنَى الْأَصْلِيِّ|jadi hubungan antara makna asal
+وَالْمَعْنَى الْمُرَادِ غَيْرُ ظَاهِرَةٍ،|dan makna maksud tidak jelas,
+وَانْتِقَالُ الذِّهْنِ مِنَ الْمُكَنَّى بِهِ|dan perpindahan pikiran dari yang dipakai kinayah
+إِلَى الْمُكَنَّى عَنْهُ|ke yang dikinayahi
+يَشُوبُهُ كَثِيرٌ مِنَ الْكَدَرِ وَعَدَمِ الصِّحَّةِ.|bercampur banyak keruh dan ketidakbenaran.
+*أَمَّا كَثْرَةُ التَّكْرَارِ وَتَتَابُعُ الْإِضَافَاتِ:|Adapun banyaknya pengulangan dan beruntunnya idhafah:
+فَلَا يُخِلَّانِ بِفَصَاحَةِ الْكَلَامِ،|keduanya tidak merusak fashahah kalam,
+إِلَّا إِذَا كَانَا ثَقِيلَيْنِ فِي السَّمْعِ وَاللِّسَانِ،|kecuali bila berat di pendengaran dan lidah,
+وَلِذَا فَهُمَا يَرْجِعَانِ إِلَى تَنَافُرِ الْكَلَامِ،|karena itu keduanya kembali pada tanafur kalam.
+فَمِنْ كَثْرَةِ التَّكْرَارِ الْمُسْتَكْرَهِ فِي الْأُذُنِ،|Contoh pengulangan banyak yang tak enak di telinga,
+قَوْلُ الْمُتَنَبِّي:|ucapan al-Mutanabbi:
+وَتُسْعِدُنِي فِي غَمْرَةٍ بَعْدَ غَمْرَةٍ|Ia menolongku dalam kesulitan demi kesulitan,
+سَبُوحٌ لَهَا مِنْهَا عَلَيْهَا شَوَاهِدُ|kuda cepat yang padanya ada tanda-tanda darinya atasnya
+حَيْثُ كَرَّرَ الضَّمِيرَ فِي: "لَهَا مِنْهَا عَلَيْهَا".|Ia mengulang dhamir pada: "laha minha alaiha".
+وَمِنْ تَتَابُعِ الْإِضَافَاتِ الثَّقِيلِ عَلَى اللِّسَانِ وَالْأُذُنِ،|Dan beruntunnya idhafah yang berat di lidah dan telinga,
+قَوْلُ ابْنِ بَابَكَ:|ucapan Ibnu Babak:
+حَمَامَةَ جَرْعَى حَوْمَةِ الْجَنْدَلِ اسْجَعِي|Wahai merpati Jar'a Haumat al-Jandal, berkicaulah,
+فَأَنْتِ بِمَرْأًى مِنْ سُعَادَ وَمَسْمَعِ|engkau berada dalam pandangan dan pendengaran Su'ad
+-الْغَمْرَةُ: الشِّدَّةُ. وَالسَّبُوحُ: الْفَرَسُ السَّرِيعَةُ.|-Ghamrah: kesulitan. Sabuh: kuda betina cepat.
+-وَالشَّوَاهِدُ: الْعَلَامَاتُ.|-Syawahid: tanda-tanda.
+-جَرْعَى: مُؤَنَّثُ الْأَجْرَعِ وَهُوَ الْمَكَانُ ذُو الرَّمْلِ|-Jar'a: bentuk feminin al-ajra', tempat berpasir
+-لَا يُنْبِتُ شَيْئًا. وَحَوْمَةُ الشَّيْءِ: مُعْظَمُهُ،|-yang tak menumbuhkan apa pun. Haumah sesuatu: bagian terbesarnya,
+-وَالْجَنْدَلُ: الْحِجَارَةُ، وَاسْجَعِي: غَنِّي،|-jandal: batu-batu, "isja'i": bernyanyilah,
+-وَسَجْعُ الْحَمَامِ هَدِيلُهُ.|-dan saj' merpati ialah kicauannya.
 @hal 37
-~Banyaknya idhafah yang membuat lidah berat (contoh "hamamat jara'a haumat al-jandal"), sedangkan pengulangan yang tidak berat tidak merusak, seperti pada ayat Maryam 2.
+فَالْأُذُنُ تَنْفِرُ مِنْ كَثْرَةِ الْإِضَافَاتِ فِي:|Telinga merasa tidak nyaman dengan banyaknya idhafah dalam:
+"حَمَامَةُ جَرْعَا حَوْمَةِ الْجَنْدَلِ"،|"Hamamah Jar'a Haumatil Jandal",
+وَاللِّسَانُ يَتَعَثَّرُ وَيَسْتَثْقِلُ|dan lidah tersandung serta merasa berat
+النُّطْقَ بِهَا.|untuk mengucapkannya.
+أَمَّا إِذَا لَمْ تُؤَدِّ كَثْرَةُ التَّكْرَارِ|Adapun jika banyaknya pengulangan tidak menimbulkan
+وَلَا تَتَابُعُ الْإِضَافَاتِ إِلَى الثِّقَلِ،|dan beruntunnya idhafah tidak berujung pada keberatan,
+فَلَا يُخِلَّانِ عِنْدَئِذٍ بِفَصَاحَةِ الْكَلَامِ،|maka keduanya tidak merusak fashahah kalam saat itu,
+كَمَا فِي قَوْلِ اللهِ عَزَّ وَجَلَّ:|seperti firman Allah azza wa jalla:
+"ذِكْرُ رَحْمَتِ رَبِّكَ عَبْدَهُ زَكَرِيَّا" [مريم: ٢]|"(Ini) penyebutan rahmat Tuhanmu kepada hamba-Nya, Zakaria" (QS. Maryam: 2)
+وَقَوْلِهِ تَعَالَى:|dan firman-Nya Ta'ala:
+"مِثْلَ دَأْبِ قَوْمِ نُوحٍ وَعَادٍ" [غافر: ٣١]|"Seperti keadaan kaum Nuh, 'Ad" (QS. Ghafir: 31)
+وَقَوْلِهِ تَعَالَى:|dan firman-Nya Ta'ala:
+"وَنَفْسٍ وَمَا سَوَّاهَا"|"Demi jiwa serta penyempurnaannya,"
+"فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا" [الشمس: ٧، ٨]|"maka Dia mengilhamkan kepadanya kefasikan dan ketakwaannya" (QS. Asy-Syams: 7-8)
+وَكَمَا فِي قَوْلِهِ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ:|dan seperti sabda beliau shallallahu alaihi wa sallam:
+"الْكَرِيمُ ابْنُ الْكَرِيمِ ابْنُ الْكَرِيمِ"|"Yang mulia putra yang mulia putra yang mulia"
+"ابْنُ الْكَرِيمِ يُوسُفُ بْنُ يَعْقُوبَ"|"putra yang mulia, Yusuf bin Ya'qub"
+"بْنِ إِسْحَاقَ بْنِ إِبْرَاهِيمَ"|"bin Ishaq bin Ibrahim"
+عَلَيْهِمُ السَّلَامُ (١)|alaihimus salam. (1)
+فَالْأُذُنُ لَا تُحِسُّ ثِقَلًا وَاللِّسَانُ|Telinga tidak merasakan keberatan dan lidah
+لَا يَجِدُ صُعُوبَةً فِي النُّطْقِ|tidak mendapati kesulitan dalam mengucapkan
+بِمَا فِي الْآيَاتِ الْكَرِيمَةِ|apa yang ada dalam ayat-ayat mulia
+وَالْحَدِيثِ الشَّرِيفِ مِنْ كَثْرَةِ التَّكْرَارِ|dan hadits mulia berupa banyaknya pengulangan
+وَتَتَابُعِ الْإِضَافَاتِ.|dan beruntunnya idhafah.
+وَكَمَا فِي قَوْلِ ابْنِ الْمُعْتَزِّ:|Dan seperti perkataan Ibnu al-Mu'tazz:
+وَظَلَّتْ تُدِيرُ الرَّاحَ أَيْدِي جَاذِرٍ|Tangan para anak rusa terus mengedarkan khamr,
+عِتَاقِ دَنَانِيرِ الْوُجُوهِ مِلَاحِ (٢)|yang mulia, wajah-wajah bagai dinar, nan elok. (2)
+وَقَوْلِ الْخَالِدِيِّ:|dan perkataan al-Khalidi:
+وَصَيْرَفِيٍّ فِي الْقَرِيضِ وَزَّانِ|Seorang sarraf dalam syair, penimbang
+دِينَارِ الْمَعَانِي الدِّقَاقِ مُنْتَقِدِ (٣)|dinar makna-makna halus, sang penilai. (3)
+فَالْإِضَافَاتُ الْمُتَتَابِعَةُ فِي الْبَيْتِ الْأَوَّلِ:|Idhafah yang beruntun dalam bait pertama:
+"عِتَاقِ دَنَانِيرِ الْوُجُوهِ"،|"mulia, dinar-dinar wajah",
+وَفِي الْبَيْتِ الثَّانِي: "وَزَّانِ دِينَارِ الْمَعَانِي"،|dan dalam bait kedua: "penimbang dinar makna",
+لَا ثِقَلَ فِيهَا عَلَى الْأُذُنِ|tidak ada keberatan padanya bagi telinga
+وَلَا صُعُوبَةَ عَلَى اللِّسَانِ|dan tidak ada kesulitan bagi lidah
+فِي النُّطْقِ بِهَا.|dalam mengucapkannya.
+-(١) رَوَاهُ الْبُخَارِيُّ فِي كِتَابِ أَحَادِيثِ الْأَنْبِيَاءِ|(1) Diriwayatkan al-Bukhari dalam Kitab Ahadits al-Anbiya'
+-رَقْمُ [١٩ / ٣٣٩٠].|nomor [19 / 3390].
+-(٢) الرَّاحُ: الْخَمْرُ، وَالْجَآذِرُ: جَمْعُ جُؤْذَرٍ|(2) Ar-raah: khamr; al-jaadzir: bentuk jamak dari ju'dzur,
+-وَهُوَ وَلَدُ الْبَقَرَةِ الْوَحْشِيَّةِ،|yaitu anak sapi liar.
+-وَعِتَاقٌ جَمْعُ عَتِيقٍ بِمَعْنَى كَرِيمٍ،|'Itaq adalah jamak dari 'atiq, berarti mulia,
+-وَإِضَافَةُ دَنَانِيرَ إِلَى الْوُجُوهِ|dan idhafah dananir kepada al-wujuh
+-مِنْ إِضَافَةِ الْمُشَبَّهِ بِهِ إِلَى الْمُشَبَّهِ.|termasuk idhafah musyabbah bih kepada musyabbah.
+-(٣) الصَّيْرَفِيُّ: الْمُحْتَالُ فِي الْأُمُورِ،|(3) Ash-shairafi: yang lihai dalam berbagai urusan;
+-وَالْقَرِيضُ: الشِّعْرُ،|al-qariidh: syair;
+-وَالْمُنْتَقِدُ: الْخَبِيرُ بِالتَّمْيِيزِ|al-muntaqid: yang ahli membedakan
+-بَيْنَ جَيِّدِ الْأَشْيَاءِ وَرَدِيئِهَا.|antara sesuatu yang baik dan yang buruk.
 @sub fashahah-mutakallim|فَصَاحَةُ الْمُتَكَلِّمِ|Fashahah pembicara|38
-@sub balaghah-kalam|بَلَاغَةُ الْكَلَامِ|Balaghah kalimat|38
 @hal 38
-أَمَّا فَصَاحَةُ الْمُتَكَلِّمِ فَهِيَ مَلَكَةٌ تَتَكَوَّنُ لَدَيْهِ|Adapun fashahah pembicara, ia adalah kemampuan yang terbentuk pada dirinya
-~Fashahah pembicara sebagai kemampuan yang dibentuk lewat latihan, banyak membaca, dan menghafal, terutama Al-Qur'an dan hadits. Lalu dimulai bahasan balaghah dan definisi ulama terdahulu.
+أَمَّا فَصَاحَةُ الْمُتَكَلِّمِ فَهِيَ مَلَكَةٌ|Adapun fashahah mutakallim adalah suatu kemampuan
+تَتَكَوَّنُ لَدَيْهِ وَيَكْتَسِبُهَا|yang terbentuk pada dirinya dan ia peroleh
+بِكَثْرَةِ الْمِرَانِ وَالتَّدْرِيبِ|dengan banyak berlatih dan membiasakan diri,
+وَقِرَاءَةِ التَّعْبِيرَاتِ الْجَيِّدَةِ|membaca ungkapan-ungkapan yang baik
+وَالْأَسَالِيبِ الرَّفِيعَةِ،|dan gaya bahasa yang tinggi,
+وَحِفْظِ كَثِيرٍ مِنَ الشِّعْرِ وَالنَّثْرِ|serta menghafal banyak syair dan prosa
+حِفْظًا دَقِيقًا وَاعِيًا مُتَأَمِّلًا،|dengan hafalan yang cermat, sadar, dan penuh renungan,
+وَقَبْلَ هَذَا وَبَعْدَهُ|dan sebelum maupun sesudah itu
+حِفْظِ كِتَابِ اللهِ عَزَّ وَجَلَّ|menghafal Kitab Allah azza wa jalla
+وَحَدِيثِ النَّبِيِّ ﷺ وَالتَّفَقُّهِ فِيهِمَا،|dan hadits Nabi saw serta mendalami keduanya.
+وَبِتَكَوُّنِ تِلْكَ الْمَلَكَةِ|Dengan terbentuknya kemampuan itu
+يَسْتَطِيعُ الْمُتَكَلِّمُ أَنْ يُعَبِّرَ|mutakallim mampu mengungkapkan
+عَمَّا يُرِيدُ وَعَمَّا يَقْصِدُ|apa yang ia inginkan dan apa yang ia maksudkan
+بِلَفْظٍ فَصِيحٍ،|dengan lafal yang fasih,
+وَيُوصَفُ هَذَا الْمُتَكَلِّمُ بِالْفَصَاحَةِ|dan mutakallim ini disifati dengan fashahah,
+فَيُقَالُ لَهُ: مُتَكَلِّمٌ فَصِيحٌ.|sehingga disebut: mutakallim yang fasih.
+@sub balaghah-kalam|بَلَاغَةُ الْكَلَامِ|Balaghah kalimat|38
+ذَكَرَ الْبَلَاغِيُّونَ الْمُتَقَدِّمُونَ|Para ahli balaghah terdahulu menyebutkan
+فِي تَعْرِيفِ الْبَلَاغَةِ أَقْوَالًا مُتَعَدِّدَةً|berbagai pendapat dalam definisi balaghah,
+مِنْهَا قَوْلُ مُعَاوِيَةَ لِصُحَارٍ الْعَبْدِيِّ:|di antaranya ucapan Mu'awiyah kepada Shuhar al-'Abdi:
+"مَا الْبَلَاغَةُ؟" فَقَالَ: "الْإِيجَازُ"،|"Apa itu balaghah?" Ia menjawab: "Ijaz (ringkas)."
+قَالَ: "وَمَا الْإِيجَازُ؟"|Mu'awiyah bertanya: "Apa itu ijaz?"
+فَقَالَ صُحَارٌ: "أَنْ تُجِيبَ فَلَا تُبْطِئَ"|Shuhar menjawab: "Engkau menjawab tanpa lamban"
+"وَتَقُولَ فَلَا تُخْطِئَ" (١)|"dan berbicara tanpa salah." (1)
+وَسُئِلَ ابْنُ الْمُقَفَّعِ: مَا الْبَلَاغَةُ؟|Ibnu al-Muqaffa' ditanya: Apa itu balaghah?
+فَقَالَ: الْبَلَاغَةُ اسْمٌ جَامِعٌ|Ia menjawab: Balaghah adalah nama yang mencakup
+لِمَعَانٍ تَجْرِي فِي وُجُوهٍ كَثِيرَةٍ،|makna-makna yang berlaku dalam banyak bentuk.
+فَمِنْهَا مَا يَكُونُ فِي السُّكُوتِ،|Ada yang berupa diam,
+وَمِنْهَا مَا يَكُونُ فِي الِاحْتِجَاجِ،|ada yang berupa berargumentasi,
+وَمِنْهَا مَا يَكُونُ جَوَابًا|ada yang berupa jawaban,
+وَمِنْهَا مَا يَكُونُ ابْتِدَاءً،|ada yang berupa permulaan bicara,
+وَمِنْهَا مَا يَكُونُ شِعْرًا،|ada yang berupa syair,
+وَمِنْهَا مَا يَكُونُ سَجْعًا وَخُطَبًا،|ada yang berupa sajak dan khutbah,
+وَمِنْهَا مَا يَكُونُ رَسَائِلَ،|dan ada yang berupa surat-surat.
+فَعَامَّةُ مَا يَكُونُ مِنْ هَذِهِ الْأَبْوَابِ|Pada umumnya dalam bidang-bidang ini,
+الْوَحْيُ فِيهَا وَالْإِشَارَةُ إِلَى الْمَعْنَى|isyarat cepat dan petunjuk kepada makna
+وَالْإِيجَازُ هُوَ الْبَلَاغَةُ،|serta ijaz itulah balaghah.
+فَأَمَّا الْخُطَبُ بَيْنَ السِّمَاطَيْنِ،|Adapun khutbah di antara dua barisan hadirin,
+وَفِي إِصْلَاحِ ذَاتِ الْبَيْنِ،|dan dalam mendamaikan perselisihan,
+فَالْإِكْثَارُ فِي غَيْرِ خَطَلٍ،|maka memperbanyak tanpa ngawur,
+وَالْإِطَالَةُ فِي غَيْرِ إِمْلَالٍ.|dan memperpanjang tanpa membosankan.
+وَلْيَكُنْ فِي صَدْرِ كَلَامِكَ|Hendaklah pada awal pembicaraanmu
+دَلِيلٌ عَلَى حَاجَتِكَ.|ada petunjuk atas keperluanmu.
+قِيلَ: فَإِنْ مَلَّ السَّامِعُ الْإِطَالَةَ|Ditanyakan: Jika pendengar bosan dengan panjangnya
+الَّتِي ذَكَرْتَ أَنَّهَا حَقُّ ذَلِكَ الْمَوْقِفِ؟|yang kaukatakan sebagai hak situasi itu?
+قَالَ: إِذَا أَعْطَيْتَ كُلَّ مَقَامٍ حَقَّهُ،|Ia menjawab: Jika engkau beri setiap situasi haknya,
+وَقُمْتَ بِالَّذِي يَجِبُ|engkau lakukan apa yang wajib
+مِنْ سِيَاسَةِ ذَلِكَ الْمَقَامِ|dalam menangani situasi itu,
+وَأَرْضَيْتَ مَنْ يَعْرِفُ حُقُوقَ الْكَلَامِ،|dan engkau puaskan orang yang tahu hak-hak kalam,
+فَلَا تَهْتَمَّ لِمَا فَاتَكَ|maka jangan risau atas hilangnya
+مِنْ رِضَا الْحَاسِدِ وَالْعَدُوِّ،|rida si pendengki dan musuh,
+فَإِنَّهُمَا لَا يُرْضِيهِمَا شَيْءٌ. (٢)|sebab keduanya tidak puas oleh apa pun. (2)
+وَقَالُوا: الْبَلَاغَةُ لَمْحَةٌ دَالَّةٌ،|Mereka berkata: Balaghah adalah kilasan yang menunjukkan,
+وَالْبَلَاغَةُ مَعْرِفَةُ الْفَصْلِ وَالْوَصْلِ.|balaghah adalah mengetahui fashl dan washl,
+وَالْبَلَاغَةُ اخْتِيَارُ|balaghah adalah memilih
+-(١) الْبَيَانُ وَالتَّبْيِينُ ٩٦/١|(1) Al-Bayan wa at-Tabyin, 1/96.
+-(٢) نَفْسُ الْمَصْدَرِ ١ / ١١٥.|(2) Sumber yang sama, 1/115.
 @hal 39
-~Definisi balaghah menurut ulama terdahulu dan ulama belakangan. Balaghah kalimat adalah kesesuaiannya dengan tuntutan keadaan, disertai fashahah, dan penjelasan tingkatannya.
-@sub balaghah-mutakallim|بَلَاغَةُ الْمُتَكَلِّمِ|Balaghah pembicara|40
+الْكَلَامِ وَتَصْحِيحُ الْأَقْسَامِ،|kalam dan membenarkan pembagiannya,
+وَالْبَلَاغَةُ إِجَاعَةُ اللَّفْظِ|balaghah adalah "melaparkan" lafal
+وَإِشْبَاعُ الْمَعْنَى.|dan mengenyangkan makna,
+وَالْبَلَاغَةُ كَلِمَةٌ تَكْشِفُ عَنِ الْبَقِيَّةِ،|balaghah adalah kata yang menyingkap sisanya,
+وَالْبَلَاغَةُ حُسْنُ الْعِبَارَةِ وَصِحَّةُ الدَّلَالَةِ،|balaghah adalah indahnya ungkapan dan benarnya petunjuk makna,
+وَالْبَلَاغَةُ الْقُدْرَةُ عَلَى الْبَيَانِ|dan balaghah adalah kemampuan menjelaskan
+مَعَ حُسْنِ النِّظَامِ.|disertai baiknya susunan.
+أَمَّا الْمُتَأَخِّرُونَ فَقَدْ عَرَّفُوا الْبَلَاغَةَ|Adapun ulama belakangan, mereka mendefinisikan balaghah
+تَعْرِيفًا يَقْرُبُ مِمَّا ذَكَرَهُ ابْنُ الْمُقَفَّعِ|dengan definisi yang dekat dengan yang disebut Ibnu al-Muqaffa',
+حَيْثُ قَالُوا: بَلَاغَةُ الْكَلَامِ هِيَ|yaitu mereka berkata: balaghah kalam adalah
+مُطَابَقَتُهُ لِمُقْتَضَى الْحَالِ مَعَ فَصَاحَتِهِ.|kesesuaiannya dengan tuntutan keadaan disertai fashahah-nya.
+وَالْمُرَادُ بِالْحَالِ: الْأَمْرُ الدَّاعِي|Yang dimaksud keadaan (hal): perkara yang mendorong
+لِلْمُتَكَلِّمِ إِلَى أَنْ يَعْتَبِرَ|mutakallim untuk memperhitungkan
+فِي كَلَامِهِ خُصُوصِيَّةً مَا،|suatu kekhususan dalam ucapannya.
+وَمُقْتَضَى الْحَالِ هُوَ تِلْكَ الْخُصُوصِيَّةُ|Tuntutan keadaan adalah kekhususan itu
+الَّتِي اعْتَبَرَهَا الْمُتَكَلِّمُ فِي كَلَامِهِ،|yang diperhitungkan mutakallim dalam ucapannya.
+وَمُطَابَقَةُ الْكَلَامِ لِمُقْتَضَى الْحَالِ:|Kesesuaian kalam dengan tuntutan keadaan:
+هِيَ مَجِيءُ الْكَلَامِ مُشْتَمِلًا|yaitu kalam datang mengandung
+عَلَى تِلْكَ الْخُصُوصِيَّةِ الَّتِي اقْتَضَاهَا الْحَالُ|kekhususan yang dituntut oleh keadaan.
+فَمَثَلًا إِذَا كَانَ هُنَاكَ مَنْ يُنْكِرُ|Misalnya, jika ada orang yang mengingkari
+قِيَامَ زَيْدٍ،|berdirinya Zaid,
+فَهَذَا الْإِنْكَارُ حَالٌ يَقْتَضِي|maka pengingkaran ini adalah keadaan yang menuntut
+أَنْ يُؤَكِّدَ الْمُتَكَلِّمُ كَلَامَهُ|mutakallim menegaskan ucapannya
+فَيَقُولَ: "إِنَّ زَيْدًا لَقَائِمٌ"،|sehingga ia berkata: "Sungguh Zaid benar-benar berdiri."
+وَمَجِيءُ الْكَلَامِ مُؤَكَّدًا|Datangnya kalam dalam bentuk penegasan
+هُوَ مُطَابَقَتُهُ لِمُقْتَضَى الْحَالِ.|itulah kesesuaiannya dengan tuntutan keadaan.
+وَإِذَا كَانَ هُنَاكَ إِنْسَانٌ عَظِيمٌ|Jika ada seorang yang agung,
+نَبِيهُ الشَّأْنِ جَلِيلُ الْقَدْرِ|terkemuka kedudukannya, tinggi martabatnya,
+وَأَرَدْتَ أَنْ تَتَحَدَّثَ عَنْهُ|dan engkau hendak membicarakannya,
+فَإِنَّكَ تَقُولُ: "هَذَا هُوَ الرَّجُلُ"،|maka engkau berkata: "Inilah sang lelaki,"
+فَعِظَمُ هَذَا الرَّجُلِ وَنَبَاهَةُ شَأْنِهِ|sebab keagungan lelaki ini, ketermukaan kedudukannya,
+وَجَلَالَةُ قَدْرِهِ حَالٌ يَقْتَضِي|dan kemuliaan martabatnya adalah keadaan yang menuntut
+تَعْرِيفَهُ بِالْأَلِفِ وَاللَّامِ،|penentuannya dengan alif dan lam,
+وَمَجِيءُ الْكَلَامِ مُعَرَّفًا|dan datangnya kalam dalam bentuk ma'rifah
+هُوَ مُطَابَقَتُهُ لِمُقْتَضَى الْحَالِ.|itulah kesesuaiannya dengan tuntutan keadaan.
+وَعَلَى الْعَكْسِ يُقَالُ لِلْحَقِيرِ:|Sebaliknya, untuk orang yang hina dikatakan:
+"أَهَذَا رَجُلٌ؟"|"Apakah ini seorang lelaki?"
+فَالْحَقَارَةُ حَالٌ. وَالتَّنْكِيرُ مُقْتَضَاهُ|Kehinaan adalah keadaan, dan tankir adalah tuntutannya,
+وَمَجِيءُ الْكَلَامِ مُنَكَّرًا|dan datangnya kalam dalam bentuk nakirah
+هُوَ مُطَابَقَتُهُ لِمُقْتَضَى الْحَالِ،|itulah kesesuaiannya dengan tuntutan keadaan.
+وَهَكَذَا يَخْتَلِفُ الْكَلَامُ|Demikianlah kalam berbeda-beda
+تَبَعًا لِاخْتِلَافِ الْأَحْوَالِ،|mengikuti perbedaan keadaan.
+فَمَقَامُ التَّأَلُّمِ أَوِ الْخَوْفِ|Situasi kesakitan atau ketakutan
+يَقْتَضِي الْإِيجَازَ،|menuntut ijaz,
+إِذِ الْمُتَأَلِّمُ تَكْفِيهِ الْكَلِمَةُ،|sebab orang yang kesakitan cukup dengan satu kata,
+وَالْخَائِفُ تُغْنِيهِ الْإِشَارَةُ،|dan orang yang takut cukup dengan isyarat,
+وَمَقَامُ الْأُنْسِ وَالتَّلَذُّذِ|sedangkan situasi keakraban dan kenikmatan
+يَقْتَضِي الْإِطْنَابَ،|menuntut ithnab,
+لِأَنَّ الْأُنْسَ يَحْتَاجُ إِلَى الْإِسْهَابِ|karena keakraban membutuhkan uraian panjang
+وَإِطَالَةِ الْقَوْلِ.|dan pemanjangan ucapan.
+وَالْبَلَاغَةُ أَنْ يَأْتِيَ الْكَلَامُ|Balaghah ialah kalam datang
+مُطَابِقًا لِلْحَالِ الَّتِي يُلْقَى فِيهَا،|sesuai dengan keadaan saat ia diucapkan,
+وَأَنْ تَتَحَقَّقَ فَصَاحَةُ كَلِمَاتِهِ وَتَرَاكِيبِهِ،|dan terwujud fashahah kata-kata dan susunannya.
+فَإِنْ طَابَقَ الْكَلَامُ مُقْتَضَى الْحَالِ|Jika kalam sesuai dengan tuntutan keadaan
+وَلَمْ يَكُنْ فَصِيحًا،|tetapi tidak fasih,
+لَا يُعَدُّ بَلِيغًا،|ia tidak dianggap baligh,
+وَكَذَا إِنْ كَانَ الْكَلَامُ فَصِيحًا|demikian pula jika kalam itu fasih
+وَلَمْ يُطَابِقْ مُقْتَضَى الْحَالِ،|tetapi tidak sesuai dengan tuntutan keadaan,
+فَلَيْسَ مِنَ الْبَلَاغَةِ.|maka ia bukan termasuk balaghah.
+هَذَا وَيَذْكُرُ الْبَلَاغِيُّونَ|Para ahli balaghah juga menyebutkan
+أَنَّ الْبَلَاغَةَ تَتَفَاوَتُ|bahwa balaghah bertingkat-tingkat
+تَبَعًا لِوَفَاءِ الْكَلَامِ|sesuai pemenuhan kalam
+بِخَصَائِصِ تَرَاكِيبِهِ وَمُقْتَضَيَاتِ أَحْوَالِهِ،|terhadap kekhasan susunan dan tuntutan keadaannya.
+فَالرُّمَّانِيُّ يَجْعَلُ الْبَلَاغَةَ|Ar-Rummani menjadikan balaghah
+ثَلَاثَ طَبَقَاتٍ: عُلْيَا وَوُسْطَى وَدُنْيَا.|tiga tingkat: tinggi, menengah, dan rendah.
+فَالْعُلْيَا هِيَ بَلَاغَةُ الْقُرْآنِ الْكَرِيمِ|Yang tertinggi adalah balaghah Al-Qur'an yang mulia,
+وَالْوُسْطَى وَالدُّنْيَا تَتَفَاوَتُ فِيهِمَا|sedangkan pada tingkat menengah dan rendah bertingkat-tingkat
+بَلَاغَةُ الْبُلَغَاءِ مِنَ الْبَشَرِ.|balaghah para ahli balaghah dari kalangan manusia.
 @hal 40
-~Dua ujung balaghah menurut Al-Qazwini (batas i'jaz dan batas terendah) dengan tingkatan di antaranya. Lalu bahasan balaghah pembicara, dengan contoh ayat tentang permohonan kembali ke dunia.
+وَالْقَزْوِينِيُّ يَجْعَلُ لِلْبَلَاغَةِ طَرَفَيْنِ:|Al-Qazwini menetapkan dua ujung bagi balaghah:
+أَعْلَى إِلَيْهِ تَنْتَهِي،|ujung atas tempat ia berakhir,
+وَهُوَ حَدُّ الْإِعْجَازِ|yaitu batas kemukjizatan
+وَمَا يَقْرُبُ مِنْهُ،|dan yang mendekatinya,
+وَطَرَفًا أَسْفَلَ مِنْهُ تَبْتَدِئُ|dan ujung bawah tempat ia bermula,
+وَهُوَ مَا إِذَا غُيِّرَ الْكَلَامُ عَنْهُ|yaitu jika kalam diubah darinya
+إِلَى مَا هُوَ دُونَهُ|menjadi yang lebih rendah darinya,
+الْتَحَقَ عِنْدَ الْبُلَغَاءِ|maka menurut para ahli balaghah ia disamakan
+بِأَصْوَاتِ الْحَيَوَانَاتِ|dengan suara-suara hewan
+وَإِنْ كَانَ صَحِيحَ الْإِعْرَابِ،|meskipun i'rabnya benar.
+وَبَيْنَ الطَّرَفَيْنِ مَرَاتِبُ كَثِيرَةٌ مُتَفَاوِتَةٌ|Di antara dua ujung itu terdapat banyak tingkatan yang berbeda-beda
+حَسَبَ تَفَاوُتِ الْبُلَغَاءِ فِي التَّعْبِيرِ|sesuai perbedaan para ahli balaghah dalam berungkap
+وَالْوَفَاءِ بِمُقْتَضَيَاتِ الْأَحْوَالِ.|dan dalam memenuhi tuntutan keadaan.
+@sub balaghah-mutakallim|بَلَاغَةُ الْمُتَكَلِّمِ|Balaghah pembicara|40
+أَمَّا بَلَاغَةُ الْمُتَكَلِّمِ فَهِيَ مَلَكَةٌ|Adapun balaghah mutakallim adalah suatu kemampuan
+يَقْتَدِرُ بِهَا عَلَى تَأْلِيفِ|yang dengannya ia sanggup menyusun
+كَلَامٍ بَلِيغٍ،|kalam yang baligh,
+وَتِلْكَ الْمَلَكَةُ تَتَكَوَّنُ لَدَيْهِ|dan kemampuan itu terbentuk pada dirinya
+بِكَثْرَةِ الْمِرَانِ وَالْقِرَاءَةِ|dengan banyak berlatih dan membaca,
+وَمُعَايَشَةِ التَّرَاكِيبِ الْجَيِّدَةِ|bergaul dengan susunan yang baik
+وَالتَّعْبِيرَاتِ الرَّفِيعَةِ|dan ungkapan yang tinggi,
+وَتَأَمُّلِهَا تَأَمُّلًا وَاعِيًا|merenungkannya dengan renungan yang sadar,
+وَإِدْرَاكِهَا إِدْرَاكًا تَامًّا،|dan memahaminya dengan pemahaman sempurna.
+يُضَافُ إِلَى هَذَا أَنْ يَكُونَ|Ditambah lagi, mutakallim itu hendaknya
+ذَلِكَ الْمُتَكَلِّمُ ذَا طَبْعٍ وَذَكَاءٍ|memiliki bakat dan kecerdasan
+يَسْتَطِيعُ بِهِمَا الِابْتِكَارَ|yang dengannya ia mampu berkreasi
+وَتَوْلِيدَ الْمَعَانِي،|dan melahirkan makna-makna.
+وَعِنْدَئِذٍ يَسْتَحِقُّ أَنْ يُوصَفَ بِالْبَلَاغَةِ،|Saat itu ia layak disifati dengan balaghah,
+فَيُقَالُ لَهُ: مُتَكَلِّمٌ بَلِيغٌ.|sehingga disebut: mutakallim yang baligh.
+وَبِهَذَا يَتَّضِحُ أَنَّ بَلَاغَةَ الْمُتَكَلِّمِ|Dengan ini jelas bahwa balaghah mutakallim
+لَا تَخْتَلِفُ عَنْ فَصَاحَتِهِ.|tidak berbeda dari fashahah-nya.
+هَذَا وَلَا تَقَعُ الْبَلَاغَةُ|Balaghah juga tidak menjadi
+وَصْفًا لِلْكَلِمَةِ الْمُفْرَدَةِ، كَمَا ذَكَرْنَا،|sifat bagi kata tunggal, sebagaimana telah kami sebutkan,
+إِلَّا إِذَا أُرِيدَ بِالْكَلِمَةِ|kecuali jika yang dimaksud dengan kata
+الْكَلَامُ الْمُرَكَّبُ،|adalah kalam yang tersusun,
+فَتُوصَفُ بِالْبَلَاغَةِ عَلَى هَذَا الِاعْتِبَارِ|maka ia disifati dengan balaghah atas dasar ini
+وَيُقَالُ: كَلِمَةٌ بَلِيغَةٌ،|dan dikatakan: kata yang baligh,
+لِأَنَّ الْمُرَادَ بِالْكَلِمَةِ عِنْدَئِذٍ:|karena yang dimaksud dengan kata saat itu:
+الْكَلَامُ الْمُرَكَّبُ كَالْخُطْبَةِ|kalam tersusun seperti khutbah,
+أَوِ الْقَصِيدَةِ أَوِ الْجُمْلَةِ أَوِ الْجُمَلِ،|kasidah, satu kalimat, atau beberapa kalimat,
+وَلَيْسَ الْمُرَادُ بِهَا "اللَّفْظَ الْمُفْرَدَ"،|dan bukan yang dimaksud "lafal tunggal".
+وَقَدْ أُطْلِقَتِ الْكَلِمَةُ عَلَى الْكَلَامِ،|Kata (kalimah) memang dipakai untuk kalam,
+كَمَا فِي قَوْلِهِ تَعَالَى:|seperti dalam firman-Nya Ta'ala:
+"لَعَلِّي أَعْمَلُ صَالِحًا فِيمَا تَرَكْتُ"|"agar aku berbuat kebaikan terhadap yang telah kutinggalkan,"
+"كَلَّا إِنَّهَا كَلِمَةٌ هُوَ قَائِلُهَا"|"sekali-kali tidak! Itu hanyalah perkataan yang diucapkannya saja,"
+"وَمِنْ وَرَائِهِمْ بَرْزَخٌ"|"dan di hadapan mereka ada barzakh"
+"إِلَى يَوْمِ يُبْعَثُونَ" [المؤمنون: ١٠٠]|"sampai hari mereka dibangkitkan" (QS. Al-Mu'minun: 100)
+حَيْثُ أُطْلِقَتِ الْكَلِمَةُ فِي الْآيَةِ الْكَرِيمَةِ|Di sini kata "kalimah" dipakai dalam ayat mulia itu
+عَلَى ثَلَاثِ جُمَلٍ وَهِيَ:|untuk tiga kalimat, yaitu:
+"رَبِّ ارْجِعُونِ لَعَلِّي أَعْمَلُ صَالِحًا فِيمَا تَرَكْتُ".|"Ya Tuhanku, kembalikanlah aku agar aku berbuat kebaikan terhadap yang telah kutinggalkan."
