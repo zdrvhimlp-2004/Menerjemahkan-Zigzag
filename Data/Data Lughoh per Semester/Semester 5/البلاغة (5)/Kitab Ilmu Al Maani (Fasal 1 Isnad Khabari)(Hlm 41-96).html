@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>أحوال الإسناد الخبري — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
+  .kosong { opacity: 0.55; font-style: italic; }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=11">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari &middot; hlm. 41&ndash;96 &middot; Terjemah biasa &middot; kerangka, isi terjemah belum diisi</p>
+
+    <dialog id="fihris-modal" class="modal" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilmu-maani">عِلْمُ الْمَعَانِي وَمَبَاحِثُهُ، الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ</a><div class="toc__id">Ilmu Ma'ani dan Pembahasannya; Perbedaan Khabar dan Insya' <span class="toc__meta">&middot; Hlm. 41</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#farq-khabar-insya">الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ</a><div class="toc__id">Perbedaan khabar dan insya' <span class="toc__meta">&middot; Hlm. 42</span></div></li>
+</ul></li>
+<li>
+            <a class="toc__ar" lang="ar" href="#fasl-1">الْفَصْلُ الْأَوَّلُ: أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ</a><div class="toc__id">Fasal 1: Keadaan Isnad Khabari <span class="toc__meta">&middot; Hlm. 44</span></div>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#makna-isnad">مَعْنَى الْإِسْنَادِ وَأَغْرَاضُ الْخَبَرِ</a><div class="toc__id">Makna isnad dan tujuan-tujuan khabar <span class="toc__meta">&middot; Hlm. 44</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#wajh-dalalah">وَجْهُ دَلَالَةِ الْخَبَرِ عَلَى أَغْرَاضِهِ</a><div class="toc__id">Cara khabar menunjukkan tujuan-tujuannya <span class="toc__meta">&middot; Hlm. 47</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#adhrub-khabar">أَضْرُبُ الْخَبَرِ</a><div class="toc__id">Macam-macam khabar <span class="toc__meta">&middot; Hlm. 48</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</a><div class="toc__id">Mengeluarkan ucapan menyelisihi tuntutan makna lahir <span class="toc__meta">&middot; Hlm. 51</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tajawwuz-isnad">التَّجَوُّزُ فِي الْإِسْنَادِ</a><div class="toc__id">Majaz dalam isnad <span class="toc__meta">&middot; Hlm. 60</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#nau-isnad">نَوْعَا الْإِسْنَادِ</a><div class="toc__id">Dua jenis isnad <span class="toc__meta">&middot; Hlm. 60</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#haqiqah-aqliyyah">الْحَقِيقَةُ الْعَقْلِيَّةُ</a><div class="toc__id">Hakikat aqliyah <span class="toc__meta">&middot; Hlm. 65</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#majaz-aqli">الْمَجَازُ الْعَقْلِيُّ</a><div class="toc__id">Majaz aqli <span class="toc__meta">&middot; Hlm. 67</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-khathib">تَعْرِيفُ الْخَطِيبِ لِلْمَجَازِ الْعَقْلِيِّ</a><div class="toc__id">Definisi Al-Khathib tentang majaz aqli <span class="toc__meta">&middot; Hlm. 67</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#alaqat-majaz">عَلَاقَاتُ الْمَجَازِ الْعَقْلِيِّ (مُلَابَسَاتُهُ)</a><div class="toc__id">Hubungan (mulabasat) majaz aqli <span class="toc__meta">&middot; Hlm. 68</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-maful">إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى الْمَفْعُولِ</a><div class="toc__id">Isnad bentuk aktif kepada maf'ul <span class="toc__meta">&middot; Hlm. 68</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-fail">إِسْنَادُ الْمَبْنِيِّ لِلْمَفْعُولِ إِلَى الْفَاعِلِ</a><div class="toc__id">Isnad bentuk pasif kepada fa'il <span class="toc__meta">&middot; Hlm. 70</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-mashdar">إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى مَصْدَرِهِ</a><div class="toc__id">Isnad kepada mashdarnya <span class="toc__meta">&middot; Hlm. 71</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilaz-zaman">الْإِسْنَادُ إِلَى الزَّمَانِ</a><div class="toc__id">Isnad kepada waktu <span class="toc__meta">&middot; Hlm. 72</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-makan">الْإِسْنَادُ إِلَى الْمَكَانِ</a><div class="toc__id">Isnad kepada tempat <span class="toc__meta">&middot; Hlm. 73</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilas-sabab">الْإِسْنَادُ إِلَى السَّبَبِ</a><div class="toc__id">Isnad kepada sebab <span class="toc__meta">&middot; Hlm. 74</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-jins">الْإِسْنَادُ إِلَى الْجِنْسِ</a><div class="toc__id">Isnad kepada jenis <span class="toc__meta">&middot; Hlm. 75</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-ilal-jarihah">الْإِسْنَادُ إِلَى الْجَارِحَةِ وَمَا لَهُ مَزِيدُ اخْتِصَاصٍ بِالْفَاعِلِ الْحَقِيقِيِّ</a><div class="toc__id">Isnad kepada anggota tubuh dan yang paling berkaitan dengan pelaku sebenarnya <span class="toc__meta">&middot; Hlm. 76</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#nisbah-idhafiyyah">النِّسْبَةُ الْإِضَافِيَّةُ وَالْإِيقَاعِيَّةُ وَالْوَصْفِيَّةُ</a><div class="toc__id">Nisbah idhafiyah, iqa'iyah, dan washfiyah <span class="toc__meta">&middot; Hlm. 76</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#isnad-mubtada-khabar">الْإِسْنَادُ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ</a><div class="toc__id">Isnad antara mubtada' dan khabar <span class="toc__meta">&middot; Hlm. 77</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#qarinah-majaz">قَرِينَةُ الْمَجَازِ الْعَقْلِيِّ</a><div class="toc__id">Qarinah majaz aqli <span class="toc__meta">&middot; Hlm. 79</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#farq-majaz">الْفَرْقُ بَيْنَ الْمَجَازِ الْعَقْلِيِّ وَالْمَجَازِ اللُّغَوِيِّ</a><div class="toc__id">Perbedaan majaz aqli dan majaz lughawi <span class="toc__meta">&middot; Hlm. 81</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#shuwar-majaz">صُوَرُ الْمَجَازِ الْعَقْلِيِّ</a><div class="toc__id">Bentuk-bentuk majaz aqli <span class="toc__meta">&middot; Hlm. 82</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#istilzam">اسْتِلْزَامُ الْمَجَازِ الْعَقْلِيِّ الْحَقِيقَةَ الْعَقْلِيَّةَ</a><div class="toc__id">Majaz aqli mengharuskan adanya hakikat aqliyah <span class="toc__meta">&middot; Hlm. 87</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#inkar-majaz">إِنْكَارُ الْمَجَازِ الْعَقْلِيِّ</a><div class="toc__id">Pengingkaran terhadap majaz aqli <span class="toc__meta">&middot; Hlm. 90</span></div></li>
+              <li><a class="toc__ar" lang="ar" href="#balaghah-majaz">بَلَاغَةُ الْمَجَازِ الْعَقْلِيِّ وَدِقَّةُ مَسْلَكِهِ</a><div class="toc__id">Balaghah majaz aqli dan kehalusan alurnya <span class="toc__meta">&middot; Hlm. 93</span></div></li>
+</ul></li>
+        </ol>
+      </nav>
+    </dialog>
+    <h2 class="pasal__judul" id="ilmu-maani">عِلْمُ الْمَعَانِي وَمَبَاحِثُهُ، الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ</h2>
+    <p class="judul__id">Ilmu Ma'ani dan Pembahasannya; Perbedaan Khabar dan Insya'</p>
+    <div class="hal" id="hal-41"><span>Hlm. 41</span></div>
+    <div class="ayat">
+      <p class="ar">عَرَّفَ الْبَلَاغِيُّونَ عِلْمَ الْمَعَانِي بِقَوْلِهِمْ: "هُوَ عِلْمٌ يُعْرَفُ بِهِ أَحْوَالُ اللَّفْظِ الْعَرَبِيِّ الَّتِي بِهَا يُطَابِقُ مُقْتَضَى الْحَالِ".</p>
+      <p class="id">Para ahli balaghah mendefinisikan ilmu ma'ani dengan ucapan mereka: "Ia adalah ilmu yang dengannya diketahui keadaan-keadaan lafaz bahasa Arab yang dengannya (lafaz itu) sesuai dengan tuntutan keadaan (muqtadha al-hal)."</p>
+    </div>
+    <div class="ayat">
+      <p class="ar">وَ"اللَّفْظُ الْعَرَبِيُّ" يَشْمَلُ اللَّفْظَ الْمُفْرَدَ وَاللَّفْظَ الْمُرَكَّبَ أَيِ الْجُمْلَةَ وَأَجْزَاءَهَا وَالْجُمَلَ الْمُلْتَقِيَةَ، فَأَحْوَالُ الْجُمْلَةِ: الْإِسْنَادُ الْخَبَرِيُّ، وَالْإِنْشَاءُ وَأُسْلُوبُ الْقَصْرِ، وَأَحْوَالُ الْجُمَلِ: الْفَصْلُ وَالْوَصْلُ وَالْإِيجَازُ وَالْإِطْنَابُ وَالْمُسَاوَاةُ، وَأَحْوَالُ أَجْزَاءِ الْجُمْلَةِ: أَيِ الْمُسْنَدُ وَالْمُسْنَدُ إِلَيْهِ وَمُتَعَلِّقَاتُ الْفِعْلِ كَالتَّعْرِيفِ وَالتَّنْكِيرِ وَالْحَذْفِ وَالذِّكْرِ وَالتَّقْدِيمِ وَالتَّأْخِيرِ وَالْإِظْهَارِ وَالْإِضْمَارِ وَغَيْرِ ذَلِكَ.</p>
+      <p class="id">"Lafaz bahasa Arab" mencakup lafaz mufrad (tunggal) dan lafaz murakkab (tersusun), yakni kalimat (jumlah) beserta bagian-bagiannya dan kalimat-kalimat yang saling bertemu. Keadaan kalimat meliputi: isnad khabari, insya', dan gaya pembatasan (qashr). Keadaan rangkaian kalimat meliputi: fashl dan washl, ijaz, ithnab, dan musawah. Adapun keadaan bagian-bagian kalimat, yaitu musnad, musnad ilaih, dan muta'alliqat al-fi'l, meliputi ta'rif dan tankir, hadzf dan dzikr, taqdim dan ta'khir, izhhar dan idhmar, serta hal-hal lainnya.</p>
+    </div>
+    <div class="ayat">
+      <p class="ar">فَعِلْمُ الْمَعَانِي يَبْحَثُ فِي تِلْكَ الْأَحْوَالِ، وَكَيْفَ تَأْتِي مُطَابِقَةً لِمُقْتَضَى حَالِ الْمُخَاطَبِ، أَيْ أَنَّهُ يَبْحَثُ فِي بِنَاءِ الْجُمْلَةِ الْعَرَبِيَّةِ، صِيَاغَتِهَا، اخْتِيَارِ أَجْزَائِهَا، عَلَاقَةِ الْجُمَلِ الْمُتَتَابِعَةِ بَعْضِهَا بِبَعْضٍ، وَاخْتِيَارِ نَوْعِ الْكَلَامِ الْمُلَائِمِ لِمُقْتَضَى حَالِ الْمُخَاطَبِ، خَبَرًا أَوْ إِنْشَاءً، إِيجَازًا أَوْ إِطْنَابًا أَوْ مُسَاوَاةً، وَلِذَا فَإِنَّ مَبَاحِثَهُ تَنْحَصِرُ فِيمَا يَلِي:</p>
+      <p class="id">Maka ilmu ma'ani membahas keadaan-keadaan tersebut dan bagaimana ia hadir sesuai dengan tuntutan keadaan mukhathab (lawan bicara). Artinya, ia membahas bangunan kalimat Arab, penyusunannya, pemilihan bagian-bagiannya, hubungan antara kalimat-kalimat yang berurutan, serta pemilihan jenis ucapan yang sesuai dengan tuntutan keadaan mukhathab: berupa khabar atau insya', ijaz, ithnab, atau musawah. Karena itu pembahasannya terbatas pada hal-hal berikut:</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">١ - أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ.</p>
+      <p class="id">1. Keadaan isnad khabari.</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٢ - أَحْوَالُ الْمُسْنَدِ إِلَيْهِ.</p>
+      <p class="id">2. Keadaan musnad ilaih.</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٣ - أَحْوَالُ الْمُسْنَدِ.</p>
+      <p class="id">3. Keadaan musnad.</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٤ - أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ.</p>
+      <p class="id">4. Keadaan muta'alliqat al-fi'l (pelengkap kata kerja).</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٥ - أَسَالِيبُ الْقَصْرِ.</p>
+      <p class="id">5. Gaya-gaya pembatasan (qashr).</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٦ - أَسَالِيبُ الْإِنْشَاءِ.</p>
+      <p class="id">6. Gaya-gaya insya'.</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٧ - مَوَاضِعُ الْفَصْلِ وَالْوَصْلِ.</p>
+      <p class="id">7. Tempat-tempat fashl dan washl.</p>
+    </div>
+    <div class="ayat list-item">
+      <p class="ar">٨ - الْإِيجَازُ وَالْإِطْنَابُ وَالْمُسَاوَاةُ.</p>
+      <p class="id">8. Ijaz, ithnab, dan musawah.</p>
+    </div>
+    <div class="ayat">
+      <p class="ar">وَعِلْمُ النَّحْوِ وَإِنْ كَانَ قَدْ تَعَرَّضَ لِدِرَاسَةِ هَذِهِ الْأَحْوَالِ فَدَرَسَ أَحْوَالَ الْمُسْنَدِ إِلَيْهِ مِنْ حَذْفٍ وَذِكْرٍ وَتَقْدِيمٍ وَتَأْخِيرٍ وَتَنْكِيرٍ وَتَعْرِيفٍ، وَكَذَا أَحْوَالَ الْمُسْنَدِ وَالْمُتَعَلِّقَاتِ وَالْحَصْرِ وَغَيْرِ ذَلِكَ.. إِلَّا أَنَّ دِرَاسَتَهُ لَهَا تَخْتَلِفُ عَنْ دِرَاسَةِ الْبَلَاغِيِّينَ، فَالنَّحْوِيُّ يَدْرُسُ هَذِهِ الْأَحْوَالَ مِنْ حَيْثُ الْجَوَازُ وَالْوُجُوبُ وَالِامْتِنَاعُ أَيْ مِنْ</p>
+      <p class="id">Ilmu nahwu, meskipun telah menyinggung kajian keadaan-keadaan ini, yaitu mengkaji keadaan musnad ilaih berupa hadzf, dzikr, taqdim, ta'khir, tankir, dan ta'rif, begitu pula keadaan musnad, muta'alliqat, hashr, dan lainnya, namun kajiannya berbeda dengan kajian para ahli balaghah. Ahli nahwu mengkaji keadaan-keadaan ini dari segi boleh, wajib, dan tidak bolehnya, yakni dari … (bersambung ke hlm. 42).</p>
+    </div>
+    <h3 class="bagian__judul" id="farq-khabar-insya">الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ</h3>
+    <p class="judul__id">Perbedaan khabar dan insya'</p>
+    <div class="hal" id="hal-42"><span>Hlm. 42</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 42: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 42: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-43"><span>Hlm. 43</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 43: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 43: tulis di sini ]</p>
+    </div>
+    <h2 class="pasal__judul" id="fasl-1">الْفَصْلُ الْأَوَّلُ: أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ</h2>
+    <p class="judul__id">Fasal 1: Keadaan Isnad Khabari</p>
+    <h3 class="bagian__judul" id="makna-isnad">مَعْنَى الْإِسْنَادِ وَأَغْرَاضُ الْخَبَرِ</h3>
+    <p class="judul__id">Makna isnad dan tujuan-tujuan khabar</p>
+    <div class="hal" id="hal-44"><span>Hlm. 44</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 44: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 44: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-45"><span>Hlm. 45</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 45: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 45: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-46"><span>Hlm. 46</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 46: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 46: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="wajh-dalalah">وَجْهُ دَلَالَةِ الْخَبَرِ عَلَى أَغْرَاضِهِ</h3>
+    <p class="judul__id">Cara khabar menunjukkan tujuan-tujuannya</p>
+    <div class="hal" id="hal-47"><span>Hlm. 47</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 47: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 47: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="adhrub-khabar">أَضْرُبُ الْخَبَرِ</h3>
+    <p class="judul__id">Macam-macam khabar</p>
+    <div class="hal" id="hal-48"><span>Hlm. 48</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 48: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 48: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-49"><span>Hlm. 49</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 49: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 49: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-50"><span>Hlm. 50</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 50: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 50: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</h3>
+    <p class="judul__id">Mengeluarkan ucapan menyelisihi tuntutan makna lahir</p>
+    <div class="hal" id="hal-51"><span>Hlm. 51</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 51: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 51: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-52"><span>Hlm. 52</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 52: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 52: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-53"><span>Hlm. 53</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 53: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 53: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-54"><span>Hlm. 54</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 54: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 54: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-55"><span>Hlm. 55</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 55: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 55: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-56"><span>Hlm. 56</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 56: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 56: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-57"><span>Hlm. 57</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 57: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 57: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-58"><span>Hlm. 58</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 58: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 58: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-59"><span>Hlm. 59</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 59: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 59: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="tajawwuz-isnad">التَّجَوُّزُ فِي الْإِسْنَادِ</h3>
+    <p class="judul__id">Majaz dalam isnad</p>
+    <h3 class="bagian__judul" id="nau-isnad">نَوْعَا الْإِسْنَادِ</h3>
+    <p class="judul__id">Dua jenis isnad</p>
+    <div class="hal" id="hal-60"><span>Hlm. 60</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 60: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 60: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-61"><span>Hlm. 61</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 61: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 61: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-62"><span>Hlm. 62</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 62: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 62: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-63"><span>Hlm. 63</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 63: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 63: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-64"><span>Hlm. 64</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 64: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 64: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="haqiqah-aqliyyah">الْحَقِيقَةُ الْعَقْلِيَّةُ</h3>
+    <p class="judul__id">Hakikat aqliyah</p>
+    <div class="hal" id="hal-65"><span>Hlm. 65</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 65: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 65: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-66"><span>Hlm. 66</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 66: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 66: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="majaz-aqli">الْمَجَازُ الْعَقْلِيُّ</h3>
+    <p class="judul__id">Majaz aqli</p>
+    <h3 class="bagian__judul" id="tarif-khathib">تَعْرِيفُ الْخَطِيبِ لِلْمَجَازِ الْعَقْلِيِّ</h3>
+    <p class="judul__id">Definisi Al-Khathib tentang majaz aqli</p>
+    <div class="hal" id="hal-67"><span>Hlm. 67</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 67: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 67: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="alaqat-majaz">عَلَاقَاتُ الْمَجَازِ الْعَقْلِيِّ (مُلَابَسَاتُهُ)</h3>
+    <p class="judul__id">Hubungan (mulabasat) majaz aqli</p>
+    <h3 class="bagian__judul" id="isnad-ilal-maful">إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى الْمَفْعُولِ</h3>
+    <p class="judul__id">Isnad bentuk aktif kepada maf'ul</p>
+    <div class="hal" id="hal-68"><span>Hlm. 68</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 68: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 68: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-69"><span>Hlm. 69</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 69: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 69: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilal-fail">إِسْنَادُ الْمَبْنِيِّ لِلْمَفْعُولِ إِلَى الْفَاعِلِ</h3>
+    <p class="judul__id">Isnad bentuk pasif kepada fa'il</p>
+    <div class="hal" id="hal-70"><span>Hlm. 70</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 70: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 70: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilal-mashdar">إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى مَصْدَرِهِ</h3>
+    <p class="judul__id">Isnad kepada mashdarnya</p>
+    <div class="hal" id="hal-71"><span>Hlm. 71</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 71: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 71: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilaz-zaman">الْإِسْنَادُ إِلَى الزَّمَانِ</h3>
+    <p class="judul__id">Isnad kepada waktu</p>
+    <div class="hal" id="hal-72"><span>Hlm. 72</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 72: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 72: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilal-makan">الْإِسْنَادُ إِلَى الْمَكَانِ</h3>
+    <p class="judul__id">Isnad kepada tempat</p>
+    <div class="hal" id="hal-73"><span>Hlm. 73</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 73: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 73: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilas-sabab">الْإِسْنَادُ إِلَى السَّبَبِ</h3>
+    <p class="judul__id">Isnad kepada sebab</p>
+    <div class="hal" id="hal-74"><span>Hlm. 74</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 74: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 74: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilal-jins">الْإِسْنَادُ إِلَى الْجِنْسِ</h3>
+    <p class="judul__id">Isnad kepada jenis</p>
+    <div class="hal" id="hal-75"><span>Hlm. 75</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 75: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 75: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-ilal-jarihah">الْإِسْنَادُ إِلَى الْجَارِحَةِ وَمَا لَهُ مَزِيدُ اخْتِصَاصٍ بِالْفَاعِلِ الْحَقِيقِيِّ</h3>
+    <p class="judul__id">Isnad kepada anggota tubuh dan yang paling berkaitan dengan pelaku sebenarnya</p>
+    <h3 class="bagian__judul" id="nisbah-idhafiyyah">النِّسْبَةُ الْإِضَافِيَّةُ وَالْإِيقَاعِيَّةُ وَالْوَصْفِيَّةُ</h3>
+    <p class="judul__id">Nisbah idhafiyah, iqa'iyah, dan washfiyah</p>
+    <div class="hal" id="hal-76"><span>Hlm. 76</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 76: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 76: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="isnad-mubtada-khabar">الْإِسْنَادُ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ</h3>
+    <p class="judul__id">Isnad antara mubtada' dan khabar</p>
+    <div class="hal" id="hal-77"><span>Hlm. 77</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 77: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 77: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-78"><span>Hlm. 78</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 78: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 78: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="qarinah-majaz">قَرِينَةُ الْمَجَازِ الْعَقْلِيِّ</h3>
+    <p class="judul__id">Qarinah majaz aqli</p>
+    <div class="hal" id="hal-79"><span>Hlm. 79</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 79: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 79: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-80"><span>Hlm. 80</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 80: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 80: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="farq-majaz">الْفَرْقُ بَيْنَ الْمَجَازِ الْعَقْلِيِّ وَالْمَجَازِ اللُّغَوِيِّ</h3>
+    <p class="judul__id">Perbedaan majaz aqli dan majaz lughawi</p>
+    <div class="hal" id="hal-81"><span>Hlm. 81</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 81: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 81: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="shuwar-majaz">صُوَرُ الْمَجَازِ الْعَقْلِيِّ</h3>
+    <p class="judul__id">Bentuk-bentuk majaz aqli</p>
+    <div class="hal" id="hal-82"><span>Hlm. 82</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 82: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 82: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-83"><span>Hlm. 83</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 83: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 83: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-84"><span>Hlm. 84</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 84: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 84: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-85"><span>Hlm. 85</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 85: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 85: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-86"><span>Hlm. 86</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 86: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 86: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="istilzam">اسْتِلْزَامُ الْمَجَازِ الْعَقْلِيِّ الْحَقِيقَةَ الْعَقْلِيَّةَ</h3>
+    <p class="judul__id">Majaz aqli mengharuskan adanya hakikat aqliyah</p>
+    <div class="hal" id="hal-87"><span>Hlm. 87</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 87: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 87: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-88"><span>Hlm. 88</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 88: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 88: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-89"><span>Hlm. 89</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 89: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 89: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="inkar-majaz">إِنْكَارُ الْمَجَازِ الْعَقْلِيِّ</h3>
+    <p class="judul__id">Pengingkaran terhadap majaz aqli</p>
+    <div class="hal" id="hal-90"><span>Hlm. 90</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 90: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 90: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-91"><span>Hlm. 91</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 91: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 91: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-92"><span>Hlm. 92</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 92: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 92: tulis di sini ]</p>
+    </div>
+    <h3 class="bagian__judul" id="balaghah-majaz">بَلَاغَةُ الْمَجَازِ الْعَقْلِيِّ وَدِقَّةُ مَسْلَكِهِ</h3>
+    <p class="judul__id">Balaghah majaz aqli dan kehalusan alurnya</p>
+    <div class="hal" id="hal-93"><span>Hlm. 93</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 93: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 93: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-94"><span>Hlm. 94</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 94: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 94: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-95"><span>Hlm. 95</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 95: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 95: tulis di sini ]</p>
+    </div>
+    <div class="hal" id="hal-96"><span>Hlm. 96</span></div>
+    <div class="ayat">
+      <p class="ar kosong">[ نَصُّ الصَّفْحَةِ 96: ضَعْهُ هُنَا ]</p>
+      <p class="id kosong">[ Terjemah hlm. 96: tulis di sini ]</p>
+    </div>
+
+  </div>
+</section>
+
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+    pageEl.style.display = curPage ? '' : 'none';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script src="../../../../assets/halaman.js?v=12"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
