@@ -1,0 +1,167 @@
+@meta out=Kitab Ilmu Al Maani (Fasal 5 Asalib Al Qashr)(Hlm 281-348).html
+@meta title=أساليب القصر
+@meta h1=أَسَالِيبُ الْقَصْرِ
+@meta subtitle=Fasal 5: Gaya Pembatasan (Qashr)
+@meta note=ringkasan dibuat langsung dari docx hlm. 260–350; hlm. 282 tidak ada di docx
+# Ringkasan per halaman, belum terjemah baris demi baris.
+@bab juz-2|الْجُزْءُ الثَّانِي: أَحْوَالُ الْجُمْلَةِ وَالْجُمَلِ|Juz 2: Keadaan Kalimat dan Rangkaian Kalimat|281
+@hal 281
+~(Hlm. 281–282) Halaman pembuka Jilid 2: Keadaan Kalimat dan Rangkaian Kalimat. Daftar bahasannya: gaya qashr, gaya insya', fashl dan washl, serta ijaz dan ithnab. Hlm. 282 tidak ada di docx dan kemungkinan halaman kosong.
+@hal 282
+@bab fasl-5|الْفَصْلُ الْخَامِسُ: أَسَالِيبُ الْقَصْرِ|Fasal 5: Gaya Pembatasan (Qashr)|283
+@sub madkhal-qashr|مَدْخَلٌ وَتَعْرِيفُ الْقَصْرِ|Pengantar dan definisi qashr|283
+@hal 283
+~Pengantar gaya qashr: ia kaya dengan pertimbangan halus, "seni yang halus alirannya, tinggi nilainya, dan banyak faedahnya". Contoh bait Ibnu Qais Ar-Ruqayyat yang memakai "innama" untuk mubalaghah, lalu dimulai definisi qashr.
+@hal 284
+~Ungkapan sehari-hari yang menunjukkan kekhususan ("hanya dia yang...") belum tentu qashr dalam istilah balaghah. Qashr adalah mengkhususkan sesuatu dengan sesuatu lewat cara tertentu.
+@hal 285
+~Dua istilah: maqshur dan maqshur 'alaih, dengan contoh "ma sya'ir illa Zuhair". Bila yang dinafikan umum, qashr-nya haqiqi; bila tertentu, qashr-nya idhafi.
+@sub qashr-haqiqi-idhafi|الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ|Qashr haqiqi dan qashr idhafi|286
+@hal 286
+~Pembagian qashr menurut tujuan pembicara: qashr haqiqi dan qashr idhafi. Qashr haqiqi tidak melampaui maqshur 'alaih ke selainnya, dan terbagi lagi menjadi tahqiqi dan iddi'a'i.
+@hal 287
+~Qashr haqiqi tahqiqi sesuai kenyataan, dengan contoh "tidak berhaji ke Makkah kecuali orang Muslim" dan pembahasan ayat tentang memohon pertolongan.
+@hal 288
+~Perdebatan ahli kalam seputar qashr haqiqi (misalnya soal sifat yang dinafikan dan lawannya) yang dianggap menyimpang dari kajian balaghah. Penulis menganjurkan pelajar menjauhinya.
+@hal 289
+~Qashr haqiqi iddi'a'i: pembatasan secara klaim dan mubalaghah, dengan contoh ayat "innama yakhsya Allah min 'ibadihi al-'ulama'" dan bait tentang kepenyairan.
+@sub ifrad-qalb-tayin|قَصْرُ الْإِفْرَادِ وَالْقَلْبِ وَالتَّعْيِينِ|Qashr ifrad, qalb, dan ta'yin|290
+@hal 290
+~Contoh qashr iddi'a'i dalam bait "la saifa illa dzul faqar". Lalu dimulai qashr idhafi dan pembagiannya menurut keadaan mukhathab.
+@sub qashr-qalb|قَصْرُ الْقَلْبِ|Qashr qalb|291
+@hal 291
+~Qashr idhafi dengan contoh ucapan Imam Ali. Tiga jenisnya menurut keyakinan mukhathab: qalb, ifrad, dan ta'yin. Dimulai qashr qalb dengan bait Abu Tammam tentang kemenangan di 'Ammuriyyah.
+@sub qashr-ifrad|قَصْرُ الْإِفْرَادِ|Qashr ifrad|292
+@hal 292
+~Penjelasan bait Abu Tammam sebagai qashr qalb: ilmu ada pada kekuatan pedang, bukan pada para ahli nujum. Lalu qashr ifrad, antara lain dengan ayat tentang tugas Nabi sebagai pemberi peringatan.
+@sub qashr-tayin|قَصْرُ التَّعْيِينِ|Qashr ta'yin|293
+@hal 293
+~Syarat qashr ifrad pada qashr maushuf atas sifat: dua sifat tidak boleh bertentangan. Sebaliknya, qashr qalb mensyaratkan sifat yang bertentangan. Lalu qashr ta'yin dengan bait tentang pedang dan sarungnya.
+@hal 294
+~Yang dimaksud keadaan mukhathab adalah yang dipahami dari konteks dan qarinah, dengan contoh ayat Ali 'Imran 144 dan Al-Ma'idah tentang Al-Masih.
+@hal 295
+~Lanjutan ayat Al-Ma'idah: konteks yang menentukan jenis qashr, dan juga menentukan maksud seni-seni balaghah lainnya.
+@sub shifah-maushuf|قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ|Qashr sifat atas yang disifati dan sebaliknya|296
+@hal 296
+~Pembagian qashr menurut dua sisinya: qashr sifat atas yang disifati dan qashr yang disifati atas sifat. "Sifat" di sini berarti makna yang berdiri pada yang lain, bukan na't dalam nahwu. Disertai contoh bait.
+@hal 297
+~Contoh qashr sifat atas yang disifati sebagai qashr haqiqi iddi'a'i (tentang mengusir kegelisahan), lalu contoh lain berikut penjelasan kosakata.
+@hal 298
+~Penjelasan bait "wa innama asyaddu minas saqami..." sebagai qashr sifat atas yang disifati. Lalu contoh qashr yang disifati atas sifat, dengan bait Syauqi tentang syair.
+@hal 299
+~Makna menafikan hal-hal yang terkait dengan sifat itu, bukan menafikan semua sifat. Contoh bait dan satu hadits dari Al-Bukhari.
+@hal 300
+~Contoh qashr haqiqi tahqiqi (penyair membatasi dirinya pada satu kabilah) dan bait Syauqi tentang bangsa dan akhlak sebagai qashr haqiqi iddi'a'i.
+@hal 301
+~Aturan menentukan sifat dan yang disifati: pada jumlah ismiyyah, qashr mubtada' atas khabar adalah qashr maushuf atas sifat. Disertai contoh ayat.
+@hal 302
+~Contoh hadits "fa innama ya'kulu adz-dzi'b al-qashiyah" dan penjelasan bahwa qashr fa'il atas maf'ul dapat dipahami sebagai qashr sifat atas yang disifati.
+@sub farq-iddiai-idhafi|مَا الْفَرْقُ بَيْنَ الْقَصْرِ الْحَقِيقِيِّ الِادِّعَائِيِّ وَالْقَصْرِ الْإِضَافِيِّ؟|Beda qashr haqiqi iddi'a'i dan qashr idhafi|303
+@hal 303
+~Aturan qashr pada jar-majrur dan pada hal (shahib al-hal atas hal). Lalu penegasan bahwa tiga jenis qashr idhafi pun bisa tahqiqi atau iddi'a'i.
+@sub thuruq-qashr|طُرُقُ الْقَصْرِ|Cara-cara qashr|304
+@sub athf-la-bal-lakin|الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ|'Athf dengan "la", "bal", dan "lakin"|304
+@hal 304
+~Dimulai bahasan thuruq al-qashr (cara-cara qashr), yang pertama 'athf dengan "la": ia cara terkuat karena penafiannya disebut tegas.
+@hal 305
+~Syarat "la" menunjukkan qashr: yang di-'athf-kan mufrad, tidak didahului nafi atau nahi, dan yang sesudahnya tidak termasuk umum yang sebelumnya. Disertai contoh.
+@hal 306
+~Contoh bait Al-Mikali tentang umur seseorang yang diukur dari jejak baiknya. Lalu "bal" dan "lakin" dan perbedaan pendapat apakah keduanya menunjukkan qashr.
+@hal 307
+~Perbedaan pendapat tentang apa yang sebelum "bal": disenyapkan atau dinafikan, sehingga sebagian menolak bahwa ia menunjukkan qashr. Contoh dan satu bait yang terpengaruh perbedaan riwayat.
+@hal 308
+~Contoh qashr dengan "bal" dan "lakin", antara lain makna yatim sebagai qashr qalb, dan bait Ibnu Al-Mu'tazz.
+@hal 309
+~Contoh bait 'Urwah bin Al-Ward dengan "lakin" yang menunjukkan qashr, dan syarat pemakaian "lakin" tanpa waw.
+@sub nafy-istitsna|النَّفْيُ وَالِاسْتِثْنَاءُ|Penafian dan pengecualian (ma ... illa)|310
+@hal 310
+~Perbedaan pendapat apakah "bal" dan "lakin" adalah cara qashr atau hanya mengandung makna qashr, serta perselisihan seputar "la". Lalu dimulai bahasan nafi dan istitsna' (ma ... illa).
+@hal 311
+~Contoh nafi-istitsna' pada ayat tentang kaum musyrik yang mengingkari wahyu kepada Nabi, dan aturan bahwa maqshur 'alaih adalah yang terletak sesudah alat istitsna'.
+@hal 312
+~Contoh bait Zuhair bin Abi Sulma dan Al-Mutanabbi, serta beberapa pola nafi-istitsna' dalam kalimat yang memuat maf'ul.
+@hal 313
+~Pembahasan mendahulukan mustatsna atas mustatsna minhu, perbedaan pendapat ulama, dan kapan hal itu dibolehkan.
+@sub wajh-dalalah|وَجْهُ دَلَالَةِ النَّفْيِ وَالِاسْتِثْنَاءِ عَلَى الْقَصْرِ|Cara nafi-istitsna' menunjukkan qashr|314
+@hal 314
+~Bait Al-Mutanabbi yang memuat beberapa qashr sekaligus. Lalu dimulai bahasan cara nafi-istitsna' menunjukkan qashr.
+@sub istitsna-tamm|هَلْ يُفِيدُ الِاسْتِثْنَاءُ التَّامُّ الْقَصْرَ؟|Apakah istitsna' tamm menunjukkan qashr?|315
+@hal 315
+~Penjelasan cara nafi dan istitsna' menunjukkan qashr. Dimulai bahasan apakah istitsna' tamm menunjukkan qashr.
+@hal 316
+~Contoh bait Al-Mutanabbi dan perbedaan pendapat apakah istitsna' tamm termasuk cara qashr dalam istilah. Pendapat yang kuat: bukan qashr istilahi.
+@sub ijtima-la|هَلْ يَجُوزُ اجْتِمَاعُ النَّفْيِ وَالِاسْتِثْنَاءِ وَالْعَطْفِ بِلَا؟|Bolehkah nafi-istitsna' digabung dengan "la"?|317
+@sub innama|إِنَّمَا|"Innama"|317
+@hal 317
+~Nafi-istitsna' tidak digabung dengan "la" karena yang dinafikan sudah umum. Lalu dimulai bahasan "innama": ulama menyatakan ia mengandung makna "ma" dan "illa".
+@hal 318
+~Dalil-dalil bahwa "innama" menunjukkan qashr, di antaranya tiga qira'at ayat An-Nahl 115 dan penafsiran para sahabat.
+@hal 319
+~Dalil pemisahan dhamir: dalam "innama yaqumu ana" dhamir dipisah, tanda "innama" bermakna "ma" dan "illa". Contoh bait 'Amr bin Ma'dikarib.
+@hal 320
+~Bantahan atas pendapat bahwa qashr dalam bait itu berasal dari ta'rif dua sisi, dan penjelasan makna "man" dan "ma" dalam konteks pujian.
+@hal 321
+~Contoh ayat Al-Ahqaf tentang Nabi Hud: ia hanya penyampai dan pengetahuan tentang azab ada pada Allah. "Innama" juga dipakai untuk perkara yang sudah dikenal.
+@hal 322
+~Contoh ayat tentang apa yang diperintahkan setan (Al-Baqarah 169) dan ayat Ar-Ra'd 7 yang menunjukkan qashr ifrad, serta jenis qashr yang dihasilkan "innama".
+@sub anna-qashr|هَلْ تُفِيدُ «أَنَّمَا» الْقَصْرَ؟|Apakah "annama" menunjukkan qashr?|323
+@sub taqdim-qashr|التَّقْدِيمُ|Taqdim (mendahulukan)|323
+@hal 323
+~'Abdul Qahir menyatakan "innama" hanya untuk qashr qalb, sedangkan penulis dan jumhur menyatakan ia dipakai untuk semua jenis. Lalu apakah "annama" menunjukkan qashr, dan dimulai bahasan taqdim.
+@hal 324
+~Mendahulukan musnad ilaih dengan alat nafi menunjukkan qashr, dengan contoh bait Al-Mutanabbi dan rujukan ke Jilid 1.
+@hal 325
+~Mendahulukan muta'alliqat atas fi'il sebagai cara qashr: bait Imam Ali, bait Abu Tammam, dan ayat "iyyaka na'budu wa iyyaka nasta'in".
+@sub dhamir-fashl|ضَمِيرُ الْفَصْلِ|Dhamir fashl|326
+@hal 326
+~Dhamir fashl sebagai cara qashr menurut sebagian ahli balaghah, dengan contoh "Zuhair huwa asy-sya'ir" dan perselisihan nahwu tentang kedudukannya.
+@hal 327
+~Contoh ayat Al-Ma'idah 117 ("kunta anta ar-raqib") dan ayat tentang penghuni surga yang memakai dhamir fashl untuk menguatkan qashr.
+@sub tarif-al|تَعْرِيفُ الْمُسْنَدِ أَوِ الْمُسْنَدِ إِلَيْهِ «بِأَلْ»|Ta'rif musnad atau musnad ilaih dengan "al"|328
+@hal 328
+~Cara terakhir: ta'rif musnad atau musnad ilaih dengan alif lam. Bila mubtada' dan khabar sama-sama ma'rifah, yang pertama dianggap mubtada', dengan contoh kalimat.
+@hal 329
+~Contoh bait Al-A'sya yang membatasi pemberian pada yang dipuji dengan batasan tertentu, dan contoh yang bukan qashr.
+@sub furuq-thuruq|فُرُوقُ طُرُقِ الْقَصْرِ وَأَوْجُهُ الِاخْتِلَافِ بَيْنَهَا|Perbedaan cara-cara qashr|330
+@hal 330
+~Dimulai bagian perbedaan antara cara-cara qashr. Yang pertama: cara-cara itu menunjukkan qashr dengan dalalah yang berbeda-beda.
+@hal 331
+~Penegasan bahwa dalalah wadh'iyyah cara-cara qashr tidak menghalangi kajiannya dalam ilmu ma'ani, dan perbedaan lain tentang yang disebut dan yang disenyapkan dalam tiap cara.
+@sub ijtima-tariqain|اجْتِمَاعُ طَرِيقَيْنِ مِنْ طُرُقِ الْقَصْرِ|Dua cara qashr dalam satu kalimat|332
+@hal 332
+~Lanjutan perbedaan antar-cara. Lalu bagian dua cara qashr dalam satu kalimat: nafi-istitsna' tidak boleh digabung dengan "la".
+@hal 333
+~Taqdim atau ta'rif boleh digabung dengan "la" ("Zaid al-karim la 'Amr") karena tidak bertentangan, tetapi pasangan yang bertentangan tidak boleh. Contoh gabungan "innama" dan taqdim.
+@hal 334
+~Penggabungan "innama" dengan taqdim: maknanya menuntut taqdim sebagai cara qashr dan "innama" dianggap tidak berfungsi, dengan contoh bait ratapan.
+@hal 335
+~Contoh bait Al-Mutanabbi tentang nama-nama leluhur yang tidak menambah pengenalan, dan kesimpulan tentang penggabungan dua cara qashr.
+@sub innama-vs-nafy|بَيْنَ «إِنَّمَا» وَ«النَّفْيِ وَالِاسْتِثْنَاءِ»|Antara "innama" dan nafi-istitsna'|336
+@hal 336
+~Penulis tidak setuju bersandar pada contoh buatan; lebih baik pada ungkapan sastrawan. Dimulai bahasan perbedaan "innama" dan nafi-istitsna', dengan contoh ayat Ali 'Imran 62.
+@hal 337
+~Contoh ayat Al-An'am 25–26. Perbedaan pokok: nafi-istitsna' dipakai untuk perkara yang diingkari, sedangkan "innama" untuk perkara yang diketahui.
+@hal 338
+~Contoh bait tentang uban yang menambah kedermawanan dan kaidah bahwa nafi-istitsna' dipakai pada perkara yang pantas ditolak.
+@hal 339
+~Contoh ayat Ibrahim 10–11, yaitu para rasul menjawab pengingkaran kaumnya yang berkata "kalian hanyalah manusia seperti kami".
+@hal 340
+~Contoh ayat Fathir 19–23 tentang tugas Nabi, lalu pembahasan ayat Yunus a.s. di mana penegasan pada khabar bukan karena keadaan lawan bicara.
+@hal 341
+~Penegasan karena keadaan pembicara (Yunus a.s.). Lalu "innama" digambarkan sebagai alat isyarat dan peringatan untuk perkara yang sudah diketahui.
+@hal 342
+~Contoh kalimat "innama huwa akhuka" dan bait yang memakai "innama" untuk mengingatkan perkara yang jelas.
+@hal 343
+~Bait Al-Khathafi dan bait lain tentang hakikat yang jelas, sebagai contoh "innama" untuk perkara yang tidak diingkari.
+@hal 344
+~Ayat Al-Baqarah 11–12 ("innama nahnu mushlihun"): kaum munafik memakai "innama" untuk menjadikan klaim mereka seolah perkara jelas, dan jawaban keras "ala innahum hum al-mufsidun".
+@sub tahdid-mawqi|تَحْدِيدُ مَوْقِعِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ|Menentukan letak maqshur dan maqshur 'alaih|345
+@hal 345
+~Dimulai bagian letak maqshur dan maqshur 'alaih: pada "innama" ia yang terakhir, pada taqdim yang didahulukan, pada nafi-istitsna' yang sesudah alat istitsna'.
+@sub jamal-tariidh|جَمَالُ التَّعْرِيضِ «بِإِنَّمَا»|Keindahan ta'ridh dengan "innama"|346
+@hal 346
+~Aturan letak maqshur 'alaih pada nafi-istitsna' dan perubahan makna bila letaknya berubah. Lalu bagian ta'ridh dengan "innama", yang menurut 'Abdul Qahir adalah tempat "innama" paling kuat.
+@hal 347
+~Contoh bait Al-'Abbas bin Al-Ahnaf yang bermakna sindiran halus lewat "innama", dan contoh lain tentang ta'ridh.
+@hal 348
+~Penjelasan 'Abdul Qahir tentang kaitan ta'ridh dan "innama", dengan contoh ayat Ar-Ra'd 19 ("innama yatadzakkaru ulul albab"). Penutup Fasal 5.

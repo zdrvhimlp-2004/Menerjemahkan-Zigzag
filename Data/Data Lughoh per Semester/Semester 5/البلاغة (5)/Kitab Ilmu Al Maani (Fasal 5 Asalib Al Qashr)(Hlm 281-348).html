@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>أساليب القصر — Terjemah Biasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+
+    --isi: #2f6b4f;      --isi-bg: #f1f6ee;
+    --nz: #6a3fa0;       --nz-ink: #4b2a80;   --nz-id: #6d5a8e;  --nz-bg: #f0eaf9;  --nz-line: #d9cbee;
+    --q: #9a6a00;        --q-bg: #fbf0cf;
+    --h: #0b6e6e;        --h-bg: #daf1ef;
+    --sy: #1f5fae;       --sy-ink: #164a8a;   --sy-id: #4f6f97;  --sy-bg: #e2edfb;  --sy-line: #bcd3f0;
+    --k: #b4531a;        --k-bg: #fbe4d2;
+    --c: #a8204f;        --c-bg: #fddce8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+
+      --isi: #7fc9a6;    --isi-bg: #1b2320;
+      --nz: #b99cee;     --nz-ink: #d6c4fa;   --nz-id: #a898c8;  --nz-bg: #2a2140;  --nz-line: #45375f;
+      --q: #e6b850;      --q-bg: #33280f;
+      --h: #63d2cc;      --h-bg: #12302f;
+      --sy: #7fb2f2;     --sy-ink: #b5d3fb;   --sy-id: #8fa9c9;  --sy-bg: #172a44;  --sy-line: #2c4a72;
+      --k: #f2a06b;      --k-bg: #3a2414;
+      --c: #ff9cbc;      --c-bg: #4a2132;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.25rem, 4vw, 2rem); }
+
+  /* ---------- baris Arab + Indonesia ---------- */
+  .ayat { display: flex; flex-direction: column; gap: 0.1rem; padding: clamp(0.5rem, 1.6vw, 0.75rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.35rem, 1rem + 2vw, 2rem); line-height: 2.05; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  /* ---------- jenis teks ---------- */
+  .blk { margin: 0.5rem 0; }
+  .blk-p { border-right: 3px solid var(--isi); padding: 0 clamp(0.6rem, 2vw, 1rem); margin: 0.9rem 0; }
+  .blk-p .ayat .ar { color: var(--ar-color); }
+
+  .blk-nz { background: var(--nz-bg); border-right: 5px solid var(--nz); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.4rem 0; }
+  .blk-nz .ayat .ar { color: var(--nz-ink); }
+  .blk-nz .ayat .id { color: var(--nz-id); }
+  .blk-nz .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-nz .bait + .bait { margin-top: 0.45rem; }
+
+  .blk-sy { background: var(--sy-bg); border-right: 5px solid var(--sy); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.2rem 0; }
+  .blk-sy .ayat .ar { color: var(--sy-ink); }
+  .blk-sy .ayat .id { color: var(--sy-id); }
+  .blk-sy .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-sy .bait + .bait { margin-top: 0.45rem; }
+
+  .tag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.8rem; padding: 0.2rem 0 0.35rem; direction: rtl; }
+  .tag__k { font-family: 'Amiri', serif; font-weight: 700; font-size: 1rem; }
+  .tag__t { direction: ltr; font-size: clamp(0.72rem, 0.66rem + 0.35vw, 0.85rem); font-weight: 500; }
+  .blk-nz .tag__k, .blk-nz .tag__t { color: var(--nz); }
+  .blk-sy .tag__k, .blk-sy .tag__t { color: var(--sy); }
+  .tag--cont .tag__t { font-style: italic; opacity: 0.8; }
+
+  /* ---------- span dalam baris ---------- */
+  .ayat .c, .legend .c { background: var(--c-bg); color: var(--c); border-radius: 0.45em; padding: 0.05em 0.3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .q, .legend .q { background: var(--q-bg); color: var(--q); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .h, .legend .h { background: var(--h-bg); color: var(--h); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .k, .legend .k { background: var(--k-bg); color: var(--k); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .ref { font-size: 0.85em; color: var(--q); opacity: 0.9; }
+  .ayat .id .c { font-weight: 500; }
+
+  /* baris yang hampir seluruhnya syahid */
+  .ayat.rq, .ayat.rh, .ayat.rk { border-radius: 10px; padding: clamp(0.5rem, 1.6vw, 0.75rem) clamp(0.6rem, 2vw, 0.9rem); margin: 0.15rem 0; }
+  .ayat.rq { background: var(--q-bg); border-right: 3px solid var(--q); }
+  .ayat.rh { background: var(--h-bg); border-right: 3px solid var(--h); }
+  .ayat.rk { background: var(--k-bg); border-right: 3px solid var(--k); }
+
+  /* ---------- judul bab & pembatas halaman ---------- */
+  .bab { background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2.5rem, 7vw, 4rem) 0 clamp(1.25rem, 4vw, 1.75rem); text-align: center; scroll-margin-top: 1rem; }
+  .bab__ar { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); line-height: 1.6; }
+  .bab__id { direction: ltr; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem); color: var(--id-color); font-weight: 500; }
+  .sub { font-family: 'Amiri', serif; font-size: 1.3rem; color: var(--heading); text-align: center; margin-top: 1.5rem; }
+  .sub__id { text-align: center; direction: ltr; font-size: 0.85rem; color: var(--muted); }
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+  [id^="nz-"], [id^="sy-"], [id^="qs-"], [id^="hd-"], [id^="kl-"] { scroll-margin-top: 1rem; }
+
+  /* ---------- ringkasan bab ---------- */
+  .ringkasan { background: var(--isi-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 3vw, 1.4rem); margin: 0 0 clamp(1.5rem, 4vw, 2.25rem); }
+  .ringkasan__judul { direction: ltr; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.6rem; }
+  .ringkasan__ar { direction: rtl; font-family: 'Amiri', serif; font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem); line-height: 2; color: var(--ar-color); margin-bottom: 0.7rem; }
+  .ringkasan__id { direction: ltr; font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem); color: var(--id-color); }
+
+  /* ---------- legenda ---------- */
+  .legend { direction: ltr; border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1rem, 3vw, 1.5rem); margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+  .legend__judul { font-weight: 600; font-size: clamp(0.85rem, 0.8rem + 0.4vw, 1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+  .legend ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.5rem 1rem; }
+  .legend li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--id-color); }
+  .legend .sw { flex: 0 0 auto; min-width: 4.2rem; text-align: center; border-radius: 8px; padding: 0.2rem 0.5rem; font-family: 'Amiri', serif; font-weight: 700; font-size: 1.1rem; line-height: 1.6; direction: rtl; }
+  .sw--isi { border-right: 3px solid var(--isi); color: var(--ar-color); background: var(--isi-bg); }
+  .sw--nz { background: var(--nz-bg); border-right: 4px solid var(--nz); color: var(--nz-ink); }
+  .sw--sy { background: var(--sy-bg); border-right: 4px solid var(--sy); color: var(--sy-ink); }
+  .legend .sw.c, .legend .sw.q, .legend .sw.h, .legend .sw.k { padding: 0.2rem 0.5rem; border-radius: 8px; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; background: var(--pasal-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem); margin-bottom: clamp(1.5rem, 5vw, 2.5rem); scroll-margin-top: 1rem; }
+  .daftar-isi__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.9rem; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc__btn { font: inherit; font-size: 0.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .toc__btn:hover { color: var(--heading); border-color: var(--heading); }
+  .toc { list-style: none; }
+  .toc__bab { margin-bottom: 0.7rem; }
+  .toc__bab > details > summary { cursor: pointer; display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; row-gap: 0.05rem; align-items: baseline; list-style-position: inside; padding: 0.3rem 0; }
+  .toc__no { grid-row: 1 / span 3; font-weight: 600; color: var(--id-color); }
+  .toc__ar { direction: rtl; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sec { margin: 0.6rem 0 0.4rem 1.6rem; }
+  .toc__sec h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.3rem; }
+  .toc__sec h4 small { text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .toc__sec ol { list-style: decimal; padding-left: 1.4rem; }
+  .toc__sec ul { list-style: none; }
+  .toc__sec li { margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--muted); }
+  .toc__sec a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; text-decoration: none; color: var(--id-color); }
+  .toc__sec a:hover .toc__t { color: var(--heading); }
+  .toc__t { flex: 1 1 60%; }
+  .toc__a { direction: rtl; font-family: 'Amiri', serif; font-size: 1.05rem; color: var(--nz-ink); flex: 0 1 auto; }
+  .toc__sy .toc__a { color: var(--ar-color); }
+  .toc__ref { font-size: 0.72rem; color: var(--q); }
+  .chip { flex: 0 0 auto; font-size: 0.66rem; font-weight: 600; padding: 0.05rem 0.5rem; border-radius: 999px; letter-spacing: 0.02em; }
+  .chip--sy { background: var(--sy-bg); color: var(--sy); }
+  .chip--q { background: var(--q-bg); color: var(--q); }
+  .chip--h { background: var(--h-bg); color: var(--h); }
+  .chip--k { background: var(--k-bg); color: var(--k); }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--legend { top: clamp(0.8rem, 2vw, 1.4rem); left: clamp(0.8rem, 2vw, 1.4rem); background: var(--card); color: var(--heading); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(720px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal.modal--wide { max-width: min(900px, 94vw); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.4rem); left: calc(clamp(0.8rem, 2vw, 1.4rem) + 3.1rem + 0.6rem); z-index: 25; max-width: min(60vw, 380px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 560px) { .crumb { display: none !important; } }
+  dialog.modal .legend, dialog.modal .daftar-isi { border: none; padding: 0; margin: 0; }
+
+  @media (max-width: 520px) {
+    .toc__sec { margin-left: 0.6rem; }
+    .toc__t { flex-basis: 100%; }
+  }
+
+  /* ---------- tambahan halaman naqd ---------- */
+  .sw--pt { border-right: 3px solid var(--h); color: var(--h); background: var(--h-bg); }
+  .sw--qt { border-right: 3px solid var(--q); color: var(--q); background: var(--q-bg); }
+  .blk-li { position: relative; border-right: 3px solid var(--h); background: var(--h-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li.has-no { padding-left: 2.6rem; }
+  .blk__no { position: absolute; left: 0.55rem; top: 0.75rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; background: var(--h); color: var(--card); font-size: 0.8rem; font-weight: 600; direction: ltr; }
+  .blk-q { border-right: 3px solid var(--q); background: var(--q-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li .ayat .ar, .blk-q .ayat .ar { color: var(--ar-color); }
+  .blk-sy .bait .ayat { gap: 0.1rem; }
+  .cover { margin: 0 0 1.5rem; text-align: center; }
+  .cover .ayat { align-items: center; padding: 0.2rem 0; }
+  .cover .ayat .ar { font-size: clamp(1.1rem, 0.95rem + 1vw, 1.5rem); line-height: 1.9; text-align: center; }
+  .cover .ayat .id { text-align: center; font-size: 0.8rem; }
+  .jadwal { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0 2rem; direction: rtl; }
+  .sat { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) 6rem; border-bottom: 1px solid var(--border); }
+  .sat:last-child { border-bottom: none; }
+  .sel { padding: 0.2rem 0.7rem; border-inline-start: 1px solid var(--border); min-width: 0; }
+  .sel:first-child { border-inline-start: none; }
+  .sel .ayat { padding: 0.3rem 0; }
+  .sel .ayat .ar { font-size: clamp(1.05rem, 0.9rem + 0.9vw, 1.4rem); line-height: 1.8; }
+  .sel .ayat .id { font-size: 0.82rem; }
+  .sel--kepala, .sel--grup, .sel--total { background: var(--pasal-bg); }
+  @media (max-width: 640px) {
+    .sat { grid-template-columns: 1fr auto; }
+    .sat .sel:nth-child(1) { order: 1; border-inline-start: none; }
+    .sat .sel:nth-child(3) { order: 2; }
+    .sat .sel:nth-child(2) { order: 3; grid-column: 1 / -1; border-inline-start: none; border-top: 1px dashed var(--border); }
+  }
+
+  .sub--3 { font-size: 1.1rem; margin-top: 1.1rem; }
+  .bab__ar .br, .sub .br { display: block; }
+  .catatan { direction: ltr; text-align: left; margin: 0 0 1.4rem; padding: 0.8rem 1rem; border: 1px solid #d9a441; border-left-width: 5px; border-radius: 10px; background: color-mix(in srgb, #d9a441 14%, transparent); font-size: 0.85rem; line-height: 1.6; }
+  .catatan strong { display: block; margin-bottom: 0.25rem; }
+  .catatan ul { margin: 0.2rem 0 0 1.1rem; }
+
+  /* ---------- tambahan halaman ilmu lughah ---------- */
+  .sat.sat--2 { grid-template-columns: 3.2rem minmax(0, 1fr); }
+  .sat.sat--3b { grid-template-columns: 3.2rem minmax(0, 1fr) 6rem; }
+  .jadwal .sel .ayat .ar { text-align: right; }
+  .blk strong { font-weight: 700; }
+  .ringkas { direction: ltr; margin: 0.6rem 0; padding: 0.7rem 0.9rem; border-left: 3px solid var(--heading); background: var(--pasal-bg); border-radius: 0 10px 10px 0; }
+  .ringkas__k { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--heading); margin-bottom: 0.2rem; }
+  .ringkas p { font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); line-height: 1.7; }
+  .belum { direction: ltr; text-align: center; font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0.4rem 0; }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=11">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">أَسَالِيبُ الْقَصْرِ</h1>
+    <p class="isi__ket">'Ilm al-Ma'ani &middot; Fasal 5: Gaya Pembatasan (Qashr) &middot; hlm. 281&ndash;348 &middot; 67 ringkasan per halaman &middot; ringkasan dibuat langsung dari docx hlm. 260–350; hlm. 282 tidak ada di docx</p>
+
+    <dialog id="legend-modal" class="modal" aria-label="Kode Warna">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <section class="legend" aria-label="Kode warna">
+        <h2 class="legend__judul">Kode Warna</h2>
+        <ul>
+          <li><span class="sw sw--isi" lang="ar">الشَّرْحُ</span> Isi &mdash; penjelasan dan uraian materi</li>
+          <li><span class="sw sw--pt" lang="ar">نُقْطَةٌ</span> Poin &mdash; daftar butir, tujuan, dan contoh bernomor/berhuruf</li>
+          <li><span class="sw sw--isi" lang="ar"><strong>عُنْوَانٌ</strong></span> Tulisan tebal &mdash; judul butir atau istilah yang sedang dijelaskan</li>
+          <li><span class="sw c" lang="ar">مِثَالٌ</span> Contoh, istilah, dan kutipan (dalam tanda kutip)</li>
+        </ul>
+      </section>
+    </dialog>
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="Fihris (Daftar Isi)">
+      <button type="button" class="modal__close" data-close aria-label="Tutup">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <div class="daftar-isi__head">
+          <h2 class="daftar-isi__judul">Fihris (Daftar Isi) <span lang="ar">الْفِهْرِسُ</span></h2>
+          <button type="button" class="toc__btn" id="toc-toggle" data-open="0">Buka semua</button>
+        </div>
+<ol class="toc">
+<li class="toc__bab"><details><summary><span class="toc__no">1.</span><a class="toc__ar" lang="ar" href="#juz-2">الْجُزْءُ الثَّانِي: أَحْوَالُ الْجُمْلَةِ وَالْجُمَلِ</a><span class="toc__id">Juz 2: Keadaan Kalimat dan Rangkaian Kalimat</span><span class="toc__meta">Hlm. 281</span></summary>
+</details></li>
+<li class="toc__bab"><details><summary><span class="toc__no">2.</span><a class="toc__ar" lang="ar" href="#fasl-5">الْفَصْلُ الْخَامِسُ: أَسَالِيبُ الْقَصْرِ</a><span class="toc__id">Fasal 5: Gaya Pembatasan (Qashr)</span><span class="toc__meta">Hlm. 283 &middot; 24 sub-bab</span></summary>
+<div class="toc__sec"><ol><li><a href="#madkhal-qashr"><span class="toc__t">Pengantar dan definisi qashr</span><span class="toc__a" lang="ar">مَدْخَلٌ وَتَعْرِيفُ الْقَصْرِ</span><span class="toc__ref">Hlm. 283</span></a></li><li><a href="#qashr-haqiqi-idhafi"><span class="toc__t">Qashr haqiqi dan qashr idhafi</span><span class="toc__a" lang="ar">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</span><span class="toc__ref">Hlm. 286</span></a></li><li><a href="#ifrad-qalb-tayin"><span class="toc__t">Qashr ifrad, qalb, dan ta'yin</span><span class="toc__a" lang="ar">قَصْرُ الْإِفْرَادِ وَالْقَلْبِ وَالتَّعْيِينِ</span><span class="toc__ref">Hlm. 290</span></a></li><li><a href="#qashr-qalb"><span class="toc__t">Qashr qalb</span><span class="toc__a" lang="ar">قَصْرُ الْقَلْبِ</span><span class="toc__ref">Hlm. 291</span></a></li><li><a href="#qashr-ifrad"><span class="toc__t">Qashr ifrad</span><span class="toc__a" lang="ar">قَصْرُ الْإِفْرَادِ</span><span class="toc__ref">Hlm. 292</span></a></li><li><a href="#qashr-tayin"><span class="toc__t">Qashr ta'yin</span><span class="toc__a" lang="ar">قَصْرُ التَّعْيِينِ</span><span class="toc__ref">Hlm. 293</span></a></li><li><a href="#shifah-maushuf"><span class="toc__t">Qashr sifat atas yang disifati dan sebaliknya</span><span class="toc__a" lang="ar">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</span><span class="toc__ref">Hlm. 296</span></a></li><li><a href="#farq-iddiai-idhafi"><span class="toc__t">Beda qashr haqiqi iddi'a'i dan qashr idhafi</span><span class="toc__a" lang="ar">مَا الْفَرْقُ بَيْنَ الْقَصْرِ الْحَقِيقِيِّ الِادِّعَائِيِّ وَالْقَصْرِ الْإِضَافِيِّ؟</span><span class="toc__ref">Hlm. 303</span></a></li><li><a href="#thuruq-qashr"><span class="toc__t">Cara-cara qashr</span><span class="toc__a" lang="ar">طُرُقُ الْقَصْرِ</span><span class="toc__ref">Hlm. 304</span></a></li><li><a href="#athf-la-bal-lakin"><span class="toc__t">'Athf dengan "la", "bal", dan "lakin"</span><span class="toc__a" lang="ar">الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</span><span class="toc__ref">Hlm. 304</span></a></li><li><a href="#nafy-istitsna"><span class="toc__t">Penafian dan pengecualian (ma ... illa)</span><span class="toc__a" lang="ar">النَّفْيُ وَالِاسْتِثْنَاءُ</span><span class="toc__ref">Hlm. 310</span></a></li><li><a href="#wajh-dalalah"><span class="toc__t">Cara nafi-istitsna' menunjukkan qashr</span><span class="toc__a" lang="ar">وَجْهُ دَلَالَةِ النَّفْيِ وَالِاسْتِثْنَاءِ عَلَى الْقَصْرِ</span><span class="toc__ref">Hlm. 314</span></a></li><li><a href="#istitsna-tamm"><span class="toc__t">Apakah istitsna' tamm menunjukkan qashr?</span><span class="toc__a" lang="ar">هَلْ يُفِيدُ الِاسْتِثْنَاءُ التَّامُّ الْقَصْرَ؟</span><span class="toc__ref">Hlm. 315</span></a></li><li><a href="#ijtima-la"><span class="toc__t">Bolehkah nafi-istitsna' digabung dengan "la"?</span><span class="toc__a" lang="ar">هَلْ يَجُوزُ اجْتِمَاعُ النَّفْيِ وَالِاسْتِثْنَاءِ وَالْعَطْفِ بِلَا؟</span><span class="toc__ref">Hlm. 317</span></a></li><li><a href="#innama"><span class="toc__t">"Innama"</span><span class="toc__a" lang="ar">إِنَّمَا</span><span class="toc__ref">Hlm. 317</span></a></li><li><a href="#anna-qashr"><span class="toc__t">Apakah "annama" menunjukkan qashr?</span><span class="toc__a" lang="ar">هَلْ تُفِيدُ «أَنَّمَا» الْقَصْرَ؟</span><span class="toc__ref">Hlm. 323</span></a></li><li><a href="#taqdim-qashr"><span class="toc__t">Taqdim (mendahulukan)</span><span class="toc__a" lang="ar">التَّقْدِيمُ</span><span class="toc__ref">Hlm. 323</span></a></li><li><a href="#dhamir-fashl"><span class="toc__t">Dhamir fashl</span><span class="toc__a" lang="ar">ضَمِيرُ الْفَصْلِ</span><span class="toc__ref">Hlm. 326</span></a></li><li><a href="#tarif-al"><span class="toc__t">Ta'rif musnad atau musnad ilaih dengan "al"</span><span class="toc__a" lang="ar">تَعْرِيفُ الْمُسْنَدِ أَوِ الْمُسْنَدِ إِلَيْهِ «بِأَلْ»</span><span class="toc__ref">Hlm. 328</span></a></li><li><a href="#furuq-thuruq"><span class="toc__t">Perbedaan cara-cara qashr</span><span class="toc__a" lang="ar">فُرُوقُ طُرُقِ الْقَصْرِ وَأَوْجُهُ الِاخْتِلَافِ بَيْنَهَا</span><span class="toc__ref">Hlm. 330</span></a></li><li><a href="#ijtima-tariqain"><span class="toc__t">Dua cara qashr dalam satu kalimat</span><span class="toc__a" lang="ar">اجْتِمَاعُ طَرِيقَيْنِ مِنْ طُرُقِ الْقَصْرِ</span><span class="toc__ref">Hlm. 332</span></a></li><li><a href="#innama-vs-nafy"><span class="toc__t">Antara "innama" dan nafi-istitsna'</span><span class="toc__a" lang="ar">بَيْنَ «إِنَّمَا» وَ«النَّفْيِ وَالِاسْتِثْنَاءِ»</span><span class="toc__ref">Hlm. 336</span></a></li><li><a href="#tahdid-mawqi"><span class="toc__t">Menentukan letak maqshur dan maqshur 'alaih</span><span class="toc__a" lang="ar">تَحْدِيدُ مَوْقِعِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ</span><span class="toc__ref">Hlm. 345</span></a></li><li><a href="#jamal-tariidh"><span class="toc__t">Keindahan ta'ridh dengan "innama"</span><span class="toc__a" lang="ar">جَمَالُ التَّعْرِيضِ «بِإِنَّمَا»</span><span class="toc__ref">Hlm. 346</span></a></li></ol></div>
+</details></li>
+</ol>
+      </nav>
+    </dialog>
+
+<header class="bab" id="juz-2"><h2 class="bab__ar" lang="ar">الْجُزْءُ الثَّانِي: أَحْوَالُ الْجُمْلَةِ وَالْجُمَلِ</h2><p class="bab__id">Bab 1 &middot; Juz 2: Keadaan Kalimat dan Rangkaian Kalimat</p></header>
+<div class="hal" id="hal-281"><span>Hlm. 281</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">(Hlm. 281–282) Halaman pembuka Jilid 2: Keadaan Kalimat dan Rangkaian Kalimat. Daftar bahasannya: gaya qashr, gaya insya', fashl dan washl, serta ijaz dan ithnab. Hlm. 282 tidak ada di docx dan kemungkinan halaman kosong.</p></div>
+<div class="hal" id="hal-282"><span>Hlm. 282</span></div>
+<p class="belum" lang="id">Terjemah hlm. 282 belum diisi.</p>
+<header class="bab" id="fasl-5"><h2 class="bab__ar" lang="ar">الْفَصْلُ الْخَامِسُ: أَسَالِيبُ الْقَصْرِ</h2><p class="bab__id">Bab 2 &middot; Fasal 5: Gaya Pembatasan (Qashr)</p></header>
+<h3 class="sub" id="madkhal-qashr" lang="ar">مَدْخَلٌ وَتَعْرِيفُ الْقَصْرِ</h3><p class="sub__id">Pengantar dan definisi qashr</p>
+<div class="hal" id="hal-283"><span>Hlm. 283</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Pengantar gaya qashr: ia kaya dengan pertimbangan halus, "seni yang halus alirannya, tinggi nilainya, dan banyak faedahnya". Contoh bait Ibnu Qais Ar-Ruqayyat yang memakai "innama" untuk mubalaghah, lalu dimulai definisi qashr.</p></div>
+<div class="hal" id="hal-284"><span>Hlm. 284</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Ungkapan sehari-hari yang menunjukkan kekhususan ("hanya dia yang...") belum tentu qashr dalam istilah balaghah. Qashr adalah mengkhususkan sesuatu dengan sesuatu lewat cara tertentu.</p></div>
+<div class="hal" id="hal-285"><span>Hlm. 285</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dua istilah: maqshur dan maqshur 'alaih, dengan contoh "ma sya'ir illa Zuhair". Bila yang dinafikan umum, qashr-nya haqiqi; bila tertentu, qashr-nya idhafi.</p></div>
+<h3 class="sub" id="qashr-haqiqi-idhafi" lang="ar">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</h3><p class="sub__id">Qashr haqiqi dan qashr idhafi</p>
+<div class="hal" id="hal-286"><span>Hlm. 286</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Pembagian qashr menurut tujuan pembicara: qashr haqiqi dan qashr idhafi. Qashr haqiqi tidak melampaui maqshur 'alaih ke selainnya, dan terbagi lagi menjadi tahqiqi dan iddi'a'i.</p></div>
+<div class="hal" id="hal-287"><span>Hlm. 287</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Qashr haqiqi tahqiqi sesuai kenyataan, dengan contoh "tidak berhaji ke Makkah kecuali orang Muslim" dan pembahasan ayat tentang memohon pertolongan.</p></div>
+<div class="hal" id="hal-288"><span>Hlm. 288</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Perdebatan ahli kalam seputar qashr haqiqi (misalnya soal sifat yang dinafikan dan lawannya) yang dianggap menyimpang dari kajian balaghah. Penulis menganjurkan pelajar menjauhinya.</p></div>
+<div class="hal" id="hal-289"><span>Hlm. 289</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Qashr haqiqi iddi'a'i: pembatasan secara klaim dan mubalaghah, dengan contoh ayat "innama yakhsya Allah min 'ibadihi al-'ulama'" dan bait tentang kepenyairan.</p></div>
+<h3 class="sub" id="ifrad-qalb-tayin" lang="ar">قَصْرُ الْإِفْرَادِ وَالْقَلْبِ وَالتَّعْيِينِ</h3><p class="sub__id">Qashr ifrad, qalb, dan ta'yin</p>
+<div class="hal" id="hal-290"><span>Hlm. 290</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh qashr iddi'a'i dalam bait "la saifa illa dzul faqar". Lalu dimulai qashr idhafi dan pembagiannya menurut keadaan mukhathab.</p></div>
+<h3 class="sub" id="qashr-qalb" lang="ar">قَصْرُ الْقَلْبِ</h3><p class="sub__id">Qashr qalb</p>
+<div class="hal" id="hal-291"><span>Hlm. 291</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Qashr idhafi dengan contoh ucapan Imam Ali. Tiga jenisnya menurut keyakinan mukhathab: qalb, ifrad, dan ta'yin. Dimulai qashr qalb dengan bait Abu Tammam tentang kemenangan di 'Ammuriyyah.</p></div>
+<h3 class="sub" id="qashr-ifrad" lang="ar">قَصْرُ الْإِفْرَادِ</h3><p class="sub__id">Qashr ifrad</p>
+<div class="hal" id="hal-292"><span>Hlm. 292</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penjelasan bait Abu Tammam sebagai qashr qalb: ilmu ada pada kekuatan pedang, bukan pada para ahli nujum. Lalu qashr ifrad, antara lain dengan ayat tentang tugas Nabi sebagai pemberi peringatan.</p></div>
+<h3 class="sub" id="qashr-tayin" lang="ar">قَصْرُ التَّعْيِينِ</h3><p class="sub__id">Qashr ta'yin</p>
+<div class="hal" id="hal-293"><span>Hlm. 293</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Syarat qashr ifrad pada qashr maushuf atas sifat: dua sifat tidak boleh bertentangan. Sebaliknya, qashr qalb mensyaratkan sifat yang bertentangan. Lalu qashr ta'yin dengan bait tentang pedang dan sarungnya.</p></div>
+<div class="hal" id="hal-294"><span>Hlm. 294</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Yang dimaksud keadaan mukhathab adalah yang dipahami dari konteks dan qarinah, dengan contoh ayat Ali 'Imran 144 dan Al-Ma'idah tentang Al-Masih.</p></div>
+<div class="hal" id="hal-295"><span>Hlm. 295</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Lanjutan ayat Al-Ma'idah: konteks yang menentukan jenis qashr, dan juga menentukan maksud seni-seni balaghah lainnya.</p></div>
+<h3 class="sub" id="shifah-maushuf" lang="ar">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</h3><p class="sub__id">Qashr sifat atas yang disifati dan sebaliknya</p>
+<div class="hal" id="hal-296"><span>Hlm. 296</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Pembagian qashr menurut dua sisinya: qashr sifat atas yang disifati dan qashr yang disifati atas sifat. "Sifat" di sini berarti makna yang berdiri pada yang lain, bukan na't dalam nahwu. Disertai contoh bait.</p></div>
+<div class="hal" id="hal-297"><span>Hlm. 297</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh qashr sifat atas yang disifati sebagai qashr haqiqi iddi'a'i (tentang mengusir kegelisahan), lalu contoh lain berikut penjelasan kosakata.</p></div>
+<div class="hal" id="hal-298"><span>Hlm. 298</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penjelasan bait "wa innama asyaddu minas saqami..." sebagai qashr sifat atas yang disifati. Lalu contoh qashr yang disifati atas sifat, dengan bait Syauqi tentang syair.</p></div>
+<div class="hal" id="hal-299"><span>Hlm. 299</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Makna menafikan hal-hal yang terkait dengan sifat itu, bukan menafikan semua sifat. Contoh bait dan satu hadits dari Al-Bukhari.</p></div>
+<div class="hal" id="hal-300"><span>Hlm. 300</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh qashr haqiqi tahqiqi (penyair membatasi dirinya pada satu kabilah) dan bait Syauqi tentang bangsa dan akhlak sebagai qashr haqiqi iddi'a'i.</p></div>
+<div class="hal" id="hal-301"><span>Hlm. 301</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Aturan menentukan sifat dan yang disifati: pada jumlah ismiyyah, qashr mubtada' atas khabar adalah qashr maushuf atas sifat. Disertai contoh ayat.</p></div>
+<div class="hal" id="hal-302"><span>Hlm. 302</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh hadits "fa innama ya'kulu adz-dzi'b al-qashiyah" dan penjelasan bahwa qashr fa'il atas maf'ul dapat dipahami sebagai qashr sifat atas yang disifati.</p></div>
+<h3 class="sub" id="farq-iddiai-idhafi" lang="ar">مَا الْفَرْقُ بَيْنَ الْقَصْرِ الْحَقِيقِيِّ الِادِّعَائِيِّ وَالْقَصْرِ الْإِضَافِيِّ؟</h3><p class="sub__id">Beda qashr haqiqi iddi'a'i dan qashr idhafi</p>
+<div class="hal" id="hal-303"><span>Hlm. 303</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Aturan qashr pada jar-majrur dan pada hal (shahib al-hal atas hal). Lalu penegasan bahwa tiga jenis qashr idhafi pun bisa tahqiqi atau iddi'a'i.</p></div>
+<h3 class="sub" id="thuruq-qashr" lang="ar">طُرُقُ الْقَصْرِ</h3><p class="sub__id">Cara-cara qashr</p>
+<h3 class="sub" id="athf-la-bal-lakin" lang="ar">الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</h3><p class="sub__id">'Athf dengan "la", "bal", dan "lakin"</p>
+<div class="hal" id="hal-304"><span>Hlm. 304</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dimulai bahasan thuruq al-qashr (cara-cara qashr), yang pertama 'athf dengan "la": ia cara terkuat karena penafiannya disebut tegas.</p></div>
+<div class="hal" id="hal-305"><span>Hlm. 305</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Syarat "la" menunjukkan qashr: yang di-'athf-kan mufrad, tidak didahului nafi atau nahi, dan yang sesudahnya tidak termasuk umum yang sebelumnya. Disertai contoh.</p></div>
+<div class="hal" id="hal-306"><span>Hlm. 306</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Al-Mikali tentang umur seseorang yang diukur dari jejak baiknya. Lalu "bal" dan "lakin" dan perbedaan pendapat apakah keduanya menunjukkan qashr.</p></div>
+<div class="hal" id="hal-307"><span>Hlm. 307</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Perbedaan pendapat tentang apa yang sebelum "bal": disenyapkan atau dinafikan, sehingga sebagian menolak bahwa ia menunjukkan qashr. Contoh dan satu bait yang terpengaruh perbedaan riwayat.</p></div>
+<div class="hal" id="hal-308"><span>Hlm. 308</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh qashr dengan "bal" dan "lakin", antara lain makna yatim sebagai qashr qalb, dan bait Ibnu Al-Mu'tazz.</p></div>
+<div class="hal" id="hal-309"><span>Hlm. 309</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait 'Urwah bin Al-Ward dengan "lakin" yang menunjukkan qashr, dan syarat pemakaian "lakin" tanpa waw.</p></div>
+<h3 class="sub" id="nafy-istitsna" lang="ar">النَّفْيُ وَالِاسْتِثْنَاءُ</h3><p class="sub__id">Penafian dan pengecualian (ma ... illa)</p>
+<div class="hal" id="hal-310"><span>Hlm. 310</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Perbedaan pendapat apakah "bal" dan "lakin" adalah cara qashr atau hanya mengandung makna qashr, serta perselisihan seputar "la". Lalu dimulai bahasan nafi dan istitsna' (ma ... illa).</p></div>
+<div class="hal" id="hal-311"><span>Hlm. 311</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh nafi-istitsna' pada ayat tentang kaum musyrik yang mengingkari wahyu kepada Nabi, dan aturan bahwa maqshur 'alaih adalah yang terletak sesudah alat istitsna'.</p></div>
+<div class="hal" id="hal-312"><span>Hlm. 312</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Zuhair bin Abi Sulma dan Al-Mutanabbi, serta beberapa pola nafi-istitsna' dalam kalimat yang memuat maf'ul.</p></div>
+<div class="hal" id="hal-313"><span>Hlm. 313</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Pembahasan mendahulukan mustatsna atas mustatsna minhu, perbedaan pendapat ulama, dan kapan hal itu dibolehkan.</p></div>
+<h3 class="sub" id="wajh-dalalah" lang="ar">وَجْهُ دَلَالَةِ النَّفْيِ وَالِاسْتِثْنَاءِ عَلَى الْقَصْرِ</h3><p class="sub__id">Cara nafi-istitsna' menunjukkan qashr</p>
+<div class="hal" id="hal-314"><span>Hlm. 314</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Bait Al-Mutanabbi yang memuat beberapa qashr sekaligus. Lalu dimulai bahasan cara nafi-istitsna' menunjukkan qashr.</p></div>
+<h3 class="sub" id="istitsna-tamm" lang="ar">هَلْ يُفِيدُ الِاسْتِثْنَاءُ التَّامُّ الْقَصْرَ؟</h3><p class="sub__id">Apakah istitsna' tamm menunjukkan qashr?</p>
+<div class="hal" id="hal-315"><span>Hlm. 315</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penjelasan cara nafi dan istitsna' menunjukkan qashr. Dimulai bahasan apakah istitsna' tamm menunjukkan qashr.</p></div>
+<div class="hal" id="hal-316"><span>Hlm. 316</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Al-Mutanabbi dan perbedaan pendapat apakah istitsna' tamm termasuk cara qashr dalam istilah. Pendapat yang kuat: bukan qashr istilahi.</p></div>
+<h3 class="sub" id="ijtima-la" lang="ar">هَلْ يَجُوزُ اجْتِمَاعُ النَّفْيِ وَالِاسْتِثْنَاءِ وَالْعَطْفِ بِلَا؟</h3><p class="sub__id">Bolehkah nafi-istitsna' digabung dengan "la"?</p>
+<h3 class="sub" id="innama" lang="ar">إِنَّمَا</h3><p class="sub__id">"Innama"</p>
+<div class="hal" id="hal-317"><span>Hlm. 317</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Nafi-istitsna' tidak digabung dengan "la" karena yang dinafikan sudah umum. Lalu dimulai bahasan "innama": ulama menyatakan ia mengandung makna "ma" dan "illa".</p></div>
+<div class="hal" id="hal-318"><span>Hlm. 318</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dalil-dalil bahwa "innama" menunjukkan qashr, di antaranya tiga qira'at ayat An-Nahl 115 dan penafsiran para sahabat.</p></div>
+<div class="hal" id="hal-319"><span>Hlm. 319</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dalil pemisahan dhamir: dalam "innama yaqumu ana" dhamir dipisah, tanda "innama" bermakna "ma" dan "illa". Contoh bait 'Amr bin Ma'dikarib.</p></div>
+<div class="hal" id="hal-320"><span>Hlm. 320</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Bantahan atas pendapat bahwa qashr dalam bait itu berasal dari ta'rif dua sisi, dan penjelasan makna "man" dan "ma" dalam konteks pujian.</p></div>
+<div class="hal" id="hal-321"><span>Hlm. 321</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat Al-Ahqaf tentang Nabi Hud: ia hanya penyampai dan pengetahuan tentang azab ada pada Allah. "Innama" juga dipakai untuk perkara yang sudah dikenal.</p></div>
+<div class="hal" id="hal-322"><span>Hlm. 322</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat tentang apa yang diperintahkan setan (Al-Baqarah 169) dan ayat Ar-Ra'd 7 yang menunjukkan qashr ifrad, serta jenis qashr yang dihasilkan "innama".</p></div>
+<h3 class="sub" id="anna-qashr" lang="ar">هَلْ تُفِيدُ «أَنَّمَا» الْقَصْرَ؟</h3><p class="sub__id">Apakah "annama" menunjukkan qashr?</p>
+<h3 class="sub" id="taqdim-qashr" lang="ar">التَّقْدِيمُ</h3><p class="sub__id">Taqdim (mendahulukan)</p>
+<div class="hal" id="hal-323"><span>Hlm. 323</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">'Abdul Qahir menyatakan "innama" hanya untuk qashr qalb, sedangkan penulis dan jumhur menyatakan ia dipakai untuk semua jenis. Lalu apakah "annama" menunjukkan qashr, dan dimulai bahasan taqdim.</p></div>
+<div class="hal" id="hal-324"><span>Hlm. 324</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Mendahulukan musnad ilaih dengan alat nafi menunjukkan qashr, dengan contoh bait Al-Mutanabbi dan rujukan ke Jilid 1.</p></div>
+<div class="hal" id="hal-325"><span>Hlm. 325</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Mendahulukan muta'alliqat atas fi'il sebagai cara qashr: bait Imam Ali, bait Abu Tammam, dan ayat "iyyaka na'budu wa iyyaka nasta'in".</p></div>
+<h3 class="sub" id="dhamir-fashl" lang="ar">ضَمِيرُ الْفَصْلِ</h3><p class="sub__id">Dhamir fashl</p>
+<div class="hal" id="hal-326"><span>Hlm. 326</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dhamir fashl sebagai cara qashr menurut sebagian ahli balaghah, dengan contoh "Zuhair huwa asy-sya'ir" dan perselisihan nahwu tentang kedudukannya.</p></div>
+<div class="hal" id="hal-327"><span>Hlm. 327</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat Al-Ma'idah 117 ("kunta anta ar-raqib") dan ayat tentang penghuni surga yang memakai dhamir fashl untuk menguatkan qashr.</p></div>
+<h3 class="sub" id="tarif-al" lang="ar">تَعْرِيفُ الْمُسْنَدِ أَوِ الْمُسْنَدِ إِلَيْهِ «بِأَلْ»</h3><p class="sub__id">Ta'rif musnad atau musnad ilaih dengan "al"</p>
+<div class="hal" id="hal-328"><span>Hlm. 328</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Cara terakhir: ta'rif musnad atau musnad ilaih dengan alif lam. Bila mubtada' dan khabar sama-sama ma'rifah, yang pertama dianggap mubtada', dengan contoh kalimat.</p></div>
+<div class="hal" id="hal-329"><span>Hlm. 329</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Al-A'sya yang membatasi pemberian pada yang dipuji dengan batasan tertentu, dan contoh yang bukan qashr.</p></div>
+<h3 class="sub" id="furuq-thuruq" lang="ar">فُرُوقُ طُرُقِ الْقَصْرِ وَأَوْجُهُ الِاخْتِلَافِ بَيْنَهَا</h3><p class="sub__id">Perbedaan cara-cara qashr</p>
+<div class="hal" id="hal-330"><span>Hlm. 330</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dimulai bagian perbedaan antara cara-cara qashr. Yang pertama: cara-cara itu menunjukkan qashr dengan dalalah yang berbeda-beda.</p></div>
+<div class="hal" id="hal-331"><span>Hlm. 331</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penegasan bahwa dalalah wadh'iyyah cara-cara qashr tidak menghalangi kajiannya dalam ilmu ma'ani, dan perbedaan lain tentang yang disebut dan yang disenyapkan dalam tiap cara.</p></div>
+<h3 class="sub" id="ijtima-tariqain" lang="ar">اجْتِمَاعُ طَرِيقَيْنِ مِنْ طُرُقِ الْقَصْرِ</h3><p class="sub__id">Dua cara qashr dalam satu kalimat</p>
+<div class="hal" id="hal-332"><span>Hlm. 332</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Lanjutan perbedaan antar-cara. Lalu bagian dua cara qashr dalam satu kalimat: nafi-istitsna' tidak boleh digabung dengan "la".</p></div>
+<div class="hal" id="hal-333"><span>Hlm. 333</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Taqdim atau ta'rif boleh digabung dengan "la" ("Zaid al-karim la 'Amr") karena tidak bertentangan, tetapi pasangan yang bertentangan tidak boleh. Contoh gabungan "innama" dan taqdim.</p></div>
+<div class="hal" id="hal-334"><span>Hlm. 334</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penggabungan "innama" dengan taqdim: maknanya menuntut taqdim sebagai cara qashr dan "innama" dianggap tidak berfungsi, dengan contoh bait ratapan.</p></div>
+<div class="hal" id="hal-335"><span>Hlm. 335</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Al-Mutanabbi tentang nama-nama leluhur yang tidak menambah pengenalan, dan kesimpulan tentang penggabungan dua cara qashr.</p></div>
+<h3 class="sub" id="innama-vs-nafy" lang="ar">بَيْنَ «إِنَّمَا» وَ«النَّفْيِ وَالِاسْتِثْنَاءِ»</h3><p class="sub__id">Antara "innama" dan nafi-istitsna'</p>
+<div class="hal" id="hal-336"><span>Hlm. 336</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penulis tidak setuju bersandar pada contoh buatan; lebih baik pada ungkapan sastrawan. Dimulai bahasan perbedaan "innama" dan nafi-istitsna', dengan contoh ayat Ali 'Imran 62.</p></div>
+<div class="hal" id="hal-337"><span>Hlm. 337</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat Al-An'am 25–26. Perbedaan pokok: nafi-istitsna' dipakai untuk perkara yang diingkari, sedangkan "innama" untuk perkara yang diketahui.</p></div>
+<div class="hal" id="hal-338"><span>Hlm. 338</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait tentang uban yang menambah kedermawanan dan kaidah bahwa nafi-istitsna' dipakai pada perkara yang pantas ditolak.</p></div>
+<div class="hal" id="hal-339"><span>Hlm. 339</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat Ibrahim 10–11, yaitu para rasul menjawab pengingkaran kaumnya yang berkata "kalian hanyalah manusia seperti kami".</p></div>
+<div class="hal" id="hal-340"><span>Hlm. 340</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh ayat Fathir 19–23 tentang tugas Nabi, lalu pembahasan ayat Yunus a.s. di mana penegasan pada khabar bukan karena keadaan lawan bicara.</p></div>
+<div class="hal" id="hal-341"><span>Hlm. 341</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penegasan karena keadaan pembicara (Yunus a.s.). Lalu "innama" digambarkan sebagai alat isyarat dan peringatan untuk perkara yang sudah diketahui.</p></div>
+<div class="hal" id="hal-342"><span>Hlm. 342</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh kalimat "innama huwa akhuka" dan bait yang memakai "innama" untuk mengingatkan perkara yang jelas.</p></div>
+<div class="hal" id="hal-343"><span>Hlm. 343</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Bait Al-Khathafi dan bait lain tentang hakikat yang jelas, sebagai contoh "innama" untuk perkara yang tidak diingkari.</p></div>
+<div class="hal" id="hal-344"><span>Hlm. 344</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Ayat Al-Baqarah 11–12 ("innama nahnu mushlihun"): kaum munafik memakai "innama" untuk menjadikan klaim mereka seolah perkara jelas, dan jawaban keras "ala innahum hum al-mufsidun".</p></div>
+<h3 class="sub" id="tahdid-mawqi" lang="ar">تَحْدِيدُ مَوْقِعِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ</h3><p class="sub__id">Menentukan letak maqshur dan maqshur 'alaih</p>
+<div class="hal" id="hal-345"><span>Hlm. 345</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Dimulai bagian letak maqshur dan maqshur 'alaih: pada "innama" ia yang terakhir, pada taqdim yang didahulukan, pada nafi-istitsna' yang sesudah alat istitsna'.</p></div>
+<h3 class="sub" id="jamal-tariidh" lang="ar">جَمَالُ التَّعْرِيضِ «بِإِنَّمَا»</h3><p class="sub__id">Keindahan ta'ridh dengan "innama"</p>
+<div class="hal" id="hal-346"><span>Hlm. 346</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Aturan letak maqshur 'alaih pada nafi-istitsna' dan perubahan makna bila letaknya berubah. Lalu bagian ta'ridh dengan "innama", yang menurut 'Abdul Qahir adalah tempat "innama" paling kuat.</p></div>
+<div class="hal" id="hal-347"><span>Hlm. 347</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Contoh bait Al-'Abbas bin Al-Ahnaf yang bermakna sindiran halus lewat "innama", dan contoh lain tentang ta'ridh.</p></div>
+<div class="hal" id="hal-348"><span>Hlm. 348</span></div>
+<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">Penjelasan 'Abdul Qahir tentang kaitan ta'ridh dan "innama", dengan contoh ayat Ar-Ra'd 19 ("innama yatadzakkaru ulul albab"). Penutup Fasal 5.</p></div>
+  </div>
+</section>
+
+<button type="button" id="btn-legend" class="fab fab--legend" aria-haspopup="dialog" aria-controls="legend-modal" title="Kode Warna">?</button>
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="Fihris (Daftar Isi)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  var toc = document.getElementById('fihris');
+  var btn = document.getElementById('toc-toggle');
+  if (toc && btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('data-open') !== '1';
+      var ds = toc.querySelectorAll('details');
+      for (var i = 0; i < ds.length; i++) ds[i].open = open;
+      btn.setAttribute('data-open', open ? '1' : '0');
+      btn.textContent = open ? 'Tutup semua' : 'Buka semua';
+    });
+  }
+
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-legend', 'legend-modal');
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = Array.prototype.slice.call(document.querySelectorAll('h2.bab__ar'));
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('bab__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      cur = all[i];
+    }
+    if (!cur) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = label(cur);
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script src="../../../../assets/halaman.js?v=12"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
