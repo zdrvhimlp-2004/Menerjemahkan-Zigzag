@@ -167,79 +167,131 @@
 الْمُتَكَلِّمُ عَالِمٌ بِالْحُكْمِ وَبِمَضْمُونِ|pembicara, mengetahui hukum dan isi
 الْخَبَرِ الَّذِي|khabar yang ... (bersambung ke hlm. 45).
 @hal 45
+~Lanjutan tujuan khabar: tujuan kedua adalah "lazim al-fa'idah", yaitu pembicara memberi tahu bahwa ia sendiri juga mengetahui isi khabar. Penulis lalu menegaskan bahwa khabar sering membawa tujuan lain yang tak terhitung, dan tujuan itu dipahami dari konteks, dengan contoh kata istri 'Imran saat melahirkan anak perempuan yang menyiratkan kekecewaan.
 @hal 46
+~Contoh tujuan lain khabar dari ayat dan syair: menggugah semangat, membanggakan diri (fakhr), memberi nasihat, memuji, mencela (hija'), menunjukkan kesedihan, dan meratapi orang yang wafat (ritsa').
 @sub wajh-dalalah|وَجْهُ دَلَالَةِ الْخَبَرِ عَلَى أَغْرَاضِهِ|Cara khabar menunjukkan tujuan-tujuannya|47
 @hal 47
+~Dua pendapat tentang cara khabar menunjukkan tujuannya. Pendapat pertama: fa'idat al-khabar dipahami langsung dari khabar, sedangkan tujuan lain dipahami secara susulan dari konteks. Pendapat kedua: dua tujuan pokok dipahami langsung, sedangkan yang lain lewat kinayah, seperti ungkapan "banyak abu" untuk kedermawanan.
 @sub adhrub-khabar|أَضْرُبُ الْخَبَرِ|Macam-macam khabar|48
 @hal 48
+~Penulis memilih pendapat pertama karena konteks sudah cukup menjelaskan tujuan itu tanpa perlu kinayah. Lalu dimulai pembahasan adhrub al-khabar lewat kisah Al-Mubarrad dan Al-Kindi tentang tiga bentuk kalimat dengan makna berbeda, dan prinsip bahwa pembicara harus menyesuaikan ucapan dengan keadaan pendengar: tanpa penguat bagi yang kosong pikirannya, satu penguat bagi yang ragu.
 @hal 49
+~Bentuk ketiga adalah khabar inkari bagi pendengar yang menolak, dengan satu penguat atau lebih sesuai kuat lemahnya penolakan. Contohnya kisah utusan kepada penduduk negeri dalam surah Yasin yang penguatnya bertambah seiring bertambahnya penolakan, dan ayat tentang penjagaan Al-Qur'an.
 @hal 50
+~Pembahasan dhamir fashl dan taqdim pada ayat surah An-Najm: penguat dipakai pada perbuatan yang rawan dianggap melibatkan selain Allah atau diingkari, seperti menghidupkan dan mematikan, sedangkan pada perbuatan yang tidak diperselisihkan penguat itu tidak dipakai.
 @sub ikhraj-kalam|إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ|Mengeluarkan ucapan menyelisihi tuntutan makna lahir|51
 @hal 51
+~Dimulai bagian ikhraj al-kalam 'ala khilaf muqtadha azh-zhahir: pembicara dapat menganggap pendengar berada dalam keadaan lain dari keadaan sebenarnya. Contoh pertama adalah kalimat sebelumnya yang memberi isyarat kepada khabar sehingga jiwa pendengar menanti, seperti pada kisah Nuh.
 @hal 52
+~Contoh dari Al-Qur'an: khabar datang dengan penguat setelah perintah dan larangan, karena perintah atau larangan itu memancing tanya dan harap dalam jiwa pendengar, sehingga ia diperlakukan seperti orang yang bertanya dan ragu. Contoh lain: ayat Yusuf yang diawali pengakuan yang tak lazim.
 @hal 53
+~Kisah Basysyar dan Khalaf tentang pilihan kalimat dengan penguat halus, lalu bentuk kedua: orang yang menolak diperlakukan seperti orang yang tidak menolak karena penolakannya tidak dianggap, dengan contoh ayat tauhid dalam surah Al-Baqarah.
 @hal 54
+~Lanjutan contoh khabar tanpa penguat kepada orang yang menolak karena yang ditolak itu sudah terang dan tidak pantas diingkari, seperti ayat dalam surah Asy-Syura dan awal surah Al-Baqarah. Maknanya: seandainya mereka mau berpikir, mereka tidak akan menolak.
 @hal 55
+~Bentuk ketiga: orang yang sebenarnya tidak menolak diperlakukan seperti penolak karena tampak tanda-tanda penolakan, dengan contoh syair Al-Bahili dan ayat surah An-Naml tentang besarnya harapan Nabi agar mereka beriman.
 @hal 56
+~Contoh lain: ayat penjagaan Al-Qur'an yang penguatnya menenangkan kaum mukmin, syair Abu al-'Atahiyah tentang kapal yang tidak berjalan di daratan, dan ayat surah Al-Mu'minun tentang kematian dan kebangkitan, dengan penjelasan Al-Qazwini mengapa kematian justru diberi dua penguat.
 @hal 57
+~Contoh nasihat kepada orang yang meninggalkan salat dan zakat. Lalu penulis menegaskan bahwa keadaan pendengar tidak selalu menjadi satu-satunya patokan memakai atau tidak memakai penguat, dengan contoh syair Al-Farazdaq kepada Jarir.
 @hal 58
+~Kelanjutan: beberapa bait yang memakai penguat tanpa memperhatikan penolakan pendengar, karena maksudnya lain, misalnya membanggakan diri atau memuji. Lalu penguat yang dipakai untuk menunjukkan penuhnya jiwa penutur dengan ucapannya, seperti syahadat kaum munafik.
 @hal 59
+~Kaum munafik memberi penguat pada khabar yang tidak mereka yakini, sedangkan di hadapan orang beriman mereka berucap tanpa penguat dan di hadapan setan-setan mereka berucap dengan penguat. Penguat juga dipakai karena pentingnya khabar, dan karena anehnya khabar.
 @sub tajawwuz-isnad|التَّجَوُّزُ فِي الْإِسْنَادِ|Majaz dalam isnad|60
 @sub nau-isnad|نَوْعَا الْإِسْنَادِ|Dua jenis isnad|60
 @hal 60
+~Penguat dipakai juga ketika kenyataan tidak sesuai harapan penutur, seperti ucapan istri 'Imran dan doa Nuh. Lalu selesai pembahasan khabar, dan dimulai bagian at-tajawwuz fil isnad dengan penjelasan arti isnad serta contoh-contoh isnad majazi.
 @hal 61
+~Contoh isnad majazi dalam ayat dan ungkapan sehari-hari. Penulis menjawab klaim bahwa majaz aqli ciptaan 'Abdul Qahir Al-Jurjani dengan menunjukkan bahwa benihnya sudah ada pada ulama sebelumnya, seperti Sibawaih dan Abu 'Ubaidah.
 @hal 62
+~Lanjutan jejak majaz aqli pada ulama terdahulu: Abu 'Ubaidah dan Al-Farra' menyinggungnya pada beberapa ayat dan bait syair, dengan penjelasan makna asalnya.
 @hal 63
+~Al-Jahizh dan sikap hati-hati para ulama terhadap ucapan tertentu, serta perdebatan akidah tentang penciptaan perbuatan antara Mu'tazilah dan Ahlus Sunnah. Dipaparkan pula tiga macam pelaku menurut Syuruh at-Talkhis.
 @hal 64
+~Ibnu Qutaibah membela adanya majaz dalam Al-Qur'an dari tuduhan sebagai dusta. Kesimpulan penulis: 'Abdul Qahir bukan pencetus majaz aqli, tetapi orang yang menganalisis dan merincinya.
 @sub haqiqah-aqliyyah|الْحَقِيقَةُ الْعَقْلِيَّةُ|Hakikat aqliyah|65
 @hal 65
+~Nama-nama lain majaz aqli, misalnya majaz fil isnad, majaz mulabasah, majaz hukmi, dan majaz nisbi, dengan "majaz aqli" sebagai yang paling masyhur. Lalu bagian al-haqiqah al-'aqliyyah: definisi isnad hakiki menurut Al-Khathib.
 @hal 66
+~Penjelasan definisi hakikat aqliyah: pelaku bisa pelaku sebenarnya (hanya Allah), pelaku secara hukum (punya usaha atau kasab), atau yang sekadar bersifat dengan perbuatan itu. Dipaparkan pula pembagian isnad berdasarkan kesesuaiannya dengan kenyataan dan keyakinan penutur.
 @sub majaz-aqli|الْمَجَازُ الْعَقْلِيُّ|Majaz aqli|67
 @sub tarif-khathib|تَعْرِيفُ الْخَطِيبِ لِلْمَجَازِ الْعَقْلِيِّ|Definisi Al-Khathib tentang majaz aqli|67
 @hal 67
+~Jenis ketiga dan keempat dalam pembagian itu, termasuk ucapan dusta yang tetap tergolong isnad hakiki. Lalu definisi Al-Khathib untuk majaz aqli: menisbatkan fi'l kepada sesuatu yang berkaitan dengannya, bukan kepada pelaku aslinya.
 @sub alaqat-majaz|عَلَاقَاتُ الْمَجَازِ الْعَقْلِيِّ (مُلَابَسَاتُهُ)|Hubungan (mulabasat) majaz aqli|68
 @sub isnad-ilal-maful|إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى الْمَفْعُولِ|Isnad bentuk aktif kepada maf'ul|68
 @hal 68
+~Perbedaan isnad hakiki dan majazi, serta arti ta'awwul (alasan) sebagai qarinah. Lalu dimulai pembahasan hubungan (mulabasat) majaz aqli: yang pertama, isnad bentuk aktif kepada maf'ul.
 @hal 69
+~Lanjutan hubungan pertama dengan contoh "fa ma rabihat tijaratuhum" dan "'isyah radhiyah", serta fungsinya sebagai mubalaghah. Disertai contoh "la 'ashima al-yaum" yang memakai bentuk fa'il untuk makna maf'ul.
 @sub isnad-ilal-fail|إِسْنَادُ الْمَبْنِيِّ لِلْمَفْعُولِ إِلَى الْفَاعِلِ|Isnad bentuk pasif kepada fa'il|70
 @hal 70
+~Hubungan kedua: isnad bentuk pasif kepada fa'il, dengan contoh dari syair Al-Hutai'ah dan ungkapan "sirr katim", serta contoh ayat tentang hijab yang disebut tertutup untuk menegaskan kerasnya penolakan mereka.
 @sub isnad-ilal-mashdar|إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى مَصْدَرِهِ|Isnad kepada mashdarnya|71
 @hal 71
+~Hubungan ketiga: isnad kepada mashdar, dengan contoh "wa'duhu ma'tiyyan", "'ahdu Allah mas'ulan", dan bait Abu Firas Al-Hamdani.
 @sub isnad-ilaz-zaman|الْإِسْنَادُ إِلَى الزَّمَانِ|Isnad kepada waktu|72
 @hal 72
+~Lanjutan hubungan ketiga, lalu hubungan keempat: isnad kepada waktu, seperti "siangnya berpuasa, malamnya salat malam", dengan contoh syair Tharafah dan dua ayat tentang malam dan hari.
 @sub isnad-ilal-makan|الْإِسْنَادُ إِلَى الْمَكَانِ|Isnad kepada tempat|73
 @hal 73
+~Lanjutan hubungan keempat, lalu hubungan kelima: isnad kepada tempat, seperti "jalan berjalan" dan "sungai mengalir", dengan contoh ayat tentang surga yang di bawahnya mengalir sungai-sungai dan tentang tanah suci yang aman.
 @sub isnad-ilas-sabab|الْإِسْنَادُ إِلَى السَّبَبِ|Isnad kepada sebab|74
 @hal 74
+~Contoh bait Al-Mutanabbi dan Al-Hayyish Bayyish untuk isnad kepada tempat. Lalu hubungan keenam: isnad kepada sebab, seperti "Amir membangun kota", dengan satu bait berikut penjelasan maknanya.
 @sub isnad-ilal-jins|الْإِسْنَادُ إِلَى الْجِنْسِ|Isnad kepada jenis|75
 @hal 75
+~Penjelasan bait tentang sebab (dua kemungkinan makna: kekikiran atau kedermawanan), contoh ayat Adz-Dzariyat dan ayat tentang Fir'aun. Lalu hubungan ketujuh: isnad kepada jenis, seperti pada kisah penyembelihan unta kaum Tsamud.
 @sub isnad-ilal-jarihah|الْإِسْنَادُ إِلَى الْجَارِحَةِ وَمَا لَهُ مَزِيدُ اخْتِصَاصٍ بِالْفَاعِلِ الْحَقِيقِيِّ|Isnad kepada anggota tubuh dan yang paling berkaitan dengan pelaku sebenarnya|76
 @sub nisbah-idhafiyyah|النِّسْبَةُ الْإِضَافِيَّةُ وَالْإِيقَاعِيَّةُ وَالْوَصْفِيَّةُ|Nisbah idhafiyah, iqa'iyah, dan washfiyah|76
 @hal 76
+~Hubungan kedelapan: isnad kepada anggota tubuh yang menjadi alatnya, dan kesembilan: kepada pihak yang paling dekat dengan pelaku sebenarnya. Lalu dimulai tambahan bentuk di luar fi'l: nisbah idhafiyah dan nisbah iqa'iyyah.
 @sub isnad-mubtada-khabar|الْإِسْنَادُ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ|Isnad antara mubtada' dan khabar|77
 @hal 77
+~Lanjutan nisbah iqa'iyyah dengan contoh ayat Asy-Syu'ara' dan Al-Qamar, lalu nisbah washfiyah, dan isnad antara mubtada' dan khabar dengan contoh dari surah Al-Baqarah.
 @hal 78
+~Penjelasan 'Abdul Qahir tentang bait Al-Khansa': majaz-nya terletak pada isnad, bukan pada kata. Anggapan bahwa ini sekadar penghapusan mudhaf tidak tepat karena menghilangkan kekuatan mubalaghah.
 @sub qarinah-majaz|قَرِينَةُ الْمَجَازِ الْعَقْلِيِّ|Qarinah majaz aqli|79
 @hal 79
+~Alasan penulis memilih definisi 'Abdul Qahir (kalimat yang mengeluarkan hukum dari tempat asalnya di akal karena suatu alasan) dibanding definisi Al-Khathib, yaitu karena lebih luas. Lalu dimulai bahasan qarinah majaz aqli.
 @hal 80
+~Qarinah lafzhiyyah, dengan contoh syair yang pembicaranya sendiri menjelaskan keyakinannya, lalu qarinah ma'nawiyyah seperti mustahilnya Fir'aun menyembelih sendiri.
 @sub farq-majaz|الْفَرْقُ بَيْنَ الْمَجَازِ الْعَقْلِيِّ وَالْمَجَازِ اللُّغَوِيِّ|Perbedaan majaz aqli dan majaz lughawi|81
 @hal 81
+~Qarinah berupa kemustahilan menurut kebiasaan dan menurut akal, dengan beberapa contoh. Lalu dimulai bahasan perbedaan majaz aqli dan majaz lughawi.
 @sub shuwar-majaz|صُوَرُ الْمَجَازِ الْعَقْلِيِّ|Bentuk-bentuk majaz aqli|82
 @hal 82
+~Pada majaz aqli, majaz terletak pada isnad, sedangkan kata-katanya dipakai dalam makna asli. Dimulai bentuk-bentuk majaz aqli: bentuk pertama, ketika musnad dan musnad ilaih sama-sama hakiki lughawi.
 @hal 83
+~Contoh bentuk pertama dari syair dan dari ayat Al-Anfal: musnad dan musnad ilaih dipakai dalam makna asli, majaznya hanya pada isnad.
 @hal 84
+~Bentuk kedua: musnad majaz lughawi sedangkan musnad ilaih hakiki, dengan contoh "musim semi menghidupkan bumi" dan bait Al-Mutanabbi. Lalu pembahasan uban dalam syair dan dalam ayat tentang Zakariya.
 @hal 85
+~Perasaan sedih terhadap uban dalam bait para penyair, lalu kembali ke majaz aqli yang majaznya juga ada pada musnad, dengan ungkapan "lembah mengalir bersama mereka".
 @hal 86
+~Lanjutan bentuk kedua dengan bait Kutsayyir, lalu bentuk ketiga: musnad ilaih majaz lughawi sedangkan musnad hakiki, dengan contoh bait Ibnu Khafajah dan Al-Farazdaq.
 @sub istilzam|اسْتِلْزَامُ الْمَجَازِ الْعَقْلِيِّ الْحَقِيقَةَ الْعَقْلِيَّةَ|Majaz aqli mengharuskan adanya hakikat aqliyah|87
 @hal 87
+~Lanjutan bentuk ketiga, lalu bentuk keempat: musnad dan musnad ilaih sama-sama majaz lughawi sehingga ada tiga majaz dalam satu kalimat. Dimulai bahasan istilzam, yaitu majaz aqli mengharuskan adanya hakikat aqliyah.
 @hal 88
+~Pelaku sebenarnya kadang jelas, kadang tersembunyi dan baru dipahami dengan perenungan. Semua ahli balaghah sepakat bahwa majaz aqli mengharuskan adanya hakikat aqliyah.
 @hal 89
+~Sebagian orang mengira 'Abdul Qahir menolak adanya pelaku hakiki di balik majaz aqli. Penulis menjelaskan itu keliru: 'Abdul Qahir menyatakan sebagian bentuk bisa dikembalikan kepada pelaku hakikinya.
 @sub inkar-majaz|إِنْكَارُ الْمَجَازِ الْعَقْلِيِّ|Pengingkaran terhadap majaz aqli|90
 @hal 90
+~Penulis menasihati pelajar agar tidak larut dalam perdebatan ini. Lalu bagian inkar al-majaz al-'aqli: As-Sakkaki mengembalikannya ke isti'arah makniyyah dan memasukkannya ke ilmu bayan.
 @hal 91
+~Penulis menolak pendapat As-Sakkaki dengan menunjukkan bahwa cita rasa majaz aqli berbeda dari isti'arah makniyyah, majaz murakkab, dan isti'arah tab'iyyah, dengan beberapa ayat, bait, dan hadits.
 @hal 92
+~Penjelasan fungsi tiap contoh dalam menegaskan sebab dan kesungguhan makna. Menyederhanakan klasifikasi tidak boleh sampai menghapus kekhasan majaz aqli, dan Al-Qazwini menyebut alasan lain mengapa suatu isnad tidak bisa dianggap isti'arah.
 @sub balaghah-majaz|بَلَاغَةُ الْمَجَازِ الْعَقْلِيِّ وَدِقَّةُ مَسْلَكِهِ|Balaghah majaz aqli dan kehalusan alurnya|93
 @hal 93
+~Bagian balaghah majaz aqli dan kehalusan alurnya: keindahannya terletak pada mubalaghah, keringkasan, dan daya khayal, serta keleluasaan pembicara berkreasi dalam ungkapannya. 'Abdul Qahir menyebutnya salah satu harta karun bahasa.
 @hal 94
+~Contoh pemakaian majaz aqli untuk tujuan tertentu, seperti "ia dibunuh oleh kebodohannya" untuk menepis tuduhan pembunuhan dan ucapan Mu'awiyah saat 'Ammar bin Yasir wafat di Shiffin.
 @hal 95
+~Pilihan kata dan susunan dapat memperkuat majaz, dengan analisis bait yang menyandarkan fi'l kepada alatnya dan contoh dari Al-Farazdaq.
 @hal 96
+~Bait Kutsayyir tentang lembah yang mengalir bersama leher-leher unta: pemilihan "leher" memperjelas gambaran. Penutup bab: majaz aqli membutuhkan penyusunan ungkapan yang tepat agar berkesan.

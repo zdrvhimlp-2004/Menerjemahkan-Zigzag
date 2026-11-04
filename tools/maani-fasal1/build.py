@@ -44,7 +44,7 @@ def line(kind, ar, idn):
 
 def main():
     check = '--check' in sys.argv
-    items = []; nlines = 0; warn = []
+    items = []; nlines = 0; nsum = 0; warn = []
     for n, raw in enumerate(open(os.path.join(HERE, 'data.txt'), encoding='utf8'), 1):
         s = raw.rstrip('\n')
         if not s.strip() or s.startswith('#'): continue
@@ -52,6 +52,8 @@ def main():
         if s[:5] in ('@bab ', '@sub '):
             i, ar, idn, hal = [x.strip() for x in s[5:].split('|')]
             items.append((s[1:4], i, ar, idn, int(hal))); continue
+        if s.startswith('~'):
+            items.append(('rk', s[1:].strip())); nsum += 1; continue
         kind = s[0] if s[0] in '-*' else ''
         ar, _, idn = (s[1:] if kind else s).partition('|')
         ar, idn = ar.strip(), idn.strip()
@@ -68,7 +70,7 @@ def main():
     ids = [b['id'] for b in babs] + [s['id'] for b in babs for s in b['subs']]
     assert len(ids) == len(set(ids)), 'id ganda'
     nsub = sum(len(b['subs']) for b in babs)
-    print('bab %d, sub-bab %d, baris %d, halaman %d (hlm. %d-%d)' % (len(babs), nsub, nlines, len(pages), min(pages), max(pages)))
+    print('bab %d, sub-bab %d, baris %d, ringkasan %d, halaman %d (hlm. %d-%d)' % (len(babs), nsub, nlines, nsum, len(pages), min(pages), max(pages)))
     for w in warn: print('PERINGATAN:', w)
     if check: return
     # fihris
@@ -85,7 +87,7 @@ def main():
     body = []; babno = 0; cur = None; has = {}
     for i, x in enumerate(items):
         if x[0] == 'hal': cur = x[1]; has[cur] = 0
-        elif x[0] == 'ln': has[cur] += 1
+        elif x[0] in ('ln', 'rk'): has[cur] += 1
     for x in items:
         if x[0] == 'hal':
             body.append('<div class="hal" id="hal-%d"><span>Hlm. %d</span></div>' % (x[1], x[1]))
@@ -95,6 +97,8 @@ def main():
             body.append('<header class="bab" id="%s"><h2 class="bab__ar" lang="ar">%s</h2><p class="bab__id">Bab %d &middot; %s</p></header>' % (x[1], esc(x[2]), babno, esc(x[3])))
         elif x[0] == 'sub':
             body.append('<h3 class="sub" id="%s" lang="ar">%s</h3><p class="sub__id">%s</p>' % (x[1], esc(x[2]), esc(x[3])))
+        elif x[0] == 'rk':
+            body.append('<div class="ringkas"><span class="ringkas__k">Ringkasan</span><p lang="id">%s</p></div>' % esc(x[1]))
         else:
             body.append(line(x[1], x[2], x[3]))
     legend = '''    <dialog id="legend-modal" class="modal" aria-label="Kode Warna">
@@ -122,9 +126,9 @@ def main():
     </dialog>
 '''
     head = open(os.path.join(LUG, 'template_head.html'), encoding='utf8').read().replace('{{TITLE}}', 'أحوال الإسناد الخبري — Terjemah Biasa')
-    head = head.replace('</style>', '  .belum { direction: ltr; text-align: center; font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0.4rem 0; }\n</style>', 1)
+    head = head.replace('</style>', '  .ringkas { direction: ltr; margin: 0.6rem 0; padding: 0.7rem 0.9rem; border-left: 3px solid var(--heading); background: var(--pasal-bg); border-radius: 0 10px 10px 0; }\n  .ringkas__k { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--heading); margin-bottom: 0.2rem; }\n  .ringkas p { font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); line-height: 1.7; }\n  .belum { direction: ltr; text-align: center; font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0.4rem 0; }\n</style>', 1)
     tail = open(os.path.join(LUG, 'template_tail.html'), encoding='utf8').read()
-    ket = "'Ilm al-Ma'ani &middot; Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari &middot; hlm. %d&ndash;%d &middot; %d baris terisi &middot; Terjemah biasa &middot; 1 baris Arab (maks. %d kata) + 1 baris Indonesia" % (min(pages), max(pages), nlines, MAXW)
+    ket = "'Ilm al-Ma'ani &middot; Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari &middot; hlm. %d&ndash;%d &middot; hlm. 41&ndash;44: terjemah biasa, 1 baris Arab (maks. %d kata) + 1 baris Indonesia (%d baris) &middot; hlm. 45&ndash;96: ringkasan per halaman (%d ringkasan)" % (min(pages), max(pages), MAXW, nlines, nsum)
     doc = (head + '<body>\n\n<div id="crumb-bar" class="crumb" aria-hidden="true">\n  <span class="crumb__path"></span>\n  <span class="crumb__page"></span>\n</div>\n\n'
            '<section class="isi">\n  <div class="isi__wrap">\n    <h1 class="isi__judul">أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ</h1>\n    <p class="isi__ket">' + ket + '</p>\n\n' + legend + fihris + '\n' + '\n'.join(body) + '\n  </div>\n</section>\n\n' + tail)
     open(OUT, 'w', encoding='utf8').write(doc)
