@@ -96,7 +96,7 @@ def main():
     for x in items:
         if x[0] == 'hal':
             body.append('<div class="hal" id="hal-%d"><span>Hlm. %d</span></div>' % (x[1], x[1]))
-            if not has[x[1]]: body.append('<p class="belum" lang="id">Terjemah hlm. %d belum diisi.</p>' % x[1])
+            if not has[x[1]]: body.append('<p class="belum" lang="id">Hlm. %d tidak memuat teks tersendiri (halaman kosong atau isinya menyatu dengan halaman sebelumnya).</p>' % x[1])
         elif x[0] == 'bab':
             babno += 1
             body.append('<header class="bab" id="%s"><h2 class="bab__ar" lang="ar">%s</h2><p class="bab__id">Bab %d &middot; %s</p></header>' % (x[1], esc(x[2]), babno, esc(x[3])))
