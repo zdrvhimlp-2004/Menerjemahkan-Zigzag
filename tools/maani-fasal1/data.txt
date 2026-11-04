@@ -1,5 +1,5 @@
 # Data terjemah Ilmu Ma'ani Fasal 1 (hlm. 41-96). Format: lihat docstring build.py.
-@meta out=Kitab Ilmu Al Maani (Fasal 1 Isnad Khabari)(Hlm 41-96).html
+@meta out=✏️ Kitab Ilmu Al Maani (Fasal 1 Isnad Khabari)(Hlm 41-96).html
 @meta title=أحوال الإسناد الخبري
 @meta h1=أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ
 @meta subtitle=Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari

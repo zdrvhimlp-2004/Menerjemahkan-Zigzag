@@ -1,4 +1,4 @@
-@meta out=Kitab Ilmu Al Maani (Fasal 4 dan Khuruj Al Kalam)(Hlm 216-280).html
+@meta out=✏️ Kitab Ilmu Al Maani (Fasal 4 dan Khuruj Al Kalam)(Hlm 216-280).html
 @meta title=أحوال متعلقات الفعل وخروج الكلام
 @meta h1=أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ وَخُرُوجُ الْكَلَامِ عَنْ مُقْتَضَى الظَّاهِرِ
 @meta subtitle=Fasal 4 dan Khuruj al-Kalam

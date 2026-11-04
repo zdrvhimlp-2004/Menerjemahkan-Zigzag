@@ -1,4 +1,4 @@
-@meta out=Kitab Ilmu Al Maani (Fasal 5 Asalib Al Qashr)(Hlm 281-348).html
+@meta out=✏️ Kitab Ilmu Al Maani (Fasal 5 Asalib Al Qashr)(Hlm 281-348).html
 @meta title=أساليب القصر
 @meta h1=أَسَالِيبُ الْقَصْرِ
 @meta subtitle=Fasal 5: Gaya Pembatasan (Qashr)
