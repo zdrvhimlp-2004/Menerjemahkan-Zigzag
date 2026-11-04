@@ -1,0 +1,97 @@
+@meta out=✏️ Kitab Ilmu Al Maani (Muqaddimah dan Tamhid)(Hlm 5-40).html
+@meta title=المقدمات والتمهيد
+@meta h1=الْمُقَدِّمَاتُ وَالتَّمْهِيدُ
+@meta subtitle=Kata Pengantar dan Tamhid
+@meta note=ringkasan per halaman dan beberapa kutipan kunci berterjemah (hlm. 14 kosong)
+# Ringkasan per halaman + kutipan kunci pendek.
+@bab muqaddimat|الْمُقَدِّمَاتُ|Kata Pengantar|5
+@sub muqaddimah-3|مُقَدِّمَةُ الطَّبْعَةِ الثَّالِثَةِ|Kata pengantar edisi ketiga|5
+@hal 5
+~Pembuka kata pengantar edisi ketiga: pujian kepada Allah dan shalawat kepada Nabi, ilmu sebagai warisan para nabi, lalu pengantar tentang kitab ini. Halaman ini juga memuat catatan kaki rujukan.
+@hal 6
+~Riwayat cetakan kitab: cetakan pertama (1406 H dan penerbit di Kairo 1408 H), cetakan kedua (1418 H), lalu penjelasan perbaikan pada edisi ketiga ini.
+@hal 7
+~Perbaikan edisi ketiga: syair dinisbatkan kepada penyairnya, konteks bait dijelaskan bila perlu, hadits ditakhrij dan diberi harakat yang benar, serta rahasia balaghahnya ditambah.
+@hal 8
+~Gambaran isi bagian kitab berikutnya (Jilid 2): qashr, insya' dan jenisnya, fashl dan washl, serta ijaz dan ithnab, dengan rujukan ke pasal-pasalnya.
+@hal 9
+~Penutup edisi ketiga: penulis menyebut edisi ini menyempurnakan bentuk dan isi serta berharap bermanfaat. Bertanggal 15 Jumadil Ula 1429 H (20 Mei 2008).
+@sub muqaddimah-2|مُقَدِّمَةُ الطَّبْعَةِ الثَّانِيَةِ|Kata pengantar edisi kedua|10
+@hal 10
+~Awal kata pengantar edisi kedua: pujian dan shalawat, ayat Al-'Alaq 1–5, serta penjelasan perbaikan dan tambahan agar tujuan kitab tercapai.
+@hal 11
+~Penutup edisi kedua: permohonan agar kitab bermanfaat dan permintaan maaf atas kekurangan. Bertanggal 23 Dzulqa'dah 1418 H.
+@sub muqaddimah-1|مُقَدِّمَةُ الطَّبْعَةِ الْأُولَى|Kata pengantar edisi pertama|12
+@hal 12
+~Kata pengantar edisi pertama: kitab ini adalah jilid pertama 'Ilm al-Ma'ani yang mengkaji anggota kalimat, dibuka dengan tamhid tentang nazhm dan penyusunan kalimat. Bertanggal 17 Ramadhan 1406 H.
+@hal 13
+~Halaman pembuka Jilid 1 tentang keadaan anggota kalimat, dengan daftar bahasan: fashahah dan balaghah, isnad khabari, majaz dalam isnad, musnad ilaih, musnad, muta'alliq fi'il, dan khuruj dari tuntutan lahiriah. Hlm. 14 kosong.
+@bab tamhid|تَمْهِيدٌ: مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ، مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ|Pendahuluan: tolok ukur keunggulan antara lafaz, makna, dan susunan; pengertian fashahah dan balaghah|15
+@sub manath-maziyyah|مَنَاطُ الْمَزِيَّةِ بَيْنَ اللَّفْظِ وَالْمَعْنَى وَالنَّظْمِ|Tolok ukur keunggulan antara lafaz, makna, dan susunan (nazhm)|15
+@hal 15
+الْأَلْفَاظُ قَوَالِبُ لِلْمَعَانِي،|Lafaz-lafaz adalah cetakan bagi makna-makna,
+~Awal tamhid: lafaz adalah wadah makna. Persoalan lafaz dan makna sudah lama menyita ulama, dengan pandangan Al-Jahizh tentang letak keunggulan ucapan dan arah menuju nazhm.
+@hal 16
+~Perbedaan nazhm Al-Qur'an dengan nazhm ucapan lain, kitab Al-Jahizh "Nazhm Al-Qur'an" yang hilang, dan rujukan pada pendapat ulama termasuk 'Abdul Jabbar dan 'Abdul Qahir.
+@hal 17
+"لَيْسَ النَّظْمُ إِلَّا أَنْ تَضَعَ|"Nazhm tidak lain adalah engkau menempatkan
+كَلَامَكَ الْوَضْعَ الَّذِي يَقْتَضِيهِ|ucapanmu pada penempatan yang dituntut oleh
+عِلْمُ النَّحْوِ".|ilmu nahwu." (kutipan dari 'Abdul Qahir)
+~Kutipan 'Abdul Qahir tentang hakikat nazhm: menempatkan ucapan sesuai tuntutan ilmu nahwu dan makna-maknanya.
+@hal 18
+~'Abdul Qahir menyajikan contoh yang menunjukkan keindahan atau kerusakan nazhm, dengan analisis ayat Hud 44 ("ya ardhu ibla'i ma'aki").
+@hal 19
+~Kesimpulan bahwa kata tidak unggul karena dirinya sendiri, tetapi karena kecocokan maknanya dengan kata di sekitarnya. 'Abdul Qahir melanjutkan dengan contoh.
+@hal 20
+~Contoh bait Al-Mutanabbi dan perbandingan susunan yang buruk dengan yang baik.
+@hal 21
+~Contoh bait Kutsayyir 'Azzah dan penegasan bahwa kajian nazhm akan diuraikan dalam pasal-pasal kitab.
+@sub mafhum-fashahah-balaghah|مَفْهُومُ الْفَصَاحَةِ وَالْبَلَاغَةِ|Pengertian fashahah dan balaghah|22
+@hal 22
+الْفَصَاحَةُ فِي اللُّغَةِ مَعْنَاهَا الظُّهُورُ وَالْبَيَانُ|Fashahah menurut bahasa maknanya kemunculan dan kejelasan.
+~Mulai bagian pengertian fashahah dan balaghah: makna fashahah menurut bahasa (kejelasan, contoh susu yang bening), lalu pembahasan balaghah.
+@sub fashahah-kalimah|فَصَاحَةُ الْكَلِمَةِ|Fashahah kata|23
+@hal 23
+~Menurut bahasa fashahah dan balaghah sepadan, tetapi menurut istilah dibedakan. Dimulai syarat fashahah kata: bebas dari ketidakserasian huruf, dengan contoh kata ganjil.
+@hal 24
+~Ketidakserasian ringan, misalnya kata "mustasyzirat" dalam bait Imru'ul Qais, dan tanafur yang makin berat.
+@hal 25
+~Ketidakserasian bukan semata dekatnya makhraj huruf, dengan contoh ayat surah Yasin 60 dan kata "dzuqtuhu bifamiy". Lalu bahasan kata asing (gharabah).
+@hal 26
+~Kata asing dan contohnya, termasuk ayat At-Taubah 39 dan kisah orang yang memakai kata ganjil sehingga tak dipahami.
+@hal 27
+~Makna kata yang tersembunyi bagi kita dalam Al-Qur'an, hadits, dan syair tidak boleh langsung disebut gharib. Contoh kata tentang unta dan majaz mursal.
+@hal 28
+~Contoh turunan kata dari isim jamid dalam bahasa Arab (misalnya "mudannirat"), lalu mulai bahasan kata yang menyalahi kaidah (mukhalafah qiyas).
+@hal 29
+~Kata yang menyalahi qiyas tetapi dipakai orang Arab tetap fashih (misalnya "aba ya'ba"), serta contoh pujian dengan nama dan gelar.
+@sub fashahah-kalam|فَصَاحَةُ الْكَلَامِ|Fashahah kalimat|30
+@hal 30
+أَمَّا فَصَاحَةُ الْكَلَامِ فَهِيَ خُلُوصُهُ|Adapun fashahah kalimat, ia adalah bebasnya
+مِنْ تَنَافُرِ كَلِمَاتِهِ، وَمِنْ ضَعْفِ التَّأْلِيفِ،|dari ketidakserasian kata-katanya, dari lemahnya susunan,
+وَالتَّعْقِيدِ اللَّفْظِيِّ وَالْمَعْنَوِيِّ|dan dari kerumitan lafal maupun makna.
+~Mulai fashahah kalimat: bebas dari ketidakserasian kata, lemahnya susunan, kerumitan lafal dan makna, pengulangan berlebihan, dan beruntunnya idhafah. Dimulai dengan tanafur kata dalam kalimat.
+@hal 31
+~Contoh bait Abu Tammam ("amdahuhu amdahuhu") sebagai tanafur akibat pengulangan, lalu bahasan lemahnya susunan (dha'f at-ta'lif).
+@hal 32
+~Lemahnya susunan: dhamir kembali kepada kata yang disebut sesudahnya dalam lafal dan martabat, dengan contoh bait Zuhair dan An-Nabighah.
+@hal 33
+~Ta'qid (kerumitan): kalimat tak jelas menunjukkan maknanya, padahal orang Arab menyukai kejelasan. Contoh bait Al-Farazdaq.
+@hal 34
+~Contoh ta'qid lafzhi pada bait Al-Farazdaq dan Abu Tammam, lalu ta'qid ma'nawi lewat kinayah yang tidak jelas.
+@hal 35
+~Kinayah yang masih lazim, misalnya meneteskan air mata untuk kesedihan perpisahan, tidak dianggap merusak fashahah. Contoh bait Al-Hamasi.
+@hal 36
+~Kinayah atau majaz yang jelas hubungannya dan sesuai kebiasaan Arab tidak merusak fashahah. Lalu bahasan banyaknya pengulangan dan beruntunnya idhafah.
+@hal 37
+~Banyaknya idhafah yang membuat lidah berat (contoh "hamamat jara'a haumat al-jandal"), sedangkan pengulangan yang tidak berat tidak merusak, seperti pada ayat Maryam 2.
+@sub fashahah-mutakallim|فَصَاحَةُ الْمُتَكَلِّمِ|Fashahah pembicara|38
+@sub balaghah-kalam|بَلَاغَةُ الْكَلَامِ|Balaghah kalimat|38
+@hal 38
+أَمَّا فَصَاحَةُ الْمُتَكَلِّمِ فَهِيَ مَلَكَةٌ تَتَكَوَّنُ لَدَيْهِ|Adapun fashahah pembicara, ia adalah kemampuan yang terbentuk pada dirinya
+~Fashahah pembicara sebagai kemampuan yang dibentuk lewat latihan, banyak membaca, dan menghafal, terutama Al-Qur'an dan hadits. Lalu dimulai bahasan balaghah dan definisi ulama terdahulu.
+@hal 39
+~Definisi balaghah menurut ulama terdahulu dan ulama belakangan. Balaghah kalimat adalah kesesuaiannya dengan tuntutan keadaan, disertai fashahah, dan penjelasan tingkatannya.
+@sub balaghah-mutakallim|بَلَاغَةُ الْمُتَكَلِّمِ|Balaghah pembicara|40
+@hal 40
+~Dua ujung balaghah menurut Al-Qazwini (batas i'jaz dan batas terendah) dengan tingkatan di antaranya. Lalu bahasan balaghah pembicara, dengan contoh ayat tentang permohonan kembali ke dunia.
