@@ -1,0 +1,115 @@
+@meta out=Kitab Ilmu Al Maani (Fasal 3 Ahwal Al Musnad)(Hlm 167-215).html
+@meta title=أحوال المسند
+@meta h1=أَحْوَالُ الْمُسْنَدِ
+@meta subtitle=Fasal 3: Keadaan Musnad
+@meta note=penanda halaman mengikuti file terjemah lama dan di beberapa tempat (misalnya hlm. 171–173) bisa bergeser satu halaman
+# Ringkasan per halaman, belum terjemah baris demi baris.
+@bab fasl-3|الْفَصْلُ الثَّالِثُ: أَحْوَالُ الْمُسْنَدِ|Fasal 3: Keadaan Musnad|167
+@sub hadzf-musnad|حَذْفُ الْمُسْنَدِ|Pembuangan musnad|167
+@hal 167
+~Pembuka Fasal 3: musnad dibuang bila ada qarinah, dengan tujuan balaghah yang tidak terhitung, dan di balik setiap hadzf ada tiga keistimewaan umum (ijaz, menghindari kesia-siaan, dan membangkitkan perasaan pendengar). Tujuan khusus pertama: sempitnya maqam, dengan contoh bait penyair yang dipenjara.
+@hal 168
+~Penjelasan bait tentang kesedihan dan keterasingan seseorang yang tidak mampu menyebut musnad secara lengkap, sebagai contoh hadzf karena sempitnya maqam.
+@hal 169
+~Lanjutan contoh syair untuk hadzf musnad serta penjelasan penyair tentang sikap dan hukum yang ia terima, disertai contoh tentang kelesuan dan pucatnya orang yang jatuh cinta.
+@hal 170
+~Iltifat dalam sebuah bait yang menunjukkan kemanjaan dan keengganan sang kekasih. Dibahas pula kemungkinan bahwa yang dibuang adalah musnad atau musnad ilaih.
+@hal 171
+~(Hlm. 171–172) Contoh ayat Az-Zumar dan lainnya: hadzf musnad menandakan jauhnya perbedaan dua golongan. Lalu hadzf karena mengikuti penggunaan orang Arab (misalnya setelah "idza" fujaiyyah, "lawla", dan sumpah), ucapan Nabi dan 'Umar bin 'Abdil 'Aziz dengan "fa inna dzalika", serta ihtiraz 'anil 'abats.
+@hal 172
+@hal 173
+~Perbandingan dua bentuk kalimat tentang pemukulan Zaid, bait Al-A'sya, dan tujuan lain hadzf musnad: taukid dan ikhtishash, dengan contoh bait Hatim Ath-Tha'i.
+@hal 174
+~Contoh bait Al-Mutalammis dan penjelasan bahwa hadzf musnad dalam syair mengubah susunan kalimat sehingga terkesan tegas, dengan kelanjutan penjelasan maknanya.
+@hal 175
+~Tujuan lain: ungkapan yang mengandung hadzf dan memuat kemungkinan bahwa yang dibuang adalah musnad atau musnad ilaih, seperti dalam ucapan Ya'qub "fa shabrun jamil".
+@hal 176
+~Contoh ayat surah An-Nur 1 yang memungkinkan beberapa perkiraan, dan pembahasan ucapan "janganlah kalian mengatakan tiga" beserta makna yang terkandung pada perkiraannya.
+@hal 177
+~Penjelasan perkiraan kata yang dibuang pada kalimat larangan tentang trinitas, kaitannya dengan tauhid, dan contoh lain dengan mubtada' yang dibuang.
+@hal 178
+~Penjelasan Az-Zamakhsyari tentang beda rafa' dan nashab pada jawaban orang yang mengakui dan yang mengingkari, serta satu hadits riwayat Muslim.
+@sub qarinah-hadzf|قَرِينَةُ حَذْفِ الْمُسْنَدِ|Qarinah pembuangan musnad|179
+@hal 179
+~Dimulai pembahasan qarinah hadzf al-musnad. Contoh musnad dan musnad ilaih dibuang bersama dan mashdar menggantikannya (surah Muhammad 4), serta contoh bait.
+@hal 180
+~Keunggulan bentuk pasif atas bentuk aktif pada sebuah bait ratapan, dari beberapa segi, di antaranya pengulangan isnad. Dilanjutkan contoh ayat tentang sekutu bagi Allah.
+@sub dzikr-musnad|ذِكْرُ الْمُسْنَدِ|Penyebutan musnad|181
+@hal 181
+~Penutup bahasan hadzf dengan bab ni'ma dan bi'sa yang mubtada'-nya dibuang. Lalu dimulai bahasan dzikr al-musnad: penyebutan untuk melengkapi semua bagian kalimat.
+@hal 182
+~Tujuan penyebutan musnad: lemahnya sandaran pada qarinah, misalnya ketika penanya bertanya dan jawabannya perlu jelas, dengan contoh ayat surah Yasin 78–79.
+@sub ifrad-musnad|إِفْرَادُ الْمُسْنَدِ|Musnad berbentuk mufrad dan sababi|183
+@hal 183
+~Penjelasan contoh Yasin 78–79: musnad disebut untuk penegasan dan sebagai isyarat atas kedunguan penanya. Lalu dimulai bahasan musnad berbentuk mufrad ("Muhammad alim").
+@sub iirad-musnad|إِيرَادُ الْمُسْنَدِ فِعْلًا أَوِ اسْمًا|Musnad sebagai fi'il atau isim|184
+@hal 184
+~Musnad sababi ("Muhammad, ayahnya dermawan") untuk mengaitkan sifat dengan leluhurnya, dan musnad berbentuk jumlah untuk menguatkan hukum. Dimulai pembahasan fi'il dan isim sebagai musnad.
+@hal 185
+~Fi'il sebagai musnad memberi faedah pembaruan dan kejadian bertahap, dengan contoh bait tentang pengawas yang mengamati wajah-wajah kaum.
+@hal 186
+~Perbedaan dua riwayat bait tentang dirham dan kantong (rafa' dan nashab), serta contoh ayat surah Al-Baqarah tentang kaum munafik.
+@hal 187
+~Contoh surah Al-A'raf 193 yang memakai jumlah ismiyyah, dan perbedaan maqam yang menuntut pembaruan dengan maqam yang menuntut ketetapan dan kesinambungan.
+@sub tankir-tarif-musnad|تَنْكِيرُ الْمُسْنَدِ وَتَعْرِيفُهُ|Tankir dan ta'rif musnad|188
+@hal 188
+~Dimulai bahasan tankir dan ta'rif musnad: musnad bisa nakirah atau ma'rifah sesuai tujuan balaghah. Tujuan tankir antara lain tidak menghendaki qashr atau 'ahd, dengan contoh bait Qais bin Jarwah.
+@hal 189
+~Lanjutan contoh tankir pada musnad untuk pengagungan atau tujuan lain, dengan contoh bait Al-Mutanabbi.
+@hal 190
+~Contoh ta'rif musnad untuk qashr iddi'a'i, yakni membatasi sifat pada seseorang sebagai mubalaghah, dan contoh bait 'Amr bin Kultsum.
+@hal 191
+~Bait kebanggaan kabilah dari 'Amr bin Kultsum sebagai contoh ta'rif musnad untuk qashr ("kamilah yang melindungi"), disertai penjelasan kosakata.
+@hal 192
+~Ta'rif musnad untuk qashr dan kehalusan balaghahnya, dengan contoh bait Al-Mutanabbi yang bangga akan sastranya dan bait pembanggaan nasab.
+@sub takhshish-musnad|تَخْصِيصُ الْمُسْنَدِ بِالْوَصْفِ أَوْ بِالْإِضَافَةِ|Pengkhususan musnad dengan sifat atau idhafah|193
+@hal 193
+~Ta'rif musnad untuk menegaskan sifat yang masyhur, bukan membatasi. Lalu dimulai bahasan takhshish musnad dengan sifat atau idhafah, dengan contoh bait Malik Al-Asytar.
+@sub taqdim-musnad|تَقْدِيمُ الْمُسْنَدِ|Pendahuluan musnad (taqdim)|194
+@hal 194
+~Contoh bait Qais bin Al-Khathim dan penutup takhshish musnad. Dimulai bahasan taqdim musnad, di antaranya ikhtishash atau pembatasan musnad ilaih pada musnad yang didahulukan.
+@hal 195
+~Taqdim musnad untuk ikhtishash, dengan contoh ayat Ash-Shaffat 45–47 tentang khamr surga dan beberapa bait.
+@hal 196
+~Faedah taqdim musnad lainnya: memberi tahu sejak awal bahwa musnad itu khabar, bukan sifat, dengan contoh bait Hassan bin Tsabit dan satu hadits riwayat Ad-Darimi.
+@sub taqyid-syarth|تَقْيِيدُ الْفِعْلِ بِأَدَوَاتِ الشَّرْطِ: إِنْ وَإِذَا وَلَوْ|Pembatasan fi'il dengan alat syarat: in, idza, dan lau|197
+@hal 197
+~Faedah taqdim lain: optimisme, dengan contoh bait Ats-Tsa'alibi. Lalu dimulai bahasan taqyid al-fi'l bi adawat asy-syarth (in, idza, dan lau).
+@hal 198
+~Perbedaan "in" dan "idza": "idza" untuk perkara yang pasti terjadi, "in" untuk yang jarang atau meragukan. Contoh dari ayat tentang datangnya kemakmuran dan kesulitan.
+@hal 199
+~Penjelasan pemakaian "idza" dalam ayat tentang bahaya dan malapetaka, dengan contoh bait.
+@hal 200
+~Contoh bait celaan Qa'nab bin Umm Shahib dengan "idza", dan pemakaian "in" untuk menarik hati lawan bicara dengan nasihat halus.
+@hal 201
+~Lanjutan pemakaian "in" dalam nasihat yang halus kepada pihak yang berada dalam kesesatan, dengan rujukan kitab.
+@hal 202
+~Contoh ayat surah Az-Zalzalah dengan "idza", dan ayat tentang orang kafir yang memakai "in" karena keinginan mereka agar kaum mukmin murtad.
+@hal 203
+~Banyak sastrawan keliru karena tidak memahami kedudukan "in" dan "idza", dengan contoh bait 'Abdurrahman bin Hassan.
+@sub in-makan-idza|اسْتِخْدَامُ «إِنْ» فِي مَوْضِعِ «إِذَا» وَ«إِذَا» فِي مَوْضِعِ «إِنْ»|Memakai "in" di tempat "idza" dan sebaliknya|204
+@hal 204
+~Penjelasan bait yang keliru memakai "idza" di tempat "in". Dimulai bahasan memakai "in" di tempat "idza" dan sebaliknya.
+@hal 205
+~Memakai "in" untuk perkara yang pasti terjadi, misalnya kematian orang pelit, dan "in" sebagai pengandaian untuk membungkam orang yang ragu.
+@hal 206
+~Lanjutan "in" sebagai pengandaian untuk membungkam dan menjatuhkan hujjah, dengan contoh ayat Al-Hajj 5 dan satu kisah.
+@hal 207
+~Contoh bait Al-Mutanabbi dengan "idza" yang menegaskan terwujudnya syarat, dan penjelasan tentang tidak sepatutnya meragukan kedermawanan sang pembesar.
+@hal 208
+~Contoh bait Abu Dzu'aib yang menaruh "idza" di tempat "in" karena rahasia balaghah, dan contoh ucapan kepada Adh-Dhaulah.
+@sub madhi-ma-in|مَجِيءُ الْمَاضِي لَفْظًا مَعَ «إِنْ»|Fi'il lampau secara lafal bersama "in"|209
+@hal 209
+~Penutup bagian in dan idza dengan contoh ucapan penyair. Dimulai bahasan fi'il lampau secara lafal bersama "in".
+@hal 210
+~Fi'il yang secara lafal lampau tetapi bermakna masa depan setelah "in" dan "idza", dengan contoh dan satu contoh dari ayat tentang istri al-'Aziz.
+@hal 211
+~Keinginan yang sangat kuat membuat hal yang belum terjadi dipandang seolah telah terjadi, dan perbedaan pendapat dengan Az-Zamakhsyari dalam penafsiran ayat.
+@sub istikhdam-lau|اسْتِعْمَالُ «لَوْ»|Penggunaan "lau"|212
+@hal 212
+~Selain "kana", "in" juga masuk pada fi'il lampau lain, dengan contoh bait Abu Al-'Ala Al-Ma'arri. Dimulai bahasan penggunaan "lau".
+@hal 213
+~"Lau" menunjukkan tidak terwujudnya jawab karena tidak terwujudnya syarat, dengan contoh kalimat dan syair serta penjelasan kosakata.
+@hal 214
+~(Hlm. 214–215) Bentuk jumlah pada jawab dan perbedaan bentuk lampau dan mudhari', misalnya "al-kasb" dan "al-kitabah" pada surah Al-Baqarah 79. Penutup Fasal 3 dengan catatan kosakata.
+@hal 215
