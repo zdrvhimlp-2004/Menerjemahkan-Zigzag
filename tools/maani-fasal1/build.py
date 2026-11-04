@@ -44,10 +44,15 @@ def line(kind, ar, idn):
 
 def main():
     check = '--check' in sys.argv
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    datafile = args[0] if args else 'data.txt'
+    meta = {}
     items = []; nlines = 0; nsum = 0; warn = []
-    for n, raw in enumerate(open(os.path.join(HERE, 'data.txt'), encoding='utf8'), 1):
+    for n, raw in enumerate(open(os.path.join(HERE, datafile), encoding='utf8'), 1):
         s = raw.rstrip('\n')
         if not s.strip() or s.startswith('#'): continue
+        if s.startswith('@meta '):
+            k, _, v = s[6:].partition('='); meta[k.strip()] = v.strip(); continue
         if s.startswith('@hal '): items.append(('hal', int(s[5:]))); continue
         if s[:5] in ('@bab ', '@sub '):
             i, ar, idn, hal = [x.strip() for x in s[5:].split('|')]
@@ -125,13 +130,17 @@ def main():
       </nav>
     </dialog>
 '''
-    head = open(os.path.join(LUG, 'template_head.html'), encoding='utf8').read().replace('{{TITLE}}', 'أحوال الإسناد الخبري — Terjemah Biasa')
+    head = open(os.path.join(LUG, 'template_head.html'), encoding='utf8').read().replace('{{TITLE}}', meta.get('title', 'أحوال الإسناد الخبري') + ' — Terjemah Biasa')
     head = head.replace('</style>', '  .ringkas { direction: ltr; margin: 0.6rem 0; padding: 0.7rem 0.9rem; border-left: 3px solid var(--heading); background: var(--pasal-bg); border-radius: 0 10px 10px 0; }\n  .ringkas__k { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--heading); margin-bottom: 0.2rem; }\n  .ringkas p { font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); line-height: 1.7; }\n  .belum { direction: ltr; text-align: center; font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0.4rem 0; }\n</style>', 1)
     tail = open(os.path.join(LUG, 'template_tail.html'), encoding='utf8').read()
-    ket = "'Ilm al-Ma'ani &middot; Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari &middot; hlm. %d&ndash;%d &middot; hlm. 41&ndash;44: terjemah biasa, 1 baris Arab (maks. %d kata) + 1 baris Indonesia (%d baris) &middot; hlm. 45&ndash;96: ringkasan per halaman (%d ringkasan)" % (min(pages), max(pages), MAXW, nlines, nsum)
+    ket = ("'Ilm al-Ma'ani &middot; " + meta.get('subtitle', "Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari") + " &middot; hlm. %d&ndash;%d" % (min(pages), max(pages))
+           + ((" &middot; %d baris terjemah biasa (1 baris Arab, maks. %d kata, + 1 baris Indonesia)" % (nlines, MAXW)) if nlines else '')
+           + ((" &middot; %d ringkasan per halaman" % nsum) if nsum else '')
+           + (" &middot; " + meta['note'] if meta.get('note') else ''))
     doc = (head + '<body>\n\n<div id="crumb-bar" class="crumb" aria-hidden="true">\n  <span class="crumb__path"></span>\n  <span class="crumb__page"></span>\n</div>\n\n'
-           '<section class="isi">\n  <div class="isi__wrap">\n    <h1 class="isi__judul">أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ</h1>\n    <p class="isi__ket">' + ket + '</p>\n\n' + legend + fihris + '\n' + '\n'.join(body) + '\n  </div>\n</section>\n\n' + tail)
-    open(OUT, 'w', encoding='utf8').write(doc)
-    print('tulis', OUT, len(doc))
+           '<section class="isi">\n  <div class="isi__wrap">\n    <h1 class="isi__judul">' + meta.get('h1', 'أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ') + '</h1>\n    <p class="isi__ket">' + ket + '</p>\n\n' + legend + fihris + '\n' + '\n'.join(body) + '\n  </div>\n</section>\n\n' + tail)
+    out = os.path.join(os.path.dirname(OUT), meta['out']) if meta.get('out') else OUT
+    open(out, 'w', encoding='utf8').write(doc)
+    print('tulis', out, len(doc))
 
 if __name__ == '__main__': main()

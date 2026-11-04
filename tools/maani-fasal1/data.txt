@@ -1,5 +1,9 @@
 # Data terjemah Ilmu Ma'ani Fasal 1 (hlm. 41-96). Format: lihat docstring build.py.
-# Hlm. 41 terisi; hlm. 42-96 menunggu terjemah.
+@meta out=Kitab Ilmu Al Maani (Fasal 1 Isnad Khabari)(Hlm 41-96).html
+@meta title=أحوال الإسناد الخبري
+@meta h1=أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ
+@meta subtitle=Ilmu Ma'ani dan Fasal 1: Keadaan Isnad Khabari
+# Hlm. 41-44 terjemah baris; hlm. 45-96 ringkasan.
 @bab ilmu-maani|عِلْمُ الْمَعَانِي وَمَبَاحِثُهُ، الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|Ilmu Ma'ani dan Pembahasannya; Perbedaan Khabar dan Insya'|41
 @hal 41
 عَرَّفَ الْبَلَاغِيُّونَ عِلْمَ الْمَعَانِي بِقَوْلِهِمْ:|Para ahli balaghah mendefinisikan ilmu ma'ani dengan ucapan mereka:

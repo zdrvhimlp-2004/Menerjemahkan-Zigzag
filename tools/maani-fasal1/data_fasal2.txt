@@ -1,0 +1,163 @@
+@meta out=Kitab Ilmu Al Maani (Fasal 2 Musnad Ilaih)(Hlm 97-166).html
+@meta title=أحوال المسند إليه
+@meta h1=أَحْوَالُ الْمُسْنَدِ إِلَيْهِ
+@meta subtitle=Fasal 2: Keadaan Musnad Ilaih
+@meta note=penanda halaman mengikuti file terjemah lama dan di beberapa tempat bisa bergeser satu halaman
+# Ringkasan per halaman, belum terjemah baris demi baris.
+@bab fasl-2|الْفَصْلُ الثَّانِي: أَحْوَالُ الْمُسْنَدِ إِلَيْهِ|Fasal 2: Keadaan Musnad Ilaih|97
+@sub hadzf-mi|حَذْفُ الْمُسْنَدِ إِلَيْهِ|Pembuangan musnad ilaih|97
+@hal 97
+~Pembuka Fasal 2: musnad ilaih adalah salah satu unsur kalimat. Fasal ini membahas keadaannya: hadzf (pembuangan), dzikr (penyebutan), ta'rif, tankir, pengiring (tawabi'), serta taqdim dan ta'khir. Dimulai dari hadzf dengan kutipan 'Abdul Qahir tentang kehalusannya.
+@hal 98
+~(Hlm. 98–99) 'Abdul Qahir menyajikan banyak contoh hadzf mubtada' dan maf'ul. Ia menegaskan bahwa memaksa memperkirakan kata yang dibuang justru menghilangkan keunggulan dan keindahan hadzf. Disusul beberapa contoh syair.
+@hal 99
+@hal 100
+~Beberapa contoh syair hadzf musnad ilaih, termasuk contoh orang yang gagal ujian yang namanya tidak disebut karena enggan menisbatkan kegagalan kepadanya.
+@hal 101
+~Perbandingan "rumah milik Mayyah" dengan "itulah rumah milik Mayyah" untuk menunjukkan akibat menyebut atau membuang isim isyarah. Lalu rahasia pertama di balik hadzf musnad ilaih: sempitnya maqam (dhiq al-maqam).
+@hal 102
+~Dhiq al-maqam terjadi bila penutur sedang sedih, jemu, takut kehilangan kesempatan, atau heran dan takjub. Contoh dari ayat tentang tamu Ibrahim dan kisah Yusuf bersama al-'Aziz.
+@hal 103
+~Lanjutan contoh Yusuf dan ucapan Al-Harits kepada istrinya. Lalu rahasia berikutnya: musnad ilaih sudah tertentu pada suatu sifat sehingga cukup menyebut sifat itu, dengan nuansa hiperbola.
+@hal 104
+~Contoh musnad ilaih dibuang karena ketertentuannya pada sifat sebagai mubalaghah, misalnya "adil dalam hukumnya" untuk 'Umar, dan karena sudah sangat dikenal.
+@hal 105
+~Contoh dari ayat tentang hadzf yang memberi kesan kejelasan dan kelenyapan (Al-Jumu'ah dan Hud), serta penyembunyian pelaku yang agung.
+@hal 106
+~Contoh ayat surah Shad tentang kuda-kuda yang hilang dari pandangan (subjek "matahari" tidak disebut karena sudah jelas), dan bait yang membuang musnad ilaih untuk menghinakan orang yang dicela.
+@sub dzikr-mi|ذِكْرُ الْمُسْنَدِ إِلَيْهِ|Penyebutan musnad ilaih|107
+@hal 107
+~(Hlm. 107–108) Hadzf untuk menghinakan atau menjaga lisan dari menyebut. Lalu dimulai bahasan dzikr al-musnad ilaih: penyebutan untuk mempertegas dan memperjelas, dengan contoh bait kebanggaan kabilah.
+@hal 108
+@hal 109
+~Pengulangan penyebutan musnad ilaih pada bait kebanggaan menonjolkan makna yang dibanggakan. Contoh ratapan Al-Khansa' untuk Shakhr dan ucapan Musa tentang tongkatnya yang memancing agar ditanya lebih lanjut.
+@hal 110
+~Penyebutan musnad ilaih karena menikmati menyebut dan mengulang-ulangnya, seperti dalam syair cinta, bahkan ada yang melarang menyebut nama kekasihnya.
+@sub tarif-mi|تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ|Ta'rif (pendefinitan) musnad ilaih|111
+@hal 111
+~Musnad ilaih disebut untuk "mengikat" pendengar agar tidak bisa mengingkari, dengan contoh bait Al-Farazdaq tentang 'Ali bin Al-Husain. Lalu dimulai bahasan ta'rif musnad ilaih dan ragamnya: dhamir, nama diri, isim isyarah, isim maushul, alif lam, dan idhafah.
+@sub tarif-dhamair|التَّعْرِيفُ بِالضَّمَائِرِ|Ta'rif dengan dhamir|112
+@hal 112
+~Pengantar ta'rif dan mulai ta'rif dengan dhamir: mutakallim (pembicara), mukhathab (lawan bicara), dan ghaib (orang ketiga), dengan satu contoh hadits.
+@hal 113
+~Ta'rif dengan dhamir mutakallim, dengan contoh bait Basysyar bin Burd dan lainnya yang menunjukkan kemasyhuran atau kebanggaan.
+@hal 114
+~Dhamir khithab dan contohnya. Asal khithab ditujukan kepada yang hadir, tetapi bisa dipalingkan karena rahasia balaghah, misalnya memperlakukan yang tidak hadir seolah hadir.
+@hal 115
+~Dhamir ghaib dan penafsirannya oleh qarinah. Penjelasan hadzf jawab "lau" yang menunjukkan dahsyatnya keadaan, dan penjelasan dhamir pada ayat surah Shad tentang matahari.
+@sub tarif-alamiyyah|التَّعْرِيفُ بِالْعَلَمِيَّةِ|Ta'rif dengan nama diri ('alam)|116
+@hal 116
+~Dhamir ghaib yang ditafsirkan oleh kata sesudahnya (dhamir sya'n), contoh Al-Hajj 46. Lalu bahasan ta'rif dengan nama diri ('alam).
+@hal 117
+~Ta'rif dengan nama diri untuk menghadirkan zatnya di benak lewat namanya, serta untuk mengagungkan atau merendahkan, dengan contoh ayat dan bait.
+@sub tarif-mawshul|التَّعْرِيفُ بِالْأَسْمَاءِ الْمَوْصُولَةِ|Ta'rif dengan isim maushul|118
+@hal 118
+~Tujuan lain ta'rif dengan nama: menikmati menyebut nama leluhur (contoh bait Al-Mutanabbi) dan bertafa'ul. Lalu dimulai ta'rif dengan isim maushul.
+@hal 119
+~Ta'rif dengan isim maushul, dengan rahasia di antaranya enggan menyebut nama secara tegas (contoh kisah istri Al-'Aziz) dan tujuan balaghah lain.
+@hal 120
+~Isim maushul dengan shilahnya dapat mengisyaratkan bentuk khabar yang akan datang (Ghafir 60) dan mengobarkan rasa cinta, dengan contoh syair.
+@hal 121
+~Contoh syair cinta dan kisah 'Abdah dengan Khaulah. Isim maushul bisa membawa makna yang tak tercakup penjelasan lain; rujukan ke Miftah al-'Ulum dan Al-Idhah.
+@hal 122
+~Isim maushul memberi kesan pengagungan dan menanamkan khabar lebih kuat, dengan bait Abu Nuwas tentang khamr dan akal peminumnya.
+@sub tarif-isyarah|التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ|Ta'rif dengan isim isyarah|123
+@hal 123
+~Isim maushul untuk menyembunyikan perkara dari selain lawan bicara atau menyembunyikan nama. Lalu dimulai ta'rif dengan isim isyarah.
+@hal 124
+~Isim isyarah menghadirkan yang ditunjuk di hadapan pendengar. Contoh bait Al-Farazdaq ("Inilah putra sebaik-baik hamba Allah") dan catatan tentang penisbatan bait itu.
+@hal 125
+~Kata tunjuk memberi faedah penentuan dan pembedaan di benak pendengar. Contoh bait tentang tamu dan unta gemuk, serta penunjukan untuk meremehkan yang rendah.
+@hal 126
+~Penunjukan untuk menghinakan, mengagungkan, atau menunjukkan kesempurnaan, dengan contoh bait Al-Hudzlul tentang istrinya.
+@hal 127
+~Penunjukan dengan kata tunjuk jauh untuk menunjukkan tingginya kedudukan, dengan contoh ayat Yusuf 32 dan ayat tentang surga.
+@sub tarif-al|التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ|Ta'rif dengan alif lam|128
+@hal 128
+~(Hlm. 128–129) Kata tunjuk "ulaika" menegaskan bahwa mereka layak mendapat petunjuk dan keberuntungan karena sifat-sifat yang disebut sebelumnya. Lalu dimulai ta'rif dengan alif lam.
+@hal 129
+@hal 130
+~Ragam alif lam: yang menunjuk hakikat (lam al-haqiqah atau lam al-jins) dengan contoh "laki-laki lebih baik daripada perempuan", serta ragam lainnya.
+@sub tarif-idhafah|التَّعْرِيفُ بِالْإِضَافَةِ|Ta'rif dengan idhafah|131
+@hal 131
+~(Hlm. 131–132) Contoh alif lam dalam bait Al-Mutanabbi dan ayat tentang serigala di surah Yusuf. Lalu dimulai ta'rif dengan idhafah.
+@hal 132
+@hal 133
+~Idhafah meringkas perincian yang sulit, seperti "kaumku" dalam bait Al-Harits, dan dapat dipakai untuk mengagungkan atau merendahkan.
+@sub tankir-mi|تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ|Tankir (pen-indefinit-an) musnad ilaih|134
+@hal 134
+~Idhafah untuk merendahkan ayah lawan bicara atau mengagungkan kakek penyair, serta untuk makna halus dalam syair.
+@hal 135
+~(Hlm. 135–136) Bahasan tankir musnad ilaih: tankir menunjukkan satu individu yang tidak tertentu atau menunjukkan jenis. Dimulai dengan contoh dan faedah-faedah tankir, termasuk pengagungan.
+@hal 136
+@hal 137
+~Tankir untuk pengagungan dengan contoh bait tentang pemuda dermawan, dan tankir untuk tujuan lain.
+@hal 138
+~Tankir untuk menunjukkan jumlah banyak (misalnya "ia punya unta dan kambing") dan contoh ayat tentang para penyihir Fir'aun serta pengagungan keridaan Allah.
+@hal 139
+~Tankir untuk pengerdilan (ayat surah Maryam tentang kesejahteraan) dan untuk menunjukkan jenis, dengan contoh ayat tentang penciptaan makhluk dari nutfah.
+@hal 140
+~(Hlm. 140–142) Lanjutan tankir untuk jenis (kehidupan dalam qishash). Lalu dimulai tawabi' al-musnad ilaih dengan washf (sifat) dan tujuan-tujuannya: menjelaskan, mengkhususkan, memuji, mencela, dan menegaskan; dengan contoh syair dan ayat.
+@sub tawabi-mi|تَوَابِعُ الْمُسْنَدِ إِلَيْهِ|Pengiring (tawabi') musnad ilaih|141
+@sub tawabi-washf|١ - الْوَصْفُ|1. Sifat (washf)|141
+@hal 141
+@hal 142
+@sub tawabi-taukid|٢ - التَّوْكِيدُ|2. Penegasan (taukid)|143
+@hal 143
+~Sifat untuk mengkhususkan yang disifati ("Zaid Sang Pedagang"). Lalu dimulai bahasan taukid sebagai tabi', dengan rujukan ke pembahasan lain.
+@hal 144
+~Taukid untuk menolak dugaan bahwa pembicara keliru, dan untuk menegaskan keumuman (dengan "kull").
+@sub tawabi-athf-bayan|٣ - عَطْفُ الْبَيَانِ|3. 'Athf bayan|145
+@hal 145
+~'Athf bayan: menjelaskan matbu' dengan nama yang khusus ("sahabatmu, Khalid") dan tujuan lain seperti penghormatan.
+@sub tawabi-badal|٤ - الْبَدَلُ|4. Badal|146
+@hal 146
+~(Hlm. 146–147) 'Athf bayan untuk mencela matbu' (contoh ayat surah Ibrahim tentang minuman dari nanah). Lalu dimulai bahasan badal dengan beberapa tujuannya.
+@hal 147
+@sub tawabi-athf-nasaq|٥ - عَطْفُ النَّسَقِ|5. 'Athf nasaq|148
+@hal 148
+~Badal untuk mubalaghah, dengan contoh bait tentang unta yang kurus, lalu kesimpulan bahwa pandangan ahli balaghah terhadap tawabi' berbeda dari ahli nahwu. Contoh lain tentang Fir'aun dan Haman.
+@hal 149
+~'Athf nasaq: perbedaan "fa" (segera sesudahnya) dan "tsumma" (ada jeda) serta huruf lain, dengan contoh kalimat dan bait.
+@sub taqib-fashl|تَعْقِيبُ الْمُسْنَدِ إِلَيْهِ بِضَمِيرِ الْفَصْلِ|Mengiringi musnad ilaih dengan dhamir fashl|150
+@hal 150
+~Penggunaan "au" untuk ibham demi menarik hati lawan bicara (surah Saba' 24), dengan rujukan ke pembahasan qashr di jilid kedua. Di sekitar sini dibahas mengiringi musnad ilaih dengan dhamir fashl.
+@sub taqdim-mi|تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ|Pendahuluan musnad ilaih (taqdim)|151
+@sub taqdim-nafy|تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ|Taqdim musnad ilaih dalam kalimat negatif|151
+@hal 151
+~Mulai bahasan taqdim musnad ilaih: perhatian ahli balaghah pada taqdim atas khabar fi'liyyah dalam kalimat negatif dan positif, serta pada taqdim isim nakirah.
+@hal 152
+~Penjelasan bahwa isim isyarah menghalangi pola ucapan tertentu karena menunjuk yang sudah terjadi, dengan contoh syair penafian.
+@hal 153
+~Contoh bait yang menafikan bahwa si penyair sendirian mengucapkan syair, dan penjelasan bahwa taqdim di sini hanya memberi taukid penafian.
+@hal 154
+~Pentingnya konteks dalam menentukan faedah gaya ini, dan bahwa hukum balaghah dibangun atas yang umum dan mayoritas.
+@sub taqdim-itsbat|تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ|Taqdim musnad ilaih dalam kalimat positif|155
+@hal 155
+~Taqdim musnad ilaih atas adat nafi memberi faedah ikhtishash atau taukid, dan konteks yang menentukan maksudnya, dengan contoh ayat.
+@hal 156
+~Penjelasan 'Abdul Qahir tentang rahasia faedah taqdim musnad ilaih atas khabar fi'liyyah untuk menguatkan hukum.
+@sub maqamat-taukid|الْمَقَامَاتُ الَّتِي تَقْتَضِي التَّوْكِيدَ|Situasi yang menuntut penegasan|157
+@hal 157
+~Situasi (maqam) yang menuntut taukid saat taqdim musnad ilaih, misalnya setelah pengingkaran dari pihak lain.
+@hal 158
+~Situasi lain, di antaranya khabar yang aneh karena menyelisihi kebiasaan, dengan contoh ayat surah An-Naml tentang bala tentara Sulaiman.
+@hal 159
+~Contoh ayat surah Al-Furqan tentang tuduhan dongeng-dongengan, dan peran taqdim dalam menegaskan khabar, dengan rujukan ke Dala'il al-I'jaz.
+@sub taqdim-nakirah|تَقْدِيمُ النَّكِرَةِ|Taqdim isim nakirah|160
+@hal 160
+~'Abdul Qahir menunjukkan ayat yang maknanya tidak tepat kecuali dengan bentuk penyandaran fi'il kepada isim sebagaimana adanya. Lalu bahasan taqdim isim nakirah.
+@sub taqdim-mitsl-ghair|تَقْدِيمُ مِثْلَ وَغَيْرَ|Taqdim "mitsl" dan "ghair"|161
+@hal 161
+~Tanpa maksud taukid atau takhshish, tidak perlu taqdim. Lalu bahasan "mitsl" dan "ghair" yang wajib didahulukan bila dimaksudkan kinayah atau mubalaghah, dengan satu bait Al-Mutanabbi.
+@hal 162
+~Taqdim "mitsl" bersifat wajib secara balaghah untuk memberi faedah kinayah dan mubalaghah dalam pujian, dengan beberapa contoh.
+@sub taqdim-umum|تَقْدِيمُ أَلْفَاظِ الْعُمُومِ عَلَى النَّفْيِ|Taqdim lafal umum atas penafian|163
+@hal 163
+~Contoh "ghairi" sebagai kinayah tentang diri sendiri. Lalu dimulai bahasan taqdim lafal umum atas penafian.
+@hal 164
+~Contoh bait Di'bil, dan perbedaan antara penafian umum dan penafian sebagian ketika lafal umum didahulukan atau diakhirkan.
+@hal 165
+~Catatan kaki dan lanjutan bahasan lafal umum dengan penafian, termasuk satu hadits dan penjelasan kosakata.
+@hal 166
+~Contoh "tidak semua laki-laki itu pemberani" dalam bait Al-Buhturi yang menafikan sebagian; penutup bahasan taqdim lafal umum atas penafian.
