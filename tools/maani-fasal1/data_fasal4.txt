@@ -1,0 +1,160 @@
+@meta out=Kitab Ilmu Al Maani (Fasal 4 dan Khuruj Al Kalam)(Hlm 216-280).html
+@meta title=أحوال متعلقات الفعل وخروج الكلام
+@meta h1=أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ وَخُرُوجُ الْكَلَامِ عَنْ مُقْتَضَى الظَّاهِرِ
+@meta subtitle=Fasal 4 dan Khuruj al-Kalam
+@meta note=ringkasan dibuat dari file terjemah lama dan docx hlm. 209–280
+# Ringkasan per halaman, belum terjemah baris demi baris.
+@bab fasl-4|الْفَصْلُ الرَّابِعُ: أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ|Fasal 4: Keadaan Pelengkap Kata Kerja (Muta'alliqat al-Fi'l)|216
+@hal 216
+~Penjelasan istilah muta'alliqat al-fi'l (maf'ul, jar-majrur, dan sejenisnya) dan bahwa kalimat tersusun dari musnad, musnad ilaih, dan muta'alliqat bila ada.
+@sub taqyid-maful|تَقْيِيدُ الْفِعْلِ بِمَفْعُولٍ وَنَحْوِهِ|Pembatasan fi'il dengan maf'ul dan sejenisnya|217
+@hal 217
+~Bila ingin mengabarkan sekadar terjadinya peristiwa, cukup dengan mashdar atau fi'il; menambah maf'ul dan batasan menambah faedah, seperti "terjadi pemukulan" dibanding "aku memukul Zaid".
+@hal 218
+~Setiap batasan yang ditambahkan (maf'ul, keterangan, dan lain-lain) menambah faedah, dan tidak boleh ditambah tanpa tuntutan situasi, misalnya karena pengingkaran, pencegahan, atau celaan.
+@hal 219
+~Contoh dari surah Al-Kahfi 75: tambahan jar-majrur "laka" menguatkan celaan Musa. Lalu contoh ayat lain tentang tambahan keterangan yang dituntut situasi.
+@hal 220
+~Beberapa contoh ayat (Ash-Shaffat 171, Hud 40) dan penjelasan kehalusan di balik penyebutan keterangan tambahan.
+@hal 221
+~Jar-majrur dan maf'ul muthlaq tidak disebut kecuali ada sebab; contoh maf'ul muthlaq untuk penegasan, dan bait tentang "mendekat dan meninggi" yang menjelaskan fungsi batasan.
+@sub hadzf-maful|حَذْفُ الْمَفْعُولِ|Pembuangan maf'ul|222
+@hal 222
+~Dimulai bahasan hadzf al-maf'ul: batasan tidak disebut kecuali untuk makna yang dituntut situasi. 'Abdul Qahir menjelaskan dua jenis pembuangan maf'ul.
+@hal 223
+~Membuang maf'ul untuk menetapkan makna fi'il itu sendiri bagi pelaku tanpa menoleh kepada maf'ul, dengan contoh "Muhammad memberi dan Khalid memuliakan".
+@hal 224
+~Contoh kalimat untuk mengabarkan bahwa perbuatan hanya terjadi dari pelaku, dan penafian perbuatan dari pelaku, dengan kutipan dari Dala'il al-I'jaz.
+@hal 225
+~Contoh "ada orang yang melihat dan mendengar" yang bermakna pujian lewat kinayah, karena kebaikan seseorang sudah masyhur.
+@hal 226
+~Penjelasan bait tentang tombak yang "membungkam" lisan penyair, kinayah dalam bait itu, dan mengapa mengutamakan makna kinayah lebih utama.
+@hal 227
+~Perbandingan bentuk kalimat dengan dan tanpa maf'ul untuk menegaskan makna yang dimaksud, serta peran fi'il lazim dan fi'il muta'addi.
+@hal 228
+~Hadzf maf'ul untuk meringkas, dan hadzf untuk memberi penjelasan setelah ketidakjelasan sehingga jiwa pendengar menanti maknanya, dengan contoh bait.
+@hal 229
+~Contoh maf'ul masyi'ah yang dilipat di dua tempat dalam bait tentang unta, dengan ketidakjelasan yang kemudian dijelaskan oleh jawab syarat.
+@hal 230
+~Kehalusan hadzf maf'ul masyi'ah. Bila maf'ul itu ganjil dan tidak lazim dikaitkan dengan masyi'ah, maka maf'ul wajib disebutkan.
+@hal 231
+~Contoh bait Abu al-Husain Al-Jauhari yang maf'ul masyi'ah-nya tidak ganjil sehingga boleh dibuang, dan contoh pengandaian "tak kami dapati yang serupa".
+@hal 232
+~Perbedaan fi'il yang jatuh pada lafal maf'ul yang jelas dan yang jatuh pada dhamirnya dalam penafian, dengan contoh pujian dari Al-Buhturi.
+@hal 233
+~Situasi menentukan menyebut atau membuang maf'ul sesuai arah penafian (bait Al-Buhturi dan Dzur Rummah). Lalu hadzf untuk mencegah dugaan yang terlintas, seperti "hingga ke tulang".
+@hal 234
+~Hadzf maf'ul agar pendengar tidak menyangka hanya sebagian, dengan contoh "memotong daging hingga ke tulang", dan hadzf agar mencakup segala yang terlintas dalam jiwa.
+@hal 235
+~Jenis hadzf lain: tidak dimaksudkan maf'ul maupun penghapusannya, melainkan perbuatan itu sendiri, seperti "Dialah yang menghidupkan dan mematikan", dan contoh awal surah Al-Kahfi.
+@hal 236
+~Hadzf maf'ul "li yundzira" agar peringatan tidak terbatas pada orang kafir, dan hadzf maf'ul untuk menjaga lisan dari menyebutkan hal yang buruk.
+@sub taqdim-maful|تَقْدِيمُ الْمَفْعُولِ وَنَحْوِهِ مِنَ الْمُتَعَلِّقَاتِ عَلَى الْعَامِلِ|Mendahulukan maf'ul dan sejenisnya atas amil|237
+@hal 237
+~Banyak rahasia lain di balik melipat dan menggugurkan maf'ul yang hanya dipahami selera sehat. Lalu dimulai bahasan mendahulukan maf'ul atau jar-majrur atas amil, dengan contoh bait tentang membangun kemuliaan.
+@hal 238
+~Mendahulukan jar-majrur memberi faedah pembatasan, dengan contoh bait Al-Murar bin Sa'id dan kalimat "aku tidak memukul Zaid tetapi memuliakannya".
+@hal 239
+~Pendahuluan untuk pengkhususan, dengan contoh ayat tentang umat pertengahan (Al-Baqarah 143) dan hal-hal yang diingkari serta dianggap mustahil.
+@hal 240
+~Penjelasan Az-Zamakhsyari mengapa suatu penghubung diakhirkan pada satu ayat dan didahulukan pada ayat lain, bergantung pada maksud pengkhususan dan tempat pengingkaran.
+@sub taqdim-baadh|تَقْدِيمُ بَعْضِ الْمُتَعَلِّقَاتِ عَلَى بَعْضٍ|Mendahulukan sebagian muta'alliqat atas sebagian lain|241
+@hal 241
+~Contoh bait yang menunjukkan bahwa yang diingkari adalah waktunya (setelah uban), bukan perbuatannya. Lalu pendahuluan untuk perhatian, dengan contoh ayat tentang rezeki dan kemiskinan; bahasan taqdim sebagian muta'alliqat atas lainnya dimulai.
+@hal 242
+~Lanjutan contoh ayat rezeki: janji rezeki orang miskin didahulukan karena lebih mendesak, sedangkan khithab pada ayat berikutnya untuk orang kaya. Lalu contoh ayat tentang kebangkitan.
+@hal 243
+~Contoh ayat tentang orang kafir yang mengingkari kebangkitan, dan bahwa tujuan pembicaraan menentukan apa yang didahulukan.
+@hal 244
+~Pendahuluan yang dimaksudkan untuk mencegah salah paham, dengan contoh ayat tentang para pemuka kafir dan frasa "dalam kehidupan dunia".
+@hal 245
+~Contoh ayat "aku tidak akan menjulurkan tanganku kepadamu": jar-majrur diakhirkan dari maf'ul karena alasan tertentu. Penutup Fasal 4: urutan muta'alliqat mengikuti maksud pembicara.
+@bab khuruj|خُرُوجُ الْكَلَامِ عَنْ مُقْتَضَى الظَّاهِرِ|Keluarnya Ucapan dari Tuntutan Makna Lahir|246
+@sub wadh-mudhmar|وَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ|Menaruh dhamir pada tempat isim zhahir|246
+@hal 246
+~Pembuka bab khuruj al-kalam 'an muqtadha azh-zhahir: ucapan dapat keluar dari tuntutan lahiriah karena tujuan balaghah. Dimulai bahasan menaruh dhamir pada tempat isim zhahir.
+@hal 247
+~Menaruh dhamir pada tempat isim zhahir untuk penjelasan setelah ketidakjelasan dan perincian setelah ringkasan (gaya ni'ma dan bi'sa). Lalu dimulai menaruh isim zhahir pada tempat dhamir dengan contoh ayat.
+@sub wadh-mudzhar|وَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ|Menaruh isim zhahir pada tempat dhamir|248
+@hal 248
+~Pada ayat yang memakai isim zhahir, bila diganti dhamir maka keagungannya hilang. Contoh lain tentang orang yang menyembunyikan kekafiran dan menampakkan keislaman.
+@hal 249
+~Bait yang menaruh isim isyarah di awal bait kedua pada tempat dhamir untuk menunjuk hukum yang telah disebut; contoh ayat tentang surga bagi orang bertakwa.
+@hal 250
+~Lanjutan contoh ayat (Ar-Ra'd 35 dan ayat tentang kesaksian anggota badan) yang memakai isim zhahir untuk penegasan, disertai penjelasan rahasia balaghahnya.
+@hal 251
+~Pengulangan isim zhahir "dan dengan kebenaran" (Al-Isra' 105) memberi penegasan dan pengokohan makna, dengan contoh doa memohon belas kasih.
+@hal 252
+~Doa yang memakai "hamba-Mu" sebagai ganti dhamir untuk memunculkan makna penghambaan, dan contoh lain yang memakai sebutan "orang-orang mukmin".
+@sub iltifat|أُسْلُوبُ الِالْتِفَاتِ|Gaya iltifat (peralihan sudut pandang)|253
+@hal 253
+~Penyebutan sifat sebagai ganti dhamir untuk pengagungan dan kontras penghinaan. Lalu dimulai bahasan iltifat dengan contoh syair yang menoleh kepada pohon basyam.
+@hal 254
+~Contoh iltifat dalam syair (merpati bersenandung) dan penjelasan bahwa iltifat mengubah sudut pandang ungkapan.
+@hal 255
+~Definisi iltifat menurut jumhur dan pandangan As-Sakkaki yang berbeda pada bagian kedua definisi, dengan contoh bait Rabi'ah bin Maqrum.
+@sub shuwar-iltifat|صُوَرُ الِالْتِفَاتِ وَمَا يَكْمُنُ وَرَاءَهَا مِنْ أَسْرَارٍ بَلَاغِيَّةٍ|Bentuk-bentuk iltifat dan rahasia balaghah di baliknya|256
+@sub iltifat-1|الصُّورَةُ الْأُولَى: الِالْتِفَاتُ مِنَ التَّكَلُّمِ إِلَى الْخِطَابِ|Bentuk 1: dari pembicara ke lawan bicara|256
+@hal 256
+~Menurut jumhur ada enam bentuk iltifat, dan di balik tiap contoh ada maksud balaghah. Bentuk pertama: peralihan dari pembicara ke lawan bicara.
+@sub iltifat-2|الصُّورَةُ الثَّانِيَةُ: الِانْتِقَالُ مِنَ التَّكَلُّمِ إِلَى الْغَيْبَةِ|Bentuk 2: dari pembicara ke orang ketiga|257
+@hal 257
+~Contoh Al-An'am 14 (peralihan dari pembicara ke lawan bicara) dan peralihan dari pembicara ke orang ketiga, dengan rahasia balaghahnya.
+@sub iltifat-3|الصُّورَةُ الثَّالِثَةُ: الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى التَّكَلُّمِ|Bentuk 3: dari lawan bicara ke pembicara|258
+@hal 258
+~Penjelasan isim zhahir memungkinkan sifat-sifat "Nabi yang ummi" dijalankan, dan isyarat bahwa iman bukan pada pribadi Nabi semata. Lalu bentuk ketiga: dari lawan bicara ke pembicara.
+@sub iltifat-4|الصُّورَةُ الرَّابِعَةُ: الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى الْغَيْبَةِ|Bentuk 4: dari lawan bicara ke orang ketiga|259
+@hal 259
+~Bentuk keempat: dari lawan bicara ke orang ketiga, dengan contoh bait 'Alqamah bin 'Abadah dan ayat Yunus 22.
+@sub iltifat-5|الصُّورَةُ الْخَامِسَةُ: الِانْتِقَالُ مِنَ الْغَيْبَةِ إِلَى التَّكَلُّمِ|Bentuk 5: dari orang ketiga ke pembicara|260
+@hal 260
+~Penjelasan iltifat ayat Yunus 22 dari khithab (kamu di dalam kapal) ke ghaibah (kapal itu membawa mereka), dan rahasianya. Lalu bentuk kelima: dari orang ketiga ke pembicara.
+@hal 261
+~Iltifat yang menunjukkan pentingnya menggiring awan dan menghidupkan bumi, dengan contoh ayat lain, termasuk Luqman 10–11.
+@sub iltifat-6|الصُّورَةُ السَّادِسَةُ: الِالْتِفَاتُ مِنَ الْغَيْبَةِ إِلَى الْخِطَابِ|Bentuk 6: dari orang ketiga ke lawan bicara|262
+@hal 262
+~Bentuk keenam: dari orang ketiga ke lawan bicara, dengan contoh beberapa iltifat dalam ayat Luqman dan awal surah Al-Fatihah.
+@hal 263
+~Iltifat pada akhir Al-Fatihah: nikmat dinisbatkan kepada Allah, sedangkan kemurkaan disusun dalam bentuk pasif demi adab. Lalu contoh bait tentang keberanian.
+@hal 264
+~Rahasia iltifat: menonjolkan permintaan dan menegaskannya, seperti isim zhahir menggantikan dhamir. Contoh bait yang memakai iltifat saat kabar pembunuhan ayah sampai.
+@sub uslub-hakim|أُسْلُوبُ الْحَكِيمِ|Gaya al-hakim (menjawab dengan yang lebih penting)|265
+@hal 265
+~Pandangan lain tentang dua iltifat pada bait ketiga. Lalu dimulai bahasan uslub al-hakim, yaitu menjawab dengan selain yang ditanyakan atau diharapkan.
+@hal 266
+~Contoh uslub al-hakim sebagai mughalathah yang halus: menjawab dengan hal yang lebih layak dengan keadaan lawan bicara.
+@hal 267
+~Contoh kedua uslub al-hakim: menyambut penanya dengan selain yang ditanyakan sebagai peringatan bahwa itu lebih penting, seperti jawaban tentang bulan sabit dan infak.
+@sub uslub-qalb|أُسْلُوبُ الْقَلْبِ|Gaya al-qalb (pembalikan)|268
+@sub qalb-maknawi|١ - قَلْبٌ مَعْنَوِيٌّ|1. Qalb ma'nawi|268
+@hal 268
+~Dimulai bahasan uslub al-qalb: pembicara menempatkan salah satu bagian ucapan pada tempat bagian lain, dimulai dengan qalb ma'nawi dan contohnya.
+@sub qalb-lafzhi|٢ - قَلْبٌ لَفْظِيٌّ|2. Qalb lafzhi|269
+@hal 269
+~Qalb lafzhi dan contoh bait Abu Tammam yang membalik tasybih untuk melebih-lebihkan, dengan penjelasan kosakata.
+@sub ara-qalb|آرَاءُ الْبَلَاغِيِّينَ فِي أُسْلُوبِ الْقَلْبِ|Pendapat ahli balaghah tentang gaya qalb|270
+@hal 270
+~Contoh qalb dalam bait Hassan (khamar dari Bait Ra's) dan dimulainya bahasan pendapat ahli balaghah tentang menerima atau menolak gaya qalb.
+@hal 271
+~Contoh qalb yang ditolak (bait Al-Qutami tentang untanya) beserta kosakatanya.
+@hal 272
+~Jawaban atas keberatan: tidak ada qalb pada bait itu, karena maknanya mengandung dua kemungkinan.
+@sub qalb-quran|هَلْ يُوجَدُ أُسْلُوبُ الْقَلْبِ فِي النَّظْمِ الْكَرِيمِ؟|Apakah gaya qalb ada dalam Al-Qur'an?|273
+@hal 273
+~Dua kemungkinan penjelasan bait tentang tombak, lalu bahasan apakah gaya qalb ada dalam Al-Qur'an.
+@sub taghlib|أُسْلُوبُ التَّغْلِيبِ|Gaya taghlib|274
+@hal 274
+~Dimulai bahasan uslub at-taghlib: definisi dan contoh, antara lain dalam ayat tentang Maryam yang membenarkan kalimat-kalimat Tuhannya, dan beberapa jenis taghlib.
+@sub mukhalafah-shiyagh|الْمُخَالَفَةُ فِي صِيَغِ الْأَفْعَالِ|Menyelisihi bentuk-bentuk fi'il|275
+@hal 275
+~Menyelisihi bentuk fi'il (mukhalafah fi shiyagh al-af'al): mengungkapkan masa lampau dengan mudhari', dengan contoh Yunus 78 dan alasan balaghahnya.
+@hal 276
+~Lanjutan contoh pemakaian bentuk fi'il yang berbeda, dengan contoh surah An-Naml 87 dan ayat tentang peristiwa hari kiamat.
+@hal 277
+~Memakai isim fa'il dan isim maf'ul untuk peristiwa mendatang, seperti ayat Adz-Dzariyat 6 dan Hud 103, supaya peristiwa itu terasa pasti dan hadir.
+@hal 278
+~Menghadirkan peristiwa aneh seolah di depan mata, dengan contoh orang musyrik yang jatuh dari langit, dan penundukan angin bagi Sulaiman.
+@hal 279
+~Fi'il amr dipakai untuk lampau atau mudhari', dengan contoh surah Al-A'raf, lalu perbedaan pendapat yang dikesampingkan.
+@hal 280
+~Penutup jilid pertama kitab dengan pujian kepada Allah dan doa penutup, disusul jilid kedua yang dimulai dengan gaya qashr.
