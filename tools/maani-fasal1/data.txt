@@ -41,12 +41,131 @@
 دِرَاسَتَهُ لَهَا تَخْتَلِفُ عَنْ دِرَاسَةِ الْبَلَاغِيِّينَ،|kajiannya berbeda dengan kajian para ahli balaghah.
 فَالنَّحْوِيُّ يَدْرُسُ هَذِهِ الْأَحْوَالَ مِنْ حَيْثُ|Ahli nahwu mengkaji keadaan ini dari segi
 الْجَوَازُ وَالْوُجُوبُ وَالِامْتِنَاعُ أَيْ مِنْ|boleh, wajib, dan tidak bolehnya, yakni dari ... (bersambung ke hlm. 42).
-@sub farq-khabar-insya|الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|Perbedaan khabar dan insya'|42
 @hal 42
+حَيْثُ الْحُكْمُ وَإِمْكَانُ الِاسْتِعْمَالِ.|segi hukum (kebolehan) dan kemungkinan penggunaannya.
+أَمَّا الْبَلَاغِيُّ فَيَدْرُسُ الْأَسْرَارَ الْكَامِنَةَ|Adapun ahli balaghah mengkaji rahasia-rahasia yang tersembunyi
+وَرَاءَ هَذِهِ الْأَحْوَالِ، لِأَنَّهُ يَتَنَاوَلُهَا|di balik keadaan-keadaan ini, karena ia menelaahnya
+مِنْ حَيْثُ كَوْنِهَا مَطْلَبًا بَلَاغِيًّا|dari segi ia merupakan tuntutan balaghah
+يَقْتَضِيهِ الْمَقَامُ وَيَدْعُو إِلَيْهِ حَالُ الْمُخَاطَبِ.|yang dituntut oleh situasi (maqam) dan diserukan oleh keadaan mukhathab.
+@sub farq-khabar-insya|الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|Perbedaan khabar dan insya'|42
+يَتَنَوَّعُ الْكَلَامُ إِلَى نَوْعَيْنِ: خَبَرٍ وَإِنْشَاءٍ:|Ucapan terbagi menjadi dua jenis: khabar dan insya':
+فَالْخَبَرُ هُوَ الْكَلَامُ الَّذِي يَحْتَمِلُ|Khabar adalah ucapan yang mungkin
+الصِّدْقَ وَالْكَذِبَ لِذَاتِهِ، نَحْوُ قَوْلِنَا:|benar dan dusta karena zatnya, seperti ucapan kita:
+"جَاءَ زَيْدٌ"، فَهَذِهِ الْجُمْلَةُ أَفَادَتْ|"Zaid telah datang." Kalimat ini memberi faedah
+نِسْبَةَ الْمَجِيءِ إِلَى زَيْدٍ وَالْحُكْمَ بِهِ عَلَيْهِ،|penisbatan kedatangan kepada Zaid dan penghukumannya atasnya,
+فَإِنْ وَافَقَ ذَلِكَ الْوَاقِعَ كَانَ الْخَبَرُ صَادِقًا|jika itu sesuai dengan kenyataan maka khabar itu benar,
+وَوُصِفَ الْكَلَامُ بِالصِّدْقِ وَإِنْ خَالَفَهُ|dan ucapan itu disifati benar; dan jika menyelisihinya
+كَانَ الْخَبَرُ كَاذِبًا وَوُصِفَ الْكَلَامُ بِالْكَذِبِ.|maka khabar itu dusta dan ucapan itu disifati dusta.
+وَكَذَا قَوْلُنَا "مَا جَاءَ زَيْدٌ" أَفَادَ|Demikian pula ucapan kita "Zaid tidak datang" memberi faedah
+نَفْيَ الْمَجِيءِ عَنْ زَيْدٍ، فَإِنْ وَافَقَ|penafian kedatangan dari Zaid; jika sesuai
+ذَلِكَ الْوَاقِعَ وُصِفَ الْكَلَامُ بِالصِّدْقِ،|dengan kenyataan itu maka ucapan disifati benar,
+وَإِنْ خَالَفَهُ وُصِفَ بِالْكَذِبِ.|dan jika menyelisihinya disifati dusta.
+وَفِي بَعْضِ الْأَحْيَانِ قَدْ يُوصَفُ الْخَبَرُ|Pada sebagian keadaan, khabar bisa disifati
+بِالصِّدْقِ فَحَسْبُ، أَوْ بِالْكَذِبِ فَقَطْ،|benar saja, atau dusta saja,
+وَلَكِنْ هَذَا لَيْسَ لِذَاتِ الْكَلَامِ|tetapi ini bukan karena zat ucapan itu
+مِنْ حَيْثُ هُوَ كَلَامٌ خَبَرِيٌّ،|dari segi ia ucapan khabari,
+وَإِنَّمَا بِاعْتِبَارِ أَسْبَابٍ أُخْرَى|melainkan dengan mempertimbangkan sebab-sebab lain
+خَارِجَةٍ عَنْ نِطَاقِ الْجُمْلَةِ تُؤَيِّدُ|yang di luar lingkup kalimat, yang menguatkan
+صِدْقَهُ أَوْ كَذِبَهُ.. فَأَخْبَارُ الْقُرْآنِ الْكَرِيمِ|kebenarannya atau kedustaannya. Maka berita-berita Al-Qur'an yang mulia
+لَا تَحْتَمِلُ إِلَّا الصِّدْقَ بِاعْتِبَارِهَا|tidak mungkin kecuali benar, karena ia
+كَلَامَ اللهِ جَلَّ وَعَلَا، وَإِنْ كَانَتْ|firman Allah Yang Maha Agung dan Tinggi, meskipun
+تَحْتَمِلُ الصِّدْقَ وَالْكَذِبَ مِنْ حَيْثُ هِيَ|ia mungkin benar dan dusta jika dilihat sebagai
+أَخْبَارٌ بِصَرْفِ النَّظَرِ عَنْ قَائِلِهَا..|berita saja, terlepas dari siapa yang mengucapkannya.
+وَقَوْلُ الْيَهُودِ: عُزَيْرٌ ابْنُ اللهِ،|Ucapan orang Yahudi: "'Uzair putra Allah,"
+وَقَوْلُ النَّصَارَى: الْمَسِيحُ ابْنُ اللهِ|dan ucapan orang Nasrani: "Al-Masih putra Allah"
+كَلَامٌ لَا يَحْتَمِلُ إِلَّا الْكَذِبَ،|adalah ucapan yang tidak mungkin kecuali dusta,
+لِأَنَّ الْوَاقِعَ يُكَذِّبُهُ وَيُبْطِلُهُ،|karena kenyataan mendustakan dan membatalkannya,
+وَإِنْ كَانَتْ تَحْتَمِلُ الصِّدْقَ وَالْكَذِبَ|meskipun ia mungkin benar dan dusta
+مِنْ حَيْثُ هِيَ أَخْبَارٌ.|jika dilihat sebagai berita.
+فَوَصْفُ الْخَبَرِ بِالصِّدْقِ فَقَطْ أَوْ بِالْكَذِبِ فَقَطْ،|Maka penyifatan khabar benar saja atau dusta saja
+إِنَّمَا هُوَ بِاعْتِبَارِ أَسْبَابٍ خَارِجَةٍ|hanyalah dengan mempertimbangkan sebab-sebab di luar
+عَنْ نِطَاقِ الْعِبَارَاتِ - كَمَا قُلْتُ -|lingkup ungkapan -sebagaimana telah kukatakan-
+وَلَيْسَ لِذَاتِ الْكَلَامِ مِنْ حَيْثُ هُوَ|dan bukan karena zat ucapan dari segi ia
+كَلَامٌ خَبَرِيٌّ، لِذَا كَانَ هَذَا الْقَيْدُ|ucapan khabari. Karena itu batasan ini
+فِي التَّعْرِيفِ "لِذَاتِهِ" أَيْ: لِذَاتِ الْقَوْلِ.|dalam definisi, "karena zatnya", yakni: karena zat ucapan.
+أَمَّا الْإِنْشَاءُ فَالْهَدَفُ مِنْهُ وَالْمَقْصِدُ|Adapun insya', tujuan dan maksudnya
+إِيجَادُ الشَّيْءِ وَإِنْشَاؤُهُ ابْتِدَاءً|adalah mewujudkan sesuatu dan mengadakannya dari awal,
+وَلِذَا عَرَّفُوهُ بِأَنَّهُ: قَوْلٌ لَا يَحْتَمِلُ|karena itu mereka mendefinisikannya: ucapan yang tidak mungkin
+الصِّدْقَ وَالْكَذِبَ لِذَاتِهِ، وَهَذَا لَا يَعْنِي|benar dan dusta karena zatnya. Ini tidak berarti
+أَنَّهُ لَيْسَ لِمَفْهُومِ الْكَلَامِ الْإِنْشَائِيِّ|bahwa makna ucapan insya'i tidak memiliki
+وَاقِعٌ يُوَافِقُهُ أَوْ يُخَالِفُهُ، بَلْ لَهُ وَاقِعٌ|kenyataan yang menyesuainya atau menyelisihinya, bahkan ia memiliki kenyataan
+خَارِجَ نِطَاقِ الْعِبَارَةِ، لَهُ وَاقِعٌ فِي|di luar lingkup ungkapan; ia memiliki kenyataan dalam
+ذِهْنِ الْمُتَكَلِّمِ بِهِ، وَلَكِنْ لَا يُقْصَدُ|benak si pembicara, tetapi tidak dimaksudkan
+مُوَافَقَةُ مَفْهُومِ الْكَلَامِ الْإِنْشَائِيِّ لِهَذَا|kesesuaian makna ucapan insya'i dengan
+الْوَاقِعِ الْخَارِجِيِّ|kenyataan eksternal itu (bersambung ke hlm. 43)
 @hal 43
+الْكَائِنِ فِي ذِهْنِ الْمُتَكَلِّمِ أَوْ عَدَمِ مُوَافَقَتِهِ،|yang ada dalam benak pembicara, atau ketidaksesuaiannya,
+بَلِ الْقَصْدُ - كَمَا قُلْتُ - إِلَى|tetapi maksudnya -sebagaimana telah kukatakan- adalah
+إِيجَادِ الشَّيْءِ وَإِنْشَائِهِ ابْتِدَاءً: فَقَوْلُكَ:|mewujudkan sesuatu dan mengadakannya dari awal. Maka ucapanmu:
+حَافِظْ عَلَى الصَّلَاةِ، اقْرَأِ الْقُرْآنَ|"Jagalah salat", "Bacalah Al-Qur'an",
+لَا تَقْرَبِ الْفَوَاحِشَ. أَيْنَ مُحَمَّدٌ؟|"Janganlah mendekati perbuatan keji", "Di mana Muhammad?",
+لَيْتَ الشَّبَابَ يَعُودُ، يَا خَالِدُ،|"Andai masa muda kembali", "Wahai Khalid",
+هَذِهِ أَسَالِيبُ إِنْشَائِيَّةٌ الْقَصْدُ مِنْهَا|ini adalah gaya-gaya insya'i yang maksudnya
+إِحْدَاثُ الشَّيْءِ وَإِيجَادُهُ ابْتِدَاءً، وَلَا|adalah memunculkan dan mengadakan sesuatu dari awal, dan tidak
+يُقْصَدُ وَصْفُهَا بِالصِّدْقِ أَوْ بِالْكَذِبِ،|dimaksudkan menyifatinya benar atau dusta,
+وَلِذَا قَالُوا: الْإِنْشَاءُ قَوْلٌ لَا يَحْتَمِلُ|karena itu mereka berkata: insya' adalah ucapan yang tidak mungkin
+الصِّدْقَ وَالْكَذِبَ.|benar dan dusta.
+هَذَا وَتَفْصِيلُ الْقَوْلِ فِي أَسَالِيبِ الْإِنْشَاءِ|Adapun uraian rinci tentang gaya-gaya insya'
+وَأَنْوَاعِهِ وَمَا يَكْمُنُ وَرَاءَهُ مِنْ دَقَائِقَ|beserta jenis-jenisnya dan kehalusan yang tersembunyi di baliknya,
+وَفِي الْخَبَرِ وَأَجْزَائِهِ وَأَحْوَالِهِ|dan tentang khabar, bagian-bagiannya, keadaannya,
+وَمَا يَكْمُنُ فِي الصِّيَاغَةِ وَالتَّرَاكِيبِ|serta rahasia yang tersembunyi dalam penyusunan dan susunan kalimat
+مِنْ أَسْرَارٍ وَدَقَائِقَ وَلَطَائِفَ هُوَ|berupa rahasia, kehalusan, dan keindahan, itulah
+مَا سَنَتَنَاوَلُهُ بِالدِّرَاسَةِ فِي فُصُولِ|yang akan kita bahas dalam fasal-fasal
+هَذَا الْكِتَابِ إِنْ شَاءَ اللهُ تَعَالَى.|kitab ini, insya Allah Ta'ala.
 @bab fasl-1|الْفَصْلُ الْأَوَّلُ: أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ|Fasal 1: Keadaan Isnad Khabari|44
 @sub makna-isnad|مَعْنَى الْإِسْنَادِ وَأَغْرَاضُ الْخَبَرِ|Makna isnad dan tujuan-tujuan khabar|44
 @hal 44
+الْكَلِمَاتُ الْمُفْرَدَةُ مِثْلُ: مُحَمَّدٌ - زَيْدٌ -|Kata-kata tunggal seperti: Muhammad, Zaid,
+ذَهَبَ - شَكَرَ - لَا يُفْهَمُ مِنْهَا|pergi, bersyukur, tidak dapat dipahami darinya
+سِوَى مَعَانِيهَا اللُّغَوِيَّةِ الَّتِي وُضِعَتْ لَهَا،|selain makna-makna bahasanya yang ditetapkan baginya,
+وَلِكَيْ تُفِيدَ مَعْنًى تَامًّا، لَا بُدَّ|dan agar ia memberi makna sempurna, harus
+مِنْ تَرَابُطِهَا وَضَمِّ بَعْضِهَا إِلَى بَعْضٍ،|ada keterkaitannya dan penggabungan sebagiannya dengan sebagian lain,
+وَصِيَاغَتِهَا فِي تَرَاكِيبَ مُفِيدَةٍ وَنَظْمٍ مُعَبِّرٍ.|dan penyusunannya dalam susunan bermakna dan nazhm yang ekspresif.
+هَذَا التَّرَابُطُ وَذَاكَ الضَّمُّ، وَتِلْكَ الصِّيَاغَةُ،|Keterkaitan ini, penggabungan itu, dan penyusunan itu
+هِيَ مَا أَطْلَقَ عَلَيْهِ الْبَلَاغِيُّونَ اسْمَ:|adalah yang oleh ahli balaghah dinamai:
+"الْإِسْنَادُ" وَعَرَّفُوهُ بِقَوْلِهِمْ: هُوَ ضَمُّ|"isnad", dan mereka mendefinisikannya: ia adalah menggabungkan
+كَلِمَةٍ إِلَى كَلِمَةٍ عَلَى وَجْهٍ يُفِيدُ|satu kata kepada kata lain dengan cara yang menunjukkan
+أَنَّ مَفْهُومَ إِحْدَاهُمَا ثَابِتٌ لِمَفْهُومِ|bahwa makna salah satunya tetap bagi makna
+الْأُخْرَى أَوْ مَنْفِيٌّ عَنْهُ، فَقَوْلُنَا:|yang lain atau dinafikan darinya. Maka ucapan kita:
+شَكَرَ مُحَمَّدٌ وَلَمْ يَذْهَبْ زَيْدٌ نَجِدُ|"Muhammad bersyukur" dan "Zaid tidak pergi", kita dapati
+أَنَّ كَلِمَةَ "شَكَرَ" قَدْ أُسْنِدَتْ إِلَى|bahwa kata "syakara" telah disandarkan kepada
+كَلِمَةِ "مُحَمَّدٍ" عَلَى وَجْهٍ يُفِيدُ أَنَّ|kata "Muhammad" dengan cara yang menunjukkan bahwa
+مَفْهُومَ "شَكَرَ" ثَابِتٌ لِمَفْهُومِ "مُحَمَّدٍ"|makna "syakara" tetap bagi makna "Muhammad"
+وَنَجِدُ فِي الْمِثَالِ الثَّانِي أَنَّ كَلِمَةَ|dan kita dapati pada contoh kedua bahwa kata
+"يَذْهَبُ" قَدْ أُسْنِدَتْ إِلَى كَلِمَةِ "زَيْدٍ"|"yadzhabu" telah disandarkan kepada kata "Zaid"
+عَلَى وَجْهٍ يُفِيدُ أَنَّ الذَّهَابَ مَنْفِيٌّ|dengan cara yang menunjukkan bahwa kepergian dinafikan
+عَنْ زَيْدٍ.|dari Zaid.
+وَيُسَمَّى كُلٌّ مِنْ: "مُحَمَّدٌ" وَ"زَيْدٌ"|Masing-masing dari "Muhammad" dan "Zaid" dinamai
+مُسْنَدًا إِلَيْهِ أَوْ مُحَدَّثًا عَنْهُ، كَمَا يُسَمَّى:|musnad ilaih atau yang diberitakan tentangnya, sebagaimana dinamai:
+"شَكَرَ وَيَذْهَبُ"، مُسْنَدًا أَوْ حَدِيثًا،|"syakara dan yadzhabu" musnad atau hadits (berita),
+وَتُسَمَّى النِّسْبَةُ بَيْنَ الْمُسْنَدِ إِلَيْهِ|dan hubungan antara musnad ilaih
+وَالْمُسْنَدِ "إِسْنَادًا" وَكَذَا الْقَوْلُ فِي الْجُمَلِ:|dan musnad dinamai "isnad". Demikian pula pada kalimat-kalimat:
+هَدَانَا اللهُ، الْحَقُّ وَاضِحٌ، مُحَمَّدٌ فَاضِلٌ،|"Allah memberi kita petunjuk", "Kebenaran itu jelas", "Muhammad itu utama",
+الْفَرَاغُ مَفْسَدَةٌ، الشَّمْسُ لَيْسَتْ مُشْرِقَةً،|"Waktu luang adalah kerusakan", "Matahari tidak bersinar",
+حَيْثُ أُسْنِدَتِ الْهِدَايَةُ إِلَى اللهِ، وَالْوُضُوحُ|karena petunjuk disandarkan kepada Allah, kejelasan
+إِلَى الْحَقِّ، وَالْفَضْلُ إِلَى مُحَمَّدٍ، وَالْفَسَادُ|kepada kebenaran, keutamaan kepada Muhammad, kerusakan
+إِلَى الْفَرَاغِ عَلَى وَجْهِ الْإِثْبَاتِ،|kepada waktu luang, dengan cara penetapan (positif),
+وَأُسْنِدَ الْإِشْرَاقُ إِلَى الشَّمْسِ عَلَى وَجْهِ النَّفْيِ،|dan pancaran disandarkan kepada matahari dengan cara penafian,
+وَلَا يَخْفَى عَلَيْكَ مَعْرِفَةُ الْمُسْنَدِ|dan tidak tersembunyi bagimu mengenali musnad
+وَالْمُسْنَدِ إِلَيْهِ فِي الْجُمَلِ الْمَذْكُورَةِ.|dan musnad ilaih dalam kalimat-kalimat tersebut.
+*أَغْرَاضُ الْخَبَرِ|Tujuan-tujuan khabar
+عِنْدَ ضَمِّ الْكَلِمَاتِ وَإِسْنَادِ بَعْضِهَا إِلَى بَعْضٍ|Ketika kata-kata digabungkan dan sebagiannya disandarkan kepada yang lain
+تَتَكَوَّنُ الْجُمَلُ الْمُفِيدَةُ أَوِ الْأَخْبَارُ،|terbentuklah kalimat-kalimat bermakna atau berita-berita,
+وَالْمُتَكَلِّمُ الَّذِي بِصَدَدِ الْإِخْبَارِ وَالْإِعْلَامِ،|dan pembicara yang hendak memberi kabar dan memberitahu,
+يَقْصِدُ بِخَبَرِهِ غَرَضًا، وَيَسْعَى مِنْ|memaksudkan suatu tujuan dengan beritanya, dan berusaha dari
+وَرَاءِ الْإِعْلَامِ بِهِ إِلَى غَايَةٍ، وَقَدْ|balik pemberitahuan itu menuju suatu tujuan akhir. Dan
+حَصَرَ الْبَلَاغِيُّونَ أَغْرَاضَ الْخَبَرِ فِي|ahli balaghah telah membatasi tujuan khabar dalam
+مَقْصِدَيْنِ أَسَاسِيَّيْنِ؛ حَيْثُ قَالُوا: إِنَّ|dua maksud pokok; mereka berkata: sesungguhnya
+قَصْدَ الْمُخْبِرِ بِخَبَرِهِ إِمَّا إِفَادَةُ|maksud pemberi kabar dengan beritanya adalah memberi faedah
+الْمُخَاطَبِ أَوِ السَّامِعِ مَضْمُونَ الْخَبَرِ|kepada mukhathab atau pendengar isi khabar
+وَنَفْسَ الْحُكْمِ كَقَوْلِهِ: جَاءَ عَمْرٌو،|dan hukum itu sendiri, seperti ucapannya: "'Amr telah datang",
+وَزَيْدٌ نَاجِحٌ لِمَنْ لَا يَعْلَمُ مَجِيءَ|dan "Zaid lulus", kepada orang yang tidak mengetahui kedatangan
+عَمْرٍو، وَنَجَاحَ زَيْدٍ، وَيُسَمَّى هَذَا|'Amr dan kelulusan Zaid. Hal ini dinamai
+"فَائِدَةَ الْخَبَرِ" وَهِيَ الْمَقْصِدُ الْأَوَّلُ|"faidah khabar", yaitu maksud pertama
+مِنَ الْأُسْلُوبِ الْخَبَرِيِّ.|dari gaya khabari.
+وَإِمَّا إِفَادَةُ الْمُخَاطَبِ أَنَّهُ أَيِ|Atau memberitahu mukhathab bahwa ia, yakni
+الْمُتَكَلِّمُ عَالِمٌ بِالْحُكْمِ وَبِمَضْمُونِ|pembicara, mengetahui hukum dan isi
+الْخَبَرِ الَّذِي|khabar yang ... (bersambung ke hlm. 45).
 @hal 45
 @hal 46
 @sub wajh-dalalah|وَجْهُ دَلَالَةِ الْخَبَرِ عَلَى أَغْرَاضِهِ|Cara khabar menunjukkan tujuan-tujuannya|47
