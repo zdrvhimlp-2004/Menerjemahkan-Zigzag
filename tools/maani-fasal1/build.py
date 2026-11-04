@@ -18,7 +18,7 @@ import os, re, sys, html as H
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 LUG = os.path.join(ROOT, 'tools', 'lughah3')
-OUT = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester 5', 'البلاغة (5)', 'Kitab Ilmu Al Maani (Fasal 1 Isnad Khabari)(Hlm 41-96).html')
+OUT = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester 5', 'البلاغة (5)', '✏️ Kitab Ilmu Al Maani (Fasal 1 Isnad Khabari)(Hlm 41-96).html')
 MAXW = 7
 HAR = re.compile('[ً-ْٰ]')
 esc = lambda s: H.escape(s, quote=False)

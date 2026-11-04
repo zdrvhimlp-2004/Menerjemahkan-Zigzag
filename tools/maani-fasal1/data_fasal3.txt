@@ -1,4 +1,4 @@
-@meta out=Kitab Ilmu Al Maani (Fasal 3 Ahwal Al Musnad)(Hlm 167-215).html
+@meta out=✏️ Kitab Ilmu Al Maani (Fasal 3 Ahwal Al Musnad)(Hlm 167-215).html
 @meta title=أحوال المسند
 @meta h1=أَحْوَالُ الْمُسْنَدِ
 @meta subtitle=Fasal 3: Keadaan Musnad
