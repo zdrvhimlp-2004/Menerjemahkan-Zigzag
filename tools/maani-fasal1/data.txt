@@ -1,0 +1,126 @@
+# Data terjemah Ilmu Ma'ani Fasal 1 (hlm. 41-96). Format: lihat docstring build.py.
+# Hlm. 41 terisi; hlm. 42-96 menunggu terjemah.
+@bab ilmu-maani|عِلْمُ الْمَعَانِي وَمَبَاحِثُهُ، الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|Ilmu Ma'ani dan Pembahasannya; Perbedaan Khabar dan Insya'|41
+@hal 41
+عَرَّفَ الْبَلَاغِيُّونَ عِلْمَ الْمَعَانِي بِقَوْلِهِمْ:|Para ahli balaghah mendefinisikan ilmu ma'ani dengan ucapan mereka:
+"هُوَ عِلْمٌ يُعْرَفُ بِهِ أَحْوَالُ اللَّفْظِ|"Ia adalah ilmu yang dengannya diketahui keadaan-keadaan lafaz
+الْعَرَبِيِّ الَّتِي بِهَا يُطَابِقُ مُقْتَضَى الْحَالِ".|Arab yang dengannya (lafaz itu) sesuai dengan tuntutan keadaan (muqtadha al-hal)."
+وَ"اللَّفْظُ الْعَرَبِيُّ" يَشْمَلُ اللَّفْظَ الْمُفْرَدَ|"Lafaz Arab" mencakup lafaz mufrad (tunggal)
+وَاللَّفْظَ الْمُرَكَّبَ أَيِ الْجُمْلَةَ وَأَجْزَاءَهَا|dan lafaz murakkab (tersusun), yakni kalimat beserta bagian-bagiannya
+وَالْجُمَلَ الْمُلْتَقِيَةَ، فَأَحْوَالُ الْجُمْلَةِ:|dan kalimat-kalimat yang saling bertemu. Keadaan kalimat:
+الْإِسْنَادُ الْخَبَرِيُّ، وَالْإِنْشَاءُ وَأُسْلُوبُ الْقَصْرِ،|isnad khabari, insya', dan gaya pembatasan (qashr),
+وَأَحْوَالُ الْجُمَلِ: الْفَصْلُ وَالْوَصْلُ|dan keadaan rangkaian kalimat: fashl dan washl,
+وَالْإِيجَازُ وَالْإِطْنَابُ وَالْمُسَاوَاةُ،|ijaz, ithnab, dan musawah,
+وَأَحْوَالُ أَجْزَاءِ الْجُمْلَةِ: أَيِ الْمُسْنَدُ|dan keadaan bagian-bagian kalimat, yakni musnad,
+وَالْمُسْنَدُ إِلَيْهِ وَمُتَعَلِّقَاتُ الْفِعْلِ|musnad ilaih, dan muta'alliqat al-fi'l,
+كَالتَّعْرِيفِ وَالتَّنْكِيرِ وَالْحَذْفِ وَالذِّكْرِ|seperti ta'rif, tankir, hadzf, dan dzikr,
+وَالتَّقْدِيمِ وَالتَّأْخِيرِ وَالْإِظْهَارِ وَالْإِضْمَارِ وَغَيْرِ ذَلِكَ.|taqdim, ta'khir, izhhar, idhmar, dan selainnya.
+فَعِلْمُ الْمَعَانِي يَبْحَثُ فِي تِلْكَ الْأَحْوَالِ،|Maka ilmu ma'ani membahas keadaan-keadaan itu,
+وَكَيْفَ تَأْتِي مُطَابِقَةً لِمُقْتَضَى حَالِ الْمُخَاطَبِ،|dan bagaimana ia hadir sesuai tuntutan keadaan mukhathab,
+أَيْ أَنَّهُ يَبْحَثُ فِي بِنَاءِ الْجُمْلَةِ الْعَرَبِيَّةِ،|yakni ia membahas bangunan kalimat Arab,
+صِيَاغَتِهَا، اخْتِيَارِ أَجْزَائِهَا،|penyusunannya, pemilihan bagian-bagiannya,
+عَلَاقَةِ الْجُمَلِ الْمُتَتَابِعَةِ بَعْضِهَا بِبَعْضٍ،|hubungan kalimat-kalimat yang berurutan satu sama lain,
+وَاخْتِيَارِ نَوْعِ الْكَلَامِ الْمُلَائِمِ|dan pemilihan jenis ucapan yang sesuai
+لِمُقْتَضَى حَالِ الْمُخَاطَبِ، خَبَرًا أَوْ إِنْشَاءً،|dengan tuntutan keadaan mukhathab: khabar atau insya',
+إِيجَازًا أَوْ إِطْنَابًا أَوْ مُسَاوَاةً،|ijaz, ithnab, atau musawah,
+وَلِذَا فَإِنَّ مَبَاحِثَهُ تَنْحَصِرُ فِيمَا يَلِي:|maka pembahasannya terbatas pada hal berikut:
+-١ - أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ.|1. Keadaan isnad khabari.
+-٢ - أَحْوَالُ الْمُسْنَدِ إِلَيْهِ.|2. Keadaan musnad ilaih.
+-٣ - أَحْوَالُ الْمُسْنَدِ.|3. Keadaan musnad.
+-٤ - أَحْوَالُ مُتَعَلِّقَاتِ الْفِعْلِ.|4. Keadaan muta'alliqat al-fi'l (pelengkap kata kerja).
+-٥ - أَسَالِيبُ الْقَصْرِ.|5. Gaya-gaya pembatasan (qashr).
+-٦ - أَسَالِيبُ الْإِنْشَاءِ.|6. Gaya-gaya insya'.
+-٧ - مَوَاضِعُ الْفَصْلِ وَالْوَصْلِ.|7. Tempat-tempat fashl dan washl.
+-٨ - الْإِيجَازُ وَالْإِطْنَابُ وَالْمُسَاوَاةُ.|8. Ijaz, ithnab, dan musawah.
+وَعِلْمُ النَّحْوِ وَإِنْ كَانَ قَدْ تَعَرَّضَ|Ilmu nahwu, meskipun telah menyinggung
+لِدِرَاسَةِ هَذِهِ الْأَحْوَالِ فَدَرَسَ|kajian keadaan-keadaan ini, lalu mengkaji
+أَحْوَالَ الْمُسْنَدِ إِلَيْهِ مِنْ حَذْفٍ وَذِكْرٍ|keadaan musnad ilaih seperti hadzf dan dzikr,
+وَتَقْدِيمٍ وَتَأْخِيرٍ وَتَنْكِيرٍ وَتَعْرِيفٍ،|taqdim, ta'khir, tankir, dan ta'rif,
+وَكَذَا أَحْوَالَ الْمُسْنَدِ وَالْمُتَعَلِّقَاتِ|begitu pula keadaan musnad dan muta'alliqat,
+وَالْحَصْرِ وَغَيْرِ ذَلِكَ.. إِلَّا أَنَّ|hashr, dan lainnya, namun
+دِرَاسَتَهُ لَهَا تَخْتَلِفُ عَنْ دِرَاسَةِ الْبَلَاغِيِّينَ،|kajiannya berbeda dengan kajian para ahli balaghah.
+فَالنَّحْوِيُّ يَدْرُسُ هَذِهِ الْأَحْوَالَ مِنْ حَيْثُ|Ahli nahwu mengkaji keadaan ini dari segi
+الْجَوَازُ وَالْوُجُوبُ وَالِامْتِنَاعُ أَيْ مِنْ|boleh, wajib, dan tidak bolehnya, yakni dari ... (bersambung ke hlm. 42).
+@sub farq-khabar-insya|الْفَرْقُ بَيْنَ الْخَبَرِ وَالْإِنْشَاءِ|Perbedaan khabar dan insya'|42
+@hal 42
+@hal 43
+@bab fasl-1|الْفَصْلُ الْأَوَّلُ: أَحْوَالُ الْإِسْنَادِ الْخَبَرِيِّ|Fasal 1: Keadaan Isnad Khabari|44
+@sub makna-isnad|مَعْنَى الْإِسْنَادِ وَأَغْرَاضُ الْخَبَرِ|Makna isnad dan tujuan-tujuan khabar|44
+@hal 44
+@hal 45
+@hal 46
+@sub wajh-dalalah|وَجْهُ دَلَالَةِ الْخَبَرِ عَلَى أَغْرَاضِهِ|Cara khabar menunjukkan tujuan-tujuannya|47
+@hal 47
+@sub adhrub-khabar|أَضْرُبُ الْخَبَرِ|Macam-macam khabar|48
+@hal 48
+@hal 49
+@hal 50
+@sub ikhraj-kalam|إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ|Mengeluarkan ucapan menyelisihi tuntutan makna lahir|51
+@hal 51
+@hal 52
+@hal 53
+@hal 54
+@hal 55
+@hal 56
+@hal 57
+@hal 58
+@hal 59
+@sub tajawwuz-isnad|التَّجَوُّزُ فِي الْإِسْنَادِ|Majaz dalam isnad|60
+@sub nau-isnad|نَوْعَا الْإِسْنَادِ|Dua jenis isnad|60
+@hal 60
+@hal 61
+@hal 62
+@hal 63
+@hal 64
+@sub haqiqah-aqliyyah|الْحَقِيقَةُ الْعَقْلِيَّةُ|Hakikat aqliyah|65
+@hal 65
+@hal 66
+@sub majaz-aqli|الْمَجَازُ الْعَقْلِيُّ|Majaz aqli|67
+@sub tarif-khathib|تَعْرِيفُ الْخَطِيبِ لِلْمَجَازِ الْعَقْلِيِّ|Definisi Al-Khathib tentang majaz aqli|67
+@hal 67
+@sub alaqat-majaz|عَلَاقَاتُ الْمَجَازِ الْعَقْلِيِّ (مُلَابَسَاتُهُ)|Hubungan (mulabasat) majaz aqli|68
+@sub isnad-ilal-maful|إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى الْمَفْعُولِ|Isnad bentuk aktif kepada maf'ul|68
+@hal 68
+@hal 69
+@sub isnad-ilal-fail|إِسْنَادُ الْمَبْنِيِّ لِلْمَفْعُولِ إِلَى الْفَاعِلِ|Isnad bentuk pasif kepada fa'il|70
+@hal 70
+@sub isnad-ilal-mashdar|إِسْنَادُ الْمَبْنِيِّ لِلْفَاعِلِ إِلَى مَصْدَرِهِ|Isnad kepada mashdarnya|71
+@hal 71
+@sub isnad-ilaz-zaman|الْإِسْنَادُ إِلَى الزَّمَانِ|Isnad kepada waktu|72
+@hal 72
+@sub isnad-ilal-makan|الْإِسْنَادُ إِلَى الْمَكَانِ|Isnad kepada tempat|73
+@hal 73
+@sub isnad-ilas-sabab|الْإِسْنَادُ إِلَى السَّبَبِ|Isnad kepada sebab|74
+@hal 74
+@sub isnad-ilal-jins|الْإِسْنَادُ إِلَى الْجِنْسِ|Isnad kepada jenis|75
+@hal 75
+@sub isnad-ilal-jarihah|الْإِسْنَادُ إِلَى الْجَارِحَةِ وَمَا لَهُ مَزِيدُ اخْتِصَاصٍ بِالْفَاعِلِ الْحَقِيقِيِّ|Isnad kepada anggota tubuh dan yang paling berkaitan dengan pelaku sebenarnya|76
+@sub nisbah-idhafiyyah|النِّسْبَةُ الْإِضَافِيَّةُ وَالْإِيقَاعِيَّةُ وَالْوَصْفِيَّةُ|Nisbah idhafiyah, iqa'iyah, dan washfiyah|76
+@hal 76
+@sub isnad-mubtada-khabar|الْإِسْنَادُ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ|Isnad antara mubtada' dan khabar|77
+@hal 77
+@hal 78
+@sub qarinah-majaz|قَرِينَةُ الْمَجَازِ الْعَقْلِيِّ|Qarinah majaz aqli|79
+@hal 79
+@hal 80
+@sub farq-majaz|الْفَرْقُ بَيْنَ الْمَجَازِ الْعَقْلِيِّ وَالْمَجَازِ اللُّغَوِيِّ|Perbedaan majaz aqli dan majaz lughawi|81
+@hal 81
+@sub shuwar-majaz|صُوَرُ الْمَجَازِ الْعَقْلِيِّ|Bentuk-bentuk majaz aqli|82
+@hal 82
+@hal 83
+@hal 84
+@hal 85
+@hal 86
+@sub istilzam|اسْتِلْزَامُ الْمَجَازِ الْعَقْلِيِّ الْحَقِيقَةَ الْعَقْلِيَّةَ|Majaz aqli mengharuskan adanya hakikat aqliyah|87
+@hal 87
+@hal 88
+@hal 89
+@sub inkar-majaz|إِنْكَارُ الْمَجَازِ الْعَقْلِيِّ|Pengingkaran terhadap majaz aqli|90
+@hal 90
+@hal 91
+@hal 92
+@sub balaghah-majaz|بَلَاغَةُ الْمَجَازِ الْعَقْلِيِّ وَدِقَّةُ مَسْلَكِهِ|Balaghah majaz aqli dan kehalusan alurnya|93
+@hal 93
+@hal 94
+@hal 95
+@hal 96
