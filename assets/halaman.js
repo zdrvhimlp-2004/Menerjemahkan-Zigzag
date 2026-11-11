@@ -643,3 +643,17 @@
   document.addEventListener('click', function (e) { if (box.classList.contains('is-open') && !box.contains(e.target)) atur(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') atur(false); });
 })();
+
+/* Tanda versi kecil di kaki halaman: tanggal file ini di server. Kalau tanggalnya lama, server belum memakai versi terbaru. */
+(function () {
+  'use strict';
+  var wrap = document.querySelector('.isi__wrap');
+  if (!wrap || !document.lastModified) return;
+  var d = new Date(document.lastModified);
+  if (isNaN(d.getTime())) return;
+  var bln = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+  var p = document.createElement('p');
+  p.className = 'ver';
+  p.textContent = 'File diperbarui ' + d.getDate() + ' ' + bln[d.getMonth()] + ' ' + d.getFullYear() + ', ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+  wrap.appendChild(p);
+})();
