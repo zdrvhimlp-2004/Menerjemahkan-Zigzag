@@ -160,15 +160,12 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .ph__btn--utama { grid-column: 1 / -1; background: var(--heading, #1f4d3a); border-color: var(--heading, #1f4d3a); color: var(--card, #fffdf7); font-weight: 600; }
 .ph__btn--utama:hover { color: var(--card, #fffdf7); filter: brightness(1.1); }
 .ph__info { font-size: 0.78rem; color: var(--heading, #1f4d3a); min-height: 1.1em; }
-.ph__pratinjau { max-height: 11rem; overflow: auto; margin: 0; padding: 0.6rem 0.8rem; border-radius: 10px; border: 1px solid var(--border, #e4ddcb); background: var(--pasal-bg, #eef2ea); color: var(--ar-color, #23331f); font-family: 'Amiri', 'Poppins', serif; font-size: 0.95rem; line-height: 1.8; white-space: pre-wrap; text-align: left; unicode-bidi: plaintext; }
-.ph__pratinjau[hidden] { display: none; }
 .ph__lain { border: 1px solid var(--border, #e4ddcb); border-radius: 10px; padding: 0.15rem 0.7rem; background: var(--pasal-bg, #eef2ea); }
 .ph__lain summary { cursor: pointer; font-size: 0.8rem; color: var(--id-color, #5a5343); padding: 0.45rem 0; }
 .ph__lain[open] { padding-bottom: 0.6rem; }
 .ph__lain[open] > * + * { margin-top: 0.5rem; }
 .ph__lain[open] > summary { margin-bottom: 0.1rem; }
 .ph__btn--lebar { grid-column: 1 / -1; }
-.ph__lihat { align-self: center; background: none; border: none; padding: 0.15rem 0.4rem; font: inherit; font-size: 0.75rem; color: var(--muted, #8a8270); text-decoration: underline; cursor: pointer; }
 .ph__info { white-space: pre-line; }
 @media (max-width: 640px) {
   dialog.ph-modal, dialog.ph-modal[open] { inset: 0; margin: 0; width: 100vw; max-width: 100vw; height: 100vh; height: 100dvh; max-height: 100vh !important; max-height: 100dvh !important; border-radius: 0; box-shadow: none; border: 0; }
@@ -182,5 +179,4 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
   .ph__item label { padding: 0.65rem 0.2rem 0.65rem 0.7rem; gap: 0.6rem; }
   .ph__aksi { padding: 0.6rem 0.6rem calc(0.7rem + env(safe-area-inset-bottom, 0px)); gap: 0.45rem; max-height: 62%; }
   .ph__btn { padding: 0.7rem 0.5rem; }
-  .ph__pratinjau { max-height: 8rem; }
 }

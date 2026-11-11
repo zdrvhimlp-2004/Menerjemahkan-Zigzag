@@ -458,15 +458,13 @@
           ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="bagi">Kirim…</button>'
           : '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button><button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>') +
       '</div>' +
-      '<button type="button" class="ph__lihat" data-k="lihat">Lihat teks yang akan dikirim</button>' +
-      '<pre class="ph__pratinjau" hidden></pre>' +
     '</div>';
   document.body.appendChild(dlg);
 
   var q = function (s) { return dlg.querySelector(s); };
   var daftar = q('.ph__daftar'), aksi = q('.ph__aksi'), jml = q('.ph__jml'), info = q('.ph__info');
   var fmt = q('.ph__fmt'), tanpa = q('.ph__tanpa'), hlm = q('.ph__hlm');
-  var sel = q('.ph__prompt'), kustom = q('.ph__kustom'), pra = q('.ph__pratinjau');
+  var sel = q('.ph__prompt'), kustom = q('.ph__kustom');
   var kotak = [], terakhir = -1;
 
   PROMPT.forEach(function (p, k) { var o = document.createElement('option'); o.value = k; o.textContent = p[1]; sel.appendChild(o); });
@@ -487,7 +485,7 @@
     var t = terpilih();
     kotak.forEach(function (c) { c.closest('.ph__item').classList.toggle('is-on', c.checked); });
     jml.textContent = t.length ? t.length + ' dari ' + halaman.length + ' dipilih' : halaman.length + ' halaman';
-    aksi.hidden = !t.length; pra.hidden = true; info.textContent = '';
+    aksi.hidden = !t.length; info.textContent = '';
     if (t.length) {
       var h1 = halaman[t[0]].n, h2 = halaman[t[t.length - 1]].n;
       info.textContent = 'Terpilih: ' + (t.length === 1 ? 'Hlm. ' + h1 : 'Hlm. ' + h1 + '–' + h2 + ' (' + t.length + ' halaman)');
@@ -573,8 +571,7 @@
     var k2 = x.getAttribute('data-k');
     if (!k2) return;
     var teks = susun();
-    if (k2 === 'lihat') { pra.textContent = teks; pra.hidden = !pra.hidden; return; }
-    if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); }); return; }
+    if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Coba lagi atau gunakan tombol Kirim….'); }); return; }
     if (k2 === 'bagi') {
       if (navigator.share) { navigator.share({ text: teks }).catch(function () { /* dibatalkan */ }); kabar('Pilih aplikasi tujuan di menu bagikan. Teks juga sudah disalin.'); salinSinkron(teks); }
       else salinKe(teks).then(function () { kabar('Berbagi tidak didukung di browser ini; teks disalin.'); });
@@ -587,7 +584,7 @@
     var url = lewat ? st[1] + '?' + st[2] + '=' + encodeURIComponent(teks) : st[1];
     kabar(tersalin
       ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
-      : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
+      : 'Gagal menyalin otomatis. Coba lagi atau gunakan tombol Kirim….');
     var w = window.open(url, '_blank');
     if (!w) { var ln = document.createElement('a'); ln.href = url; ln.target = '_blank'; ln.rel = 'noopener'; ln.click(); }
   });
