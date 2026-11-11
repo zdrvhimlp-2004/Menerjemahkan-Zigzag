@@ -224,6 +224,10 @@
   .pdfp { position: fixed; z-index: 60; background: var(--card); color: var(--ar-color); border: 1px solid var(--border); box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25); display: none; flex-direction: column; direction: ltr; left: 0; right: 0; bottom: 0; height: calc(var(--pdfh, 55) * 1vh); height: calc(var(--pdfh, 55) * 1dvh); border-radius: 14px 14px 0 0; }
   .pdfp.pdfp--on { display: flex; }
   .pdfp__bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+  .pdfp__bar { cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+  .pdfp--drag .pdfp__bar { cursor: grabbing; }
+  .pdfp--free { border-radius: 14px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); }
+  body.pdfp-open.pdfp-free { padding-bottom: 0 !important; padding-right: 0 !important; }
   .pdfp__ttl { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--id-color); }
   .pdfp__b { font: inherit; min-width: 2rem; height: 2rem; padding: 0 0.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--id-color); cursor: pointer; }
   .pdfp__b:hover:not(:disabled) { color: var(--heading); border-color: var(--heading); }
@@ -789,11 +793,13 @@
   var ttl = panel.querySelector('.pdfp__ttl'), body = panel.querySelector('.pdfp__body');
   var prev = panel.querySelector('[data-a=prev]'), next = panel.querySelector('[data-a=next]');
   var doc = null, loading = null, page = 1, zoom = 1, token = 0, hlm = '';
+  var free = false;
   var wide = function () { return window.innerWidth >= 1100; };
   var H = wide() ? 100 : 55;
   function setH(v) {
     H = Math.max(25, Math.min(wide() ? 100 : 90, v));
     panel.style.setProperty('--pdfh', H);
+    if (free) panel.style.height = H + 'vh';
     document.body.style.setProperty('--pdfh', H);
   }
   function syncHtml() {
@@ -844,6 +850,35 @@
     render();
     if (!doc) load().then(render, function () { msg('PDF tidak bisa dimuat. Periksa koneksi internet lalu coba lagi.'); });
   }
+  /* seret bilah atas untuk memindahkan panel ke mana saja; klik dua kali untuk mengembalikan */
+  function reset() {
+    free = false; panel.classList.remove('pdfp--free'); document.body.classList.remove('pdfp-free');
+    ['left', 'top', 'right', 'bottom', 'width', 'height'].forEach(function (k) { panel.style[k] = ''; });
+    setH(wide() ? 100 : 55);
+  }
+  var bar = panel.querySelector('.pdfp__bar'), drag = null;
+  bar.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('button') || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    var r = panel.getBoundingClientRect();
+    drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, w: r.width, h: r.height, id: e.pointerId, moved: false };
+    bar.setPointerCapture(e.pointerId);
+  });
+  bar.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (!drag.moved) {
+      if (Math.abs(e.clientX - drag.dx - panel.getBoundingClientRect().left) < 4 && Math.abs(e.clientY - drag.dy - panel.getBoundingClientRect().top) < 4) return;
+      drag.moved = true; free = true;
+      panel.classList.add('pdfp--free', 'pdfp--drag'); document.body.classList.add('pdfp-free');
+      panel.style.right = 'auto'; panel.style.bottom = 'auto';
+      panel.style.width = drag.w + 'px'; panel.style.height = drag.h + 'px';
+    }
+    var x = Math.max(0, Math.min(window.innerWidth - Math.min(drag.w, window.innerWidth), e.clientX - drag.dx));
+    var y = Math.max(0, Math.min(window.innerHeight - 48, e.clientY - drag.dy));
+    panel.style.left = x + 'px'; panel.style.top = y + 'px';
+  });
+  function endDrag(e) { if (drag && e.pointerId === drag.id) { drag = null; panel.classList.remove('pdfp--drag'); } }
+  bar.addEventListener('pointerup', endDrag); bar.addEventListener('pointercancel', endDrag);
+  bar.addEventListener('dblclick', function (e) { if (!e.target.closest('button')) reset(); });
   function close() { panel.classList.remove('pdfp--on'); document.body.classList.remove('pdfp-open'); token++; }
   Array.prototype.forEach.call(btns, function (b) {
     b.addEventListener('click', function () {
