@@ -865,10 +865,12 @@
   fab.type = 'button'; fab.className = 'fab fab--pdf'; fab.title = 'Buka PDF'; fab.setAttribute('aria-label', 'Buka PDF asli');
   fab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>';
   document.body.appendChild(fab);
+  /* halaman yang sedang dibaca: penanda "Hlm. N" terakhir yang sudah mencapai 60% tinggi layar dari atas.
+     Jadi kalau pembatas "Hlm. 4" terlihat di layar, PDF dibuka di halaman 4. */
   function halamanSekarang() {
-    var cur = 1;
+    var batas = window.innerHeight * 0.6, cur = 1;
     Array.prototype.forEach.call(document.querySelectorAll('.hal'), function (h) {
-      if (h.offsetParent !== null && h.getBoundingClientRect().top <= 110) cur = parseInt(h.id.replace('hal-', ''), 10) || cur;
+      if (h.offsetParent !== null && h.getBoundingClientRect().top <= batas) cur = parseInt(h.id.replace('hal-', ''), 10) || cur;
     });
     return cur;
   }
