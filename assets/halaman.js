@@ -18,6 +18,15 @@
       if (d.matches(b[0])) {
         var hv = tinggiLihat();
         var h = Math.min(hv * b[1], b[2]);
+        /* Pilih Halaman di layar sempit: penuh satu layar, tanpa tepi kiri-kanan-atas-bawah */
+        if (b[0] === 'dialog.ph-modal' && window.innerWidth <= 640) {
+          var offv = window.visualViewport ? window.visualViewport.offsetTop : 0;
+          d.style.setProperty('max-height', hv + 'px', 'important');
+          d.style.setProperty('height', hv + 'px', 'important');
+          d.style.setProperty('margin', '0', 'important');
+          d.style.setProperty('top', offv + 'px', 'important');
+          return;
+        }
         d.style.setProperty('max-height', h + 'px', 'important');
         d.style.setProperty('height', 'auto', 'important');
         d.style.setProperty('bottom', 'auto', 'important');
