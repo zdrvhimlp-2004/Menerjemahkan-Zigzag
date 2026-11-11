@@ -220,6 +220,7 @@
   /* ---------- panel PDF asli ---------- */
   .fab--pdf { bottom: calc(clamp(0.8rem, 2vw, 1.4rem) + 2 * (3.1rem + 0.7rem)); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--card); color: var(--heading); }
   .fab--pdf svg { width: 1.4rem; height: 1.4rem; }
+  body.pdfp-open .fabs { display: none; }
   .fab--pdf.is-on { background: var(--heading); color: var(--card); border-color: var(--heading); }
   .pdfp { position: fixed; z-index: 60; background: var(--card); color: var(--ar-color); border: 1px solid var(--border); box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25); display: none; flex-direction: column; direction: ltr; left: 0; right: 0; bottom: 0; height: calc(var(--pdfh, 55) * 1vh); height: calc(var(--pdfh, 55) * 1dvh); border-radius: 14px 14px 0 0; }
   .pdfp.pdfp--on { display: flex; }
@@ -239,7 +240,7 @@
     body.pdfp-open { padding-bottom: 0; padding-right: min(46vw, 640px); }
   }
 </style>
-<link rel="stylesheet" href="../../../../assets/halaman.css?v=14">
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=15">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
 </head>
@@ -885,7 +886,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('pdfp--on')) close(); });
 })();
 </script>
-<script src="../../../../assets/halaman.js?v=20"></script>
+<script src="../../../../assets/halaman.js?v=21"></script>
 <script>window.PENGATURAN={collapse:true};</script>
 <script src="../../../../assets/pengaturan.js?v=10"></script>
 </body>
