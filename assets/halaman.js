@@ -548,8 +548,8 @@
   };
   var kabar = function (t) { info.textContent = t; };
   var SITUS = {
-    claude: ['Claude', 'https://claude.ai/new', 'q'],
-    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q']
+    claude: ['Claude', 'https://claude.ai/new', 'q', 'com.anthropic.claude'],
+    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q', 'com.openai.chatgpt']
   };
   var BATAS_URL = 5500;
 
@@ -592,6 +592,21 @@
     kabar(tersalin
       ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
       : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
+    /* Android: kirim langsung ke aplikasinya (seperti "Kirim ke aplikasi lain", tapi sudah terpilih).
+       Kalau aplikasi belum terpasang, Chrome membuka situs web sebagai cadangan. */
+    if (/Android/i.test(navigator.userAgent) && st[3] && encodeURIComponent(teks).length <= 300000) {
+      location.href = 'intent:#Intent;action=android.intent.action.SEND;type=text/plain;package=' + st[3] +
+        ';S.android.intent.extra.TEXT=' + encodeURIComponent(teks) +
+        ';S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      kabar('Mengirim ke aplikasi ' + st[0] + '… (teks juga sudah disalin).');
+      return;
+    }
+    /* iPhone/lainnya: web tidak bisa memilih aplikasi tujuan; pakai menu bagikan bila ada */
+    if (!lewat && navigator.share && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
+      kabar('Pilih ' + st[0] + ' di menu bagikan. Teks juga sudah disalin.');
+      return;
+    }
     var w = window.open(url, '_blank');
     if (!w) { var ln = document.createElement('a'); ln.href = url; ln.target = '_blank'; ln.rel = 'noopener'; ln.click(); }
   });
