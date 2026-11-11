@@ -192,3 +192,4 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .fab--menu .ic-tutup { opacity: 0; transform: rotate(-90deg); }
 .fabs.is-open .fab--menu .ic-buka { opacity: 0; transform: rotate(90deg); }
 .fabs.is-open .fab--menu .ic-tutup { opacity: 1; transform: none; }
+.ver { direction: ltr; text-align: center; margin-top: 2rem; font-size: 0.68rem; color: var(--muted, #8a8270); opacity: 0.8; }

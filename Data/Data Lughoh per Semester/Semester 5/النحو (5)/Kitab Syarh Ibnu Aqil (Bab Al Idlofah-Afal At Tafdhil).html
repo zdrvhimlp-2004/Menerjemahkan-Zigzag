@@ -180,30 +180,9 @@
   .hal-awal { display: flex; align-items: center; gap: 0.8rem; margin: 1.6rem 0 0.9rem; direction: ltr; color: var(--heading); }
   .hal-awal::before, .hal-awal::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .hal-awal span { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; background: var(--pasal-bg); padding: 0.15rem 1rem; border-radius: 999px; }
-  /* ---------- panel PDF asli ---------- */
-  .hal__pdf { direction: ltr; margin-left: 0.5rem; font: inherit; font-size: 0.72rem; padding: 0.1rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
-  .hal__pdf::before { content: "\1F4C4  PDF"; }
-  .hal__pdf:hover { color: var(--heading); border-color: var(--heading); }
-  body.pdfp-open .fabs { display: none; }
-  .pdfp { position: fixed; z-index: 60; background: var(--card); color: var(--ar-color); border: 1px solid var(--border); box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25); display: none; flex-direction: column; direction: ltr; left: 0; right: 0; bottom: 0; height: calc(var(--pdfh, 55) * 1vh); height: calc(var(--pdfh, 55) * 1dvh); border-radius: 14px 14px 0 0; }
-  .pdfp.pdfp--on { display: flex; }
-  .pdfp__bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
-  .pdfp__grip { cursor: ns-resize; touch-action: none; user-select: none; -webkit-user-select: none; font-size: 1.1rem; line-height: 1; }
-  .pdfp--drag { user-select: none; }
-  .pdfp__ttl { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--id-color); }
-  .pdfp__b { font: inherit; min-width: 2rem; height: 2rem; padding: 0 0.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--id-color); cursor: pointer; }
-  .pdfp__b:hover:not(:disabled) { color: var(--heading); border-color: var(--heading); }
-  .pdfp__b:disabled { opacity: 0.4; cursor: default; }
-  .pdfp__body { flex: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 0.5rem; background: var(--pasal-bg); }
-  .pdfp__body canvas { max-width: 100%; height: auto; background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
-  .pdfp__msg { padding: 1.5rem 1rem; color: var(--muted); font-size: 0.85rem; text-align: center; }
-  body.pdfp-open { padding-bottom: calc(var(--pdfh, 55) * 1vh + 1vh); }
-  @media (min-width: 1100px) {
-    .pdfp { left: auto; top: auto; bottom: 0; right: 0; width: min(46vw, 640px); border-radius: 0; box-shadow: -8px 0 30px rgba(0, 0, 0, 0.2); }
-    body.pdfp-open { padding-bottom: 0; padding-right: min(46vw, 640px); }
-  }
 </style>
-<link rel="stylesheet" href="../../../../assets/halaman.css?v=16">
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=17">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
 </head>
@@ -3887,108 +3866,9 @@
   update();
 })();
 </script>
-<script>
-/* Panel PDF asli: tombol "PDF" di tiap pembatas Hlm. membuka halaman PDF yang bersesuaian (pdf.js). */
-(function () {
-  var SRC = '%D8%B4%D8%B1%D8%AD%20%D8%A7%D8%A8%D9%86%20%D8%B9%D9%82%D9%8A%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A3%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D8%A8%D9%86%20%D9%85%D8%A7%D9%84%D9%83%20-%203.pdf', LIB = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  if (!document.querySelector('.hal__pdf')) return;
-  var panel = document.createElement('div');
-  panel.className = 'pdfp';
-  panel.setAttribute('role', 'region'); panel.setAttribute('aria-label', 'PDF asli');
-  panel.innerHTML = '<div class="pdfp__bar"><button type="button" class="pdfp__b" data-a="prev" aria-label="Halaman sebelumnya">&#8249;</button><span class="pdfp__ttl"></span><button type="button" class="pdfp__b" data-a="next" aria-label="Halaman berikutnya">&#8250;</button><button type="button" class="pdfp__b pdfp__grip" aria-label="Seret ke atas atau bawah untuk mengubah tinggi panel" title="Seret ke atas/bawah (klik dua kali: reset)">&#8597;</button><button type="button" class="pdfp__b" data-a="zoom-" aria-label="Perkecil">&minus;</button><button type="button" class="pdfp__b" data-a="zoom+" aria-label="Perbesar">+</button><button type="button" class="pdfp__b" data-a="close" aria-label="Tutup">&times;</button></div><div class="pdfp__body"></div>';
-  document.body.appendChild(panel);
-  var ttl = panel.querySelector('.pdfp__ttl'), body = panel.querySelector('.pdfp__body');
-  var prev = panel.querySelector('[data-a=prev]'), next = panel.querySelector('[data-a=next]');
-  var doc = null, loading = null, page = 1, zoom = 1, token = 0, hlm = '';
-  var wide = function () { return window.innerWidth >= 1100; };
-  var H = wide() ? 100 : 55;
-  function setH(v) {
-    H = Math.max(25, Math.min(wide() ? 100 : 90, v));
-    panel.style.setProperty('--pdfh', H);
-    document.body.style.setProperty('--pdfh', H);
-  }
-  function syncHtml() {
-    var m = document.getElementById('awal-' + page) || document.getElementById('hal-' + page);
-    if (!m) return;
-    for (var e = m.parentNode; e && e !== document.body; e = e.parentNode) {
-      if (e.classList && e.classList.contains('is-collapsed')) e.classList.remove('is-collapsed');
-    }
-    window.scrollTo({ top: m.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
-  }
-
-  function load() {
-    if (loading) return loading;
-    loading = new Promise(function (ok, no) {
-      var sc = document.createElement('script');
-      sc.src = LIB; sc.onload = ok; sc.onerror = no; document.head.appendChild(sc);
-    }).then(function () {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER;
-      return pdfjsLib.getDocument(SRC).promise;
-    }).then(function (d) { doc = d; return d; });
-    loading.catch(function () { loading = null; });
-    return loading;
-  }
-  function msg(t) { body.innerHTML = '<p class="pdfp__msg"></p>'; body.firstChild.textContent = t; }
-  function render() {
-    var my = ++token;
-    ttl.textContent = 'Hlm. ' + page + (doc ? ' / ' + doc.numPages : '');
-    prev.disabled = page <= 1; next.disabled = !doc || page >= doc.numPages;
-    if (!doc) { msg('Memuat PDF\u2026'); return; }
-    doc.getPage(page).then(function (pg) {
-      if (my !== token) return;
-      var avail = Math.max(240, body.clientWidth - 16);
-      var base = pg.getViewport({ scale: 1 });
-      var scale = (avail / base.width) * zoom, dpr = window.devicePixelRatio || 1;
-      var vp = pg.getViewport({ scale: scale * dpr });
-      var c = document.createElement('canvas');
-      c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
-      c.style.width = Math.floor(vp.width / dpr) + 'px'; c.style.maxWidth = zoom > 1 ? 'none' : '100%';
-      return pg.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise.then(function () {
-        if (my !== token) return;
-        body.innerHTML = ''; body.appendChild(c); body.scrollTop = 0;
-      });
-    }).catch(function () { if (my === token) msg('Gagal menampilkan halaman PDF.'); });
-  }
-  function open(p, h) {
-    page = p; hlm = h; zoom = 1; setH(H);
-    panel.classList.add('pdfp--on'); document.body.classList.add('pdfp-open');
-    render();
-    if (!doc) load().then(render, function () { msg('PDF tidak bisa dimuat. Periksa koneksi internet lalu coba lagi.'); });
-  }
-  /* gagang di bilah panel: seret ke atas/bawah untuk mengubah tinggi panel; klik dua kali untuk reset */
-  var grip = panel.querySelector('.pdfp__grip'), gid = null;
-  grip.addEventListener('pointerdown', function (e) {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    gid = e.pointerId; grip.setPointerCapture(gid); panel.classList.add('pdfp--drag'); e.preventDefault();
-  });
-  grip.addEventListener('pointermove', function (e) {
-    if (e.pointerId !== gid) return;
-    setH((window.innerHeight - e.clientY) / window.innerHeight * 100);
-  });
-  function endGrip(e) { if (e.pointerId === gid) { gid = null; panel.classList.remove('pdfp--drag'); } }
-  grip.addEventListener('pointerup', endGrip); grip.addEventListener('pointercancel', endGrip);
-  grip.addEventListener('dblclick', function () { setH(wide() ? 100 : 55); });
-  function close() { panel.classList.remove('pdfp--on'); document.body.classList.remove('pdfp-open'); token++; }
-  /* tombol PDF di tiap pembatas "Hlm. N": buka PDF di halaman yang sama */
-  Array.prototype.forEach.call(document.querySelectorAll('.hal__pdf'), function (b) {
-    b.addEventListener('click', function () {
-      open(parseInt(b.getAttribute('data-pdf'), 10), b.getAttribute('data-pdf'));
-      var el = b.parentNode, top = el.getBoundingClientRect().top;
-      if (top > window.innerHeight * (window.innerWidth >= 1100 ? 0.9 : 0.4)) window.scrollBy({ top: top - 90, behavior: 'smooth' });
-    });
-  });
-  panel.addEventListener('click', function (e) {
-    var a = e.target.getAttribute && e.target.getAttribute('data-a'); if (!a) return;
-    if (a === 'close') close();
-    else if (a === 'prev' && page > 1) { page--; hlm = ''; render(); syncHtml(); }
-    else if (a === 'next' && doc && page < doc.numPages) { page++; hlm = ''; render(); syncHtml(); }
-    else if (a === 'zoom+') { zoom = Math.min(3, zoom + 0.25); render(); }
-    else if (a === 'zoom-') { zoom = Math.max(0.5, zoom - 0.25); render(); }
-  });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('pdfp--on')) close(); });
-})();
-</script>
-<script src="../../../../assets/halaman.js?v=21"></script>
+<script>window.PDFPANEL={src:"شرح ابن عقيل على ألفية ابن مالك - 3.pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=1"></script>
+<script src="../../../../assets/halaman.js?v=22"></script>
 <script>window.PENGATURAN={collapse:true};</script>
 <script src="../../../../assets/pengaturan.js?v=10"></script>
 </body>
