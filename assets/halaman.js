@@ -607,3 +607,39 @@
     var k = halamanSekarang(); if (daftar.children[k]) daftar.children[k].scrollIntoView({ block: 'center' });
   });
 })();
+
+/* Tombol melayang kanan-bawah (daftar isi, pilih halaman, buka PDF, dll.) dikumpulkan dalam satu wadah
+   dan baru muncul setelah tombol menu kecil di pojok kanan bawah diketuk. */
+(function () {
+  'use strict';
+  var items = Array.prototype.slice.call(document.querySelectorAll('.fab--toc, .fab--ph, .fab--pdf'));
+  if (!items.length) return;
+  var urut = { 'fab--pdf': 0, 'fab--ph': 1, 'fab--toc': 2 };
+  var rank = function (el) { for (var k in urut) if (el.classList.contains(k)) return urut[k]; return 9; };
+  items.sort(function (a, b) { return rank(a) - rank(b); });
+
+  var box = document.createElement('div');
+  box.className = 'fabs'; box.id = 'fabs';
+  var list = document.createElement('div');
+  list.className = 'fabs__list'; list.id = 'fabs-list';
+  items.forEach(function (el) { list.appendChild(el); });
+  var tog = document.createElement('button');
+  tog.type = 'button'; tog.className = 'fab fab--menu'; tog.id = 'btn-menu';
+  tog.title = 'Menu tombol'; tog.setAttribute('aria-label', 'Tampilkan tombol'); tog.setAttribute('aria-expanded', 'false'); tog.setAttribute('aria-controls', 'fabs-list');
+  tog.innerHTML =
+    '<svg class="ic-buka" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18" cy="12" r="1.8"/></svg>' +
+    '<svg class="ic-tutup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  box.appendChild(list); box.appendChild(tog);
+  document.body.appendChild(box);
+
+  var atur = function (buka) {
+    box.classList.toggle('is-open', buka);
+    tog.setAttribute('aria-expanded', buka ? 'true' : 'false');
+    tog.setAttribute('aria-label', buka ? 'Sembunyikan tombol' : 'Tampilkan tombol');
+  };
+  tog.addEventListener('click', function () { atur(!box.classList.contains('is-open')); });
+  /* setelah salah satu tombol dipilih, wadah menutup lagi supaya layar tetap bersih */
+  list.addEventListener('click', function (e) { if (e.target.closest('.fab')) atur(false); });
+  document.addEventListener('click', function (e) { if (box.classList.contains('is-open') && !box.contains(e.target)) atur(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') atur(false); });
+})();

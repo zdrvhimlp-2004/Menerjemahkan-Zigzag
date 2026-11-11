@@ -180,3 +180,14 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
   .ph__aksi { padding: 0.6rem 0.6rem calc(0.7rem + env(safe-area-inset-bottom, 0px)); gap: 0.45rem; max-height: 62%; }
   .ph__btn { padding: 0.7rem 0.5rem; }
 }
+
+/* ---------- wadah tombol kanan-bawah (muncul lewat tombol menu) ---------- */
+.fabs { position: fixed; right: clamp(0.8rem, 2vw, 1.4rem); bottom: clamp(0.8rem, 2vw, 1.4rem); z-index: 30; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+.fabs__list { display: none; flex-direction: column; align-items: center; gap: 0.7rem; }
+.fabs.is-open .fabs__list { display: flex; }
+.fabs .fab { position: static; inset: auto; }
+.fab--menu { background: var(--heading, #1f4d3a); color: var(--card, #fffdf7); border-color: var(--heading, #1f4d3a); }
+.fab--menu svg { width: 1.4rem; height: 1.4rem; }
+.fab--menu .ic-tutup { display: none; }
+.fabs.is-open .fab--menu .ic-buka { display: none; }
+.fabs.is-open .fab--menu .ic-tutup { display: block; }
