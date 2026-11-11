@@ -1,0 +1,6 @@
+# Selalu cek ulang ke server untuk halaman HTML dan daftar isi (hindari tampilan versi lama dari cache)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html?|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

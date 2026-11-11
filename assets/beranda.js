@@ -102,7 +102,7 @@ function buildItem(n, path, showPath) {
     root.addEventListener('click', () => { qEl.value = ''; syncSearch(); go(path); });
   } else if (!soon) {
     // semua jenis file dibuka di viewer
-    root.href = 'viewer.html?f=' + encodeURIComponent(decodeURIComponent(n.href));
+    root.href = 'viewer.html?f=' + encodeURIComponent(decodeURIComponent(n.href)) + '&t=' + Date.now();
   }
 
   const ico = el('span', 'ico');
