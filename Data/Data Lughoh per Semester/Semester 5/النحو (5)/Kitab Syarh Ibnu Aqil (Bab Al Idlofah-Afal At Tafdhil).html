@@ -180,6 +180,28 @@
   .hal-awal { display: flex; align-items: center; gap: 0.8rem; margin: 1.6rem 0 0.9rem; direction: ltr; color: var(--heading); }
   .hal-awal::before, .hal-awal::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .hal-awal span { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; background: var(--pasal-bg); padding: 0.15rem 1rem; border-radius: 999px; }
+  /* ---------- panel PDF asli ---------- */
+  .hal__pdf { direction: ltr; margin-left: 0.5rem; font: inherit; font-size: 0.72rem; padding: 0.1rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .hal__pdf::before { content: "\1F4C4  PDF"; }
+  .hal__pdf:hover { color: var(--heading); border-color: var(--heading); }
+  body.pdfp-open .fabs { display: none; }
+  .pdfp { position: fixed; z-index: 60; background: var(--card); color: var(--ar-color); border: 1px solid var(--border); box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25); display: none; flex-direction: column; direction: ltr; left: 0; right: 0; bottom: 0; height: calc(var(--pdfh, 55) * 1vh); height: calc(var(--pdfh, 55) * 1dvh); border-radius: 14px 14px 0 0; }
+  .pdfp.pdfp--on { display: flex; }
+  .pdfp__bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+  .pdfp__grip { cursor: ns-resize; touch-action: none; user-select: none; -webkit-user-select: none; font-size: 1.1rem; line-height: 1; }
+  .pdfp--drag { user-select: none; }
+  .pdfp__ttl { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--id-color); }
+  .pdfp__b { font: inherit; min-width: 2rem; height: 2rem; padding: 0 0.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .pdfp__b:hover:not(:disabled) { color: var(--heading); border-color: var(--heading); }
+  .pdfp__b:disabled { opacity: 0.4; cursor: default; }
+  .pdfp__body { flex: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 0.5rem; background: var(--pasal-bg); }
+  .pdfp__body canvas { max-width: 100%; height: auto; background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
+  .pdfp__msg { padding: 1.5rem 1rem; color: var(--muted); font-size: 0.85rem; text-align: center; }
+  body.pdfp-open { padding-bottom: calc(var(--pdfh, 55) * 1vh + 1vh); }
+  @media (min-width: 1100px) {
+    .pdfp { left: auto; top: auto; bottom: 0; right: 0; width: min(46vw, 640px); border-radius: 0; box-shadow: -8px 0 30px rgba(0, 0, 0, 0.2); }
+    body.pdfp-open { padding-bottom: 0; padding-right: min(46vw, 640px); }
+  }
 </style>
 <link rel="stylesheet" href="../../../../assets/halaman.css?v=16">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -529,7 +551,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَالثَّانِيَ اجْرُرْ وَانْوِ مِنْ أَوْ فِي إِذَا</p><p class="id" lang="id">Dan jarkanlah (isim) yang kedua; niatkan (makna) 'min' atau 'fii' apabila</p></div><div class="ayat"><p class="ar" lang="ar">لَمْ يَصْلُحْ إِلَّا ذَاكَ وَاللَّامَ خُذَا؛</p><p class="id" lang="id">tidak layak kecuali itu; dan (makna) 'lam' ambillah</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">لِمَا سِوَى ذَيْنِكَ وَاخْصُصْ أَوَّلَا،</p><p class="id" lang="id">untuk selain kedua keadaan itu; dan khususkanlah (isim) yang pertama,</p></div><div class="ayat"><p class="ar" lang="ar">أَوْ أَعْطِهِ التَّعْرِيفَ بِالَّذِي تَلَا.</p><p class="id" lang="id">atau berilah ia ta'rif (ma'rifah) dengan (isim) yang mengikutinya.</p></div></div>
 </div>
-<div class="hal" id="hal-42"><span>Juz 3 &middot; Hlm. 42</span></div>
+<div class="hal" id="hal-42"><span>Juz 3 &middot; Hlm. 42</span><button type="button" class="hal__pdf" data-pdf="42" aria-label="Lihat PDF asli untuk Hlm. 42" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">إِذَا أُرِيدَ إِضَافَةُ اسْمٍ إِلَى آخَرَ،</p><p class="id" lang="id">Apabila hendak meng-idhafahkan satu isim kepada isim yang lain,</p></div>
 <div class="ayat"><p class="ar" lang="ar">حُذِفَ مَا فِي الْمُضَافِ مِنْ نُونٍ تَلِي الْإِعْرَابَ،</p><p class="id" lang="id">maka dibuang dari mudhaf nun yang mengiringi i'rab,</p></div>
@@ -563,7 +585,7 @@
 <div class="ayat rq"><p class="ar" lang="ar"><span class="q">نِسَائِهِمْ تَرَبُّصُ أَرْبَعَةِ أَشْهُرٍ﴾</span></p><p class="id" lang="id"><span class="q">istri-istri mereka, (ada masa) menunggu empat bulan﴿</span> <span class="ref">[QS. Al-Baqarah: 226]</span></p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ تَعَالَى: <span class="q" id="qs-2">﴿بَلْ مَكْرُ اللَّيْلِ وَالنَّهَارِ﴾</span></p><p class="id" lang="id">Dan firman-Nya: <span class="q">﴾Bahkan (yang menghalangi) adalah tipu daya (kalian) malam dan siang﴿</span> <span class="ref">[QS. Saba': 33]</span></p></div>
 </div>
-<div class="hal" id="hal-43"><span>Juz 3 &middot; Hlm. 43</span></div>
+<div class="hal" id="hal-43"><span>Juz 3 &middot; Hlm. 43</span><button type="button" class="hal__pdf" data-pdf="43" aria-label="Lihat PDF asli untuk Hlm. 43" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَإِنْ لَمْ يَتَعَيَّنْ تَقْدِيرُ مِنْ أَوْ فِي،</p><p class="id" lang="id">Jika tidak pasti taqdir 'min' atau 'fii',</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَالْإِضَافَةُ بِمَعْنَى اللَّامِ نَحْوَ</p><p class="id" lang="id">maka idhafah itu bermakna lam, seperti</p></div>
@@ -590,7 +612,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَإِنْ يُشَابِهِ الْمُضَافُ يَفْعَلُ</p><p class="id" lang="id">Dan jika mudhaf menyerupai fi'il mudhari' (yaf'alu),</p></div><div class="ayat"><p class="ar" lang="ar">وَصْفًا فَعَنْ تَنْكِيرِهِ لَا يُعْذَلُ؛</p><p class="id" lang="id">berupa sifat, maka ia tidak keluar dari kenakirahannya;</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">كَرُبَّ رَاجِينَا عَظِيمِ الْأَمَلِ،</p><p class="id" lang="id">seperti 'rubba rajina 'azhimil amal' (betapa banyak yang berharap kepada kami, besar cita-citanya),</p></div><div class="ayat"><p class="ar" lang="ar">مُرَوَّعِ الْقَلْبِ قَلِيلِ الْحِيَلِ.</p><p class="id" lang="id">'muraww'il qalb qalilil hiyal' (yang hatinya diliputi ketakutan, sedikit daya upayanya).</p></div></div>
 </div>
-<div class="hal" id="hal-44"><span>Juz 3 &middot; Hlm. 44</span></div>
+<div class="hal" id="hal-44"><span>Juz 3 &middot; Hlm. 44</span><button type="button" class="hal__pdf" data-pdf="44" aria-label="Lihat PDF asli untuk Hlm. 44" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-3">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Penamaan dua jenis idhafah: lafzhiyyah dan mahdhah/ma'nawiyyah</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَذِي الْإِضَافَةِ اسْمُهَا لَفْظِيَّةٌ،</p><p class="id" lang="id">Dan idhafah yang ini namanya lafzhiyyah,</p></div><div class="ayat"><p class="ar" lang="ar">وَتِلْكَ مَحْضَةٌ وَمَعْنَوِيَّةٌ.</p><p class="id" lang="id">sedangkan yang itu mahdhah dan ma'nawiyyah.</p></div></div>
@@ -623,7 +645,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَإِنْ كَانَ مُضَافًا لِمَعْرِفَةٍ نَحْوَ <span class="c">رُبَّ رَاجِينَا</span>،</p><p class="id" lang="id">meskipun ia diidhafahkan kepada ma'rifah, seperti <span class="c">rubba rajina</span>,</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَتُوصَفُ بِهِ النَّكِرَةُ،</p><p class="id" lang="id">dan nakirah pun bisa disifati dengannya,</p></div>
 </div>
-<div class="hal" id="hal-45"><span>Juz 3 &middot; Hlm. 45</span></div>
+<div class="hal" id="hal-45"><span>Juz 3 &middot; Hlm. 45</span><button type="button" class="hal__pdf" data-pdf="45" aria-label="Lihat PDF asli untuk Hlm. 45" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">نَحْوَ قَوْلِهِ تَعَالَى: <span class="q" id="qs-3">﴿هَدْيًا بَالِغَ الْكَعْبَةِ﴾</span>.</p><p class="id" lang="id">seperti firman Allah Ta'ala: <span class="q">﴾sebagai hadyu (hewan kurban) yang sampai ke Ka'bah﴿</span> <span class="ref">[QS. Al-Ma'idah: 95]</span>.</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَإِنَّمَا يُفِيدُ التَّخْفِيفَ، وَفَائِدَتُهُ</p><p class="id" lang="id">Ia hanya memberi faedah berupa peringanan, dan faedahnya</p></div>
@@ -651,7 +673,7 @@
 <div class="ayat"><p class="ar" lang="ar">لِأَنَّ الْإِضَافَةَ مُنَافِيَةٌ لِلْأَلِفِ وَاللَّامِ،</p><p class="id" lang="id">karena idhafah itu bertentangan dengan alif-lam,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَلَا يُجْمَعُ بَيْنَهُمَا.</p><p class="id" lang="id">sehingga keduanya tidak dikumpulkan.</p></div>
 </div>
-<div class="hal" id="hal-46"><span>Juz 3 &middot; Hlm. 46</span></div>
+<div class="hal" id="hal-46"><span>Juz 3 &middot; Hlm. 46</span><button type="button" class="hal__pdf" data-pdf="46" aria-label="Lihat PDF asli untuk Hlm. 46" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَمَّا مَا كَانَتْ إِضَافَتُهُ غَيْرَ مَحْضَةٍ —</p><p class="id" lang="id">Adapun mudhaf yang idhafahnya ghairu mahdhah —</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَهُوَ الْمُرَادُ بِقَوْلِهِ: بِذَا الْمُضَافِ</p><p class="id" lang="id">dan itulah yang dimaksud dengan ucapannya 'bi dzal mudhaf'</p></div>
@@ -694,7 +716,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Adanya alif-lam pada sifat mutsanna/jamak salim sudah cukup</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَكَوْنُهَا فِي الْوَصْفِ كَافٍ إِنْ وَقَعْ</p><p class="id" lang="id">Adanya (alif-lam) pada sifat sudah cukup jika ia berupa</p></div><div class="ayat"><p class="ar" lang="ar">مُثَنًّى أَوْ جَمْعًا سَبِيلَهُ اتَّبَعْ.</p><p class="id" lang="id">mutsanna, atau jamak yang jalannya mengikuti (mutsanna).</p></div></div>
 </div>
-<div class="hal" id="hal-47"><span>Juz 3 &middot; Hlm. 47</span></div>
+<div class="hal" id="hal-47"><span>Juz 3 &middot; Hlm. 47</span><button type="button" class="hal__pdf" data-pdf="47" aria-label="Lihat PDF asli untuk Hlm. 47" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَيْ وُجُودُ الْأَلِفِ وَاللَّامِ فِي الْوَصْفِ</p><p class="id" lang="id">Yakni adanya alif-lam pada sifat</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمُضَافِ إِذَا كَانَ مُثَنًّى أَوْ جَمْعًا</p><p class="id" lang="id">yang menjadi mudhaf, jika ia mutsanna atau jamak</p></div>
@@ -708,7 +730,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Larangan meng-idhafahkan isim kepada yang semakna dengannya</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَلَا يُضَافُ اسْمٌ لِمَا بِهِ اتَّحَدْ</p><p class="id" lang="id">Tidak diidhafahkan sebuah isim kepada (isim) yang bersatu dengannya</p></div><div class="ayat"><p class="ar" lang="ar">مَعْنًى وَأَوِّلْ مُوهِمًا إِذَا وَرَدْ.</p><p class="id" lang="id">dalam makna; dan takwilkan (ungkapan) yang menimbulkan kesan itu bila datang.</p></div></div>
 </div>
-<div class="hal" id="hal-48"><span>Juz 3 &middot; Hlm. 48</span></div>
+<div class="hal" id="hal-48"><span>Juz 3 &middot; Hlm. 48</span><button type="button" class="hal__pdf" data-pdf="48" aria-label="Lihat PDF asli untuk Hlm. 48" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الْمُضَافُ يَتَخَصَّصُ بِالْمُضَافِ إِلَيْهِ</p><p class="id" lang="id">Mudhaf menjadi khusus dengan mudhaf ilaih</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَوْ يَتَعَرَّفُ بِهِ، فَلَا بُدَّ مِنْ كَوْنِهِ</p><p class="id" lang="id">atau menjadi ma'rifah dengannya, maka harus ia</p></div>
@@ -752,7 +774,7 @@
 <div class="ayat"><p class="ar" lang="ar">أَنْ يَكُونَ الْمُضَافُ صَالِحًا لِلْحَذْفِ</p><p class="id" lang="id">mudhaf itu layak untuk dibuang</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَإِقَامَةِ الْمُضَافِ إِلَيْهِ مَقَامَهُ، وَيُفْهَمُ مِنْهُ ذَلِكَ</p><p class="id" lang="id">dan mudhaf ilaih ditempatkan di tempatnya, serta dari (mudhaf ilaih) itu dipahami</p></div>
 </div>
-<div class="hal" id="hal-49"><span>Juz 3 &middot; Hlm. 49</span></div>
+<div class="hal" id="hal-49"><span>Juz 3 &middot; Hlm. 49</span><button type="button" class="hal__pdf" data-pdf="49" aria-label="Lihat PDF asli untuk Hlm. 49" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الْمَعْنَى نَحْوَ <span class="c">قَطَعْتُ بَعْضَ أَصَابِعِهِ</span>؛</p><p class="id" lang="id">maknanya, seperti <span class="c">aku memotong sebagian jari-jarinya</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَصَحَّ تَأْنِيثُ بَعْضٍ لِإِضَافَتِهِ</p><p class="id" lang="id">maka sah ta'nits 'ba'dh' karena diidhafahkan</p></div>
@@ -772,7 +794,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَاكْتَسَبَ التَّذْكِيرَ مِنَ الْمُذَكَّرِ</p><p class="id" lang="id">lalu tertular sifat tadzkir dari mudhaf ilaih yang mudzakkar</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمُضَافِ إِلَيْهِ بِالشَّرْطِ</p><p class="id" lang="id">dengan syarat</p></div>
 </div>
-<div class="hal" id="hal-50"><span>Juz 3 &middot; Hlm. 50</span></div>
+<div class="hal" id="hal-50"><span>Juz 3 &middot; Hlm. 50</span><button type="button" class="hal__pdf" data-pdf="50" aria-label="Lihat PDF asli untuk Hlm. 50" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الَّذِي تَقَدَّمَ كَقَوْلِهِ تَعَالَى:</p><p class="id" lang="id">yang telah lalu, seperti firman-Nya Ta'ala:</p></div>
 <div class="ayat rq"><p class="ar" lang="ar"><span class="q" id="qs-4">﴿إِنَّ رَحْمَتَ اللهِ قَرِيبٌ مِنَ الْمُحْسِنِينَ﴾</span>.</p><p class="id" lang="id"><span class="q">﴾Sesungguhnya rahmat Allah dekat dengan orang-orang yang berbuat baik﴿</span> <span class="ref">[QS. Al-A'raf: 56]</span>.</p></div>
@@ -804,7 +826,7 @@
 <div class="ayat"><p class="ar" lang="ar">مَا لَزِمَ الْإِضَافَةَ مَعْنًى قَدْ يُسْتَعْمَلُ؛</p><p class="id" lang="id">yang harus idhafah secara makna kadang dipakai</p></div>
 <div class="ayat"><p class="ar" lang="ar">مُفْرَدًا لَفْظًا، وَسَيَأْتِي كُلٌّ مِنَ الْقِسْمَيْنِ.</p><p class="id" lang="id">mufrad secara lafazh; dan masing-masing dari dua macam itu akan datang penjelasannya.</p></div>
 </div>
-<div class="hal" id="hal-51"><span>Juz 3 &middot; Hlm. 51</span></div>
+<div class="hal" id="hal-51"><span>Juz 3 &middot; Hlm. 51</span><button type="button" class="hal__pdf" data-pdf="51" aria-label="Lihat PDF asli untuk Hlm. 51" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-9">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Isim yang harus diidhafahkan kepada dhamir saja: labbaika dan kawan-kawan</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَبَعْضُ مَا يُضَافُ حَتْمًا امْتَنَعْ</p><p class="id" lang="id">Dan sebagian yang wajib diidhafahkan tercegah</p></div><div class="ayat"><p class="ar" lang="ar">إِيلَاؤُهُ اسْمًا ظَاهِرًا حَيْثُ وَقَعْ،</p><p class="id" lang="id">diiringinya dengan isim zhahir di mana pun terjadi,</p></div></div>
@@ -825,7 +847,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">إِنَّكَ لَوْ دَعَوْتَنِي وَدُونِي</p><p class="id" lang="id">Sesungguhnya jika engkau memanggilku, sedang di antara kita</p></div><div class="ayat"><p class="ar" lang="ar">زَوْرَاءُ ذَاتُ مُتْرَعٍ بِيُونِ،</p><p class="id" lang="id">ada jurang yang miring, penuh dengan (luapan) sumur,</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">لَقُلْتُ لَبَّيْهِ لِمَنْ يَدْعُونِي.</p><p class="id" lang="id">niscaya aku akan berkata 'labbaihi' kepada orang yang memanggilku.</p></div></div>
 </div>
-<div class="hal" id="hal-52"><span>Juz 3 &middot; Hlm. 52</span></div>
+<div class="hal" id="hal-52"><span>Juz 3 &middot; Hlm. 52</span><button type="button" class="hal__pdf" data-pdf="52" aria-label="Lihat PDF asli untuk Hlm. 52" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَشَذَّ إِضَافَةُ لَبَّى إِلَى الظَّاهِرِ؛</p><p class="id" lang="id">Dan syadz-lah idhafah 'labbaa' kepada isim zhahir;</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَنْشَدَ سِيبَوَيْهِ:</p><p class="id" lang="id">Sibawaih melantunkan (syair):</p></div>
@@ -834,7 +856,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٢٥</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">دَعَوْتُ لَمَّا نَابَنِي مِسْوَرًا،</p><p class="id" lang="id">Aku memanggil Miswar tatkala musibah menimpaku,</p></div><div class="ayat"><p class="ar" lang="ar">فَلَبَّى فَلَبَّى يَدَيْ مِسْوَرِ.</p><p class="id" lang="id">lalu ia menyambut, maka menyambutlah kedua tangan Miswar.</p></div></div>
 </div>
-<div class="hal" id="hal-53"><span>Juz 3 &middot; Hlm. 53</span></div>
+<div class="hal" id="hal-53"><span>Juz 3 &middot; Hlm. 53</span><button type="button" class="hal__pdf" data-pdf="53" aria-label="Lihat PDF asli untuk Hlm. 53" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">كَذَا ذَكَرَ الْمُصَنِّفُ، وَيُفْهَمُ مِنْ</p><p class="id" lang="id">Demikian disebutkan Mushannif, dan dipahami dari</p></div>
 <div class="ayat"><p class="ar" lang="ar">كَلَامِ سِيبَوَيْهِ أَنَّ ذَلِكَ غَيْرُ شَاذٍّ</p><p class="id" lang="id">ucapan Sibawaih bahwa itu tidak syadz</p></div>
@@ -867,7 +889,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْأَمْرُ كَمَا ذُكِرَ لَمْ تَنْقَلِبْ أَلِفُهُ</p><p class="id" lang="id">seperti yang disebutkan, niscaya alif-nya tidak diubah</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَعَ الظَّاهِرِ يَاءً كَمَا</p><p class="id" lang="id">bersama isim zhahir menjadi ya', sebagaimana</p></div>
 </div>
-<div class="hal" id="hal-54"><span>Juz 3 &middot; Hlm. 54</span></div>
+<div class="hal" id="hal-54"><span>Juz 3 &middot; Hlm. 54</span><button type="button" class="hal__pdf" data-pdf="54" aria-label="Lihat PDF asli untuk Hlm. 54" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">لَا تَنْقَلِبُ أَلِفُ لَدَى وَعَلَى.</p><p class="id" lang="id">tidak berubahnya alif 'ladaa' dan 'alaa'.</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَكَمَا تَقُولُ <span class="c">عَلَى زَيْدٍ وَلَدَى زَيْدٍ</span>،</p><p class="id" lang="id">Sebagaimana engkau katakan <span class="c">'alaa Zaidin wa ladaa Zaidin</span>,</p></div>
@@ -889,7 +911,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَإِذَا. فَأَمَّا حَيْثُ فَتُضَافُ إِلَى</p><p class="id" lang="id">dan 'idzaa'. Adapun 'hayts', ia diidhafahkan kepada</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْجُمْلَةِ الِاسْمِيَّةِ نَحْوَ <span class="c">اجْلِسْ حَيْثُ زَيْدٌ جَالِسٌ</span>،</p><p class="id" lang="id">jumlah ismiyyah, seperti <span class="c">duduklah di tempat Zaid duduk</span>,</p></div>
 </div>
-<div class="hal" id="hal-55"><span>Juz 3 &middot; Hlm. 55</span></div>
+<div class="hal" id="hal-55"><span>Juz 3 &middot; Hlm. 55</span><button type="button" class="hal__pdf" data-pdf="55" aria-label="Lihat PDF asli untuk Hlm. 55" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَإِلَى الْجُمْلَةِ الْفِعْلِيَّةِ نَحْوَ</p><p class="id" lang="id">dan kepada jumlah fi'liyyah, seperti</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">اجْلِسْ حَيْثُ جَلَسَ زَيْدٌ أَوْ حَيْثُ يَجْلِسُ زَيْدٌ</span>؛</p><p class="id" lang="id"><span class="c">duduklah di tempat Zaid telah duduk, atau di tempat Zaid duduk</span>;</p></div>
@@ -899,7 +921,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٢٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَمَا تَرَى حَيْثُ سُهَيْلٌ طَالِعًا،</p><p class="id" lang="id">Tidakkah engkau lihat, di tempat Suhail (bintang) terbit,</p></div><div class="ayat"><p class="ar" lang="ar">نَجْمًا يُضِيءُ كَالشِّهَابِ لَامِعًا؟</p><p class="id" lang="id">sebagai bintang yang bersinar seperti nyala api, berkilau?</p></div></div>
 </div>
-<div class="hal" id="hal-56"><span>Juz 3 &middot; Hlm. 56</span></div>
+<div class="hal" id="hal-56"><span>Juz 3 &middot; Hlm. 56</span><button type="button" class="hal__pdf" data-pdf="56" aria-label="Lihat PDF asli untuk Hlm. 56" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَمَّا إِذْ فَتُضَافُ أَيْضًا إِلَى</p><p class="id" lang="id">Adapun 'idz', ia pun diidhafahkan kepada</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْجُمْلَةِ الِاسْمِيَّةِ نَحْوَ <span class="c">جِئْتُكَ إِذْ زَيْدٌ قَائِمٌ</span>،</p><p class="id" lang="id">jumlah ismiyyah, seperti <span class="c">aku mendatangimu ketika Zaid berdiri</span>,</p></div>
@@ -938,7 +960,7 @@
 <div class="ayat"><p class="ar" lang="ar">يُضَافُ إِلَى مَا يُضَافُ إِلَيْهِ إِذْ،</p><p class="id" lang="id">diidhafahkan kepada apa yang 'idz' diidhafahkan kepadanya,</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَهُوَ الْجُمْلَةُ جَوَازًا لَا وُجُوبًا.</p><p class="id" lang="id">yaitu jumlah, secara boleh, bukan wajib.</p></div>
 </div>
-<div class="hal" id="hal-57"><span>Juz 3 &middot; Hlm. 57</span></div>
+<div class="hal" id="hal-57"><span>Juz 3 &middot; Hlm. 57</span><button type="button" class="hal__pdf" data-pdf="57" aria-label="Lihat PDF asli untuk Hlm. 57" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَإِنْ كَانَ الظَّرْفُ غَيْرَ مَاضٍ</p><p class="id" lang="id">Adapun jika zharaf itu bukan lampau</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَوْ مَحْدُودًا لَمْ يَجْرِ مَجْرَى إِذْ،</p><p class="id" lang="id">atau terbatas, maka ia tidak berlaku seperti 'idz',</p></div>
@@ -956,7 +978,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَابْنِ أَوْ أَعْرِبْ مَا كَإِذْ قَدْ أُجْرِيَا،</p><p class="id" lang="id">Bina'kanlah atau i'rabkanlah (isim) yang telah diperlakukan seperti 'idz',</p></div><div class="ayat"><p class="ar" lang="ar">وَاخْتَرْ بِنَا مَتْلُوَّ فِعْلٍ بُنِيَا؛</p><p class="id" lang="id">dan pilihlah bina' bagi (isim) yang diiringi fi'il yang mabni;</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَقَبْلَ فِعْلٍ مُعْرَبٍ أَوْ مُبْتَدَا،</p><p class="id" lang="id">dan sebelum fi'il yang mu'rab atau mubtada',</p></div><div class="ayat"><p class="ar" lang="ar">أَعْرِبْ، وَمَنْ بَنَى فَلَنْ يُفَنَّدَا.</p><p class="id" lang="id">i'rabkanlah; siapa yang membina'kan, maka tidak akan dicela.</p></div></div>
 </div>
-<div class="hal" id="hal-58"><span>Juz 3 &middot; Hlm. 58</span></div>
+<div class="hal" id="hal-58"><span>Juz 3 &middot; Hlm. 58</span><button type="button" class="hal__pdf" data-pdf="58" aria-label="Lihat PDF asli untuk Hlm. 58" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">تَقَدَّمَ أَنَّ الْأَسْمَاءَ الْمُضَافَةَ إِلَى الْجُمْلَةِ</p><p class="id" lang="id">Telah lalu bahwa isim-isim yang diidhafahkan kepada jumlah</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَى قِسْمَيْنِ:</p><p class="id" lang="id">ada dua macam:</p></div>
@@ -978,7 +1000,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٢٧</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">عَلَى حِينَ عَاتَبْتُ الْمَشِيبَ عَلَى الصِّبَا،</p><p class="id" lang="id">Pada saat aku menegur uban atas (sisa) masa muda,</p></div></div>
 </div>
-<div class="hal" id="hal-59"><span>Juz 3 &middot; Hlm. 59</span></div>
+<div class="hal" id="hal-59"><span>Juz 3 &middot; Hlm. 59</span><button type="button" class="hal__pdf" data-pdf="59" aria-label="Lihat PDF asli untuk Hlm. 59" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">بِفَتْحِ نُونِ حِينَ عَلَى الْبِنَاءِ،</p><p class="id" lang="id">(diriwayatkan) dengan fathah nun 'hiin' atas dasar bina',</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَكَسْرِهَا عَلَى الْإِعْرَابِ. وَمَا وَقَعَ</p><p class="id" lang="id">dan dengan kasrah atas dasar i'rab. Adapun yang terjadi</p></div>
@@ -1008,7 +1030,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">'Idzaa' wajib diidhafahkan kepada jumlah fi'liyyah</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَلْزَمُوا إِذَا إِضَافَةً إِلَى</p><p class="id" lang="id">Dan mereka mewajibkan 'idzaa' diidhafahkan kepada</p></div><div class="ayat"><p class="ar" lang="ar">جُمَلِ الْأَفْعَالِ كَهُنَّ إِذَا اعْتَلَى.</p><p class="id" lang="id">jumlah-jumlah fi'liyyah (yakni kalimat berfi'il), seperti pada contoh: 'hun idzaa'-tala'.</p></div></div>
 </div>
-<div class="hal" id="hal-60"><span>Juz 3 &middot; Hlm. 60</span></div>
+<div class="hal" id="hal-60"><span>Juz 3 &middot; Hlm. 60</span><button type="button" class="hal__pdf" data-pdf="60" aria-label="Lihat PDF asli untuk Hlm. 60" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَشَارَ فِي هَذَا الْبَيْتِ إِلَى مَا</p><p class="id" lang="id">Dalam bait ini beliau mengisyaratkan kepada apa</p></div>
 <div class="ayat"><p class="ar" lang="ar">تَقَدَّمَ ذِكْرُهُ مِنْ أَنَّ إِذَا تَلْزَمُ</p><p class="id" lang="id">yang telah lalu, bahwa 'idzaa' wajib</p></div>
@@ -1038,7 +1060,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Kilaa dan kiltaa: hanya diidhafahkan kepada ma'rifah yang menunjukkan dua</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">لِمَفْهَمِ اثْنَيْنِ مُعَرَّفٍ بِلَا</p><p class="id" lang="id">Kepada (isim) ma'rifah yang menunjukkan dua (orang/benda), tanpa</p></div><div class="ayat"><p class="ar" lang="ar">تَفَرُّقٍ أُضِيفَ كِلْتَا وَكِلَا.</p><p class="id" lang="id">pemisahan, diidhafahkanlah 'kiltaa' dan 'kilaa'.</p></div></div>
 </div>
-<div class="hal" id="hal-61"><span>Juz 3 &middot; Hlm. 61</span></div>
+<div class="hal" id="hal-61"><span>Juz 3 &middot; Hlm. 61</span><button type="button" class="hal__pdf" data-pdf="61" aria-label="Lihat PDF asli untuk Hlm. 61" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">مِنَ الْأَسْمَاءِ الْمُلَازِمَةِ لِلْإِضَافَةِ لَفْظًا</p><p class="id" lang="id">Di antara isim yang wajib idhafah secara lafazh</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَمَعْنًى كِلْتَا وَكِلَا، وَلَا يُضَافَانِ</p><p class="id" lang="id">dan makna adalah 'kiltaa' dan 'kilaa', dan keduanya tidak diidhafahkan</p></div>
@@ -1059,7 +1081,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَلَا تَقُولُ <span class="c">كِلَا زَيْدٍ وَعَمْرٍو جَاءَ</span>؛</p><p class="id" lang="id">maka engkau tidak mengatakan <span class="c">kedua Zaid dan 'Amr datang</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَدْ جَاءَ شَاذًّا كَقَوْلِهِ:</p><p class="id" lang="id">dan pernah datang secara syadz, seperti ucapan (penyair):</p></div>
 </div>
-<div class="hal" id="hal-62"><span>Juz 3 &middot; Hlm. 62</span></div>
+<div class="hal" id="hal-62"><span>Juz 3 &middot; Hlm. 62</span><button type="button" class="hal__pdf" data-pdf="62" aria-label="Lihat PDF asli untuk Hlm. 62" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-7">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٢٩</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">كِلَا أَخِي وَخَلِيلِي وَاجِدِي عَضُدًا،</p><p class="id" lang="id">Kedua saudaraku dan sahabat karibku, aku dapati sebagai penopang,</p></div><div class="ayat"><p class="ar" lang="ar">فِي النَّائِبَاتِ وَإِلْمَامِ الْمُلِمَّاتِ.</p><p class="id" lang="id">di kala musibah dan datangnya bencana-bencana.</p></div></div>
@@ -1069,7 +1091,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَلَا تُضِفْ لِمُفْرَدٍ مُعَرَّفِ</p><p class="id" lang="id">Janganlah engkau idhafahkan kepada mufrad yang ma'rifah</p></div><div class="ayat"><p class="ar" lang="ar">أَيًّا، وَإِنْ كَرَّرْتَهَا فَأَضِفِ،</p><p class="id" lang="id">'ayyan'; dan jika engkau mengulangnya, maka idhafahkanlah,</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَوْ تَنْوِ الْأَجْزَا؛ وَاخْصُصَنْ بِالْمَعْرِفَةِ</p><p class="id" lang="id">atau engkau niatkan bagian-bagian (ajza'); dan khususkanlah dengan ma'rifah</p></div><div class="ayat"><p class="ar" lang="ar">مَوْصُولَةً أَيًّا، وَبِالْعَكْسِ الصِّفَةُ؛</p><p class="id" lang="id">'ayyan' yang berupa maushulah, dan sebaliknya (nakirah) untuk shifah;</p></div></div>
 </div>
-<div class="hal" id="hal-63"><span>Juz 3 &middot; Hlm. 63</span></div>
+<div class="hal" id="hal-63"><span>Juz 3 &middot; Hlm. 63</span><button type="button" class="hal__pdf" data-pdf="63" aria-label="Lihat PDF asli untuk Hlm. 63" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-15">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Ayyun syarthiyyah dan istifhamiyyah diidhafahkan secara mutlak</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَإِنْ تَكُنْ شَرْطًا أَوِ اسْتِفْهَامَا،</p><p class="id" lang="id">Dan jika ia (ayyun) berupa syarat atau istifham,</p></div><div class="ayat"><p class="ar" lang="ar">فَمُطْلَقًا كَمِّلْ بِهَا الْكَلَامَا.</p><p class="id" lang="id">maka sempurnakanlah perkataan dengannya secara mutlak.</p></div></div>
@@ -1083,7 +1105,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٣٠</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَلَا تَسْأَلُونَ النَّاسَ أَيِّي وَأَيِّكُمْ،</p><p class="id" lang="id">Tidakkah kalian bertanya kepada orang-orang, siapa aku dan siapa kalian,</p></div><div class="ayat"><p class="ar" lang="ar">غَدَاةَ الْتَقَيْنَا كَانَ خَيْرًا وَأَكْرَمَا؟</p><p class="id" lang="id">di pagi kita bertemu, siapa yang lebih baik dan lebih mulia?</p></div></div>
 </div>
-<div class="hal" id="hal-64"><span>Juz 3 &middot; Hlm. 64</span></div>
+<div class="hal" id="hal-64"><span>Juz 3 &middot; Hlm. 64</span><button type="button" class="hal__pdf" data-pdf="64" aria-label="Lihat PDF asli untuk Hlm. 64" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَوْ قَصَدْتَ الْأَجْزَاءَ كَقَوْلِكَ:</p><p class="id" lang="id">Atau engkau maksudkan bagian-bagian (ajza'), seperti ucapanmu:</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">أَيُّ زَيْدٍ أَحْسَنُ</span>، أَيْ</p><p class="id" lang="id"><span class="c">bagian mana dari Zaid yang paling bagus</span>, yakni</p></div>
@@ -1113,7 +1135,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٣١</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَأَوْمَأْتُ إِيمَاءً خَفِيًّا لِحَبْتَرٍ،</p><p class="id" lang="id">Maka aku memberi isyarat samar kepada Habtar,</p></div><div class="ayat"><p class="ar" lang="ar">فَلِلَّهِ عَيْنَا حَبْتَرٍ أَيُّمَا فَتَى!</p><p class="id" lang="id">maka betapa (hebat) kedua mata Habtar, pemuda yang luar biasa!</p></div></div>
 </div>
-<div class="hal" id="hal-65"><span>Juz 3 &middot; Hlm. 65</span></div>
+<div class="hal" id="hal-65"><span>Juz 3 &middot; Hlm. 65</span><button type="button" class="hal__pdf" data-pdf="65" aria-label="Lihat PDF asli untuk Hlm. 65" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَمَّا الشَّرْطِيَّةُ وَالِاسْتِفْهَامِيَّةُ فَيُضَافَانِ</p><p class="id" lang="id">Adapun yang syarthiyyah dan istifhamiyyah, keduanya diidhafahkan</p></div>
 <div class="ayat"><p class="ar" lang="ar">إِلَى الْمَعْرِفَةِ وَإِلَى النَّكِرَةِ مُطْلَقًا،</p><p class="id" lang="id">kepada ma'rifah dan nakirah secara mutlak,</p></div>
@@ -1141,7 +1163,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Ladun dan ma'a: dua isim yang wajib diidhafahkan</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَلْزَمُوا إِضَافَةً لَدُنْ فَجُرَّ،</p><p class="id" lang="id">Dan mereka mewajibkan idhafah bagi 'ladun'; (isim setelahnya) dijarkan,</p></div><div class="ayat"><p class="ar" lang="ar">وَنَصْبَ غُدْوَةً بِهَا عَنْهُمْ نَدَرْ.</p><p class="id" lang="id">dan manshub-nya 'ghudwah' sesudahnya jarang dari mereka.</p></div></div>
 </div>
-<div class="hal" id="hal-66"><span>Juz 3 &middot; Hlm. 66</span></div>
+<div class="hal" id="hal-66"><span>Juz 3 &middot; Hlm. 66</span><button type="button" class="hal__pdf" data-pdf="66" aria-label="Lihat PDF asli untuk Hlm. 66" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-17">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Ma'a: jarang dengan sukun; bina' fathah/kasrah bila bertemu sukun</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَعْ مَعَ فِيهَا قَلِيلٌ، وَنُقِلْ</p><p class="id" lang="id">Dan 'ma'a' pada (idhafah)nya jarang (disukunkan), dan dinukil</p></div><div class="ayat"><p class="ar" lang="ar">فَتْحٌ وَكَسْرٌ لِسُكُونٍ يَتَّصِلْ.</p><p class="id" lang="id">fathah dan kasrah (pada 'ma'a') bila diiringi sukun.</p></div></div>
@@ -1163,7 +1185,7 @@
 <div class="ayat"><p class="ar" lang="ar">مِنْ لَدُنْهُ، لَكِنَّهُ أَسْكَنَ الدَّالَ</p><p class="id" lang="id">min ladunhi', hanya saja ia mensukunkan dal</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَأَشَمَّهَا الضَّمَّ.</p><p class="id" lang="id">dan mengisyaratkan (isymam) dhammah padanya.</p></div>
 </div>
-<div class="hal" id="hal-67"><span>Juz 3 &middot; Hlm. 67</span></div>
+<div class="hal" id="hal-67"><span>Juz 3 &middot; Hlm. 67</span><button type="button" class="hal__pdf" data-pdf="67" aria-label="Lihat PDF asli untuk Hlm. 67" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">قَالَ الْمُصَنِّفُ: وَيُحْتَمَلُ أَنْ يَكُونَ</p><p class="id" lang="id">Mushannif berkata: dan mungkin termasuk darinya</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِنْهُ قَوْلُهُ:</p><p class="id" lang="id">ucapan (penyair):</p></div>
@@ -1181,7 +1203,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٣٣</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا زَالَ مُهْرِي مَزْجَرَ الْكَلْبِ مِنْهُمْ،</p><p class="id" lang="id">Kudaku senantiasa berada di tempat pengusiran anjing (dekat kemah) mereka,</p></div><div class="ayat"><p class="ar" lang="ar">لَدُنْ غُدْوَةً حَتَّى دَنَتْ لِغُرُوبِ.</p><p class="id" lang="id">sejak pagi hari hingga (matahari) mendekati terbenam.</p></div></div>
 </div>
-<div class="hal" id="hal-68"><span>Juz 3 &middot; Hlm. 68</span></div>
+<div class="hal" id="hal-68"><span>Juz 3 &middot; Hlm. 68</span><button type="button" class="hal__pdf" data-pdf="68" aria-label="Lihat PDF asli untuk Hlm. 68" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَهِيَ مَنْصُوبَةٌ عَلَى التَّمْيِيزِ، وَهُوَ</p><p class="id" lang="id">Ia (ghudwah) manshub sebagai tamyiz, dan itu</p></div>
 <div class="ayat"><p class="ar" lang="ar">اخْتِيَارُ الْمُصَنِّفِ؛ وَلِهَذَا قَالَ: وَنَصْبَ</p><p class="id" lang="id">pilihan Mushannif; karena itu ia berkata 'dan manshub-nya</p></div>
@@ -1200,7 +1222,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَالتَّقْدِيرُ <span class="c">لَدُنْ كَانَتْ غُدْوَةٌ</span></p><p class="id" lang="id">dan taqdirnya <span class="c">sejak adalah pagi hari</span></p></div>
 <div class="ayat"><p class="ar" lang="ar">وَكَانَ تَامَّةً.</p><p class="id" lang="id">dan 'kaana' di sini adalah taammah (sempurna).</p></div>
 </div>
-<div class="hal" id="hal-69"><span>Juz 3 &middot; Hlm. 69</span></div>
+<div class="hal" id="hal-69"><span>Juz 3 &middot; Hlm. 69</span><button type="button" class="hal__pdf" data-pdf="69" aria-label="Lihat PDF asli untuk Hlm. 69" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَمَّا مَعَ فَاسْمٌ لِمَكَانِ الِاصْطِحَابِ</p><p class="id" lang="id">Adapun 'ma'a', ia isim untuk tempat kebersamaan</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَوْ وَقْتِهِ نَحْوَ <span class="c">جَلَسَ زَيْدٌ مَعَ عَمْرٍو</span></p><p class="id" lang="id">atau waktunya, seperti <span class="c">Zaid duduk bersama 'Amr</span></p></div>
@@ -1222,7 +1244,7 @@
 <div class="ayat"><p class="ar" lang="ar">عَلَى ذَلِكَ، وَهُوَ فَاسِدٌ؛ فَإِنَّ سِيبَوَيْهِ</p><p class="id" lang="id">atas hal itu, dan ini keliru, sebab Sibawaih</p></div>
 <div class="ayat"><p class="ar" lang="ar">زَعَمَ أَنَّ سَاكِنَةَ الْعَيْنِ اسْمٌ.</p><p class="id" lang="id">berpendapat bahwa yang 'ain-nya sukun adalah isim.</p></div>
 </div>
-<div class="hal" id="hal-70"><span>Juz 3 &middot; Hlm. 70</span></div>
+<div class="hal" id="hal-70"><span>Juz 3 &middot; Hlm. 70</span><button type="button" class="hal__pdf" data-pdf="70" aria-label="Lihat PDF asli untuk Hlm. 70" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">هَذَا حُكْمُهَا إِنْ وَلِيَهَا مُتَحَرِّكٌ،</p><p class="id" lang="id">Inilah hukumnya bila diiringi huruf berharakat,</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَعْنِي أَنَّهَا تُفْتَحُ، وَهُوَ الْمَشْهُورُ،</p><p class="id" lang="id">yakni ia difathahkan, dan itu yang masyhur,</p></div>
@@ -1239,7 +1261,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">قَبْلُ كَغَيْرُ بَعْدُ حَسْبُ أَوَّلُ،</p><p class="id" lang="id">(seperti) 'qablu', semisal 'ghairu', 'ba'du', 'hasbu', 'awwalu',</p></div><div class="ayat"><p class="ar" lang="ar">وَدُونُ وَالْجِهَاتُ أَيْضًا وَعَلُ.</p><p class="id" lang="id">'dunu', dan arah-arah (jihat) juga, serta 'ala' (ulu).</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَعْرَبُوا نَصْبًا إِذَا مَا نُكِّرَا:</p><p class="id" lang="id">Dan mereka meng-i'rab-kannya dengan nashb apabila dinakirahkan:</p></div><div class="ayat"><p class="ar" lang="ar">قَبْلًا، وَمَا مِنْ بَعْدِهِ قَدْ ذُكِرَا.</p><p class="id" lang="id">'qablan', dan (isim-isim) yang disebutkan sesudahnya.</p></div></div>
 </div>
-<div class="hal" id="hal-71"><span>Juz 3 &middot; Hlm. 71</span></div>
+<div class="hal" id="hal-71"><span>Juz 3 &middot; Hlm. 71</span><button type="button" class="hal__pdf" data-pdf="71" aria-label="Lihat PDF asli untuk Hlm. 71" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">هَذِهِ الْأَسْمَاءُ الْمَذْكُورَةُ، وَهِيَ غَيْرُ،</p><p class="id" lang="id">Isim-isim yang disebutkan ini, yaitu 'ghairu',</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَبْلُ، وَبَعْدُ، وَحَسْبُ، وَأَوَّلُ، وَدُونُ،</p><p class="id" lang="id">'qabl', 'ba'd', 'hasb', 'awwal', 'dun',</p></div>
@@ -1266,7 +1288,7 @@
 <div class="ayat"><p class="ar" lang="ar"><span class="q">مِنْ قَبْلُ وَمِنْ بَعْدُ﴾</span> بِجَرِّ قَبْلَ وَبَعْدَ</p><p class="id" lang="id"><span class="q">min qablin wa min ba'din﴿</span> dengan jar 'qabl' dan 'ba'd'</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَتَنْوِينِهِمَا، وَكَقَوْلِهِ:</p><p class="id" lang="id">serta menanwinkan keduanya, dan seperti ucapan (penyair):</p></div>
 </div>
-<div class="hal" id="hal-72"><span>Juz 3 &middot; Hlm. 72</span></div>
+<div class="hal" id="hal-72"><span>Juz 3 &middot; Hlm. 72</span><button type="button" class="hal__pdf" data-pdf="72" aria-label="Lihat PDF asli untuk Hlm. 72" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-14">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٣٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَسَاغَ لِي الشَّرَابُ وَكُنْتُ قَبْلًا</p><p class="id" lang="id">Maka minuman menjadi nikmat bagiku, padahal sebelumnya</p></div><div class="ayat"><p class="ar" lang="ar">أَكَادُ أَغَصُّ بِالْمَاءِ الْحَمِيمِ.</p><p class="id" lang="id">aku hampir tercekik oleh air yang panas.</p></div></div>
@@ -1274,7 +1296,7 @@
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">هَذِهِ الْأَحْوَالُ الثَّلَاثَةُ الَّتِي تُعْرَبُ فِيهَا:</p><p class="id" lang="id">Inilah tiga keadaan yang di dalamnya ia di-i'rab:</p></div>
 </div>
-<div class="hal" id="hal-73"><span>Juz 3 &middot; Hlm. 73</span></div>
+<div class="hal" id="hal-73"><span>Juz 3 &middot; Hlm. 73</span><button type="button" class="hal__pdf" data-pdf="73" aria-label="Lihat PDF asli untuk Hlm. 73" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَمَّا الْحَالَةُ الرَّابِعَةُ: الَّتِي تُبْنَى</p><p class="id" lang="id">Adapun keadaan keempat, yang di dalamnya ia dimabnikan,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فِيهَا، فَهِيَ إِذَا حُذِفَ مَا تُضَافُ</p><p class="id" lang="id">yaitu apabila dibuang apa yang menjadi mudhaf ilaih</p></div>
@@ -1294,7 +1316,7 @@
 <div class="ayat"><p class="ar" lang="ar">إِلَيْهِ مَعْنًى؛ وَالْفَتْحُ عَلَى الْإِعْرَابِ</p><p class="id" lang="id">ilaih secara makna; fathah karena i'rab</p></div>
 <div class="ayat"><p class="ar" lang="ar">لِعَدَمِ نِيَّةِ الْمُضَافِ</p><p class="id" lang="id">karena tidak meniatkan mudhaf</p></div>
 </div>
-<div class="hal" id="hal-74"><span>Juz 3 &middot; Hlm. 74</span></div>
+<div class="hal" id="hal-74"><span>Juz 3 &middot; Hlm. 74</span><button type="button" class="hal__pdf" data-pdf="74" aria-label="Lihat PDF asli untuk Hlm. 74" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">إِلَيْهِ لَفْظًا وَمَعْنًى، وَإِعْرَابُهَا إِعْرَابُ</p><p class="id" lang="id">ilaih, baik lafazh maupun makna, dan i'rab-nya adalah i'rab</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَا لَا يَنْصَرِفُ لِلصِّفَةِ وَوَزْنِ الْفِعْلِ؛</p><p class="id" lang="id">isim ghairu munsharif karena sifat dan wazan fi'il;</p></div>
@@ -1323,7 +1345,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mudhaf ilaih menggantikan mudhaf yang dibuang dalam i'rab</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا يَلِي الْمُضَافَ يَأْتِي خَلَفًا</p><p class="id" lang="id">Dan (isim) yang mengiringi mudhaf datang sebagai pengganti</p></div><div class="ayat"><p class="ar" lang="ar">عَنْهُ فِي الْإِعْرَابِ إِذَا مَا حُذِفَا.</p><p class="id" lang="id">darinya dalam i'rab apabila (mudhaf) dibuang.</p></div></div>
 </div>
-<div class="hal" id="hal-75"><span>Juz 3 &middot; Hlm. 75</span></div>
+<div class="hal" id="hal-75"><span>Juz 3 &middot; Hlm. 75</span><button type="button" class="hal__pdf" data-pdf="75" aria-label="Lihat PDF asli untuk Hlm. 75" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">يُحْذَفُ الْمُضَافُ لِقِيَامِ قَرِينَةٍ تَدُلُّ</p><p class="id" lang="id">Mudhaf dibuang karena adanya qarinah yang menunjukkannya</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَيْهِ، وَيُقَامُ الْمُضَافُ إِلَيْهِ مَقَامَهُ</p><p class="id" lang="id">dan mudhaf ilaih ditempatkan di tempatnya</p></div>
@@ -1340,7 +1362,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَرُبَّمَا جَرُّوا الَّذِي أَبْقَوْا كَمَا</p><p class="id" lang="id">Dan kadang mereka menjarkan (isim) yang mereka sisakan sebagaimana</p></div><div class="ayat"><p class="ar" lang="ar">قَدْ كَانَ قَبْلُ حَذْفِ مَا تَقَدَّمَا،</p><p class="id" lang="id">keadaannya sebelum dibuangnya (mudhaf) yang telah didahulukan,</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">لَكِنْ بِشَرْطِ أَنْ يَكُونَ مَا حُذِفْ</p><p class="id" lang="id">namun dengan syarat apa yang dibuang itu</p></div><div class="ayat"><p class="ar" lang="ar">مُمَاثِلًا لِمَا عَلَيْهِ قَدْ عُطِفْ.</p><p class="id" lang="id">semisal dengan apa yang di-'athaf-kan atasnya.</p></div></div>
 </div>
-<div class="hal" id="hal-76"><span>Juz 3 &middot; Hlm. 76</span></div>
+<div class="hal" id="hal-76"><span>Juz 3 &middot; Hlm. 76</span><button type="button" class="hal__pdf" data-pdf="76" aria-label="Lihat PDF asli untuk Hlm. 76" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">قَدْ يُحْذَفُ الْمُضَافُ وَيَبْقَى الْمُضَافُ إِلَيْهِ</p><p class="id" lang="id">Kadang mudhaf dibuang dan mudhaf ilaih tetap</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَجْرُورًا كَمَا كَانَ عِنْدَ ذِكْرِ</p><p class="id" lang="id">dijarkan sebagaimana keadaannya ketika mudhaf disebutkan,</p></div>
@@ -1356,7 +1378,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَالتَّقْدِيرُ <span class="c">وَكُلَّ نَارٍ</span>؛ فَحُذِفَ كُلٌّ</p><p class="id" lang="id">Taqdirnya <span class="c">dan setiap api</span>; maka 'kulla' dibuang</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَبَقِيَ الْمُضَافُ إِلَيْهِ مَجْرُورًا</p><p class="id" lang="id">dan mudhaf ilaih tetap dijarkan</p></div>
 </div>
-<div class="hal" id="hal-77"><span>Juz 3 &middot; Hlm. 77</span></div>
+<div class="hal" id="hal-77"><span>Juz 3 &middot; Hlm. 77</span><button type="button" class="hal__pdf" data-pdf="77" aria-label="Lihat PDF asli untuk Hlm. 77" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">كَمَا كَانَ عِنْدَ ذِكْرِهَا، وَالشَّرْطُ</p><p class="id" lang="id">sebagaimana keadaannya ketika ia disebutkan, dan syaratnya</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَوْجُودٌ، وَهُوَ الْعَطْفُ عَلَى مُمَاثِلِ</p><p class="id" lang="id">ada, yaitu 'athaf atas (kata) yang semisal</p></div>
@@ -1383,7 +1405,7 @@
 <div class="ayat"><p class="ar" lang="ar">يُحْذَفُ الْمُضَافُ إِلَيْهِ وَيَبْقَى الْمُضَافُ</p><p class="id" lang="id">Mudhaf ilaih dibuang dan mudhaf tetap</p></div>
 <div class="ayat"><p class="ar" lang="ar">كَحَالِهِ لَوْ كَانَ مُضَافًا، فَيُحْذَفُ تَنْوِينُهُ.</p><p class="id" lang="id">seperti keadaannya seandainya ia masih mudhaf, maka tanwinnya dibuang.</p></div>
 </div>
-<div class="hal" id="hal-78"><span>Juz 3 &middot; Hlm. 78</span></div>
+<div class="hal" id="hal-78"><span>Juz 3 &middot; Hlm. 78</span><button type="button" class="hal__pdf" data-pdf="78" aria-label="Lihat PDF asli untuk Hlm. 78" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَكْثَرُ مَا يَكُونُ ذَلِكَ إِذَا عُطِفَ</p><p class="id" lang="id">Dan yang paling banyak hal itu terjadi adalah bila di-'athaf-kan</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَى الْمُضَافِ اسْمٌ مُضَافٌ إِلَى مِثْلِ</p><p class="id" lang="id">atas mudhaf sebuah isim yang diidhafahkan kepada semisal</p></div>
@@ -1399,7 +1421,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٣٩</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">سَقَى الْأَرَضِينَ الْغَيْثُ سَهْلَ وَحَزْنَهَا.</p><p class="id" lang="id">Hujan telah menyirami bumi-bumi itu, dataran rendah dan dataran tingginya.</p></div></div>
 </div>
-<div class="hal" id="hal-79"><span>Juz 3 &middot; Hlm. 79</span></div>
+<div class="hal" id="hal-79"><span>Juz 3 &middot; Hlm. 79</span><button type="button" class="hal__pdf" data-pdf="79" aria-label="Lihat PDF asli untuk Hlm. 79" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">التَّقْدِيرُ <span class="c">سَهْلَهَا وَحَزْنَهَا</span>؛ فَحُذِفَ مَا</p><p class="id" lang="id">Taqdirnya <span class="c">dataran rendahnya dan dataran tingginya</span>; maka dibuang apa</p></div>
 <div class="ayat"><p class="ar" lang="ar">أُضِيفَ إِلَيْهِ سَهْلٌ لِدَلَالَةِ مَا أُضِيفَ</p><p class="id" lang="id">yang diidhafahkan kepada 'sahl' karena adanya petunjuk dari apa yang diidhafahkan</p></div>
@@ -1425,7 +1447,7 @@
 <div class="ayat"><p class="ar" lang="ar">هُوَ الْمُضَافُ إِلَى الْمَذْكُورِ، هُوَ</p><p class="id" lang="id">adalah yang diidhafahkan kepada yang disebut, dan itu</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَذْهَبُ الْمُبَرِّدِ.</p><p class="id" lang="id">madzhab Al-Mubarrid.</p></div>
 </div>
-<div class="hal" id="hal-80"><span>Juz 3 &middot; Hlm. 80</span></div>
+<div class="hal" id="hal-80"><span>Juz 3 &middot; Hlm. 80</span><button type="button" class="hal__pdf" data-pdf="80" aria-label="Lihat PDF asli untuk Hlm. 80" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَمَذْهَبُ سِيبَوَيْهِ: أَنَّ الْأَصْلَ <span class="c">قَطَعَ اللهُ</span></p><p class="id" lang="id">Madzhab Sibawaih: bahwa asalnya <span class="c">Allah memotong</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">يَدَ مَنْ قَالَهَا وَرِجْلَ مَنْ قَالَهَا</span>،</p><p class="id" lang="id"><span class="c">tangan orang yang mengucapkannya dan kaki orang yang mengucapkannya</span>,</p></div>
@@ -1441,7 +1463,7 @@
 <div class="ayat"><p class="ar" lang="ar">إِلَى مَنْ قَالَهَا، وَلَا حَذْفَ فِي</p><p class="id" lang="id">kepada 'man qalaha', dan tidak ada pembuangan dalam</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْكَلَامِ، لَا مِنَ الْأَوَّلِ وَلَا مِنَ الثَّانِي.</p><p class="id" lang="id">kalimat itu, baik dari yang pertama maupun yang kedua.</p></div>
 </div>
-<div class="hal" id="hal-81"><span>Juz 3 &middot; Hlm. 81</span></div>
+<div class="hal" id="hal-81"><span>Juz 3 &middot; Hlm. 81</span><button type="button" class="hal__pdf" data-pdf="81" aria-label="Lihat PDF asli untuk Hlm. 81" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-22">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Memisahkan mudhaf dan mudhaf ilaih: boleh dengan maf'ul/zharaf/sumpah; darurat dengan ajnabi/na'at/nida'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَصْلُ مُضَافٍ شِبْهِ فِعْلٍ مَا نَصَبْ</p><p class="id" lang="id">Pemisahan (antara) mudhaf yang menyerupai fi'il dengan apa yang dinashabnya</p></div><div class="ayat"><p class="ar" lang="ar">مَفْعُولًا أَوْ ظَرْفًا أَجِزْ وَلَمْ يُعَبْ؛</p><p class="id" lang="id">berupa maf'ul atau zharaf — bolehkanlah, dan tidaklah dicela;</p></div></div>
@@ -1464,7 +1486,7 @@
 <div class="ayat"><p class="ar" lang="ar">مَا حُكِيَ عَنْ بَعْضِ مَنْ يُوثَقُ</p><p class="id" lang="id">adalah apa yang dikisahkan dari sebagian orang yang dipercaya</p></div>
 <div class="ayat"><p class="ar" lang="ar">بِعَرَبِيَّتِهِ: <span class="k" id="kl-8">تَرْكُ يَوْمًا نَفْسَكَ وَهَوَاهَا سَعْيٌ لَهَا فِي رَدَاهَا</span>.</p><p class="id" lang="id">bahasa Arabnya: <span class="k">membiarkan pada suatu hari dirimu dan hawa nafsunya adalah usaha demi kebinasaannya</span>.</p></div>
 </div>
-<div class="hal" id="hal-82"><span>Juz 3 &middot; Hlm. 82</span></div>
+<div class="hal" id="hal-82"><span>Juz 3 &middot; Hlm. 82</span><button type="button" class="hal__pdf" data-pdf="82" aria-label="Lihat PDF asli untuk Hlm. 82" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَمِثَالُ مَا فُصِلَ فِيهِ بَيْنَ الْمُضَافِ</p><p class="id" lang="id">Contoh pemisahan antara mudhaf</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَالْمُضَافِ إِلَيْهِ بِمَفْعُولِ الْمُضَافِ الَّذِي</p><p class="id" lang="id">dan mudhaf ilaih dengan maf'ul dari mudhaf yang</p></div>
@@ -1492,7 +1514,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَهُوَ أَجْنَبِيٌّ مِنْ كَفٍّ لِأَنَّهُ</p><p class="id" lang="id">dan ia ajnabi dari 'kaff' karena ia</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَعْمُولٌ لِـ خَطَّ.</p><p class="id" lang="id">ma'mul bagi 'khaththa'.</p></div>
 </div>
-<div class="hal" id="hal-83"><span>Juz 3 &middot; Hlm. 83</span></div>
+<div class="hal" id="hal-83"><span>Juz 3 &middot; Hlm. 83</span><button type="button" class="hal__pdf" data-pdf="83" aria-label="Lihat PDF asli untuk Hlm. 83" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَمِثَالُ النَّعْتِ قَوْلُهُ:</p><p class="id" lang="id">Dan contoh na'at adalah ucapan (penyair):</p></div>
 </div>
@@ -1500,7 +1522,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤١</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">نَجَوْتُ وَقَدْ بَلَّ الْمُرَادِيُّ سَيْفَهُ</p><p class="id" lang="id">Aku selamat, padahal Al-Muradi telah membasahi pedangnya (dengan darah)</p></div><div class="ayat"><p class="ar" lang="ar">مِنِ ابْنِ أَبِي شَيْخِ الْأَبَاطِحِ طَالِبِ.</p><p class="id" lang="id">dari putra Abu (Thalib), penghulu Abathih, Thalib.</p></div></div>
 </div>
-<div class="hal" id="hal-84"><span>Juz 3 &middot; Hlm. 84</span></div>
+<div class="hal" id="hal-84"><span>Juz 3 &middot; Hlm. 84</span><button type="button" class="hal__pdf" data-pdf="84" aria-label="Lihat PDF asli untuk Hlm. 84" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الْأَصْلُ <span class="c">مِنِ ابْنِ أَبِي طَالِبٍ شَيْخِ الْأَبَاطِحِ</span>؛</p><p class="id" lang="id">Asalnya <span class="c">dari putra Abu Thalib, penghulu Abathih</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ:</p><p class="id" lang="id">dan ucapannya:</p></div>
@@ -1513,7 +1535,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْأَصْلُ <span class="c">بِيَمِينِ مُقْسِمٍ أَصْدَقَ مِنْ يَمِينِكَ</span>.</p><p class="id" lang="id">Asalnya <span class="c">dengan sumpah seorang yang bersumpah, yang lebih jujur dari sumpahmu</span>.</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَمِثَالُ النِّدَاءِ قَوْلُهُ:</p><p class="id" lang="id">Dan contoh nida' adalah ucapan (penyair):</p></div>
 </div>
-<div class="hal" id="hal-85"><span>Juz 3 &middot; Hlm. 85</span></div>
+<div class="hal" id="hal-85"><span>Juz 3 &middot; Hlm. 85</span><button type="button" class="hal__pdf" data-pdf="85" aria-label="Lihat PDF asli untuk Hlm. 85" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-22">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٣</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وِفَاقُ، كَعْبُ، بُجَيْرٍ مُنْقِذٌ لَكَ مِنْ</p><p class="id" lang="id">Kesesuaian (sikap) Bujair (dengan Nabi), wahai Ka'b, adalah penyelamat bagimu dari</p></div><div class="ayat"><p class="ar" lang="ar">تَعْجِيلِ تَهْلُكَةٍ وَالْخُلْدِ فِي سَقَرَ.</p><p class="id" lang="id">cepatnya kebinasaan dan dari kekal di Saqar (neraka).</p></div></div>
@@ -1529,7 +1551,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْأَصْلُ <span class="c">وِفَاقُ بُجَيْرٍ يَا كَعْبُ</span></p><p class="id" lang="id">Asalnya <span class="c">kesesuaian Bujair, wahai Ka'b</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَكَأَنَّ بِرْذَوْنَ زَيْدٍ يَا أَبَا عِصَامٍ</span></p><p class="id" lang="id">dan <span class="c">seakan-akan kuda beban Zaid, wahai Abu 'Ishaam</span></p></div>
 </div>
-<div class="hal" id="hal-86"><span>Juz 3 &middot; Hlm. 86</span></div>
+<div class="hal" id="hal-86"><span>Juz 3 &middot; Hlm. 86</span><button type="button" class="hal__pdf" data-pdf="86" aria-label="Lihat PDF asli untuk Hlm. 86" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-2"><h2 class="bab__ar" lang="ar">الْمُضَافُ إِلَى يَاءِ الْمُتَكَلِّمِ</h2><p class="bab__id">Bab 2 &middot; Isim yang Diidhafahkan kepada Ya' Mutakallim</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَحَدَّثُ هَذَا الْبَابُ الْقَصِيرُ عَنْ حُكْمِ آخِرِ الْمُضَافِ إِذَا أُضِيفَ إِلَى يَاءِ الْمُتَكَلِّمِ، فَيُكْسَرُ آخِرُهُ فِي الْغَالِبِ. أَمَّا الِاسْمُ الْمُعْتَلُّ وَالْمُثَنَّى وَجَمْعُ الْمُذَكَّرِ السَّالِمُ فَتُفْتَحُ يَاؤُهُ وَتُدْغَمُ فِيهَا يَاءُ الْمُتَكَلِّمِ، وَيَبْقَى الْأَلِفُ فِي الْمَقْصُورِ سَالِمًا إِلَّا فِي لُغَةِ هُذَيْلٍ الَّتِي تَقْلِبُهُ يَاءً.</p><p class="ringkasan__id" lang="id">Bab pendek ini menjelaskan hukum akhir mudhaf apabila diidhafahkan kepada ya&rsquo; mutakallim: pada umumnya dikasrahkan. Adapun isim mu&rsquo;tal, mutsanna, dan jamak mudzakkar salim, ya&rsquo;-nya difathahkan lalu diidghamkan dengan ya&rsquo; mutakallim; sedangkan alif pada isim maqshur tetap, kecuali dalam logat Hudzail yang mengubahnya menjadi ya&rsquo;.</p></div>
 <div class="blk blk-nz" id="nz-23">
@@ -1538,7 +1560,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَوْ يَكُ كَابْنَيْنِ وَزَيْدِينَ فَذَا</p><p class="id" lang="id">atau ia seperti 'ibnaini' dan 'zaidina'; maka bagi (isim-isim) ini</p></div><div class="ayat"><p class="ar" lang="ar">جَمِيعُهَا الْيَا بَعْدَ فَتْحِهَا احْتَذَى.</p><p class="id" lang="id">semuanya, ya' (mutakallim) setelah difathahkan menjadi patokan.</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَتُدْغَمُ الْيَا فِيهِ وَالْوَاوُ وَإِنْ</p><p class="id" lang="id">Dan ya' (dan wau) diidghamkan ke dalamnya; dan jika</p></div><div class="ayat"><p class="ar" lang="ar">مَا قَبْلَ وَاوٍ ضُمَّ فَاكْسِرْهُ يَهُنْ.</p><p class="id" lang="id">(huruf) sebelum wau berupa dhammah, maka kasrahkanlah, niscaya engkau selamat.</p></div></div>
 </div>
-<div class="hal" id="hal-88"><span>Juz 3 &middot; Hlm. 88</span></div>
+<div class="hal" id="hal-88"><span>Juz 3 &middot; Hlm. 88</span><button type="button" class="hal__pdf" data-pdf="88" aria-label="Lihat PDF asli untuk Hlm. 88" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-24">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Alif tetap; maqshur pada Hudzail diubah menjadi ya'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَلِفًا سَلِّمْ وَفِي الْمَقْصُورِ عَنْ</p><p class="id" lang="id">Dan alif selamatkan (biarkan); dan pada maqshur, dari</p></div><div class="ayat"><p class="ar" lang="ar">هُذَيْلٍ انْقِلَابُهَا يَاءً حَسَنٌ.</p><p class="id" lang="id">(kabilah) Hudzail, perubahannya menjadi ya' adalah baik.</p></div></div>
@@ -1556,7 +1578,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَإِنْ كَانَ مُعْتَلًّا فَإِمَّا أَنْ يَكُونَ</p><p class="id" lang="id">Adapun jika ia mu'tal, maka ia bisa jadi</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَقْصُورًا أَوْ مَنْقُوصًا فَإِنْ كَانَ مَنْقُوصًا،</p><p class="id" lang="id">maqshur atau manqush; jika ia manqush,</p></div>
 </div>
-<div class="hal" id="hal-89"><span>Juz 3 &middot; Hlm. 89</span></div>
+<div class="hal" id="hal-89"><span>Juz 3 &middot; Hlm. 89</span><button type="button" class="hal__pdf" data-pdf="89" aria-label="Lihat PDF asli untuk Hlm. 89" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أُدْغِمَتْ يَاؤُهُ فِي يَاءِ الْمُتَكَلِّمِ</p><p class="id" lang="id">maka ya'-nya diidghamkan ke dalam ya' mutakallim</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَفُتِحَتْ يَاءُ الْمُتَكَلِّمِ فَتَقُولُ <span class="c">قَاضِيَّ</span></p><p class="id" lang="id">dan ya' mutakallim difathahkan, sehingga engkau katakan <span class="c">qadhiyya</span></p></div>
@@ -1591,7 +1613,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٥</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">سَبَقُوا هَوَى وَأَعْنَقُوا لِهَوَاهُمُ،</p><p class="id" lang="id">Mereka mendahului keinginanku (hawaya) dan bergegas menuju keinginan mereka,</p></div><div class="ayat"><p class="ar" lang="ar">فَتَخَرَّمُوا؛ وَلِكُلِّ جَنْبٍ مَصْرَعٌ.</p><p class="id" lang="id">lalu mereka binasa; dan bagi setiap sisi ada tempat rebah (ajal).</p></div></div>
 </div>
-<div class="hal" id="hal-90"><span>Juz 3 &middot; Hlm. 90</span></div>
+<div class="hal" id="hal-90"><span>Juz 3 &middot; Hlm. 90</span><button type="button" class="hal__pdf" data-pdf="90" aria-label="Lihat PDF asli untuk Hlm. 90" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَالْحَاصِلُ: أَنَّ يَاءَ الْمُتَكَلِّمِ تُفْتَحُ</p><p class="id" lang="id">Kesimpulannya: ya' mutakallim difathahkan</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَعَ الْمَنْقُوصِ كَـ <span class="c">رَامِيَّ</span> وَالْمَقْصُورِ</p><p class="id" lang="id">bersama manqush seperti <span class="c">ramiyya</span>, dan maqshur</p></div>
@@ -1613,7 +1635,7 @@
 <div class="ayat"><p class="ar" lang="ar">بَلِ انْفَتَحَ بَقِيَ عَلَى فَتْحِهِ نَحْوَ</p><p class="id" lang="id">melainkan berfathah, tetap atas fathahnya, seperti</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">مُصْطَفَوْنَ</span>، فَتَقُولُ <span class="c">مُصْطَفَيَّ</span>.</p><p class="id" lang="id"><span class="c">mushthafawna</span>, maka engkau katakan <span class="c">mushthafayya</span>.</p></div>
 </div>
-<div class="hal" id="hal-91"><span>Juz 3 &middot; Hlm. 91</span></div>
+<div class="hal" id="hal-91"><span>Juz 3 &middot; Hlm. 91</span><button type="button" class="hal__pdf" data-pdf="91" aria-label="Lihat PDF asli untuk Hlm. 91" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَشَارَ بِقَوْلِهِ: وَأَلِفًا سَلِّمْ، إِلَى أَنَّ</p><p class="id" lang="id">Dan dengan ucapannya 'dan alif selamatkan' beliau mengisyaratkan bahwa</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَا كَانَ آخِرُهُ أَلِفًا كَالْمُثَنَّى وَالْمَقْصُورِ،</p><p class="id" lang="id">yang akhirnya berupa alif, seperti mutsanna dan maqshur,</p></div>
@@ -1625,7 +1647,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْيَاءِ مَعَهُ الْفَتْحُ وَالتَّسْكِينُ فَتَقُولُ</p><p class="id" lang="id">ya' bersamanya fathah dan sukun; maka engkau katakan</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">غُلَامِيَ وَغُلَامِيْ</span>.</p><p class="id" lang="id"><span class="c">ghulamiya dan ghulami (dengan ya' fathah atau sukun)</span>.</p></div>
 </div>
-<div class="hal" id="hal-92"><span>Juz 3 &middot; Hlm. 92</span></div>
+<div class="hal" id="hal-92"><span>Juz 3 &middot; Hlm. 92</span><button type="button" class="hal__pdf" data-pdf="92" aria-label="Lihat PDF asli untuk Hlm. 92" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-3"><h2 class="bab__ar" lang="ar">إِعْمَالُ الْمَصْدَرِ</h2><p class="bab__id">Bab 3 &middot; I'mal al-Mashdar (Beramalnya Mashdar)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُبَيِّنُ هَذَا الْبَابُ أَنَّ الْمَصْدَرَ يَعْمَلُ عَمَلَ فِعْلِهِ فَيَنْصِبُ مَفْعُولًا بِهِ أَوْ يَرْفَعُ فَاعِلًا، سَوَاءٌ أُضِيفَ إِلَى فَاعِلِهِ أَوْ إِلَى مَفْعُولِهِ، أَوْ جُرِّدَ مِنْ (أَلْ) وَالْإِضَافَةِ، أَوِ اقْتَرَنَ بِـ(أَلْ). كَمَا يُوَضِّحُ حُكْمَ مَا يَتْبَعُ فَاعِلَ الْمَصْدَرِ أَوْ مَفْعُولَهُ مِنَ التَّوَابِعِ: هَلْ يُرَاعَى فِيهَا اللَّفْظُ فَيُجَرُّ، أَمِ الْمَحَلُّ فَيُرْفَعُ أَوْ يُنْصَبُ.</p><p class="ringkasan__id" lang="id">Bab ini menjelaskan bahwa mashdar beramal seperti fi&rsquo;ilnya: menashabkan maf&rsquo;ul bih atau merafa&rsquo;kan fa&rsquo;il, baik ketika diidhafahkan kepada fa&rsquo;ilnya atau maf&rsquo;ulnya, ketika mujarrad dari &lsquo;al&rsquo; dan idhafah, maupun ketika ber-&lsquo;al&rsquo;. Dijelaskan pula hukum kata yang mengikuti (tabi&rsquo;) fa&rsquo;il atau maf&rsquo;ul mashdar: apakah mengikuti lafazhnya (sehingga dijarkan) atau mengikuti kedudukannya/mahallnya (sehingga dirafa&rsquo;kan atau dinashabkan).</p></div>
 <div class="blk blk-nz" id="nz-25">
@@ -1646,7 +1668,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَالْفِعْلِ؛ وَهُوَ الْمُرَادُ بِهَذَا الْفَصْلِ.</p><p class="id" lang="id">dan fi'il; dan itulah maksud bagian ini.</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَيُقَدَّرُ بِأَنْ إِذَا أُرِيدَ الْمُضِيُّ أَوِ</p><p class="id" lang="id">Maka ia ditaqdirkan dengan 'an' apabila dimaksudkan masa lampau atau</p></div>
 </div>
-<div class="hal" id="hal-93"><span>Juz 3 &middot; Hlm. 93</span></div>
+<div class="hal" id="hal-93"><span>Juz 3 &middot; Hlm. 93</span><button type="button" class="hal__pdf" data-pdf="93" aria-label="Lihat PDF asli untuk Hlm. 93" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الِاسْتِقْبَالُ نَحْوَ <span class="c">عَجِبْتُ مِنْ ضَرْبِكَ زَيْدًا أَمْسِ أَوْ غَدًا</span>،</p><p class="id" lang="id">masa depan, seperti <span class="c">aku heran akan pemukulanmu terhadap Zaid kemarin atau besok</span>,</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَالتَّقْدِيرُ: <span class="c">مِنْ أَنْ ضَرَبْتَ زَيْدًا أَمْسِ</span></p><p class="id" lang="id">dan taqdirnya: <span class="c">dari (fakta) bahwa engkau memukul Zaid kemarin</span></p></div>
@@ -1675,7 +1697,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">بِضَرْبٍ بِالسُّيُوفِ رُؤُوسَ قَوْمٍ،</p><p class="id" lang="id">Dengan memukulkan pedang-pedang ke kepala-kepala suatu kaum,</p></div><div class="ayat"><p class="ar" lang="ar">أَزَلْنَا هَامَهُنَّ عَنِ الْمَقِيلِ.</p><p class="id" lang="id">kami lepaskan ubun-ubun mereka dari tempat peristirahatannya (leher).</p></div></div>
 </div>
-<div class="hal" id="hal-94"><span>Juz 3 &middot; Hlm. 94</span></div>
+<div class="hal" id="hal-94"><span>Juz 3 &middot; Hlm. 94</span><button type="button" class="hal__pdf" data-pdf="94" aria-label="Lihat PDF asli untuk Hlm. 94" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَرُؤُوسَ مَنْصُوبٌ بِضَرْبٍ؛ وَمِنْ إِعْمَالِهِ</p><p class="id" lang="id">'Ru'usa' manshub oleh 'dharb'; dan di antara beramalnya (mashdar)</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَهُوَ مُحَلًّى بِأَلْ قَوْلُهُ:</p><p class="id" lang="id">ketika ia ber-'al' adalah ucapan (penyair):</p></div>
@@ -1684,7 +1706,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٧</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">ضَعِيفُ النِّكَايَةِ أَعْدَاءَهُ،</p><p class="id" lang="id">Lemah dalam melukai musuh-musuhnya,</p></div><div class="ayat"><p class="ar" lang="ar">يُخَالُ الْفِرَارَ يُرَاخِي الْأَجَلَ.</p><p class="id" lang="id">ia menyangka lari (dari perang) memperpanjang ajal.</p></div></div>
 </div>
-<div class="hal" id="hal-95"><span>Juz 3 &middot; Hlm. 95</span></div>
+<div class="hal" id="hal-95"><span>Juz 3 &middot; Hlm. 95</span><button type="button" class="hal__pdf" data-pdf="95" aria-label="Lihat PDF asli untuk Hlm. 95" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ:</p><p class="id" lang="id">Dan ucapannya:</p></div>
 </div>
@@ -1692,7 +1714,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٨</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَإِنَّكَ وَالتَّأْبِينَ عُرْوَةَ بَعْدَمَا</p><p class="id" lang="id">Sesungguhnya engkau dan (sikap) memuji/meratapi 'Urwah, setelah</p></div><div class="ayat"><p class="ar" lang="ar">دَعَاكَ وَأَيْدِينَا إِلَيْهِ شَوَارِعُ —</p><p class="id" lang="id">ia memanggilmu sedang tangan-tangan kami terulur kepadanya —</p></div></div>
 </div>
-<div class="hal" id="hal-96"><span>Juz 3 &middot; Hlm. 96</span></div>
+<div class="hal" id="hal-96"><span>Juz 3 &middot; Hlm. 96</span><button type="button" class="hal__pdf" data-pdf="96" aria-label="Lihat PDF asli untuk Hlm. 96" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ:</p><p class="id" lang="id">Dan ucapannya:</p></div>
 </div>
@@ -1700,7 +1722,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٤٩</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">لَقَدْ عَلِمَتْ أُولَى الْمُغِيرَةِ أَنَّنِي</p><p class="id" lang="id">Sungguh telah tahu barisan terdepan (pasukan) Al-Mughirah bahwa aku</p></div><div class="ayat"><p class="ar" lang="ar">كَرَرْتُ فَلَمْ أَنْكُلْ عَنِ الضَّرْبِ مِسْمَعًا.</p><p class="id" lang="id">menyerang berulang kali dan tidak mundur dari memukul Mis'ama.</p></div></div>
 </div>
-<div class="hal" id="hal-97"><span>Juz 3 &middot; Hlm. 97</span></div>
+<div class="hal" id="hal-97"><span>Juz 3 &middot; Hlm. 97</span><button type="button" class="hal__pdf" data-pdf="97" aria-label="Lihat PDF asli untuk Hlm. 97" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَأَعْدَاءَهُ مَنْصُوبٌ بِالنِّكَايَةِ،</p><p class="id" lang="id">'A'da'ahu' manshub oleh 'an-nikayah',</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَعُرْوَةَ مَنْصُوبٌ بِالتَّأْبِينِ،</p><p class="id" lang="id">dan 'Urwah' manshub oleh 'at-ta'bin',</p></div>
@@ -1719,7 +1741,7 @@
 <div class="ayat"><p class="ar" lang="ar">مَا فِي فِعْلِهِ لَفْظًا وَلَمْ يَخْلُ</p><p class="id" lang="id">yang ada pada fi'ilnya secara lafazh namun tidak kosong</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِنْهُ تَقْدِيرًا، فَإِنَّهُ</p><p class="id" lang="id">darinya secara taqdir, sebab ia</p></div>
 </div>
-<div class="hal" id="hal-98"><span>Juz 3 &middot; Hlm. 98</span></div>
+<div class="hal" id="hal-98"><span>Juz 3 &middot; Hlm. 98</span><button type="button" class="hal__pdf" data-pdf="98" aria-label="Lihat PDF asli untuk Hlm. 98" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">لَا يَكُونُ اسْمَ مَصْدَرٍ بَلْ يَكُونُ</p><p class="id" lang="id">bukan isim mashdar melainkan mashdar,</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَصْدَرًا، وَذَلِكَ نَحْوَ <span class="c">قِتَالٍ</span>، فَإِنَّهُ مَصْدَرُ</p><p class="id" lang="id">yaitu seperti <span class="c">qital</span>, karena ia mashdar dari</p></div>
@@ -1747,7 +1769,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٥٠</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَكُفْرًا بَعْدَ رَدِّ الْمَوْتِ عَنِّي،</p><p class="id" lang="id">Apakah (patut) kekufuran (nikmat) setelah engkau menolak maut dariku,</p></div><div class="ayat"><p class="ar" lang="ar">وَبَعْدَ عَطَائِكَ الْمِائَةَ الرِّتَاعَا؟</p><p class="id" lang="id">dan setelah pemberianmu (berupa) seratus (unta) penggembala yang gemuk?</p></div></div>
 </div>
-<div class="hal" id="hal-99"><span>Juz 3 &middot; Hlm. 99</span></div>
+<div class="hal" id="hal-99"><span>Juz 3 &middot; Hlm. 99</span><button type="button" class="hal__pdf" data-pdf="99" aria-label="Lihat PDF asli untuk Hlm. 99" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَالْمِائَةَ مَنْصُوبٌ بِعَطَائِكَ؛ وَمِنْهُ</p><p class="id" lang="id">'Al-mi'ah' manshub oleh 'atha'ika'; dan di antaranya</p></div>
 <div class="ayat"><p class="ar" lang="ar">حَدِيثِ الْمُوَطَّأِ: <span class="h" id="hd-2">«مِنْ قُبْلَةِ الرَّجُلِ امْرَأَتَهُ الْوُضُوءُ»</span></p><p class="id" lang="id">hadits Al-Muwatta': <span class="h">“karena seorang lelaki mencium istrinya, (wajib) wudhu”</span></p></div>
@@ -1764,7 +1786,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٥٢</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">بِعِشْرَتِكَ الْكِرَامَ تُعَدُّ مِنْهُمُ؛</p><p class="id" lang="id">Dengan bergaul bersama orang-orang mulia, engkau dihitung termasuk mereka;</p></div><div class="ayat"><p class="ar" lang="ar">فَلَا تَرَيَنَّ لِغَيْرِهِمْ أُلُوفَا.</p><p class="id" lang="id">maka janganlah sekali-kali engkau merasa akrab kepada selain mereka.</p></div></div>
 </div>
-<div class="hal" id="hal-100"><span>Juz 3 &middot; Hlm. 100</span></div>
+<div class="hal" id="hal-100"><span>Juz 3 &middot; Hlm. 100</span><button type="button" class="hal__pdf" data-pdf="100" aria-label="Lihat PDF asli untuk Hlm. 100" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَإِعْمَالُ اسْمِ الْمَصْدَرِ قَلِيلٌ، وَمَنِ</p><p class="id" lang="id">Beramalnya isim mashdar itu sedikit, dan siapa</p></div>
 <div class="ayat"><p class="ar" lang="ar">ادَّعَى الْإِجْمَاعَ عَلَى جَوَازِ إِعْمَالِهِ</p><p class="id" lang="id">yang mengklaim ijma' atas bolehnya beramalnya</p></div>
@@ -1780,7 +1802,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar setelah menjarkan mudhaf ilaih: diikuti nashab atau rafa'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَبَعْدَ جَرِّهِ الَّذِي أُضِيفَ لَهْ،</p><p class="id" lang="id">Dan setelah ia menjarkan (isim) yang diidhafahkan kepadanya,</p></div><div class="ayat"><p class="ar" lang="ar">كَمِّلْ بِنَصْبٍ أَوْ بِرَفْعٍ عَمَلَهْ.</p><p class="id" lang="id">sempurnakanlah amalnya dengan nashab atau rafa'.</p></div></div>
 </div>
-<div class="hal" id="hal-101"><span>Juz 3 &middot; Hlm. 101</span></div>
+<div class="hal" id="hal-101"><span>Juz 3 &middot; Hlm. 101</span><button type="button" class="hal__pdf" data-pdf="101" aria-label="Lihat PDF asli untuk Hlm. 101" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">يُضَافُ الْمَصْدَرُ إِلَى الْفَاعِلِ فَيَجُرُّهُ،</p><p class="id" lang="id">Mashdar diidhafahkan kepada fa'il lalu menjarkannya,</p></div>
 <div class="ayat"><p class="ar" lang="ar">ثُمَّ يَنْصِبُ الْمَفْعُولَ نَحْوَ</p><p class="id" lang="id">kemudian memanshubkan maf'ul, seperti</p></div>
@@ -1793,7 +1815,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٥٣</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">تَنْفِي يَدَاهَا الْحَصَى فِي كُلِّ هَاجِرَةٍ،</p><p class="id" lang="id">Kedua kaki depannya melemparkan kerikil di setiap waktu terik siang,</p></div><div class="ayat"><p class="ar" lang="ar">نَفْيَ الدَّرَاهِيمِ تَنْقَادُ الصَّيَارِيفُ.</p><p class="id" lang="id">seperti para penukar uang menyingkirkan dirham-dirham (saat memeriksanya).</p></div></div>
 </div>
-<div class="hal" id="hal-102"><span>Juz 3 &middot; Hlm. 102</span></div>
+<div class="hal" id="hal-102"><span>Juz 3 &middot; Hlm. 102</span><button type="button" class="hal__pdf" data-pdf="102" aria-label="Lihat PDF asli untuk Hlm. 102" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَلَيْسَ هَذَا الثَّانِي مَخْصُوصًا بِالضَّرُورَةِ،</p><p class="id" lang="id">Bentuk kedua ini tidak khusus untuk darurat (syair),</p></div>
 <div class="ayat"><p class="ar" lang="ar">خِلَافًا لِبَعْضِهِمْ، وَجَعَلَ مِنْهُ قَوْلَهُ</p><p class="id" lang="id">berbeda dengan sebagian mereka; dan mereka menjadikan darinya firman-Nya</p></div>
@@ -1815,7 +1837,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">I'rab tabi' bagi fa'il/maf'ul mashdar: lafazh (jar) atau mahall (rafa'/nashab)</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَجُرَّ مَا يَتْبَعُ مَا جُرَّ؛ وَمَنْ</p><p class="id" lang="id">Dan jarkanlah (tabi') yang mengikuti (isim) yang dijarkan; dan siapa</p></div><div class="ayat"><p class="ar" lang="ar">رَاعَى فِي الْإِتْبَاعِ الْمَحَلَّ فَحَسَنْ.</p><p class="id" lang="id">yang memperhatikan mahall dalam ittiba', maka itu baik.</p></div></div>
 </div>
-<div class="hal" id="hal-103"><span>Juz 3 &middot; Hlm. 103</span></div>
+<div class="hal" id="hal-103"><span>Juz 3 &middot; Hlm. 103</span><button type="button" class="hal__pdf" data-pdf="103" aria-label="Lihat PDF asli untuk Hlm. 103" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">إِذَا أُضِيفَ الْمَصْدَرُ إِلَى الْفَاعِلِ،</p><p class="id" lang="id">Apabila mashdar diidhafahkan kepada fa'il,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَفَاعِلُهُ يَكُونُ مَجْرُورًا لَفْظًا مَرْفُوعًا</p><p class="id" lang="id">maka fa'ilnya majrur secara lafazh dan marfu'</p></div>
@@ -1833,7 +1855,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَرُفِعَ الْمَظْلُومُ لِكَوْنِهِ نَعْتًا لِلْمُعَقِّبِ</p><p class="id" lang="id">Maka 'al-mazhlum' dirafa'kan karena ia na'at bagi 'al-mu'aqqib'</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَى الْمَحَلِّ.</p><p class="id" lang="id">atas dasar mahall.</p></div>
 </div>
-<div class="hal" id="hal-104"><span>Juz 3 &middot; Hlm. 104</span></div>
+<div class="hal" id="hal-104"><span>Juz 3 &middot; Hlm. 104</span><button type="button" class="hal__pdf" data-pdf="104" aria-label="Lihat PDF asli untuk Hlm. 104" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَإِذَا أُضِيفَ إِلَى الْمَفْعُولِ فَهُوَ</p><p class="id" lang="id">Dan apabila ia diidhafahkan kepada maf'ul, maka ia</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَجْرُورٌ لَفْظًا مَنْصُوبٌ مَحَلًّا، فَيَجُوزُ</p><p class="id" lang="id">majrur secara lafazh dan manshub secara mahall, sehingga boleh</p></div>
@@ -1847,7 +1869,7 @@
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَاللَّيَّانَا مَعْطُوفٌ عَلَى مَحَلِّ الْإِفْلَاسِ.</p><p class="id" lang="id">'Al-layyana' di-'athaf-kan atas mahall 'al-iflas'.</p></div>
 </div>
-<div class="hal" id="hal-105"><span>Juz 3 &middot; Hlm. 105</span></div>
+<div class="hal" id="hal-105"><span>Juz 3 &middot; Hlm. 105</span><button type="button" class="hal__pdf" data-pdf="105" aria-label="Lihat PDF asli untuk Hlm. 105" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-4"><h2 class="bab__ar" lang="ar">إِعْمَالُ اسْمِ الْفَاعِلِ</h2><p class="bab__id">Bab 4 &middot; I'mal Isim Fa'il (Beramalnya Isim Fa'il)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَنَاوَلُ هَذَا الْبَابُ عَمَلَ اسْمِ الْفَاعِلِ عَمَلَ فِعْلِهِ الْمُضَارِعِ بِشَرْطِ أَلَّا يَكُونَ بِمَعْنَى الْمَاضِي، وَأَنْ يَعْتَمِدَ عَلَى اسْتِفْهَامٍ أَوْ نَفْيٍ أَوْ نِدَاءٍ، أَوْ يَقَعَ صِفَةً أَوْ خَبَرًا أَوْ حَالًا أَوْ صِلَةً لِـ(أَلْ). وَيَذْكُرُ صِيَغَ الْمُبَالَغَةِ الْعَامِلَةَ عَمَلَهُ كَـ(فَعَّال) وَ(مِفْعَال) وَ(فَعُول)، وَحُكْمَ مُثَنَّاهُ وَجَمْعِهِ، وَجَوَازَ إِضَافَتِهِ إِلَى مَعْمُولِهِ أَوْ نَصْبِهِ إِيَّاهُ، وَأَنَّ اسْمَ الْمَفْعُولِ يَجْرِي فِي الْعَمَلِ مَجْرَى اسْمِ الْفَاعِلِ.</p><p class="ringkasan__id" lang="id">Bab ini membahas syarat isim fa&rsquo;il beramal seperti fi&rsquo;il mudhari&rsquo;nya: tidak bermakna lampau, serta bersandar (i&rsquo;timad) pada istifham, nafi, atau nida&rsquo;, atau berkedudukan sebagai sifat, khabar, hal, atau shilah bagi &lsquo;al&rsquo;. Dijelaskan pula bentuk-bentuk mubalaghah yang beramal sepertinya, seperti &lsquo;fa&rsquo;&rsquo;al&rsquo;, &lsquo;mif&rsquo;al&rsquo;, dan &lsquo;fa&rsquo;ul&rsquo;, hukum bentuk mutsanna dan jamaknya, kebolehan mengidhafahkannya kepada ma&rsquo;mul atau menashabkannya, serta bahwa isim maf&rsquo;ul mengikuti hukum isim fa&rsquo;il dalam beramal.</p></div>
 <div class="blk blk-nz" id="nz-28">
@@ -1875,7 +1897,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْكِسَائِيُّ إِعْمَالَهُ، وَجَعَلَ مِنْهُ قَوْلَهُ</p><p class="id" lang="id">beramalnya, dan ia menjadikan darinya firman-Nya</p></div>
 <div class="ayat rq"><p class="ar" lang="ar">تَعَالَى: <span class="q" id="qs-21">﴿وَكَلْبُهُمْ بَاسِطٌ ذِرَاعَيْهِ بِالْوَصِيدِ﴾</span></p><p class="id" lang="id">Ta'ala: <span class="q">﴾sedangkan anjing mereka membentangkan kedua lengannya di ambang pintu gua﴿</span> <span class="ref">[QS. Al-Kahf: 18]</span></p></div>
 </div>
-<div class="hal" id="hal-106"><span>Juz 3 &middot; Hlm. 106</span></div>
+<div class="hal" id="hal-106"><span>Juz 3 &middot; Hlm. 106</span><button type="button" class="hal__pdf" data-pdf="106" aria-label="Lihat PDF asli untuk Hlm. 106" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَذِرَاعَيْهِ مَنْصُوبٌ بِبَاسِطٍ، وَهُوَ مَاضٍ؛</p><p class="id" lang="id">'Dzira'ayhi' manshub oleh 'basith', padahal ia lampau;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَخَرَّجَهُ غَيْرُهُ عَلَى أَنَّهُ حِكَايَةُ</p><p class="id" lang="id">dan selain beliau menafsirkannya sebagai penceritaan</p></div>
@@ -1903,7 +1925,7 @@
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَظَنَنْتُ زَيْدًا ضَارِبًا عَمْرًا</span></p><p class="id" lang="id"><span class="c">dan aku mengira Zaid memukul 'Amr</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَأَعْلَمْتُ زَيْدًا عَمْرًا ضَارِبًا بَكْرًا</span>.</p><p class="id" lang="id"><span class="c">dan aku memberitahu Zaid bahwa 'Amr memukul Bakr</span>.</p></div>
 </div>
-<div class="hal" id="hal-107"><span>Juz 3 &middot; Hlm. 107</span></div>
+<div class="hal" id="hal-107"><span>Juz 3 &middot; Hlm. 107</span><button type="button" class="hal__pdf" data-pdf="107" aria-label="Lihat PDF asli untuk Hlm. 107" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-30">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Isim fa'il bersandar pada maushuf yang dibuang</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَقَدْ يَكُونُ نَعْتَ مَحْذُوفٍ عُرِفْ،</p><p class="id" lang="id">Dan kadang ia menjadi na'at bagi (maushuf) yang dibuang namun dikenal,</p></div><div class="ayat"><p class="ar" lang="ar">فَيَسْتَحِقُّ الْعَمَلَ الَّذِي وُصِفْ.</p><p class="id" lang="id">maka ia berhak atas amal yang telah disifatkan.</p></div></div>
@@ -1917,7 +1939,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٥٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَكَمْ مَالِئٍ عَيْنَيْهِ مِنْ شَيْءٍ غَيْرِهِ،</p><p class="id" lang="id">Betapa banyak orang yang memenuhi kedua matanya dengan sesuatu selain (Allah),</p></div><div class="ayat"><p class="ar" lang="ar">إِذَا رَاحَ نَحْوَ الْجَمْرَةِ الْبِيضُ كَالدُّمَى.</p><p class="id" lang="id">apabila ia berangkat menuju (tempat) jumrah (dan melihat) gadis-gadis putih bak patung.</p></div></div>
 </div>
-<div class="hal" id="hal-108"><span>Juz 3 &middot; Hlm. 108</span></div>
+<div class="hal" id="hal-108"><span>Juz 3 &middot; Hlm. 108</span><button type="button" class="hal__pdf" data-pdf="108" aria-label="Lihat PDF asli untuk Hlm. 108" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَعَيْنَيْهِ مَنْصُوبٌ بِمَالِئٍ، وَمَالِئٌ</p><p class="id" lang="id">'Ainaihi' manshub oleh 'mali'', dan 'mali'' adalah</p></div>
 <div class="ayat"><p class="ar" lang="ar">صِفَةٌ لِمَوْصُوفٍ مَحْذُوفٍ، وَتَقْدِيرُهُ</p><p class="id" lang="id">sifat bagi maushuf yang dibuang, dan taqdirnya</p></div>
@@ -1930,7 +1952,7 @@
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">التَّقْدِيرُ <span class="c">كَوَعِلٍ نَاطِحٍ صَخْرَةً</span>.</p><p class="id" lang="id">Taqdirnya <span class="c">seperti kambing gunung yang menanduk batu karang</span>.</p></div>
 </div>
-<div class="hal" id="hal-109"><span>Juz 3 &middot; Hlm. 109</span></div>
+<div class="hal" id="hal-109"><span>Juz 3 &middot; Hlm. 109</span><button type="button" class="hal__pdf" data-pdf="109" aria-label="Lihat PDF asli untuk Hlm. 109" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-31">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Isim fa'il sebagai shilah 'al': beramal pada semua zaman</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَإِنْ يَكُنْ صِلَةَ أَلْ فَفِي الْمُضِي</p><p class="id" lang="id">Dan jika ia menjadi shilah 'al', maka dalam (makna) lampau</p></div><div class="ayat"><p class="ar" lang="ar">وَغَيْرِهِ إِعْمَالُهُ قَدِ ارْتُضِي.</p><p class="id" lang="id">dan selainnya, beramalnya telah diridhai.</p></div></div>
@@ -1953,7 +1975,7 @@
 <div class="ayat"><p class="ar" lang="ar">فِي شَرْحِهِ أَنَّ اسْمَ الْفَاعِلِ إِذَا</p><p class="id" lang="id">dalam syarahnya bahwa isim fa'il apabila</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَعَ صِلَةً لِلْأَلِفِ وَاللَّامِ عَمِلَ</p><p class="id" lang="id">menjadi shilah bagi alif-lam, ia beramal</p></div>
 </div>
-<div class="hal" id="hal-110"><span>Juz 3 &middot; Hlm. 110</span></div>
+<div class="hal" id="hal-110"><span>Juz 3 &middot; Hlm. 110</span><button type="button" class="hal__pdf" data-pdf="110" aria-label="Lihat PDF asli untuk Hlm. 110" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">مَاضِيًا وَمُسْتَقْبَلًا وَحَالًا بِاتِّفَاقٍ؛ وَقَالَ</p><p class="id" lang="id">(baik) lampau, akan datang, maupun kini dengan kesepakatan; dan ia berkata</p></div>
 <div class="ayat"><p class="ar" lang="ar">بَعْدَ هَذَا أَيْضًا: ارْتَضَى جَمِيعُ</p><p class="id" lang="id">setelah ini pula: seluruh</p></div>
@@ -1976,7 +1998,7 @@
 <div class="ayat rk"><p class="ar" lang="ar"><span class="k" id="kl-10">أَمَّا الْعَسَلُ فَأَنَا شَرَّابٌ</span>؛</p><p class="id" lang="id"><span class="k">adapun madu, maka aku peminumnya</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُ الشَّاعِرِ:</p><p class="id" lang="id">dan ucapan penyair:</p></div>
 </div>
-<div class="hal" id="hal-111"><span>Juz 3 &middot; Hlm. 111</span></div>
+<div class="hal" id="hal-111"><span>Juz 3 &middot; Hlm. 111</span><button type="button" class="hal__pdf" data-pdf="111" aria-label="Lihat PDF asli untuk Hlm. 111" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-37">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٥٨</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَخَا الْحَرْبِ لَبَّاسًا إِلَيْهَا جِلَالَهَا؛</p><p class="id" lang="id">(Ia) sahabat perang, yang mengenakan pakaian tempur(nya) untuk (perang) itu;</p></div><div class="ayat"><p class="ar" lang="ar">وَلَيْسَ بِوَلَّاجِ الْخَوَالِفِ أَعْقَلَا.</p><p class="id" lang="id">bukan orang yang menyusup ke sisi belakang (bersama para wanita), yang lumpuh (penakut).</p></div></div>
@@ -1985,7 +2007,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَالْعَسَلُ مَنْصُوبٌ بِشَرَّابٍ، وَجِلَالَهَا</p><p class="id" lang="id">'Al-'asal' manshub oleh 'syarrab', dan 'jilaluha'</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَنْصُوبٌ بِلَبَّاسٍ.</p><p class="id" lang="id">manshub oleh 'labbas'.</p></div>
 </div>
-<div class="hal" id="hal-112"><span>Juz 3 &middot; Hlm. 112</span></div>
+<div class="hal" id="hal-112"><span>Juz 3 &middot; Hlm. 112</span><button type="button" class="hal__pdf" data-pdf="112" aria-label="Lihat PDF asli untuk Hlm. 112" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَمِنْ إِعْمَالِ مِفْعَالٍ قَوْلُ بَعْضِ الْعَرَبِ:</p><p class="id" lang="id">Dan di antara beramalnya mif'aal adalah ucapan sebagian orang Arab:</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="k" id="kl-11">إِنَّهُ لَمِنْحَارٌ بَوَائِكَهَا</span>؛ فَبَوَائِكَهَا</p><p class="id" lang="id"><span class="k">sungguh ia benar-benar penyembelih unta-unta gemuknya</span>; maka 'bawa'ikaha'</p></div>
@@ -1997,7 +2019,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">عَشِيَّةَ سُعْدَى لَوْ تَرَاءَتْ لِرَاهِبٍ</p><p class="id" lang="id">Pada petang (hari bertemu) Su'da, seandainya ia menampakkan diri kepada seorang rahib</p></div><div class="ayat"><p class="ar" lang="ar">بِدَوْمَةَ تَجْرٍ دُونَهُ وَحَجِيجُ،</p><p class="id" lang="id">di Dumah, yang terhalang darinya oleh (tabir padang) dan para jamaah haji,</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">قَلَى دِينَهُ وَاهْتَاجَ لِلشَّوْقِ؛ إِنَّهَا</p><p class="id" lang="id">niscaya (sang rahib) membenci agamanya dan bangkit rindu; sesungguhnya (Su'da)</p></div><div class="ayat"><p class="ar" lang="ar">عَلَى الشَّوْقِ إِخْوَانَ الْعَزَاءِ هَيُوجُ.</p><p class="id" lang="id">atas rindu itu, para penghibur hati, adalah penggerak (kerinduan).</p></div></div>
 </div>
-<div class="hal" id="hal-113"><span>Juz 3 &middot; Hlm. 113</span></div>
+<div class="hal" id="hal-113"><span>Juz 3 &middot; Hlm. 113</span><button type="button" class="hal__pdf" data-pdf="113" aria-label="Lihat PDF asli untuk Hlm. 113" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَإِخْوَانَ مَنْصُوبٌ بِهَيُوجٍ؛ وَمِنْ</p><p class="id" lang="id">'Ikhwan' manshub oleh 'hayuj'; dan di antara</p></div>
 <div class="ayat"><p class="ar" lang="ar">إِعْمَالِ فَعِيلٍ قَوْلُ بَعْضِ الْعَرَبِ:</p><p class="id" lang="id">beramalnya fa'iil adalah ucapan sebagian orang Arab:</p></div>
@@ -2009,7 +2031,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٠</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">حَذِرٌ أُمُورًا لَا تَضِيرُ وَآمِنٌ</p><p class="id" lang="id">(Ia) sangat waspada terhadap perkara yang tak membahayakan, dan merasa aman</p></div><div class="ayat"><p class="ar" lang="ar">مَا لَيْسَ مُنْجِيهِ مِنَ الْأَقْدَارِ.</p><p class="id" lang="id">dari apa yang tidak dapat menyelamatkannya dari takdir-takdir.</p></div></div>
 </div>
-<div class="hal" id="hal-114"><span>Juz 3 &middot; Hlm. 114</span></div>
+<div class="hal" id="hal-114"><span>Juz 3 &middot; Hlm. 114</span><button type="button" class="hal__pdf" data-pdf="114" aria-label="Lihat PDF asli untuk Hlm. 114" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ:</p><p class="id" lang="id">Dan ucapannya:</p></div>
 </div>
@@ -2021,7 +2043,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَأُمُورًا مَنْصُوبٌ بِحَذِرٍ،</p><p class="id" lang="id">'Umuran' manshub oleh 'hadzir',</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَعِرْضِي مَنْصُوبٌ بِمُزَّقٍ.</p><p class="id" lang="id">dan 'ardhi' manshub oleh 'mazziq'.</p></div>
 </div>
-<div class="hal" id="hal-115"><span>Juz 3 &middot; Hlm. 115</span></div>
+<div class="hal" id="hal-115"><span>Juz 3 &middot; Hlm. 115</span><button type="button" class="hal__pdf" data-pdf="115" aria-label="Lihat PDF asli untuk Hlm. 115" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-33">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mutsanna dan jamak bagi isim fa'il sama hukumnya dengan mufrad</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا سِوَى الْمُفْرَدِ مِثْلُهُ جُعِلْ</p><p class="id" lang="id">Dan selain mufrad dijadikan sama dengannya</p></div><div class="ayat"><p class="ar" lang="ar">فِي الْحُكْمِ وَالشُّرُوطِ حَيْثُمَا عَمِلْ.</p><p class="id" lang="id">dalam hukum dan syarat-syarat di mana pun ia beramal.</p></div></div>
@@ -2039,7 +2061,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٢</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَوَالِفًا مَكَّةَ مِنْ وَرَقِ الْحِمَى.</p><p class="id" lang="id">(Demi burung-burung) yang bersahabat dengan Makkah, dari merpati-merpati kelabu Tanah Haram.</p></div></div>
 </div>
-<div class="hal" id="hal-116"><span>Juz 3 &middot; Hlm. 116</span></div>
+<div class="hal" id="hal-116"><span>Juz 3 &middot; Hlm. 116</span><button type="button" class="hal__pdf" data-pdf="116" aria-label="Lihat PDF asli untuk Hlm. 116" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَصْلُهُ الْحَمَامُ؛ وَقَوْلُهُ:</p><p class="id" lang="id">Asalnya 'al-hamam' (merpati); dan ucapannya:</p></div>
 </div>
@@ -2047,7 +2069,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٣</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">ثُمَّ زَادُوا أَنَّهُمْ فِي قَوْمِهِمْ</p><p class="id" lang="id">Kemudian mereka menambah (keutamaan) bahwa mereka di tengah kaumnya</p></div><div class="ayat"><p class="ar" lang="ar">غُفُرٌ ذَنْبَهُمْ غَيْرَ فَخْرِ.</p><p class="id" lang="id">sangat pemaaf terhadap dosa (orang) kepada mereka, bukan pembangga diri.</p></div></div>
 </div>
-<div class="hal" id="hal-117"><span>Juz 3 &middot; Hlm. 117</span></div>
+<div class="hal" id="hal-117"><span>Juz 3 &middot; Hlm. 117</span><button type="button" class="hal__pdf" data-pdf="117" aria-label="Lihat PDF asli untuk Hlm. 117" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-34">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Isim fa'il yang beramal boleh diidhafahkan kepada maf'ulnya atau menashabkannya</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَانْصِبْ بِذِي الْإِعْمَالِ تِلْوًا وَاخْفِضِ؛</p><p class="id" lang="id">Dan nashabkanlah dengan (isim fa'il) yang beramal ini (isim) yang mengiringinya, dan jarkan;</p></div><div class="ayat"><p class="ar" lang="ar">وَهُوَ لِنَصْبِ مَا سِوَاهُ مُقْتَضِي.</p><p class="id" lang="id">dan ia menuntut nashab bagi selain (maf'ul pertama).</p></div></div>
@@ -2068,7 +2090,7 @@
 <div class="ayat"><p class="ar" lang="ar">يَجُوزُ فِي تَابِعِ مَعْمُولِ اسْمِ الْفَاعِلِ</p><p class="id" lang="id">Boleh pada tabi' ma'mul isim fa'il</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمَجْرُورِ بِالْإِضَافَةِ الْجَرُّ وَالنَّصْبُ نَحْوُ:</p><p class="id" lang="id">yang dijarkan dengan idhafah, jar dan nashab, seperti:</p></div>
 </div>
-<div class="hal" id="hal-118"><span>Juz 3 &middot; Hlm. 118</span></div>
+<div class="hal" id="hal-118"><span>Juz 3 &middot; Hlm. 118</span><button type="button" class="hal__pdf" data-pdf="118" aria-label="Lihat PDF asli untuk Hlm. 118" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar"><span class="c">هَذَا ضَارِبُ زَيْدٍ وَعَمْرٍو وَعَمْرًا</span>؛</p><p class="id" lang="id"><span class="c">ini pemukul Zaid dan 'Amr (jar) dan 'Amr (nashab)</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَالْجَرُّ مُرَاعَاةً لِلَّفْظِ، وَالنَّصْبُ عَلَى</p><p class="id" lang="id">jar karena memperhatikan lafazh, dan nashab atas dasar</p></div>
@@ -2081,7 +2103,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٤</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">الْوَاهِبُ الْمِائَةَ الْهِجَانَ وَعَبْدَهَا،</p><p class="id" lang="id">(Dialah) yang memberi seratus unta putih (pilihan) dan budaknya,</p></div><div class="ayat"><p class="ar" lang="ar">عُوذًا تُزْجَى بَيْنَهَا أَطْفَالُهَا.</p><p class="id" lang="id">(unta-unta) betina yang baru beranak, digiring di antaranya anak-anaknya.</p></div></div>
 </div>
-<div class="hal" id="hal-119"><span>Juz 3 &middot; Hlm. 119</span></div>
+<div class="hal" id="hal-119"><span>Juz 3 &middot; Hlm. 119</span><button type="button" class="hal__pdf" data-pdf="119" aria-label="Lihat PDF asli untuk Hlm. 119" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">بِنَصْبِ عَبْدٍ وَجَرِّهِ؛ وَقَالَ الْآخَرُ:</p><p class="id" lang="id">dengan nashab 'abd' dan jarnya; dan penyair lain berkata:</p></div>
 </div>
@@ -2094,7 +2116,7 @@
 <div class="ayat"><p class="ar" lang="ar">أَوْ عَلَى إِضْمَارِ فِعْلٍ، وَالتَّقْدِيرُ</p><p class="id" lang="id">atau atas penyembunyian fi'il, dan taqdirnya</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">أَوْ تَبْعَثُ عَبْدَ رَبٍّ</span>.</p><p class="id" lang="id"><span class="c">atau engkau mengirimkan 'Abd Rabb</span>.</p></div>
 </div>
-<div class="hal" id="hal-120"><span>Juz 3 &middot; Hlm. 120</span></div>
+<div class="hal" id="hal-120"><span>Juz 3 &middot; Hlm. 120</span><button type="button" class="hal__pdf" data-pdf="120" aria-label="Lihat PDF asli untuk Hlm. 120" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-36">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Hukum isim maf'ul sama dengan isim fa'il dalam beramal</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَكُلُّ مَا قُرِّرَ لِاسْمِ فَاعِلِ</p><p class="id" lang="id">Dan segala yang ditetapkan bagi isim fa'il</p></div><div class="ayat"><p class="ar" lang="ar">يُعْطَى اسْمُ مَفْعُولٍ بِلَا تَفَاضُلِ؛</p><p class="id" lang="id">diberikan (pula) kepada isim maf'ul tanpa perbedaan;</p></div></div>
@@ -2115,7 +2137,7 @@
 <div class="ayat"><p class="ar" lang="ar">مَفْعُولَانِ رَفَعَ أَحَدَهُمَا وَنَصَبَ الْآخَرَ،</p><p class="id" lang="id">memiliki dua maf'ul, ia merafa'kan salah satunya dan menashabkan yang lain,</p></div>
 <div class="ayat"><p class="ar" lang="ar">نَحْوَ: <span class="c">الْمُعْطَى كَفَافًا يَكْتَفِي</span></p><p class="id" lang="id">seperti: <span class="c">yang diberi kecukupan, ia merasa cukup</span></p></div>
 </div>
-<div class="hal" id="hal-121"><span>Juz 3 &middot; Hlm. 121</span></div>
+<div class="hal" id="hal-121"><span>Juz 3 &middot; Hlm. 121</span><button type="button" class="hal__pdf" data-pdf="121" aria-label="Lihat PDF asli untuk Hlm. 121" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">فَالْمَفْعُولُ الْأَوَّلُ ضَمِيرٌ مُسْتَتِرٌ عَائِدٌ</p><p class="id" lang="id">maka maf'ul pertama adalah dhamir mustatir yang kembali</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَى الْأَلِفِ وَاللَّامِ، وَهُوَ مَرْفُوعٌ</p><p class="id" lang="id">kepada alif-lam, dan ia marfu'</p></div>
@@ -2138,7 +2160,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَلَا تَقُولُ <span class="c">مَرَرْتُ بِرَجُلٍ ضَارِبِ الْأَبِ زَيْدًا</span></p><p class="id" lang="id">sehingga engkau tidak mengatakan <span class="c">aku melewati seorang lelaki yang memukul sang ayah, Zaid</span></p></div>
 <div class="ayat"><p class="ar" lang="ar">تُرِيدُ <span class="c">ضَارِبٍ أَبُوهُ زَيْدًا</span>.</p><p class="id" lang="id">dengan maksud <span class="c">yang ayahnya memukul Zaid</span>.</p></div>
 </div>
-<div class="hal" id="hal-122"><span>Juz 3 &middot; Hlm. 122</span></div>
+<div class="hal" id="hal-122"><span>Juz 3 &middot; Hlm. 122</span><button type="button" class="hal__pdf" data-pdf="122" aria-label="Lihat PDF asli untuk Hlm. 122" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-5"><h2 class="bab__ar" lang="ar">أَبْنِيَةُ الْمَصَادِرِ</h2><p class="bab__id">Bab 5 &middot; Abniyat al-Mashadir (Wazan-wazan Mashdar)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَسْتَعْرِضُ هَذَا الْبَابُ أَوْزَانَ الْمَصَادِرِ الْقِيَاسِيَّةَ: مَصْدَرُ الْفِعْلِ الثُّلَاثِيِّ الْمُتَعَدِّي عَلَى وَزْنِ (فَعْل) غَالِبًا، وَمَصْدَرُ اللَّازِمِ عَلَى أَوْزَانٍ مُتَعَدِّدَةٍ كَـ(فَعَل) وَ(فُعُول) بِحَسَبِ مَعْنَاهُ مِنِ امْتِنَاعٍ أَوْ تَقَلُّبٍ أَوْ دَاءٍ أَوْ صَوْتٍ أَوْ مَشْيٍ، وَأَوْزَانُ مَصْدَرِ مَا فَوْقَ الثُّلَاثِيِّ الْقِيَاسِيَّةُ كَـ(تَفْعِيل) وَ(إِفْعَال) وَ(مُفَاعَلَة)، وَخُتِمَ بِصِيغَتَيِ الْمَرَّةِ وَالْهَيْئَةِ مِنَ الْمَصْدَرِ.</p><p class="ringkasan__id" lang="id">Bab ini memaparkan wazan-wazan mashdar yang bersifat qiyas: mashdar fi&rsquo;il tsulatsi muta&rsquo;addi umumnya berwazan &lsquo;fa&rsquo;l&rsquo;, sedangkan mashdar fi&rsquo;il lazim memiliki beberapa wazan seperti &lsquo;fa&rsquo;al&rsquo; dan &lsquo;fu&rsquo;uul&rsquo; sesuai maknanya (penolakan, berbolak-balik, penyakit, suara, atau berjalan). Dijelaskan pula wazan mashdar qiyas untuk fi&rsquo;il di atas tsulatsi seperti &lsquo;taf&rsquo;iil&rsquo;, &lsquo;if&rsquo;aal&rsquo;, dan &lsquo;mufaa&rsquo;alah&rsquo;, diakhiri dengan bentuk marrah (sekali perbuatan) dan hay&rsquo;ah (cara/keadaan) dari mashdar.</p></div>
 <div class="blk blk-nz" id="nz-38">
@@ -2166,7 +2188,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Fu'uul untuk fi'il lazim, kecuali yang berhak fi'aal, fa'alaan, atau fu'aal</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَفَعَلُ اللَّازِمِ مِثْلَ قَعَدَا،</p><p class="id" lang="id">Dan (mashdar) fi'il lazim seperti 'qa'ada',</p></div><div class="ayat"><p class="ar" lang="ar">لَهُ فُعُولٌ بِاطِّرَادٍ كَغَدَا.</p><p class="id" lang="id">baginya wazan fu'uul secara konsisten, seperti 'ghadaa'.</p></div></div>
 </div>
-<div class="hal" id="hal-123"><span>Juz 3 &middot; Hlm. 123</span></div>
+<div class="hal" id="hal-123"><span>Juz 3 &middot; Hlm. 123</span><button type="button" class="hal__pdf" data-pdf="123" aria-label="Lihat PDF asli untuk Hlm. 123" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-41">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Penyaring: fi'aal (penolakan), fa'alaan (berbolak-balik), fu'aal (penyakit/suara), fa'iil (berjalan/suara)</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">مَا لَمْ يَكُنْ مُسْتَوْجِبًا فِعَالَا</p><p class="id" lang="id">(Hal itu berlaku) selama ia tidak berhak (memakai) fi'aal,</p></div><div class="ayat"><p class="ar" lang="ar">أَوْ فَعَلَانًا فَادْرِ أَوْ فُعَالَا؛</p><p class="id" lang="id">atau fa'alaan — ketahuilah — atau fu'aal;</p></div></div>
@@ -2178,7 +2200,7 @@
 <div class="ayat"><p class="ar" lang="ar">فُعُولٍ قِيَاسًا، فَتَقُولُ: <span class="c">قَعَدَ قُعُودًا</span>،</p><p class="id" lang="id">wazan fu'uul secara qiyas; maka engkau katakan <span class="c">qa'ada — qu'uudan (duduk),</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَغَدَا غُدُوًّا وَبَكَرَ بُكُورًا</span>.</p><p class="id" lang="id"><span class="c">ghadaa — ghuduwwan (pergi pagi), dan bakara — bukuuran (bergegas pagi)</span>.</p></div>
 </div>
-<div class="hal" id="hal-124"><span>Juz 3 &middot; Hlm. 124</span></div>
+<div class="hal" id="hal-124"><span>Juz 3 &middot; Hlm. 124</span><button type="button" class="hal__pdf" data-pdf="124" aria-label="Lihat PDF asli untuk Hlm. 124" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَشَارَ بِقَوْلِهِ: مَا لَمْ يَكُنْ مُسْتَوْجِبًا</p><p class="id" lang="id">Dan dengan ucapannya 'selama ia tidak berhak',</p></div>
 <div class="ayat"><p class="ar" lang="ar">فِعَالَا، إِلَى آخِرِهِ، إِلَى أَنَّهُ إِنَّمَا</p><p class="id" lang="id">sampai akhirnya, beliau mengisyaratkan bahwa ia hanya</p></div>
@@ -2222,7 +2244,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar fa'ula (lazim): fu'uulah dan fa'aalah</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فُعُولَةٌ فَعَالَةٌ لِفَعُلَا</p><p class="id" lang="id">(Wazan) fu'uulah dan fa'aalah bagi (fi'il) fa'ula,</p></div><div class="ayat"><p class="ar" lang="ar">كَسَهُلَ الْأَمْرُ وَزَيْدٌ جَزُلَا</p><p class="id" lang="id">seperti 'sahula al-amr' dan 'Zaidun jazula'.</p></div></div>
 </div>
-<div class="hal" id="hal-125"><span>Juz 3 &middot; Hlm. 125</span></div>
+<div class="hal" id="hal-125"><span>Juz 3 &middot; Hlm. 125</span><button type="button" class="hal__pdf" data-pdf="125" aria-label="Lihat PDF asli untuk Hlm. 125" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">إِذَا كَانَ الْفِعْلُ عَلَى فَعُلَ وَلَا</p><p class="id" lang="id">Apabila fi'il berwazan fa'ula, dan ia tidak</p></div>
 <div class="ayat"><p class="ar" lang="ar">يَكُونُ إِلَّا لَازِمًا يَكُونُ مَصْدَرُهُ</p><p class="id" lang="id">terjadi kecuali lazim, maka mashdarnya</p></div>
@@ -2247,7 +2269,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar selain tsulatsi bersifat qiyas: taf'iil untuk fa''ala, dan seterusnya</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَغَيْرُ ذِي ثَلَاثَةٍ مُقَيَّسُ</p><p class="id" lang="id">Dan (fi'il) selain tsulatsi dapat di-qiyaskan</p></div><div class="ayat"><p class="ar" lang="ar">مَصْدَرُهُ كَقَدَّسَ التَّقْدِيسُ</p><p class="id" lang="id">mashdarnya, seperti 'qaddasa — at-taqdis'.</p></div></div>
 </div>
-<div class="hal" id="hal-126"><span>Juz 3 &middot; Hlm. 126</span></div>
+<div class="hal" id="hal-126"><span>Juz 3 &middot; Hlm. 126</span><button type="button" class="hal__pdf" data-pdf="126" aria-label="Lihat PDF asli untuk Hlm. 126" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-45">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar fa''ala, af'ala, tafa''ala, dan yang berawalan hamzah washal, serta tafa'lala</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَزَكِّهِ تَزْكِيَةً وَأَجْمِلَا</p><p class="id" lang="id">Dan (jadikan) 'zakkahu — tazkiyah'; dan 'ajmala' —</p></div><div class="ayat"><p class="ar" lang="ar">إِجْمَالَ مَنْ تَجَمَّلَا تَجَمُّلَا</p><p class="id" lang="id">ijmaal; dan orang yang bertajammul — tajammulan;</p></div></div>
@@ -2255,7 +2277,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا يَلِي الْآخِرَ مُدَّ وَافْتَحَا</p><p class="id" lang="id">Dan (huruf) yang mengiringi (huruf) akhir, panjangkanlah (mad) dan fathahkan,</p></div><div class="ayat"><p class="ar" lang="ar">مَعَ كَسْرِ تِلْوِ الثَّانِ مِمَّا افْتُتِحَا</p><p class="id" lang="id">disertai kasrah (huruf) yang mengiringi yang kedua, dari (fi'il) yang diawali</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">بِهَمْزِ وَصْلٍ كَاصْطَفَى وَضُمَّ مَا</p><p class="id" lang="id">dengan hamzah washal, seperti 'ishthafaa'; dan dhammahkan (huruf) yang</p></div><div class="ayat"><p class="ar" lang="ar">يَرْبَعُ فِي أَمْثَالِ قَدْ تَلَمْلَمَا</p><p class="id" lang="id">keempat pada (fi'il) semisal 'talamlama'.</p></div></div>
 </div>
-<div class="hal" id="hal-127"><span>Juz 3 &middot; Hlm. 127</span></div>
+<div class="hal" id="hal-127"><span>Juz 3 &middot; Hlm. 127</span><button type="button" class="hal__pdf" data-pdf="127" aria-label="Lihat PDF asli untuk Hlm. 127" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">ذَكَرَ فِي هَذِهِ الْأَبْيَاتِ مَصَادِرَ</p><p class="id" lang="id">Dalam bait-bait ini beliau menyebut mashdar-mashdar</p></div>
 <div class="ayat"><p class="ar" lang="ar">غَيْرِ الثُّلَاثِيِّ، وَهِيَ مَقِيسَةٌ كُلُّهَا.</p><p class="id" lang="id">selain tsulatsi, dan semuanya di-qiyaskan.</p></div>
@@ -2280,7 +2302,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">بَاتَتْ تُنَزِّي دَلْوَهَا تَنْزِيًا</p><p class="id" lang="id">(Ia) bermalam menggerak-gerakkan timbanya dengan (gerakan) melonjak,</p></div><div class="ayat"><p class="ar" lang="ar">كَمَا تُنَزِّي شَهْلَةٌ صَبِيَّا</p><p class="id" lang="id">sebagaimana (wanita tua bernama) Syahlah melonjak-lonjakkan seorang anak kecil.</p></div></div>
 </div>
-<div class="hal" id="hal-128"><span>Juz 3 &middot; Hlm. 128</span></div>
+<div class="hal" id="hal-128"><span>Juz 3 &middot; Hlm. 128</span><button type="button" class="hal__pdf" data-pdf="128" aria-label="Lihat PDF asli untuk Hlm. 128" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَإِنْ كَانَ مَهْمُوزًا وَلَمْ يَذْكُرْهُ</p><p class="id" lang="id">Dan jika ia mahmuz — yang tidak disebutkan Mushannif</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمُصَنِّفُ هُنَا، فَمَصْدَرُهُ عَلَى تَفْعِيلٍ</p><p class="id" lang="id">di sini — maka mashdarnya menurut taf'iil</p></div>
@@ -2302,7 +2324,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَهَذَا هُوَ الْمُرَادُ بِقَوْلِهِ: ثُمَّ أَقِمْ إِقَامَةً</p><p class="id" lang="id">Inilah maksud ucapannya 'kemudian aqim — iqamah'</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلِهِ: وَغَالِبًا ذَا التَّاءِ لَزِمْ.</p><p class="id" lang="id">dan ucapannya 'dan umumnya ta' ini wajib (dipakai)'</p></div>
 </div>
-<div class="hal" id="hal-129"><span>Juz 3 &middot; Hlm. 129</span></div>
+<div class="hal" id="hal-129"><span>Juz 3 &middot; Hlm. 129</span><button type="button" class="hal__pdf" data-pdf="129" aria-label="Lihat PDF asli untuk Hlm. 129" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">إِشَارَةٌ إِلَى مَا ذَكَرْنَاهُ مِنْ أَنَّ</p><p class="id" lang="id">adalah isyarat kepada apa yang kami sebutkan bahwa</p></div>
 <div class="ayat"><p class="ar" lang="ar">التَّاءَ تُعَوَّضُ غَالِبًا، وَقَدْ جَاءَ حَذْفُهَا</p><p class="id" lang="id">ta' menjadi pengganti pada umumnya, dan kadang ia dibuang,</p></div>
@@ -2335,7 +2357,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar fa'lala: fi'laal atau fa'lalah (yang kedua qiyas)</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فِعْلَالٌ أَوْ فَعْلَلَةٌ لِفَعْلَلَا</p><p class="id" lang="id">(Wazan) fi'laal atau fa'lalah bagi (fi'il) fa'lala,</p></div><div class="ayat"><p class="ar" lang="ar">وَاجْعَلْ مُقِيسًا ثَانِيًا لَا أَوَّلَا</p><p class="id" lang="id">dan jadikanlah yang kedua yang di-qiyaskan, bukan yang pertama.</p></div></div>
 </div>
-<div class="hal" id="hal-130"><span>Juz 3 &middot; Hlm. 130</span></div>
+<div class="hal" id="hal-130"><span>Juz 3 &middot; Hlm. 130</span><button type="button" class="hal__pdf" data-pdf="130" aria-label="Lihat PDF asli untuk Hlm. 130" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">يَأْتِي مَصْدَرُ فَعْلَلَ عَلَى فِعْلَالٍ</p><p class="id" lang="id">Mashdar fa'lala datang menurut fi'laal</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">كَدَحْرَجَ دِحْرَاجًا وَسَرْهَفَ سِرْهَافًا</span></p><p class="id" lang="id">seperti <span class="c">dahraja — dihraajan (menggelindingkan), sarhafa — sirhaafan (memberi makan enak)</span>,</p></div>
@@ -2373,7 +2395,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٧</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">يَا قَوْمِ قَدْ حَوْقَلْتُ أَوْ دَنَوْتُ</p><p class="id" lang="id">Wahai kaumku, sungguh aku telah lemah/renta atau hampir (ajal),</p></div><div class="ayat"><p class="ar" lang="ar">وَشَرُّ حِيقَالِ الرِّجَالِ الْمَوْتُ</p><p class="id" lang="id">dan seburuk-buruk ketuaan (hiiqaal) para lelaki adalah kematian.</p></div></div>
 </div>
-<div class="hal" id="hal-131"><span>Juz 3 &middot; Hlm. 131</span></div>
+<div class="hal" id="hal-131"><span>Juz 3 &middot; Hlm. 131</span><button type="button" class="hal__pdf" data-pdf="131" aria-label="Lihat PDF asli untuk Hlm. 131" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُمْ فِي مَصْدَرِ تَفَعَّلَ: تِفْعَالًا،</p><p class="id" lang="id">Dan ucapan mereka pada mashdar tafa''ala: tif'aalan,</p></div>
 <div class="ayat"><p class="ar" lang="ar">نَحْوَ: <span class="k" id="kl-14">تَمَلَّقَ تِمْلَاقًا</span>، وَالْقِيَاسُ تَفَعَّلَ</p><p class="id" lang="id">seperti <span class="k">tamallaqa — tamlaaqan</span>, sedangkan qiyasnya tafa''ala</p></div>
@@ -2391,7 +2413,7 @@
 <div class="ayat"><p class="ar" lang="ar">تَاءِ التَّأْنِيثِ، فَإِنْ بُنِيَ عَلَيْهَا وُصِفَ</p><p class="id" lang="id">ta' ta'nits; jika dibangun di atasnya, ia disifati</p></div>
 <div class="ayat"><p class="ar" lang="ar">بِمَا يَدُلُّ عَلَى</p><p class="id" lang="id">dengan apa yang menunjukkan</p></div>
 </div>
-<div class="hal" id="hal-132"><span>Juz 3 &middot; Hlm. 132</span></div>
+<div class="hal" id="hal-132"><span>Juz 3 &middot; Hlm. 132</span><button type="button" class="hal__pdf" data-pdf="132" aria-label="Lihat PDF asli untuk Hlm. 132" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الْوَحْدَةِ نَحْوَ: نِعْمَةٍ وَرَحْمَةٍ. فَإِذَا أُرِيدَ</p><p class="id" lang="id">kesatuan, seperti 'ni'mah' dan 'rahmah'; maka jika dimaksudkan</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمَرَّةُ وُصِفَ بِوَاحِدَةٍ.</p><p class="id" lang="id">'sekali', ia disifati dengan 'wahidah' (satu).</p></div>
@@ -2413,7 +2435,7 @@
 <div class="ayat"><p class="ar" lang="ar">فِعْلَةً مِنِ اخْتَمَرَ. وَ<span class="k" id="kl-16">هُوَ حَسَنُ الْعِمَّةِ</span>،</p><p class="id" lang="id">fi'lah dari 'ikhtamara'; dan <span class="k">ia (lelaki) bagus caranya berserban</span>,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَبَنَوْا فِعْلَةً مِنْ تَعَمَّمَ.</p><p class="id" lang="id">maka mereka membentuk fi'lah dari 'ta'ammama'.</p></div>
 </div>
-<div class="hal" id="hal-133"><span>Juz 3 &middot; Hlm. 133</span></div>
+<div class="hal" id="hal-133"><span>Juz 3 &middot; Hlm. 133</span><button type="button" class="hal__pdf" data-pdf="133" aria-label="Lihat PDF asli untuk Hlm. 133" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-6"><h2 class="bab__ar" lang="ar">أَبْنِيَةُ أَسْمَاءِ الْفَاعِلِينَ وَالْمَفْعُولِينَ (وَالصِّفَاتِ الْمُشَبَّهَاتِ بِهَا)</h2><p class="bab__id">Bab 6 &middot; Wazan Isim Fa'il dan Isim Maf'ul (serta Shifat yang Menyerupainya)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُبَيِّنُ هَذَا الْبَابُ وَزْنَ اسْمِ الْفَاعِلِ مِنَ الثُّلَاثِيِّ عَلَى (فَاعِل)، مَعَ أَوْزَانٍ أُخْرَى قَلِيلَةٍ كَـ(أَفْعَل) وَ(فَعْلَان) لِمَا دَلَّ عَلَى لَوْنٍ أَوْ عَيْبٍ أَوِ امْتِلَاءٍ، وَوَزْنَهُ مِنْ غَيْرِ الثُّلَاثِيِّ عَلَى صِيغَةِ الْمُضَارِعِ مَعَ إِبْدَالِ حَرْفِ الْمُضَارَعَةِ مِيمًا مَضْمُومَةً وَكَسْرِ مَا قَبْلَ الْآخِرِ. كَمَا يَذْكُرُ وَزْنَ اسْمِ الْمَفْعُولِ مِنَ الثُّلَاثِيِّ عَلَى (مَفْعُول)، وَمِنْ غَيْرِ الثُّلَاثِيِّ كَاسْمِ الْفَاعِلِ لَكِنْ بِفَتْحِ مَا قَبْلَ الْآخِرِ، وَأَنَّ (فَعِيلًا) قَدْ يَنُوبُ عَنْ (مَفْعُول) سَمَاعًا.</p><p class="ringkasan__id" lang="id">Bab ini menjelaskan wazan isim fa&rsquo;il dari fi&rsquo;il tsulatsi, yaitu &lsquo;faa&rsquo;il&rsquo;, dengan beberapa wazan lain yang jarang seperti &lsquo;af&rsquo;al&rsquo; dan &lsquo;fa&rsquo;laan&rsquo; untuk makna warna, cacat, atau penuh. Wazan isim fa&rsquo;il dari selain tsulatsi mengikuti bentuk fi&rsquo;il mudhari&rsquo;-nya dengan huruf mudhara&rsquo;ah diganti mim berharakat dhammah serta huruf sebelum akhir dikasrahkan. Dijelaskan pula wazan isim maf&rsquo;ul dari tsulatsi, yaitu &lsquo;maf&rsquo;uul&rsquo;, dan dari selain tsulatsi seperti isim fa&rsquo;il namun huruf sebelum akhirnya difathahkan, serta bahwa wazan &lsquo;fa&rsquo;iil&rsquo; terkadang menggantikan &lsquo;maf&rsquo;uul&rsquo; secara sama&rsquo;.</p></div>
 <div class="blk blk-nz" id="nz-50">
@@ -2442,7 +2464,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Faa'il jarang pada fa'ula dan fa'ila lazim; qiyasnya fa'il/fa'laan/af'al</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَهُوَ قَلِيلٌ فِي فَعُلَتْ وَفَعِلْ</p><p class="id" lang="id">Dan ia (wazan faa'il) jarang pada (fi'il) fa'ula dan fa'ila</p></div><div class="ayat"><p class="ar" lang="ar">غَيْرِ مُعَدًّى بَلْ قِيَاسُهُ فَعِلْ</p><p class="id" lang="id">yang tidak muta'addi; bahkan qiyasnya (pada keduanya) adalah fa'il.</p></div></div>
 </div>
-<div class="hal" id="hal-134"><span>Juz 3 &middot; Hlm. 134</span></div>
+<div class="hal" id="hal-134"><span>Juz 3 &middot; Hlm. 134</span><button type="button" class="hal__pdf" data-pdf="134" aria-label="Lihat PDF asli untuk Hlm. 134" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-52">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Contoh wazan af'al dan fa'laan untuk isim fa'il</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَفْعَلُ فَعْلَانُ نَحْوَ أَشِرْ</p><p class="id" lang="id">Dan (wazan) af'al dan fa'laan, seperti 'asyir',</p></div><div class="ayat"><p class="ar" lang="ar">وَنَحْوَ صَدْيَانَ وَنَحْوَ الْأَجْهَرْ</p><p class="id" lang="id">dan seperti 'shadyaan', dan seperti 'al-ajhar'.</p></div></div>
@@ -2476,7 +2498,7 @@
 <div class="ayat"><p class="ar" lang="ar">مِنْهُ عَلَى وَزْنِ فَعْلٍ كَـ <span class="c">ضَخُمَ فَهُوَ ضَخْمٌ</span></p><p class="id" lang="id">darinya menurut wazan fa'l seperti <span class="c">dhakhuma — maka ia dhakhm (besar),</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَشَهُمَ فَهُوَ شَهْمٌ</span>، وَعَلَى فَعِيلٍ نَحْوَ:</p><p class="id" lang="id"><span class="c">dan syahuma — maka ia syahm (cerdas/pemberani)</span>; dan menurut fa'iil, seperti</p></div>
 </div>
-<div class="hal" id="hal-135"><span>Juz 3 &middot; Hlm. 135</span></div>
+<div class="hal" id="hal-135"><span>Juz 3 &middot; Hlm. 135</span><button type="button" class="hal__pdf" data-pdf="135" aria-label="Lihat PDF asli untuk Hlm. 135" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar"><span class="c">جَمُلَ فَهُوَ جَمِيلٌ وَشَرُفَ فَهُوَ شَرِيفٌ</span></p><p class="id" lang="id"><span class="c">jamula — maka ia jamiil (indah), syarufa — maka ia syariif (mulia)</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَيَقِلُّ مَجِيءُ اسْمِ فَاعِلِهِ عَلَى أَفْعَلَ،</p><p class="id" lang="id">dan jarang datangnya isim fa'ilnya menurut af'al,</p></div>
@@ -2495,7 +2517,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَزِنَةُ الْمُضَارِعِ اسْمُ فَاعِلِ</p><p class="id" lang="id">Wazan mudhari' (adalah wazan) isim fa'il</p></div><div class="ayat"><p class="ar" lang="ar">مِنْ غَيْرِ ذِي الثَّلَاثِ كَالْمُوَاصِلِ</p><p class="id" lang="id">dari (fi'il) selain tsulatsi, seperti 'al-muwashil',</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">مَعَ كَسْرِ مَتْلُوِّ الْأَخِيرِ مُطْلَقَا</p><p class="id" lang="id">disertai kasrah (huruf) yang mendahului akhir secara mutlak,</p></div><div class="ayat"><p class="ar" lang="ar">وَضَمِّ مِيمٍ زَائِدٍ قَدْ سَبَقَا</p><p class="id" lang="id">dan dhammah mim tambahan yang mendahului.</p></div></div>
 </div>
-<div class="hal" id="hal-136"><span>Juz 3 &middot; Hlm. 136</span></div>
+<div class="hal" id="hal-136"><span>Juz 3 &middot; Hlm. 136</span><button type="button" class="hal__pdf" data-pdf="136" aria-label="Lihat PDF asli untuk Hlm. 136" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-55">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Bila kasrah difathahkan: menjadi isim maf'ul</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَإِنْ فَتَحْتَ مِنْهُ مَا كَانَ انْكَسَرْ</p><p class="id" lang="id">Dan jika engkau fathahkan (huruf) yang tadinya berkasrah darinya,</p></div><div class="ayat"><p class="ar" lang="ar">صَارَ اسْمَ مَفْعُولٍ كَمِثْلِ الْمُنْتَظَرْ</p><p class="id" lang="id">ia menjadi isim maf'ul, seperti 'al-muntazhar'.</p></div></div>
@@ -2530,7 +2552,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْفِعْلِ الثُّلَاثِيِّ جِيءَ بِهِ عَلَى زِنَةِ</p><p class="id" lang="id">fi'il tsulatsi, ia didatangkan menurut wazan</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَفْعُولٍ قِيَاسًا</p><p class="id" lang="id">maf'uul secara qiyas</p></div>
 </div>
-<div class="hal" id="hal-137"><span>Juz 3 &middot; Hlm. 137</span></div>
+<div class="hal" id="hal-137"><span>Juz 3 &middot; Hlm. 137</span><button type="button" class="hal__pdf" data-pdf="137" aria-label="Lihat PDF asli untuk Hlm. 137" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">مُطَّرِدًا، نَحْوَ: <span class="c">قَصَدْتُهُ فَهُوَ مَقْصُودٌ</span></p><p class="id" lang="id">yang konsisten, seperti <span class="c">qashadtuhu — maka ia maqshuud (yang dituju),</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">وَضَرَبْتُهُ فَهُوَ مَضْرُوبٌ</span></p><p class="id" lang="id"><span class="c">dharabtuhu — maka ia madhruub (yang dipukul),</span></p></div>
@@ -2573,7 +2595,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَقَدْ يُعْتَذَرُ عَنِ ابْنِ الْمُصَنِّفِ بِأَنَّهُ</p><p class="id" lang="id">Dan (putra Mushannif) dimaafkan karena ia</p></div>
 <div class="ayat"><p class="ar" lang="ar">ادَّعَى الْإِجْمَاعَ عَلَى أَنَّ فَعِيلًا لَا يَنُوبُ عَنْ</p><p class="id" lang="id">mengklaim ijma' bahwa fa'iil tidak menggantikan</p></div>
 </div>
-<div class="hal" id="hal-138"><span>Juz 3 &middot; Hlm. 138</span></div>
+<div class="hal" id="hal-138"><span>Juz 3 &middot; Hlm. 138</span><button type="button" class="hal__pdf" data-pdf="138" aria-label="Lihat PDF asli untuk Hlm. 138" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">مَفْعُولٍ، يَعْنِي نِيَابَةً مُطْلَقَةً، أَيْ مِنْ</p><p class="id" lang="id">maf'uul — yakni penggantian mutlak, yaitu dari</p></div>
 <div class="ayat"><p class="ar" lang="ar">كُلِّ فِعْلٍ؛ وَهُوَ كَذَلِكَ بِنَاءً عَلَى</p><p class="id" lang="id">setiap fi'il — dan memang demikian berdasarkan</p></div>
@@ -2596,7 +2618,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَتَرْفَعُ عَبْدًا بِجَرِيحٍ؛ وَقَدْ صَرَّحَ غَيْرُهُ</p><p class="id" lang="id">dengan merafa'kan 'abd' oleh 'jariih'; padahal selain beliau menegaskan</p></div>
 <div class="ayat"><p class="ar" lang="ar">بِجَوَازِ هَذِهِ الْمَسْأَلَةِ.</p><p class="id" lang="id">bolehnya masalah ini.</p></div>
 </div>
-<div class="hal" id="hal-139"><span>Juz 3 &middot; Hlm. 139</span></div>
+<div class="hal" id="hal-139"><span>Juz 3 &middot; Hlm. 139</span><button type="button" class="hal__pdf" data-pdf="139" aria-label="Lihat PDF asli untuk Hlm. 139" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-7"><h2 class="bab__ar" lang="ar">الصِّفَةُ الْمُشَبَّهَةُ بِاسْمِ الْفَاعِلِ</h2><p class="bab__id">Bab 7 &middot; Ash-Shifah al-Musyabbahah bi Isim al-Fa'il (Sifat yang Menyerupai Isim Fa'il)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَحَدَّثُ هَذَا الْبَابُ عَنِ الصِّفَةِ الْمُشَبَّهَةِ، وَهِيَ صِفَةٌ يُسْتَحْسَنُ فِيهَا جَرُّ فَاعِلِهَا لَفْظًا، تُصَاغُ مِنَ الْفِعْلِ اللَّازِمِ لِلدَّلَالَةِ عَلَى الْحَالِ (الزَّمَنِ الْحَاضِرِ) دُونَ غَيْرِهِ. وَيُبَيِّنُ أَنَّهَا تَعْمَلُ عَمَلَ اسْمِ الْفَاعِلِ الْمُتَعَدِّي فِي حُدُودِ مَا تَقَدَّمَ، لَكِنَّ مَعْمُولَهَا لَا يَجُوزُ تَقْدِيمُهُ عَلَيْهَا وَيَجِبُ أَنْ يَكُونَ سَبَبِيًّا. وَتُذْكَرُ أَحْوَالُهَا السِّتُّ فِي الرَّفْعِ وَالنَّصْبِ وَالْجَرِّ، وَامْتِنَاعُ جَرِّهَا إِذَا اقْتَرَنَتْ بِـ(أَلْ) وَكَانَ مَعْمُولُهَا مُجَرَّدًا مِنْهَا وَمِنَ الْإِضَافَةِ إِلَى مَا فِيهِ (أَلْ).</p><p class="ringkasan__id" lang="id">Bab ini membahas shifah musyabbahah, yaitu sifat yang baik dijarkan fa&rsquo;ilnya secara lafazh, dibentuk dari fi&rsquo;il lazim untuk menunjukkan makna zaman sekarang (hal) saja. Dijelaskan bahwa ia beramal seperti isim fa&rsquo;il yang muta&rsquo;addi sebatas ketentuan yang telah lalu, namun ma&rsquo;mulnya tidak boleh didahulukan dan harus berupa sababi (terkait maushuf). Disebutkan pula enam keadaannya dalam rafa&rsquo;, nashab, dan jar, serta larangan menjarkannya bila ber-&lsquo;al&rsquo; sementara ma&rsquo;mulnya tidak ber-&lsquo;al&rsquo; dan tidak diidhafahkan kepada yang ber-&lsquo;al&rsquo;.</p></div>
 <div class="blk blk-nz" id="nz-58">
@@ -2622,7 +2644,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَتَقُولُ: <span class="c">زَيْدٌ مَضْرُوبُ الْأَبِ</span>، وَهُوَ حِينَئِذٍ جَارٍ</p><p class="id" lang="id">maka engkau berkata <span class="c">Zaid madhruubul-ab</span>, dan ia ketika itu berjalan</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَجْرَى الصِّفَةِ الْمُشَبَّهَةِ.</p><p class="id" lang="id">menurut hukum shifah musyabbahah.</p></div>
 </div>
-<div class="hal" id="hal-140"><span>Juz 3 &middot; Hlm. 140</span></div>
+<div class="hal" id="hal-140"><span>Juz 3 &middot; Hlm. 140</span><button type="button" class="hal__pdf" data-pdf="140" aria-label="Lihat PDF asli untuk Hlm. 140" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-59">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Pembentukannya hanya dari fi'il lazim dan untuk zaman sekarang</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَصَوْغُهَا مِنْ لَازِمٍ لِحَاضِرِ</p><p class="id" lang="id">Dan pembentukannya dari (fi'il) lazim untuk (zaman) sekarang,</p></div><div class="ayat"><p class="ar" lang="ar">كَطَاهِرِ الْقَلْبِ جَمِيلِ الظَّاهِرِ</p><p class="id" lang="id">seperti 'thaahirul-qalb' (bersih hatinya), 'jamiilizh-zhaahir' (indah lahirnya).</p></div></div>
@@ -2650,7 +2672,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Amal shifah musyabbahah seperti isim fa'il muta'addi, menurut batas yang telah lalu</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَعَمَلُ اسْمِ فَاعِلٍ الْمُعَدَّى</p><p class="id" lang="id">Dan amal isim fa'il yang muta'addi</p></div><div class="ayat"><p class="ar" lang="ar">لَهَا عَلَى الْحَدِّ الَّذِي قَدْ حُدَّا</p><p class="id" lang="id">(ditetapkan) baginya (shifah musyabbahah) menurut batas yang telah ditetapkan.</p></div></div>
 </div>
-<div class="hal" id="hal-141"><span>Juz 3 &middot; Hlm. 141</span></div>
+<div class="hal" id="hal-141"><span>Juz 3 &middot; Hlm. 141</span><button type="button" class="hal__pdf" data-pdf="141" aria-label="Lihat PDF asli untuk Hlm. 141" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَيْ يَثْبُتُ لِهَذِهِ الصِّفَةِ عَمَلُ اسْمِ الْفَاعِلِ</p><p class="id" lang="id">Yakni, ditetapkan bagi sifat ini amal isim fa'il</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْمُتَعَدِّي، وَهُوَ الرَّفْعُ وَالنَّصْبُ، نَحْوَ:</p><p class="id" lang="id">yang muta'addi, yaitu rafa' dan nashab, seperti</p></div>
@@ -2667,7 +2689,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Ma'mul tidak boleh didahulukan dan harus berupa sababi (terkait dengan maushuf)</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَسَبْقُ مَا تَعْمَلُ فِيهِ مُجْتَنَبْ</p><p class="id" lang="id">Dan mendahulukan (ma'mul) yang ia (sifat) beramal padanya, dijauhi,</p></div><div class="ayat"><p class="ar" lang="ar">وَكَوْنُهُ ذَا سَبَبِيَّةٍ وَجَبْ</p><p class="id" lang="id">dan keberadaan (ma'mul) itu bersifat sababi adalah wajib.</p></div></div>
 </div>
-<div class="hal" id="hal-142"><span>Juz 3 &middot; Hlm. 142</span></div>
+<div class="hal" id="hal-142"><span>Juz 3 &middot; Hlm. 142</span><button type="button" class="hal__pdf" data-pdf="142" aria-label="Lihat PDF asli untuk Hlm. 142" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">لَمَّا كَانَتِ الصِّفَةُ الْمُشَبَّهَةُ فَرْعًا فِي الْعَمَلِ</p><p class="id" lang="id">Karena shifah musyabbahah adalah cabang dalam beramal</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَنِ اسْمِ الْفَاعِلِ قَصُرَتْ عَنْهُ، فَلَمْ يَجُزْ</p><p class="id" lang="id">dari isim fa'il, ia kurang darinya, maka tidak boleh</p></div>
@@ -2684,7 +2706,7 @@
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَارْفَعْ بِهَا وَانْصِبْ وَجُرَّ مَعَ أَلْ</p><p class="id" lang="id">Maka rafa'kan dengannya, nashabkan, dan jarkan — bersama 'al' (pada shifah),</p></div><div class="ayat"><p class="ar" lang="ar">وَدُونَ أَلْ مَصْحُوبَ أَلْ وَمَا اتَّصَلْ</p><p class="id" lang="id">dan tanpa 'al' (pada shifah), (ma'mul) yang disertai 'al' dan yang bersambung</p></div></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">بِهَا مُضَافًا أَوْ مُجَرَّدَا وَلَا</p><p class="id" lang="id">dengannya, berupa mudhaf atau mujarrad; dan janganlah</p></div><div class="ayat"><p class="ar" lang="ar">تَجْرُرْ بِهَا مَعَ أَلْ سِمًا مِنْ أَلْ خَلَا</p><p class="id" lang="id">engkau jarkan dengannya, bersama 'al', isim yang kosong dari 'al',</p></div></div>
 </div>
-<div class="hal" id="hal-143"><span>Juz 3 &middot; Hlm. 143</span></div>
+<div class="hal" id="hal-143"><span>Juz 3 &middot; Hlm. 143</span><button type="button" class="hal__pdf" data-pdf="143" aria-label="Lihat PDF asli untuk Hlm. 143" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-63">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Dari idhafah kepada yang ber-'al'; selain itu boleh</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمِنْ إِضَافَةٍ لِتَالِيهَا وَمَا</p><p class="id" lang="id">Dan (yang kosong) dari idhafah kepada (isim) yang mengikutinya (yang ber-'al'); dan yang</p></div><div class="ayat"><p class="ar" lang="ar">لَمْ يَخْلُ فَهُوَ بِالْجَوَازِ وُسِمَا</p><p class="id" lang="id">tidak kosong (dari hal itu), maka ia dicap dengan kebolehan.</p></div></div>
@@ -2715,7 +2737,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْخَامِسُ: أَنْ يَكُونَ مُجَرَّدًا مِنْ أَلْ دُونَ</p><p class="id" lang="id">Kelima: ia kosong dari 'al' tanpa</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْإِضَافَةِ، نَحْوَ: <span class="c">الْحَسَنُ وَجْهِ أَبٍ وَحَسَنُ وَجْهِ أَبٍ</span>.</p><p class="id" lang="id">idhafah, seperti <span class="c">al-hasanu wajhi abin dan hasanu wajhi abin</span>.</p></div>
 </div>
-<div class="hal" id="hal-144"><span>Juz 3 &middot; Hlm. 144</span></div>
+<div class="hal" id="hal-144"><span>Juz 3 &middot; Hlm. 144</span><button type="button" class="hal__pdf" data-pdf="144" aria-label="Lihat PDF asli untuk Hlm. 144" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">السَّادِسُ: أَنْ يَكُونَ الْمَعْمُولُ مُجَرَّدًا مِنْ أَلْ</p><p class="id" lang="id">Keenam: ma'mul-nya kosong dari 'al'</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَالْإِضَافَةِ، نَحْوَ: <span class="c">الْحَسَنُ وَجْهًا وَحَسَنٌ وَجْهًا</span>.</p><p class="id" lang="id">dan idhafah, seperti <span class="c">al-hasanu wajhan dan hasanun wajhan</span>.</p></div>
@@ -2758,7 +2780,7 @@
 <div class="ayat"><p class="ar" lang="ar">أُضِيفَ إِلَى ضَمِيرِ الْمَوْصُوفِ، نَحْوَ:</p><p class="id" lang="id">di-idhafahkan kepada dhamir maushuf, seperti</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">الْحَسَنُ وَجْهِ غُلَامِهِ</span></p><p class="id" lang="id"><span class="c">al-hasanu wajhi ghulaamihi</span></p></div>
 </div>
-<div class="hal" id="hal-145"><span>Juz 3 &middot; Hlm. 145</span></div>
+<div class="hal" id="hal-145"><span>Juz 3 &middot; Hlm. 145</span><button type="button" class="hal__pdf" data-pdf="145" aria-label="Lihat PDF asli untuk Hlm. 145" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الثَّالِثَةُ: جَرُّ الْمَعْمُولِ الْمُضَافِ إِلَى الْمُجَرَّدِ</p><p class="id" lang="id">Ketiga: men-jar-kan ma'mul yang mudhaf kepada yang kosong</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِنْ أَلْ دُونَ الْإِضَافَةِ، نَحْوَ: <span class="c">الْحَسَنُ وَجْهِ أَبٍ</span></p><p class="id" lang="id">dari 'al' tanpa idhafah, seperti <span class="c">al-hasanu wajhi abin</span></p></div>
@@ -2780,7 +2802,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَنَصْبُهُ وَرَفْعُهُ إِذَا كَانَتِ الصِّفَةُ بِغَيْرِ أَلْ</p><p class="id" lang="id">menashabkan, dan merafa'kannya apabila shifah itu tanpa 'al'</p></div>
 <div class="ayat"><p class="ar" lang="ar">عَلَى كُلِّ حَالٍ.</p><p class="id" lang="id">dalam keadaan apa pun.</p></div>
 </div>
-<div class="hal" id="hal-146"><span>Juz 3 &middot; Hlm. 146</span></div>
+<div class="hal" id="hal-146"><span>Juz 3 &middot; Hlm. 146</span><button type="button" class="hal__pdf" data-pdf="146" aria-label="Lihat PDF asli untuk Hlm. 146" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-8"><h2 class="bab__ar" lang="ar">التَّعَجُّبُ</h2><p class="bab__id">Bab 8 &middot; At-Ta'ajjub (Kalimat Kekaguman)</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَنَاوَلُ هَذَا الْبَابُ صِيغَتَيِ التَّعَجُّبِ الْقِيَاسِيَّتَيْنِ: (مَا أَفْعَلَهُ) وَ(أَفْعِلْ بِهِ)، وَجَوَازَ حَذْفِ الْمُتَعَجَّبِ مِنْهُ إِذَا دَلَّ عَلَيْهِ دَلِيلٌ. وَيَشْتَرِطُ لِصَوْغِ فِعْلِ التَّعَجُّبِ أَنْ يَكُونَ مِنْ فِعْلٍ ثُلَاثِيٍّ مُتَصَرِّفٍ تَامٍّ مُثْبَتٍ قَابِلٍ لِلتَّفَاضُلِ وَلَيْسَ عَلَى وَزْنِ (أَفْعَل) الَّذِي مُؤَنَّثُهُ فَعْلَاء، فَإِنْ فَقَدَ شَرْطًا اسْتُعِينَ بِـ(أَشْدِدْ) أَوْ (أَشَدّ) وَنَحْوِهِمَا مَعَ مَصْدَرِ الْفِعْلِ الْمُرَادِ التَّعَجُّبُ مِنْهُ، مَنْصُوبًا أَوْ مَجْرُورًا بِالْبَاءِ. وَيُخْتَمُ بِأَنَّ فِعْلَيِ التَّعَجُّبِ لَا يَجُوزُ تَقْدِيمُ مَعْمُولِهِمَا عَلَيْهِمَا وَلَا الْفَصْلُ بَيْنَهُمَا.</p><p class="ringkasan__id" lang="id">Bab ini membahas dua shighat ta&rsquo;ajjub yang qiyas: &lsquo;maa af&rsquo;alahu&rsquo; dan &lsquo;af&rsquo;il bihi&rsquo;, serta kebolehan membuang muta&rsquo;ajjab minhu bila ada dalil yang menunjukkannya. Fi&rsquo;il ta&rsquo;ajjub disyaratkan dibentuk dari fi&rsquo;il tsulatsi yang mutasharrif, tam, mutsbat, menerima tafadhul, dan tidak berwazan &lsquo;af&rsquo;al&rsquo; yang muannatsnya &lsquo;fa&rsquo;laa&rsquo;; bila syarat tidak terpenuhi, dipakailah &lsquo;asydid&rsquo; atau &lsquo;asyadd&rsquo; dan semisalnya bersama mashdar fi&rsquo;il yang dimaksud, baik dinashabkan atau dijarkan dengan ba&rsquo;. Bab ini ditutup dengan larangan mendahulukan ma&rsquo;mul atas fi&rsquo;il ta&rsquo;ajjub maupun memisah keduanya.</p></div>
 <div class="blk blk-nz" id="nz-64">
@@ -2797,7 +2819,7 @@
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَالثَّانِيَةُ: <span class="c">أَفْعِلْ بِهِ</span> وَإِلَيْهِمَا</p><p class="id" lang="id">Dan yang kedua: <span class="c">af'il bihi</span>; dan kepada keduanya</p></div>
 </div>
-<div class="hal" id="hal-147"><span>Juz 3 &middot; Hlm. 147</span></div>
+<div class="hal" id="hal-147"><span>Juz 3 &middot; Hlm. 147</span><button type="button" class="hal__pdf" data-pdf="147" aria-label="Lihat PDF asli untuk Hlm. 147" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَشَارَ الْمُصَنِّفُ بِالْبَيْتِ الْأَوَّلِ، أَيْ أَنْطِقْ</p><p class="id" lang="id">Mushannif mengisyaratkan dengan bait pertama, yakni: ucapkanlah</p></div>
 <div class="ayat"><p class="ar" lang="ar">بِأَفْعَلَ بَعْدَ مَا لِلتَّعَجُّبِ، نَحْوَ: <span class="c">مَا أَحْسَنَ زَيْدًا</span></p><p class="id" lang="id">dengan (wazan) af'ala setelah 'maa' untuk kekaguman, seperti <span class="c">maa ahsana Zaidan (alangkah baiknya Zaid)</span></p></div>
@@ -2828,7 +2850,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٨</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمُسْتَبْدِلٍ مِنْ بَعْدِ غَضْبَى صَرِيمَةً</p><p class="id" lang="id">Dan (banyak) orang yang menukar, sesudah kemarahanku, (dengan) keteguhan tekad,</p></div><div class="ayat"><p class="ar" lang="ar">فَأَحْرِ بِهِ مِنْ طُولِ فَقْرٍ وَأَحْرِيَا</p><p class="id" lang="id">maka alangkah pantasnya dia (menerima) kefakiran yang panjang, dan sungguh alangkah pantasnya!</p></div></div>
 </div>
-<div class="hal" id="hal-148"><span>Juz 3 &middot; Hlm. 148</span></div>
+<div class="hal" id="hal-148"><span>Juz 3 &middot; Hlm. 148</span><button type="button" class="hal__pdf" data-pdf="148" aria-label="Lihat PDF asli untuk Hlm. 148" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَرَادَ: وَأَحْرِيَنْ، بِنُونِ التَّوْكِيدِ الْخَفِيفَةِ،</p><p class="id" lang="id">Ia bermaksud 'wa-ahrayn' dengan nun taukid khafifah,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَأَبْدَلَهَا أَلِفًا فِي الْوَقْفِ. وَأَشَارَ بِقَوْلِهِ:</p><p class="id" lang="id">lalu ia menggantinya dengan alif ketika waqaf. Dan ia mengisyaratkan dengan ucapannya</p></div>
@@ -2855,7 +2877,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Muta'ajjab minhu boleh dibuang bila maknanya jelas</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَحَذْفُ مَا مِنْهُ تَعَجَّبْتَ اسْتَبِحْ</p><p class="id" lang="id">Dan buanglah — dibolehkan — (isim) yang darinya engkau kagum,</p></div><div class="ayat"><p class="ar" lang="ar">إِنْ كَانَ عِنْدَ الْحَذْفِ مَعْنَاهُ يَضِحْ</p><p class="id" lang="id">jika ketika dibuang maknanya tetap jelas.</p></div></div>
 </div>
-<div class="hal" id="hal-150"><span>Juz 3 &middot; Hlm. 150</span></div>
+<div class="hal" id="hal-150"><span>Juz 3 &middot; Hlm. 150</span><button type="button" class="hal__pdf" data-pdf="150" aria-label="Lihat PDF asli untuk Hlm. 150" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">يَجُوزُ حَذْفُ الْمُتَعَجَّبِ مِنْهُ، وَهُوَ الْمَنْصُوبُ</p><p class="id" lang="id">Boleh membuang (isim) yang dikagumi (muta'ajjab minhu), yaitu yang dinashabkan</p></div>
 <div class="ayat"><p class="ar" lang="ar">بَعْدَ أَفْعَلَ، وَالْمَجْرُورُ بِالْبَاءِ بَعْدَ أَفْعِلْ،</p><p class="id" lang="id">setelah 'af'ala' dan yang dijarkan dengan ba' setelah 'af'il',</p></div>
@@ -2865,7 +2887,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٦٩</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَرَى أُمَّ عَمْرٍو دَمْعُهَا قَدْ تَحَدَّرَا</p><p class="id" lang="id">Kulihat Ummu 'Amr, air matanya telah mengalir deras,</p></div><div class="ayat"><p class="ar" lang="ar">بُكَاءً عَلَى عَمْرٍو وَمَا كَانَ أَصْبَرَا</p><p class="id" lang="id">menangisi 'Amr — padahal alangkah sabarnya (ia dahulu)!</p></div></div>
 </div>
-<div class="hal" id="hal-151"><span>Juz 3 &middot; Hlm. 151</span></div>
+<div class="hal" id="hal-151"><span>Juz 3 &middot; Hlm. 151</span><button type="button" class="hal__pdf" data-pdf="151" aria-label="Lihat PDF asli untuk Hlm. 151" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">التَّقْدِيرُ: <span class="c">وَمَا كَانَ أَصْبَرَهَا</span> فَحُذِفَ الضَّمِيرُ</p><p class="id" lang="id">Taqdirnya: <span class="c">wa maa kaana ashbarahaa (alangkah sabarnya dia)</span>, maka dhamir dibuang,</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَهُوَ مَفْعُولُ أَفْعَلَ لِلدَّلَالَةِ عَلَيْهِ بِمَا</p><p class="id" lang="id">yaitu maf'ul 'af'ala', karena adanya petunjuk atasnya dengan apa yang</p></div>
@@ -2878,7 +2900,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٠</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَذَلِكَ إِنْ يَلْقَ الْمَنِيَّةَ يَلْقَهَا</p><p class="id" lang="id">Maka dia itu, jika menjumpai kematian, ia menjumpainya</p></div><div class="ayat"><p class="ar" lang="ar">حَمِيدًا وَإِنْ يَسْتَغْنِ يَوْمًا فَأَجْدِرِ</p><p class="id" lang="id">dalam keadaan terpuji; dan jika suatu hari ia berkecukupan, maka alangkah layaknya (dia).</p></div></div>
 </div>
-<div class="hal" id="hal-152"><span>Juz 3 &middot; Hlm. 152</span></div>
+<div class="hal" id="hal-152"><span>Juz 3 &middot; Hlm. 152</span><button type="button" class="hal__pdf" data-pdf="152" aria-label="Lihat PDF asli untuk Hlm. 152" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَيْ <span class="c">فَأَجْدِرْ بِهِ</span>، فَحُذِفَ الْمُتَعَجَّبُ مِنْهُ بَعْدَ</p><p class="id" lang="id">Yakni <span class="c">fa-ajdir bihi (maka alangkah layaknya dia)</span>, maka muta'ajjab minhu dibuang setelah</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَفْعِلْ، وَإِنْ لَمْ يَكُنْ مَعْطُوفًا عَلَى أَفْعِلَ</p><p class="id" lang="id">'af'il', meskipun ia tidak diathafkan pada 'af'il'</p></div>
@@ -2904,7 +2926,7 @@
 <div class="ayat"><p class="ar" lang="ar">يُشْتَرَطُ فِي الْفِعْلِ الَّذِي يُصَاغُ مِنْهُ فِعْلَا</p><p class="id" lang="id">Disyaratkan pada fi'il yang darinya dibentuk dua fi'il</p></div>
 <div class="ayat"><p class="ar" lang="ar">التَّعَجُّبِ شُرُوطٌ سَبْعَةٌ:</p><p class="id" lang="id">ta'ajjub, tujuh syarat:</p></div>
 </div>
-<div class="hal" id="hal-153"><span>Juz 3 &middot; Hlm. 153</span></div>
+<div class="hal" id="hal-153"><span>Juz 3 &middot; Hlm. 153</span><button type="button" class="hal__pdf" data-pdf="153" aria-label="Lihat PDF asli untuk Hlm. 153" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَحَدُهَا: أَنْ يَكُونَ ثُلَاثِيًّا، فَلَا يُبْنَيَانِ</p><p class="id" lang="id">Salah satunya: ia harus tsulatsi, maka keduanya tidak dibentuk</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِمَّا زَادَ عَلَيْهِ نَحْوَ <span class="c">دَحْرَجَ وَانْطَلَقَ وَاسْتَخْرَجَ</span></p><p class="id" lang="id">dari yang lebih dari itu, seperti <span class="c">dahraja, inthalaqa, dan istakhraja</span></p></div>
@@ -2947,7 +2969,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Pengganti bagi fi'il yang syaratnya tidak lengkap: 'asydid' atau 'asyadd'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَأَشْدِدْ أَوْ أَشَدَّ أَوْ شِبْهَهُمَا</p><p class="id" lang="id">Dan 'asydid' atau 'asyadd' atau yang menyerupai keduanya</p></div><div class="ayat"><p class="ar" lang="ar">يَخْلُفُ مَا بَعْضُ الشُّرُوطِ عَدِمَا</p><p class="id" lang="id">menggantikan (fi'il) yang sebagian syaratnya tidak ada.</p></div></div>
 </div>
-<div class="hal" id="hal-154"><span>Juz 3 &middot; Hlm. 154</span></div>
+<div class="hal" id="hal-154"><span>Juz 3 &middot; Hlm. 154</span><button type="button" class="hal__pdf" data-pdf="154" aria-label="Lihat PDF asli untuk Hlm. 154" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-69">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Mashdar fi'il yang tidak memenuhi syarat: dinashabkan atau dijarkan dengan ba'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَصْدَرُ الْعَادِمِ بَعْدُ يَنْتَصِبْ</p><p class="id" lang="id">Dan mashdar (fi'il) yang kehilangan syarat dinashabkan setelah (af'ala),</p></div><div class="ayat"><p class="ar" lang="ar">وَبَعْدَ أَفْعِلْ جَرُّهُ بِالْبَا يَجِبْ</p><p class="id" lang="id">dan setelah 'af'il' men-jar-kannya dengan ba' adalah wajib.</p></div></div>
@@ -2967,7 +2989,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Selain yang disebut dihukumi langka (syudzudz) dan tidak di-qiyaskan</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَبِالنُّدُورِ احْكُمْ لِغَيْرِ مَا ذُكِرْ</p><p class="id" lang="id">Dan hukumilah dengan kelangkaan (syudzudz) selain yang telah disebut,</p></div><div class="ayat"><p class="ar" lang="ar">وَلَا تَقِسْ عَلَى الَّذِي مِنْهُ أَثَرْ</p><p class="id" lang="id">dan janganlah engkau meng-qiyaskan pada yang ada atsarnya (yang didengar) darinya.</p></div></div>
 </div>
-<div class="hal" id="hal-155"><span>Juz 3 &middot; Hlm. 155</span></div>
+<div class="hal" id="hal-155"><span>Juz 3 &middot; Hlm. 155</span><button type="button" class="hal__pdf" data-pdf="155" aria-label="Lihat PDF asli untuk Hlm. 155" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">يَعْنِي أَنَّهُ إِذَا وَرَدَ بِنَاءُ فِعْلِ التَّعَجُّبِ مِنْ</p><p class="id" lang="id">Maksudnya, apabila ada pembentukan fi'il ta'ajjub dari</p></div>
 <div class="ayat"><p class="ar" lang="ar">شَيْءٍ مِنَ الْأَفْعَالِ الَّتِي سَبَقَ أَنَّهُ لَا يُبْنَى</p><p class="id" lang="id">sesuatu dari fi'il-fi'il yang telah lalu (disebut) bahwa ia tidak dibentuk</p></div>
@@ -2989,7 +3011,7 @@
 <div class="ayat"><p class="ar" lang="ar">لَا يَجُوزُ تَقْدِيمُ مَعْمُولِ فِعْلِ التَّعَجُّبِ عَلَيْهِ،</p><p class="id" lang="id">Tidak boleh mendahulukan ma'mul fi'il ta'ajjub atasnya,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَلَا تَقُولُ: <span class="c">زَيْدًا مَا أَحْسَنَ</span></p><p class="id" lang="id">maka engkau tidak berkata: <span class="c">Zaidan maa ahsana</span></p></div>
 </div>
-<div class="hal" id="hal-156"><span>Juz 3 &middot; Hlm. 156</span></div>
+<div class="hal" id="hal-156"><span>Juz 3 &middot; Hlm. 156</span><button type="button" class="hal__pdf" data-pdf="156" aria-label="Lihat PDF asli untuk Hlm. 156" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَلَا <span class="c">مَا زَيْدًا أَحْسَنَ</span> وَلَا <span class="c">بِزَيْدٍ أَحْسَنَ</span></p><p class="id" lang="id">dan tidak (pula) <span class="c">maa Zaidan ahsana</span>, tidak pula <span class="c">bi-Zaidin ahsana</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَيَجِبُ وَصْلُهُ بِعَامِلِهِ، فَلَا يُفْصَلُ بَيْنَهُمَا</p><p class="id" lang="id">dan wajib menyambungkannya dengan 'amil-nya, maka tidak dipisahkan di antara keduanya</p></div>
@@ -3020,7 +3042,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧١</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَقَالَ نَبِيُّ الْمُسْلِمِينَ تَقَدَّمُوا</p><p class="id" lang="id">Dan Nabi kaum muslimin bersabda: majulah kalian,</p></div><div class="ayat"><p class="ar" lang="ar">وَأَحْبِبْ إِلَيْنَا أَنْ تَكُونَ الْمُقَدَّمَا</p><p class="id" lang="id">dan alangkah kami sukai jika engkau menjadi yang terdepan!</p></div></div>
 </div>
-<div class="hal" id="hal-157"><span>Juz 3 &middot; Hlm. 157</span></div>
+<div class="hal" id="hal-157"><span>Juz 3 &middot; Hlm. 157</span><button type="button" class="hal__pdf" data-pdf="157" aria-label="Lihat PDF asli untuk Hlm. 157" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَقَوْلُهُ:</p><p class="id" lang="id">Dan ucapannya:</p></div>
 </div>
@@ -3028,7 +3050,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٢</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">خَلِيلَيَّ مَا أَحْرَى بِذِي اللُّبِّ أَنْ يُرَى</p><p class="id" lang="id">Wahai dua sahabatku, alangkah layaknya bagi pemilik akal untuk terlihat</p></div><div class="ayat"><p class="ar" lang="ar">صَبُورًا وَلَكِنْ لَا سَبِيلَ إِلَى الصَّبْرِ</p><p class="id" lang="id">sabar; namun tak ada jalan menuju kesabaran.</p></div></div>
 </div>
-<div class="hal" id="hal-158"><span>Juz 3 &middot; Hlm. 158</span></div>
+<div class="hal" id="hal-158"><span>Juz 3 &middot; Hlm. 158</span><button type="button" class="hal__pdf" data-pdf="158" aria-label="Lihat PDF asli untuk Hlm. 158" title="Lihat PDF asli"></button></div>
 <header class="bab" id="bab-9"><h2 class="bab__ar" lang="ar">نِعْمَ وَبِئْسَ وَمَا جَرَى مَجْرَاهُمَا</h2><p class="bab__id">Bab 9 &middot; Ni'ma, Bi'sa, dan yang Berlaku Seperti Keduanya</p></header>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَبْحَثُ هَذَا الْبَابُ فِي (نِعْمَ) وَ(بِئْسَ)، وَهُمَا فِعْلَانِ جَامِدَانِ غَيْرُ مُتَصَرِّفَيْنِ يَرْفَعَانِ فَاعِلًا ظَاهِرًا مُقْتَرِنًا بِـ(أَلْ) أَوْ مُضَافًا إِلَى مَا فِيهِ (أَلْ)، أَوْ ضَمِيرًا مُسْتَتِرًا يُفَسِّرُهُ تَمْيِيزٌ بَعْدَهُ. وَيَذْكُرُ جَوَازَ اجْتِمَاعِ التَّمْيِيزِ وَالْفَاعِلِ الظَّاهِرِ عَلَى خِلَافٍ مَشْهُورٍ، وَأَنَّ الْمَخْصُوصَ بِالْمَدْحِ أَوِ الذَّمِّ يُذْكَرُ بَعْدَهُمَا خَبَرًا لِمُبْتَدَأٍ مَحْذُوفٍ أَوْ مُبْتَدَأً لِخَبَرٍ مَحْذُوفٍ، وَيَجُوزُ حَذْفُهُ إِنْ دَلَّ عَلَيْهِ دَلِيلٌ سَابِقٌ. كَمَا يُلْحَقُ بِهِمَا (سَاءَ) وَمَا جَاءَ عَلَى وَزْنِ (فَعُلَ) لِلْمَدْحِ، وَ(حَبَّذَا) وَ(لَا حَبَّذَا) لِلْمَدْحِ وَالذَّمِّ، مَعَ بَيَانِ أَحْكَامِ الْمَخْصُوصِ بَعْدَ (حَبَّذَا) وَأَحْوَالِ الِاسْمِ بَعْدَ (حَبَّ).</p><p class="ringkasan__id" lang="id">Bab ini membahas &lsquo;ni&rsquo;ma&rsquo; dan &lsquo;bi&rsquo;sa&rsquo;, dua fi&rsquo;il jamid (beku) yang ghairu mutasharrif, merafa&rsquo;kan fa&rsquo;il berupa isim zhahir yang ber-&lsquo;al&rsquo; atau mudhaf kepada yang ber-&lsquo;al&rsquo;, atau dhamir mustatir yang ditafsirkan oleh tamyiz sesudahnya. Disebutkan kebolehan menggabungkan tamyiz dan fa&rsquo;il zhahir menurut pendapat yang masyhur, serta bahwa al-makhshush (yang dipuji/dicela) disebutkan setelah keduanya sebagai khabar dari mubtada&rsquo; yang dibuang atau mubtada&rsquo; dari khabar yang dibuang, dan boleh dibuang bila ada dalil sebelumnya. Bab ini juga membahas &lsquo;saa&rsquo;a&rsquo; dan wazan &lsquo;fa&rsquo;ula&rsquo; yang berfungsi seperti &lsquo;ni&rsquo;ma&rsquo;, serta &lsquo;hubbadza&rsquo; dan &lsquo;laa hubbadza&rsquo; untuk pujian dan celaan, lengkap dengan hukum al-makhshush setelah &lsquo;hubbadza&rsquo; dan keadaan isim setelah &lsquo;habba&rsquo;.</p></div>
 <div class="blk blk-nz" id="nz-72">
@@ -3049,7 +3071,7 @@
 <div class="ayat"><p class="ar" lang="ar">بِدُخُولِ حَرْفِ الْجَرِّ عَلَيْهِمَا فِي قَوْلِ بَعْضِهِمْ:</p><p class="id" lang="id">dengan masuknya huruf jar pada keduanya dalam ucapan sebagian mereka:</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="k" id="kl-22">نِعْمَ السَّيْرُ عَلَى بِئْسَ الْعَيْرِ</span> وَقَوْلِ</p><p class="id" lang="id"><span class="k">sebaik-baik perjalanan adalah di atas seburuk-buruk unta</span>; dan ucapan</p></div>
 </div>
-<div class="hal" id="hal-160"><span>Juz 3 &middot; Hlm. 160</span></div>
+<div class="hal" id="hal-160"><span>Juz 3 &middot; Hlm. 160</span><button type="button" class="hal__pdf" data-pdf="160" aria-label="Lihat PDF asli untuk Hlm. 160" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">الْآخَرِ: <span class="k" id="kl-23">وَاللهِ مَا هِيَ بِنِعْمَ الْوَلَدِ نَصْرُهَا</span></p><p class="id" lang="id">yang lain: <span class="k">Demi Allah, ia bukanlah sebaik-baik anak; pertolongannya</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="k">بُكَاءٌ وَبِرُّهَا سَرِقَةٌ</span> وَخُرِّجَ عَلَى جَعْلِ نِعْمَ</p><p class="id" lang="id"><span class="k">adalah tangisan dan baktinya adalah pencurian</span>; dan hal itu ditakhrij atas dasar menjadikan 'ni'ma'</p></div>
@@ -3084,7 +3106,7 @@
 <div class="ayat"><p class="ar" lang="ar">الثَّالِثُ: أَنْ يَكُونَ مُضْمَرًا مُفَسَّرًا بِنَكِرَةٍ</p><p class="id" lang="id">Ketiga: ia (fa'il) berupa dhamir yang ditafsirkan oleh nakirah</p></div>
 <div class="ayat"><p class="ar" lang="ar">بَعْدَهُ مَنْصُوبَةٍ عَلَى التَّمْيِيزِ، نَحْوَ:</p><p class="id" lang="id">sesudahnya yang dinashabkan sebagai tamyiz, seperti</p></div>
 </div>
-<div class="hal" id="hal-161"><span>Juz 3 &middot; Hlm. 161</span></div>
+<div class="hal" id="hal-161"><span>Juz 3 &middot; Hlm. 161</span><button type="button" class="hal__pdf" data-pdf="161" aria-label="Lihat PDF asli untuk Hlm. 161" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar"><span class="c">نِعْمَ قَوْمًا مَعْشَرُهُ</span> فَفِي نِعْمَ ضَمِيرٌ مُسْتَتِرٌ</p><p class="id" lang="id"><span class="c">ni'ma qawman ma'syaruhu (sebaik-baik kaum adalah rombongannya)</span>; maka di dalam 'ni'ma' ada dhamir mustatir</p></div>
 <div class="ayat"><p class="ar" lang="ar">يُفَسِّرُهُ قَوْمًا، وَمَعْشَرُهُ مُبْتَدَأٌ؛ وَزَعَمَ بَعْضُهُمْ</p><p class="id" lang="id">yang ditafsirkan oleh 'qawman', dan 'ma'syaruhu' adalah mubtada'; sebagian mereka mengklaim</p></div>
@@ -3105,7 +3127,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٤</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">تَقُولُ عِرْسِي وَهِيَ لِي فِي عَوْمَرَهْ</p><p class="id" lang="id">Istriku berkata — sedang ia bersamaku dalam kegaduhan —:</p></div><div class="ayat"><p class="ar" lang="ar">بِئْسَ امْرَأً وَإِنَّنِي بِئْسَ الْمَرَهْ</p><p class="id" lang="id">'Seburuk-buruk lelaki (engkau)!' Dan sungguh aku memang seburuk-buruk lelaki.</p></div></div>
 </div>
-<div class="hal" id="hal-162"><span>Juz 3 &middot; Hlm. 162</span></div>
+<div class="hal" id="hal-162"><span>Juz 3 &middot; Hlm. 162</span><button type="button" class="hal__pdf" data-pdf="162" aria-label="Lihat PDF asli untuk Hlm. 162" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-74">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Menggabungkan tamyiz dan fa'il zhahir: khilaf yang masyhur</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَجَمْعُ تَمْيِيزٍ وَفَاعِلٍ ظَهَرْ</p><p class="id" lang="id">Dan menggabungkan tamyiz dan fa'il yang zhahir,</p></div><div class="ayat"><p class="ar" lang="ar">فِيهِ خِلَافٌ عَنْهُمُ قَدِ اشْتَهَرْ</p><p class="id" lang="id">padanya ada perbedaan pendapat yang telah masyhur dari mereka.</p></div></div>
@@ -3117,7 +3139,7 @@
 <div class="ayat"><p class="ar" lang="ar">عَنْ سِيبَوَيْهِ، فَلَا تَقُولُ: <span class="c">نِعْمَ الرَّجُلُ رَجُلًا زَيْدٌ</span></p><p class="id" lang="id">dari Sibawaih; maka engkau tidak berkata <span class="c">ni'mar-rajulu rajulan Zaidun</span>;</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَذَهَبَ قَوْمٌ إِلَى الْجَوَازِ، وَاسْتَدَلُّوا بِقَوْلِهِ:</p><p class="id" lang="id">dan sekelompok (lain) berpendapat boleh, dan mereka berdalil dengan ucapan (penyair):</p></div>
 </div>
-<div class="hal" id="hal-163"><span>Juz 3 &middot; Hlm. 163</span></div>
+<div class="hal" id="hal-163"><span>Juz 3 &middot; Hlm. 163</span><button type="button" class="hal__pdf" data-pdf="163" aria-label="Lihat PDF asli untuk Hlm. 163" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-55">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٥</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَالتَّغْلِبِيُّونَ بِئْسَ الْفَحْلُ فَحْلُهُمْ</p><p class="id" lang="id">Dan orang-orang Taghlib — seburuk-buruk pejantan adalah pejantan mereka,</p></div><div class="ayat"><p class="ar" lang="ar">فَحْلًا وَأُمُّهُمُ زَلَّاءُ مِنْطِيقُ</p><p class="id" lang="id">sebagai pejantan; dan ibu mereka (wanita) kecil pinggulnya lagi fasih berbicara.</p></div></div>
@@ -3129,7 +3151,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٦</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">تَزَوَّدْ مِثْلَ زَادِ أَبِيكَ فِينَا</p><p class="id" lang="id">Berbekallah seperti bekal ayahmu di tengah kami,</p></div><div class="ayat"><p class="ar" lang="ar">فَنِعْمَ الزَّادُ زَادُ أَبِيكَ زَادَا</p><p class="id" lang="id">maka sebaik-baik bekal adalah bekal ayahmu, sebagai bekal!</p></div></div>
 </div>
-<div class="hal" id="hal-164"><span>Juz 3 &middot; Hlm. 164</span></div>
+<div class="hal" id="hal-164"><span>Juz 3 &middot; Hlm. 164</span><button type="button" class="hal__pdf" data-pdf="164" aria-label="Lihat PDF asli untuk Hlm. 164" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَفَصَّلَ بَعْضُهُمْ فَقَالَ: إِنْ أَفَادَ التَّمْيِيزُ</p><p class="id" lang="id">Sebagian mereka merinci, lalu berkata: jika tamyiz memberi</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَائِدَةً زَائِدَةً عَلَى الْفَاعِلِ جَازَ الْجَمْعُ</p><p class="id" lang="id">faidah tambahan atas fa'il, boleh menggabungkan</p></div>
@@ -3142,7 +3164,7 @@
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">'Maa' setelah ni'ma dan bi'sa: tamyiz, dan dikatakan fa'il</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا مُمَيِّزٌ وَقِيلَ فَاعِلُ</p><p class="id" lang="id">Dan 'maa' adalah tamyiz — dan dikatakan fa'il —</p></div><div class="ayat"><p class="ar" lang="ar">فِي نَحْوِ</p><p class="id" lang="id">dalam (contoh) seperti</p></div></div>
 </div>
-<div class="hal" id="hal-165"><span>Juz 3 &middot; Hlm. 165</span></div>
+<div class="hal" id="hal-165"><span>Juz 3 &middot; Hlm. 165</span><button type="button" class="hal__pdf" data-pdf="165" aria-label="Lihat PDF asli untuk Hlm. 165" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz">
 <div class="tag tag--cont"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">lanjutan</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">نِعْمَ مَا يَقُولُ الْفَاضِلُ</p><p class="id" lang="id">'ni'ma maa yaquulul-faadhil' (sebaik-baik apa yang dikatakan orang yang utama).</p></div></div>
@@ -3168,7 +3190,7 @@
 <div class="ayat"><p class="ar" lang="ar">يُذْكَرُ بَعْدَ نِعْمَ وَبِئْسَ وَفَاعِلِهِمَا اسْمٌ مَرْفُوعٌ</p><p class="id" lang="id">Disebutkan setelah 'ni'ma' dan 'bi'sa' serta fa'ilnya, isim marfu'</p></div>
 <div class="ayat"><p class="ar" lang="ar">هُوَ الْمَخْصُوصُ بِالْمَدْحِ</p><p class="id" lang="id">yang merupakan al-makhshush bil-madh (yang dikhususkan dengan pujian)</p></div>
 </div>
-<div class="hal" id="hal-166"><span>Juz 3 &middot; Hlm. 166</span></div>
+<div class="hal" id="hal-166"><span>Juz 3 &middot; Hlm. 166</span><button type="button" class="hal__pdf" data-pdf="166" aria-label="Lihat PDF asli untuk Hlm. 166" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَوِ الذَّمِّ، وَعَلَامَتُهُ أَنْ يَصْلُحَ لِجَعْلِهِ</p><p class="id" lang="id">atau celaan, dan tandanya adalah ia layak dijadikan</p></div>
 <div class="ayat"><p class="ar" lang="ar">مُبْتَدَأً وَجَعْلِ الْفِعْلِ وَالْفَاعِلِ خَبَرًا عَنْهُ،</p><p class="id" lang="id">mubtada', dan fi'il beserta fa'il dijadikan khabar baginya,</p></div>
@@ -3201,7 +3223,7 @@
 <div class="ayat"><p class="ar" lang="ar"><span class="c">أَيُّوبُ</span> فَحُذِفَ الْمَخْصُوصُ بِالْمَدْحِ وَهُوَ أَيُّوبُ</p><p class="id" lang="id"><span class="c">Ayyubu (sebaik-baik hamba adalah Ayyub)</span>, maka dibuang al-makhshush bil-madh, yaitu Ayyub,</p></div>
 <div class="ayat"><p class="ar" lang="ar">لِدَلَالَةِ مَا قَبْلَهُ عَلَيْهِ.</p><p class="id" lang="id">karena ada petunjuk dari apa yang sebelumnya atasnya.</p></div>
 </div>
-<div class="hal" id="hal-167"><span>Juz 3 &middot; Hlm. 167</span></div>
+<div class="hal" id="hal-167"><span>Juz 3 &middot; Hlm. 167</span><button type="button" class="hal__pdf" data-pdf="167" aria-label="Lihat PDF asli untuk Hlm. 167" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-78">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">'Saa'a' seperti 'bi'sa', dan wazan fa'ula dari tsulatsi seperti 'ni'ma'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَاجْعَلْ كَبِئْسَ سَاءَ وَاجْعَلْ فَعُلَا</p><p class="id" lang="id">Dan jadikanlah 'saa'a' seperti 'bi'sa', dan jadikanlah (wazan) fa'ula</p></div><div class="ayat"><p class="ar" lang="ar">مِنْ ذِي ثَلَاثَةٍ كَنِعْمَ مُسْجَلَا</p><p class="id" lang="id">dari (fi'il) tsulatsi seperti 'ni'ma', secara mutlak.</p></div></div>
@@ -3236,7 +3258,7 @@
 <div class="ayat"><p class="ar" lang="ar">أَبْقَتْهَا عَلَى كَسْرَةِ عَيْنِهَا وَلَمْ تُحَوِّلْهَا</p><p class="id" lang="id">mempertahankannya pada kasrah 'ain-nya dan tidak mengubahnya</p></div>
 <div class="ayat"><p class="ar" lang="ar">إِلَى الضَّمِّ فَلَا يَجُوزُ لَنَا تَحْوِيلُهَا</p><p class="id" lang="id">menjadi dhammah; maka tidak boleh bagi kita mengubahnya,</p></div>
 </div>
-<div class="hal" id="hal-168"><span>Juz 3 &middot; Hlm. 168</span></div>
+<div class="hal" id="hal-168"><span>Juz 3 &middot; Hlm. 168</span><button type="button" class="hal__pdf" data-pdf="168" aria-label="Lihat PDF asli untuk Hlm. 168" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">بَلْ نُبْقِيهَا عَلَى حَالِهَا كَمَا أَبْقَوْهَا،</p><p class="id" lang="id">bahkan kita membiarkannya pada keadaannya sebagaimana mereka membiarkannya,</p></div>
 <div class="ayat"><p class="ar" lang="ar">فَتَقُولُ: <span class="c">عَلِمَ الرَّجُلُ زَيْدٌ وَجَهِلَ الرَّجُلُ</span></p><p class="id" lang="id">maka engkau berkata <span class="c">'alimar-rajulu Zaidun, jahilar-rajulu 'Amrun,</span></p></div>
@@ -3254,7 +3276,7 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٧</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">أَلَا حَبَّذَا أَهْلُ الْمَلَا غَيْرَ أَنَّهُ</p><p class="id" lang="id">Ketahuilah, alangkah dicintainya para penghuni al-mala (padang lapang), hanya saja</p></div><div class="ayat"><p class="ar" lang="ar">إِذَا ذُكِرَتْ مَيُّ فَلَا حَبَّذَا هِيَا</p><p class="id" lang="id">apabila Mayy disebut, maka 'alangkah tidak dicintainya dia (hiyaa)'.</p></div></div>
 </div>
-<div class="hal" id="hal-169"><span>Juz 3 &middot; Hlm. 169</span></div>
+<div class="hal" id="hal-169"><span>Juz 3 &middot; Hlm. 169</span><button type="button" class="hal__pdf" data-pdf="169" aria-label="Lihat PDF asli untuk Hlm. 169" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَاخْتُلِفَ فِي إِعْرَابِهَا؛ فَذَهَبَ أَبُو عَلِيٍّ</p><p class="id" lang="id">Dan diperselisihkan tentang i'rab-nya; Abu 'Ali</p></div>
 <div class="ayat"><p class="ar" lang="ar">الْفَارِسِيُّ فِي 'الْبَغْدَادِيَّاتِ' وَابْنُ بُرْهَانَ،</p><p class="id" lang="id">Al-Farisi dalam 'Al-Baghdadiyyat', Ibn Burhan,</p></div>
@@ -3274,7 +3296,7 @@
 <div class="ayat"><p class="ar" lang="ar">وَالْمَخْصُوصُ مُبْتَدَأٌ مُؤَخَّرٌ؛ فَرُكِّبَتْ حَبَّ مَعَ</p><p class="id" lang="id">dan al-makhshush mubtada' yang diakhirkan; maka 'habba' digabungkan dengan</p></div>
 <div class="ayat"><p class="ar" lang="ar">ذَا وَجُعِلَتَا اسْمًا وَاحِدًا</p><p class="id" lang="id">'dza' dan keduanya dijadikan satu isim.</p></div>
 </div>
-<div class="hal" id="hal-170"><span>Juz 3 &middot; Hlm. 170</span></div>
+<div class="hal" id="hal-170"><span>Juz 3 &middot; Hlm. 170</span><button type="button" class="hal__pdf" data-pdf="170" aria-label="Lihat PDF asli untuk Hlm. 170" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَذَهَبَ قَوْمٌ مِنْهُمُ ابْنُ دُرُسْتَوَيْهِ إِلَى أَنَّ</p><p class="id" lang="id">Dan sekelompok orang — di antaranya Ibn Durustawaih — berpendapat bahwa</p></div>
 <div class="ayat"><p class="ar" lang="ar">حَبَّذَا فِعْلٌ مَاضٍ وَزَيْدٌ فَاعِلُهُ؛ فَرُكِّبَتْ حَبَّ</p><p class="id" lang="id">'hubbadza' adalah fi'il madhi dan 'Zaid' adalah fa'ilnya, maka 'habba'</p></div>
@@ -3301,7 +3323,7 @@
 <div class="ayat"><p class="ar" lang="ar"><span class="c">الْهِنْدَانِ وَحَبَّ أُولَئِكَ الزَّيْدُونَ</span></p><p class="id" lang="id"><span class="c">al-Hindaan, wa habba ulaa'ika az-Zaiduuna</span></p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">أَوِ الْهِنْدَاتُ</span>.</p><p class="id" lang="id"><span class="c">awil-Hindaat</span>.</p></div>
 </div>
-<div class="hal" id="hal-171"><span>Juz 3 &middot; Hlm. 171</span></div>
+<div class="hal" id="hal-171"><span>Juz 3 &middot; Hlm. 171</span><button type="button" class="hal__pdf" data-pdf="171" aria-label="Lihat PDF asli untuk Hlm. 171" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-81">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Isim selain 'dza' setelah 'habba': rafa' atau jar dengan ba'</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">وَمَا سِوَى ذَا ارْفَعْ بِحُبَّ أَوْ فَجُرْ</p><p class="id" lang="id">Dan (isim) selain 'dza', rafa'kanlah dengan 'hubb', atau jarkanlah</p></div><div class="ayat"><p class="ar" lang="ar">بِالْبَا وَدُونَ ذَا انْضِمَامُ الْحَا كَثُرْ</p><p class="id" lang="id">dengan 'baa'; dan tanpa 'dza', dhammah huruf ha' itu banyak.</p></div></div>
@@ -3321,12 +3343,12 @@
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٧٨</span></div>
 <div class="bait"><div class="ayat"><p class="ar" lang="ar">فَقُلْتُ اقْتُلُوهَا عَنْكُمُ بِمِزَاجِهَا</p><p class="id" lang="id">Maka aku berkata: bunuhlah ia (khamr) dari (peredaran) kalian dengan campurannya (air),</p></div><div class="ayat"><p class="ar" lang="ar">وَحُبَّ بِهَا مَقْتُولَةً حِينَ تُقْتَلُ</p><p class="id" lang="id">dan alangkah dicintainya ia sebagai yang terbunuh (tercampur) ketika dibunuh (dicampur).</p></div></div>
 </div>
-<div class="hal" id="hal-172"><span>Juz 3 &middot; Hlm. 172</span></div>
+<div class="hal" id="hal-172"><span>Juz 3 &middot; Hlm. 172</span><button type="button" class="hal__pdf" data-pdf="172" aria-label="Lihat PDF asli untuk Hlm. 172" title="Lihat PDF asli"></button></div>
 
 <header class="bab" id="bab-10"><h2 class="bab__ar" lang="ar">أفعل التفضيل</h2><p class="bab__id">Bab 10 &middot; Af'al at-Tafdhil (Bentuk Perbandingan: &lsquo;lebih&rsquo; dan &lsquo;paling&rsquo;)</p></header>
-<div class="hal" id="hal-173"><span style="color:#c0392b">&#9888; Hlm. 173 tidak ada di data sumber (file ini berhenti di hlm. 172, bab ini mulai dari hlm. 174)</span></div>
+<div class="hal" id="hal-173"><span style="color:#c0392b">&#9888; Hlm. 173 tidak ada di data sumber (file ini berhenti di hlm. 172, bab ini mulai dari hlm. 174)</span><button type="button" class="hal__pdf" data-pdf="173" aria-label="Lihat PDF asli untuk Hlm. 173" title="Lihat PDF asli"></button></div>
 <div class="ringkasan"><p class="ringkasan__judul">Ringkasan Bab &middot; ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَنَاوَلُ هَذَا الْبَابُ أَفْعَلَ التَّفْضِيلِ: شُرُوطَ صِيَاغَتِهِ وَالتَّوَصُّلَ إِلَيْهِ مِمَّا امْتَنَعَ بِنَاؤُهُ، وَأَحْوَالَهُ الثَّلَاثَةَ (مُجَرَّدًا وَمُضَافًا وَبِأَلْ) وَحُكْمَ الْمُطَابَقَةِ فِي كُلٍّ مِنْهَا، وَتَقْدِيمَ «مِنْ» وَمَجْرُورِهَا إِذَا كَانَ اسْمَ اسْتِفْهَامٍ، وَرَفْعَهُ الِاسْمَ الظَّاهِرَ.</p><p class="ringkasan__id">Bab ini membahas af'al tafdhil: syarat pembentukannya dan cara mencapainya dari fi'il yang terhalang; tiga keadaannya (mujarrad, mudhaf, dan ber-&lsquo;al&rsquo;) beserta hukum kesesuaian (mufrad/mudzakkar atau mengikuti) pada masing-masing; kewajiban &lsquo;min&rsquo; pada keadaan mujarrad dan mendahulukannya bila majrurnya isim istifham; serta kapan af'al tafdhil boleh merafa'kan isim zhahir.</p></div>
-<div class="hal-awal"><span>Halaman 174</span></div>
+<div class="hal-awal" id="awal-174"><span>Halaman 174</span><button type="button" class="hal__pdf" data-pdf="174" aria-label="Lihat PDF asli untuk Hlm. 174" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-82">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Af'al tafdhil dibentuk dari fi'il yang boleh dibuat ta'ajjub</span></div>
 <div class="bait">
@@ -3349,7 +3371,7 @@
 <div class="ayat"><p class="ar" lang="ar">كَنِعْمَ وَبِئْسَ وَلَا مِنْ فِعْلٍ</p><p class="id" lang="id">seperti ni'ma dan bi'sa, tidak pula dari fi'il</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-174"><span>Juz 3 &middot; Hlm. 174</span></div>
-<div class="hal-awal"><span>Halaman 175</span></div>
+<div class="hal-awal" id="awal-175"><span>Halaman 175</span><button type="button" class="hal__pdf" data-pdf="175" aria-label="Lihat PDF asli untuk Hlm. 175" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">لَا يَقْبَلُ الْمُفَاضَلَةَ كَمَاتَ وَفَنَى</p><p class="id" lang="id">yang tidak menerima perbandingan seperti mata dan fana,</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَلَا مِنْ فِعْلٍ نَاقِصٍ كَكَانَ وَأَخَوَاتِهَا</p><p class="id" lang="id">tidak pula dari fi'il naqish seperti kaana dan saudara-saudaranya,</p></div>
@@ -3390,7 +3412,7 @@
 <div class="ayat"><p class="ar" lang="ar">بَعْدَ أَشَدَّ مَفْعُولًا وَهَهُنَا يَنْتَصِبُ تَمْيِيزًا</p><p class="id" lang="id">sebagai maf'ul setelah "asyadda", sedangkan di sini dinashabkan sebagai tamyiz.</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-175"><span>Juz 3 &middot; Hlm. 175</span></div>
-<div class="hal-awal"><span>Halaman 176</span></div>
+<div class="hal-awal" id="awal-176"><span>Halaman 176</span><button type="button" class="hal__pdf" data-pdf="176" aria-label="Lihat PDF asli untuk Hlm. 176" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-84">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Af'al tafdhil yang mujarrad wajib disambung dengan 'min' secara lafazh atau taqdir</span></div>
 <div class="bait">
@@ -3426,7 +3448,7 @@
 <div class="ayat"><p class="ar" lang="ar"><span class="c">النَّاسِ مِنْ عَمْرٍو</span></p><p class="id" lang="id">Amr".</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-176"><span>Juz 3 &middot; Hlm. 176</span></div>
-<div class="hal-awal"><span>Halaman 177</span></div>
+<div class="hal-awal" id="awal-177"><span>Halaman 177</span><button type="button" class="hal__pdf" data-pdf="177" aria-label="Lihat PDF asli untuk Hlm. 177" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَكْثَرُ مَا يَكُونُ ذَلِكَ إِذَا كَانَ</p><p class="id" lang="id">Dan kebanyakan hal itu terjadi apabila</p></div>
 <div class="ayat"><p class="ar" lang="ar">أَفْعَلُ التَّفْضِيلِ خَبَرًا كَالْآيَةِ الْكَرِيمَةِ</p><p class="id" lang="id">af'al tafdhil menjadi khabar seperti ayat yang mulia itu</p></div>
@@ -3448,7 +3470,7 @@
 <div class="ayat"><p class="ar" lang="ar">أَجْمَلَ مِنَ الْبَدْرِ وَقَدْ خِلْنَاكَ كَالْبَدْرِ</p><p class="id" lang="id">lebih indah dari bulan purnama, padahal kami mengira engkau seperti bulan purnama.</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-177"><span>Juz 3 &middot; Hlm. 177</span></div>
-<div class="hal-awal"><span>Halaman 178</span></div>
+<div class="hal-awal" id="awal-178"><span>Halaman 178</span><button type="button" class="hal__pdf" data-pdf="178" aria-label="Lihat PDF asli untuk Hlm. 178" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَيَلْزَمُ أَفْعَلَ التَّفْضِيلِ الْمُجَرَّدَ الْإِفْرَادُ</p><p class="id" lang="id">Af'al tafdhil yang mujarrad wajib mufrad</p></div>
 <div class="ayat"><p class="ar" lang="ar">وَالتَّذْكِيرُ وَكَذَلِكَ الْمُضَافُ إِلَى نَكِرَةٍ</p><p class="id" lang="id">dan mudzakkar, demikian pula yang dimudhafkan kepada nakirah,</p></div>
@@ -3481,7 +3503,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-178"><span>Juz 3 &middot; Hlm. 178</span></div>
-<div class="hal-awal"><span>Halaman 179</span></div>
+<div class="hal-awal" id="awal-179"><span>Halaman 179</span><button type="button" class="hal__pdf" data-pdf="179" aria-label="Lihat PDF asli untuk Hlm. 179" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz">
 <div class="tag tag--cont"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">lanjutan bait pada halaman berikutnya</span></div>
 <div class="bait">
@@ -3508,7 +3530,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَأَمَّا قَوْلُهُ</p><p class="id" lang="id">Adapun ucapannya:</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-179"><span>Juz 3 &middot; Hlm. 179</span></div>
-<div class="hal-awal"><span>Halaman 180</span></div>
+<div class="hal-awal" id="awal-180"><span>Halaman 180</span><button type="button" class="hal__pdf" data-pdf="180" aria-label="Lihat PDF asli untuk Hlm. 180" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy" id="sy-60">
 <div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">Syahid syair No. ٢٨٠</span></div>
 <div class="bait">
@@ -3525,7 +3547,7 @@
 <div class="ayat"><p class="ar" lang="ar">بِالْأَكْثَرِ أَكْثَرَ مِنْهُمْ"</p><p class="id" lang="id">lebih banyak dari mereka".</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-180"><span>Juz 3 &middot; Hlm. 180</span></div>
-<div class="hal-awal"><span>Halaman 181</span></div>
+<div class="hal-awal" id="awal-181"><span>Halaman 181</span><button type="button" class="hal__pdf" data-pdf="181" aria-label="Lihat PDF asli untuk Hlm. 181" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَأَشَارَ بِقَوْلِهِ وَمَا لِمَعْرِفَةٍ أُضِيفَ</p><p class="id" lang="id">Dan ia mengisyaratkan dengan ucapannya "dan yang dimudhafkan kepada ma'rifah"</p></div>
 <div class="ayat"><p class="ar" lang="ar">إِلَخْ إِلَى أَنَّ أَفْعَلَ التَّفْضِيلِ</p><p class="id" lang="id">dan seterusnya bahwa af'al tafdhil</p></div>
@@ -3579,7 +3601,7 @@
 <div class="ayat"><p class="ar" lang="ar">الْمُطَابَقَةَ وَعَدَمَهَا</p><p class="id" lang="id">kesesuaian dan ketiadaannya.</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-181"><span>Juz 3 &middot; Hlm. 181</span></div>
-<div class="hal-awal"><span>Halaman 182</span></div>
+<div class="hal-awal" id="awal-182"><span>Halaman 182</span><button type="button" class="hal__pdf" data-pdf="182" aria-label="Lihat PDF asli untuk Hlm. 182" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">مَشْرُوطٌ بِمَا إِذَا نَوَى بِالْإِضَافَةِ</p><p class="id" lang="id">Hal itu disyaratkan bila dengan idhafah diniatkan</p></div>
 <div class="ayat"><p class="ar" lang="ar">مَعْنَى مِنْ أَيْ إِذَا نَوَى التَّفْضِيلَ</p><p class="id" lang="id">makna "min", yakni bila diniatkan tafdhil;</p></div>
@@ -3611,7 +3633,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-182"><span>Juz 3 &middot; Hlm. 182</span></div>
-<div class="hal-awal"><span>Halaman 183</span></div>
+<div class="hal-awal" id="awal-183"><span>Halaman 183</span><button type="button" class="hal__pdf" data-pdf="183" aria-label="Lihat PDF asli untuk Hlm. 183" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">أَيْ دَعَائِمُهُ عَزِيزَةٌ طَوِيلَةٌ وَهَلْ</p><p class="id" lang="id">Yakni tiang-tiangnya kokoh dan tinggi. Dan apakah</p></div>
 <div class="ayat"><p class="ar" lang="ar">يُنْقَاسُ ذَلِكَ أَمْ لَا قَالَ</p><p class="id" lang="id">hal itu dikiaskan atau tidak? Al-</p></div>
@@ -3638,7 +3660,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-183"><span>Juz 3 &middot; Hlm. 183</span></div>
-<div class="hal-awal"><span>Halaman 184</span></div>
+<div class="hal-awal" id="awal-184"><span>Halaman 184</span><button type="button" class="hal__pdf" data-pdf="184" aria-label="Lihat PDF asli untuk Hlm. 184" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">تَقَدَّمَ أَنَّ أَفْعَلَ التَّفْضِيلِ إِذَا</p><p class="id" lang="id">Telah lalu bahwa af'al tafdhil apabila</p></div>
 <div class="ayat"><p class="ar" lang="ar">كَانَ مُجَرَّدًا جِيءَ بَعْدَهُ بِمِنْ</p><p class="id" lang="id">mujarrad, setelahnya didatangkan "min"</p></div>
@@ -3667,7 +3689,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-184"><span>Juz 3 &middot; Hlm. 184</span></div>
-<div class="hal-awal"><span>Halaman 185</span></div>
+<div class="hal-awal" id="awal-185"><span>Halaman 185</span><button type="button" class="hal__pdf" data-pdf="185" aria-label="Lihat PDF asli untuk Hlm. 185" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">وَالتَّقْدِيرُ بَلْ مَا زَوَّدَتْ أَطْيَبُ</p><p class="id" lang="id">Taqdirnya: bahkan apa yang dibekalkannya lebih manis</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِنْهُ وَقَوْلُ ذِي الرُّمَّةِ يَصِفُ</p><p class="id" lang="id">darinya; dan ucapan Dzur-Rummah menggambarkan</p></div>
@@ -3681,7 +3703,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-185"><span>Juz 3 &middot; Hlm. 185</span></div>
-<div class="hal-awal"><span>Halaman 186</span></div>
+<div class="hal-awal" id="awal-186"><span>Halaman 186</span><button type="button" class="hal__pdf" data-pdf="186" aria-label="Lihat PDF asli untuk Hlm. 186" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">التَّقْدِيرُ وَأَنْ لَا شَيْءَ أَكْسَلُ</p><p class="id" lang="id">Taqdirnya: dan bahwa tak ada sesuatu pun yang lebih malas</p></div>
 <div class="ayat"><p class="ar" lang="ar">مِنْهُنَّ وَقَوْلُهُ</p><p class="id" lang="id">dari mereka; dan ucapannya:</p></div>
@@ -3697,7 +3719,7 @@
 <div class="ayat"><p class="ar" lang="ar">التَّقْدِيرُ فَأَسْمَاءُ أَصْلَحُ مِنْ تِلْكَ الظَّعِينَةِ</p><p class="id" lang="id">Taqdirnya: maka Asma' lebih baik dari wanita dalam tandu itu.</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-186"><span>Juz 3 &middot; Hlm. 186</span></div>
-<div class="hal-awal"><span>Halaman 187</span></div>
+<div class="hal-awal" id="awal-187"><span>Halaman 187</span><button type="button" class="hal__pdf" data-pdf="187" aria-label="Lihat PDF asli untuk Hlm. 187" title="Lihat PDF asli"></button></div>
 <div class="blk blk-nz" id="nz-88">
 <div class="tag"><span class="tag__k" lang="ar">نَظْمُ الْأَلْفِيَّةِ</span><span class="tag__t">Merafa'kan isim zhahir jarang; sering bila bisa digantikan fi'il</span></div>
 <div class="bait">
@@ -3719,7 +3741,7 @@
 <div class="ayat"><p class="ar" lang="ar">فَفِي أَفْضَلَ ضَمِيرٌ مُسْتَتِرٌ عَائِدٌ عَلَى</p><p class="id" lang="id">maka pada "afdhal" ada dhamir mustatir yang kembali kepada</p></div>
 </div>
 <div class="hal hal--akhir" id="hal-187"><span>Juz 3 &middot; Hlm. 187</span></div>
-<div class="hal-awal"><span>Halaman 188</span></div>
+<div class="hal-awal" id="awal-188"><span>Halaman 188</span><button type="button" class="hal__pdf" data-pdf="188" aria-label="Lihat PDF asli untuk Hlm. 188" title="Lihat PDF asli"></button></div>
 <div class="blk blk-p">
 <div class="ayat"><p class="ar" lang="ar">زَيْدٍ فَلَا تَقُولُ <span class="c">مَرَرْتُ بِرَجُلٍ أَفْضَلَ</span></p><p class="id" lang="id">Zaid, maka tidak dikatakan "Aku melewati seorang lelaki yang lebih utama</p></div>
 <div class="ayat"><p class="ar" lang="ar"><span class="c">مِنْهُ أَبُوهُ</span> فَتَرْفَعَ أَبُوهُ بِأَفْضَلَ</p><p class="id" lang="id">darinya ayahnya" sehingga engkau merafa'kan "ayahnya" dengan "afdhal",</p></div>
@@ -3750,7 +3772,7 @@
 </div>
 </div>
 <div class="hal hal--akhir" id="hal-188"><span>Juz 3 &middot; Hlm. 188</span></div>
-<div class="hal-awal"><span>Halaman 189</span></div>
+<div class="hal-awal" id="awal-189"><span>Halaman 189</span><button type="button" class="hal__pdf" data-pdf="189" aria-label="Lihat PDF asli untuk Hlm. 189" title="Lihat PDF asli"></button></div>
 <div class="blk blk-sy">
 <div class="tag tag--cont"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span><span class="tag__t">lanjutan bait kedua syahid No. ٢٨٥</span></div>
 <div class="bait">
@@ -3863,6 +3885,107 @@
   }, { passive: true });
   window.addEventListener('resize', update);
   update();
+})();
+</script>
+<script>
+/* Panel PDF asli: tombol "PDF" di tiap pembatas Hlm. membuka halaman PDF yang bersesuaian (pdf.js). */
+(function () {
+  var SRC = '%D8%B4%D8%B1%D8%AD%20%D8%A7%D8%A8%D9%86%20%D8%B9%D9%82%D9%8A%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A3%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D8%A8%D9%86%20%D9%85%D8%A7%D9%84%D9%83%20-%203.pdf', LIB = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  if (!document.querySelector('.hal__pdf')) return;
+  var panel = document.createElement('div');
+  panel.className = 'pdfp';
+  panel.setAttribute('role', 'region'); panel.setAttribute('aria-label', 'PDF asli');
+  panel.innerHTML = '<div class="pdfp__bar"><button type="button" class="pdfp__b" data-a="prev" aria-label="Halaman sebelumnya">&#8249;</button><span class="pdfp__ttl"></span><button type="button" class="pdfp__b" data-a="next" aria-label="Halaman berikutnya">&#8250;</button><button type="button" class="pdfp__b pdfp__grip" aria-label="Seret ke atas atau bawah untuk mengubah tinggi panel" title="Seret ke atas/bawah (klik dua kali: reset)">&#8597;</button><button type="button" class="pdfp__b" data-a="zoom-" aria-label="Perkecil">&minus;</button><button type="button" class="pdfp__b" data-a="zoom+" aria-label="Perbesar">+</button><button type="button" class="pdfp__b" data-a="close" aria-label="Tutup">&times;</button></div><div class="pdfp__body"></div>';
+  document.body.appendChild(panel);
+  var ttl = panel.querySelector('.pdfp__ttl'), body = panel.querySelector('.pdfp__body');
+  var prev = panel.querySelector('[data-a=prev]'), next = panel.querySelector('[data-a=next]');
+  var doc = null, loading = null, page = 1, zoom = 1, token = 0, hlm = '';
+  var wide = function () { return window.innerWidth >= 1100; };
+  var H = wide() ? 100 : 55;
+  function setH(v) {
+    H = Math.max(25, Math.min(wide() ? 100 : 90, v));
+    panel.style.setProperty('--pdfh', H);
+    document.body.style.setProperty('--pdfh', H);
+  }
+  function syncHtml() {
+    var m = document.getElementById('awal-' + page) || document.getElementById('hal-' + page);
+    if (!m) return;
+    for (var e = m.parentNode; e && e !== document.body; e = e.parentNode) {
+      if (e.classList && e.classList.contains('is-collapsed')) e.classList.remove('is-collapsed');
+    }
+    window.scrollTo({ top: m.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+  }
+
+  function load() {
+    if (loading) return loading;
+    loading = new Promise(function (ok, no) {
+      var sc = document.createElement('script');
+      sc.src = LIB; sc.onload = ok; sc.onerror = no; document.head.appendChild(sc);
+    }).then(function () {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER;
+      return pdfjsLib.getDocument(SRC).promise;
+    }).then(function (d) { doc = d; return d; });
+    loading.catch(function () { loading = null; });
+    return loading;
+  }
+  function msg(t) { body.innerHTML = '<p class="pdfp__msg"></p>'; body.firstChild.textContent = t; }
+  function render() {
+    var my = ++token;
+    ttl.textContent = 'Hlm. ' + page + (doc ? ' / ' + doc.numPages : '');
+    prev.disabled = page <= 1; next.disabled = !doc || page >= doc.numPages;
+    if (!doc) { msg('Memuat PDF\u2026'); return; }
+    doc.getPage(page).then(function (pg) {
+      if (my !== token) return;
+      var avail = Math.max(240, body.clientWidth - 16);
+      var base = pg.getViewport({ scale: 1 });
+      var scale = (avail / base.width) * zoom, dpr = window.devicePixelRatio || 1;
+      var vp = pg.getViewport({ scale: scale * dpr });
+      var c = document.createElement('canvas');
+      c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+      c.style.width = Math.floor(vp.width / dpr) + 'px'; c.style.maxWidth = zoom > 1 ? 'none' : '100%';
+      return pg.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise.then(function () {
+        if (my !== token) return;
+        body.innerHTML = ''; body.appendChild(c); body.scrollTop = 0;
+      });
+    }).catch(function () { if (my === token) msg('Gagal menampilkan halaman PDF.'); });
+  }
+  function open(p, h) {
+    page = p; hlm = h; zoom = 1; setH(H);
+    panel.classList.add('pdfp--on'); document.body.classList.add('pdfp-open');
+    render();
+    if (!doc) load().then(render, function () { msg('PDF tidak bisa dimuat. Periksa koneksi internet lalu coba lagi.'); });
+  }
+  /* gagang di bilah panel: seret ke atas/bawah untuk mengubah tinggi panel; klik dua kali untuk reset */
+  var grip = panel.querySelector('.pdfp__grip'), gid = null;
+  grip.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    gid = e.pointerId; grip.setPointerCapture(gid); panel.classList.add('pdfp--drag'); e.preventDefault();
+  });
+  grip.addEventListener('pointermove', function (e) {
+    if (e.pointerId !== gid) return;
+    setH((window.innerHeight - e.clientY) / window.innerHeight * 100);
+  });
+  function endGrip(e) { if (e.pointerId === gid) { gid = null; panel.classList.remove('pdfp--drag'); } }
+  grip.addEventListener('pointerup', endGrip); grip.addEventListener('pointercancel', endGrip);
+  grip.addEventListener('dblclick', function () { setH(wide() ? 100 : 55); });
+  function close() { panel.classList.remove('pdfp--on'); document.body.classList.remove('pdfp-open'); token++; }
+  /* tombol PDF di tiap pembatas "Hlm. N": buka PDF di halaman yang sama */
+  Array.prototype.forEach.call(document.querySelectorAll('.hal__pdf'), function (b) {
+    b.addEventListener('click', function () {
+      open(parseInt(b.getAttribute('data-pdf'), 10), b.getAttribute('data-pdf'));
+      var el = b.parentNode, top = el.getBoundingClientRect().top;
+      if (top > window.innerHeight * (window.innerWidth >= 1100 ? 0.9 : 0.4)) window.scrollBy({ top: top - 90, behavior: 'smooth' });
+    });
+  });
+  panel.addEventListener('click', function (e) {
+    var a = e.target.getAttribute && e.target.getAttribute('data-a'); if (!a) return;
+    if (a === 'close') close();
+    else if (a === 'prev' && page > 1) { page--; hlm = ''; render(); syncHtml(); }
+    else if (a === 'next' && doc && page < doc.numPages) { page++; hlm = ''; render(); syncHtml(); }
+    else if (a === 'zoom+') { zoom = Math.min(3, zoom + 0.25); render(); }
+    else if (a === 'zoom-') { zoom = Math.max(0.5, zoom - 0.25); render(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('pdfp--on')) close(); });
 })();
 </script>
 <script src="../../../../assets/halaman.js?v=21"></script>
