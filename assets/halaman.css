@@ -186,8 +186,9 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .fabs__list { display: none; flex-direction: column; align-items: center; gap: 0.7rem; }
 .fabs.is-open .fabs__list { display: flex; }
 .fabs .fab { position: static; inset: auto; }
-.fab--menu { background: var(--heading, #1f4d3a); color: var(--card, #fffdf7); border-color: var(--heading, #1f4d3a); }
-.fab--menu svg { width: 1.4rem; height: 1.4rem; }
-.fab--menu .ic-tutup { display: none; }
-.fabs.is-open .fab--menu .ic-buka { display: none; }
-.fabs.is-open .fab--menu .ic-tutup { display: block; }
+.fabs .fab--menu { position: relative; display: block; padding: 0; background: var(--heading, #1f4d3a); color: var(--card, #fffdf7); border-color: var(--heading, #1f4d3a); }
+.fabs .fab--menu:hover { transform: none; }
+.fab--menu svg { position: absolute; top: 50%; left: 50%; width: 1.4rem; height: 1.4rem; margin: -0.7rem 0 0 -0.7rem; transition: opacity 0.15s, transform 0.2s; }
+.fab--menu .ic-tutup { opacity: 0; transform: rotate(-90deg); }
+.fabs.is-open .fab--menu .ic-buka { opacity: 0; transform: rotate(90deg); }
+.fabs.is-open .fab--menu .ic-tutup { opacity: 1; transform: none; }
