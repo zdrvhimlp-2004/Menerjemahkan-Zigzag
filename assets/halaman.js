@@ -435,11 +435,7 @@
         '<button type="button" class="ph__chip" data-a="semua">Semua</button>' +
         '<button type="button" class="ph__chip" data-a="kosong">Kosongkan</button>' +
         '<button type="button" class="ph__chip" data-a="sini">Halaman ini</button>' +
-      '</div>' +
-      '<div class="ph__baris ph__rentang">' +
-        '<label>Hlm. <select class="ph__dari" aria-label="Dari halaman"></select></label>' +
-        '<label>&ndash; <select class="ph__sampai" aria-label="Sampai halaman"></select></label>' +
-        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang">Centang</button>' +
+        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang" title="Centang dua halaman, lalu tekan Rentang untuk memilih semua halaman di antaranya">Rentang</button>' +
       '</div>' +
     '</div>' +
     '<ul class="ph__daftar"></ul>' +
@@ -469,7 +465,7 @@
 
   var q = function (s) { return dlg.querySelector(s); };
   var daftar = q('.ph__daftar'), aksi = q('.ph__aksi'), jml = q('.ph__jml'), info = q('.ph__info');
-  var dari = q('.ph__dari'), sampai = q('.ph__sampai'), fmt = q('.ph__fmt'), tanpa = q('.ph__tanpa'), hlm = q('.ph__hlm');
+  var fmt = q('.ph__fmt'), tanpa = q('.ph__tanpa'), hlm = q('.ph__hlm');
   var sel = q('.ph__prompt'), kustom = q('.ph__kustom'), pra = q('.ph__pratinjau');
   var kotak = [], terakhir = -1;
 
@@ -484,9 +480,7 @@
     var go = document.createElement('button'); go.type = 'button'; go.className = 'ph__go'; go.title = 'Lompat ke halaman ini'; go.setAttribute('aria-label', 'Lompat ke halaman ' + h.n); go.setAttribute('data-k', k); go.innerHTML = '&#8599;';
     li.appendChild(lb); li.appendChild(go); daftar.appendChild(li);
     kotak.push(cb);
-    [dari, sampai].forEach(function (s2) { var o = document.createElement('option'); o.value = k; o.textContent = h.n; s2.appendChild(o); });
   });
-  sampai.value = String(halaman.length - 1);
 
   var terpilih = function () { return kotak.map(function (c, k) { return c.checked ? k : -1; }).filter(function (k) { return k >= 0; }); };
   var segarkan = function () {
@@ -567,12 +561,14 @@
     }
     var a = x.getAttribute('data-a');
     if (a) {
-      var d = parseInt(dari.value, 10), s = parseInt(sampai.value, 10);
       if (a === 'semua') kotak.forEach(function (c) { c.checked = true; });
       else if (a === 'kosong') kotak.forEach(function (c) { c.checked = false; });
       else if (a === 'sini') { var k = halamanSekarang(); kotak.forEach(function (c) { c.checked = false; }); kotak[k].checked = true; daftar.children[k].scrollIntoView({ block: 'center' }); }
-      else if (a === 'rentang') set(d, s, true);
-      segarkan(); return;
+      else if (a === 'rentang') {
+        var tr = terpilih();
+        if (tr.length < 2) { segarkan(); var psn = 'Centang halaman awal dan akhir dulu, lalu tekan Rentang.'; if (tr.length) kabar(psn); else jml.textContent = psn; return; }
+        set(tr[0], tr[tr.length - 1], true);
+      }      segarkan(); return;
     }
     var k2 = x.getAttribute('data-k');
     if (!k2) return;
