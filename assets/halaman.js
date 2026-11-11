@@ -427,7 +427,7 @@
 
   var dlg = document.createElement('dialog');
   dlg.className = 'ph-modal'; dlg.setAttribute('aria-label', 'Pilih halaman');
-  var bisaBagi = !!navigator.share;
+  var bisaBagi = !!navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   dlg.innerHTML =
     '<div class="ph__head"><h2>Pilih Halaman <small class="ph__jml"></small></h2><button type="button" class="ph__x" aria-label="Tutup">&times;</button></div>' +
     '<div class="ph__cepat">' +
@@ -454,9 +454,9 @@
       '</details>' +
       '<div class="ph__tombol">' +
         '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
-        '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button>' +
-        '<button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>' +
-        (bisaBagi ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="bagi">Kirim ke aplikasi lain…</button>' : '') +
+        (bisaBagi
+          ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="claude">Kirim ke Claude</button>'
+          : '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button><button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>') +
       '</div>' +
       '<button type="button" class="ph__lihat" data-k="lihat">Lihat teks yang akan dikirim</button>' +
       '<pre class="ph__pratinjau" hidden></pre>' +
@@ -588,25 +588,9 @@
     kabar(tersalin
       ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
       : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
-    /* Android: coba kirim langsung ke aplikasinya (intent bagikan). Halaman ini TIDAK berpindah;
-       kalau aplikasi tidak terbuka dalam 1,5 detik, otomatis tampil menu "Bagikan" biasa. */
-    if (/Android/i.test(navigator.userAgent) && st[3] && encodeURIComponent(teks).length <= 300000) {
-      var sempat = false, onv = function () { if (document.hidden) sempat = true; };
-      document.addEventListener('visibilitychange', onv);
-      var ai = document.createElement('a');
-      ai.href = 'intent:#Intent;action=android.intent.action.SEND;type=text/plain;package=' + st[3] + ';S.android.intent.extra.TEXT=' + encodeURIComponent(teks) + ';end';
-      document.body.appendChild(ai); ai.click(); ai.remove();
-      kabar('Membuka aplikasi ' + st[0] + '… (teks juga sudah disalin).');
-      setTimeout(function () {
-        document.removeEventListener('visibilitychange', onv);
-        if (sempat) return;
-        if (navigator.share) { navigator.share({ text: teks }).catch(function () { kabar('Aplikasi ' + st[0] + ' tidak terbuka. Teks sudah disalin, tempel di aplikasinya.'); }); kabar('Pilih ' + st[0] + ' di menu bagikan. Teks juga sudah disalin.'); }
-        else kabar('Aplikasi ' + st[0] + ' tidak terbuka. Teks sudah disalin, tempel di aplikasinya.');
-      }, 1500);
-      return;
-    }
-    /* iPhone/lainnya: web tidak bisa memilih aplikasi tujuan; pakai menu bagikan bila ada */
-    if (!lewat && navigator.share && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    /* HP: Chrome tidak bisa mengirim teks langsung ke aplikasi lain lewat tautan (intent hanya menjangkau
+       layar berlabel "browsable"), jadi dipakai menu Bagikan; Claude tinggal dipilih. */
+    if (bisaBagi) {
       navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
       kabar('Pilih ' + st[0] + ' di menu bagikan. Teks juga sudah disalin.');
       return;
