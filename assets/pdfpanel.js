@@ -23,7 +23,13 @@
     document.body.style.setProperty('--pdfh', H);
   }
   function syncHtml() {
-    var m = document.getElementById('awal-' + page) || document.getElementById('hal-' + page);
+    var btns = document.querySelectorAll('.hal__pdf'), m = null, mp = -1, first = null, fp = 1e9;
+    Array.prototype.forEach.call(btns, function (b) {
+      var v = parseInt(b.getAttribute('data-pdf'), 10);
+      if (v <= page && v >= mp) { mp = v; m = b.parentNode; }
+      if (v < fp) { fp = v; first = b.parentNode; }
+    });
+    m = m || first;
     if (!m) return;
     for (var e = m.parentNode; e && e !== document.body; e = e.parentNode) {
       if (e.classList && e.classList.contains('is-collapsed')) e.classList.remove('is-collapsed');
@@ -46,7 +52,7 @@
   function msg(t) { body.innerHTML = '<p class="pdfp__msg"></p>'; body.firstChild.textContent = t; }
   function render() {
     var my = ++token;
-    ttl.textContent = 'Hlm. ' + page + (doc ? ' / ' + doc.numPages : '');
+    ttl.textContent = (CFG.label || 'Hlm.') + ' ' + page + (doc ? ' / ' + doc.numPages : '');
     prev.disabled = page <= 1; next.disabled = !doc || page >= doc.numPages;
     if (!doc) { msg('Memuat PDF\u2026'); return; }
     doc.getPage(page).then(function (pg) {
