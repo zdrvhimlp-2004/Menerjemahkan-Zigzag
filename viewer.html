@@ -115,7 +115,8 @@
     document.getElementById('kecil').hidden = true;
     document.getElementById('besar').hidden = true;
     var f = document.createElement('iframe');
-    f.src = url;
+    // tambahkan penanda waktu agar bingkai selalu memuat versi terbaru, bukan salinan lama dari cache
+    f.src = url + (url.indexOf('?') < 0 ? '?' : '&') + 'v=' + Date.now();
     f.title = nama;
     isi.replaceChildren(f);
     return;
@@ -199,7 +200,7 @@
 
   if (ext !== 'docx') {
     var md = /^(md|markdown)$/.test(ext);
-    fetch(url).then(function (r) {
+    fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.arrayBuffer();
     }).then(function (buf) {
@@ -235,7 +236,7 @@
   document.getElementById('kecil').onclick = function () { ubah(1 / 1.25); };
   document.getElementById('besar').onclick = function () { ubah(1.25); };
 
-  fetch(url).then(function (r) {
+  fetch(url, { cache: 'no-cache' }).then(function (r) {
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.arrayBuffer();
   }).then(function (buf) {
