@@ -588,13 +588,21 @@
     kabar(tersalin
       ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
       : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
-    /* Android: kirim langsung ke aplikasinya (seperti "Kirim ke aplikasi lain", tapi sudah terpilih).
-       Kalau aplikasi belum terpasang, Chrome membuka situs web sebagai cadangan. */
+    /* Android: coba kirim langsung ke aplikasinya (intent bagikan). Halaman ini TIDAK berpindah;
+       kalau aplikasi tidak terbuka dalam 1,5 detik, otomatis tampil menu "Bagikan" biasa. */
     if (/Android/i.test(navigator.userAgent) && st[3] && encodeURIComponent(teks).length <= 300000) {
-      location.href = 'intent:#Intent;action=android.intent.action.SEND;type=text/plain;package=' + st[3] +
-        ';S.android.intent.extra.TEXT=' + encodeURIComponent(teks) +
-        ';S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
-      kabar('Mengirim ke aplikasi ' + st[0] + '… (teks juga sudah disalin).');
+      var sempat = false, onv = function () { if (document.hidden) sempat = true; };
+      document.addEventListener('visibilitychange', onv);
+      var ai = document.createElement('a');
+      ai.href = 'intent:#Intent;action=android.intent.action.SEND;type=text/plain;package=' + st[3] + ';S.android.intent.extra.TEXT=' + encodeURIComponent(teks) + ';end';
+      document.body.appendChild(ai); ai.click(); ai.remove();
+      kabar('Membuka aplikasi ' + st[0] + '… (teks juga sudah disalin).');
+      setTimeout(function () {
+        document.removeEventListener('visibilitychange', onv);
+        if (sempat) return;
+        if (navigator.share) { navigator.share({ text: teks }).catch(function () { kabar('Aplikasi ' + st[0] + ' tidak terbuka. Teks sudah disalin, tempel di aplikasinya.'); }); kabar('Pilih ' + st[0] + ' di menu bagikan. Teks juga sudah disalin.'); }
+        else kabar('Aplikasi ' + st[0] + ' tidak terbuka. Teks sudah disalin, tempel di aplikasinya.');
+      }, 1500);
       return;
     }
     /* iPhone/lainnya: web tidak bisa memilih aplikasi tujuan; pakai menu bagikan bila ada */
