@@ -333,7 +333,7 @@
   var SEL_ID = 'p.id, p.bab__id, .judul__id, .sub__id, .ringkasan__id';
   var HARAKAT = /[ً-ْٰٕ]/g;
 
-  var adaIsi = function (frag) { return !!frag.querySelector('.ar, .id, .shatr'); };
+  var adaIsi = function (frag) { return !!frag.querySelector('.ar, .id, .shatr, ' + SEL_AR + ', ' + SEL_ID); };
   var rentang = function (dari, sampai) {
     var r = document.createRange();
     if (dari) r.setStartAfter(dari); else r.setStart(wrap, 0);
@@ -418,45 +418,42 @@
 
   var dlg = document.createElement('dialog');
   dlg.className = 'ph-modal'; dlg.setAttribute('aria-label', 'Pilih halaman');
+  var bisaBagi = !!navigator.share;
   dlg.innerHTML =
     '<div class="ph__head"><h2>Pilih Halaman <small class="ph__jml"></small></h2><button type="button" class="ph__x" aria-label="Tutup">&times;</button></div>' +
     '<div class="ph__cepat">' +
       '<div class="ph__baris">' +
         '<button type="button" class="ph__chip" data-a="semua">Semua</button>' +
         '<button type="button" class="ph__chip" data-a="kosong">Kosongkan</button>' +
-        '<button type="button" class="ph__chip" data-a="balik">Balik</button>' +
-        '<button type="button" class="ph__chip" data-a="sini">Halaman saat ini</button>' +
-        '<button type="button" class="ph__chip" data-a="lanjut">+ Lanjut 5 hlm</button>' +
+        '<button type="button" class="ph__chip" data-a="sini">Halaman ini</button>' +
       '</div>' +
       '<div class="ph__baris ph__rentang">' +
-        '<label>Dari <select class="ph__dari" aria-label="Dari halaman"></select></label>' +
-        '<label>sampai <select class="ph__sampai" aria-label="Sampai halaman"></select></label>' +
-        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang">Centang rentang</button>' +
-        '<button type="button" class="ph__chip" data-a="lepas">Lepas rentang</button>' +
+        '<label>Hlm. <select class="ph__dari" aria-label="Dari halaman"></select></label>' +
+        '<label>&ndash; <select class="ph__sampai" aria-label="Sampai halaman"></select></label>' +
+        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang">Centang</button>' +
       '</div>' +
-      '<p class="ph__tip">Tips: tahan Shift lalu klik dua halaman untuk mencentang semua di antaranya.</p>' +
     '</div>' +
     '<ul class="ph__daftar"></ul>' +
     '<div class="ph__aksi" hidden>' +
-      '<div class="ph__opsi">' +
-        '<label>Isi <select class="ph__fmt" aria-label="Isi yang disalin">' +
-          '<option value="ar">Arab saja</option><option value="id">Indonesia saja</option><option value="dua">Arab + Indonesia (berselang)</option><option value="arid">Arab dulu, lalu Indonesia</option>' +
-        '</select></label>' +
-        '<label class="ph__cek"><input type="checkbox" class="ph__tanpa"> Tanpa harakat</label>' +
-        '<label class="ph__cek"><input type="checkbox" class="ph__hlm" checked> Sertakan nomor halaman</label>' +
-      '</div>' +
-      '<div class="ph__opsi"><label>Instruksi untuk AI <select class="ph__prompt" aria-label="Instruksi untuk AI"></select></label></div>' +
-      '<textarea class="ph__kustom" rows="3" placeholder="Tulis instruksi sendiri, misalnya: Jelaskan i\'rab kalimat berikut…" hidden></textarea>' +
+      '<p class="ph__info" aria-live="polite"></p>' +
+      '<details class="ph__lain"><summary>Pengaturan teks dan instruksi</summary>' +
+        '<div class="ph__opsi">' +
+          '<label>Isi <select class="ph__fmt" aria-label="Isi yang disalin">' +
+            '<option value="ar">Arab saja</option><option value="id">Indonesia saja</option><option value="dua">Arab + Indonesia (berselang)</option><option value="arid">Arab dulu, lalu Indonesia</option>' +
+          '</select></label>' +
+          '<label class="ph__cek"><input type="checkbox" class="ph__tanpa"> Tanpa harakat</label>' +
+          '<label class="ph__cek"><input type="checkbox" class="ph__hlm" checked> Nomor halaman</label>' +
+        '</div>' +
+        '<div class="ph__opsi"><label>Instruksi AI <select class="ph__prompt" aria-label="Instruksi untuk AI"></select></label></div>' +
+        '<textarea class="ph__kustom" rows="3" placeholder="Tulis instruksi sendiri, misalnya: Jelaskan i\'rab kalimat berikut…" hidden></textarea>' +
+      '</details>' +
       '<div class="ph__tombol">' +
         '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
-        '<button type="button" class="ph__btn" data-k="claude">Buka di Claude</button>' +
-        '<button type="button" class="ph__btn" data-k="chatgpt">Buka di ChatGPT</button>' +
-        '<button type="button" class="ph__btn" data-k="perplexity">Buka di Perplexity</button>' +
-        '<button type="button" class="ph__btn" data-k="unduh">Unduh .txt</button>' +
-        '<button type="button" class="ph__btn" data-k="bagi">Bagikan…</button>' +
-        '<button type="button" class="ph__btn" data-k="lihat">Lihat hasil</button>' +
+        '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button>' +
+        '<button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>' +
+        (bisaBagi ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="bagi">Kirim ke aplikasi lain…</button>' : '') +
       '</div>' +
-      '<p class="ph__info" aria-live="polite"></p>' +
+      '<button type="button" class="ph__lihat" data-k="lihat">Lihat teks yang akan dikirim</button>' +
       '<pre class="ph__pratinjau" hidden></pre>' +
     '</div>';
   document.body.appendChild(dlg);
@@ -525,20 +522,25 @@
     return p ? p + '\n\n' + isi : isi;
   };
 
+  /* salin langsung saat disentuh (execCommand lebih andal di HP), clipboard API sebagai cadangan */
+  var salinSinkron = function (teks) {
+    var ok = false;
+    try {
+      var t = document.createElement('textarea'); t.value = teks; t.setAttribute('readonly', '');
+      t.style.cssText = 'position:fixed;opacity:0;top:0;left:0;font-size:16px';
+      dlg.appendChild(t); t.focus(); t.select(); t.setSelectionRange(0, teks.length);
+      ok = document.execCommand('copy'); t.remove();
+    } catch (e) { ok = false; }
+    if (!ok && navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(teks).catch(function () { /* abaikan */ }); return true; }
+    return ok;
+  };
   var salinKe = function (teks) {
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(teks);
-    return new Promise(function (ok, gagal) {
-      var t = document.createElement('textarea'); t.value = teks; t.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
-      document.body.appendChild(t); t.select();
-      var b = false; try { b = document.execCommand('copy'); } catch (e) { /* abaikan */ }
-      t.remove(); b ? ok() : gagal(new Error('gagal'));
-    });
+    return salinSinkron(teks) ? Promise.resolve() : Promise.reject(new Error('gagal'));
   };
   var kabar = function (t) { info.textContent = t; };
   var SITUS = {
     claude: ['Claude', 'https://claude.ai/new', 'q'],
-    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q'],
-    perplexity: ['Perplexity', 'https://www.perplexity.ai/search', 'q']
+    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q']
   };
   var BATAS_URL = 5500;
 
@@ -559,11 +561,8 @@
       var d = parseInt(dari.value, 10), s = parseInt(sampai.value, 10);
       if (a === 'semua') kotak.forEach(function (c) { c.checked = true; });
       else if (a === 'kosong') kotak.forEach(function (c) { c.checked = false; });
-      else if (a === 'balik') kotak.forEach(function (c) { c.checked = !c.checked; });
       else if (a === 'sini') { var k = halamanSekarang(); kotak.forEach(function (c) { c.checked = false; }); kotak[k].checked = true; daftar.children[k].scrollIntoView({ block: 'center' }); }
-      else if (a === 'lanjut') { var t = terpilih(); var from = t.length ? t[t.length - 1] + 1 : halamanSekarang(); set(from, Math.min(from + 4, kotak.length - 1), true); }
       else if (a === 'rentang') set(d, s, true);
-      else if (a === 'lepas') set(d, s, false);
       segarkan(); return;
     }
     var k2 = x.getAttribute('data-k');
@@ -571,26 +570,21 @@
     var teks = susun();
     if (k2 === 'lihat') { pra.textContent = teks; pra.hidden = !pra.hidden; return; }
     if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); }); return; }
-    if (k2 === 'unduh') {
-      var t2 = terpilih(), nama = (document.title.split(' — ')[0] || 'teks').replace(/[\\/:*?"<>|]+/g, '').slice(0, 60).trim();
-      var blob = new Blob([teks], { type: 'text/plain;charset=utf-8' }), u = URL.createObjectURL(blob);
-      var el = document.createElement('a'); el.href = u; el.download = nama + ' hlm ' + halaman[t2[0]].n + (t2.length > 1 ? '-' + halaman[t2[t2.length - 1]].n : '') + '.txt';
-      document.body.appendChild(el); el.click(); el.remove(); setTimeout(function () { URL.revokeObjectURL(u); }, 2000);
-      kabar('File .txt diunduh.'); return;
-    }
     if (k2 === 'bagi') {
       if (navigator.share) navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
       else salinKe(teks).then(function () { kabar('Berbagi tidak didukung di browser ini; teks disalin.'); });
       return;
     }
     var st = SITUS[k2]; if (!st) return;
+    /* 1) salin dulu (masih dalam sentuhan pengguna), 2) baru buka situs AI */
+    var tersalin = salinSinkron(teks);
     var lewat = st[2] && encodeURIComponent(teks).length <= BATAS_URL;
     var url = lewat ? st[1] + '?' + st[2] + '=' + encodeURIComponent(teks) : st[1];
-    var w = window.open(url, '_blank', 'noopener');
-    salinKe(teks).then(function () {
-      kabar(lewat ? 'Teks dikirim ke ' + st[0] + ' (juga tersalin).' : 'Teks tersalin. Tempel (Tahan lama atau Ctrl+V) di kolom chat ' + st[0] + '.');
-    }, function () { kabar(lewat ? 'Teks dikirim ke ' + st[0] + '.' : 'Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); });
-    if (!w) kabar('Pop-up diblokir browser. Izinkan pop-up lalu coba lagi.');
+    kabar(tersalin
+      ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
+      : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
+    var w = window.open(url, '_blank');
+    if (!w) { var ln = document.createElement('a'); ln.href = url; ln.target = '_blank'; ln.rel = 'noopener'; ln.click(); }
   });
   daftar.addEventListener('click', function (e) {
     var c = e.target.closest('input[type="checkbox"]'); if (!c) return;
