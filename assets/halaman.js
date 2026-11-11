@@ -455,7 +455,7 @@
       '<div class="ph__tombol">' +
         '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
         (bisaBagi
-          ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="claude">Kirim ke Claude</button>'
+          ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="bagi">Kirim…</button>'
           : '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button><button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>') +
       '</div>' +
       '<button type="button" class="ph__lihat" data-k="lihat">Lihat teks yang akan dikirim</button>' +
@@ -576,7 +576,7 @@
     if (k2 === 'lihat') { pra.textContent = teks; pra.hidden = !pra.hidden; return; }
     if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Gunakan "Lihat hasil" lalu salin manual.'); }); return; }
     if (k2 === 'bagi') {
-      if (navigator.share) navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
+      if (navigator.share) { navigator.share({ text: teks }).catch(function () { /* dibatalkan */ }); kabar('Pilih aplikasi tujuan di menu bagikan. Teks juga sudah disalin.'); salinSinkron(teks); }
       else salinKe(teks).then(function () { kabar('Berbagi tidak didukung di browser ini; teks disalin.'); });
       return;
     }
@@ -588,13 +588,6 @@
     kabar(tersalin
       ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
       : 'Gagal menyalin otomatis. Pakai "Lihat teks" lalu salin manual.');
-    /* HP: Chrome tidak bisa mengirim teks langsung ke aplikasi lain lewat tautan (intent hanya menjangkau
-       layar berlabel "browsable"), jadi dipakai menu Bagikan; Claude tinggal dipilih. */
-    if (bisaBagi) {
-      navigator.share({ text: teks }).catch(function () { /* dibatalkan */ });
-      kabar('Pilih ' + st[0] + ' di menu bagikan. Teks juga sudah disalin.');
-      return;
-    }
     var w = window.open(url, '_blank');
     if (!w) { var ln = document.createElement('a'); ln.href = url; ln.target = '_blank'; ln.rel = 'noopener'; ln.click(); }
   });
