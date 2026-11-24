@@ -167,12 +167,49 @@
   }
 
   if (ext === 'pdf') {
-    document.body.classList.add('mode-html');
-    document.getElementById('kecil').hidden = true;
-    document.getElementById('besar').hidden = true;
-    var fp = document.createElement('iframe');
-    fp.src = url; fp.title = nama;
-    isi.replaceChildren(fp);
+    // PDF digambar dengan pdf.js (tersimpan di assets/pdfjs) karena iframe PDF tidak jalan di banyak browser, terutama HP
+    var sk = document.createElement('script');
+    sk.src = 'assets/pdfjs/pdf.min.js';
+    sk.onerror = function () { pesan('Penampil PDF gagal dimuat. Silakan <a href="' + url + '" download>unduh filenya</a>.'); };
+    sk.onload = function () {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdfjs/pdf.worker.min.js';
+      pdfjsLib.getDocument(url).promise.then(function (pdf) {
+        var wrapP = document.createElement('div'), skala = 1, token = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+        wrapP.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:.8rem;padding:0 .5rem';
+        isi.replaceChildren(wrapP);
+        function gambar() {
+          var my = ++token, lebar = Math.max(240, Math.min(document.documentElement.clientWidth - 16, 1000)) * skala;
+          wrapP.replaceChildren();
+          var urut = Promise.resolve();
+          for (var i = 1; i <= pdf.numPages; i++) (function (no) {
+            urut = urut.then(function () {
+              if (my !== token) return;
+              return pdf.getPage(no).then(function (pg) {
+                if (my !== token) return;
+                var v0 = pg.getViewport({ scale: 1 }), sc = lebar / v0.width, v = pg.getViewport({ scale: sc * dpr });
+                var c = document.createElement('canvas');
+                c.width = v.width; c.height = v.height;
+                c.style.cssText = 'display:block;width:' + lebar + 'px;max-width:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.35);border-radius:4px';
+                wrapP.appendChild(c);
+                return pg.render({ canvasContext: c.getContext('2d'), viewport: v }).promise;
+              });
+            });
+          })(i);
+        }
+        function ubahPdf(f) { skala = Math.min(3, Math.max(0.5, skala * f)); gambar(); }
+        document.getElementById('kecil').onclick = function () { ubahPdf(1 / 1.25); };
+        document.getElementById('besar').onclick = function () { ubahPdf(1.25); };
+        var lb = document.documentElement.clientWidth, tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(function () { if (document.documentElement.clientWidth !== lb) { lb = document.documentElement.clientWidth; gambar(); } }, 250);
+        });
+        gambar();
+      }).catch(function () {
+        pesan('PDF tidak bisa ditampilkan. Silakan <a href="' + url + '" download>unduh filenya</a>.');
+      });
+    };
+    document.head.appendChild(sk);
     return;
   }
 
