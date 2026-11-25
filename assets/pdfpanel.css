@@ -21,3 +21,8 @@ body.pdfp-open { padding-bottom: calc(var(--pdfh, 55) * 1vh + 1vh); }
   .pdfp { left: auto; top: auto; bottom: 0; right: 0; width: min(46vw, 640px); border-radius: 0; box-shadow: -8px 0 30px rgba(0, 0, 0, 0.2); }
   body.pdfp-open { padding-bottom: 0; padding-right: min(46vw, 640px); }
 }
+
+/* penanda halaman ganda: halaman asli kitab (data-kitab) + halaman PDF; tanpa data-kitab tampil seperti biasa */
+.hal[data-kitab]::before { content: "Hlm. Kitab " attr(data-kitab); display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); margin-inline-end: 0.4rem; }
+.hal[data-kitab] .hal__t { display: none; }
+.hal[data-kitab] > span::before { content: "Hlm. PDF "; }
