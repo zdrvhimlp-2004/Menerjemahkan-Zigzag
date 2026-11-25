@@ -31,3 +31,6 @@ body.pdfp-open { padding-bottom: calc(var(--pdfh, 55) * 1vh + 1vh); }
 .hal[data-kitab]::before { content: "Hlm. Kitab " attr(data-kitab); display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); margin-inline-end: 0.4rem; }
 .hal[data-kitab] .hal__t { display: none; }
 .hal[data-kitab] > span::before { content: "Hlm. PDF "; }
+
+.pdfp__dl { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.pdfp__dl svg { display: block; }
