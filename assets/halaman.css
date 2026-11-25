@@ -193,3 +193,11 @@ dialog.ph-modal::backdrop { background: rgba(15, 13, 8, 0.55); }
 .fabs.is-open .fab--menu .ic-buka { opacity: 0; transform: rotate(90deg); }
 .fabs.is-open .fab--menu .ic-tutup { opacity: 1; transform: none; }
 .ver { direction: ltr; text-align: center; margin-top: 2rem; font-size: 0.68rem; color: var(--muted, #8a8270); opacity: 0.8; }
+
+/* menu Pilih Halaman: tombol berupa ikon SVG */
+.ph__chip, .ph__btn--utama, .ph__go, .ph__x { display: inline-flex; align-items: center; justify-content: center; }
+.ph__chip { width: 2.4rem; height: 2.2rem; padding: 0; }
+.ph__chip svg, .ph__btn svg, .ph__go svg, .ph__x svg { display: block; }
+.ph__go svg { width: 16px; height: 16px; }
+.ph__btn--utama { padding: 0.6rem; min-height: 2.8rem; }
+.ph__btn--utama svg { width: 22px; height: 22px; }
