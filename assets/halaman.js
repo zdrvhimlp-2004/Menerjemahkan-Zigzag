@@ -324,8 +324,8 @@
   });
 })();
 
-/* Tombol "Pilih Halaman": daftar semua halaman (Hlm.) dengan kotak centang, lalu salin atau kirim teksnya
-   (Arab saja, Indonesia saja, atau keduanya) ke papan klip, Claude, ChatGPT, dan lainnya. */
+/* Tombol "Pilih Halaman": daftar semua halaman (Hlm.) dengan kotak centang, lalu unduh teksnya sebagai
+   file .txt (Arab saja, Indonesia saja, atau keduanya). */
 (function () {
   'use strict';
   var wrap = document.querySelector('.isi__wrap');
@@ -411,52 +411,43 @@
   fab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg>';
   document.body.appendChild(fab);
 
-  var PROMPT = [
-    ['', 'Tanpa instruksi (teks saja)'],
-    ['Jelaskan isi teks berikut dengan bahasa Indonesia yang sederhana dan runtut. Sebutkan istilah penting beserta artinya.', 'Jelaskan isinya'],
-    ['Terjemahkan teks Arab berikut ke bahasa Indonesia yang natural dan mudah dipahami. Pertahankan istilah teknis, dan beri catatan pada bagian yang sulit.', 'Terjemahkan teks Arab'],
-    ['Periksa terjemahan Indonesia berikut terhadap teks Arabnya. Tunjukkan bagian yang keliru atau kurang tepat, lalu beri perbaikannya.', 'Koreksi terjemahan'],
-    ['Buatkan 10 soal pilihan ganda dengan 2 pilihan jawaban dari teks berikut, lengkap dengan kunci jawaban dan penjelasan singkat.', 'Buat soal pilihan ganda'],
-    ['Ringkas teks berikut menjadi poin-poin utama yang mudah dihafal.', 'Ringkas'],
-    ['Lakukan i\'rab dan analisis nahwu/sharaf untuk teks Arab berikut, kalimat demi kalimat.', 'I\'rab dan analisis nahwu'],
-    ['Jelaskan aspek balaghah (ilmu ma\'ani, bayan, badi\') pada teks berikut beserta contohnya.', 'Analisis balaghah'],
-    ['__kustom__', 'Instruksi sendiri…']
-  ];
   var simpan = function (k, v) { try { localStorage.setItem('ph.' + k, v); } catch (e) { /* abaikan */ } };
   var muat = function (k, d) { try { var v = localStorage.getItem('ph.' + k); return v === null ? d : v; } catch (e) { return d; } };
 
+  var IK = function (d) { return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+  var X = IK('<path d="M6 6l12 12M18 6 6 18"/>');
+  var I_SEMUA = IK('<path d="m4 7 2 2 3-3M4 15l2 2 3-3M12 8h8M12 16h8"/>');
+  var I_KOSONG = IK('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="m9 9 6 6M15 9l-6 6"/>');
+  var I_SINI = IK('<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>');
+  var I_RENTANG = IK('<path d="M5 5v14M19 5v14M5 12h14M8 9l-3 3 3 3M16 9l3 3-3 3"/>');
+  var I_UNDUH = IK('<path d="M12 4v11M7.5 11l4.5 4.5 4.5-4.5M5 19h14"/>');
+  var I_LOMPAT = IK('<path d="M7 17 17 7M9 7h8v8"/>');
   var dlg = document.createElement('dialog');
   dlg.className = 'ph-modal'; dlg.setAttribute('aria-label', 'Pilih halaman');
-  var bisaBagi = !!navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   dlg.innerHTML =
-    '<div class="ph__head"><h2>Pilih Halaman <small class="ph__jml"></small></h2><button type="button" class="ph__x" aria-label="Tutup">&times;</button></div>' +
+    '<div class="ph__head"><h2>Pilih Halaman <small class="ph__jml"></small></h2><button type="button" class="ph__x" aria-label="Tutup" title="Tutup">'+X+'</button></div>' +
     '<div class="ph__cepat">' +
       '<div class="ph__baris">' +
-        '<button type="button" class="ph__chip" data-a="semua">Semua</button>' +
-        '<button type="button" class="ph__chip" data-a="kosong">Kosongkan</button>' +
-        '<button type="button" class="ph__chip" data-a="sini">Halaman ini</button>' +
-        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang" title="Centang dua halaman, lalu tekan Rentang untuk memilih semua halaman di antaranya">Rentang</button>' +
+        '<button type="button" class="ph__chip" data-a="semua" aria-label="Pilih semua halaman" title="Pilih semua halaman">'+I_SEMUA+'</button>' +
+        '<button type="button" class="ph__chip" data-a="kosong" aria-label="Kosongkan pilihan" title="Kosongkan pilihan">'+I_KOSONG+'</button>' +
+        '<button type="button" class="ph__chip" data-a="sini" aria-label="Pilih halaman yang sedang dibaca" title="Pilih halaman yang sedang dibaca">'+I_SINI+'</button>' +
+        '<button type="button" class="ph__chip ph__chip--utama" data-a="rentang" aria-label="Pilih rentang" title="Centang dua halaman, lalu tekan ini untuk memilih semua halaman di antaranya">'+I_RENTANG+'</button>' +
       '</div>' +
     '</div>' +
     '<ul class="ph__daftar"></ul>' +
     '<div class="ph__aksi" hidden>' +
       '<p class="ph__info" aria-live="polite"></p>' +
-      '<details class="ph__lain"><summary>Pengaturan teks dan instruksi</summary>' +
+      '<details class="ph__lain"><summary>Pengaturan teks</summary>' +
         '<div class="ph__opsi">' +
-          '<label>Isi <select class="ph__fmt" aria-label="Isi yang disalin">' +
+          '<label>Isi <select class="ph__fmt" aria-label="Isi file teks">' +
             '<option value="ar">Arab saja</option><option value="id">Indonesia saja</option><option value="dua">Arab + Indonesia (berselang)</option><option value="arid">Arab dulu, lalu Indonesia</option>' +
           '</select></label>' +
           '<label class="ph__cek"><input type="checkbox" class="ph__tanpa"> Tanpa harakat</label>' +
           '<label class="ph__cek"><input type="checkbox" class="ph__hlm" checked> Nomor halaman</label>' +
         '</div>' +
-        '<div class="ph__opsi"><label>Instruksi AI <select class="ph__prompt" aria-label="Instruksi untuk AI"></select></label></div>' +
-        '<textarea class="ph__kustom" rows="3" placeholder="Tulis instruksi sendiri, misalnya: Jelaskan i\'rab kalimat berikut…" hidden></textarea>' +
       '</details>' +
       '<div class="ph__tombol">' +
-        '<button type="button" class="ph__btn ph__btn--utama" data-k="salin">Salin teks</button>' +
-        (bisaBagi
-          ? '<button type="button" class="ph__btn ph__btn--lebar" data-k="bagi">Kirim…</button>'
-          : '<button type="button" class="ph__btn" data-k="claude">Tanya Claude</button><button type="button" class="ph__btn" data-k="chatgpt">Tanya ChatGPT</button>') +
+        '<button type="button" class="ph__btn ph__btn--utama" data-k="unduh" aria-label="Unduh file teks" title="Unduh file teks (.txt)">'+I_UNDUH+'</button>' +
       '</div>' +
     '</div>';
   document.body.appendChild(dlg);
@@ -464,10 +455,8 @@
   var q = function (s) { return dlg.querySelector(s); };
   var daftar = q('.ph__daftar'), aksi = q('.ph__aksi'), jml = q('.ph__jml'), info = q('.ph__info');
   var fmt = q('.ph__fmt'), tanpa = q('.ph__tanpa'), hlm = q('.ph__hlm');
-  var sel = q('.ph__prompt'), kustom = q('.ph__kustom');
   var kotak = [], terakhir = -1;
 
-  PROMPT.forEach(function (p, k) { var o = document.createElement('option'); o.value = k; o.textContent = p[1]; sel.appendChild(o); });
   halaman.forEach(function (h, k) {
     var li = document.createElement('li'); li.className = 'ph__item';
     var lb = document.createElement('label');
@@ -475,7 +464,7 @@
     var no = document.createElement('b'); no.textContent = 'Hlm. ' + h.n;
     var cp = document.createElement('span'); cp.className = 'ph__cup'; cp.setAttribute('lang', 'ar'); cp.textContent = cuplikan(h);
     lb.appendChild(cb); lb.appendChild(no); lb.appendChild(cp);
-    var go = document.createElement('button'); go.type = 'button'; go.className = 'ph__go'; go.title = 'Lompat ke halaman ini'; go.setAttribute('aria-label', 'Lompat ke halaman ' + h.n); go.setAttribute('data-k', k); go.innerHTML = '&#8599;';
+    var go = document.createElement('button'); go.type = 'button'; go.className = 'ph__go'; go.title = 'Lompat ke halaman ini'; go.setAttribute('aria-label', 'Lompat ke halaman ' + h.n); go.setAttribute('data-k', k); go.innerHTML = I_LOMPAT;
     li.appendChild(lb); li.appendChild(go); daftar.appendChild(li);
     kotak.push(cb);
   });
@@ -499,11 +488,6 @@
     return k;
   };
 
-  var ambilPrompt = function () {
-    var p = PROMPT[parseInt(sel.value, 10)];
-    if (!p) return '';
-    return p[0] === '__kustom__' ? kustom.value.trim() : p[0];
-  };
   var susun = function () {
     var out = [];
     terpilih().forEach(function (k) {
@@ -518,32 +502,28 @@
       if (tanpa.checked) teks = teks.replace(HARAKAT, '');
       out.push((hlm.checked ? '[Hlm. ' + h.n + ']\n' : '') + teks);
     });
-    var isi = out.join('\n\n');
-    var p = ambilPrompt();
-    return p ? p + '\n\n' + isi : isi;
+    return out.join('\n\n');
   };
 
-  /* salin langsung saat disentuh (execCommand lebih andal di HP), clipboard API sebagai cadangan */
-  var salinSinkron = function (teks) {
-    var ok = false;
-    try {
-      var t = document.createElement('textarea'); t.value = teks; t.setAttribute('readonly', '');
-      t.style.cssText = 'position:fixed;opacity:0;top:0;left:0;font-size:16px';
-      dlg.appendChild(t); t.focus(); t.select(); t.setSelectionRange(0, teks.length);
-      ok = document.execCommand('copy'); t.remove();
-    } catch (e) { ok = false; }
-    if (!ok && navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(teks).catch(function () { /* abaikan */ }); return true; }
-    return ok;
-  };
-  var salinKe = function (teks) {
-    return salinSinkron(teks) ? Promise.resolve() : Promise.reject(new Error('gagal'));
-  };
   var kabar = function (t) { info.textContent = t; };
-  var SITUS = {
-    claude: ['Claude', 'https://claude.ai/new', 'q', 'com.anthropic.claude'],
-    chatgpt: ['ChatGPT', 'https://chatgpt.com/', 'q', 'com.openai.chatgpt']
+  /* nama file: judul dokumen + rentang halaman, mis. "Ilmu Lughah 3 - Hlm 3-5.txt" */
+  var namaFile = function () {
+    var t = terpilih(), h1 = halaman[t[0]].n, h2 = halaman[t[t.length - 1]].n;
+    /* pakai nama berkas halaman (huruf Latin) supaya nama unduhan aman di semua browser; cadangan: judul halaman */
+    var berkas = ''; try { berkas = decodeURIComponent(location.pathname.split('/').pop() || '').replace(/\.[^.]+$/, ''); } catch (e) { /* abaikan */ }
+    var judul = (berkas || (document.title || 'halaman').split(/\s[\u2014\u2013-]\s/)[0]).replace(/[\\/:*?"<>|]+/g, '').trim() || 'halaman';
+    return judul + ' - Hlm ' + (h1 === h2 ? h1 : h1 + '-' + h2) + '.txt';
   };
-  var BATAS_URL = 5500;
+  var unduh = function (teks) {
+    var nama = namaFile();
+    /* BOM UTF-8 supaya huruf Arab terbaca benar di Notepad dan aplikasi lain */
+    var url = URL.createObjectURL(new Blob(['\ufeff' + teks], { type: 'text/plain;charset=utf-8' }));
+    var a = document.createElement('a');
+    a.href = url; a.download = nama; a.style.display = 'none';
+    dlg.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    kabar('File diunduh: ' + nama);
+  };
 
   dlg.addEventListener('click', function (e) {
     var r = dlg.getBoundingClientRect();
@@ -570,23 +550,7 @@
     }
     var k2 = x.getAttribute('data-k');
     if (!k2) return;
-    var teks = susun();
-    if (k2 === 'salin') { salinKe(teks).then(function () { kabar('Tersalin (' + teks.length + ' karakter).'); }, function () { kabar('Gagal menyalin. Coba lagi atau gunakan tombol Kirim….'); }); return; }
-    if (k2 === 'bagi') {
-      if (navigator.share) { navigator.share({ text: teks }).catch(function () { /* dibatalkan */ }); kabar('Pilih aplikasi tujuan di menu bagikan. Teks juga sudah disalin.'); salinSinkron(teks); }
-      else salinKe(teks).then(function () { kabar('Berbagi tidak didukung di browser ini; teks disalin.'); });
-      return;
-    }
-    var st = SITUS[k2]; if (!st) return;
-    /* 1) salin dulu (masih dalam sentuhan pengguna), 2) baru buka situs AI */
-    var tersalin = salinSinkron(teks);
-    var lewat = st[2] && encodeURIComponent(teks).length <= BATAS_URL;
-    var url = lewat ? st[1] + '?' + st[2] + '=' + encodeURIComponent(teks) : st[1];
-    kabar(tersalin
-      ? 'Teks sudah disalin. Jika kolom chat ' + st[0] + ' kosong, tempel dengan tekan lama lalu Tempel.'
-      : 'Gagal menyalin otomatis. Coba lagi atau gunakan tombol Kirim….');
-    var w = window.open(url, '_blank');
-    if (!w) { var ln = document.createElement('a'); ln.href = url; ln.target = '_blank'; ln.rel = 'noopener'; ln.click(); }
+    if (k2 === 'unduh') unduh(susun());
   });
   daftar.addEventListener('click', function (e) {
     var c = e.target.closest('input[type="checkbox"]'); if (!c) return;
@@ -594,13 +558,10 @@
     if (e.shiftKey && terakhir >= 0) set(terakhir, k, c.checked);
     terakhir = k; segarkan();
   });
-  sel.addEventListener('change', function () { kustom.hidden = PROMPT[parseInt(sel.value, 10)][0] !== '__kustom__'; simpan('prompt', sel.value); });
-  kustom.addEventListener('input', function () { simpan('kustom', kustom.value); });
   fmt.addEventListener('change', function () { simpan('fmt', fmt.value); });
   tanpa.addEventListener('change', function () { simpan('tanpa', tanpa.checked ? '1' : '0'); });
   hlm.addEventListener('change', function () { simpan('hlm', hlm.checked ? '1' : '0'); });
   fmt.value = muat('fmt', 'ar'); tanpa.checked = muat('tanpa', '0') === '1'; hlm.checked = muat('hlm', '1') === '1';
-  sel.value = muat('prompt', '0'); kustom.value = muat('kustom', ''); kustom.hidden = PROMPT[parseInt(sel.value, 10) || 0][0] !== '__kustom__';
 
   fab.addEventListener('click', function () {
     segarkan(); dlg.showModal();
