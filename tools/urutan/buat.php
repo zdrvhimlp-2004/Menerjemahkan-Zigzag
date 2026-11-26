@@ -11,7 +11,7 @@
  *
  * Mode rapi:   php tools/urutan/buat.php --rapikan
  *   Menyusun ulang SEMUA folder dengan aturan baku (urutan lama diabaikan):
- *     1. maudhuat.html (paling atas)   2. subfolder   3. file .html   4. file .docx   5. file .pdf   6. lainnya
+ *     1. maudhuat.html (paling atas)   2. subfolder   3. file .pdf   4. file .html   5. file .docx   6. lainnya
  *   Di tiap kelompok: berkas "pokok" dulu, lalu berkas "Latihan"; "Daftar Isi" di depan, berkas bertanda ✏ setelah berkas biasa, lalu menurut halaman awal "(Hlm N-M)" bila ada;
  *   selebihnya abjad alami (angka berurutan).
  * Nama yang tidak tercantum di berkas akan ditampilkan paling akhir oleh daftar.php.
@@ -42,7 +42,7 @@ function rapi(string $dir, array $now): array {
         if (mb_strtolower($n) === 'maudhuat.html') return 0;
         if (is_dir($dir . '/' . $n)) return 1;
         $e = strtolower(pathinfo($n, PATHINFO_EXTENSION));
-        return $e === 'html' || $e === 'htm' ? 2 : ($e === 'docx' || $e === 'doc' ? 3 : ($e === 'pdf' ? 4 : 5));
+        return $e === 'pdf' ? 2 : ($e === 'html' || $e === 'htm' ? 3 : ($e === 'docx' || $e === 'doc' ? 4 : 5));
     };
     usort($now, function ($a, $b) use ($kel) {
         $ka = $kel($a); $kb = $kel($b);
