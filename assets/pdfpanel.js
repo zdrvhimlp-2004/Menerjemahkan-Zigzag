@@ -10,10 +10,11 @@
   var panel = document.createElement('div');
   panel.className = 'pdfp';
   panel.setAttribute('role', 'region'); panel.setAttribute('aria-label', 'PDF asli');
-  panel.innerHTML = '<div class="pdfp__bar"><button type="button" class="pdfp__b" data-a="prev" aria-label="Halaman sebelumnya">&#8249;</button><span class="pdfp__ttl"></span><button type="button" class="pdfp__b" data-a="next" aria-label="Halaman berikutnya">&#8250;</button><button type="button" class="pdfp__b pdfp__grip" aria-label="Seret untuk mengubah ukuran panel" title="Seret untuk mengubah ukuran panel (klik dua kali: reset)"><svg class="pdfp__gv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg><svg class="pdfp__gh" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></button><button type="button" class="pdfp__b" data-a="zoom-" aria-label="Perkecil">&minus;</button><button type="button" class="pdfp__b" data-a="zoom+" aria-label="Perbesar">+</button><a class="pdfp__b pdfp__dl" download aria-label="Unduh PDF" title="Unduh PDF"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11l4.5 4.5 4.5-4.5M5 19h14"/></svg></a><button type="button" class="pdfp__b" data-a="close" aria-label="Tutup">&times;</button></div><div class="pdfp__body"></div>';
+  panel.innerHTML = '<div class="pdfp__bar"><button type="button" class="pdfp__b" data-a="prev" aria-label="Halaman sebelumnya">&#8249;</button><span class="pdfp__ttl"><span class="pdfp__lb"></span> <input type="number" class="pdfp__no" min="1" inputmode="numeric" aria-label="Pindah ke halaman PDF" title="Ketik nomor halaman lalu tekan Enter"> <span class="pdfp__tot"></span></span><button type="button" class="pdfp__b" data-a="next" aria-label="Halaman berikutnya">&#8250;</button><button type="button" class="pdfp__b pdfp__grip" aria-label="Seret untuk mengubah ukuran panel" title="Seret untuk mengubah ukuran panel (klik dua kali: reset)"><svg class="pdfp__gv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg><svg class="pdfp__gh" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></button><button type="button" class="pdfp__b" data-a="zoom-" aria-label="Perkecil">&minus;</button><button type="button" class="pdfp__b" data-a="zoom+" aria-label="Perbesar">+</button><a class="pdfp__b pdfp__dl" download aria-label="Unduh PDF" title="Unduh PDF"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11l4.5 4.5 4.5-4.5M5 19h14"/></svg></a><button type="button" class="pdfp__b" data-a="close" aria-label="Tutup">&times;</button></div><div class="pdfp__body"></div>';
   document.body.appendChild(panel);
   var dl = panel.querySelector('.pdfp__dl'); dl.href = SRC;
   var ttl = panel.querySelector('.pdfp__ttl'), body = panel.querySelector('.pdfp__body');
+  var lb = panel.querySelector('.pdfp__lb'), no = panel.querySelector('.pdfp__no'), tot = panel.querySelector('.pdfp__tot');
   var prev = panel.querySelector('[data-a=prev]'), next = panel.querySelector('[data-a=next]');
   var doc = null, loading = null, page = 1, zoom = 1, token = 0, hlm = '';
   var wide = function () { return window.innerWidth >= 1100; };
@@ -60,7 +61,10 @@
   function msg(t) { body.innerHTML = '<p class="pdfp__msg"></p>'; body.firstChild.textContent = t; }
   function render() {
     var my = ++token;
-    ttl.textContent = (CFG.label || 'Hlm.') + ' ' + page + (doc ? ' / ' + doc.numPages : '');
+    lb.textContent = CFG.label || 'Hlm.';
+    if (document.activeElement !== no) no.value = page;
+    if (doc) no.max = doc.numPages;
+    tot.textContent = doc ? '/ ' + doc.numPages : '';
     prev.disabled = page <= 1; next.disabled = !doc || page >= doc.numPages;
     if (!doc) { msg('Memuat PDF\u2026'); return; }
     doc.getPage(page).then(function (pg) {
@@ -114,6 +118,18 @@
     else if (a === 'zoom+') { zoom = Math.min(3, zoom + 0.25); render(); }
     else if (a === 'zoom-') { zoom = Math.max(0.5, zoom - 0.25); render(); }
   });
+  /* kotak nomor halaman: ketik nomor + Enter, PDF dan HTML pindah ke halaman itu */
+  function lompat() {
+    var n = parseInt(no.value, 10);
+    if (!n || !doc) { no.value = page; return; }
+    n = Math.max(1, Math.min(doc.numPages, n));
+    no.value = n;
+    if (n !== page) { page = n; hlm = ''; render(); }
+    syncHtml();
+  }
+  no.addEventListener('keydown', function (e) { if (e.key === 'Enter') { lompat(); no.blur(); } e.stopPropagation(); });
+  no.addEventListener('change', lompat);
+  no.addEventListener('focus', function () { no.select(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('pdfp--on')) close(); });
 })();
 
