@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bangun halaman maudhuat.html tiap mata kuliah dari semN.py.
+"""Bangun halaman الموضوعات.html tiap mata kuliah dari semN.py.
 Pakai:  python3 tools/maudhuat/build.py        (dari root repo; semua semN.py di folder ini)
 Tiap semN.py berisi SEM dan COURSES = [(judul, nama_folder, teks), ...]."""
 import glob, html, importlib.util, os, re, sys
@@ -172,7 +172,7 @@ def main():
             # semester 5: maudhuat disimpan di folder 'Semester 5 (Versi 2)'
             d = os.path.join(ROOT, 'Data', 'Data Lughoh per Semester', 'Semester 5 (Versi 2)' if m.SEM == 5 else 'Semester %d' % m.SEM, folder)
             os.makedirs(d, exist_ok=True)
-            with open(os.path.join(d, 'maudhuat.html'), 'w', encoding='utf-8') as fh:
+            with open(os.path.join(d, 'الموضوعات.html'), 'w', encoding='utf-8') as fh:
                 fh.write(halaman(m.SEM, judul, teks))
             print('ok', m.SEM, folder)
 

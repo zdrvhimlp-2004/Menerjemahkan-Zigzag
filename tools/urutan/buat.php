@@ -11,7 +11,7 @@
  *
  * Mode rapi:   php tools/urutan/buat.php --rapikan
  *   Menyusun ulang SEMUA folder dengan aturan baku (urutan lama diabaikan):
- *     1. maudhuat.html (paling atas)   2. subfolder   3. file .pdf (HTML yang tertaut ke PDF-nya persis sesudahnya)   4. file .html   5. file .docx   6. lainnya
+ *     1. الموضوعات.html (paling atas)   2. subfolder   3. file .pdf (HTML yang tertaut ke PDF-nya persis sesudahnya)   4. file .html   5. file .docx   6. lainnya
  *   Di tiap kelompok: berkas "pokok" dulu, lalu berkas "Latihan"; "Daftar Isi" di depan, berkas bertanda ✏ setelah berkas biasa, lalu menurut halaman awal "(Hlm N-M)" bila ada;
  *   selebihnya abjad alami (angka berurutan).
  * Nama yang tidak tercantum di berkas akan ditampilkan paling akhir oleh daftar.php.
@@ -39,7 +39,7 @@ function bawaan(string $dir): array {
 /* aturan "rapi": kelompok -> latihan belakangan -> abjad alami */
 function rapi(string $dir, array $now): array {
     $kel = function (string $n) use ($dir): int {
-        if (mb_strtolower($n) === 'maudhuat.html') return 0;
+        if (mb_strtolower($n) === 'الموضوعات.html') return 0;
         if (is_dir($dir . '/' . $n)) return 1;
         $e = strtolower(pathinfo($n, PATHINFO_EXTENSION));
         return $e === 'pdf' ? 2 : ($e === 'html' || $e === 'htm' ? 3 : ($e === 'docx' || $e === 'doc' ? 4 : 5));
@@ -63,7 +63,7 @@ function rapi(string $dir, array $now): array {
     // HTML yang tertaut ke sebuah PDF (PDFPANEL src) ditaruh persis setelah PDF aslinya
     $nfc = function (string $s): string { return class_exists('Normalizer') ? mb_strtolower(Normalizer::normalize($s, Normalizer::FORM_C)) : mb_strtolower($s); };
     foreach ($now as $h) {
-        if (!preg_match('/\.html?$/i', $h) || mb_strtolower($h) === 'maudhuat.html') continue;
+        if (!preg_match('/\.html?$/i', $h) || mb_strtolower($h) === 'الموضوعات.html') continue;
         $isi = (string) @file_get_contents($dir . '/' . $h);
         if (!preg_match('/PDFPANEL\s*=\s*\{\s*src\s*:\s*"([^"]+)"/', $isi, $m)) continue;
         $tujuan = $nfc(basename($m[1]));

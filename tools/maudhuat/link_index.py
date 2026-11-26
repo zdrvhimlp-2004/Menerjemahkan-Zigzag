@@ -18,7 +18,7 @@ for m in mods:
 
 for m in mods:
     for judul, folder, _ in m.COURSES:
-        tag = "S%d + '%s/maudhuat.html'" % (m.SEM, folder)
+        tag = "S%d + '%s/الموضوعات.html'" % (m.SEM, folder)
         if tag in s:
             continue
         linkline = "        link('الموضوعات', %d, %s),\n" % (m.SEM, tag)
