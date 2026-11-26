@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>البحث عن النثر في العصر الوسيط — النص العربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+
+    --isi: #2f6b4f;      --isi-bg: #f1f6ee;
+    --nz: #6a3fa0;       --nz-ink: #4b2a80;   --nz-id: #6d5a8e;  --nz-bg: #f0eaf9;  --nz-line: #d9cbee;
+    --q: #9a6a00;        --q-bg: #fbf0cf;
+    --h: #0b6e6e;        --h-bg: #daf1ef;
+    --sy: #1f5fae;       --sy-ink: #164a8a;   --sy-id: #4f6f97;  --sy-bg: #e2edfb;  --sy-line: #bcd3f0;
+    --k: #b4531a;        --k-bg: #fbe4d2;
+    --c: #a8204f;        --c-bg: #fddce8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+
+      --isi: #7fc9a6;    --isi-bg: #1b2320;
+      --nz: #b99cee;     --nz-ink: #d6c4fa;   --nz-id: #a898c8;  --nz-bg: #2a2140;  --nz-line: #45375f;
+      --q: #e6b850;      --q-bg: #33280f;
+      --h: #63d2cc;      --h-bg: #12302f;
+      --sy: #7fb2f2;     --sy-ink: #b5d3fb;   --sy-id: #8fa9c9;  --sy-bg: #172a44;  --sy-line: #2c4a72;
+      --k: #f2a06b;      --k-bg: #3a2414;
+      --c: #ff9cbc;      --c-bg: #4a2132;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.25rem, 4vw, 2rem); }
+
+  /* ---------- baris Arab + Indonesia ---------- */
+  .ayat { display: flex; flex-direction: column; gap: 0.1rem; padding: clamp(0.5rem, 1.6vw, 0.75rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.35rem, 1rem + 2vw, 2rem); line-height: 2.05; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  /* ---------- jenis teks ---------- */
+  .blk { margin: 0.5rem 0; }
+  .blk-p { border-right: 3px solid var(--isi); padding: 0 clamp(0.6rem, 2vw, 1rem); margin: 0.9rem 0; }
+  .blk-p .ayat .ar { color: var(--ar-color); }
+
+  .blk-nz { background: var(--nz-bg); border-right: 5px solid var(--nz); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.4rem 0; }
+  .blk-nz .ayat .ar { color: var(--nz-ink); }
+  .blk-nz .ayat .id { color: var(--nz-id); }
+  .blk-nz .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-nz .bait + .bait { margin-top: 0.45rem; }
+
+  .blk-sy { background: var(--sy-bg); border-right: 5px solid var(--sy); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.2rem 0; }
+  .blk-sy .ayat .ar { color: var(--sy-ink); }
+  .blk-sy .ayat .id { color: var(--sy-id); }
+  .blk-sy .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-sy .bait + .bait { margin-top: 0.45rem; }
+
+  .tag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.8rem; padding: 0.2rem 0 0.35rem; direction: rtl; }
+  .tag__k { font-family: 'Amiri', serif; font-weight: 700; font-size: 1rem; }
+  .tag__t { direction: ltr; font-size: clamp(0.72rem, 0.66rem + 0.35vw, 0.85rem); font-weight: 500; }
+  .blk-nz .tag__k, .blk-nz .tag__t { color: var(--nz); }
+  .blk-sy .tag__k, .blk-sy .tag__t { color: var(--sy); }
+  .tag--cont .tag__t { font-style: italic; opacity: 0.8; }
+
+  /* ---------- span dalam baris ---------- */
+  .ayat .c, .legend .c { background: var(--c-bg); color: var(--c); border-radius: 0.45em; padding: 0.05em 0.3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .q, .legend .q { background: var(--q-bg); color: var(--q); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .h, .legend .h { background: var(--h-bg); color: var(--h); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .k, .legend .k { background: var(--k-bg); color: var(--k); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .ref { font-size: 0.85em; color: var(--q); opacity: 0.9; }
+  .ayat .id .c { font-weight: 500; }
+
+  /* baris yang hampir seluruhnya syahid */
+  .ayat.rq, .ayat.rh, .ayat.rk { border-radius: 10px; padding: clamp(0.5rem, 1.6vw, 0.75rem) clamp(0.6rem, 2vw, 0.9rem); margin: 0.15rem 0; }
+  .ayat.rq { background: var(--q-bg); border-right: 3px solid var(--q); }
+  .ayat.rh { background: var(--h-bg); border-right: 3px solid var(--h); }
+  .ayat.rk { background: var(--k-bg); border-right: 3px solid var(--k); }
+
+  /* ---------- judul bab & pembatas halaman ---------- */
+  .bab { background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2.5rem, 7vw, 4rem) 0 clamp(1.25rem, 4vw, 1.75rem); text-align: center; scroll-margin-top: 1rem; }
+  .bab__ar { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); line-height: 1.6; }
+  .bab__id { direction: ltr; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem); color: var(--id-color); font-weight: 500; }
+  .sub { font-family: 'Amiri', serif; font-size: 1.3rem; color: var(--heading); text-align: center; margin-top: 1.5rem; }
+  .sub__id { text-align: center; direction: ltr; font-size: 0.85rem; color: var(--muted); }
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+  [id^="nz-"], [id^="sy-"], [id^="qs-"], [id^="hd-"], [id^="kl-"] { scroll-margin-top: 1rem; }
+
+  /* ---------- ringkasan bab ---------- */
+  .ringkasan { background: var(--isi-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 3vw, 1.4rem); margin: 0 0 clamp(1.5rem, 4vw, 2.25rem); }
+  .ringkasan__judul { direction: ltr; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.6rem; }
+  .ringkasan__ar { direction: rtl; font-family: 'Amiri', serif; font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem); line-height: 2; color: var(--ar-color); margin-bottom: 0.7rem; }
+  .ringkasan__id { direction: ltr; font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem); color: var(--id-color); }
+
+  /* ---------- legenda ---------- */
+  .legend { direction: ltr; border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1rem, 3vw, 1.5rem); margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+  .legend__judul { font-weight: 600; font-size: clamp(0.85rem, 0.8rem + 0.4vw, 1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+  .legend ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.5rem 1rem; }
+  .legend li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--id-color); }
+  .legend .sw { flex: 0 0 auto; min-width: 4.2rem; text-align: center; border-radius: 8px; padding: 0.2rem 0.5rem; font-family: 'Amiri', serif; font-weight: 700; font-size: 1.1rem; line-height: 1.6; direction: rtl; }
+  .sw--isi { border-right: 3px solid var(--isi); color: var(--ar-color); background: var(--isi-bg); }
+  .sw--nz { background: var(--nz-bg); border-right: 4px solid var(--nz); color: var(--nz-ink); }
+  .sw--sy { background: var(--sy-bg); border-right: 4px solid var(--sy); color: var(--sy-ink); }
+  .legend .sw.c, .legend .sw.q, .legend .sw.h, .legend .sw.k { padding: 0.2rem 0.5rem; border-radius: 8px; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; background: var(--pasal-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem); margin-bottom: clamp(1.5rem, 5vw, 2.5rem); scroll-margin-top: 1rem; }
+  .daftar-isi__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.9rem; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc__btn { font: inherit; font-size: 0.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .toc__btn:hover { color: var(--heading); border-color: var(--heading); }
+  .toc { list-style: none; }
+  .toc__bab { margin-bottom: 0.7rem; }
+  .toc__bab > details > summary { cursor: pointer; display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; row-gap: 0.05rem; align-items: baseline; list-style-position: inside; padding: 0.3rem 0; }
+  .toc__no { grid-row: 1 / span 3; font-weight: 600; color: var(--id-color); }
+  .toc__ar { direction: rtl; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sec { margin: 0.6rem 0 0.4rem 1.6rem; }
+  .toc__sec h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.3rem; }
+  .toc__sec h4 small { text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .toc__sec ol { list-style: decimal; padding-left: 1.4rem; }
+  .toc__sec ul { list-style: none; }
+  .toc__sec li { margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--muted); }
+  .toc__sec a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; text-decoration: none; color: var(--id-color); }
+  .toc__sec a:hover .toc__t { color: var(--heading); }
+  .toc__t { flex: 1 1 60%; }
+  .toc__a { direction: rtl; font-family: 'Amiri', serif; font-size: 1.05rem; color: var(--nz-ink); flex: 0 1 auto; }
+  .toc__sy .toc__a { color: var(--ar-color); }
+  .toc__ref { font-size: 0.72rem; color: var(--q); }
+  .chip { flex: 0 0 auto; font-size: 0.66rem; font-weight: 600; padding: 0.05rem 0.5rem; border-radius: 999px; letter-spacing: 0.02em; }
+  .chip--sy { background: var(--sy-bg); color: var(--sy); }
+  .chip--q { background: var(--q-bg); color: var(--q); }
+  .chip--h { background: var(--h-bg); color: var(--h); }
+  .chip--k { background: var(--k-bg); color: var(--k); }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--legend { top: clamp(0.8rem, 2vw, 1.4rem); left: clamp(0.8rem, 2vw, 1.4rem); background: var(--card); color: var(--heading); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(720px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal.modal--wide { max-width: min(900px, 94vw); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.4rem); left: calc(clamp(0.8rem, 2vw, 1.4rem) + 3.1rem + 0.6rem); z-index: 25; max-width: min(60vw, 380px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 560px) { .crumb { display: none !important; } }
+  dialog.modal .legend, dialog.modal .daftar-isi { border: none; padding: 0; margin: 0; }
+
+  @media (max-width: 520px) {
+    .toc__sec { margin-left: 0.6rem; }
+    .toc__t { flex-basis: 100%; }
+  }
+
+  /* ---------- tambahan halaman naqd ---------- */
+  .sw--pt { border-right: 3px solid var(--h); color: var(--h); background: var(--h-bg); }
+  .sw--qt { border-right: 3px solid var(--q); color: var(--q); background: var(--q-bg); }
+  .blk-li { position: relative; border-right: 3px solid var(--h); background: var(--h-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li.has-no { padding-left: 2.6rem; }
+  .blk__no { position: absolute; left: 0.55rem; top: 0.75rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; background: var(--h); color: var(--card); font-size: 0.8rem; font-weight: 600; direction: ltr; }
+  .blk-q { border-right: 3px solid var(--q); background: var(--q-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li .ayat .ar, .blk-q .ayat .ar { color: var(--ar-color); }
+  .blk-sy .bait .ayat { gap: 0.1rem; }
+  .cover { margin: 0 0 1.5rem; text-align: center; }
+  .cover .ayat { align-items: center; padding: 0.2rem 0; }
+  .cover .ayat .ar { font-size: clamp(1.1rem, 0.95rem + 1vw, 1.5rem); line-height: 1.9; text-align: center; }
+  .cover .ayat .id { text-align: center; font-size: 0.8rem; }
+  .jadwal { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0 2rem; direction: rtl; }
+  .sat { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) 6rem; border-bottom: 1px solid var(--border); }
+  .sat:last-child { border-bottom: none; }
+  .sel { padding: 0.2rem 0.7rem; border-inline-start: 1px solid var(--border); min-width: 0; }
+  .sel:first-child { border-inline-start: none; }
+  .sel .ayat { padding: 0.3rem 0; }
+  .sel .ayat .ar { font-size: clamp(1.05rem, 0.9rem + 0.9vw, 1.4rem); line-height: 1.8; }
+  .sel .ayat .id { font-size: 0.82rem; }
+  .sel--kepala, .sel--grup, .sel--total { background: var(--pasal-bg); }
+  @media (max-width: 640px) {
+    .sat { grid-template-columns: 1fr auto; }
+    .sat .sel:nth-child(1) { order: 1; border-inline-start: none; }
+    .sat .sel:nth-child(3) { order: 2; }
+    .sat .sel:nth-child(2) { order: 3; grid-column: 1 / -1; border-inline-start: none; border-top: 1px dashed var(--border); }
+  }
+
+  .sub--3 { font-size: 1.1rem; margin-top: 1.1rem; }
+  .catatan { direction: ltr; text-align: left; margin: 0 0 1.4rem; padding: 0.8rem 1rem; border: 1px solid #d9a441; border-left-width: 5px; border-radius: 10px; background: color-mix(in srgb, #d9a441 14%, transparent); font-size: 0.85rem; line-height: 1.6; }
+  .catatan strong { display: block; margin-bottom: 0.25rem; }
+  .catatan ul { margin: 0.2rem 0 0 1.1rem; }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=30">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul" lang="ar">البحث عن النثر في العصر الوسيط</h1>
+    <p class="isi__ket" lang="ar">النُّصُوصُ الْأَدَبِيَّةُ (٤) · الْمُسْتَوَى الْخَامِسُ · النَّصُّ الْعَرَبِيُّ فَقَطْ (٥١ صَفْحَةً بِحَسَبِ أَرْقَامِ الصَّفَحَاتِ فِي الْأَصْلِ)</p>
+    
+
+    <dialog id="legend-modal" class="modal" aria-label="دليل الألوان">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <section class="legend" aria-label="دليل الألوان">
+        <h2 class="legend__judul" lang="ar">دَلِيلُ الْأَلْوَانِ</h2>
+        <ul>
+          <li><span class="sw sw--isi" lang="ar">الشَّرْحُ</span></li>
+          <li><span class="sw sw--pt" lang="ar">نُقْطَةٌ</span></li>
+          <li><span class="sw sw--sy" lang="ar">شِعْرٌ</span></li>
+          <li><span class="sw sw--nz" lang="ar">نَصٌّ</span></li>
+        </ul>
+      </section>
+    </dialog>
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="الفهرس">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <div class="daftar-isi__head">
+          <h2 class="daftar-isi__judul"><span lang="ar">الْفِهْرِسُ</span></h2>
+          <button type="button" class="toc__btn" id="toc-toggle" data-open="0">فتح الكل</button>
+        </div>
+<ol class="toc">
+<li class="toc__bab"><details><summary><span class="toc__no">1.</span><a class="toc__ar" lang="ar" href="#bab-1">المقدمة</a><span class="toc__meta">Hlm. 2&ndash;3</span></summary>
+</details></li>
+<li class="toc__bab"><details><summary><span class="toc__no">2.</span><a class="toc__ar" lang="ar" href="#bab-2">الحالة الثقافية النثرية في عصر الدول المتتابعة</a><span class="toc__meta">Hlm. 3&ndash;15</span></summary>
+<div class="toc__sec"><ol><li><a href="#sub-1"><span class="toc__a" lang="ar">أسباب ازدهار النثر في عهد الزنكيين والأيوبيين والمماليك</span><span class="toc__ref">Hlm. 3</span></a></li><li><a href="#sub-2"><span class="toc__a" lang="ar">ومن أهم أسباب تراجع النثر العربي في العصر العثماني:</span><span class="toc__ref">Hlm. 3</span></a></li><li><a href="#sub-3"><span class="toc__a" lang="ar">التسمية عن عصر الدول المتتابعة</span><span class="toc__ref">Hlm. 4</span></a></li><li><a href="#sub-4"><span class="toc__a" lang="ar">صحة تسمية هذا العصر بالانحطاط</span><span class="toc__ref">Hlm. 6</span></a></li><li><a href="#sub-5"><span class="toc__a" lang="ar">الرد على من سمى هذا العصر بالانحطاط :</span><span class="toc__ref">Hlm. 11</span></a></li></ol></div>
+</details></li>
+<li class="toc__bab"><details><summary><span class="toc__no">3.</span><a class="toc__ar" lang="ar" href="#bab-3">أنواع النثر وفنونه في العصر الوسيط</a><span class="toc__meta">Hlm. 15&ndash;35</span></summary>
+<div class="toc__sec"><ol><li><a href="#sub-6"><span class="toc__a" lang="ar">١. الخطابة</span><span class="toc__ref">Hlm. 15</span></a></li><li><a href="#sub-7"><span class="toc__a" lang="ar">الخطبة الدينية</span><span class="toc__ref">Hlm. 15</span></a></li><li><a href="#sub-8"><span class="toc__a" lang="ar">الخطابة الحربية</span><span class="toc__ref">Hlm. 16</span></a></li><li><a href="#sub-9"><span class="toc__a" lang="ar">الرسائل</span><span class="toc__ref">Hlm. 17</span></a></li><li><a href="#sub-10"><span class="toc__a" lang="ar">الرسائل الديوانية أو الرسمية</span><span class="toc__ref">Hlm. 17</span></a></li><li><a href="#sub-16"><span class="toc__a" lang="ar">الرسائل الإخوانية</span><span class="toc__ref">Hlm. 22</span></a></li><li><a href="#sub-17"><span class="toc__a" lang="ar">النثر القصصي</span><span class="toc__ref">Hlm. 23</span></a></li><li><a href="#sub-18"><span class="toc__a" lang="ar">القصة</span><span class="toc__ref">Hlm. 23</span></a></li><li><a href="#sub-19"><span class="toc__a" lang="ar">المقامات</span><span class="toc__ref">Hlm. 24</span></a></li><li><a href="#sub-20"><span class="toc__a" lang="ar">النثر التأليفي</span><span class="toc__ref">Hlm. 26</span></a></li><li><a href="#sub-21"><span class="toc__a" lang="ar">المنهجية</span><span class="toc__ref">Hlm. 27</span></a></li><li><a href="#sub-22"><span class="toc__a" lang="ar">الموسوعية</span><span class="toc__ref">Hlm. 28</span></a></li><li><a href="#sub-23"><span class="toc__a" lang="ar">الشرح والتبسيط</span><span class="toc__ref">Hlm. 28</span></a></li><li><a href="#sub-24"><span class="toc__a" lang="ar">التلخيص</span><span class="toc__ref">Hlm. 29</span></a></li><li><a href="#sub-25"><span class="toc__a" lang="ar">الحقول المعرفية وأبرز روادها</span><span class="toc__ref">Hlm. 29</span></a></li><li><a href="#sub-26"><span class="toc__a" lang="ar">المؤلفات الدينية</span><span class="toc__ref">Hlm. 30</span></a></li><li><a href="#sub-27"><span class="toc__a" lang="ar">المؤلفات اللغوية والأدبية</span><span class="toc__ref">Hlm. 30</span></a></li><li><a href="#sub-28"><span class="toc__a" lang="ar">المؤلفات التاريخية</span><span class="toc__ref">Hlm. 31</span></a></li><li><a href="#sub-29"><span class="toc__a" lang="ar">سمات النثر الفنية في عصر الوسيط</span><span class="toc__ref">Hlm. 31</span></a></li><li><a href="#sub-30"><span class="toc__a" lang="ar">أولاً : المبالغة في المحسنات البديعية.</span><span class="toc__ref">Hlm. 31</span></a></li><li><a href="#sub-31"><span class="toc__a" lang="ar">ثانيا : تدني مستوى الفصاحة في الألفاظ والأساليب.</span><span class="toc__ref">Hlm. 32</span></a></li><li><a href="#sub-32"><span class="toc__a" lang="ar">ثالثاً: عدم الابتكار والتجديد</span><span class="toc__ref">Hlm. 33</span></a></li></ol></div>
+</details></li>
+<li class="toc__bab"><details><summary><span class="toc__no">4.</span><a class="toc__ar" lang="ar" href="#bab-4">أعلام النثر في العصر الوسيط</a><span class="toc__meta">Hlm. 35&ndash;51</span></summary>
+<div class="toc__sec"><ol><li><a href="#sub-33"><span class="toc__a" lang="ar">١. ابن منظور</span><span class="toc__ref">Hlm. 35</span></a></li><li><a href="#sub-34"><span class="toc__a" lang="ar">اسمه ومولده ونسبه</span><span class="toc__ref">Hlm. 35</span></a></li><li><a href="#sub-35"><span class="toc__a" lang="ar">حياته العلمية والعملية</span><span class="toc__ref">Hlm. 35</span></a></li><li><a href="#sub-36"><span class="toc__a" lang="ar">صفاته</span><span class="toc__ref">Hlm. 35</span></a></li><li><a href="#sub-37"><span class="toc__a" lang="ar">شعره ومؤلفاته:</span><span class="toc__ref">Hlm. 35</span></a></li><li><a href="#sub-38"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 36</span></a></li><li><a href="#sub-39"><span class="toc__a" lang="ar">٢. شهاب الدين الخفاجي</span><span class="toc__ref">Hlm. 36</span></a></li><li><a href="#sub-40"><span class="toc__a" lang="ar">اسمه</span><span class="toc__ref">Hlm. 36</span></a></li><li><a href="#sub-41"><span class="toc__a" lang="ar">مولده ونشأته:</span><span class="toc__ref">Hlm. 36</span></a></li><li><a href="#sub-42"><span class="toc__a" lang="ar">وظائفه</span><span class="toc__ref">Hlm. 36</span></a></li><li><a href="#sub-43"><span class="toc__a" lang="ar">أهم إنجازاته:</span><span class="toc__ref">Hlm. 37</span></a></li><li><a href="#sub-44"><span class="toc__a" lang="ar">بعض شيوخه</span><span class="toc__ref">Hlm. 37</span></a></li><li><a href="#sub-45"><span class="toc__a" lang="ar">تلاميذه:</span><span class="toc__ref">Hlm. 37</span></a></li><li><a href="#sub-46"><span class="toc__a" lang="ar">بعض مؤلفاته:</span><span class="toc__ref">Hlm. 37</span></a></li><li><a href="#sub-49"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 38</span></a></li><li><a href="#sub-50"><span class="toc__a" lang="ar">٣. جلال الدين السيوطي</span><span class="toc__ref">Hlm. 38</span></a></li><li><a href="#sub-51"><span class="toc__a" lang="ar">اسمه ومولده</span><span class="toc__ref">Hlm. 38</span></a></li><li><a href="#sub-52"><span class="toc__a" lang="ar">نشأته وحياته :</span><span class="toc__ref">Hlm. 38</span></a></li><li><a href="#sub-57"><span class="toc__a" lang="ar">مكانته ومنزلته العلمية</span><span class="toc__ref">Hlm. 39</span></a></li><li><a href="#sub-58"><span class="toc__a" lang="ar">شخصيته وأخلاقه:</span><span class="toc__ref">Hlm. 40</span></a></li><li><a href="#sub-59"><span class="toc__a" lang="ar">مؤلفاته:</span><span class="toc__ref">Hlm. 40</span></a></li><li><a href="#sub-60"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 40</span></a></li><li><a href="#sub-61"><span class="toc__a" lang="ar">٤. الخطيب الحصكفي</span><span class="toc__ref">Hlm. 41</span></a></li><li><a href="#sub-62"><span class="toc__a" lang="ar">اسمه</span><span class="toc__ref">Hlm. 41</span></a></li><li><a href="#sub-63"><span class="toc__a" lang="ar">مولوده</span><span class="toc__ref">Hlm. 41</span></a></li><li><a href="#sub-64"><span class="toc__a" lang="ar">حياته</span><span class="toc__ref">Hlm. 41</span></a></li><li><a href="#sub-65"><span class="toc__a" lang="ar">مؤلفاته:</span><span class="toc__ref">Hlm. 41</span></a></li><li><a href="#sub-66"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 42</span></a></li><li><a href="#sub-67"><span class="toc__a" lang="ar">٥. عماد الدين الأصفهاني</span><span class="toc__ref">Hlm. 42</span></a></li><li><a href="#sub-68"><span class="toc__a" lang="ar">اسمه ومولده</span><span class="toc__ref">Hlm. 42</span></a></li><li><a href="#sub-69"><span class="toc__a" lang="ar">حياته</span><span class="toc__ref">Hlm. 42</span></a></li><li><a href="#sub-70"><span class="toc__a" lang="ar">خبرته ووظائفه</span><span class="toc__ref">Hlm. 42</span></a></li><li><a href="#sub-71"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 43</span></a></li><li><a href="#sub-72"><span class="toc__a" lang="ar">٦. القاضي الفاضل</span><span class="toc__ref">Hlm. 43</span></a></li><li><a href="#sub-73"><span class="toc__a" lang="ar">اسمه ومولده</span><span class="toc__ref">Hlm. 43</span></a></li><li><a href="#sub-74"><span class="toc__a" lang="ar">حياته</span><span class="toc__ref">Hlm. 43</span></a></li><li><a href="#sub-75"><span class="toc__a" lang="ar">من عباراته</span><span class="toc__ref">Hlm. 43</span></a></li><li><a href="#sub-76"><span class="toc__a" lang="ar">مؤلفاته:</span><span class="toc__ref">Hlm. 44</span></a></li><li><a href="#sub-77"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 44</span></a></li><li><a href="#sub-78"><span class="toc__a" lang="ar">٧. محي الدين بن عبد الظاهر</span><span class="toc__ref">Hlm. 44</span></a></li><li><a href="#sub-79"><span class="toc__a" lang="ar">اسمه ومولده ووفاته</span><span class="toc__ref">Hlm. 44</span></a></li><li><a href="#sub-80"><span class="toc__a" lang="ar">نشأته وحياته</span><span class="toc__ref">Hlm. 45</span></a></li><li><a href="#sub-81"><span class="toc__a" lang="ar">خبرته ووظائفه:</span><span class="toc__ref">Hlm. 45</span></a></li><li><a href="#sub-82"><span class="toc__a" lang="ar">مؤلفاته:</span><span class="toc__ref">Hlm. 46</span></a></li><li><a href="#sub-83"><span class="toc__a" lang="ar">٨. صلاح الدين الصفدي</span><span class="toc__ref">Hlm. 46</span></a></li><li><a href="#sub-84"><span class="toc__a" lang="ar">اسمه ومولده :</span><span class="toc__ref">Hlm. 46</span></a></li><li><a href="#sub-85"><span class="toc__a" lang="ar">شخصيته :</span><span class="toc__ref">Hlm. 46</span></a></li><li><a href="#sub-86"><span class="toc__a" lang="ar">مؤلفاته :</span><span class="toc__ref">Hlm. 47</span></a></li><li><a href="#sub-87"><span class="toc__a" lang="ar">وفاته :</span><span class="toc__ref">Hlm. 47</span></a></li><li><a href="#sub-88"><span class="toc__a" lang="ar">٩. الصاحب بن عباد</span><span class="toc__ref">Hlm. 47</span></a></li><li><a href="#sub-89"><span class="toc__a" lang="ar">اسمه ومولده</span><span class="toc__ref">Hlm. 47</span></a></li><li><a href="#sub-90"><span class="toc__a" lang="ar">حياته وشخصيته</span><span class="toc__ref">Hlm. 47</span></a></li><li><a href="#sub-91"><span class="toc__a" lang="ar">من مؤلفاته:</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-92"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-93"><span class="toc__a" lang="ar">١٠. ابن العميد</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-94"><span class="toc__a" lang="ar">اسمه</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-95"><span class="toc__a" lang="ar">دينه</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-96"><span class="toc__a" lang="ar">مولده</span><span class="toc__ref">Hlm. 48</span></a></li><li><a href="#sub-97"><span class="toc__a" lang="ar">وزارته وألقابه:</span><span class="toc__ref">Hlm. 49</span></a></li><li><a href="#sub-98"><span class="toc__a" lang="ar">حياته وشخصيته</span><span class="toc__ref">Hlm. 49</span></a></li><li><a href="#sub-99"><span class="toc__a" lang="ar">العلوم التي اشتهر بها :</span><span class="toc__ref">Hlm. 49</span></a></li><li><a href="#sub-100"><span class="toc__a" lang="ar">مؤلفاته:</span><span class="toc__ref">Hlm. 51</span></a></li><li><a href="#sub-101"><span class="toc__a" lang="ar">وفاته:</span><span class="toc__ref">Hlm. 51</span></a></li></ol></div>
+</details></li>
+</ol>
+      </nav>
+    </dialog>
+
+<div class="hal" id="hal-1" data-kitab="1"><span><i class="hal__t">Hlm. </i>1</span><button type="button" class="hal__pdf" data-pdf="1" aria-label="Lihat PDF asli untuk Hlm. 1" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">المملكة العربية السعودية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وزارة التعليم</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">جامعة الإمام محمد بن سعود الإسلامية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">معهد العلوم الشرعية و العربية بجاكرتا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قسم اللغة العربية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">البحث عن النثر في العصر الوسيط</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يبحث عن النثر في هذا العصر، أنواعه وفنونه، سماته الفنية العامة، ودراسة بعض أدباء النثر في هذا العصر</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إعداد الطالبة:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الطالبات من قسم اللغة العربية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">المستوى الخامس</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إرشاد:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فضيلة الأستاذ فيصل بن عبد العزيز المواش - حفظه الله تعالى</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">العام الجامعي</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١٤٤٢-١٤٤٣ هـ</p></div></div>
+<div class="hal" id="hal-2" data-kitab="2"><span><i class="hal__t">Hlm. </i>2</span><button type="button" class="hal__pdf" data-pdf="2" aria-label="Lihat PDF asli untuk Hlm. 2" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-1"><h2 class="bab__ar" lang="ar">المقدمة</h2></header>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">النثر في عهد الدولة الزنكيين والأيوبيين والمماليك ازدهر بشكل ملحوظ، لأنَّ اللغة العربية ظلت لغة رسمية لهم، مع أن أصولهم غير عربية، كما أن لغاتهم الأصيلة كانت غير عربية، وكان أغلب حكامهم من الأعاجم، لذا اتخذوا لأنفسهم كتابا يكتبون لهم الرسائل السلطانية، فهذا من الأسباب تطور النثر الديواني والاهتمام الكبير الذي أولاه حكام الدولة الأيوبية والمملوكية للكتاب وأصحاب الأقلام المتميزين (( فاجتهد الأيوبيون في اجتذاب أرباب الأقلام إلى مجالسهم وتنافسوا في استقطابهم وتواصوا في تقديرهم وإكرامهم))، وقد اعترف صلاح الدين بفضلهم وقدرتهم في التأثير وصياغة فكر المجتمع وصناعته وذلك في قوله : ((لا تظنوا أني ملكت البلاد بسيوفكم، بل بقلم القاضي الفاضل))، وكذلك فعل سلاطين الدولة المملوكية في عنايتهم بالنثر، فاهتموا بالكتاب حتى (( بلغوا عندهم منازل رفيعة قاربت منازل أصحاب السيوف وكبار القضاة)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما في عهد الدولة العثمانية فقد تراخت عجلة ازدهار الفنون النثرية، بل إن بعضها وصل إلى درجة كبيرة من الضعف والركاكة لم يسبق أن وصلها من قبل في تاريخ النثر العربي العريض، فقد غدت التركية لغة الدولة الرسمية وبها تكتب المراسلات والمعاهدات والمعاملات، ثم تأتي بعدها في المقام الثاني اللغة الفارسية وتدرس في المدارس ويتحدث بها كثير من الثقفين والحكام، ثم تأتي العربية في المقام الثالث والدولة العثمانية لا تحاربها ولا تقف عقبة في وجه من يسعى إلى تعلمها؛ لأنها لغة القرآن والإسلام ولها في النفوس أرفع مقام ((فخمدت أذهان الكتاب العرب وتقصفت أقلامهم حتى لم يعودوا يجدون في أنفسهم قدرة على التعبير وتعثروا في الركاكة التي ما بعدها ركاكة)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولعلنا من خلال الصفحات القادمة نقوم بتسليط الضوء على الجانب النثري في أدب الدول المتتابعة محاولين الكشف عن خصائصه الفنية، وأنواعه وأشكاله المختلفة التي نشطت في هذا العصر ومختتمين حديثنا حول النثر بالتعرف على أبرز الكتاب والأدباء الذين قادوا دفة الإبداع الفني ووجهوا أشرعته باتجاه التميز المعرفي وتطوره.</p></div></div>
+<div class="hal" id="hal-3" data-kitab="3"><span><i class="hal__t">Hlm. </i>3</span><button type="button" class="hal__pdf" data-pdf="3" aria-label="Lihat PDF asli untuk Hlm. 3" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-2"><h2 class="bab__ar" lang="ar">الحالة الثقافية النثرية في عصر الدول المتتابعة</h2></header>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قد ساهمت كثير من العوامل في هذا التعدد النوعي في الثقافة النثرية في عصر الدول المتتابعة، لعل من أبرزها الازدهار الكبير الذي اتسم به فن النثر آنذاك، وسأوضح أسبابه وبواعثه.</p></div></div>
+<h3 class="sub" id="sub-1" lang="ar">أسباب ازدهار النثر في عهد الزنكيين والأيوبيين والمماليك</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد زاد عدد العلماء والشعراء والكتاب والمؤلفين زيادة كبيرة في عهد الدول الثلاث، وحافظ النثر العربي على مستوى جيد من الجودة، وذلك لعدة أسباب، من أهمها :</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١- بقاء اللغة العربية لغة رسمية للدولة في المعاملات والمراسلات، وكونها لغة الثقافة والعلوم والفنون والآداب.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢- الاستقرار الأمني الذي تمتعت به بلاد مصر والشام في عهد الأيوبيين والمماليك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣- بناء المدارس والمساجد ودور العلم في معظم المدن المهمة في مصر والشام والحجاز.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٤- رعاية الحكام للعلماء والأدباء، وتوفير المناخ العلمي والحياة الكريمة لهم مع الإجلال والاحترام.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٥- الاهتمام بديوان الإنشاء، وذلك بإيجاد الكثير من الإغراءات والحوافز للمثقفين مما أدى إلى التنافس في التحصيل والمعرفة والثقافة، وكان لديوان الإنشاء أثر بالغ في النهضة العلمية، وازدهار الثقافة عموما، والنثر على وجه الخصوص.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٦- هروب العلماء والأدباء والكتاب إلى مصر والشام والحجاز، من شرقي العالم الإسلامي إثر اجتياح التتار، ومن الأندلس بعد اجتياح الإسبان لبلادهم وطردهم منها .</p></div></div>
+<h3 class="sub" id="sub-2" lang="ar">ومن أهم أسباب تراجع النثر العربي في العصر العثماني:</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١- لم تعد العربية اللغة الحكومية المعتمدة، بل غدت التركية وكذلك اللغة الفارسية لغة الدولة الرسمية، بها تكتب المراسلات والمعاهدات والمعاملات، وتدرس في المدارس، ويتحدث بها كثير من المثقفين والحكام.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">https://fac.ksu.edu.sa/halfaify/blog/276740</p></div></div>
+<div class="hal" id="hal-4" data-kitab="4"><span><i class="hal__t">Hlm. </i>4</span><button type="button" class="hal__pdf" data-pdf="4" aria-label="Lihat PDF asli untuk Hlm. 4" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢- العربية لغة القرآن والإسلام، لذا لم تحاربها الدولة العثمانية، ولم تمنع من تعلمها، ولكنها لم تولها أي: لم تهتم بها الدولة، وقد بقيت العربية لغة رسمية للمعاملات في الأقطار العربية لأمد غير قصير، ولكن العثمانيين أبطلوا اللغة العربية من ديوان الإنشاء العربي في أواخر عهدهم، وأحلوا اللغة التركية محلها، فتدهورت الثقافة العربية، وانعدمت الحوافز، وساءت الكتابة بوجه عام.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣- انقطع إنفاق الدولة على المدارس العربية كلها، ولم يُنشئ الحكام مدارس جديدة، ولم يعتنوا كما ينبغي بالمدارس الموجودة، فأخذ تلك المدارس عددها يتناقص يوماً بعد يوم. وحل محلها كتاتيب صغيرة تعلم القرآن الكريم وتجويده ومبادئ القراءة والكتابة والحساب. حتى إذا أوغل الحكم العثماني في الزمن، ران الجهل على البلاد العربية المحكومة، وصار من النادر وجود من يحسن القراءة والكتابة فيها فضلا عن العلماء والأدباء الأفذاذ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٤- استولى السلاطين العثمانيون على خير ما في خزائن مصر والشام والحجاز من الكتب، كما أخذوا خيرة علماء العربية، ومَهَرَة الصناع والحرفيين إلى العاصمة اصطنبول. وكان ذلك سبباً في تراجع الاهتمام باللغة وعلومها، فتدهورت منابع العلم وتفشى اللحن والعامية والجهل والأمية؛ بعد أن أصبحت بلاد العرب شبه خالية من نجوم العلم والمعرفة والإبداع.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٥- ومن أظهر الأسباب التي أدّت إلى ضعف الأدب النثري في العصر المملوكي والعثماني: أن المماليك لم يكن لهم ميل إلى الأدب أو حس لغوي بتذوّق الجمال فيه، يضاف إلى ذلك أن الأدب فقد جمهوره فتحوّل ذلك الجمهور إلى الأدب الشعبي في مثل قصص سيف بن ذي يزن وأبي زيد الهلالي والزير سالم".</p></div></div>
+<h3 class="sub" id="sub-3" lang="ar">التسمية عن عصر الدول المتتابعة</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قسم المستشرقون العصور الأدبية تقسيمات تتماشى وفترات التاريخ السياسي، وهي تقسيمات انتقلت إلى العرب نتيجة التأثر والتأثير في الفكر العربي المعاصر، وثمرة من ثمرات الصلة بالآداب الأوربية، وقد سمي عصر الدول المتتابعة بأسماء أخرى:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">https://fac.ksu.edu.sa/halfaify/blog/276740</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">http://ahmadkelhy.blogspot.com/2012/02/blog-post_8846.html</p></div></div>
+<div class="hal" id="hal-5" data-kitab="5"><span><i class="hal__t">Hlm. </i>5</span><button type="button" class="hal__pdf" data-pdf="5" aria-label="Lihat PDF asli untuk Hlm. 5" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أطلق الباحثون على المدة التي تقع بين سقوط بغداد في ٦٥٦هـ ومجيء نابليون بونابرت إلى مصر في ١٢١٣هـ / ۱۷۹۸م اسم عصر الانحطاط، وكانوا يعنون به عصر التأخر السياسي والفكري والعلمي والأدبي, متأثرين في ذلك بدراسات استشراقية، وبتسمية الفرنسيين الذين أطلقوا هذه التسمية على الأدب اللاتيني، وقد سمى دارسو الأدب بهذه التسمية متأثرين بهم، وبفكرة الضعف السياسي بسقوط بغداد على أيدي التتر، وبانحدار مستوى الأدب العربي في هذا العهد، ثم تبين للباحثين بعد اطلاعهم على معطيات العصر الثقافية والفكرية والسياسية خطل هذه التسمية وسابقتها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ذكر الدكتور شكري فيصل في كتابه مناهج الدراسة الأدبية أن حسن توفيق العدل (١٢٨٨هـ /١٨٦٢م)، وعبد الله دراز (۱۹۱۰م) وأحمد الإسكندري (١٨٧٥-١٩٣٨م) وهم باحثون مصريون في القرن العشرين اتفقوا على تسمية العصر بعصر الدول المتتابعة، ويضيف الأخير كلمة التركي إلى التسمية فتكون "عصر الدول المتتابعة التركي" وذلك في تقسيمهم للعصور الأدبية، وكانت عندهم:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١- العصر الجاهلي</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢- عصر ابتداء الإسلام أو عصر صدر الإسلام وعصر بني أمية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣- العصر العباسي وينتهي عندهم بهجمة المغول على بغداد في ٦٥٦هـ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٤- عصر الدول المتتابعة ، وهو عصر يبدأ بـ ٦٥٦هـ ينتهي بالنهضة الأخيرة ١٢٢٠هـ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٥- عصر النهضة الأخيرة ويبتدئ من ١٢٢٠هـ حتى وقتنا هذا أما د. شوقي ضيف فيسمي العصر عصر الدول والإمارات)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان دليل جامعة الشارقة في دولة الإمارات العربية المتحدة يحمل هذا الاسم أيضا. وكذلك كانت المملكة العربية السعودية تدرسه بهذا الاسم, بتسمية الأغلبية وسمت كتابيها بعصر الدول المتتابعة وهما "الشعر العربي في عصر الدول المتتابعة" و "النثر العربي في عصر الدول المتتابعة".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">واختارت تسمية عصر الدول المتتابعة، كما ذكرت في كتابها الأول الشعر العربي في عصر الدول المتتابعة" وكررته في الثاني "النثر العربي في عصر الدول المتتابعة لأنه الاسم الأعرف والأشهر لهذا العصر، كما أنه يشير إلى دول تعاقبت في الأصقاع العربية خلال هذه المدة : أيوبية ومملوكية وعثمانية وغيرها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">http://www.odabasham.net / نقد أدبي / ٨٤٢١- إشكالية - مفهوم عصر - الدول المتتابعة التسمية و الزمن</p></div></div>
+<div class="hal" id="hal-6" data-kitab="6"><span><i class="hal__t">Hlm. </i>6</span><button type="button" class="hal__pdf" data-pdf="6" aria-label="Lihat PDF asli untuk Hlm. 6" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-4" lang="ar">صحة تسمية هذا العصر بالانحطاط</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هذا عصر اعتنى الشعراء والأدباء فيه بالقضايا الشعبية العامة، إما بالإنشاد أو بالكتابة وذلك كان ضروريا في هذه الفترة الحاسمة ومن ميزاته الابتكار والإبداع بلا تقليد وتكلف وانعكاس واقع الحياة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وإذا لم يتمتع الكاتب أو الشاعر بهذه الموهبة، يقع في التكلف والتصنع كما نراه جلياً واضحاً في النواحي المختلفة من أدب هذا العصر الذي وقعوا فيه دون أي ابتكار وأدى إلى الضعف والركاكة والإسفاف. إذن ليس هذا ضعف على المهتمين بها في هذا العهد الذي يعتبره البعض بل نرى عكس ذلك في هذه الناحية كانوا أقوياء جدا؛ لأنهم أحسوا حاجتهم القوية في اهتمام الأدب العربي من الشعراء والأدباء في هذا العصر.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">في قول الدكتور عمر فروخ في مقدمة الجزء الثالث من كتابه تاريخ الأدب العربي "هذه الفترة ليست قليلة الشهرة فحسب، ولكنها مظلومة أيضا إذ يسمي القسم الأخير منها عصر الانحطاط تسمية فيها قليل من الصواب والحق وكثير من الخطأ والباطل. ويجد القارئ شرح جوانب من هذه التسمية الخاطئة الظالمة في مقدمات فصول مختلفة من هذا الجزء ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أولاً: لابد أن نعرف لماذا سمي هذا العصر بالانحطاط ؟ ولما اختزنت في تاريخ الأدب بهذا المسمى بالانحطاط ؟</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">نأتي إلى الجانب الفكري والعلمي والثقافي، نحن لا ننكر تراجع التأليف عن سابق عهده وانتشار النظم في الشعر وانتشار البدع والخرافات والسحر والشعوذة التي سيطرت على عقول الناس والركاكة والسخف في الدواوين الشعرية والآثار.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد ازداد عدد العلماء والشعراء والكتاب والمؤلفين زيادة كبيرة لأسباب، منها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هروب العلماء والأدباء من شرقي العالم الإسلامي إلى مصر والشام إثر اجتياح التتار،</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهروب العلماء والأدباء من غرب العالم الإسلامي أي من الأندلس إلى هناك، بعد اجتياح الإسبان للدولة الأندلسية المسلمة</p></div></div>
+<div class="hal" id="hal-7" data-kitab="7"><span><i class="hal__t">Hlm. </i>7</span><button type="button" class="hal__pdf" data-pdf="7" aria-label="Lihat PDF asli untuk Hlm. 7" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن تلك الأسباب الاستقرار الأمني الذي تمتعت به بلاد مصر والشام ولاسيما في عهد الأيوبيين والمماليك، ورعاية حكامها للعلماء والأدباء وتوفير المناخ العلمي والحياة الكريمة لهم مع الإجلال والاحترام.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وعلى سبيل المثال نذكر صفي الدين الحلي، وبهاء الدين العاملي، وابن نباتة، والبوصيري، وابن أبي أصيبعة مع كتابه طبقات الأطباء، وابن النفيس في الطب، وابن خلدون في علم الاجتماع، وابن تيمية، وابن خلكان، والصفدي، والذهبي صاحب الرسالة الذهبية، وابن حجر العسقلاني، وشمس الدين السخاوي، والقلقشندي، والمقريزي، وجلال الدين السيوطي، والجوهري، وابن زنبل وأبا الفداء الأيوبي وكثيرا من الكتاب والباحثين والموسوعيين الآخرين الذين تنورت سماء حضارتنا الإسلامية بل العالم بأجمعه بأفكارهم وجهودهم وآثارهم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">زد على ذلك عناية كثير من الأمراء والسلاطين بموضوع التعليم في المساجد والمدارس وغيرها في عصر كثرت فيه البلابل والاضطرابات والطواعين والأوبئة والأمراض الأخرى. حيث أنشئ عدد كبير من المدارس والجوامع في جميع أنحاء البلاد كان فيها أساتذة يلقون دروسا في موضوعات معينة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهتم السلاطين في هذا العصر بإنشاء المدارس وحتى بعض نسائهم شدن عدداً من المدارس، كان منها المدرسة الشامية والخاتونية ، وحث الطلبة على العلم، وتكريم العلماء، وتوفير المناخ الطيب لإنتاجهم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان بناء المساجد يساير حركة بناء المدارس والمساجد في عهدهم مواطن للعلم والدرس إلى جانب كونها للعبادة. وقد عرف الكثير منهم بإنشاء المدارس المنظمة، وعمارة المساجد، واستقدموا من المهندسين المهرة ليبنوا المدارس الفائقة في حلب وحماة وحمص وبعلبك ويشرفون بأنفسهم على صيانتها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما عرفوا بحبهم للحديث الشريف، فأنشئوا له مدارس خاصة، وأوقفوا عليها أوقافاً كبيرة. كما أصبحت دمشق في هذا العهد تدعى مدينة المدارس. حيث وصف ابن جبير في رحلته هذه المدارس ووجدها قصوراً أنيقة، ومن أحسن مدارس الدنيا منظراً.</p></div></div>
+<div class="hal" id="hal-8" data-kitab="8"><span><i class="hal__t">Hlm. </i>8</span><button type="button" class="hal__pdf" data-pdf="8" aria-label="Lihat PDF asli untuk Hlm. 8" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">على سبيل المثال: المدرسة الظاهرية، والصاحبية، والعادلية، والأشرفية، والناصرية. كما إن ابن بطوطة عجب من كثرتها بسبب أن الحكام تنافسوا في إنشائها، ذاكراً أنه لا يحيط بحصرها لكثرتها. وذكر من هذه المدارس: الظاهرية والمنصورية ومدرسة السلطان حسن، والسلطان برقوق، والمؤيد شيخ وسواها. ولكنها مع الأسف تقلل من عددها في العصر العثماني؛ لأنه انقطع إنفاق الدولة على المدارس، ولم تنشأ مدارس جديدة، وأخذ عددها يتناقص يوماً بعد يوم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما أكثر موضوعات العلم رواجا فكان الحديث ودراسة على المذاهب الأربعة. وكان إلى جانبهما تفسير القرآن الكريم وأصول الدين واللغة والأدب. ثم إن كثرة التأليف في العلوم الرياضية والطبيعية من الرياضيات والفلك والجغرافية والهندسة والطب وما إليها يوحي بأنه كان لمثل هذه الموضوعات مدارس خاصة أو حلقات خاصة في المدارس العامة. وكانت العلوم الطبيعية والطب الخاصة تعلم في المستشفيات نظريا وعمليا معا، كما أن العلوم الرياضية كانت تعلم في المراصد. كما رأى هذا العصر اتجاها شموليا في التأليف بالموسوعات وبالشروح والحواشي في العلوم المختلفة وكان غنيا جدا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد كثر التصنيف في العلوم المختلفة من التفسير والحديث والفقه والعلوم الطبيعية والرياضية والجغرافيا والتاريخ والملاحة وغير ذلك. وكان لديوان الإنشاء أثر بالغ في النهضة العلمية، وازدهار الثقافة، لما كان فيه من إغراءات، وحوافز.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكما كثر أصحاب الرحلات حيث نضج أدب الرحلة ونجد عددا كبيرا من الرحلات التي أبدعها أبناء هذا العهد الإسلامي واهتم به كثير من المستشرقين ومع الأسف لم تبحث أو تعرض العرض الأدبي الصحيح.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان من نتيجة هذه العوامل أن استطاع العلماء تعويض المكتبة العربية الإسلامية بعض ما ضاع منها حرقاً أو إتلافاً أو سرقة بيد التتار الوحشيين والإفرنج الحاقدين على مكتسبات العلماء المسلمين، وكانوا في تأليفهم يعتمدون على ما وصل إليهم من العصور السابقة فيقومون بتصنيفه وترتيبه وتدوينه في كتب جامعة تقرب من الموسوعات. وكثرت في هذا العصر الشروح والذيول والحواشي ، حتى سمي بعصر التحشية والموسوعات. ولكن مع الأسف الشديد هذه الحقبة الخصبة نسبياً لم تستمر في عهد العثمانيين.</p></div></div>
+<div class="hal" id="hal-9" data-kitab="9"><span><i class="hal__t">Hlm. </i>9</span><button type="button" class="hal__pdf" data-pdf="9" aria-label="Lihat PDF asli untuk Hlm. 9" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لذلك عندما نعود عند مسألتنا لماذا عصر الانحطاط ؟ فليست المشكلة من الناحية الفكرية أو العلمية أو التعليمية وغيرها، ربما يعود أمر هؤلاء الذين يلحون على هذا الأمر بأميتهم وجهلهم الذي شاركوا في داء المؤامرة من ناحية الغربيين الإفرنج الذين لم يكن باستطاعتهم نسيان الفشل والإحباط أمام المسلمين من الناحية السياسية بمسألة الحرب الصليبية وتوابعها؛ حيث نراها في كثير من الكتب التاريخية ونلاحظ المستشرقين يعملون تخريباً في تاريخنا الإسلامي آنذاك مثل كلود كاهن ولوتسكي وجان كوهن والكثيرين.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ثانيا: ناقش بعض الباحثين تاريخ الأدب العربي في عصوره المختلفة، وقسموه إلى أقسام كما يبدو أنه تقسيم استشراقي الذي يستلهم دورة الحضارة الغربية، وهاهي عصر النشأة، وعصر الترجمة، وعصر الإبداع الفكري، وبعد ذلك عصر الجمود والانحطاط، ثم يليه عصر النهضة الحديثة الممتاز بالإبداع والإبتكار – وطبعا المتسم بتأثره بتكنولوجيا غربية والتغريب والرؤية الفكرية الغربية، وهم اعتبروا العصرين المملوكي والعثماني من عصور الانحطاط، كما اعتبروا أن عصر النهضة بدأ باحتلال نابليون لمصر سنة ١٧٩٨ للميلاد. فهل هذا التحقيب والتصنيف صحيح وسليم؟ فما أبرز مظاهر الانحطاط في رأيهم؟</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن أبرز مظاهر الانحطاط في رأيهم جمود العقول، وقلة الإبداع العلمي، والتكرار والاجترار في الإنتاج العلمي وغيره.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن الفترة الواقعة بعد سقوط بغداد مقولة هامة في الأدب العربي، التي هي بحاجة ماسة لتكثيف الجهد العميق والعمل والتحليل الدقيق. ومن المفترض علينا أن نعي هذا العصر وعيًا صحيحًا، وأن ندرسه درسًا منهجيًا ولنناقش عناصره ولندرس مؤثراتها الإيجابية والسلبية التي تكون في أدب كل عصر وجوهره.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فقد أطلق على الفترة التي تلت سقوط بغداد بالفترة المظلمة، وهذه التسمية تعد ظلما وجناية؛ لأنه ليس من المناسب أن نصف فترة أنها مظلمة مع أنها كانت تتميز بمقاومة المحتلين والتصدي لهم. بل على عكس ذلك، هذه فترة متصفة بالحماسة والبسالة والبطولة أمام نير الأجانب من الإفرنج والمغول وحث الشعب على المقاومة،</p></div></div>
+<div class="hal" id="hal-10" data-kitab="10"><span><i class="hal__t">Hlm. </i>10</span><button type="button" class="hal__pdf" data-pdf="10" aria-label="Lihat PDF asli untuk Hlm. 10" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهكذا انعكس هذا العصر في دواوين شعراء هذه الفترة المظلمة؛ فلا يصح أن نطلق وصف الانحطاط على أدب تلك الفترة، ولو أننا نعتقد أيضا قد ضعف وتراجع عن تلك القوة التي تميز بها شعر العصر العباسي، ولذلك العصر مؤثراته الخاصة ولهذا العصر مؤثراته المختصة به.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن الأدب العربي في هذا العصر، شغل حيزاً مهماً من تاريخ الأدب ولكنه رغم هذا الأمر الخطير مع الأسف اتسم بالانحطاط. فحال الأدب في هذا العصر قصر كثيراً وتباطأت حركته، فلم يساير تقدم الفكر فيه، ولم يواز حركته الإبداعية. والأسلوب العربي قد ابتلي في أثنائه مقادير متفاوتة من الركاكة بسبب عدم عناية السلاطين والأمراء بالأدب والأدباء وعدم اهتمامهم باللغة العربية كلغة رسمية ولاسيما في عصر العثمانيين الذي حلت محلها اللغة التركية وغلبة العجمة عليها، ولذا فإن الضعف الفني والجمود الإبداعي كانا هما المسيطران عليه، وكان هذا الضعف والجمود يسيطران على الجانب الشعري أكثر من الجانب النثري، وذلك لعوامل منها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أن السلطة السياسية والتي يمثلها الحكام والسلاطين كانت أعجمية، ولذلك لم يقوموا بدعم حركة الشعر الفصيح ونهوضه، بل شجعوا على النظم باللهجة العامية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عدم اهتمام الحكام والسلاطين بالشعراء كما سبق ذكره.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">دخول عدد كبير من الجنسيات غير عربية لمجتمع الدول المتتابعة الذي أدى إلى تفشي العامية وانحسار واضح لمتكلمي العربية الفصحى.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن الخطأ الحاقد في التسمية والتهمة المشؤومة على أدب مرحلة حاسمة في تاريخ الأدب العربي والإسلامي؛ لأن المعنى المكتسب بالإضافة إلى عصر الانحطاط أو عصر الانحدار هو الذي وصم الأدب بهذه الوصمة، فمن الجفاء أن نتصفه بالضعف أو وصف الانحطاط والانحدار، ولا يجوز إهماله؛ لأنه قطعة من تاريخ الأمة الإسلامية الحاسم، الأمة التي قاومت الأعداء الغربيين الإفرنج والتتار المتوحش وكانت ناجحة في هذه المقاومة الصامدة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">بالنظر إلى صحة التسمية في هذا العصر، نلاحظ أن من عهد إلى عهد مصطلحات أو تسميات التي استحدثت أو أطلقت عليه. ففي تاريخ صراع الشرق والغرب نعتت تارة بأدب عصور الانحطاط والانحدار، ومنهم من سماه</p></div></div>
+<div class="hal" id="hal-11" data-kitab="11"><span><i class="hal__t">Hlm. </i>11</span><button type="button" class="hal__pdf" data-pdf="11" aria-label="Lihat PDF asli untuk Hlm. 11" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">بعصر العثمانيين، وآخر ادعى بأنه العصر التركي، بينما البعض الآخر وصفه بعصر المملوكي والمماليك، وهناك من يطلق عليه عصر التتر أو العصر المغولي، وتارة سمي باسم أدب الدول المتتابعة وتارة باسم أدب العصور الوسطى الإسلامية، قياسا على عصور أوروبا الوسيطة التي سبقت عصور الأنوار، علما بأن كثيرا من المؤرخين قسموا عصور الانحطاط إلى دورين:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الدور المملوكي الذي يبتدئ من سنة ٦٤٨هـ . وهم سلالتان: الأولى المماليك البحرية والثانية المماليك البرجية أو الشراكسة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الدور العثماني حينما استولى العثمانيون على القاهرة سنة ٩٢٣هـ .</p></div></div>
+<h3 class="sub" id="sub-5" lang="ar">الرد على من سمى هذا العصر بالانحطاط :</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">سبق لنا أن الضعف الفني والجمود الإبداعي كانا هما المسيطران على الأدب في هذا العصر. ولكن لا نستطيع أن نصف هذا العصر بالانحطاط مطلقا، وذلك لأسباب منها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عدم وجود أسس واضحة ومعايير ثابتة للأحكام النقدية الأدبية، بل إن الذوق الأدبي يقوم بدور محوري في إصدارها.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. لا يمكن الحكم على أدب عصر بحكم واحد فقط، فإن كل العصور لها امتيازاتها ولها سلبياتها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أن هذا العصر امتد زمنا طويلا قرابة سبعة قرون ما بين ٦٥٦هـ ، و ١٢١٣هـ. فلا يمكن وصفه بالانحطاط والانحدار متجاهلا بالكثير من الشعراء والكتاب الذين رسموا في هذه القرون جوانب مشرقة من الإبداع الأدبي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">رغم عن ذلك دورنا تجاه لهذا التاريخ الأدبي أن نرى الجانب الصائب، بأن أدب هذا العهد محتاج إلى جهود جمعية؛ لأنه لم يحقق علميا في صورته المقبولة كما لم يُنظر فيه بنظرة موضوعية تقيسه بمقاييس ملائمة له، ولذلك فهو مجال واسع لدراسات كثيرة متنوعة في كمها وكيفها للوصول إلى الرؤية المنطقية الصائبة مبتعدة عن الخطأ عن حال الأدب العربي آنذاك.</p></div></div>
+<div class="hal" id="hal-12" data-kitab="12"><span><i class="hal__t">Hlm. </i>12</span><button type="button" class="hal__pdf" data-pdf="12" aria-label="Lihat PDF asli untuk Hlm. 12" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما علينا قبول هذه المسألة بأن قد أصابه شيء من العقم والجمود، فهو جزء ضخم من تراثنا الفني وتاريخنا الأدبي ويجب أن يخضع للدراسة الأكاديمية أو المنهجية للحكم عليه كما ينبغي له ويليق به لهذه الميزات التي يمكن أن نخلصها فيما يلي:</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. أدى هذا الأدب مهمته في تصوير الحياة في ذلك العصر سياسيا، اجتماعيا وثقافيا.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. رأى هذا العصر اتجاها شموليا في التأليف بالموسوعات والمجاميع وبالشروح والحواشي في العلوم المختلفة وكان غنيا زاخرا جدا. وقد كثر التصنيف في العلوم المختلفة من التفسير والحديث والفقه والعلوم الطبيعية والرياضية والجغرافيا والتاريخ والملاحة وغير ذلك.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. أنشئ عدد كبير من المدارس والجوامع في جميع أنحاء البلاد كان فيها أساتذة يلقون دروسا في موضوعات معينة في الحديث ودراسة على المذاهب الأربعة وتفسير القران الكريم وأصول الدين واللغة والأدب. وكذلك العلوم الرياضية والطبيعية من الرياضيات والفلك والجغرافية والهندسة والطب.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. ازدهر التيار الصوفي في الإبداع الأدبي شعرا ونثرا وفكرا حيث كثر التأليف فيه مع ابن العربي، ابن الفارض وعبد الغني النابلسي، ابن الخطيب وغيرهم.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. انتقل الأدب من الاتجاه الغنائي الذاتي المتصل بالحكام وأصحاب السلطة والقدرة في الغالب إلى الاتجاه الموضوعي العام الذي يعبر عن هموم العامة ولو دخلت بعض الألفاظ السوقية في الأدب واهتم أصحاب الحرف به ولكن ازدهر التيار الشعبي في الإبداع في شتى المجالات.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٦. ازدهر فن المديح النبوي الشريف والبديعيات في مدحه والأولياء والاستشفاع بهم والشكوى إليهم.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٧. كثر أصحاب الرحلات حيث ازدهر ونضج أدب الرحلة.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٨. ظهرت فنون الشعرية المستحدثة كالموشح المواليا، القوما، الزجل الكان وكان الدوبيت، التشجير، التخميس، التشطير وغيرها. كما قوي الشعر التعليمي والغزل المذكر والشعر الصوفي والمجون آنذاك.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٩. كثرت إنتاجات فنية ومعمارية التي لم يكن لها مثيل في عهد المماليك منذ القديم رغم ما كان من الفوضى الداخلية والاضطرابات والفتن، حيث وصل الفن الإسلامي إلى ذروته باستعمال المقرنصات والزخارف الكوفية والأشكال الهندسية والأبواب البرونزية المزخرفة للمساجد والشمعدانات وصناديق لحفظ المصاحف من الذهب المرصعة بالحجارة الكريمة وفسيفساء في المحاريب وصناعة خشبية دقيقة في المنابر.</p></div></div>
+<div class="hal" id="hal-13" data-kitab="13"><span><i class="hal__t">Hlm. </i>13</span><button type="button" class="hal__pdf" data-pdf="13" aria-label="Lihat PDF asli untuk Hlm. 13" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١٠. في هذا العصر اتسع العمل بخيال الظل بيد ابن سودون الذي هو أول من أحدث خيال الظل؛ غير أن نشأته قديمة في المشرق الإسلامي وكذلك كان في مصر من قبل ذلك. كما ظهرت كتابات تتعلق بخيال الظل لمحمد بن دانيال الخزاعي وعنوانه " طيف الخيال في معرفة خيال الظل" الذي يمكن لنا أن نعتبره الأثر الوحيد الباقي للشعر الروائي وذلك في ثلاث بابات</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١١. أظهر الشعراء حذقهم بالاستكثار من الألفاظ المصغرة أو المهملة والمعجمة أو لزوم ما لا يلزم وما لا يستحيل بالانعكاس كما اقتصروا على الألفاظ والتراكيب السهلة واستعملوا كثيرا من الأمثال العامية دون الألفاظ الجزلة والتراكيب المحكمة والرصينة.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١٢. ظهور أسماء بارزة في فنون النثر والشعر المختلفة مثل: ابن خلدون، وابن خلكان، والنويري، وابن منظور، وابن فضل الله العمري، وخليل بن أيبك الصفدي، والقلقشندي، والسيوطي، والشهاب الخفاجي، وعبد القادر البغدادي وفي الشعر الشاب الظريف، وشمس الدين الكوفي، والبوصيري، وصفي الدين الحلي وابن نباتة المصري، وابن حجة الحموي، وبهاء الدين العاملي، وابن النحاس الحلبي، وعبدالغني النابلسي، وابن معتوق الموسوي وغيرهم. هذه بعض المؤثرات والميزات والاتهامات التي ذكرت بالاختصار ونرجع الحكم إلى القارئ عناية بهذه المسائل.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والأفضل لنا أن نسمى هذا العصر " من سقوط بغداد إلى مطالع القرن الحديث" احترازا وكراهية لمجاراة الذين سموه بهذه المسميات الخاطئة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وما يهمنا في محور حديثنا عن صحة تسمية هذا العصر بالانحطاط، فرأينا أن هذه التسمية جائرة على هذا العصر المهم الزاخر في شتى المجالات وإن كان هناك بعض ركاكة وسخف في مجال الشعر والنثر بسبب غلبة العجمة عليه وهدم ودمار وتقتيل وتحريق.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فمن هذه التسميات مهما تعددت؛ فهي لن تغير من حقيقة وجوهر ذلك الأدب شيئا لمن عرفه على حقيقته ووضعه في إطاره التاريخي الصحيح، وإنما كان القصد محاولة إعادة الاعتبار لتلك المرحلة المهمة في تاريخ الأدب العربي التي كثيرا ما يُقفز عنها في المناهج والمقررات التعليمية ولم يهتم به المؤرخون والنقاد مع الأسف ولو نبه بعضهم إلى ذلك، وهنا لابد من تحية جهودهم التي بذلت في سبيل تحقيق ودراسة وإخراج هذا الجانب المهم من أدب وتراث تلك المرحلة إلى حيز الوجود.</p></div></div>
+<div class="hal" id="hal-14" data-kitab="14"><span><i class="hal__t">Hlm. </i>14</span><button type="button" class="hal__pdf" data-pdf="14" aria-label="Lihat PDF asli untuk Hlm. 14" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">واجهت الأمة الإسلامية في هذا العصر موجات ثلاثاً من الغزو:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">موجة الغزو الصليبي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">موجة الغزو المغولي الأولى بقيادة هولاكو ، التي انتهت بسقوط بغداد، ثم غزت مصر والشام ، لولا هزيمتها في عين جالوت.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الموجة الثالثة هي موجة الغزو المغولي الثانية، وقائدها تيمورلنك من سلالة جنكيز خان، الذي قام بتخريب غالب مدن العراق بعد أن خرّب كثيرا من مدن فارس وأحرقها، كما خرّب حلب وأحرق دمشق وكانت هذه الموجات من الخارج على الأراضي الإسلامية وزد على ذلك، اغتشاشات واضطرابات ومنافسات الأمراء والسلاطين داخل الأراضي الإسلامية مع الأسف، وكان له تأثير هام على هذه الفوضى من الناحية السياسية والثقافية والفكرية وبالتالي عدم الاهتمام بالأدب وأدى إلى ضعفه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد كان لهذه الموجات الثلاث صداها البعيد في الأدب شعره ونثره.</p></div></div>
+<div class="hal" id="hal-15" data-kitab="15"><span><i class="hal__t">Hlm. </i>15</span><button type="button" class="hal__pdf" data-pdf="15" aria-label="Lihat PDF asli untuk Hlm. 15" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-3"><h2 class="bab__ar" lang="ar">أنواع النثر وفنونه في العصر الوسيط</h2></header>
+<h3 class="sub" id="sub-6" lang="ar">١. الخطابة</h3>
+<h4 class="sub sub--3" id="sub-7" lang="ar">الخطبة الدينية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان الخطبة الدينية لها النصيب الأوفر منها, فالأسباب التي أدّت إلى اتساع نظم الشعر الديني في هذا العصر هي نفسها التي جعلت الخطابة الدينية محورا رئيسيا لخطباء الدول المتتابعة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد كانت خطب الجمعة والأعياد والمناسبات الدينية المختلفة مسرحا لعرض الخطب الدينية وإلقائها و فمن هذه الخطب تلك التي ألقاها قاضي القضاة بدمشق محي الدين بن زكي في المسجد الأقصى بعد فتحه سنة ٥٨٣ ه, وجاء فيها:(( إياكم أن يستذلكم الشيطان وأن يتداخلكم الطغيان فيخيل إليكم أن هذا النصر بسيوفكم الحداد, وبخيولكم الجياد, وبجلادكم في مواضع الجلاد, والله "وما النصر إلا من عند الله إن الله عزيز حكيم")).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما في العصر المماليك الأتراك فقد كثر الخطباء من أهل المنابر في مصر والشام, فكان منهم ابن دقيق العيد سنة ٧٠٢ هـ الذي اعتبر أخطب الخطباء قاطبة أيام المماليك, كما اعتاد خليفة العباسي آنذاك إلقاء خطبة الجمعة بعدما جعله الظاهر بيبرس خليفة على المسلمين, متخذا القاهرة عاصمة لخلافته, يقول الخليفة الحاكم بأمر الله مخاطبا الناس يوم الجمعة:(( الحمد لله الذي أقام لبني عباس ركنا وظهيرا وجعل لهم من لدنه سلطانا نصيرا )), ثم يقول مواصلا خطبته ومشيرا لحق العباسيين في إمامة المسلمين: ((أيها الناس اعلموا أن الإمامة فرض من فروض الإسلام)) ثم يجعل الجهاد محورا رئيسيا لخطبته فيقول : (( فشمروا ساق الاجتهاد في إحياء فرض الجهاد)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وفي عهد المماليك نقف عند أحد أشهر الخطباء فيها وهو العز بن عبد السلام الذي ارتجل خطبة وعظية أمام أمير مكة عندما كان حاجا وفيها يقول:</p></div></div>
+<div class="hal" id="hal-16" data-kitab="16"><span><i class="hal__t">Hlm. </i>16</span><button type="button" class="hal__pdf" data-pdf="16" aria-label="Lihat PDF asli untuk Hlm. 16" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(( من ذا الذي يرحم الذليل إذا الخطب الجليل وافاها ؟ من ذا الذي ستر زلة الخاطئ وعظاها ؟ من ذا الذي يغفر زلة العاصي وفي صحائف السيئات محاها)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن خطباء هذا العصر أيضا ابن المنير الإسكندري سنة ٨٣٦هـ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولم تتوقف الخطابة الدينية في إنشائها على الجمع والأعياد والمناسبات, بل وجدت أيضا في افتتاح الدروس العلمية ومناسبات الزواج وخطب مناظرات الدينية التي اشتهر بها ابن تيمية وغير ذلك من المسارات التي عرفتها الخطابة الدينية وقتئذ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وتواصل الخطبة الدينية حضورها في عهد العثمانيين بمصر والشام, فهذا الجبرتي سنة ١٢٣٧هـ في كتابه (عجائب الآثار) يشير إلى تميز أحد خطباء المساجد بمصر ويصف خطبته أنها كانت (( في غاية الخفة والاختصار)) ويصف الخطيب بقوله: ((ولو عظه وقع في النفوس لخلوّه من التصنّع)), ونلحظ أن معظم المصادر لم تهتم بنقل الخطب التي قيلت أيام العثمانيين, بيد أنهم اهتموا بنقل الابتهالات المحملة بفكر الصوفي, والتي كثر انتاجها وقتئذ من قبل رجال الدين الذين اتخذوها عوضا عن الخطابة الوعظية, ومن ذلك أحمد العدوي الشهير بالدردير ت ١٢٠١هـ الذي أورد العديد من الابتهالات في الذات الإلهية والحقيقة المحمدية التي يقول فيها : ((اللهم صل على من منه انشقت الأسرار, وانفلقت الأنوار وفيه ارتقت الحقائق, ونزلت علوم آدم فأعجز الخلائق, وله تضاءلت الفهوم فلم يدركه منا سابق ولا لاحق)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما الجانب الفني للخطابة الدينية في عصر الدول المتتابعة فقد احتفظ بكثير من العناصر الأساسية للخطب في صدر الإسلام وعصر العباسيين الأول، وبخاصة شكل الخطبة من كتاب الله تتناسب موضوع الخطبة وغالبا ما يشفعها الخطيب بالأحاديث النبوية الموافقة، كما الافتتاح بالحمد والصلاة والسلام على رسول الله، والانتقال بعدها إلى إيراد آيات من يضمن الخطبة بالآيات والأحاديث والحكم وأبيات الشعر، ويكسب خطبته بعض المؤثرات البلاغية بالتزام السجع وبعض صور البديع اللفظي والمعنوي.</p></div></div>
+<h4 class="sub sub--3" id="sub-8" lang="ar">الخطابة الحربية</h4>
+<div class="hal" id="hal-17" data-kitab="17"><span><i class="hal__t">Hlm. </i>17</span><button type="button" class="hal__pdf" data-pdf="17" aria-label="Lihat PDF asli untuk Hlm. 17" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهي الخطب التي تلقى على الجيش قبل الحرب أو أثناءها، وذلك لزرع روح الحماس والجهاد في نفوس الجيش و تحث على خوض المعارك وتحفيز النفوس على الجهاد ضد التتار والصليبيين، وذلك في العهدين الأيوبي والمملوكي. أما العثماني فلا وجود لمثل هذا النوع من الخطب.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">و ازدهرت الخطابة الحربية على نطاق واسع من قبل العلماء والقادة، وهي تمتاز بالإيجاز والبعد عن التكلف والسجع وغير ذلك من الزخارف الأسلوبية المعروفة في هذا النوع من الخطب الحماسية، وذلك لطبيعة الظروف التي كانت تلقى فيها ، والتي كانت تروم الحث على الجهاد والمقاومة، وليس استعراض المهارات البيانية واللغوية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن أجمل الخطب العسكرية خطبة صلاح الدين الأيوبي في المصاف الأعظم على عكا سنة (٥٨٥هـ):( بسم الله، والحمد لله، والصلاة والسلام على رسول الله اعلموا أن هذا عدو الله وعدونا، قد نزل في بلدنا وقد وطيء أرض الإسلام، وقد لاحت لوائح النصرة عليه إن شاء الله تعالى، وقد بقي في هذا الجمع اليسير ولا بد من الاهتمام بقلعه، والله قد أوجب علينا ذلك، وأنتم تعلمون أن هذه عساكرنا ليس وراءنا نجدة ننتظرها سوى الملك العادل وهو واصل، وهذا العدو إن بقي وطال أمره إلى أن ينفتح البحر جاءه مدد عظيم، والرأي كل الرأي عندي مناجزته، فليخبرنا كل منكم ما عنده في ذلك).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فالخطبة جاءت على شكل خطاب عسكري زاخر بالعاطفة الدينية التي تلقي بالمسؤولية الكاملة في حماية أرض الإسلام على عاتقهم، وهي خطبة قصيرة حافظت على بنائها الفني المتناغم مع الموقف، مع ظهور للألفاظ الجزلة واستخدام لبعض الاستعارات، إلا أنها لم تحظ بحظ كبير من المحسنات اللفظية، ما يجعلها متوافقة في سماتها الفنية والأدبية مع الخطب الحربية في ذلك العصر.</p></div></div>
+<h3 class="sub" id="sub-9" lang="ar">الرسائل</h3>
+<h4 class="sub sub--3" id="sub-10" lang="ar">الرسائل الديوانية أو الرسمية</h4>
+<div class="hal" id="hal-18" data-kitab="18"><span><i class="hal__t">Hlm. </i>18</span><button type="button" class="hal__pdf" data-pdf="18" aria-label="Lihat PDF asli untuk Hlm. 18" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هي الرسائل التي صدرت عن جهات رسمية كديوان الخليفة أو الأمراء أو القادة أو غيرهم من المسؤولين السياسيين أو العسكريين أو القضاة، ويخبر فيها المرسل المرسل إليه عن أمر يتعلق بالدولة، كانتصار في حرب، أو استلام منصب أو عزل، أو تعزية بوفاة حاكم، أو ما شابه ذلك مما له علاقة رسمية بالحكم ومتطلباته.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان لهذا النوع النثري في عصر الدول المتتابعة أهمية كبيرة، فالحروب التي عاصرها الأيوبيون والمماليك ضد الصليبيين والتتار دفعت بتقدم كتابة الرسائل الديوانية وازدهارها، فقد كانت تهتم بأمور الدولة وشؤونها الداخلية والخارجية في حالتي السلم والحرب، وقد أولت السلطة السياسية عند الأيوبيين والمماليك عناية فائقة بهذا الفن النثري، حتى أصبحت أشرف صناعات المماليك وأسناها، وأفضل درجات المملكة وأعلاها، وأميز رتبها وأبهاها)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما كتابة الرسائل الديوانية في عهد العثمانيين الأتراك فقد ضاعت منزلتها نهائياً وأصبحت أثراً بعد عين))، حيث استبدلت الدولة العثمانية التركية بدواوين الإنشاء العربية، لتكون (( اللغة التركية هي اللغة الديوانية)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد تولى رئاسة ديوان الإنشاء في العهدين الأيوبي والمملوكي عدد كبير من الكتاب البارزين وذلك في كل من مصر والشام منها على سبيل المثال: القاضي الفاضل والعماد الأصبهاني والبهاء زهير وضياء الدين بن الأثير في العصر الأيوبي، ومحيي الدين بن عبد الظاهر وابن فضل العُمري والشهاب محمود والصفدي وكذلك ابن حجة الحموي في العصر المملوكي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد أظهر هؤلاء الكتاب براعةً كبيرةً في صناعة الكتابة الديوانية، حتى أصبحت دواوين الإنشاء في عصرهم أشبه بالمعاهد العلمية لتخريج الكتاب وتعليمهم فنون الكتابة، وقد عمد بعض هؤلاء الكتاب للتأليف في صناعة الكتابة مثل ضياء الدين ابن الأثير الذي ألف كتابه الشهير ((المثل السائر)) وأيضاً كتابه ((المفتاح المنشا لحديقة الانشا))، وكذلك فعل ابن الصيرفي في كتابه المسمى بـ ((قانون ديوان الرسائل))، ونجد أيضاً الشهاب محمود في كتابه ((حسن التوسل إلى صناعة الترسل )).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما اتسم كتاب الرسائل الديوانية بميلهم إلى مدرسة التصنع التي قادها القاضي الفاضل في أوائل العصر الأيوبي وتبعه في ذلك الكثير من الكتاب في دواوين الإنشاء، فاهتموا بصناعة رسائلهم وتضمينها ألواناً مختلفة من المحسنات البديعية كالسجع والجناس والطباق والتورية والإكثار من تضمين الآيات القرآنية والأحاديث النبوية</p></div></div>
+<div class="hal" id="hal-19" data-kitab="19"><span><i class="hal__t">Hlm. </i>19</span><button type="button" class="hal__pdf" data-pdf="19" aria-label="Lihat PDF asli untuk Hlm. 19" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والأبيات الشعرية والحكم والأمثال وغير ذلك، يقول القاضي الفاضل وقد كتب رسالة عن صلاح الدين إلى الخليفة العباسي ببغداد يبشره بفتح القدس ملتزماً فيها بالسجع وبعض المحسنات البديعية:((وقد صارت أمور الإسلام إلى أحسن مصايرها واستتبت عقائد أهله على بصائرها، وتقلص ظل رجاء الكافر المبسوط، وصدق الله أهل دينه، فلما وقع الشرط حصل المشروط، وكان الدين غريباً فهو الآن في وطنه، والفوز معروضاً فقد بذلت الأنفس في ثمنه)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ويظهر هذا الاتجاه نحو اعتماد المحسنات البديعية منهجاً في كتابة الرسائل الديوانية عند أبرز كتاب العصر المملوكي وهو الكاتب محي الدين بن عبد الظاهر، ومن ذلك رسالة وجهها إلى صاحب اليمن ويبشره بفتح السلطان قلاوون لأحد المعاقل في الشام، فيقول فيها:((تعطيه الملوك الجزية عن يد وهم صاغرون، ويصطفي كرام أموالهم وهم صابرون لا مصابرون، وكم شكتْ منه حماة تثني بذكرها قلة الإنصاف، وكم خافتة معرَّة وما من معرة خاف)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد توزعت كتابة الرسائل الديوانية في هذا العصر بين عدد من الموضوعات، فظهرت تبعاً لذلك عدد من أنواع الرسائل الديوان كالتقاليد للمناصب والتوقيعات والمنشورات، وكتب الجهاد والعهود والمواثيق وغير ذلك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن هذه الرسائل :</p></div></div>
+<h4 class="sub sub--3" id="sub-11" lang="ar">رسائل التعازي والتهاني</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهي رسائل متبادلة بين المسؤولين عند وفاة ملك أو سلطان في الدولة، وتهنئة غيره باستلام منصبه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنها الرسالة التي وردت عن السلطان المنصور " أبي الحسن علي بن أبي سعيد المريني"، وكان هذا ذا علاقة وطيدة مع الملك الصالح " إسماعيل بن السلطان الناصر محمد بن قلاوون " ، وكانت الهدايا تترى بينهما، وقد أرسل إليه رسالة تعزية بوالده، وتهنئة له بالسلطنة في (٧٤٥هـ) ، وكتبها عنه أبو المجد بن الكاتب أبي عبد الله المعروف بابن أبي مدين، وفيها يذكر واقعة جرت له مع النصارى، ويطلب منه فيها أن يدعو للمسلمين، كما يستنجد به على الأعداء.</p></div></div>
+<h4 class="sub sub--3" id="sub-12" lang="ar">كتب العهود</h4>
+<div class="hal" id="hal-20" data-kitab="20"><span><i class="hal__t">Hlm. </i>20</span><button type="button" class="hal__pdf" data-pdf="20" aria-label="Lihat PDF asli untuk Hlm. 20" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهي كتب يسند بها الأمر إلى سلطان جديد وقد تأتي قصيرةً لا تتعدى بضعة أسطر، وقد تطول حتى تتجاوز سبع صفحات.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فمن العهود القصيرة ما كتبه محيي الدين بن عبد الظاهر باسم الخليفة المستكفي سليمان يعهد فيه بالسلطنة إلى محمد بن قلاوون سنة (٧١٧هـ) .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن العهود الطويلة ما كتب محيي الدين بن عبد الظاهر عن المنصور قلاوون، ليعهد بالسلطنة إلى ابنه الملك الأشرف صلاح الدين خليل.</p></div></div>
+<h4 class="sub sub--3" id="sub-13" lang="ar">التقاليد</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهي من أنواع الرسائل الديوانية أيضاً، وتوجه لأرباب السيوف، ولنواب السلاطين وللوزراء والقضاة، ولولاية الحسبة، وللإمارة كإمارة المدينة المنورة إلى أحد الشرفاء، وتشتمل التقاليد على طرة ومتن:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وتعني الأولى (الطرة): قول الكاتب في عنوان الرسالة: (تقليد شريف لفلان بكذا وصورتها أن يكتب فيها تقليد شريف بأن يفوض إلى المقر الكريم أو إلى الجناب الكريم أو الجناب العالي الأميري الكبيري الكافلي الفلاني أعز الله تعالى أنصاره أو نصرته، أو ضاعف الله تعالى نعمته نيابة السلطنة الشريفة بالشام المحروس أو بحلب المحروسة أو نحو ذلك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما المتن: فلا يفتتح إلا بحمد الله سبحانه والحمدلة والبسملة على العادة ثم يقال ( أما بعد) ثم يذكر ما سنح من حال الولاية وحال المولى، وأنه أحق من يتسنم هذا المنصب ويدعى له، ثم يقال: "اقتضى حسن رأينا الشريف [ويذكر ما يقتضي تكريمه وتعظيمه]"، فلذلك رسم بالأمر الشريف العالي المولدي السلطاني الملكي الفلاني [ ويدعى له بما يناسب الحال ثلاث دعوات أو أربعاً أن يفوض إلى المشار إليه كذا ] ، فليتقلّد ذلك [ أو فليتلق هذا التفويض أو نحو هذا ]، ثم يوصى بما يناسب تلك الولاية مما لابد منه، ويحرص أن ينبه إلى التقوى، ويختم بالدعاء للمولى بالإعانة والتأييد ونحو ذلك ثلاث دعوات، وأكثرها أربع وأقلها اثنتان، ثم يكتب التأريخ.</p></div></div>
+<h4 class="sub sub--3" id="sub-14" lang="ar">التوقيعات</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والتوقيع لغة: التأثير الخفيف، واصطلاحاً اسم لما يكتب في حواشي القصص بخط الخليفة أو الوزير أو كاتب السر.</p></div></div>
+<div class="hal" id="hal-21" data-kitab="21"><span><i class="hal__t">Hlm. </i>21</span><button type="button" class="hal__pdf" data-pdf="21" aria-label="Lihat PDF asli untuk Hlm. 21" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">صارت في عصر الدول المتتابعة رسائل ديوانية تصدر عن السلطان أو من ينوب منابه في دواوين الدولة، وتكون لعامة أهل الوظائف جليلها ووضيعها، وبعضهم خصها لغير أرباب السيوف إلا ما ندر والفرق بينها وبين التقاليد أن التقاليد تخص أرباب السيوف، ونواب السلطان والوزراء والقضاة وولاة الحسبة، والتواقيع لعامة الوظائف. وقد تطول التوقيعات حتى تجاوز عشر صفحات، وقد تقصر حتى لا تتجاوز الواحدة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ويعد منصب الموقع من المناصب الهامة في الدولة ويسمى أصحابها جماعة الموقعين، وتحتاج إلى مهارة كتابية كبرى لا يستطيعها إلا متمكن من اللغة وصناعة الإنشاء.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن تواقيع العصر ما خطه خليل بن أيبك الصفدي نيابة عن القاضي شهاب الدين بن فضل الله العمري، وفيه تسند مهمة الخطابة إلى جمال الدين يوسف بن سليمان في المدرسة البدرية، وكانت قد عمرت وجعل فيها مسجد، وكان أول خطبة له فيه في يوم مشهود اجتمع فيه القضاة والعلماء ووجوه الناس والأعيان وخلعت فيه الخلع السنية، وقدمت فيه الأطعمة</p></div></div>
+<h4 class="sub sub--3" id="sub-15" lang="ar">سمات الرسائل الديوانية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">على تعدد أنواعها فإن الفارق بين كل نوع وآخر لا يكاد يذكر، إلا في كثرة الألقاب وعددها، فهي في مجملها تبدأ بالحمد والثناء على الله سبحانه، وقد تضيف ثناء على الرسول صلى الله عليه وسلم ، وتثني على المرسل والمرسل إليه كائناً من كان حتى إنها لتذكرنا بقصائد المديح ، وتوصف المهمة وقابلية صاحبها لها، ويكلف المرسل إليه بالمهمة، وتبين له متطلباتها، ويحث على أداء واجبه، وتنتهي الرسالة بالدعاء، أو بآية قرآنية ويؤرخ زمن كتابتها، وهذا النهج هو النهج التقليدي للخطبة والرسالة في الأعصر السابقة.</p></div></div>
+<div class="hal" id="hal-22" data-kitab="22"><span><i class="hal__t">Hlm. </i>22</span><button type="button" class="hal__pdf" data-pdf="22" aria-label="Lihat PDF asli untuk Hlm. 22" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-16" lang="ar">الرسائل الإخوانية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الرسائل الإخوانية هي التي يكتبها الأدباء بعضهم إلى بعض في موضوعات إخوانية. ولم تتخلف كتابة الرسائل الإخوانية عن اللحاق بركب الازدهار الذي عم الكتابة الديوانية، بل إنها كانت نشطة ومزدهرة طيلة عصر الدول المتتابعة، فقد حاول كُتّاب الدواوين أن يجربوا أقلامهم في موضوعات الرسائل الإخوانية المتعددة كالتعبير عن المودة وصدق الأخوة والشوق والحنين وطلب الاعتذار والعتاب والتهنئة وغير ذلك من الموضوعات؛ ليثبتوا أن قدرتهم في صناعة الكتابة لا تتوقف عند أمور الحكم وشؤون السياسة، وكذلك أراد أولئك الكتاب في هذا العصر الذين لم يلتحقوا بدواوين الإنشاء ولم يعرفوا الكتابة الديوانية أن يطلقوا العنان لقرائحهم الكتابية في إظهار براعتهم على صياغة الرسائل الإخوانية وإجادة حبكها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد أظهر كتاب الرسائل الإخوانية اهتماماً واضحاً بالناحية الفنية، فقاموا ((بنشر زخارف البديع ومحسناته عليها حتى تروق من تُرسل إليهم وتبلغ من التأثير فيهم المبلغ المنشود)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يقول القاضي الفاضل في رسالة بعث بها لأحد أصدقائه واصفاً مقدار ما يحمله من شوق إليه، فيقول:((وكيف لا أذوب شوقاً إليه وحنة عليه، وقد فارقت من الطائر الميمون الذي لم أزل أقابل منه كل يوم طائر اليمن والإقبال، والوجه الجميل الكريم الذي يجمع بين الجمال والإجمال، وما تذكرته إلا وأشرقني بالدمع طرف مشتاق إلى مرآة مرآه، وما توهمته إلا وطالبني بالقرب فؤاد ليس ينساه)). ولعلنا نلحظ مقدار اهتمام القاضي الفاضل بتضمين رسالته بألوان مختلفة من المحسنات البديعية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فالرسائل الإخوانية تمثل ميداناً فسيحاً يمكن للكاتب أن يثبت براعته الإنشائية على عكس الرسائل الديوانية التي تتطلب في المقام الأول فهماً واضحاً للقصد والمعنى.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ويقول الكاتب محي الدين بن عبدالظاهر وهو أحد أبرز كتاب العصر المملوكي في رسالة بعثها لأحد أصدقائه وقد شفعها بهدية وصفها في رسالته بقوله: (( واستقلَّتْ الرياض أن تَهْدِي إلى جنابها زهراً، والسحائب أن ترسل إلى بحرها قطراً، والفلك الدائر أن يخدمها بنجومه)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما في العهد العثماني فقد استمرت كتابة الرسائل الإخوانية بمفردها بعدما توقفت مسيرة الكتابة الديوانية، فقد كانت الملاذ الوحيد لأصحاب الأقلام الإبداعية، ولعل ذلك جعلها تكون عرضة لمظاهر التكلف والتصنع، وقد يصاحبها أحياناً ضعف في عملية كتابة الرسالة، ومن ذلك ما كتبه أحد أدباء دمشق في القرن الحادي عشر في</p></div></div>
+<div class="hal" id="hal-23" data-kitab="23"><span><i class="hal__t">Hlm. </i>23</span><button type="button" class="hal__pdf" data-pdf="23" aria-label="Lihat PDF asli untuk Hlm. 23" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">رسالة لصديقه ضمنها لغزاً، فيقول: (( وقد أخذ رائق كلامكم وفائق نظامكم بهذا الصب أخذ الأحباب الأرواح، ولعب به ولا كتلعاب الراح، كيف لا !؟ وقد كسا خلل البها والجمال وانتظم ولا كانتظام اللآل، رق فاسترق الأحرار، وحلّي فتحلى به أهل الشعار، وراق معناه فأشرق مغناه، وحَسُنَ اتساقه فحلا مذاقه...)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن النشاط الملحوظ في كتابة الرسائل الإخوانية لم يتوقف عند مقدار ما تحمله من فنون الكتابة والصنعة الإنشائية، لكنها أيضاً سلكت مساراً جعلها تبدو أكثر حيوية ونشاطاً، حيث جنح الأدباء إلى تبادل الرسائل الشخصية التي تناقش موضوعاً أدبياً أو قضية فكرية أو تنقل بعض مشاهدات كاتبها، وغير ذلك من الموضوعات التي يتطلب معها أن تطول الرسالة والأمثلة على هذه الرسائل كثيرة، منها: رسائل العماد الأصبهاني، ورسائل ابن الأثير، وبعض رسائل ابن الوردي، وكذلك بعض الرسائل التي أوردها الشهاب محمود في كتابه ((حسن التوسل)).</p></div></div>
+<h3 class="sub" id="sub-17" lang="ar">النثر القصصي</h3>
+<h4 class="sub sub--3" id="sub-18" lang="ar">القصة</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">شهدت القصة في عصر الدول المتتابعة رواجاً كبيراً بين الأدباء، وتراوحت ما بين القصص القصيرة والطويلة، وقد حرص بعض الكتاب أن يجعل من بعض مؤلفاته مسرحاً لنثر بعض القصص القصيرة، ومن ذلك ما نجده في كتاب (الاعتبار) لأسامة بن منقذ، ومنها قصة الطبيب الإفرنجي مع أحد الفرسان الذي يشتكي علة في قدمه، حيث بدا واضحاً لجوء الكاتب إلى الأسلوب القصصي ليس في هذا الموضع فحسب، بل في أجزاء كبيرة من الكتاب، يقول أسامة في سرد هذه القصة:((وقال للفارس : أيما أحب إليك ؟ تعيش برجل واحدة أو تموت برجلين ؟ قال: أعيش برجل واحدة، فقال : احضروا فارساً قوياً وفأساً قاطعاً، فحضر الناس والفأس وأنا حاضر فحط ساقه على قرمة خشب، وقال للفارس: اضرب رجله بالفأس ضربةً واحدةً ، اقطعها، فضربه وأنا أراه ضربة واحدة فما انقطعت وضربه ضربة ثانية، فسال مخ الساق ومات من ساعته)).</p></div></div>
+<div class="hal" id="hal-24" data-kitab="24"><span><i class="hal__t">Hlm. </i>24</span><button type="button" class="hal__pdf" data-pdf="24" aria-label="Lihat PDF asli untuk Hlm. 24" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما أفرد بعض الكتاب مؤلفات مستقلة امتازت بالحس القصصي وضمنوها العديد من القصص، ولعل بعضها اكتفت بقصة واحدة على غرار رسالة ((النسر والبلبل)) للمهذب أبي طالب الدمشقي من كتاب القرن السادس الهجري، وهي قصة وعظية تدور بين طائرين هما النسر والبلبل، وجاء فيها:((طار طائر عن بعض الشجر، وقد هب نسيم السحر، وانفلق عمود الفلق، وانخرق قميص الغسق مشهور بالقسر، موسوم بالنسر))،</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إلى أن يقول:((وبينا هو صاف الأجنحة عليها ينظر من الأفق بعين التعجب إليها، إذ سمع صوتاً من بلبل سحري على وكر شجري)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد استخدم كتاب الدول المتتابعة في صياغتهم لفن القصة مجموعة من الأساليب الفنية، فأسلوب السرد والحوار كان حاضراً في (الاعتبار) لأسامة بن منقذ، كما أن الصنعة الكتابة المعتمدة على المحسنات البديعية حاضرة بقوة في قصة ((النسر والبلبل))، وكذلك الأمر نفسه نلحظه في منامات الوهراني، التي استبدلت بأرض الواقع في سرد قصصها أرضاً متخيلة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن رواج الفن القصصي لم يكن في عصر الدول المتتابعة مقتصراً على ما يخطه المبدعون من أدبائه، بل إن الشعب بات متطلعاً لأكثر من ذلك، فشجع ظهور القصص الشعبية ودعم حضورها بالتفاعل معها ومتابعة أحدثها؛ ولذا وجدنا شاعر مثل ابن دانيال ت ٧١٠هـ ينتج لنا ثلاث مسرحيات تمثيلية بلغة تقرب من العامية هي: ((طيف الخيال)) و((عجيب وغريب)) و((متيم))، كما نجد ازدهاراً وانتشاراً واسعاً للقصص الشعبية ((في تلك الفترة التي التقى فيها الشعب العربي بالغرب، وهي المعروفة عند المؤرخين بفترة الحروب الصليبية، فقد اهتز الوجدان العربي هزة قوية دفعته إلى أن يعتصم بعصر البطولة، فانتخب من الفرسان الجاهليين سيرة المهلل أو الزير سالم وسيرة عنترة بن شداد وسيرة سيف بن ذي يزن )) وقد كُتبت هذه القصص بالعامية؛ لتكون قريبة من فكر الشعب ومشاعره.</p></div></div>
+<h4 class="sub sub--3" id="sub-19" lang="ar">المقامات</h4>
+<div class="hal" id="hal-25" data-kitab="25"><span><i class="hal__t">Hlm. </i>25</span><button type="button" class="hal__pdf" data-pdf="25" aria-label="Lihat PDF asli untuk Hlm. 25" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كتابة المقامات في هذا العصر لم تتمسك بأصولها الفنية التي وجدت عند بديع الزمان الهمذاني والحريري، والتي تعتمد على راوٍ يسرد وقائعها, وبطل ينسج أحداثها، كما أنها لم تعد تهتم بموضوع الكدية والتسول وابتداع طرق الحيلة والخداع، بل إنها أصبحت في عصر الدول المتتابعة حرة طليقة يختار كاتبها أي موضوع أراد، فالجدال وعقد المناظرة بين الأشياء وكذلك السخرية والغزل وغير ذلك من الموضوعات المختلفة كانت هي مدار موضوعات المقامة في هذا العصر.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لم يكن أدباء الدول المتتابعة تنقصهم المعرفة بالأصول الفنية لفن المقامة، فقد اعتنوا بها وبالتأليف فيها، وشرح غامضها وهو أمر عُرف قبل هذا العصر في تاريخ النثر العربي، فقام بعضهم بشرح المقامات كابن ظفر الصقلي ت ٥٦٧هـ الذي شرح مقامات الحريري في كتابه المطوّل في شرح المقامات) وكتاب آخر أسماه : ((التنقيب على ما في المقامات من الغريب) وغير ذلك من الشروحات، ولم يكتف أدباء هذا العصر بشرحها، بل نجد بعضهم عارضها كالحسن الصافي ت ٥٦٨هـ الذي (( أنشأ مقامات حذا فيها حذو الحريري)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد اهتم كثير من أدباء عصر الدول المتتابعة بكتابة المقامات، فنجد في العهد الأيوبي القاضي الفاضل وركن الدين محمد الوهراني الذي يعتبر أبرز من كتب في هذا الفن، أما في عهد المماليك فالقائمة تطول لكثرتهم، ومنهم محيي الدين بن عبد الظاهر والصفدي والشهاب محمود ، والشاب الظريف، وابن الوردي، وفي العهد العثماني ظهر أدباء كثر اهتموا بكتابة المقامات كان من أبرزهم الشهاب الخفاجي والسيوطي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن المقامات في هذا العصر وبالرغم من خروجها على معظم أصولها الفنية التي سُنَّتْ لها قديماً، إلا أنها التزمت بالصنعة اللفظية التي تعتمد على ألوان متعددة من المحسنات البديعية كالسجع المتكلف والجناس والطباق والعبارات القصيرة والمتقابلة، ولعل ذلك يتضح من المقامات البغدادية للوهراني حيث يقول :((لما تعذرت مآربي، واضطربت مغاربي، ألقيت حبلي على غاربي، وجعلت مذهبات الشعر بضاعتي، ومن أخلاف الأدب رضاعتي، فما مررت بأمير إلا حللت ساحته، واستمطرت راحته)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد توافقت هذه الزخرفة اللفظية التي عُرفت بها المقامات مع أهم خصائص النثر في هذا العصر، ألا وهي ولوع أدبائه بالبديع وفنونه، يقول جمال الدين الرسغي في مقامة ضمنها أنواعاً عدةً من الزخرفة اللفظية والمعنوية وذلك في وصف لمدينة حلب في القرن السابع بعد تخريب التتار لها، يقول : ((فَسُتر السفور السرور، وستر ستور</p></div></div>
+<div class="hal" id="hal-26" data-kitab="26"><span><i class="hal__t">Hlm. </i>26</span><button type="button" class="hal__pdf" data-pdf="26" aria-label="Lihat PDF asli untuk Hlm. 26" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الشرور، وتخربت الدور والقصور، ونُحرت الحور في النحور، وجرت عيونها على أعيانها، وهمت جفونها على شبانها)).</p></div></div>
+<h3 class="sub" id="sub-20" lang="ar">النثر التأليفي</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يعد عصر الدول المتتابعة أغنى عصر في حركة التأليفية في العصور العربية بسبب ازدهار هذه الحركة بشكل لافت. ومن الصعب استعراض أسلوب كل مؤلفات لطول الفترة، وكثرة العلماء، وتنوع التخصصات التي أبحر فيها مفكروه. وقد عوض مؤلفوها المكتبة العربية التي نهب الصليبيون كثيراً منها، ثم أحرق المغول ما تبقى فيها، وضاع منها ما ضاع بسبب الكوارث والخلافات الفكرية والمذهبية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد ضاع أكثر الأصول التي نقلوا منها واعتمدوا عليها، ولم يبق إلا ما تركه أبناء هذه العصور، وخير مثل على ذلك تلك الأصول التي اعتمد عليها ابن منظور (ت٧١١هـ) أو جلال الدين السيوطي (ت٩١١هـ) أو مؤلفو الموسوعات كالقلقشندي (ت ٨٢١هـ) في مؤلفه صبح الأعشى أو العمري (ت ٧٤٨هـ) في مسالك الأبصار في ممالك الأمصار»، أو النويري (ت ٧٣٢هـ) في نهاية الأرب في فنون الأدب»، وغير ذلك كثير. ويكفي القول إن كتاب حاجي خليفة كشف الظنون وحده، ذكر أسماء ثلاثمئة علم، في خمسة عشر ألف كتاب، ألفها عشرة آلاف عالم، معظمهم كان من أبناء هذه العصور.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قدم لنا الدكتور فيصل الزهراني صورة واضحة عن النثر التأليفي في هذا العصر من خلال نقطتين مهمتين، وهما: الأسلوب والمنهجية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تعددت الخصائص الأسلوبية في عصر الوسيط حتى وصلت إلى منهجية واضحة في عملية التصنيف والتنظيم وحسن عرض المحتويات ومضامين النتاج الفكري لمؤلفات هذا العصر، كما ظهرت بعض الأساليب التي تتعلق بالموسوعية وطول النفس في التأليف، واتباع طريقة الشرح والتبسيط والتسهيل لكثير من المؤلفات السابقة، وكذلك اللجوء لاستخدام منهج الاختصار والتلخيص لمؤلفات أخرى.</p></div></div>
+<div class="hal" id="hal-27" data-kitab="27"><span><i class="hal__t">Hlm. </i>27</span><button type="button" class="hal__pdf" data-pdf="27" aria-label="Lihat PDF asli untuk Hlm. 27" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وسيأتي بيان لكل الأسلوب فيما يلي:</p></div></div>
+<h4 class="sub sub--3" id="sub-21" lang="ar">المنهجية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اعتمد المفكرون في أوائل العصر العباسي الأول منهجية في تشكيل مؤلفاتهم وصياغة نتاجهم الفكري، فظهر فيها حسن العرض والاهتمام بتقسيم محتواها إلى فصول وأبواب ووضع العناوين الخاصة بها، وإدراج ما يناسبها من المضامين والموضوعات. ومن هؤلاء المفكرين هو : الجاحظ ( ت ٢٥٥هـ)، ومن عاصره من المفكرين والأدباء؛ كابن قتيبة الدينوري ( ت ٢٧٦هـ) والمبرد ( ت ٢٨٦هـ) وغيرهما كثير.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تتبع مؤلفو هذا العصر أثر من سبقهم بل استطاعوا أن يتفوقوا عليهم، وورد ذلك في منهجية المؤلفات النحوية التي تنتسب إلى القرن الرابع وما بعده، لاسيما ما ظهر عند ابن هشام (ت ٧٦١هـ ) فحصل تطور عميق الذي يبعدها في الشكل عن أساليب التأليف المأثورة عن القرون السابقة، ويتضح هذا التطور بصورة تكاد تجسده في مجالين معاً: أوليهما تبويب الأفكار النحوية، وثانيهما ترتيب المصنفات النحوية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ووردت هذه المنهجية عند أحد الكتاب وهو ياقوت الحموي (ت٦٢٦هـ) في كتابيه: معجم الأدباء ومعجم البلدان، فقد أوضح في مقدمة هذين الكتابين المنهجية الدقيقة في تأليفه لهما، فيقول في مقدمة كتابه معجم الأدباء: ((وأثبت مواضع نقلي ومواطن أخذي من كتب العلماء المعول في هذا الشأن عليهم، والمرجوع في صحة النقل إليهم، وكنتُ قد شرعتُ عند شروعي في هذا الكتاب أو قبله، في جمع كتاب في أخبار الشعراء المتأخرين والقدماء، ونسجتها على هذا المنوال، وسبكتها على هذا المثال، في الترتيب، والوضع والتبويب)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وبرزت منهجية ياقوت الحموي ومدى الالتزام بها عبر استخدام الترتيب الهجائي لعرض البلدان والأدباء، فقد اتبع منهجية صارمةً في هذا الجانب، ففي "معجم الأدباء" وجد أنه لا يقف عند حدود الحرف الأول للأديب، بل يعمد إلى الحرف الثاني ثم الثالث للتعريف بهم وبنتاجهم، يقول ياقوت في مقدمة معجم الأدباء: ((وجعلت ترتيبه على حروف المعجم، أذكر أولاً من أوّل اسمه (ألف) ثم من أول اسمه (باء ) ثم (تاء) ثم (ثاء) إلى آخر الحروف، و ألتزم ذلك في أول حرف من الاسم وثانيه وثالثه ورابعه)).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حدثت نكبة للفكر العربي في العصر المملوكي بسبب نهب التتار كماً هائلاً من ذخائر ونفائس نتاجهم المعرفي، فحاول علماء هذا العصر استرجاع بعض ما ضاع منها. فقاموا بمحاولات مضنية لجمع شتاتها، والتقريب بين متباعدها، فبادروا للتأليف لكن بمنهجية منظمة، فأخرجوا لنا العديد من الذخائر التي امتازت بتطور منهجيتها.</p></div></div>
+<div class="hal" id="hal-28" data-kitab="28"><span><i class="hal__t">Hlm. </i>28</span><button type="button" class="hal__pdf" data-pdf="28" aria-label="Lihat PDF asli untuk Hlm. 28" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ووردت هذه المنهجية في كتاب صبح الأعشى في كتابة الإنشاء لمؤلفه القلقشندي (ت ٨٢١هـ) الذي يقع في أربعة عشر جزءاً موزعة على أكثر من ستة آلاف صفحة في علوم شتى من الأدب واللغة والتاريخ والجغرافيا وغير ذلك، لقد قسم كتابه إلى مقدمة وعشر مقالات وخاتمة ثم جعل لكل مقالة عنواناً وضمنها العديد من العناوين الفرعية في هيئة أبواب يندرج منها عدد من الفصول ثم يتفرع من بعض هذه الفصول فصول ثانوية، كما قام قبل ذلك بتقسيم المقدمة نفسها لخمسة أبواب، ناقش فيها عدداً من الموضوعات المتعلقة بالكتابة وشؤونها، كما أن الخاتمة - أيضاً - أنت على نفس منهجية تقسيم المقدمة.</p></div></div>
+<h4 class="sub sub--3" id="sub-22" lang="ar">الموسوعية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن الموسوعات التي ظهرت خلال هذا العصر تؤكد لنا التزام المؤلفين بالمنهجية المنظمة في التأليف والابتعاد عن العشوائية وعدم التنظيم، فلو تصفحنا هذه الموسوعات التي تتصل إلى عشرات المجلدات وتتسم بغزارة المعلومات التي تحملها، لوجدنا أن هذه الضخامة وهذا الامتداد الكمي والتشعب الموضوعي لم يمنع مؤلفيها من التحكم في حسن عرضها وبراعة تصنيفها، مستفيدين من محاولات السابقين في التصنيف والتبويب، بل جعلوها أكثر دقة وتفريعاً.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فالجاحظ يُعد أول من استخدم أسلوب الاستطراد في التأليف النثري، فأنتج لنا كتابين هما البيان والتبيين والحيوان ظهرت عليهما بعض ملامح الموسوعية في المعلومات، كما أن ظهورها بشكل أكثر وضوحاً كان متمثلاً في كتاب الأغاني لأبي الفرج الأصفهاني (ت ٣٥٦هـ).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقام باتباعها الكثير من مفكري عصر الدول المتتابعة في مجالات شتى، ففي الأدب نجد مثلاً نهاية الأرب في فنون الأدب للنويري (ت ٧٣٣ هـ)، ونجد في التاريخ النجوم الزاهرة في ملوك مصر والقاهرة لابن تغري بردي (ت٨٧٤هـ)، وفي علم الجغرافيا المواعظ والاعتبار بذكر الخطط والآثار للمقريزي (ت ٨٤٥هـ)، أما في مجال اللغة فإن لسان العرب لابن منظور (ت ٧١١هـ) خير شاهد على موسوعية المعلومات وتشعبها.</p></div></div>
+<h4 class="sub sub--3" id="sub-23" lang="ar">الشرح والتبسيط</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تداخل الثقافات العربي معا الثقافات الأخرى يسبب ضعف المستوى اللغوي في مجتمع عصر الدول المتتابعة، فظهر توجه في النثر التأليفي نحو إنتاج الشروحات لتبسيط كتب القدماء وتسهيل فهمها. لقد كثرت الشروحات في عصر الدول المتتابعة، ولجأ العلماء للتوسل بها في إفهام طلبتهم في مجالات شتى من التخصصات لاسيما تلك التي</p></div></div>
+<div class="hal" id="hal-29" data-kitab="29"><span><i class="hal__t">Hlm. </i>29</span><button type="button" class="hal__pdf" data-pdf="29" aria-label="Lihat PDF asli untuk Hlm. 29" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تتصل بالعلوم الدينية وعلوم العربية من أدب ولغة، لكن بعض العلماء في العصر العثماني وجد في كثرتها عقبة في طريق طلاب العلم, إذ يلتبس عليهم فهم القضايا؛ لأنهم يقرأون الحاشية أو الشرح قبل المتن.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولعل كثرة هذه الشروحات تظهر لنا في علم النحو التي منها لباب الألباب في شرح الكتاب لابن بري (ت٥٨٢هـ)، وأوضح المسالك إلى ألفية ابن مالك لابن هشام (ت٧٦١هـ). وفي الأدب يطالعنا العديد من الشروحات سواء أكان ذلك للنصوص النثرية أو الشعرية، فمن شروحات النصوص الشعرية الغيث المنسجم للصفدي (ت ٧٦٤هـ) في شرح قصيدة لامية العجم للطغرائي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد ظهر منهج آخر عُرف بالحواشي التوضيحية غرضه لإزالة ما في الشروحات من غموض وإبهام، وزيادة ما نقص منها أو تفصيل ما أجمل، فكثرت هذه الحواشي في علم النحو خاصة، ومن ذلك ما قام به الصبان (ت١٢٠٦هـ) في حاشيته المعروفة بحاشية الصبان على شرح الأشموني على ألفية ابن مالك. كما ظهرت الحواشي في العلوم الدينية فنجد في الفقه الشرقاوي (ت ٨٢٣ هـ) في كتابه المعروف بحاشية الشرقاوي على شرح التحرير.</p></div></div>
+<h4 class="sub sub--3" id="sub-24" lang="ar">التلخيص</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">رأى مجموعة من المؤلفين تعاظم حجم بعض المؤلفات وصعوبة إدراك مكنونها، ولهذا لجأوا لمنهج تلخيص بعض المؤلفات القيمة واختصار بعض علوم العربية، كعلم النحو وعلم الصرف وكذلك علم القراءات.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فاشتهر ابن مالك (ت٦٧٢هـ) باختصار أبواب النحو في منظومة الألفية، وسبقه ابن الحاجب (ت٦٤٦هـ) في الكافية في النحو والشافية في الصرف. وكذلك اهتم العديد من الكتاب بتلخيص الكتب ذات القيمة العلمية، ففي علم البلاغة يقوم القزويني (ت ٧٣٩هـ ) بتلخيص كتاب مفتاح العلوم للسكاكي (ت ٦٢٦هـ) في كتاب عُرف بـ تلخيص المفتاح. وفي الأدب حظي كتاب الأغاني بعدة تلخيصات، منها تجريد الأغاني لابن واصل الحموي (ت ٦٩٧هـ).</p></div></div>
+<h3 class="sub" id="sub-25" lang="ar">الحقول المعرفية وأبرز روادها</h3>
+<div class="hal" id="hal-30" data-kitab="30"><span><i class="hal__t">Hlm. </i>30</span><button type="button" class="hal__pdf" data-pdf="30" aria-label="Lihat PDF asli untuk Hlm. 30" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد تناول العلماء في هذا العصر للكثير من المعارف، فزادت عملية إنتاج المؤلفات وزاد معها عدد المؤلفين في معارف شتى، ولعلنا نوضح أبرز الحقول المعرفية التي شهدت نشاطاً ملحوظاً ومتميزاً، مسلطين الضوء على أبرز المؤلفات فيها والرواد من المؤلفين الذين تولوا زمام أمرها.</p></div></div>
+<h4 class="sub sub--3" id="sub-26" lang="ar">المؤلفات الدينية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تحركت عجلة إنتاج المؤلفات الدينية في عصر الدول بشكل ملحوظ، وذلك بسبب النكبة التي حلت بمدينة بغداد، عاصمة الخلافة الإسلامية ومصدر إشعاعها الفكري، الذي تسبب إلى ضياع كبير للمؤلفات الدينية وغيرها، وهذا الأمر ولد غيرة إنتاجية لدى الكتاب لزيادة عملية الإنتاج التأليفي، ليس للمؤلفات الدينية فحسب بل لجميع المؤلفات في الحقول المعرفية الأخرى.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">توزعت المؤلفات الدينية في هذا العصر على العديد من فروع علوم الدين كالفقه والقراءات والحديث والتفسير، وبرز فيها العديد من العلماء أمثال الشاطبي (ت٥٩٠هـ)، وابن تيمية (ت٧٢٨هـ)، وتلميذه ابن قيم الجوزية (ت ٧٥١هـ).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد كان البناء الدمياطي (ت ١١١٧هـ)، أحد أبرز علماء القراءات في عصر الدولة العثمانية بمصر فقد عُرف بكتاب إتحاف البشر بالقراءات الأربعة عشر، كما نجد قبله الخطيب الشربيني (ت ٩٧٧هـ) المفسر المعروف وصاحب كتاب السراج المنير، وبرز أيضاً في العصر العثماني المحدث المناوي (ت ١٠٣١هـ) صاحب كتاب كنوز الحقائق في حديث خير الخلائق.</p></div></div>
+<h4 class="sub sub--3" id="sub-27" lang="ar">المؤلفات اللغوية والأدبية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تعتبر المؤلفات اللغوية والأدبية خدمة للدين والمحافظة على الفهم الجيد لنصوصه وعلومه المختلفة، خاصة بسبب تزايد العامية والعجمي في هذا العصر بشكل كبير. ومن أبرز فروع علوم اللغوية والأدبية في هذا العصر: النحو والبلاغة والقواميس اللغوية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ففي علم النحو يطالعنا ابن مالك (ت ٦٧٢ هـ ) صاحب الألفية وابن عقيل (ت ٧٦٩هـ)، أما البلاغة فإن ابن أبي الأصبع ( ت ٦٥٤هـ ) في طلائع من تميز في التأليف البلاغي في كتابه تحرير التحبير، أما التأليف في القواميس اللغوية والحديث عن دقائقها؛ فيكفينا الإشارة إلى ابن منظور (ت٧١١هـ) صاحب لسان العرب.</p></div></div>
+<div class="hal" id="hal-31" data-kitab="31"><span><i class="hal__t">Hlm. </i>31</span><button type="button" class="hal__pdf" data-pdf="31" aria-label="Lihat PDF asli untuk Hlm. 31" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-28" lang="ar">المؤلفات التاريخية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ترك لنا المؤلفون هذا العصر العديد من المؤلفات التاريخية المتميزة، والتي توزعت ما بين السير الخاصة وكتب التاريخ العامة وأخرى اتجهت نحو فن التراجم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد كان لانتصارات صلاح الدين ضد الصليبيين وقع مؤثر لدى كتاب التاريخ حينئذ، فصنف ابن شداد (ت ٦٣٢هـ ) سيرة تاريخية لصلاح الدين الأيوبي بعنوان النوادر السلطانية والمحاسن اليوسفية، أما كتب التاريخ العام فظهر مجموعة من الكتاب المميزين، لعل من أبرزهم، الذهبي (ت٧٤٨هـ) في كتابه تاريخ الإسلام، وكذلك ابن كثير (ت٧٧٤هـ) في البداية والنهاية. ويكثر في عصر المماليك كتب التراجم التاريخية بشكل لافت، فمن الكتاب الذين أبدعوا في هذا الحقل ابن خلكان (ت ٦٨١هـ) في كتابه وفيات الأعيان.</p></div></div>
+<h3 class="sub" id="sub-29" lang="ar">سمات النثر الفنية في عصر الوسيط</h3>
+<h4 class="sub sub--3" id="sub-30" lang="ar">أولاً : المبالغة في المحسنات البديعية.</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تأثر كتاب الدول المتتابعة كثيرا بأسلوب ابن العميد ومدرسته التي تعتمد على الإكثار من المحسنات البديعية والمعنوية على حد سواء.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد فارق النثر السجية والطبع، وتجافى عن الرقة والعذوبة، وانساق في تيار التكلف والتصنع، فتخلله الكثير من الغموض في المعاني، والإبهام في الأغراض.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ألح على أن كتابة النثرية كثّف حضور الصنعة اللفظية من سجع و جناس وطباق، كما أنه استعان بالمحسنات المعنوية من تشبيه واستعارة وتورية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والتكلف الفني الذي بدا واضحًا على وجه صناعة الكتابة في عصر الدول المتتابعة لم يقتصر على نوع نثري واحد، بل إنه طغى على ألوان الكتابة جميعها في هذا العصر، فالنثر التأليفي مثلا والذي يحتاج مؤلفه إلى الابتعاد عن مذهب الصنعة اللفظية، واللجوء إلى الأسلوب البسيط وغير المعقد؛ لأن الاهتمام يكون منصبا على فهم المعلومة وليس التفنن في صياغتها اللفظية.</p></div></div>
+<div class="hal" id="hal-32" data-kitab="32"><span><i class="hal__t">Hlm. </i>32</span><button type="button" class="hal__pdf" data-pdf="32" aria-label="Lihat PDF asli untuk Hlm. 32" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد وضع معظم المؤلفين المقدمات النثرية لكتابهم تأنقوا فيها وساروا على نسق الرسائل الديوانية، فأكثروا فيها من السجع والطباق والمطابقة وألوان البديع الأخرى و من الصور البيانية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولم يكتف بعض المؤلفين بهذه المقدمات المتصنعة بل جعلوا أسلوبهم الكتابي في كامل مؤلفاتهم يسير على هذا النمط الأسلوبي المتكلف، ولعل ذلك يتضح عبر كتاب ((الفتح القسي في الفتح القدسي)) لابن العماد والذي يصف فيه الفرنجة في بيت المقدس عند قدوم صلاح الدين.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد سادت الصنعة في معظم الفنون النثرية لهذا العصر ، تلك الصنعة المتكلفة والمغرقة في الغرابة والتعقيد وهو ما دفع بابن الأثير أن يلتمس طريقًا وسطًا لأسلوبه الكتابي الذي يقتصر على الصنعة التي تلائم الطبع وتقبل به النفس ويبتعد عن كل أساليب التكلف والتعقيد والإسراف في الإغراب.</p></div></div>
+<h4 class="sub sub--3" id="sub-31" lang="ar">ثانيا : تدني مستوى الفصاحة في الألفاظ والأساليب.</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هذا التناقض الواضح بين هذه الميزة الفنية وسابقتها واللتان ترسمان معا خصائص فن النثر في عصر الدول المتتابعة، لقد برزت في هذا العصر مشكلة الألفاظ والأساليب العامية بشكل جلي، فشكلت بذلك أحد أهم الخصائص الفنية التي طبع بها النثر في هذا العصر، فدخلت لغة الكتابة تعبيرات عامية، وألفاظ دارجة، أو دخيلة، أو تركية، أو فارسية، أو إفرنجية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إن عوامل عدة ساعدت على تدني مستوى الفصاحة في بعض فنون النثر في هذا العصر، ومن أبرزها التمازج الحضاري مع الثقافات المختلفة، وكذلك طبيعة الحكم السياسي التي تزعمها من غير العرب، ففي عهدهم برزت هذه الظاهرة بشكل واضح. لقد تنبّه بعض الكتاب عصر الدول المتتابعة لاستخدام الكتاب عصرهم أساليب عامية وألفاظ معجمية وأخرى عامية في نتاجهم الأدبي، ومن ذلك :</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ابن تغري بردي في كتابه ((النجوم الزاهرة))</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ابن الأثير في كتابه ((المثل السائر))</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أحمد المقري الفيومي صاحب معجم ((المصباح المنير))</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الشهاب الخفاجي في معجمه (( شفاء الغليل بما في كلام العرب من الدخيل))</p></div></div>
+<div class="hal" id="hal-33" data-kitab="33"><span><i class="hal__t">Hlm. </i>33</span><button type="button" class="hal__pdf" data-pdf="33" aria-label="Lihat PDF asli untuk Hlm. 33" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لو تأملنا في بعض النتاج النثري في هذا العصر لوجدنا بعض الأدباء والكتاب يستعينون بالكثير من الألفاظ المعربة، ومنهم أسامة بن منقذ في كتابه ((الاعتبار)) والذي يعد مصنفا ضمن فن السيرة الذاتية، وفي عصر الدولة العثمانية يظهر لنا أيضًا استخدام بعض المؤلفين للألفاظ العامية في مؤلفاتهم، وأكثر ما كان ذلك في كتب التاريخ، كتاريخ ابن إياس المسمى ((بدائع الزهور في وقائع الدهور)) وتاريخ الجبرتي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما أن الرسائل التي كانت تكتب ما بين المسلمين والنصارى الصليبيين فإنها كانت لابد أن تكتب بأسلوب بسيط؛ لأن القصد الأول منها وضوح المعاني من أقرب سبيل.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لكن أجلى مظاهر تدني مستوى الفصاحة في الألفاظ والأساليب يتمثل في فن نثري كان له حضور قوي في عصر الدول المتتابعة وهو فن السير والقصص الشعبية التي تكتظ بالألفاظ والأساليب العامية، لعل من أبرزها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">سيرة الظاهر بيبرس</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وسيف بن ذي يزن</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقصة ألف ليلة وليلة</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان ابن مماتي ت ٦٠٦هـ من أشهر الكتاب والأدباء في عصر الدول المتتابعة الذين ألفوا في فن القصة الشعبية، وذلك في كتابه المسمى ((كتاب الفاشوش في حكم قراقوش )) ، وقد لجأ كثيرًا إلى استخدام العامية في صياغة بعض أجزاء قصته.</p></div></div>
+<h4 class="sub sub--3" id="sub-32" lang="ar">ثالثاً: عدم الابتكار والتجديد</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">غلب على النثر في عصر الدول المتتابعة البراعة في الصنعة الكتابية، وقد أوضحنا ذلك في أول حديثنا عن أبرز الخصائص الفنية لهذا النثر، لكنه في المقابل لم يكن يمتاز بالابتكار والتجديد، وهو أمر كان موضع اختلاف بين كثير من الباحثين، فأوردوا عدداً من الآراء حول ذلك، فمنهم:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">من يرى بأن النثر في هذا العصر قد وصل إلى درجة كبيرة من الانحدار والانحطاط لاسيما في عصر المماليك والعثمانيين.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وبعضهم يرى بأن هناك نوعاً من الابتكار ظهر على يدي القاضي الفاضل وابن الأثير.</p></div></div>
+<div class="hal" id="hal-34" data-kitab="34"><span><i class="hal__t">Hlm. </i>34</span><button type="button" class="hal__pdf" data-pdf="34" aria-label="Lihat PDF asli untuk Hlm. 34" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أن النثر في هذا العصر قد ازدهر وشهد تسارعاً كبيراً في حركته، لكنه كان خالياً من معالم التجديد والابتكار. غير أن خلوه من التجديد والابتكار لا يعني أن نقلل من شأنه وقيمته، فنكون مثل أولئك الباحثين الذين يجردونه من أية قيمة، فلا يقيمون له وزناً، وإنما يجعلونه عقيماً يمثل الجدب والانحطاط، وينعتونه بأدب الظلام والتأخر، وهم بالتالي يهملون أمره. وهو الذي خلد لنا أجل الملاحم وأهم الأحداث في تاريخنا البعيد، ووشى كتبنا القديمة بأرق الشعر وأعذب الموشحات، وزينها بأجمل النثر الوجداني والقصص الوعظية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لقد عوضنا النثر العربي في هذه المرحلة من تدرجه والتي عاشها في عصر الدول المتتابعة بمصر والشام عن التجديد والابتكار بمظاهر مختلفة من الإبداع لا سيما فيما يتعلق بالنثر التأليفي، الذي امتاز كتابه بعمق القراءة للتراث النثري العربي القديم وقوة استيعاب مضامينه، فظهرت الموسوعات لتجمع شتات ما تفرق منه وتآلف ما تباعد بينه. كما ظهرت الشروحات في مختلف العلوم لتبسيطها وإضافة بعض ما قد يستجد في هذه العلوم، ومن ذلك الشروحات في مجال النحو واللغة والبلاغة والأدب والفقه وغير ذلك، كما ظهرت في هذا السبيل ما يسمى بالحواشي على بعض الكتب؛ سعيًا لمزيد من الإيضاح وتسهيل فهمها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وتزداد مظاهر الإبداع وضوحًا في النثر التأليفي في عصر الدول المتتابعة عندما نلقي نظرة على المؤلفات الدينية في الحديث والفقه والتفسير والتي حمل لواءها علماء أفذاذ أمثال ابن تيمية وتلميذه ابن القيم وكذلك السيوطي وغيره من العلماء، كما أن الإبداع يظهر في المعاجم وما خطه علماء كبار أمثال: ابن منظور والفيروز آبادي والزبيدي، وغيرهم كثير من العلماء الذين أبدعوا في مجالات متنوعة.</p></div></div>
+<div class="hal" id="hal-35" data-kitab="35"><span><i class="hal__t">Hlm. </i>35</span><button type="button" class="hal__pdf" data-pdf="35" aria-label="Lihat PDF asli untuk Hlm. 35" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-4"><h2 class="bab__ar" lang="ar">أعلام النثر في العصر الوسيط</h2></header>
+<h3 class="sub" id="sub-33" lang="ar">١. ابن منظور</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(٦٣٠ هـ / ١٢٣٢ م - ٧١١ هـ / ١٣١١ م ) هو أديب ومؤرّخ وعالم في الفقه الإسلامي واللغة العربية. من أشهر مؤلفاته معجم لسان العرب.</p></div></div>
+<h4 class="sub sub--3" id="sub-34" lang="ar">اسمه ومولده ونسبه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هو محمد بن مكرم بن علي، أبو الفضل، جمال الدين ابن منظور الأنصاري الرويفعي الإفريقي المصري.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد في محرم سنة ٦٣٠ هـ / ١٢٣٢م ، واختلفت الأقاويل حول مكان ولادته، قيل بقفصة تونس، وقيل بطرابلس ليبيا، وقيل بمصر. ويعدّ من نسل رويفع بن ثابت الأنصاري.</p></div></div>
+<h4 class="sub sub--3" id="sub-35" lang="ar">حياته العلمية والعملية</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تعلم ابن منظور الأدب، والشعر، والإنشاء على يد كبار الشيوخ، والعلماء في عصره، أمثال: عبدالرحمن بن الطفيل، وابن المقير، ومرتضى بن حاتم، وأخذ منهم، ومن غيرهم من الشيوخ العلم، واستزاد من معرفته في النحو، واللغة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما حياته العملية فقد تمثلت بالعمل في ديوان الإنشاء ، ثم توليه بعد ذلك شؤون القضاء في طرابلس الغرب، ومن الجدير بالذكر أنّ هاتين الوظيفتين لابن منظور كان لهما الدورُ المُؤثّر في تطويع ما نثره، وزيادة جماله، وذلك إلى أن انتهت مسيرته بعودته إلى مصر قبل وفاته.</p></div></div>
+<h4 class="sub sub--3" id="sub-36" lang="ar">صفاته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان ابن منظور صاحب خُلق طيب، وخصال حميدة؛ فقد وصفه الكثيرون بأنّه كان كريماً، ومتواضعاً، ومُحافِظاً على دينه ملتزماً بأداء العبادات، والطاعات، حليماً هادئ الأعصاب ضابطاً لانفعالاته، كما كان لطيفاً في معشره، ومُحِبّاً للعلم، والعلماء، وأصحاب العقول، والحكمةِ، وقد جاءَ في وَصفِ نثره بأنّه كان جميلاً رقيقاً، وخفيف الظل.</p></div></div>
+<h4 class="sub sub--3" id="sub-37" lang="ar">شعره ومؤلفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">له شعر رقيق. ومن شعره:</p></div></div>
+<div class="hal" id="hal-36" data-kitab="36"><span><i class="hal__t">Hlm. </i>36</span><button type="button" class="hal__pdf" data-pdf="36" aria-label="Lihat PDF asli untuk Hlm. 36" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">النَّاس قد أثموا فِينَا بظنهم * وَصَدَقُوا بِالَّذِي أَدْرِي وتدرينا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مَاذَا يَضرُّك فِي تَصْدِيقِ قَوْلهم * بِأَن نحقق ما فِينَا يظنونا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حملي وحملك ذنبا وَاحِدًا ثِقَة * بِالْعَفو أجمل من إِثْم الورى فِينَا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وضع ابن منظور قبل وفاته عدداً كبيراً من المُختصرات، والمؤلفات، لأهمها ما يلي:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لسان العرب في اللغة العربية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الجمع بين صحاح الجوهري والمحكم لابن سيده.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">سرور النفس في مختصر فصل الخطاب.</p></div></div>
+<h4 class="sub sub--3" id="sub-38" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">بعد حياة علمية حافلة، وبعد أن تولى نظر القضاء في طرابلس، عاد ابن منظور أدراجه إلى مصر، وفيها توفاه الله في شعبان سنة إحدى عشرة وسبعمائة من الهجرة (٧١١ هـ) ، عن اثنتين وثمانين سنة، وكان ذلك قبل ولادة صاحب "القاموس المحيط" الذي أتى بعده بثماني عشرة سنة.</p></div></div>
+<h3 class="sub" id="sub-39" lang="ar">٢. شهاب الدين الخفاجي</h3>
+<h4 class="sub sub--3" id="sub-40" lang="ar">اسمه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أحمد بن محمد بن عمر، شهاب الدين الخفاجي المصري: قاضي القضاة وصاحب التصانيف في الأدب واللغة.</p></div></div>
+<h4 class="sub sub--3" id="sub-41" lang="ar">مولده ونشأته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد عام 1569/0977م. وينسب إلى قبيلة خفاجة - وهى إحدى القبائل القاطنة بمصر – ويعود أصل والديه إلى سرياقوس - وهى قرية من قرى الخانقاه، وقد نشأ شهاب الدين محباً للعلم والدراسة، فقد حرص والداه على تلقينه أسس العلوم الدينية، فألحقاه بالأزهر الشريف.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ورحل إلى بلاد الروم واتصل بالسلطان مراد العثماني فولاه قضاء سلانيك، ثم قضاء مصر. ثم عزل عنها فرحل إلى الشام وحلب وعاد إلى بلاد الروم فنفي إلى مصر وولي قضاءاً يعيش منه فاستقر إلى أن توفي.</p></div></div>
+<h4 class="sub sub--3" id="sub-42" lang="ar">وظائفه</h4>
+<div class="hal" id="hal-37" data-kitab="37"><span><i class="hal__t">Hlm. </i>37</span><button type="button" class="hal__pdf" data-pdf="37" aria-label="Lihat PDF asli untuk Hlm. 37" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تولى قضاء العسكر بمصر، وسافر إلى القسطنطينية بعد ذلك فكتب تقريرًا عن تفاقم وتردي الأوضاع هناك، فكان ذلك من أسباب عزله عن قضاء العسكر.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تولى بعد ذلك القضاء ببلاد الروم، ووصل إلى أعلى مناصب الوظيفة والتي سميت (كأسكوب).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ذاعت شهرته لجهده في عمله وعلمه الغزير، فولاه السلطان مراد قضاء ولاية سلانيك ثم قضاء مصر.</p></div></div>
+<h4 class="sub sub--3" id="sub-43" lang="ar">أهم إنجازاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ترك الشهاب الخفاجي تراثا علميا وفيرا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تتلمذ على يديه نخبة من علماء العصر.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عمل على إصلاح القضاء في الدولة العثمانية.</p></div></div>
+<h4 class="sub sub--3" id="sub-44" lang="ar">بعض شيوخه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهتم شهاب الدين الخفاجي بتحصيل العلوم الدينية، فقرأ على خاله أبي بكر الشنواني، وتدرج في دراسة علوم الاثنى عشر ، ثم التحق بالأزهر، وقام بدراسة علم الفقه على المذهب الشافعي والحنفي على شيوخ عصره، إضافة إلى تلقيه علم الحديث على علماء عصره، وقد تتلمذ الشهاب على جملة من أساتذة عصره، أشهرهم شمس الدين الرملي، فقيه الديار المصرية، قرأ عليه شيئاً من صحيح مسلم، وأجازه بذلك وبجميع مؤلفاته ومروياته بروايته عن شيخ الإسلام القاضي زكريا الأنصاري.</p></div></div>
+<h4 class="sub sub--3" id="sub-45" lang="ar">تلاميذه:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أشهرهم عبد القادر ابن عمر البغدادي صاحب خزانة الأدب (ت ١٠٩٣هـ ) الذي قرأ عليه كثيراً من كتب التفسير والحديث والأدب، وأجازه بذلك وبمؤلفاته، ولما مات الشهاب تملك البغدادي أكثر كتبه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وفضل الله بن محب الله بن محمد المحبي (ت ١٠٨٢هـ ) الذي كتب عنه أصل الريحانة، وسماه "خبايا الزوايا فيما في الرجال من البقايا."</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وأحمد بن يحيى بن عمر الحموي المعروف بالعسكري الشافعي، وهو فقيه الشافعية بحماة (ت ١٠٩٤هـ.</p></div></div>
+<h4 class="sub sub--3" id="sub-46" lang="ar">بعض مؤلفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">شهاب الدين الخفاجي لديه مؤلفات كثيرة، ومنها فيما يلي:</p></div></div>
+<h4 class="sub sub--3" id="sub-47" lang="ar">الكتب:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عناية القاضي وكفاية الراضي - حاشية على تفسير البيضاوي.</p></div></div>
+<div class="hal" id="hal-38" data-kitab="38"><span><i class="hal__t">Hlm. </i>38</span><button type="button" class="hal__pdf" data-pdf="38" aria-label="Lihat PDF asli untuk Hlm. 38" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. ريحانة الندماء وشمامة الأدباء.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. حديقة السحر.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. عتاب الزمان في سبب حجب حرمان بني الأعيان.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. شفاء الغليل فيما في كلام العرب من الدخيل.</p></div></div>
+<h4 class="sub sub--3" id="sub-48" lang="ar">المخطوطات:</h4>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. البوارح والسوانح.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. حاشية الشهاب الخفاجي على حاشية ناصر الدين اللقاني على شرح السعد التفتازاني على التصريف العزي للزنجاني.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. خبايا الزوايا فيما للرجال من البقايا.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. ديوان الشهاب الخفاجي</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. رسالة الشهاب الخفاجي لمحمد الغشتالي ورده عليه.</p></div></div>
+<h4 class="sub sub--3" id="sub-49" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">شهاب الدين الخفاجي استقر في مصر إلى أن توفي سنة ١٠٦٩هـ / ١٦٥٩م.</p></div></div>
+<h3 class="sub" id="sub-50" lang="ar">٣. جلال الدين السيوطي</h3>
+<h4 class="sub sub--3" id="sub-51" lang="ar">اسمه ومولده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هو عبد الرحمن بن الكمال أبي بكر بن محمد بن سابق الدين بن الفخر عثمان بن ناصر الدين محمد بن سيف الدين خضر بن نجم الدين أبي الصلاح أيوب بن ناصر الدين محمد بن الشيخ همام الدين الأسيوطي نسبة لبلد تُسمّى أسيوط في صعيد مصر. وقد لقبه أبوه بجلال الدين، وابن الكتب، لأنه ولد عند الكتب، وكان شيخه عز الدين أحمد الحنبلي قد كناه بأبي الفضل.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد الإمام السيوطي في مصر في بداية شهر رجب سنة ٨٤٩ من العام الهجري، الذي يوافق الثالث من تشرين الأول من عام ١٤٤٥ ميلادي.</p></div></div>
+<h4 class="sub sub--3" id="sub-52" lang="ar">نشأته وحياته :</h4>
+<div class="hal" id="hal-39" data-kitab="39"><span><i class="hal__t">Hlm. </i>39</span><button type="button" class="hal__pdf" data-pdf="39" aria-label="Lihat PDF asli untuk Hlm. 39" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كانت حياة السيوطي مليئة بالعلم والرحلات إليه، ولازم العديد من العلماء، وحفظ الكثير من العلماء، وفيما يأتي بيان نبذة عن ذلك:</p></div></div>
+<h4 class="sub sub--3" id="sub-53" lang="ar">حياة السيوطي قبل وفاة والده:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد الإمام السيوطي لعائلة من أهل العلم، فقد عُرف جده همام الدين بأنه من "أهل الحقيقة ومن مشايخ الطريقة"، وكان والده إماماً في الفقه والفرض وغيرها الكثير من العلوم. ونشأ السيوطي في القاهرة، حيث كان والده يسكن فيها، وكان الإمام الحافظ ابن حجر - وهو شيخ والده - يُقيم فيها المجالس، وقد حضر السيوطي مع والده مجلساً له وهو بعمر الثالثة، وقد حفظ السيوطي من القرآن الكريم حتى سورة التحريم بحياة والده، إذ توفي والده وهو بالسادسة من العمر، وأصبح تحت وصاية الشيخ جمال الدين بن الهمام.</p></div></div>
+<h4 class="sub sub--3" id="sub-54" lang="ar">حفظ السيوطي للعديد من العلوم</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أكمل السيوطي حفظه لكتاب الله لما بلغ الثامنة من عمره، وتمتع الإمام السيوطي منذ الصغر بالذكاء وقوة الحفظ، فبعد حفظه لكتاب الله حفظ عدداً من الكتب؛ مثل كتاب عمدة الأحكام، والمنهاج الفرعي في الفقه للنووي، والمنهاج في الأصول، وألفية ابن مالك في النحو، ومنهاج البيضاوي، وعرض حفظه على الشيوخ في ذلك الوقت...</p></div></div>
+<h4 class="sub sub--3" id="sub-55" lang="ar">بدء السيوطي برحلة طلب العلم:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">بدأ السيوطي برحلة طلب العلم قبل سن الخامسة عشر، ودرس على يد عدد من الشيوخ؛ كالشمس محمد بن موسى الحنفي، والفخر عثمان المقسي، والشموس البامي، وابن الفالاتي، وابن يوسف، والعجلوني، والنعماني، وقد أخذ عنهم الفقه والنحو، ودرس الفرائض مع الشيخ شهاب الدين الشار مساحي.</p></div></div>
+<h4 class="sub sub--3" id="sub-56" lang="ar">ملازمة السيوطي للعلماء والشيوخ:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لزم السيوطي الشيخ شرف الدين المناوي وقرأ عليه عدداً من كتب الفقه والتفسير، وبقي مع العلامة محي الدين الكافيجي لمدة أربع عشرة سنة، وقد أجازه في التفسير، والأصول العربية، والمعاني، وكان يُتابع دروس الشيخ سيف الدين الحنفي ويحضرها.</p></div></div>
+<h4 class="sub sub--3" id="sub-57" lang="ar">مكانته ومنزلته العلمية</h4>
+<div class="hal" id="hal-40" data-kitab="40"><span><i class="hal__t">Hlm. </i>40</span><button type="button" class="hal__pdf" data-pdf="40" aria-label="Lihat PDF asli untuk Hlm. 40" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اجتهد الإمام السيوطي وتبحر وتوسع في العلم، ولم يكتف بعلم واحد بل بسبعة علوم، وهي التفسير، والحديث والفقه، والنحو، والمعاني والبيان والبديع، وكان يملك معرفةً قوية بباقي العلوم؛ كأصول الفقه، والفرائض، والحساب، والإنشاء، والتصرف، والجدل، وغيرها. ولم يكن السيوطي مجرد قارئ وباحث يستنبط ويشرح؛ بل كان مجدّداً مُتميّزاً لم يُشبهه أحدٌ في زمانه، وحظي الإمام السيوطي بمكانة رفيعة في المجتمع، فقد كان تحت وصاية كمال الدين؛ وهو من كبار فقهاء الحنفية في ذلك الوقت، وكان مقرّباً من الخلفاء العباسيين بفضل والده والسلاطين؛ كالسلطان قايتباي. ولما بلغ من العلم الكثير أصبح من كبار علماء عصره، وعلا شأنه وارتفعت منزلته في المجتمع، فقد كان مؤثراً وصاحب كلمة، وكان معروفاً في مصر وبلاد الشام، وانتفع الناس من علمه وكتبه، واعتمدت فتاويه عند السلاطين والعوام، وانتشرت في مصر وبلاد الشام.</p></div></div>
+<h4 class="sub sub--3" id="sub-58" lang="ar">شخصيته وأخلاقه:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اتصف السيوطي بالتواضع، والصفاء، والوضوح، والثّقة العالية بالنفس، فقد كان صريحاً في الحديث عن نفسه عن نعم الله - تعالى - التي حظي بها، وكان يذكر خصاله الجيدة والمميّزة، وقد قال في ذلك: "أقول ذلك تحدثاً بنعمة الله تعالى لا فخراً، وأي شيء في الدنيا حتى يُطلب تحصيلها في الفخر، وقد أزف الرحيل وبدا الشيب وذهب أطيب العمر"، وكان - رحمه الله - وَرِعاً ، تقياً، مُتمسّكاً بسنّة النبي - صلى الله عليه وسلم-، ومتخذاً علماء السلف قدوة وأسوةً له.</p></div></div>
+<h4 class="sub sub--3" id="sub-59" lang="ar">مؤلفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ألف الإمام السيوطي - رحمه الله - الكثير من المؤلفات، لأهمها ما يلي :</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. الإتقان في علوم القرآن.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. تفسير الجلالين</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. الديباج على صحيح مسلم بن الحجاج.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. متشابه القرآن.</p></div></div>
+<h4 class="sub sub--3" id="sub-60" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">توفي الإمام السيوطي بعمر الواحد والستين قبل فجر يوم الجمعة في التاسع عشر من جمادى الأولى عام ٩١١ هجري، وقد كان مريضاً لمدة سبعة أيامٍ يُعاني فيها من ورم شديد في يده اليسرى، وقد توفي في منزله، ودفن في حوش قوصون خارج باب القرافة.</p></div></div>
+<div class="hal" id="hal-41" data-kitab="41"><span><i class="hal__t">Hlm. </i>41</span><button type="button" class="hal__pdf" data-pdf="41" aria-label="Lihat PDF asli untuk Hlm. 41" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-61" lang="ar">٤. الخطيب الحصكفي</h3>
+<h4 class="sub sub--3" id="sub-62" lang="ar">اسمه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أبو الفضل يحيى بن سلامة بن الحسين بن محمد الملقب معين الدين، المعروف بالخطيب الحصكفي نسبة إلى حصن كيفا، صاحب ديوان شعر وخطب ورسائل.</p></div></div>
+<h4 class="sub sub--3" id="sub-63" lang="ar">مولوده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد يحيى بن سلامة بن الحسين في قرية طنزة الواقعة في جزيرة ابن عمر، جنوب شرق تركيا حاليا، وكانت ولادته في سنة ٤٥٩هـ، وانتقل مع عائلته في صغره إلى حصن كيفا ونشأ هناك.</p></div></div>
+<h4 class="sub sub--3" id="sub-64" lang="ar">حياته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قدم الخطيب الحصكفي إلى بغداد، فاشتغل بالأدب على الخطيب أبي زكريا التبريزي، وأتقنه حتى مهر فيه، وقرأ الفقه على مذهب الإمام الشافعي وأجاد فيه. ثم رحل عن بغداد راجعا إلى بلاده، ونزل ميافارقين واستوطنها، وتولى بها الخطابة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان الخطيب الحصكفي شاعرا وخطيبا ومترسلا، وهو عظيم البراعة في شعره ونثره، مقتدر في جميع أوجه الصناعة المعنوية والصناعة اللفظية. وهو يصرف في شعره ونثره كثيرا من المعارف اللغوية والفقهية والفلكية وسواها، وكان بارعا في نظم الشعر والنثر وإنشاء الخطبة، وارتقى مقام الخطيب الحصكفي في ميافارقين حتى صار مفتي المدينة، فاشتغل عليه الناس وانتفعوا بصحبته، وكان يتشيع وهو في شعره ظاهر وله الخطب المليحة والرسائل المنتقاة ولم يزل على رياسته وجلالته وإفادته إلى أن توفي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وذكره العماد الأصبهاني في كتاب "الخريدة" فقال في حقه: "كان علامة الزمان في علمه ومعري العصر في نثره ونظمه، له اللفظ الجزل الرقيق، والمعنى السهل العميق، والفضل السائر المقيم". وأكثر العماد من الثناء عليه وتعداد محاسنه بتلك الأسجاع المتعارفة في ذلك العصر.</p></div></div>
+<h4 class="sub sub--3" id="sub-65" lang="ar">مؤلفاته:</h4>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. ديوان شعر</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. ديوان خطب</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. ديوان رسائل</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. المرادفات في القرآن</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. عمدة الاقتصاد في النحو</p></div></div>
+<div class="hal" id="hal-42" data-kitab="42"><span><i class="hal__t">Hlm. </i>42</span><button type="button" class="hal__pdf" data-pdf="42" aria-label="Lihat PDF asli untuk Hlm. 42" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-66" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">توفي الخطيب الحصفكي سنة ٥٥١هـ بميافارقين وفق إحدى الروايات، وفي رواية أخرى كانت وفاته سنة ٥٥٣هـ.</p></div></div>
+<h3 class="sub" id="sub-67" lang="ar">٥. عماد الدين الأصفهاني</h3>
+<h4 class="sub sub--3" id="sub-68" lang="ar">اسمه ومولده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عماد الدين الأصفهاني أو العماد الأصفهاني أو عماد الدين الأصبهاني هو أبو عبد الله، محمد بن حامد بن محمد بن عبد الله بن علي بن محمود بن هبة الأصفهاني الكاتب، ويعرف بابن أخي العزيز.</p></div></div>
+<h4 class="sub sub--3" id="sub-69" lang="ar">حياته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد في أصبهان، وقدم بغداد حدثا، فتأدب وتفقه واتصل بالوزير عون الدين ابن هبيرة ) فولاه نظر البصرة ثم نظر واسط. ومات الوزير، فضعف أمره، فرحل إلى دمشق، فاستخدم عند السلطان (نور الدين) في ديوان الإنشاء. وبعثه نور الدين رسولا إلى بغداد أيام (المستنجد) ثم لحق بصلاح الدين بعد موت نور الدين، فكان معه في مكانة (وكيل وزارة) إذا انقطع (الفاضل ) بمصر لمصالح صلاح الدين قام العماد مقامه. ولما توفي صلاح الدين استوطن العماد دمشق ولزم مدرسته المعروفة بالعمادية. وتوفي بها. ولد في سنة ( ١١٢٥ م / ٥١٩ هـ) في ثاني جمادى، في أصبهان.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان هو أديب و شاعر و مؤرخ فارسي اتولد في اصفهان اعظم اشعاره صورت الحروب الصليبية. ترجم من الفارسي وأرخ لنفسه في " البرق الشامي " و لشعرا القرن ١٢ في " خريدة القصر وجريدة اهل العصر".</p></div></div>
+<h4 class="sub sub--3" id="sub-70" lang="ar">خبرته ووظائفه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">المعارك والحروب : معركة مرجعيون ، معركة حطين ، حصار القدس، وغيرها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">له كتب كثيرة، منها :</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(خريدة القصر - ط) مجلدات منه، في دمشق وبغداد وكانت في طريقة طبعه إقليمية خبيثة في الأدب.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(الفتح القسي في الفتح القدسي - ط)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(البرق الشامي - خ) [ثم طُبع] سبع مجلدات في أخبار صلاح الدين وفتوحه</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(ديوان رسائل)</p></div></div>
+<div class="hal" id="hal-43" data-kitab="43"><span><i class="hal__t">Hlm. </i>43</span><button type="button" class="hal__pdf" data-pdf="43" aria-label="Lihat PDF asli untuk Hlm. 43" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(ديوان شعر)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(السيل على الذيل ) ثلاث مجلدات في تاريخ بغداد، جعله ذيلا على ذيل ابن السمعاني</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(نصرة الفترة وعصرة الفطرة في أخبار الدولة السلجوقية، اختصره الفتح بن علي البنداري في جزء سماه (زبدة النصرة ونخبة العصرة - ط) ويعرف بـ (تواریخ آل سلجوق)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(البستان - خ) في التاريخ. نقلا عن «الأعلام للزركلي [ بزيادة بين معكوفين]</p></div></div>
+<h4 class="sub sub--3" id="sub-71" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">توفي في دمشق سنة (١٢٠١ م / ٥٩٧هـ).</p></div></div>
+<h3 class="sub" id="sub-72" lang="ar">٦. القاضي الفاضل</h3>
+<h4 class="sub sub--3" id="sub-73" lang="ar">اسمه ومولده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">القاضي الفاضل هو أبو علي عبد الرحيم بن القاضي الأشرف بهاء الدين أبي المجد علي بن القاضي السعيد أبي محمد الحسن بن الحسن بن أحمد بن الفرج. ولد القاضي الفاضل بمدينة " عسقلان" شمال غزة في فلسطين سنة ٥٢٦هـ. وانتقل إلى الإسكندرية، ثم إلى القاهرة .</p></div></div>
+<h4 class="sub sub--3" id="sub-74" lang="ar">حياته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان القاضي الفاضل ذا شخصية واسعة الإطلاع منذ صغر سنه، متنوعة الثقافة، غنية بالمعارف والعلوم المختلفة، فدرس القرآن والحديث وديوان الحماسة وغيرها من العلوم في جوامع المدينة التي كانت موئلا للفقهاء من فلسطين وغيرهم. هاجر عبد الرحيم البيساني من عسقلان إلى القاهرة للتعلم على يد كبار علمائها وشيوخها فكان أبرزهم الموفق بن خلال ابن قادوس، ابن الشخباء، ابن حديد قاضي الإسكندرية وناظرها، العميدي، ابن عبد كان.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان يعمل كاتبا في دواوين الدولة ووزيرًا ومستشارًا للسلطان صلاح الدين لبلاغته وفصاحته، حيث قال فيه صلاح الدين ( لا تظنوا أني فتحت البلاد بالعساكر إنما فتحتها بقلم القاضي الفاضل) وفي رواية لا تظنوا أني ملكت البلاد بسيوفكم بل بقلم القاضي الفاضل. وقد برز القاضي الفاضل في صناعة الإنشاء، وفاق المتقدمين، وله فيه الغرائب مع الإكثار.</p></div></div>
+<h4 class="sub sub--3" id="sub-75" lang="ar">من عباراته</h4>
+<div class="hal" id="hal-44" data-kitab="44"><span><i class="hal__t">Hlm. </i>44</span><button type="button" class="hal__pdf" data-pdf="44" aria-label="Lihat PDF asli untuk Hlm. 44" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إني رأيتُ أنَّه لا يكتب إنسان كتابًا في يومه؛ إلا قال في غَدِهِ : لو غُيِّرَ هذا لكان أحسن، ولو زيد كذا لكان يُستَحسَنُ، ولو قُدِمَ هذا لكان أفضل، ولو تُرِكَ هذا لكان أجمل. هذا مِنْ أعظم العِبَرِ، وهو دليل على استيلاء النقص علَى جُملة البَشَرِ.</p></div></div>
+<h4 class="sub sub--3" id="sub-76" lang="ar">مؤلفاته:</h4>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. الدر النظيم من ترسل عبد الرحيم، حققه الدكتور أحمد بدوي، القاهرة ١٩٥١م.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. رسائل عن الحرب والسلام، حققه الدكتور محمد نغش، القاهرة ١٩٨٤م.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. الفاضل من كلام الفاضل، مخطوط، دار الكتب المصرية، رقم: (٣٨٨٢) أدب.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. الرسائل الأدبية للقاضي الفاضل، مخطوط مكتبة الأزهر، رقم: (٧٠٣٥) أدب.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. الرسائل الحجازية، مخطوط بالفاتيكان.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٦. كتابة مكاتبة، مختصر من متبلج الأنوار ومتأرج النوار في المكاتبات إلى الملوك والوزراء والعلماء مما جمعه ابن مماتي من قول القاضي الفاضل، مخطوط بالفاتيكان.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٧. رسائله إلى الخليفة في بغداد، مخطوط في باريس، وأورد مجموعة من رسائله ومكاتباته المفردة. انظر: تاريخ الأدب العربي 7/10/11</p></div></div>
+<h4 class="sub sub--3" id="sub-77" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان القاضي الفاضل ضعيف البنية كثير المرض، وفي رسائله إشارات كثيرة إلى مرضه وضعفه اللذين ازدادا بعد وفاة صلاح الدين الأيوبي. توفي القاضي الفاضل بعد كل هذه الآلام الجسمية والمعنوية في السادس من ربيع الأول ٥٩٦هـ / ١١٩٩م في القاهرة ودفن في سفح المقطم في القرافة الصغرى.</p></div></div>
+<h3 class="sub" id="sub-78" lang="ar">٧. محي الدين بن عبد الظاهر</h3>
+<h4 class="sub sub--3" id="sub-79" lang="ar">اسمه ومولده ووفاته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">محيي الدين أبو الفضل عبد الله بن رشيد الدين عبد الظاهر السعدي المصري . ولد بالقاهرة في 9 محرم ٦٢٠ هـ / ١٢ فبراير ١٢٢٣م - وتوفي بالقاهرة في ٤ رجب ٦٩٢هـ / ١٧ يونيو ١٢٩٣م).</p></div></div>
+<div class="hal" id="hal-45" data-kitab="45"><span><i class="hal__t">Hlm. </i>45</span><button type="button" class="hal__pdf" data-pdf="45" aria-label="Lihat PDF asli untuk Hlm. 45" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-80" lang="ar">نشأته وحياته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد ونشأ في مصر في بيت علم وأدب، وقد وصف القلقشندي أبناء عائلة عبد الظاهر بأنهم " بيت الفصاحة ورؤوس البلاغة ". كان والد محيي الدين بن عبد الظاهر قاضياً وقد حرص على تعليمه وتثقيفه، فتتلمذ على أيدي علماء عصره أمثال جعفر الحمداني، وعبد الله بن إسماعيل بن رمضان، ويوسف بن المخيلي، وغيرهم. وبالإضافة إلى تعلمه علوم الدين والفقه فقد إجتهد في تحصيل علم التاريخ، وقرأ لكبار المؤرخين من أمثال الطبري و ابن الأثير وابن عساكر وغيرهم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">رافق محي الدين بن عبد الظاهر السلطان قطز في حملته إلى الشام للتصدي للمغول، وعندما تولى الظاهر بيبرس الحكم كان ابن عبد الظاهر يعمل كاتباً في ديوان الإنشاء.</p></div></div>
+<h4 class="sub sub--3" id="sub-81" lang="ar">خبرته ووظائفه:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قاضي مصري وصاحب ديوان الإنشاء مؤرخ أديب لعهد المماليك البحرية، وخاصة الظاهر بيبرس.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">بالدولة المملوكية، عاش في عهد السلطان الظاهر بيبرس. تألق حين عهد إليه الظاهر بيبرس بعمل شجرة نسب للخليفة الحاكم بأمر الله أحمد العباسي. وألف كتابه الشهير " الروض الزاهر في سيرة الملك الظاهر " عن حياة وأعمال السلطان الظاهر بيبرس البندقداري، فأعطى معلومات تاريخية متكاملة عن عهد الظاهر بيبرس.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وبعد تولي بيبرس الحكم في سنة ١٢٦٠م كانت أولى أهم خدماته له كتابة رسالة على لسانه إلى بركة خان ملك القبيلة الذهبية المغولية، الذي اعتنق الإسلام، يحرضه فيها على هولاكو ومغول فارس ( الإلخانات ). اعتمد المقريزي على بعض ما ورد في كتابه " الروضة البهية الزاهرة في خطط المعزية القاهرة " في كتابة " الخطط المقريزية ". من مؤلفاته الأخرى " تشريف الأيام والعصور في سيرة الملك المنصور " عن حياة السلطان المنصور قلاوون ووقائع عهده، و الألطاف الخفية من السيرة الشريفة السلطانية الأشرفية " عن حياة السلطان الأشرف خليل بن قلاوون وعهده طبيعة عمله ككاتب بديوان الإنشاء جعلته على اتصال دائم بسلاطين زمنه وإطلاعه على أمور الدولة. كان له أسلوب مميز بارع في الكتابة جعله من أساطين الكتابة في عصره. وصفه ابن تغري بأنه " من سادات الكتاب ورؤسائهم وفضلائهم."</p></div></div>
+<div class="hal" id="hal-46" data-kitab="46"><span><i class="hal__t">Hlm. </i>46</span><button type="button" class="hal__pdf" data-pdf="46" aria-label="Lihat PDF asli untuk Hlm. 46" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-82" lang="ar">مؤلفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الروض الزاهر في سيرة الملك الظاهر : عن حياة السلطان الظاهر بيبرس وأحداث عهده. مخطوطة الكتاب توجد بمكتبة الفاتح بـ إسطنبول. فقدت من المخطوطة بعض الورقات من بينها أول ست ورقات. وتوجد مخطوطة أخرى بالمتحف البريطاني بلندن.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الروضة البهية الزاهرة في خطط المعزية القاهرة : عن مدينة القاهرة وقد استخدمه المقريزي كمصدر لبعض المعلومات التي وردت في كتابه " المواعظ والاعتبار بذكر الخطط والآثار - الخطط المقريزية ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تشريف الأيام والعصور في سيرة الملك المنصور : عن حياة السلطان المنصور قلاوون وعهده.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الألطاف الخفية من السيرة الشريفة السلطانية الأشرفية : عن السلطان الأشرف خليل بن قلاوون ووقائع عهده.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تمائم الحمام [٥] : مراسلات حمام البريد.</p></div></div>
+<h3 class="sub" id="sub-83" lang="ar">٨. صلاح الدين الصفدي</h3>
+<h4 class="sub sub--3" id="sub-84" lang="ar">اسمه ومولده :</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هو صلاح الدين أبو الصفاء خليل بن أيبك بن عبد الله الأيبكي الصفدي الدمشقي الشافعي. ونسبته إلى صفد من أرض فلسطين، فهو صفدي الأصل، دمشقي الدار والوفاة. وذكر الذهبي وابن خطيب الناصرية: أنه من موالي الأمير الكبير فارس الدين الألبكي.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولد لواحد من أمراء المماليك، في صفد سنة ٦٩٦ هـ ونشأ في أُسرة ثرية نشأة مرفهة، فحفظ القرآن العزيز في صغره، ثم طلب العلم، وبرع في النحو واللغة والأدب والإنشاء، وكتب الخط المنسوب، وقرأ الحديث وكتبه.</p></div></div>
+<h4 class="sub sub--3" id="sub-85" lang="ar">شخصيته :</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان الصفدي محببا إلى الناس، حسن المعاشرة، جميل المودة، وكان إليه المنتهى في مكارم الأخلاق ومحاسن الشيم، وكانت له همَّةٌ عالية في التحصيل، فما صنف إلا وسأل علماء عصره عما يلزمه فيه من لغة، أو نحو أو بلاغة أو فقه أو حديث، فكتب بخطه المئين من المجلدات، وصنف ما يزيد عن خمسين مؤلفاً.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ويقول صاحب النجوم الزاهرة : كان إماما بارعا كاتبا ناظما ناثرا شاعرا، وديوان شعره مشهور بأيدي الناس وهو من المكثرين.</p></div></div>
+<div class="hal" id="hal-47" data-kitab="47"><span><i class="hal__t">Hlm. </i>47</span><button type="button" class="hal__pdf" data-pdf="47" aria-label="Lihat PDF asli untuk Hlm. 47" title="Lihat PDF asli"></button></div>
+<h4 class="sub sub--3" id="sub-86" lang="ar">مؤلفاته :</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الوافي بالوفيات</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أعيان العصر وأعوان النصر</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تمام المتون في شرح رسالة ابن زيدون</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">نكت الهميان في نكت العميان</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">جنان الجناس</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">التذكرة الصفدية</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والغيث المسجم في شرح لامية العجم</p></div></div>
+<h4 class="sub sub--3" id="sub-87" lang="ar">وفاته :</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">في سنة ٧٦٤ هـ انتشر الطاعون في البلاد المصرية، وامتد إلى الساحل الشرقي للبحر الأبيض المتوسط، مما أصاب البلاد الشامية بهذا الوباء، وكان من ضحيته عدد من العلماء، كان من أبرزهم صلاح الدين الصفدي، حيث توفي بدمشق في ليلة الأحد، عاشر شوال سنة أربع وستين وسبع مئة، وعمره ثمان وستون سنة. ودفن بمقابر الشهداء المعروفة بالصوفية، المطلة على الميدان الأخضر، والتي أُقيم على أنقاضها بناء الجامعة السورية، والمستشفى الوطني.</p></div></div>
+<h3 class="sub" id="sub-88" lang="ar">٩. الصاحب بن عباد</h3>
+<h4 class="sub sub--3" id="sub-89" lang="ar">اسمه ومولده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أبو القاسم إسماعيل بن عباد بن عباس بن عباد بن أحمد بن إدريس القزويني، الطالقاني، الأصفهاني. ولد باصطخر، وقيل بالطالقان في السادس عشر من ذي القعدة سنة ٣٢٦ هـ ، وقيل سنة ٣٢٤ هـ ، وكان أصله من شيراز وقيل من الري، وقيل من أصفهان.</p></div></div>
+<h4 class="sub sub--3" id="sub-90" lang="ar">حياته وشخصيته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان محدثاً ثقة، شاعراً مبدعا. كان وزيراً، ومن نوادر الوزراء الذين غلب عليهم العلم والأدب. استكتبه ابن العميد، ثم استوزره الملك مؤيد الدولة بن بويه البويهي، ثم فخر الدولة شاهنشاه البويهي. تصدر للوزارة بعد ابن العميد سنة ٣٦٧ هـ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان أحد كتاب الدواوين الأربع، وكان فصيحاً، سريع البديهة، كثير المحفوظات، متكلماً، محققاً، نحوياً، لغويا، ولجلالة قدره وعظيم شأنه مدحه خمسمائة شاعر، ولأجله ألف أبو منصور الثعالبي كتاب يتيمة الدهر، وابن بابويه كتاب عيون أخبار الرضا. كان أول من سمي بالصاحب من الوزراء لأنه صحب الملك مؤيد الدولة البويهي</p></div></div>
+<div class="hal" id="hal-48" data-kitab="48"><span><i class="hal__t">Hlm. </i>48</span><button type="button" class="hal__pdf" data-pdf="48" aria-label="Lihat PDF asli untuk Hlm. 48" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">من الصبا، فسماه بالصاحب فلقب به، وكان أبوه وجده من الوزراء، فنشأ في بيت فضل وعلم ووزارة وجلالة ووجاهة.</p></div></div>
+<h4 class="sub sub--3" id="sub-91" lang="ar">من مؤلفاته:</h4>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١. المحيط في اللغة</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٢. الكشف عن مساوئ المتنبي</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٣. ديوان رسائل</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٤. ديوان شعر</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٥. عنوان المعارف في التاريخ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٦. الوزراء</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٧. أسماء الله وصفاته</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٨. جوهرة الجمهرة</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">٩. الأعياد</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">١٠. الإمامة</p></div></div>
+<h4 class="sub sub--3" id="sub-92" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">توفي بالري في الرابع والعشرين من صفر سنة ٣٨٥ هـ، ونقل جثمانه إلى أصفهان ودفن بها في باب دريه. رثاه الشريف الرضي بعد وفاته بقصيدة مطولة.</p></div></div>
+<h3 class="sub" id="sub-93" lang="ar">١٠. ابن العميد</h3>
+<h4 class="sub sub--3" id="sub-94" lang="ar">اسمه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هو أبو الفضل محمد بن العميد أبي عبد الله الحسين بن محمد الكاتب المعروف بابن العميد. يرجع أبو الفضل إلى "أسرة فارسية من مدينة قم الفارسية الشيعية"، وأشارت الدراسات أنه زعيم مدرسة الصنعة.</p></div></div>
+<h4 class="sub sub--3" id="sub-95" lang="ar">دينه</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أشار الأصبهاني في كتابه "رياض العلماء أن ابن العميد شيعي المذهب، كما أورد صاحب كتاب طبقات أعلام الشيعة" ذلك، ودل على ذلك من خلال ما ذكره بانه فاز بلقاء الحجة عند تهنئة أبيه بولادته في سامراء.</p></div></div>
+<h4 class="sub sub--3" id="sub-96" lang="ar">مولده</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لم تؤكد المصادر سنة ميلاد ابن العميد بدقة، ولكنها كلها أجمعت على أن تكون ولادته إما في السنة الأخيرة من القرن الثالث الهجري، أي سنة (٢٩٩هـ ، ٩١٢م)، أو في السنة الأولى من القرن الرابع الهجري. ولم يعمر</p></div></div>
+<div class="hal" id="hal-49" data-kitab="49"><span><i class="hal__t">Hlm. </i>49</span><button type="button" class="hal__pdf" data-pdf="49" aria-label="Lihat PDF asli untuk Hlm. 49" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ابن العميد في هذه الدنيا طويلا، إذ لم ينج من الأمراض اللعينة، فقد أصيب بالقولنج والنقرس، وكان كل واحد منهما متعبا له أكثر من الآخر، وفي ذلك، سأله سائل: " أيهما أصعب عليك وأشق ؟ فأجاب: إذا عارضني النقرس فكأني بين فكي سبع يمضغني، وإذا اعتراني القولنج وددت لو استبدلت النقرس عنه.</p></div></div>
+<h4 class="sub sub--3" id="sub-97" lang="ar">وزارته وألقابه:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عمل ابن العميد وزيرا في عهد دولة بويه لركن الدولة أبي علي الحسن بن بويه الديلمي، وذلك بعد وفاة وزيره أبي علي ابن القمي في سنة ٣٢٦هـ ، وقيل في ٣٢٨هـ ، فحمل أعباء الإدارة وخاض معه غمرات السياسة والحرب".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">جاء لقبه (العميد) وراثة عن والده علي بن محمد الإسكافي الكاتب، وقد لقب به على عادة أهل خراسان لإجرائه مجرى التعظيم، و لأبيه أدب وترسل، تؤكد الدراسات على جودتهما، كما أنه عمل وزيرا لمرداويج.</p></div></div>
+<h4 class="sub sub--3" id="sub-98" lang="ar">حياته وشخصيته</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان ابن العميد يقول: ثلاثة علوم الناس كلها عيال فيها على ثلاثة أنفس، أما الفقه، فعلى أبي حنيفة، وأما الكلام، فعلى أبي هذيل، وأما البلاغة والفصاحة واللسن والعارضة، فعلى أبي عثمان الجاحظ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لم يرث ابن العميد الكتابة عن كلالة، بل كان كما قال ذو الرمة في وصف صائد حاذق ألفى أباه بذاك الكسب يكتسب"، لأن أباه أبا عبد الله الملقب بكله كان في الرتبة الكبرى من الكتابة، وكان قد تقلد ديوان الرسائل للملك نوح بن نصر، وكان يحضر إلى ديوان الرسائل في محفة لسوء أثر النقرس في قدمه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان ابن العميد يقول: ثلاثة علوم الناس كلها عيال فيها على ثلاثة أنفس، أما الفقه، فعلى أبي حنيفة، وأما الكلام، فعلى أبي هذيل ، وأما البلاغة والفصاحة واللسن والعارضة، فعلى أبي عثمان الجاحظ.</p></div></div>
+<h4 class="sub sub--3" id="sub-99" lang="ar">العلوم التي اشتهر بها :</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان ابن العميد على دراية عالية بالفلسفة والنجوم، علاوة على الرسائل التي لم يدانيه فيها أحد فذكر الثعالبي عنه المقولة المشهورة : بدئت الكتابة بعبد الحميد، وختمت بابن العميد وقد أجرى ذكرهما معا مثلا، أبو محمد الخازن، في قصيدة مدح بها الصاحب بن عباد حيث وصف بلاغته فقال من جملتها :</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وتارك أولا عبد الحميد بها  وابن العميد أخيرا في بني جاد</p></div></div>
+<div class="hal" id="hal-50" data-kitab="50"><span><i class="hal__t">Hlm. </i>50</span><button type="button" class="hal__pdf" data-pdf="50" aria-label="Lihat PDF asli untuk Hlm. 50" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">نشأ ابن العميد شغوفا بمعرفة العلوم العقلية واللسانية، فبرع في علوم الحكمة والنجوم، ونبغ في الأدب والكتابة، وابتدع طريقة في الشعر المنثور.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وممن أشار إليه بالرفعة والبنان والبلاغة الرازي، وقد ذكر فيه الشيخ عباس القمي أنه كان يضرب به المثل في البلاغة وينتهي إليه الإشارة بالفصاحة، إن علت شجعان البراعة فهو ملاعب أسلة الأقلام، أو ذكرت فرسان البراعة فهو ثاني أعنة الكلام (٥). و قد قال أبو القاسم علي بن محمد الكرخي وكان شديد الاختصاص بالصاحب انه كثيرا ما كان يقول: "كتاب الدنيا وبلغاء العصر أربعة: الأستاذ ابن العميد، وأبو القاسم عبد العزيز بن يوسف وأبو إسحق الصابي".(*) ولم يذكر الرابع ويعني نفسه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكان ابن العميد مجدا في الوصول إلى المعرفة والعلم، إذ لم تشغله الوزارة عن مجالسة العلماء والأدباء، وتذكر الدراسات أنه كان يقدر من هو على علم ودراية، وقصته مع أبي بكر الخياط خير دليل على ذلك". وكان حافظا لشعر القدماء، وكان شغوفا بالاستقصاء والاستدراك على من يلقي عليه شعرا، وذكر ابن العميد أنه تعلم أشياء لم يكن يعرفها من أبي بكر الخياط، وكان جديا، وينفر من المزاح الماجن، وله في ذلك قول هو: "المزاح والجد بابان إذا فتحا لم يغلقا إلا بعد العسر، وفحلان إذا ألقحا، لم ينتجا غير الشر.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مع هذا كله، لا يمكن إغفال ما تركه ابن العميد لنا من الشعر، فهو شاعر كما هو ناثر، وشعره ذو جودة عالية كما نثره، حتى أن ابن عباد ذكر أن ابن العميد كان متذوقا للشعر وناقدا جيدا له.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فمن شعره قوله:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يا من تخلى وولى * وصد عني وملا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وأوسع العهد نكثا * وأتبع العقد حلا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ما كان عهدك إلا * عهد الشبيبة ولى</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كل ذلك جعل منه عاملا من عوامل النهضة الأدبية والعلمية أيام بني بويه ممدوحا وكاتبا ومعلما ومقارضا ومكاتبا . أما علمه، فقد كان ابن العميد فيزيانيا، تبين ذلك من خلال طرحه لعدة أسئلة منها : لماذا تكثر السحب والرعد والبرق في الربيع و الخريف ؟ لماذا تمطر السماء في مصر قليلا وفي الهند بغزارة وبخاصة في الصيف؟، لماذا</p></div></div>
+<div class="hal" id="hal-51" data-kitab="51"><span><i class="hal__t">Hlm. </i>51</span><button type="button" class="hal__pdf" data-pdf="51" aria-label="Lihat PDF asli untuk Hlm. 51" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كان في الجزر ينابيع ماء حلو، وقد وردت إجابات هذه الأسئلة في مخطوطته "الرسائل العميدية"، وقد أشار فؤاد سركين إلى بعضها.</p></div></div>
+<h4 class="sub sub--3" id="sub-100" lang="ar">مؤلفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ترك ابن العميد مؤلفات منها: "المذهب في البلاغات و ديوان الرسائل وديوان في اللغة والتاريخ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن كتبه الخلق والخلق، فقد أورد الذهبي في كتابه تاريخ الإسلام) "وكان قد ألف كتابا سماه (الخُلق والخلق)، فلم يبيضه، ولم يكن الكتاب بذاك". ولكن كتبه هذه لم يعثر عليها في المكتبات العربية التي وجدت في تلك الفترة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد ذكر خليل مردم "أنه لو قدر لرسائل ابن العميد أن تبقى لبلغت مئات من الصفحات، كما يؤخذ من كلام من ترجم له، ولكن اجتياح المغول لبلاد فارس والعراق، ذهب بالقسم العظيم من ميراثنا العلمي والأدبي، وذهبت معه آثار ابن العميد، والبقية الباقية منها مبثوثة في كتب الأدب على سبيل الاقتباس والتمثل.</p></div></div>
+<h4 class="sub sub--3" id="sub-101" lang="ar">وفاته:</h4>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومثلما اختلف في سنة الولادة، اختلف في سنة الوفاة ومكانها، فأورد ابن خلكان تاريخين ربما يكون أحدهما هو الصواب، وهما في صفر، وقيل في المحرم بالري، وقيل في بغداد سنة ستين وثلاثمائة، - رحمه الله تعالى - . و أورد ياقوت في معجم الأدباء، أنه توفي بهمذان في صفر ليلة الخميس السادس منه سنة (٣٦٠هـ، ٩٧٠م).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وذكر أبو الحسين هلال بن المحسن بن إبراهيم الصابي في كتاب (الوزراء)، أنه توفي في سنة تسع وخمسين وثلاثمائة، وكذا قال جده إبراهيم الصابي في كتاب (التاجي) وأورد صاحب كتاب( العبر) "أن ابن العميد عمر ثمانين عاما"، فهو بذلك زاد على كل التواريخ السابقة عشرين أو قرابة العشرين عاما، ولكنه لم يحدد تاريخ ومكان الوفاة، والله أعلم بالصواب، وأيا كان تاريخ الولادة والوفاة، فإن ذلك لا ينقص ولا يزيد في علمه أو أدبه شيئا.</p></div></div>
+  </div>
+</section>
+
+<button type="button" id="btn-legend" class="fab fab--legend" aria-haspopup="dialog" aria-controls="legend-modal" title="دليل الألوان">?</button>
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="الفهرس">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  var toc = document.getElementById('fihris');
+  var btn = document.getElementById('toc-toggle');
+  if (toc && btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('data-open') !== '1';
+      var ds = toc.querySelectorAll('details');
+      for (var i = 0; i < ds.length; i++) ds[i].open = open;
+      btn.setAttribute('data-open', open ? '1' : '0');
+      btn.textContent = open ? 'إغلاق الكل' : 'فتح الكل';
+    });
+  }
+
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-legend', 'legend-modal');
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = Array.prototype.slice.call(document.querySelectorAll('h2.bab__ar'));
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('bab__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      cur = all[i];
+    }
+    if (!cur) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = label(cur);
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script>window.PDFPANEL={src:"البحث عن النثر في العصر الوسيط.pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=7"></script>
+<script src="../../../../assets/halaman.js?v=31"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
