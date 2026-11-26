@@ -11,7 +11,7 @@
  *
  * Mode rapi:   php tools/urutan/buat.php --rapikan
  *   Menyusun ulang SEMUA folder dengan aturan baku (urutan lama diabaikan):
- *     1. maudhuat.html (paling atas)   2. subfolder   3. file .pdf   4. file .html   5. file .docx   6. lainnya
+ *     1. maudhuat.html (paling atas)   2. subfolder   3. file .pdf (HTML yang tertaut ke PDF-nya persis sesudahnya)   4. file .html   5. file .docx   6. lainnya
  *   Di tiap kelompok: berkas "pokok" dulu, lalu berkas "Latihan"; "Daftar Isi" di depan, berkas bertanda ✏ setelah berkas biasa, lalu menurut halaman awal "(Hlm N-M)" bila ada;
  *   selebihnya abjad alami (angka berurutan).
  * Nama yang tidak tercantum di berkas akan ditampilkan paling akhir oleh daftar.php.
@@ -60,6 +60,22 @@ function rapi(string $dir, array $now): array {
         if ($ha !== $hb) return $ha <=> $hb;
         return strnatcasecmp($a, $b);
     });
+    // HTML yang tertaut ke sebuah PDF (PDFPANEL src) ditaruh persis setelah PDF aslinya
+    $nfc = function (string $s): string { return class_exists('Normalizer') ? mb_strtolower(Normalizer::normalize($s, Normalizer::FORM_C)) : mb_strtolower($s); };
+    foreach ($now as $h) {
+        if (!preg_match('/\.html?$/i', $h) || mb_strtolower($h) === 'maudhuat.html') continue;
+        $isi = (string) @file_get_contents($dir . '/' . $h);
+        if (!preg_match('/PDFPANEL\s*=\s*\{\s*src\s*:\s*"([^"]+)"/', $isi, $m)) continue;
+        $tujuan = $nfc(basename($m[1]));
+        $pdf = null;
+        foreach ($now as $x) if (preg_match('/\.pdf$/i', $x) && $nfc($x) === $tujuan && dirname($m[1]) === '.') $pdf = $x;
+        if ($pdf === null) continue;
+        $now = array_values(array_filter($now, function ($x) use ($h) { return $x !== $h; }));
+        $pos = array_search($pdf, $now, true);
+        while (isset($now[$pos + 1]) && ($GLOBALS['_sudah'][$dir][$now[$pos + 1]] ?? false)) $pos++;
+        array_splice($now, $pos + 1, 0, [$h]);
+        $GLOBALS['_sudah'][$dir][$h] = true;
+    }
     return $now;
 }
 
