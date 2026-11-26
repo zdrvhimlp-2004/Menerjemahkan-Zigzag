@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>النَّقْدُ الْأَدَبِيُّ ٢ — النص العربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+
+    --isi: #2f6b4f;      --isi-bg: #f1f6ee;
+    --nz: #6a3fa0;       --nz-ink: #4b2a80;   --nz-id: #6d5a8e;  --nz-bg: #f0eaf9;  --nz-line: #d9cbee;
+    --q: #9a6a00;        --q-bg: #fbf0cf;
+    --h: #0b6e6e;        --h-bg: #daf1ef;
+    --sy: #1f5fae;       --sy-ink: #164a8a;   --sy-id: #4f6f97;  --sy-bg: #e2edfb;  --sy-line: #bcd3f0;
+    --k: #b4531a;        --k-bg: #fbe4d2;
+    --c: #a8204f;        --c-bg: #fddce8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+
+      --isi: #7fc9a6;    --isi-bg: #1b2320;
+      --nz: #b99cee;     --nz-ink: #d6c4fa;   --nz-id: #a898c8;  --nz-bg: #2a2140;  --nz-line: #45375f;
+      --q: #e6b850;      --q-bg: #33280f;
+      --h: #63d2cc;      --h-bg: #12302f;
+      --sy: #7fb2f2;     --sy-ink: #b5d3fb;   --sy-id: #8fa9c9;  --sy-bg: #172a44;  --sy-line: #2c4a72;
+      --k: #f2a06b;      --k-bg: #3a2414;
+      --c: #ff9cbc;      --c-bg: #4a2132;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.25rem, 4vw, 2rem); }
+
+  /* ---------- baris Arab + Indonesia ---------- */
+  .ayat { display: flex; flex-direction: column; gap: 0.1rem; padding: clamp(0.5rem, 1.6vw, 0.75rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.35rem, 1rem + 2vw, 2rem); line-height: 2.05; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  /* ---------- jenis teks ---------- */
+  .blk { margin: 0.5rem 0; }
+  .blk-p { border-right: 3px solid var(--isi); padding: 0 clamp(0.6rem, 2vw, 1rem); margin: 0.9rem 0; }
+  .blk-p .ayat .ar { color: var(--ar-color); }
+
+  .blk-nz { background: var(--nz-bg); border-right: 5px solid var(--nz); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.4rem 0; }
+  .blk-nz .ayat .ar { color: var(--nz-ink); }
+  .blk-nz .ayat .id { color: var(--nz-id); }
+  .blk-nz .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-nz .bait + .bait { margin-top: 0.45rem; }
+
+  .blk-sy { background: var(--sy-bg); border-right: 5px solid var(--sy); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.2rem 0; }
+  .blk-sy .ayat .ar { color: var(--sy-ink); }
+  .blk-sy .ayat .id { color: var(--sy-id); }
+  .blk-sy .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-sy .bait + .bait { margin-top: 0.45rem; }
+
+  .tag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.8rem; padding: 0.2rem 0 0.35rem; direction: rtl; }
+  .tag__k { font-family: 'Amiri', serif; font-weight: 700; font-size: 1rem; }
+  .tag__t { direction: ltr; font-size: clamp(0.72rem, 0.66rem + 0.35vw, 0.85rem); font-weight: 500; }
+  .blk-nz .tag__k, .blk-nz .tag__t { color: var(--nz); }
+  .blk-sy .tag__k, .blk-sy .tag__t { color: var(--sy); }
+  .tag--cont .tag__t { font-style: italic; opacity: 0.8; }
+
+  /* ---------- span dalam baris ---------- */
+  .ayat .c, .legend .c { background: var(--c-bg); color: var(--c); border-radius: 0.45em; padding: 0.05em 0.3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .q, .legend .q { background: var(--q-bg); color: var(--q); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .h, .legend .h { background: var(--h-bg); color: var(--h); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .k, .legend .k { background: var(--k-bg); color: var(--k); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .ref { font-size: 0.85em; color: var(--q); opacity: 0.9; }
+  .ayat .id .c { font-weight: 500; }
+
+  /* baris yang hampir seluruhnya syahid */
+  .ayat.rq, .ayat.rh, .ayat.rk { border-radius: 10px; padding: clamp(0.5rem, 1.6vw, 0.75rem) clamp(0.6rem, 2vw, 0.9rem); margin: 0.15rem 0; }
+  .ayat.rq { background: var(--q-bg); border-right: 3px solid var(--q); }
+  .ayat.rh { background: var(--h-bg); border-right: 3px solid var(--h); }
+  .ayat.rk { background: var(--k-bg); border-right: 3px solid var(--k); }
+
+  /* ---------- judul bab & pembatas halaman ---------- */
+  .bab { background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2.5rem, 7vw, 4rem) 0 clamp(1.25rem, 4vw, 1.75rem); text-align: center; scroll-margin-top: 1rem; }
+  .bab__ar { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); line-height: 1.6; }
+  .bab__id { direction: ltr; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem); color: var(--id-color); font-weight: 500; }
+  .sub { font-family: 'Amiri', serif; font-size: 1.3rem; color: var(--heading); text-align: center; margin-top: 1.5rem; }
+  .sub__id { text-align: center; direction: ltr; font-size: 0.85rem; color: var(--muted); }
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+  [id^="nz-"], [id^="sy-"], [id^="qs-"], [id^="hd-"], [id^="kl-"] { scroll-margin-top: 1rem; }
+
+  /* ---------- ringkasan bab ---------- */
+  .ringkasan { background: var(--isi-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 3vw, 1.4rem); margin: 0 0 clamp(1.5rem, 4vw, 2.25rem); }
+  .ringkasan__judul { direction: ltr; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.6rem; }
+  .ringkasan__ar { direction: rtl; font-family: 'Amiri', serif; font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem); line-height: 2; color: var(--ar-color); margin-bottom: 0.7rem; }
+  .ringkasan__id { direction: ltr; font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem); color: var(--id-color); }
+
+  /* ---------- legenda ---------- */
+  .legend { direction: ltr; border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1rem, 3vw, 1.5rem); margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+  .legend__judul { font-weight: 600; font-size: clamp(0.85rem, 0.8rem + 0.4vw, 1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+  .legend ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.5rem 1rem; }
+  .legend li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--id-color); }
+  .legend .sw { flex: 0 0 auto; min-width: 4.2rem; text-align: center; border-radius: 8px; padding: 0.2rem 0.5rem; font-family: 'Amiri', serif; font-weight: 700; font-size: 1.1rem; line-height: 1.6; direction: rtl; }
+  .sw--isi { border-right: 3px solid var(--isi); color: var(--ar-color); background: var(--isi-bg); }
+  .sw--nz { background: var(--nz-bg); border-right: 4px solid var(--nz); color: var(--nz-ink); }
+  .sw--sy { background: var(--sy-bg); border-right: 4px solid var(--sy); color: var(--sy-ink); }
+  .legend .sw.c, .legend .sw.q, .legend .sw.h, .legend .sw.k { padding: 0.2rem 0.5rem; border-radius: 8px; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; background: var(--pasal-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem); margin-bottom: clamp(1.5rem, 5vw, 2.5rem); scroll-margin-top: 1rem; }
+  .daftar-isi__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.9rem; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc__btn { font: inherit; font-size: 0.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .toc__btn:hover { color: var(--heading); border-color: var(--heading); }
+  .toc { list-style: none; }
+  .toc__bab { margin-bottom: 0.7rem; }
+  .toc__bab > details > summary { cursor: pointer; display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; row-gap: 0.05rem; align-items: baseline; list-style-position: inside; padding: 0.3rem 0; }
+  .toc__no { grid-row: 1 / span 3; font-weight: 600; color: var(--id-color); }
+  .toc__ar { direction: rtl; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sec { margin: 0.6rem 0 0.4rem 1.6rem; }
+  .toc__sec h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.3rem; }
+  .toc__sec h4 small { text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .toc__sec ol { list-style: decimal; padding-left: 1.4rem; }
+  .toc__sec ul { list-style: none; }
+  .toc__sec li { margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--muted); }
+  .toc__sec a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; text-decoration: none; color: var(--id-color); }
+  .toc__sec a:hover .toc__t { color: var(--heading); }
+  .toc__t { flex: 1 1 60%; }
+  .toc__a { direction: rtl; font-family: 'Amiri', serif; font-size: 1.05rem; color: var(--nz-ink); flex: 0 1 auto; }
+  .toc__sy .toc__a { color: var(--ar-color); }
+  .toc__ref { font-size: 0.72rem; color: var(--q); }
+  .chip { flex: 0 0 auto; font-size: 0.66rem; font-weight: 600; padding: 0.05rem 0.5rem; border-radius: 999px; letter-spacing: 0.02em; }
+  .chip--sy { background: var(--sy-bg); color: var(--sy); }
+  .chip--q { background: var(--q-bg); color: var(--q); }
+  .chip--h { background: var(--h-bg); color: var(--h); }
+  .chip--k { background: var(--k-bg); color: var(--k); }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--legend { top: clamp(0.8rem, 2vw, 1.4rem); left: clamp(0.8rem, 2vw, 1.4rem); background: var(--card); color: var(--heading); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(720px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal.modal--wide { max-width: min(900px, 94vw); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.4rem); left: calc(clamp(0.8rem, 2vw, 1.4rem) + 3.1rem + 0.6rem); z-index: 25; max-width: min(60vw, 380px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 560px) { .crumb { display: none !important; } }
+  dialog.modal .legend, dialog.modal .daftar-isi { border: none; padding: 0; margin: 0; }
+
+  @media (max-width: 520px) {
+    .toc__sec { margin-left: 0.6rem; }
+    .toc__t { flex-basis: 100%; }
+  }
+
+  /* ---------- tambahan halaman naqd ---------- */
+  .sw--pt { border-right: 3px solid var(--h); color: var(--h); background: var(--h-bg); }
+  .sw--qt { border-right: 3px solid var(--q); color: var(--q); background: var(--q-bg); }
+  .blk-li { position: relative; border-right: 3px solid var(--h); background: var(--h-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li.has-no { padding-left: 2.6rem; }
+  .blk__no { position: absolute; left: 0.55rem; top: 0.75rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; background: var(--h); color: var(--card); font-size: 0.8rem; font-weight: 600; direction: ltr; }
+  .blk-q { border-right: 3px solid var(--q); background: var(--q-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li .ayat .ar, .blk-q .ayat .ar { color: var(--ar-color); }
+  .blk-sy .bait .ayat { gap: 0.1rem; }
+  .cover { margin: 0 0 1.5rem; text-align: center; }
+  .cover .ayat { align-items: center; padding: 0.2rem 0; }
+  .cover .ayat .ar { font-size: clamp(1.1rem, 0.95rem + 1vw, 1.5rem); line-height: 1.9; text-align: center; }
+  .cover .ayat .id { text-align: center; font-size: 0.8rem; }
+  .jadwal { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0 2rem; direction: rtl; }
+  .sat { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) 6rem; border-bottom: 1px solid var(--border); }
+  .sat:last-child { border-bottom: none; }
+  .sel { padding: 0.2rem 0.7rem; border-inline-start: 1px solid var(--border); min-width: 0; }
+  .sel:first-child { border-inline-start: none; }
+  .sel .ayat { padding: 0.3rem 0; }
+  .sel .ayat .ar { font-size: clamp(1.05rem, 0.9rem + 0.9vw, 1.4rem); line-height: 1.8; }
+  .sel .ayat .id { font-size: 0.82rem; }
+  .sel--kepala, .sel--grup, .sel--total { background: var(--pasal-bg); }
+  @media (max-width: 640px) {
+    .sat { grid-template-columns: 1fr auto; }
+    .sat .sel:nth-child(1) { order: 1; border-inline-start: none; }
+    .sat .sel:nth-child(3) { order: 2; }
+    .sat .sel:nth-child(2) { order: 3; grid-column: 1 / -1; border-inline-start: none; border-top: 1px dashed var(--border); }
+  }
+
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=30">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=4">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul" lang="ar">النَّقْدُ الْأَدَبِيُّ (٢)</h1>
+    <p class="isi__ket" lang="ar">مُقَرَّرُ النَّقْدِ الْأَدَبِيِّ ٢ · الْمُسْتَوَى الْخَامِسُ · النَّصُّ الْعَرَبِيُّ فَقَطْ (٢٦ صَفْحَةً بِحَسَبِ أَرْقَامِ الصَّفَحَاتِ فِي الْأَصْلِ)</p>
+
+    <dialog id="legend-modal" class="modal" aria-label="دليل الألوان">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <section class="legend" aria-label="دليل الألوان">
+        <h2 class="legend__judul" lang="ar">دَلِيلُ الْأَلْوَانِ</h2>
+        <ul>
+          <li><span class="sw sw--isi" lang="ar">الشَّرْحُ</span></li>
+          <li><span class="sw sw--pt" lang="ar">نُقْطَةٌ</span></li>
+          <li><span class="sw sw--sy" lang="ar">شِعْرٌ</span></li>
+          <li><span class="sw sw--qt" lang="ar">اقْتِبَاسٌ</span></li>
+        </ul>
+      </section>
+    </dialog>
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="الفهرس">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="Fihris">
+        <div class="daftar-isi__head">
+          <h2 class="daftar-isi__judul"><span lang="ar">الْفِهْرِسُ</span></h2>
+          <button type="button" class="toc__btn" id="toc-toggle" data-open="0">فتح الكل</button>
+        </div>
+        <ol class="toc">
+<li class="toc__bab"><details>
+<summary><span class="toc__no">1.</span><a class="toc__ar" lang="ar" href="#bab-1">الْخُطَّةُ التَّدْرِيسِيَّةُ</a><span class="toc__meta">Hlm. 1&ndash;2</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-1"><span class="toc__a" lang="ar">هَدَفُ الْمُقَرَّرِ وَمُخْرَجَاتُهُ التَّعْلِيمِيَّةُ</span><span class="toc__ref">Hlm. 2</span></a></li>
+<li><a href="#sub-2"><span class="toc__a" lang="ar">ج. مَوْضُوعَاتُ الْمُقَرَّرِ</span><span class="toc__ref">Hlm. 2</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">2.</span><a class="toc__ar" lang="ar" href="#bab-2">و - مَصَادِرُ التَّعَلُّمِ وَالْمَرَافِقِ</a><span class="toc__meta">Hlm. 2&ndash;3</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-3"><span class="toc__a" lang="ar">١. قَائِمَةُ مَصَادِرِ التَّعَلُّمِ</span><span class="toc__ref">Hlm. 3</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">3.</span><a class="toc__ar" lang="ar" href="#bab-3">مَفْهُومُ النَّقْدِ</a><span class="toc__meta">Hlm. 3&ndash;5</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-4"><span class="toc__a" lang="ar">تَعْرِيفُ النَّقْدِ</span><span class="toc__ref">Hlm. 4</span></a></li>
+<li><a href="#sub-5"><span class="toc__a" lang="ar">الْفَرْقُ بَيْنَ النَّقْدِ الْبَنَّاءِ وَالنَّقْدِ الْهَدَّامِ</span><span class="toc__ref">Hlm. 4</span></a></li>
+<li><a href="#sub-6"><span class="toc__a" lang="ar">مَرَاحِلُ الْعَمَلِيَّةِ النَّقْدِيَّةِ:</span><span class="toc__ref">Hlm. 5</span></a></li>
+<li><a href="#sub-7"><span class="toc__a" lang="ar">شُرُوطُ النَّاقِدِ</span><span class="toc__ref">Hlm. 5</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">4.</span><a class="toc__ar" lang="ar" href="#bab-4">اتِّجَاهُ النُّقَّادِ الْمُنَاصِرِينَ لِلشِّعْرِ الْقَدِيمِ: الْأَصْمَعِيُّ، وَالْآمِدِيُّ</a><span class="toc__meta">Hlm. 5&ndash;9</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-8"><span class="toc__a" lang="ar">مَعْنَى النَّقْدِ الْمَنْهَجِيِّ وَأَشْهَرُ رُوَّادِهِ</span><span class="toc__ref">Hlm. 6</span></a></li>
+<li><a href="#sub-9"><span class="toc__a" lang="ar">الْأَصْمَعِيُّ (١٢٣ هـ - ٢١٦ هـ / ٧٤١ م - ٨٣١ م)</span><span class="toc__ref">Hlm. 6</span></a></li>
+<li><a href="#sub-10"><span class="toc__a" lang="ar">أَمْثِلَةٌ مِنْ نَقْدِ الْأَصْمَعِيِّ (الِانْتِصَارُ لِلْفَصَاحَةِ وَاللُّغَةِ)</span><span class="toc__ref">Hlm. 7</span></a></li>
+<li><a href="#sub-11"><span class="toc__a" lang="ar">الْآمِدِيُّ (٣٧٥هـ - ٤٢٥ هـ / ٩٨٥ م - ١٠٣٤ م)</span><span class="toc__ref">Hlm. 7</span></a></li>
+<li><a href="#sub-12"><span class="toc__a" lang="ar">ثَانِيًا : أَمْثِلَةٌ مِنْ نَقْدِ الْآمِدِيِّ (الْمُوَازَنَةُ وَعَمُودُ الشِّعْرِ)</span><span class="toc__ref">Hlm. 8</span></a></li>
+<li><a href="#sub-13"><span class="toc__a" lang="ar">التَّأْثِيرُ وَالْمُقَارَنَةُ</span><span class="toc__ref">Hlm. 9</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">5.</span><a class="toc__ar" lang="ar" href="#bab-5">الِاتِّجَاهُ التَّوْفِيقِيُّ</a><span class="toc__meta">Hlm. 9&ndash;13</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-14"><span class="toc__a" lang="ar">الْجَاحِظُ ( ١٥٩هـ - ٢٥٥ هـ / ٧٧٦ م - ٨٦٩م)</span><span class="toc__ref">Hlm. 10</span></a></li>
+<li><a href="#sub-15"><span class="toc__a" lang="ar">ابْنُ قُتَيْبَةَ (٢١٣هـ - ٢٧٦ هـ / ٨٢٨ م - ٨٨٩م)</span><span class="toc__ref">Hlm. 11</span></a></li>
+<li><a href="#sub-16"><span class="toc__a" lang="ar">الْقَاضِي الْجُرْجَانِيُّ (٣٩٣هـ - ٤٧١ هـ / ١٠٠٢م - ١٠٧٨م)</span><span class="toc__ref">Hlm. 11</span></a></li>
+<li><a href="#sub-17"><span class="toc__a" lang="ar">التَّأْثِيرُ وَالْمُقَارَنَةُ</span><span class="toc__ref">Hlm. 12</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">6.</span><a class="toc__ar" lang="ar" href="#bab-6">اتِّجَاهُ النَّقْدِ الْمُتَأَثِّرِ بِالْمَنْطِقِ</a><span class="toc__meta">Hlm. 13&ndash;15</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-18"><span class="toc__a" lang="ar">قُدَامَةُ بْنُ جَعْفَرٍ (؟ - ٣٣٧ هـ / ؟ - ٩٤٨ م)</span><span class="toc__ref">Hlm. 14</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">7.</span><a class="toc__ar" lang="ar" href="#bab-7">مِنْ قَضَايَا النَّقْدِ الْعَرَبِيِّ</a><span class="toc__meta">Hlm. 15&ndash;20</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-19"><span class="toc__a" lang="ar">أَوَّلًا: اللَّفْظُ وَالْمَعْنَى</span><span class="toc__ref">Hlm. 16</span></a></li>
+<li><a href="#sub-20"><span class="toc__a" lang="ar">مَقَايِيسُ نَقْدِ الْمَعْنَى</span><span class="toc__ref">Hlm. 19</span></a></li>
+<li><a href="#sub-21"><span class="toc__a" lang="ar">ب . مَقَايِيسُ نَقْدِ الْأُسْلُوبِ</span><span class="toc__ref">Hlm. 19</span></a></li>
+<li><a href="#sub-22"><span class="toc__a" lang="ar">ج. مَقَايِيسُ نَقْدِ الْعَاطِفَةِ</span><span class="toc__ref">Hlm. 20</span></a></li>
+<li><a href="#sub-23"><span class="toc__a" lang="ar">د. مَقَايِيسُ نَقْدِ الْخَيَالِ</span><span class="toc__ref">Hlm. 20</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">8.</span><a class="toc__ar" lang="ar" href="#bab-8">ثَانِيًا: عَمُودُ الشِّعْرِ</a><span class="toc__meta">Hlm. 20&ndash;24</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-24"><span class="toc__a" lang="ar">الْمُصْطَلَحُ عِنْدَ الْآمِدِيِّ</span><span class="toc__ref">Hlm. 21</span></a></li>
+</ol></div>
+</details></li>
+<li class="toc__bab"><details>
+<summary><span class="toc__no">9.</span><a class="toc__ar" lang="ar" href="#bab-9">ثَالِثًا: السَّرِقَاتُ الْأَدَبِيَّةُ</a><span class="toc__meta">Hlm. 24&ndash;26</span></summary>
+<div class="toc__sec"><ol>
+<li><a href="#sub-25"><span class="toc__a" lang="ar">تَعْرِيفُ السَّرِقَةِ الْأَدَبِيَّةِ</span><span class="toc__ref">Hlm. 25</span></a></li>
+<li><a href="#sub-26"><span class="toc__a" lang="ar">قَوَاعِدُ تَمْيِيزِ السَّرِقَةِ الْأَدَبِيَّةِ</span><span class="toc__ref">Hlm. 25</span></a></li>
+</ol></div>
+</details></li>
+        </ol>
+      </nav>
+    </dialog>
+
+<div class="hal" id="hal-1" data-kitab="1"><span><i class="hal__t">Hlm. </i>1</span><button type="button" class="hal__pdf" data-pdf="1" aria-label="Lihat PDF asli untuk Hlm. 1" title="Lihat PDF asli"></button></div>
+    <div class="cover"><div class="ayat"><p class="ar" lang="ar">جَامِعَةُ الْإِمَامِ مُحَمَّدِ بْنِ سُعُودٍ الْإِسْلَامِيَّةُ</p></div><div class="ayat"><p class="ar" lang="ar">مَعْهَدُ الْعُلُومِ الْإِسْلَامِيَّةِ وَالْعَرَبِيَّةِ فِي إِنْدُونِيسِيَا</p></div><div class="ayat"><p class="ar" lang="ar">النَّقْدُ الْأَدَبِيُّ ٢</p></div><div class="ayat"><p class="ar" lang="ar">الْمُسْتَوَى الْخَامِسُ</p></div><div class="ayat"><p class="ar" lang="ar">د. الطَّاهِرُ الطَّيِّبُ الطَّاهِرُ</p></div></div>
+
+<header class="bab" id="bab-1"><h2 class="bab__ar" lang="ar">الْخُطَّةُ التَّدْرِيسِيَّةُ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُعَرِّفُ هَذَا الْبَابُ بِمُقَرَّرِ النَّقْدِ الْأَدَبِيِّ (٢)، وَيَعْرِضُ وَصْفَهُ وَأَهْدَافَهُ وَجَدْوَلَ مَوْضُوعَاتِهِ: اتِّجَاهَاتِ النَّقْدِ الْعَرَبِيِّ وَقَضَايَاهُ، مَعَ عَدَدِ سَاعَاتِ الِاتِّصَالِ لِكُلِّ مَوْضُوعٍ.</p></div>
+<div class="hal" id="hal-2" data-kitab="2"><span><i class="hal__t">Hlm. </i>2</span><button type="button" class="hal__pdf" data-pdf="2" aria-label="Lihat PDF asli untuk Hlm. 2" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اسْمُ الْمُقَرَّرِ: النَّقْدُ الْأَدَبِيُّ (۲)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">رَمْزُ الْمُقَرَّرِ: بلغ ٦٢٣٢٥</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْبَرْنَامَجُ: قِسْمُ اللُّغَةِ الْعَرَبِيَّةِ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْقِسْمُ الْعِلْمِيُّ: اللُّغَةُ الْعَرَبِيَّةُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْكُلِّيَّةُ: مَعْهَدُ الْعُلُومِ الْإِسْلَامِيَّةِ وَالْعَرَبِيَّةِ فِي إِنْدُونِيسِيَا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْمُؤَسَّسَةُ: جَامِعَةُ الْإِمَامِ مُحَمَّدِ بْنِ سُعُودٍ الْإِسْلَامِيَّةُ</p></div></div>
+<h3 class="sub" id="sub-1" lang="ar">هَدَفُ الْمُقَرَّرِ وَمُخْرَجَاتُهُ التَّعْلِيمِيَّةُ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١. الْوَصْفُ الْعَامُّ لِلْمُقَرَّرِ:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يُقَدِّمُ هَذَا الْمُقَرَّرُ مَعْلُومَاتٍ تَارِيخِيَّةً عَنِ النَّقْدِ الْأَدَبِيِّ عُمُومًا مِنْ حَيْثُ الْمَفْهُومُ وَالْوَظَائِفُ وَالْبِدَايَاتُ</p></div><div class="ayat"><p class="ar" lang="ar">وَالتَّطَوُّرُ وَأَشْهَرُ النُّقَّادِ فِي كُلِّ عَصْرٍ مِنَ الْعُصُورِ، وَأَبْرَزُ الْقَضَايَا النَّقْدِيَّةِ فِي الْأَدَبِ الْعَرَبِيِّ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْهَدَفُ الرَّئِيسُ لِلْمُقَرَّرِ:</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">مَعْرِفَةُ أَهَمِّ اتِّجَاهَاتِ النَّقْدِ الْعَرَبِيِّ الْقَدِيمِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">تَوْضِيحُ أَبْرَزِ قَضَايَا النَّقْدِ الْعَرَبِيِّ، وَالْعَوَامِلِ الْمُؤَثِّرَةِ فِي ظُهُورِهَا.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّعَرُّفُ عَلَى الْخُصُومَاتِ النَّقْدِيَّةِ فِي النَّقْدِ الْقَدِيمِ، وَأَثَرِهَا فِي قَضَايَا النَّقْدِ الْأَدَبِيِّ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">مَعْرِفَةُ أَهَمِّ النُّقَّادِ الَّذِينَ أَسْهَمُوا فِي النَّقْدِ الْعَرَبِيِّ الْقَدِيمِ.</p></div></div>
+<h3 class="sub" id="sub-2" lang="ar">ج. مَوْضُوعَاتُ الْمُقَرَّرِ</h3>
+<div class="jadwal" role="table"><div class="sat" role="row"><div class="sel sel--kepala" role="cell"><div class="ayat"><p class="ar" lang="ar">م</p></div></div><div class="sel sel--kepala" role="cell"><div class="ayat"><p class="ar" lang="ar">قَائِمَةُ الْمَوْضُوعَاتِ</p></div></div><div class="sel sel--kepala" role="cell"><div class="ayat"><p class="ar" lang="ar">سَاعَاتُ الِاتِّصَالِ</p></div></div></div><div class="sat" role="row"><div class="sel sel--grup" role="cell"><div class="ayat"><p class="ar" lang="ar">١</p></div></div><div class="sel sel--grup" role="cell"><div class="ayat"><p class="ar" lang="ar">اتِّجَاهَاتُ النَّقْدِ الْعَرَبِيِّ</p></div></div><div class="sel sel--grup" role="cell"></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">اتِّجَاهُ النُّقَّادِ الْمُنَاصِرِينَ لِلشِّعْرِ الْقَدِيمِ: الْأَصْمَعِيُّ، وَالْأَمِدِيُّ.</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٤</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">اتِّجَاهُ النُّقَّادِ الْمُنَاصِرِينَ لِلشُّعَرَاءِ الْمُحْدَثِينَ أَبُو بَكْرٍ الصُّولِيُّ.</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٣</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">الِاتِّجَاهُ التَّوْفِيقِيُّ: الْجَاحِظُ، وَابْنُ قُتَيْبَةَ، وَالْقَاضِي الْجُرْجَانِيُّ.</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٦</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">اتِّجَاهُ النَّقْدِ الْمُتَأَثِّرِ بِالْمَنْطِقِ قُدَامَةُ بْنُ جَعْفَرٍ.</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٤</p></div></div></div><div class="sat" role="row"><div class="sel sel--grup" role="cell"><div class="ayat"><p class="ar" lang="ar">٢</p></div></div><div class="sel sel--grup" role="cell"><div class="ayat"><p class="ar" lang="ar">مِنْ قَضَايَا النَّقْدِ الْعَرَبِيِّ</p></div></div><div class="sel sel--grup" role="cell"></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">اللَّفْظُ وَالْمَعْنَى.</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٤</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">عَمُودُ الشِّعْرِ</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٤</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">السَّرِقَاتُ الشِّعْرِيَّةُ .</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٣</p></div></div></div><div class="sat" role="row"><div class="sel" role="cell"></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">مُرَاجَعَاتٌ وَتَطْبِيقَاتٌ</p></div></div><div class="sel" role="cell"><div class="ayat"><p class="ar" lang="ar">٢</p></div></div></div><div class="sat" role="row"><div class="sel sel--total" role="cell"></div><div class="sel sel--total" role="cell"><div class="ayat"><p class="ar" lang="ar">الْمَجْمُوعُ:</p></div></div><div class="sel sel--total" role="cell"><div class="ayat"><p class="ar" lang="ar">٣٠</p></div></div></div></div>
+<header class="bab" id="bab-2"><h2 class="bab__ar" lang="ar">و - مَصَادِرُ التَّعَلُّمِ وَالْمَرَافِقِ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَسْرُدُ هَذَا الْبَابُ الْمَرَاجِعَ الرَّئِيسَةَ لِلْمُقَرَّرِ، وَهِيَ عَشَرَةُ كُتُبٍ فِي تَارِيخِ النَّقْدِ وَمَصَادِرِهِ الْأُولَى، مِنْهَا الشِّعْرُ وَالشُّعَرَاءُ وَنَقْدُ الشِّعْرِ وَالْمُوَازَنَةُ وَالْوَسَاطَةُ وَالْعُمْدَةُ.</p></div>
+<div class="hal" id="hal-3" data-kitab="3"><span><i class="hal__t">Hlm. </i>3</span><button type="button" class="hal__pdf" data-pdf="3" aria-label="Lihat PDF asli untuk Hlm. 3" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-3" lang="ar">١. قَائِمَةُ مَصَادِرِ التَّعَلُّمِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْمَرَاجِعُ الرَّئِيسَةُ لِلْمُقَرَّرِ</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">تَارِيخُ النَّقْدِ الْأَدَبِيِّ عِنْدَ الْعَرَبِ، الْإِحْسَانُ عَبَّاسٌ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">تَارِيخُ النَّقْدِ الْأَدَبِيِّ عِنْدَ الْعَرَبِ، لِطَهَ أَحْمَدَ إِبْرَاهِيمَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الشِّعْرُ وَالشُّعَرَاءُ، لِابْنِ قُتَيْبَةَ، تَحْقِيقُ:</p></div><div class="ayat"><p class="ar" lang="ar">أَحْمَدَ مُحَمَّدٍ شَاكِرٍ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">4</span><div class="ayat"><p class="ar" lang="ar">نَقْدُ الشِّعْرِ، لِقُدَامَةَ بْنِ جَعْفَرٍ، تَحْقِيقُ:</p></div><div class="ayat"><p class="ar" lang="ar">كَمَالٍ مُصْطَفَى.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">أَخْبَارُ أَبِي تَمَّامٍ، لِلصُّولِيِّ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">6</span><div class="ayat"><p class="ar" lang="ar">الْمُوَازَنَةُ بَيْنَ شِعْرِ أَبِي تَمَّامٍ وَالْبُحْتُرِيِّ، لِلْآمِدِيِّ، تَحْقِيقُ:</p></div><div class="ayat"><p class="ar" lang="ar">السَّيِّدِ أَحْمَدَ صَقْرٍ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">7</span><div class="ayat"><p class="ar" lang="ar">الْوَسَاطَةُ بَيْنَ الْمُتَنَبِّي وَخُصُومِهِ، لِلْقَاضِي الْجُرْجَانِيِّ، تَحْقِيقٌ وَشَرْحُ مُحَمَّدٍ أَبُو الْفَضْلِ إِبْرَاهِيمَ وَعَلِيٍّ الْبِجَاوِيِّ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">8</span><div class="ayat"><p class="ar" lang="ar">مُقَدِّمَةُ شَرْحِ الْحَمَاسَةِ لِلْمَرْزُوقِيِّ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">9</span><div class="ayat"><p class="ar" lang="ar">الْعُمْدَةُ، لِابْنِ رَشِيقٍ الْقَيْرَوَانِيِّ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">10</span><div class="ayat"><p class="ar" lang="ar">الْمَثَلُ السَّائِرُ، لِابْنِ الْأَثِيرِ.</p></div></div>
+<header class="bab" id="bab-3"><h2 class="bab__ar" lang="ar">مَفْهُومُ النَّقْدِ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُبَيِّنُ هَذَا الْبَابُ مَعْنَى النَّقْدِ لُغَةً وَاصْطِلَاحًا، وَالْفَرْقَ بَيْنَ النَّقْدِ الْبَنَّاءِ وَالْهَدَّامِ، وَمَرَاحِلَ الْعَمَلِيَّةِ النَّقْدِيَّةِ الثَّلَاثَ: التَّفْسِيرَ وَالتَّحْلِيلَ وَالتَّقْوِيمَ، وَشُرُوطَ النَّاقِدِ.</p></div>
+<div class="hal" id="hal-4" data-kitab="4"><span><i class="hal__t">Hlm. </i>4</span><button type="button" class="hal__pdf" data-pdf="4" aria-label="Lihat PDF asli untuk Hlm. 4" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-4" lang="ar">تَعْرِيفُ النَّقْدِ</h3>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">لُغَةً: يُعْرَفُ النَّقْدُ لُغَةً، بِأَنَّهُ تَمْيِيزُ الدَّرَاهِمِ وَإِخْرَاجُ الزَّائِفِ مِنْهَا، وَيَأْتِي بِمَعْنَى فَحْصِ الشَّيْءِ وَكَشْفِ عُيُوبِهِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">اصْطِلَاحًا: فَالنَّقْدُ هُوَ تَمْحِيصُ الْعَمَلِ الْأَدَبِيِّ بِشَكْلٍ مُتَكَامِلٍ حَالَ الِانْتِهَاءِ مِنْ كِتَابَتِهِ؛</p></div><div class="ayat"><p class="ar" lang="ar">إِذْ يَتِمُّ تَقْدِيرُ النَّصِّ الْأَدَبِيِّ تَقْدِيرًا صَحِيحًا يَكْشِفُ مَوَاطِنَ الْجَوْدَةِ وَالرَّدَاءَةِ فِيهِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَيُبَيِّنُ دَرَجَتَهُ وَقِيمَتَهُ، وَمِنْ ثَمَّ الْحُكْمُ عَلَيْهِ بِمَعَايِيرَ مُعَيَّنَةٍ، وَتَصْنِيفُهُ مَعَ مَنْ يُشَابِهُهُ مَنْزِلَةً.</p></div><div class="ayat"><p class="ar" lang="ar">فَالنَّقْدُ يَخْتَلِفُ بِمَعَايِيرِهِ وَأَحْكَامِهِ بِاخْتِلَافِ الْفَنِّ الَّذِي يُمَارَسُ فِيهِ النَّقْدُ؛</p></div><div class="ayat"><p class="ar" lang="ar">فَالنَّقْدُ الَّذِي يُوَجَّهُ لِلْأُدَبَاءِ وَالنُّقَّادِ يَخْتَلِفُ عَنِ النَّقْدِ الْمُوَجَّهِ لِلْفُقَهَاءِ، كَمَا أَنَّ نَقْدَ الْأُصُولِيِّينَ يَخْتَلِفُ عَنْ نَقْدِ الْمُحَدِّثِينَ؛</p></div><div class="ayat"><p class="ar" lang="ar">فَلِكُلٍّ مِنْهُمْ أُسْلُوبُهُ وَأَحْكَامُهُ، إِلَّا أَنَّ الْمُشْتَرَكَ بَيْنَهُمْ هُوَ النَّظَرُ فِي الْأَثَرِ الْأَدَبِيِّ وَتَحْلِيلُهُ مَضْمُونًا وَشَكْلًا،</p></div><div class="ayat"><p class="ar" lang="ar">ثُمَّ الْحُكْمُ عَلَيْهِ وَتَقْوِيمُهُ، وَالنَّقْدُ قَدْ يَكُونُ فِي مَجَالِ الْأَدَبِ، وَالسِّيَاسَةِ، وَالْفَلْسَفَةِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَفِي مُخْتَلِفِ الْمَجَالَاتِ الْأُخْرَى، وَمِنَ الْجَدِيرِ بِالذِّكْرِ أَنَّ هُنَاكَ مُفْرَدَاتٍ مُقَارِبَةً لِلنَّقْدِ، كَالتَّقْيِيمِ، وَالرُّدُودِ، وَالْمُنَاظَرَاتِ، وَالْمُحَاوَرَاتِ وَالْجَدَلِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَالْمُبَاحَثَةِ، إِلَّا أَنَّ لِكُلِّ مُصْطَلَحٍ مَا يُمَيِّزُهُ عَنْ غَيْرِهِ مِنْ حَيْثُ الْأَسَالِيبُ، وَالْأَحْكَامُ، وَالْغَايَاتُ.</p></div></div>
+<h3 class="sub" id="sub-5" lang="ar">الْفَرْقُ بَيْنَ النَّقْدِ الْبَنَّاءِ وَالنَّقْدِ الْهَدَّامِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قَسَّمَ أَهْلُ الْعِلْمِ النَّقْدَ إِلَى:</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">نَقْدٌ بَنَّاءٌ: وَهُوَ الَّذِي يَسْعَى النَّاقِدُ فِيهِ إِلَى تَقْوِيمِ الْخَطَأِ وَيُحَاوِلُ إِصْلَاحَهُ بِنَاءً عَلَى أُسُسٍ عِلْمِيَّةٍ..</p></div><div class="ayat"><p class="ar" lang="ar">مُبْتَعِدًا عَنِ التَّعَصُّبِ، وَإِصْدَارِ الْأَحْكَامِ الْمُسْبَقَةِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">نَقْدٌ هَدَّامٌ: وَهُوَ الَّذِي يَكُونُ فِيهِ النَّقْدُ مِنْ أَجْلِ النَّيْلِ مِنَ الْآخَرِينَ،</p></div><div class="ayat"><p class="ar" lang="ar">وَتَشْوِيهِ سُمْعَتِهِمْ، وَالتَّرَصُّدِ لَهُمْ، بِإِظْهَارِ أَخْطَائِهِمْ مِنْ غَيْرِ حُجَّةٍ وَلَا بُرْهَانٍ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يَظْهَرُ مِنْ ذَلِكَ:</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">أَنَّ النَّاقِدَ فِي النَّقْدِ الْبَنَّاءِ يُقَدِّمُ نَقْدًا مُتَخَصِّصًا قَائِمًا عَلَى أَسَالِيبَ عِلْمِيَّةٍ فِي مَجَالِ تَخَصُّصِهِ،</p></div><div class="ayat"><p class="ar" lang="ar">بَيْنَمَا النَّاقِدُ فِي النَّقْدِ الْهَدَّامِ يَنْتَقِدُ مِنْ غَيْرِ إِنْصَافٍ، وَقَدْ يَقُومُ عَلَى تَجْرِيحِ النَّاسِ؛</p></div><div class="ayat"><p class="ar" lang="ar">بِسَبَبِ تَعَصُّبِهِ لِفِكْرَةٍ مَا، وَقَدْ تَكُونُ فِي غَيْرِ مَجَالِ دِرَاسَتِهِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">أَنَّ النَّقْدَ الْبَنَّاءَ يَكُونُ هَدَفُهُ الْأَسَاسِيُّ تَصْوِيبَ الْأَوْضَاعِ؛</p></div><div class="ayat"><p class="ar" lang="ar">لِذَلِكَ يَسْعَى النَّاقِدُ إِلَى تَقْدِيمِ النُّصْحِ لِلنَّاسِ، أَوِ التَّلْمِيحِ لَهُمْ دُونَ تَجْرِيحٍ،</p></div><div class="ayat"><p class="ar" lang="ar">بَيْنَمَا يَكُونُ هَدَفُ النَّاقِدِ فِي النَّقْدِ الْهَدَّامِ هُوَ الِانْتِصَارُ، بِغَضِّ النَّظَرِ إِنْ كَانَ عَلَى</p></div><div class="ayat"><p class="ar" lang="ar">صَوَابٍ أَمْ لَا ؛ حَيْثُ يَعْمِدُ النَّاقِدُ هُنَا إِلَى الثَّأْرِ مِنَ الْآخَرِينَ وَفَضْحِهِمْ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">يَرَى النَّاقِدُ فِي النَّقْدِ الْبَنَّاءِ أَنَّ رَأْيَهُ قَدْ يُؤْخَذُ بِهِ أَوْ قَدْ يُرْفَضُ،</p></div></div>
+<div class="hal" id="hal-5" data-kitab="5"><span><i class="hal__t">Hlm. </i>5</span><button type="button" class="hal__pdf" data-pdf="5" aria-label="Lihat PDF asli untuk Hlm. 5" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">لَكِنَّ النَّاقِدَ فِي النَّقْدِ الْهَدَّامِ يَرَى أَنَّ رَأْيَهُ هُوَ الْحَقِيقَةُ الْمُطْلَقَةُ غَيْرُ الْقَابِلَةِ لِلنَّقْضِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">تَرْحِيبُ النَّاقِدِ بِجَمِيعِ الْآرَاءِ الْمَطْرُوحَةِ فِي النَّقْدِ الْبَنَّاءِ؛</p></div><div class="ayat"><p class="ar" lang="ar">إِذْ لَا يُهِمُّهُ صَاحِبُ الرَّأْيِ بِقَدْرِ مَا يُهِمُّهُ الرَّأْيُ ذَاتُهُ، لَكِنَّ النَّاقِدَ فِي النَّقْدِ</p></div><div class="ayat"><p class="ar" lang="ar">الْهَدَّامِ لَا يُهِمُّهُ تَقْدِيمُ حُلُولٍ وَمُنَاقَشَتُهَا، بِقَدْرِ مَا يُهِمُّهُ الِانْتِقَادُ بِحَسَبِ مَكَانَةِ الْأَشْخَاصِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">أَنَّ النَّاقِدَ فِي النَّقْدِ الْبَنَّاءِ يَفْصِلُ بَيْنَ كُلِّ فِكْرَةٍ وَأُخْرَى، وَيَتَقَبَّلُ الْأَفْكَارَ الْإِيجَابِيَّةَ الْأُخْرَى</p></div><div class="ayat"><p class="ar" lang="ar">الَّتِي تَصْدُرُ مِنَ الشَّخْصِ ذَاتِهِ الَّذِي انْتَقَدَهُ، بَيْنَمَا فِي النَّقْدِ الْهَدَّامِ يَرْفُضُ النَّاقِدُ</p></div><div class="ayat"><p class="ar" lang="ar">جَمِيعَ الْأَفْكَارِ الَّتِي تَصْدُرُ مِنَ الشَّخْصِ الَّذِي انْتَقَدَهُ، حَتَّى لَوْ كَانَتْ ذَاتَ أَهَمِّيَّةٍ.</p></div></div>
+<h3 class="sub" id="sub-6" lang="ar">مَرَاحِلُ الْعَمَلِيَّةِ النَّقْدِيَّةِ:</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يَخْضَعُ النَّقْدُ لِمَجْمُوعَةٍ مِنَ الْإِجْرَاءَاتِ وَالْخُطُوَاتِ الضَّرُورِيَّةِ، فَيَمُرُّ بِثَلَاثِ مَرَاحِلَ هِيَ:</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">مَرْحَلَةُ التَّفْسِيرِ: وَيَتِمُّ فِي هَذِهِ الْمَرْحَلَةِ تَوْضِيحُ مَضْمُونِ النَّصِّ وَالْمَعْنَى الْعَامِّ الَّذِي أَرَادَ الْكَاتِبُ إِيصَالَهُ إِلَى الْقُرَّاءِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">مَرْحَلَةُ التَّحْلِيلِ: وَيَتِمُّ فِيهَا شَرْحُ أُسْلُوبِ الْأَدِيبِ فِي التَّعْبِيرِ عَنْ أَفْكَارِهِ وَعَوَاطِفِهِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">مَرْحَلَةُ التَّقْوِيمِ: وَهِيَ الْمَرْحَلَةُ الْأَخِيرَةُ فِي الْعَمَلِيَّةِ النَّقْدِيَّةِ، وَتَعْنِي الْحُكْمَ عَلَى الْعَمَلِ الْأَدَبِيِّ إِمَّا بِنَجَاحِهِ، وَإِمَّا بِفَشَلِهِ.</p></div></div>
+<h3 class="sub" id="sub-7" lang="ar">شُرُوطُ النَّاقِدِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُنَاكَ بَعْضُ الشُّرُوطِ الْوَاجِبِ تَوَافُرُهَا فِي النَّاقِدِ.</p></div><div class="ayat"><p class="ar" lang="ar">مِنْهَا:</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">الْمَوْهِبَةُ النَّقْدِيَّةُ: وَالَّتِي يَسْتَطِيعُ النَّاقِدُ مِنْ خِلَالِهَا أَنْ يُقَدِّرَ الْأَشْيَاءَ تَقْدِيرًا صَحِيحًا؛</p></div><div class="ayat"><p class="ar" lang="ar">فَيُمَيِّزَ الْعَمَلَ الْجَيِّدَ مِنَ الْعَمَلِ الرَّدِيءِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">الْأَهْلِيَّةُ الْعِلْمِيَّةُ وَالْكَفَاءَةُ: وَذَلِكَ بِأَنْ يَتَخَصَّصَ النَّاقِدُ بِنَقْدِ الْأَعْمَالِ فِي مَجَالِ تَخَصُّصِهِ، وَأَنْ يَمْتَلِكَ الثَّقَافَةَ الْوَاسِعَةَ فِي مُخْتَلِفِ الْمَيَادِينِ؛</p></div><div class="ayat"><p class="ar" lang="ar">وَالَّتِي تُؤَهِّلُهُ لِإِعْطَاءِ رَأْيِهِ بِكُلِّ ثِقَةٍ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الْعَدَالَةُ وَالْإِنْصَافُ: بِأَنْ يُصْدِرَ أَحْكَامَهُ بِكُلِّ شَفَافِيَّةٍ وَنَزَاهَةٍ بَعِيدًا عَنِ الْهَوَى وَالتَّعَصُّبِ؛</p></div><div class="ayat"><p class="ar" lang="ar">وَذَلِكَ بِأَنْ يُعَلِّلَ أَحْكَامَهُ وَيُفَسِّرَ رَأْيَهُ بِنَاءً عَلَى أُسُسٍ عِلْمِيَّةٍ غَيْرِ خَاضِعَةٍ لِعَاطِفَتِهِ أَوْ مُيُولِهِ الشَّخْصِيَّةِ؛</p></div><div class="ayat"><p class="ar" lang="ar">فَلَا يُصْدِرُ حُكْمَهُ لِكَيْ يُحَابِيَ أَحَدًا، أَوْ مِنْ أَجْلِ أَنْ يُقَلِّلَ مِنْ قِيمَةِ أَحَدٍ الْتِزَامُ الْأَدَبِ:</p></div><div class="ayat"><p class="ar" lang="ar">حَيْثُ يَجِبُ أَنْ يَكُونَ النَّقْدُ بَعِيدًا عَنِ الْإِسَاءَةِ لِلْآخَرِينَ بِالْأَلْفَاظِ الْخَارِجَةِ عَنِ الْأَدَبِ؛</p></div><div class="ayat"><p class="ar" lang="ar">فَيُوَجَّهُ النَّقْدُ لِلْفِكْرَةِ دُونَ إِيذَاءِ الْمُخَالِفِينَ فِي الرَّأْيِ حَتَّى وَإِنْ كَانُوا مُخْطِئِينَ.</p></div></div>
+<div class="hal" id="hal-6" data-kitab="6"><span><i class="hal__t">Hlm. </i>6</span><button type="button" class="hal__pdf" data-pdf="6" aria-label="Lihat PDF asli untuk Hlm. 6" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-4"><h2 class="bab__ar" lang="ar">اتِّجَاهُ النُّقَّادِ الْمُنَاصِرِينَ لِلشِّعْرِ الْقَدِيمِ: الْأَصْمَعِيُّ، وَالْآمِدِيُّ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَتَنَاوَلُ هَذَا الْبَابُ النَّقْدَ الْمَنْهَجِيَّ عِنْدَ الْأَصْمَعِيِّ وَالْآمِدِيِّ، نَاصِرَيِ الشِّعْرِ الْقَدِيمِ، فَيَعْرِضُ سِيرَتَهُمَا وَآرَاءَهُمَا وَأَمْثِلَةً مِنْ نَقْدِهِمَا وَمُقَارَنَةً بَيْنَهُمَا.</p></div>
+<h3 class="sub" id="sub-8" lang="ar">مَعْنَى النَّقْدِ الْمَنْهَجِيِّ وَأَشْهَرُ رُوَّادِهِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ ذَلِكَ النَّقْدُ الَّذِي يَقُومُ عَلَى مَنْهَجٍ، تَدْعَمُهُ أُسُسٌ نَظَرِيَّةٌ أَوْ تَطْبِيقِيَّةٌ عَامَّةٌ، وَيَتَنَاوَلُ بِالدَّرْسِ مَدَارِسَ أَدَبِيَّةً،</p></div><div class="ayat"><p class="ar" lang="ar">أَوْ شُعَرَاءَ، أَوْ خُصُومَاتٍ، يُفَصِّلُ الْقَوْلَ فِيهَا، وَيَبْسُطُ عَنَاصِرَهَا، وَيُبَصِّرُ بِمَوَاضِعِ الْجَمَالِ وَالْقُبْحِ فِيهَا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَقَدْ كَانَ الْقَرْنُ الرَّابِعُ قَرْنًا مُهِمًّا فِي تَارِيخِ النَّقْدِ الْعَرَبِيِّ؛</p></div><div class="ayat"><p class="ar" lang="ar">حَيْثُ اتَّجَهَ الْعُلَمَاءُ وَالْأُدَبَاءُ إِلَى الْكِتَابَةِ فِي الْأَدَبِ وَالنَّقْدِ، كَمَا أَفَادُوا مِنْ دِرَاسَاتِ النَّقْدِ فَائِدَةً كَبِيرَةً،</p></div><div class="ayat"><p class="ar" lang="ar">فَانْتَقَلُوا بِالنَّقْدِ مِنْ طَوْرٍ إِلَى آخَرَ ؛ فَمَزَجُوا بُحُوثَ النَّقْدِ وَالْأَدَبِ بِالْبَيَانِ،</p></div><div class="ayat"><p class="ar" lang="ar">كَمَا بَحَثُوا فِي مُشْكِلَاتِ الْبَلَاغَةِ، وَذَلِكَ فِي أَوَاخِرِ هَذَا الْقَرْنِ.</p></div></div>
+<h3 class="sub" id="sub-9" lang="ar">الْأَصْمَعِيُّ (١٢٣ هـ - ٢١٦ هـ / ٧٤١ م - ٨٣١ م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ: هُوَ عَبْدُ الْمَلِكِ بْنُ قُرَيْبٍ الْأَصْمَعِيُّ، أَحَدُ أَبْرَزِ النُّقَّادِ وَالشُّعَرَاءِ فِي الْعَصْرِ الْعَبَّاسِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ مِنْ أَئِمَّةِ اللُّغَةِ وَالْأَدَبِ، وَاهْتَمَّ بِجَمْعِ الشِّعْرِ الْعَرَبِيِّ وَتَدْوِينِهِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">جَمْعُ الشِّعْرِ وَتَدْوِينٌ: الْأَصْمَعِيُّ كَانَ لَهُ دَوْرٌ كَبِيرٌ فِي جَمْعِ الشِّعْرِ</p></div><div class="ayat"><p class="ar" lang="ar">الْعَرَبِيِّ مِنْ مَصَادِرِهِ الْأَصْلِيَّةِ، وَكَانَ لَهُ اهْتِمَامٌ خَاصٌّ بِالشِّعْرِ الْجَاهِلِيِّ وَالْإِسْلَامِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">قَامَ بِجَمْعِ قَصَائِدِ الشُّعَرَاءِ مُخْتَلِفِينَ وَحَرِصَ عَلَى تَصْحِيحِ الْأَنْسَابِ وَالْمُفْرَدَاتِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">النَّقْدُ وَالتَّقْيِيمُ: كَانَ الْأَصْمَعِيُّ يُشَدِّدُ عَلَى ضَرُورَةِ الِالْتِزَامِ بِالْأُسُسِ الْفَنِّيَّةِ لِلشِّعْرِ،</p></div><div class="ayat"><p class="ar" lang="ar">مِثْلَ الْوَزْنِ وَالْقَافِيَةِ، وَكَانَ يَهْتَمُّ بِتَحْلِيلِ الْمَعَانِي وَالْبَلَاغَةِ فِي النُّصُوصِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الِاهْتِمَامُ بِالْجَزَالَةِ: كَانَ الْأَصْمَعِيُّ يُقَدِّرُ جَزَالَةَ اللِّسَانِ وَنَقَاءَ اللُّغَةِ، وَيَرَى أَنَّ الشِّعْرَ الْجَيِّدَ هُوَ الَّذِي يَتَمَيَّزُ بِأُسْلُوبٍ فَصِيحٍ وَبَلِيغٍ.</p></div></div>
+<div class="hal" id="hal-7" data-kitab="7"><span><i class="hal__t">Hlm. </i>7</span><button type="button" class="hal__pdf" data-pdf="7" aria-label="Lihat PDF asli untuk Hlm. 7" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">رَفْضُهُ لِلْغُمُوضِ: كَانَ يَنْتَقِدُ الشِّعْرَ الَّذِي يَحْتَوِي عَلَى غُمُوضٍ أَوْ يَصْعُبُ فَهْمُهُ، مُؤَكِّدًا عَلَى أَهَمِّيَّةِ وُضُوحِ الْمَعَانِي فِي الشِّعْرِ.</p></div></div>
+<h3 class="sub" id="sub-10" lang="ar">أَمْثِلَةٌ مِنْ نَقْدِ الْأَصْمَعِيِّ (الِانْتِصَارُ لِلْفَصَاحَةِ وَاللُّغَةِ)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كَانَ الْأَصْمَعِيُّ يَرْفُضُ شِعْرَ الْمُحْدَثِينَ إِذَا خَرَجَ عَنْ سُنَنِ الْعَرَبِ الْبَدَوِيَّةِ فِي التَّعْبِيرِ، أَوْ إِذَا شَابَهُ اللَّحْنُ وَالضَّعْفُ اللُّغَوِيُّ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">رَفْضُ شِعْرِ بَشَّارِ بْنِ بُرْدٍ بِسَبَبِ اللَّحْنِ</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">جَفَتْ خِلْقَتِي خِلْقَ الْكِرَامِ وَلَمْ أَزَلْ</p><p class="ar" lang="ar">بِنَفْسِي عَنِ الْأَمْرِ الدَّنِيِّ أُذِيدُهَا</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حَيْثُ اعْتَرَضَ الْأَصْمَعِيُّ عَلَى جَمْعِ "خُلُق" عَلَى "خِلْقَةٍ"، وَرَأَى أَنَّ هَذَا خَطَأٌ لُغَوِيٌّ لَا يَقَعُ فِيهِ شَاعِرٌ فَصِيحٌ مِنَ الْأَقْدَمِينَ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">إِخْرَاجُ أَبِي نُوَاسٍ مِنْ دَائِرَةِ الْفُحُولَةِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">سُئِلَ الْأَصْمَعِيُّ عَنْ أَبِي نُوَاسٍ، فَقَالَ:</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ صَاحِبَ دِيبَاجَةٍ، وَمَذْهَبٍ حَسَنٍ فِي الشِّعْرِ، وَلَكِنْ لَيْسَ لَهُ مَادَّةٌ؛</p></div><div class="ayat"><p class="ar" lang="ar">وَكَانَ يَقْصِدُ بِالْمَادَّةِ غَرِيبَ اللُّغَةِ وَالسُّنَنَ الْبَدَوِيَّةَ، مُعْتَبِرًا أَنَّ شِعْرَ أَبِي نُوَاسٍ حَضَرِيٌّ رَقِيقٌ لَا يَقْوَى عَلَى مُجَارَاةِ جَزَالَةِ الْقُدَمَاءِ.</p></div></div>
+<h3 class="sub" id="sub-11" lang="ar">الْآمِدِيُّ (٣٧٥هـ - ٤٢٥ هـ / ٩٨٥ م - ١٠٣٤ م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ أَبُو الْقَاسِمِ عَبْدُ اللهِ بْنُ عَلِيِّ بْنِ عِيسَى،</p></div><div class="ayat"><p class="ar" lang="ar">الْمَعْرُوفُ بِالْآمِدِيِّ كَانَ مِنْ أَبْرَزِ نُقَّادِ الشِّعْرِ فِي الْقَرْنِ الرَّابِعِ وَالْخَامِسِ الْهِجْرِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">اشْتُهِرَ بِدِقَّتِهِ فِي النَّقْدِ وَتَحْلِيلِهِ الْعَمِيقِ لِلْأَدَبِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">النَّقْدُ الْأَدَبِيُّ: قَامَ بِكِتَابَةِ الْعَدِيدِ مِنَ الْمُؤَلَّفَاتِ النَّقْدِيَّةِ الَّتِي تَنَاوَلَتْ نَقْدَ الشِّعْرِ وَتَقْدِيمَ تَحْلِيلَاتٍ</p></div><div class="ayat"><p class="ar" lang="ar">دَقِيقَةٍ لِلْأَعْمَالِ الْأَدَبِيَّةِ مِنْ أَشْهَرِ أَعْمَالِهِ "الْمُوَازَنَةُ" الَّذِي يُقَارِنُ بَيْنَ الشُّعَرَاءِ الْقُدَامَى وَالْمُحْدَثِينَ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الشِّعْرُ وَالتَّقْلِيدُ: كَانَ لَهُ اهْتِمَامٌ خَاصٌّ بِالشِّعْرِ الْجَاهِلِيِّ وَقَدَّرَهُ وَمَيَّزَ بَيْنَ الشُّعَرَاءِ الْجَيِّدِينَ وَالْأَقَلِّ جَوْدَةً بِنَاءً عَلَى مَعَايِيرَ نَقْدِيَّةٍ مُحَدَّدَةٍ.</p></div></div>
+<div class="hal" id="hal-8" data-kitab="8"><span><i class="hal__t">Hlm. </i>8</span><button type="button" class="hal__pdf" data-pdf="8" aria-label="Lihat PDF asli untuk Hlm. 8" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الِاهْتِمَامُ بِالْقُوَّةِ الْأُسْلُوبِيَّةِ: كَانَ الْآمِدِيُّ يُولِي أَهَمِّيَّةً خَاصَّةً لِلْقُوَّةِ الْأُسْلُوبِيَّةِ وَالْجَمَالِيَّةِ فِي الشِّعْرِ، وَيُرَكِّزُ عَلَى الْجَوَانِبِ الْبَلَاغِيَّةِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الِانْتِقَائِيَّةُ فِي النَّقْدِ: كَانَ يَنْظُرُ إِلَى الشِّعْرِ الْقَدِيمِ بِاعْتِبَارِهِ الْمِعْيَارَ الْأَسَاسِيَّ لِلْأَدَبِ الْجَيِّدِ وَيُفَضِّلُ الشِّعْرَ الَّذِي يَتَّسِمُ بِالْبَسَاطَةِ وَالْوُضُوحِ وَالْبَلَاغَةِ.</p></div></div>
+<h3 class="sub" id="sub-12" lang="ar">ثَانِيًا : أَمْثِلَةٌ مِنْ نَقْدِ الْآمِدِيِّ (الْمُوَازَنَةُ وَعَمُودُ الشِّعْرِ)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فِي كِتَابِهِ "الْمُوَازَنَةِ"، طَبَّقَ الْأَمِدِيُّ مِعْيَارَ عَمُودِ الشِّعْرِ : الْوُضُوحَ، وَاللَّفْظَ الشَّرِيفَ وَالتَّشْبِيهَ الْمُصِيبَ،</p></div><div class="ayat"><p class="ar" lang="ar">لِيَنْتَصِرَ لِلْبُحْتُرِيِّ مُمَثِّلِ مَذْهَبِ الْقُدَمَاءِ فِي الطَّبْعِ ضِدَّ أَبِي تَمَّامٍ ( مُمَثِّلِ مَذْهَبِ الْمُحْدَثِينَ فِي التَّكَلُّفِ وَالْغُمُوضِ).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">نَقْدُ الْغُمُوضِ وَالْفَلْسَفَةِ عِنْدَ أَبِي تَمَّامٍ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أَنْكَرَ الْآمِدِيُّ قَوْلَ أَبِي تَمَّامٍ فِي الْغَزَلِ</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">لَا تَسْقِنِي مَاءَ الْمَلَامِ فَإِنَّنِي</p><p class="ar" lang="ar">صَبٌّ قَدِ اسْتَعْذَبْتُ مَاءَ بُكَائِي</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عَابَ الْآمِدِيُّ هَذَا الْبَيْتَ بِشِدَّةٍ، قَائِلًا إِنَّ الْمَلَامَ لَيْسَ لَهُ مَاءٌ يُسْقَى،</p></div><div class="ayat"><p class="ar" lang="ar">وَرَأَى فِي اسْتِعَارَةِ مَاءٍ لِلْمَلَامِ تَكَلُّفًا قَبِيحًا يَخْرُجُ عَنِ الْبَلَاغَةِ الْعَرَبِيَّةِ الْمَفْطُورَةِ عَلَى وُضُوحِ التَّشْبِيهِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الِانْتِصَارُ لِطَبْعِ الْبُحْتُرِيِّ (الْقَدِيمِ)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فَضَّلَ الْآمِدِيُّ قَوْلَ الْبُحْتُرِيِّ فِي وَصْفِ الشَّوْقِ.</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">أَمَا وَأَبِيكَ لَمْ أَسْلُ الْإِخَاءَ</p><p class="ar" lang="ar">وَلَمْ أَقْطَعْ لَدَيْكَ رَجَاءَ وَصْلِ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اعْتَبَرَ الْآمِدِيُّ هَذَا الشِّعْرَ هُوَ النَّمُوذَجَ الْأَعْلَى، لِأَنَّهُ مَطْبُوعٌ، سَهْلُ الْمَأْخَذِ، مَتِينُ السَّبْكِ،</p></div><div class="ayat"><p class="ar" lang="ar">لَا يَحْتَاجُ الْقَارِئُ إِلَى فِكْرٍ وَفَلْسَفَةٍ لِيَفْهَمَهُ، وَهُوَ عَيْنُ مَا كَانَ عَلَيْهِ شُعَرَاءُ الْجَاهِلِيَّةِ وَالْإِسْلَامِ.</p></div></div>
+<div class="hal" id="hal-9" data-kitab="9"><span><i class="hal__t">Hlm. </i>9</span><button type="button" class="hal__pdf" data-pdf="9" aria-label="Lihat PDF asli untuk Hlm. 9" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-13" lang="ar">التَّأْثِيرُ وَالْمُقَارَنَةُ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١ - الِاهْتِمَامُ بِالشِّعْرِ الْقَدِيمِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْأَصْمَعِيُّ: كَانَ لَدَيْهِ شَغَفٌ بِجَمْعِ الشِّعْرِ الْقَدِيمِ وَحِفْظِهِ، وَكَانَ يَرَى فِي الشِّعْرِ الْجَاهِلِيِّ وَالْإِسْلَامِيِّ نَمُوذَجًا لِلْكَمَالِ الْأَدَبِيِّ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْآمِدِيُّ: كَانَ أَيْضًا يُقَدِّرُ الشِّعْرَ الْقَدِيمَ وَيَسْتَخْدِمُهُ كَمِعْيَارٍ لِتَقْيِيمِ الشِّعْرِ الْمُحْدَثِ</p></div><div class="ayat"><p class="ar" lang="ar">اعْتَبَرَ أَنَّ الشِّعْرَ الْقَدِيمَ يُمَثِّلُ الْقِمَّةَ فِي الْجَمَالِ الْأَدَبِيِّ وَالْبَلَاغَةِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢ - الْمَعَايِيرُ النَّقْدِيَّةُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْأَصْمَعِيُّ: رَكَّزَ عَلَى مَعَايِيرِ الْوَزْنِ وَالْقَافِيَةِ وَاللُّغَةِ النَّقِيَّةِ، وَكَانَ يَرْفُضُ الشِّعْرَ الَّذِي يَحْتَوِي عَلَى عَنَاصِرَ غَامِضَةٍ أَوْ غَيْرِ وَاضِحَةٍ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْآمِدِيُّ: اهْتَمَّ بِالتَّحْلِيلِ الْعَمِيقِ لِلْأُسْلُوبِ وَالْبَلَاغَةِ ، وَرَكَّزَ عَلَى مُقَارَنَةٍ بَيْنَ الشُّعَرَاءِ عَبْرَ الْعُصُورِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣- التَّأْثِيرُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْأَصْمَعِيُّ: سَاهَمَ فِي الْحِفَاظِ عَلَى التُّرَاثِ الشِّعْرِيِّ وَتَوْثِيقِهِ، وَتَرَكَ تَأْثِيرًا كَبِيرًا عَلَى جَمْعِ الشِّعْرِ الْعَرَبِيِّ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْآمِدِيُّ: أَثَّرَ فِي تَطْوِيرِ النَّقْدِ الْأَدَبِيِّ مِنْ خِلَالِ التَّحْلِيلِ الدَّقِيقِ وَالْمُقَارَنَاتِ بَيْنَ الشُّعَرَاءِ،</p></div><div class="ayat"><p class="ar" lang="ar">مِمَّا سَاعَدَ عَلَى تَقَدُّمِ النَّقْدِ الْأَدَبِيِّ فِي عَصْرِهِ.</p></div></div>
+<div class="hal" id="hal-10" data-kitab="10"><span><i class="hal__t">Hlm. </i>10</span><button type="button" class="hal__pdf" data-pdf="10" aria-label="Lihat PDF asli untuk Hlm. 10" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-5"><h2 class="bab__ar" lang="ar">الِاتِّجَاهُ التَّوْفِيقِيُّ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَعْرِضُ هَذَا الْبَابُ الِاتِّجَاهَ التَّوْفِيقِيَّ الَّذِي يَجْمَعُ بَيْنَ الْقَدِيمِ وَالْحَدِيثِ عِنْدَ الْجَاحِظِ وَابْنِ قُتَيْبَةَ وَالْقَاضِي الْجُرْجَانِيِّ، مَعَ أَعْمَالِهِمْ وَآرَائِهِمْ وَمُقَارَنَةٍ بَيْنَهُمْ.</p></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْجَاحِظُ، وَابْنُ قُتَيْبَةَ، وَالْقَاضِي الْجُرْجَانِيُّ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الِاتِّجَاهُ التَّوْفِيقِيُّ هُوَ نَهْجٌ نَقْدِيٌّ يَدْمُجُ بَيْنَ أَسَالِيبَ مُتَعَدِّدَةٍ فِي الْأَدَبِ وَالنَّقْدِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَيَهْدِفُ إِلَى التَّوَازُنِ بَيْنَ التَّقْلِيدِيِّ وَالْحَدِيثِ، بَيْنَ الْعَنَاصِرِ الْقَدِيمَةِ وَالْجَدِيدَةِ.</p></div><div class="ayat"><p class="ar" lang="ar">يَعْكِسُ هَذَا الِاتِّجَاهُ مُحَاوَلَةَ جَمْعِ أَفْضَلِ مَا فِي الشِّعْرِ وَالنَّقْدِ مِنْ مُخْتَلِفِ الْفَتَرَاتِ وَتَطْوِيرِ مَعَايِيرَ نَقْدِيَّةٍ تَسْتَنِدُ إِلَى التَّنَوُّعِ وَالتَّكَامُلِ.</p></div></div>
+<h3 class="sub" id="sub-14" lang="ar">الْجَاحِظُ ( ١٥٩هـ - ٢٥٥ هـ / ٧٧٦ م - ٨٦٩م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ أَبُو عُثْمَانَ عَمْرُو بْنُ بَحْرٍ الْجَاحِظُ، أَحَدُ أَعْظَمِ الْأُدَبَاءِ وَالنُّقَّادِ فِي الْعَصْرِ الْعَبَّاسِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">اشْتُهِرَ بِكِتَابِهِ "الْبَيَانِ وَالتَّبْيِينِ" وَ"الْحَيَوَانِ" وَاهْتَمَّ بِالْبَلَاغَةِ وَالْأَدَبِ وَالنَّقْدِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْبَلَاغَةُ وَالْأَدَبُ: كَانَ لِلْجَاحِظِ اهْتِمَامٌ كَبِيرٌ بِالْبَلَاغَةِ وَالْأَدَبِ الْعَرَبِيِّ، وَقَدَّمَ فِي أَعْمَالِهِ تَحْلِيلًا عَمِيقًا لِلْعَنَاصِرِ الْبَلَاغِيَّةِ فِي الشِّعْرِ وَالنَّثْرِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّوْفِيقِيَّةُ: كَانَ لِلْجَاحِظِ نَهْجٌ تَوْفِيقِيٌّ فِي نَقْدِهِ، حَيْثُ جَمَعَ بَيْنَ تَقَالِيدِ الْأَدَبِ الْعَرَبِيِّ الْقَدِيمِ وَالِابْتِكَارَاتِ الْجَدِيدَةِ.</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ يُقَدِّرُ الشِّعْرَ الْقَدِيمَ وَيَدْعُو إِلَى تَحْدِيثِهِ بِمَا يَتَنَاسَبُ مَعَ الذَّوْقِ الْمُعَاصِرِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ وَالنَّقْدِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الِاهْتِمَامُ بِالتَّوَازُنِ: كَانَ الْجَاحِظُ يَسْعَى إِلَى تَحْقِيقِ تَوَازُنٍ بَيْنَ عَنَاصِرِ الْأَدَبِ التَّقْلِيدِيِّ وَالْحَدِيثِ.</p></div><div class="ayat"><p class="ar" lang="ar">وَقَدَّرَ الْأَدَبَ الْقَدِيمَ وَاعْتَبَرَهُ أَسَاسًا لِتَطْوِيرِ الْأَدَبِ الْمُعَاصِرِ.</p></div></div>
+<div class="hal" id="hal-11" data-kitab="11"><span><i class="hal__t">Hlm. </i>11</span><button type="button" class="hal__pdf" data-pdf="11" aria-label="Lihat PDF asli untuk Hlm. 11" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الِابْتِكَارُ وَالتَّمَيُّزُ: شَجَّعَ عَلَى الِابْتِكَارِ وَالتَّمَيُّزِ، وَأَكَّدَ أَنَّ الْأَدَبَ الْجَيِّدَ هُوَ الَّذِي يَمْزُجُ بَيْنَ الْأَصَالَةِ وَالِابْتِكَارِ.</p></div></div>
+<h3 class="sub" id="sub-15" lang="ar">ابْنُ قُتَيْبَةَ (٢١٣هـ - ٢٧٦ هـ / ٨٢٨ م - ٨٨٩م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ أَبُو مُحَمَّدٍ عَبْدُ اللهِ بْنُ مُسْلِمِ بْنِ قُتَيْبَةَ، نَاقِدٌ وَمُؤَرِّخٌ وَأَدِيبٌ.</p></div><div class="ayat"><p class="ar" lang="ar">كَتَبَ الْعَدِيدَ مِنَ الْمُؤَلَّفَاتِ النَّقْدِيَّةِ وَالتَّارِيخِيَّةِ مِنْ أَبْرَزِهَا "الشِّعْرُ وَالشُّعَرَاءُ" وَ"تَأْوِيلُ مُشْكِلِ الْقُرْآنِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">النَّقْدُ وَالتَّفْسِيرُ: رَكَّزَ ابْنُ قُتَيْبَةَ فِي نَقْدِهِ عَلَى تَفْسِيرِ الشِّعْرِ وَتَحْلِيلِهِ، وَاهْتَمَّ بِدَمْجِ الْأُطُرِ الْقَدِيمَةِ مَعَ الْأَفْكَارِ الْجَدِيدَةِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّوْفِيقِيَّةُ: كَانَ لَهُ أُسْلُوبٌ تَوْفِيقِيٌّ فِي نَقْدِ الشِّعْرِ، حَيْثُ حَاوَلَ الْجَمْعَ بَيْنَ دِرَاسَةِ النُّصُوصِ الْقَدِيمَةِ وَالِاعْتِرَافِ بِأَهَمِّيَّةِ الِابْتِكَارِ وَالتَّحْدِيثِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ وَالنَّقْدِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">مُقَارَنَةٌ بَيْنَ الْقَدِيمِ وَالْحَدِيثِ:</p></div><div class="ayat"><p class="ar" lang="ar">اسْتَخْدَمَ ابْنُ قُتَيْبَةَ مَعَايِيرَ نَقْدِيَّةً تَشْمَلُ تَقْيِيمَ الشُّعَرَاءِ الْقُدَمَاءِ وَالْمُحْدَثِينَ عَلَى حَدٍّ سَوَاءٍ، مَعَ التَّرْكِيزِ عَلَى الْمَزَايَا الْأَدَبِيَّةِ وَالنَّقْدِيَّةِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">تَأْكِيدُ الْأَصَالَةِ: كَانَ يُقَدِّرُ الْأَصَالَةَ فِي الشِّعْرِ وَلَكِنَّهُ أَيْضًا شَجَّعَ عَلَى التَّجْدِيدِ، مِمَّا يَعْكِسُ التَّوَجُّهَ التَّوْفِيقِيَّ فِي تَقْيِيمِ الْأَدَبِ.</p></div></div>
+<h3 class="sub" id="sub-16" lang="ar">الْقَاضِي الْجُرْجَانِيُّ (٣٩٣هـ - ٤٧١ هـ / ١٠٠٢م - ١٠٧٨م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ عَبْدُ الرَّحْمَنِ بْنُ عَلِيِّ بْنِ مُحَمَّدٍ الْجُرْجَانِيُّ، نَاقِدٌ وَأَدِيبٌ.</p></div><div class="ayat"><p class="ar" lang="ar">اشْتُهِرَ بِكِتَابِهِ "الْوَسَاطَةِ بَيْنَ الْمُتَنَبِّي وَخُصُومِهِ" وَ "دَلَائِلِ الْإِعْجَازِ" وَ"أَسْرَارِ الْبَلَاغَةِ.</p></div></div>
+<div class="hal" id="hal-12" data-kitab="12"><span><i class="hal__t">Hlm. </i>12</span><button type="button" class="hal__pdf" data-pdf="12" aria-label="Lihat PDF asli untuk Hlm. 12" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْبَلَاغَةُ وَالْأَدَبُ: كَانَ الْقَاضِي الْجُرْجَانِيُّ مِنْ أَبْرَزِ النُّقَّادِ الَّذِينَ اهْتَمُّوا بِدِرَاسَةِ الْبَلَاغَةِ وَالْأَدَبِ الْعَرَبِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">قَدَّمَ تَحْلِيلَاتٍ دَقِيقَةً لِلْأَسَالِيبِ الْبَلَاغِيَّةِ وَالْفَنِّيَّةِ فِي الْأَدَبِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّوْفِيقِيَّةُ: كَانَ لَهُ نَهْجٌ تَوْفِيقِيٌّ فِي تَقْيِيمِ الْأَدَبِ، حَيْثُ حَاوَلَ دَمْجَ بَيْنَ مَعَايِيرِ النَّقْدِ الْقَدِيمِ وَالِابْتِكَارَاتِ الْجَدِيدَةِ فِي الْأَدَبِ الْعَرَبِيِّ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ وَالنَّقْدِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّحْلِيلُ الْبَلَاغِيُّ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّوَازُنُ بَيْنَ الْقَدِيمِ وَالْحَدِيثِ:</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ يُشَجِّعُ عَلَى تَحْقِيقِ تَوَازُنٍ بَيْنَ تَقَالِيدِ الْأَدَبِ الْعَرَبِيِّ وَالِابْتِكَارَاتِ، مِمَّا يَعْكِسُ تَوَجُّهَهُ التَّوْفِيقِيَّ فِي النَّقْدِ.</p></div></div>
+<h3 class="sub" id="sub-17" lang="ar">التَّأْثِيرُ وَالْمُقَارَنَةُ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">التَّأْثِيرُ عَلَى النَّقْدِ الْأَدَبِيِّ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْجَاحِظُ: سَاهَمَ فِي تَطْوِيرِ النَّقْدِ الْأَدَبِيِّ مِنْ خِلَالِ دَمْجِ الْأَدَبِ الْقَدِيمِ بِالْجَدِيدِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَأَثَّرَ فِي كَيْفِيَّةِ تَقْيِيمِ الْأَدَبِ بِنَاءً عَلَى التَّوَازُنِ بَيْنَ التَّقْلِيدِ وَالِابْتِكَارِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">ابْنُ قُتَيْبَةَ: قَدَّمَ نَمُوذَجًا تَوْفِيقِيًّا فِي نَقْدِ الشِّعْرِ مِنْ خِلَالِ مُقَارَنَتِهِ</p></div><div class="ayat"><p class="ar" lang="ar">بَيْنَ الشُّعَرَاءِ الْقُدَمَاءِ وَالْمُحْدَثِينَ، مِمَّا سَاعَدَ عَلَى تَوْسِيعِ مَعَايِيرِ النَّقْدِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْقَاضِي الْجُرْجَانِيُّ: أَثَّرَ فِي دِرَاسَةِ الْبَلَاغَةِ وَالنَّقْدِ الْأَدَبِيِّ عَبْرَ الْجَمْعِ بَيْنَ الْأَسَالِيبِ التَّقْلِيدِيَّةِ وَالْحَدِيثَةِ،</p></div><div class="ayat"><p class="ar" lang="ar">مِمَّا سَاهَمَ فِي تَطْوِيرِ النَّقْدِ الْأَدَبِيِّ بِشَكْلٍ كَبِيرٍ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مُقَارَنَةٌ بَيْنَ الثَّلَاثَةِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْجَاحِظُ: كَانَ يُرَكِّزُ عَلَى الْجَمْعِ بَيْنَ الْبَلَاغَةِ الْقَدِيمَةِ وَالِابْتِكَارِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">ابْنُ قُتَيْبَةَ: كَانَ يَسْعَى إِلَى تَحْقِيقِ تَوَازُنٍ بَيْنَ تَقْيِيمِ الشِّعْرِ الْقَدِيمِ وَالْحَدِيثِ.</p></div></div>
+<div class="hal" id="hal-13" data-kitab="13"><span><i class="hal__t">Hlm. </i>13</span><button type="button" class="hal__pdf" data-pdf="13" aria-label="Lihat PDF asli untuk Hlm. 13" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْقَاضِي الْجُرْجَانِيُّ: قَدَّمَ تَحْلِيلَاتٍ بَلَاغِيَّةً وَتَوْفِيقِيَّةً لِجَمْعٍ بَيْنَ تِقْنِيَّاتِ الْأَدَبِ التَّقْلِيدِيِّ وَالِابْتِكَارَاتِ الْحَدِيثَةِ.</p></div></div>
+<div class="hal" id="hal-14" data-kitab="14"><span><i class="hal__t">Hlm. </i>14</span><button type="button" class="hal__pdf" data-pdf="14" aria-label="Lihat PDF asli untuk Hlm. 14" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-6"><h2 class="bab__ar" lang="ar">اتِّجَاهُ النَّقْدِ الْمُتَأَثِّرِ بِالْمَنْطِقِ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُقَدِّمُ هَذَا الْبَابُ النَّقْدَ الْمُتَأَثِّرَ بِالْمَنْطِقِ، وَيُعَرِّفُ بِقُدَامَةَ بْنِ جَعْفَرٍ وَكِتَابِهِ «نَقْدِ الشِّعْرِ» وَمَبَادِئِهِ: الْوُضُوحِ وَالدِّقَّةِ وَالتَّوَازُنِ بَيْنَ الشَّكْلِ وَالْمَضْمُونِ.</p></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قُدَامَةُ بْنُ جَعْفَرٍ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">النَّقْدُ الْمُتَأَثِّرُ بِالْمَنْطِقِ هُوَ نَهْجٌ فِي النَّقْدِ الْأَدَبِيِّ يَعْتَمِدُ عَلَى الْمَبَادِئِ الْمَنْطِقِيَّةِ وَالْعَقْلَانِيَّةِ لِتَحْلِيلِ وَتَقْيِيمِ الْأَدَبِ.</p></div><div class="ayat"><p class="ar" lang="ar">هَذَا الِاتِّجَاهُ يُرَكِّزُ عَلَى اسْتِخْدَامِ أَدَوَاتِ التَّفْكِيرِ الْمَنْطِقِيِّ وَالْمَبَادِئِ الْعَقْلِيَّةِ لِفَهْمِ النُّصُوصِ الْأَدَبِيَّةِ، وَتَقْيِيمِهَا، وَتَفْسِيرِهَا.</p></div><div class="ayat"><p class="ar" lang="ar">يَعْكِسُ هَذَا الِاتِّجَاهُ تَأَثُّرَ النَّقْدِ الْأَدَبِيِّ بِالْفَلْسَفَةِ وَالْمَنْطِقِ، وَيَهْدِفُ إِلَى تَحْقِيقِ مَوْضُوعِيَّةٍ وَدِقَّةٍ فِي التَّحْلِيلِ الْأَدَبِيِّ.</p></div></div>
+<h3 class="sub" id="sub-18" lang="ar">قُدَامَةُ بْنُ جَعْفَرٍ (؟ - ٣٣٧ هـ / ؟ - ٩٤٨ م)</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْرِيفُهُ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هُوَ أَبُو الْعَبَّاسِ قُدَامَةُ بْنُ جَعْفَرٍ، نَاقِدٌ أَدَبِيٌّ وَفَقِيهٌ مِنَ الْعَصْرِ الْعَبَّاسِيِّ.</p></div><div class="ayat"><p class="ar" lang="ar">يُعْتَبَرُ مِنْ أَبْرَزِ النُّقَّادِ الَّذِينَ تَأَثَّرُوا بِالْفَلْسَفَةِ وَالْمَنْطِقِ، وَلَهُ تَأْثِيرٌ كَبِيرٌ فِي تَطَوُّرِ النَّقْدِ الْأَدَبِيِّ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">اهْتِمَامَاتُهُ وَأَعْمَالُهُ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">النَّقْدُ الْمَنْطِقِيُّ: قَدَّمَ قُدَامَةُ بْنُ جَعْفَرٍ مَنْهَجًا نَقْدِيًّا يَعْتَمِدُ عَلَى مَبَادِئِ الْمَنْطِقِ وَالْعَقْلَانِيَّةِ.</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ يُرَكِّزُ عَلَى تَحْلِيلِ النُّصُوصِ الْأَدَبِيَّةِ بِطَرِيقَةٍ مُنَظَّمَةٍ وَمَوْضُوعِيَّةٍ، مُسْتَخْدِمًا أَدَوَاتِ التَّفْكِيرِ الْمَنْطِقِيِّ لِفَهْمِ النُّصُوصِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">أَبْرَزُ أَعْمَالِهِ: مِنْ أَشْهَرِ أَعْمَالِهِ كِتَابُ "نَقْدِ الشِّعْرِ"، حَيْثُ قَدَّمَ فِيهِ تَحْلِيلًا عَمِيقًا لِلنُّصُوصِ الشِّعْرِيَّةِ بِنَاءً عَلَى قَوَاعِدَ مَنْطِقِيَّةٍ وَعَقْلَانِيَّةٍ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">آرَاؤُهُ فِي الشِّعْرِ وَالنَّقْدِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">الْوُضُوحُ وَالدِّقَّةُ: مِنْ أَبْرَزِ الْمَبَادِئِ الَّتِي اعْتَمَدَهَا قُدَامَةُ بْنُ جَعْفَرٍ هُوَ أَهَمِّيَّةُ وُضُوحِ النُّصُوصِ الْأَدَبِيَّةِ وَدِقَّتِهَا.</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ تُؤْمِنُ أَنَّ النُّصُوصَ الْأَدَبِيَّةَ يَجِبُ أَنْ تَكُونَ خَالِيَةً مِنَ الْغُمُوضِ وَأَنْ تَكُونَ مَعَانِيهَا وَاضِحَةً وَسَهْلَةَ الْفَهْمِ.</p></div></div>
+<div class="hal" id="hal-15" data-kitab="15"><span><i class="hal__t">Hlm. </i>15</span><button type="button" class="hal__pdf" data-pdf="15" aria-label="Lihat PDF asli untuk Hlm. 15" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">التَّوَازُنُ بَيْنَ الشَّكْلِ وَالْمَضْمُونِ:</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ يَرَى أَنَّ الْجَوْدَةَ الْأَدَبِيَّةَ تَتَحَقَّقُ مِنْ خِلَالِ التَّوَازُنِ بَيْنَ الشَّكْلِ (مِثْلَ الْوَزْنِ وَالْقَافِيَةِ) وَالْمَضْمُونِ (مِثْلَ الْمَعَانِي وَالْأَفْكَارِ).</p></div><div class="ayat"><p class="ar" lang="ar">وَاسْتَخْدَمَ الْمَنْطِقَ لِتَقْيِيمِ مَدَى تَحْقِيقِ هَذَا التَّوَازُنِ</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">انْتِقَادُ الشِّعْرِ الْغَامِضِ: انْتَقَدَ قُدَامَةُ بْنُ جَعْفَرٍ الشِّعْرَ الَّذِي يَحْتَوِي عَلَى غُمُوضٍ أَوْ</p></div><div class="ayat"><p class="ar" lang="ar">لَبْسٍ وَأَكَّدَ عَلَى أَهَمِّيَّةِ أَنْ تَكُونَ النُّصُوصُ الْأَدَبِيَّةُ مَفْهُومَةً وَقَابِلَةً لِلتَّفْسِيرِ بِسُهُولَةٍ.</p></div></div>
+<header class="bab" id="bab-7"><h2 class="bab__ar" lang="ar">مِنْ قَضَايَا النَّقْدِ الْعَرَبِيِّ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يَبْحَثُ هَذَا الْبَابُ قَضِيَّةَ اللَّفْظِ وَالْمَعْنَى بَيْنَ الْجَاحِظِ وَابْنِ قُتَيْبَةَ وَعَبْدِ الْقَاهِرِ الْجُرْجَانِيِّ، ثُمَّ يَذْكُرُ مَقَايِيسَ نَقْدِ الْمَعْنَى وَالْأُسْلُوبِ وَالْعَاطِفَةِ وَالْخَيَالِ.</p></div>
+<div class="hal" id="hal-16" data-kitab="16"><span><i class="hal__t">Hlm. </i>16</span><button type="button" class="hal__pdf" data-pdf="16" aria-label="Lihat PDF asli untuk Hlm. 16" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-19" lang="ar">أَوَّلًا: اللَّفْظُ وَالْمَعْنَى</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أ- أَبُو عُثْمَانَ عَمْرُو بَحْرٍ الْجَاحِظُ (ت ٢٥٥هـ)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يَذْهَبُ الْجَاحِظُ إِلَى أَنَّ الْمَعْنَى مَوْجُودٌ فِي كُلِّ مَكَانٍ ، وَمَا عَلَى الْأَدِيبِ إِلَّا أَنْ يَتَنَاوَلَهُ وَيَصُوغَهُ صِيَاغَةً مُتَفَرِّدَةً .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فَالْمَعَانِي مَطْرُوحَةٌ فِي الطَّرِيقِ يَعْرِفُهَا الْعَجَمِيُّ وَالْعَرَبِيُّ وَالْبَدَوِيُّ وَالْقَرَوِيُّ وَالْمَدَنِيُّ ،</p></div><div class="ayat"><p class="ar" lang="ar">وَالْمُعَوَّلُ فِي عَلَى إِقَامَةِ الْوَزْنِ ، وَتَخْيِيرِ اللَّفْظِ ، وَسُهُولَةِ الْمَخْرَجِ ، وَكَثْرَةِ الْمَاءِ ، وَصِحَّةِ الطَّبْعِ ،</p></div><div class="ayat"><p class="ar" lang="ar">وَجَوْدَةِ السَّبْكِ ، إِنَّمَا الشِّعْرُ صِنَاعَةٌ وَضَرْبٌ مِنَ النَّسْجِ وَجِنْسٌ مِنَ التَّصْوِيرِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَلَعَلَّ الْجَاحِظَ ذَهَبَ إِلَى هَذَا الرَّأْيِ ؛ لِأَنَّهُ يَرَى أَنَّ الْإِعْجَازَ لَا يُفَسَّرُ إِلَّا</p></div><div class="ayat"><p class="ar" lang="ar">عَنْ طَرِيقِ النَّظْمِ ، وَمَنْ آمَنَ بِأَنَّ النَّظْمَ حَقِيقٌ بِرَفْعِ الْبَيَانِ إِلَى مُسْتَوَى الْإِعْجَازِ</p></div><div class="ayat"><p class="ar" lang="ar">لَمْ يَعُدْ قَادِرًا عَلَى أَنْ يَتَبَنَّى نَظَرِيَّةَ تَقْدِيمِ الْمَعْنَى عَلَى اللَّفْظِ وَلِأَنَّ عَصْرَ الْجَاحِظِ</p></div><div class="ayat"><p class="ar" lang="ar">كَانَ يَشْهَدُ بَوَادِرَ حَمْلَةٍ عَنِيفَةٍ يَقُومُ بِهَا النُّقَّادُ ؛ لِتَبْيَانِ السَّرِقَةِ فِي الْمَعَانِي بَيْنَ</p></div><div class="ayat"><p class="ar" lang="ar">الشُّعَرَاءِ وَلَا يُسْتَبْعَدُ أَنْ يَكُونَ الْجَاحِظُ قَدْ حَاوَلَ الرَّدَّ عَلَى هَذَا التَّيَّارِ مَرَّتَيْنِ:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مَرَّةً بِأَنْ لَا يَشْغَلَ نَفْسَهُ بِمَوْضُوعِ السَّرِقَاتِ كَمَا فَعَلَ مُعَاصِرُوهُ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَمَرَّةً بِأَنْ يُقَرِّرَ أَنَّ الْأَفْضَلِيَّةَ لِلشَّكْلِ ؛ لِأَنَّ الْمَعَانِيَ قَدْرٌ مُشْتَرَكٌ بَيْنَ النَّاسِ جَمِيعًا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَسَبَبٌ ثَالِثٌ قَائِمٌ فِي طَبِيعَةِ الْجَاحِظِ نَفْسِهِ ، فَقَدْ كَانَ رَجُلًا حَصِبَ</p></div><div class="ayat"><p class="ar" lang="ar">الْقَرِيحَةِ لَا يَعِيبُهُ الْمَوْضُوعُ ، وَلَا يُثْقِلُ عَلَيْهِ الْمُحْتَوَى أَيًّا كَانَ لَوْنُهُ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ب . ابْنُ قُتَيْبَةَ ( أَبُو مُحَمَّدٍ عَبْدُ اللهِ بْنُ مُسْلِمِ بْنِ قُتَيْبَةَ ت ٢٧٦هـ)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ذَهَبَ ابْنُ قُتَيْبَةَ فِي هَذِهِ الْقَضِيَّةِ مَذْهَبَ التَّسْوِيَةِ.</p></div><div class="ayat"><p class="ar" lang="ar">فَلِهَذِهِ الْقَضِيَّةِ رُكْنَانِ (اللَّفْظُ . الْمَعْنَى).</p></div><div class="ayat"><p class="ar" lang="ar">وَمِيزَانٌ (الْجَوْدَةُ . الرَّدَاءَةُ ) ، وَلَا بَأْسَ أَنْ يَتَّجِهَ ابْنُ قُتَيْبَةَ فِي هَذَا نَحْوَ الْمَنْطِقِ ،</p></div><div class="ayat"><p class="ar" lang="ar">فَيَجِدَ أَنَّ الشِّعْرَ أَرْبَعَةُ أَضْرُبٍ ، لَا تَسْمَحُ الْعَلَاقَةُ الْمَنْطِقِيَّةُ بِأَكْثَرَ مِنْهَا :</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أ . لَفْظٌ جَيِّدٌ وَمَعْنًى جَيِّدٌ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ب . لَفْظٌ جَيِّدٌ وَمَعْنًى رَدِيءٌ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ج. لَفْظٌ رَدِيءٌ وَمَعْنًى جَيِّدٌ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">د. لَفْظٌ رَدِيءٌ وَمَعْنًى رَدِيءٌ.</p></div></div>
+<div class="hal" id="hal-17" data-kitab="17"><span><i class="hal__t">Hlm. </i>17</span><button type="button" class="hal__pdf" data-pdf="17" aria-label="Lihat PDF asli untuk Hlm. 17" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَقَدْ تَمَّ اسْتِعْمَالُ لَفْظَتَيْ "الْجَوْدَةِ وَالرَّدَاءَةِ" وَإِنْ كَانَ ابْنُ قُتَيْبَةَ لَمْ يَسْتَعْمِلْهُمَا</p></div><div class="ayat"><p class="ar" lang="ar">وَإِنَّمَا اسْتَعْمَلَ أَحْيَانًا ضَرْبٌ حَسُنَ لَفْظُهُ فَإِذَا أَنْتَ فَتَّشْتَهُ لَمْ تَجِدْ</p></div><div class="ayat"><p class="ar" lang="ar">هُنَاكَ فَائِدَةً فِي الْمَعْنَى" أَوْ "ضَرْبٌ مِنْهُ جَادَ مَعْنَاهُ وَقَصُرَتْ أَلْفَاظُهُ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَلَمْ يَسْتَعْمِلْ لَفْظَتَيْنِ حَاسِمَتَيْنِ فِي دَلَالَتِهِمَا ، وَإِنَّمَا فَعَلَ ذَلِكَ لِيَكُونَ أَبْعَدَ</p></div><div class="ayat"><p class="ar" lang="ar">عَنِ الْحِدَّةِ الَّتِي قَدْ تُسْتَشَفُّ مِنْ قَوْلِنَا : " جَيِّدٌ وَرَدِيءٌ" .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْمَسْأَلَةُ إِذَنْ مَسْأَلَةُ صِلَةٍ بَيْنَ الْمَعْنَى وَاللَّفْظِ وَعَلَاقَةِ الْجَوْدَةِ فِي كِلَيْهِمَا مَعًا هِيَ الْمُفَضَّلَةُ .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَهَذَا يَعْنِي أَنَّ الْمَعَانِيَ نَفْسَهَا تَتَفَاوَتُ وَإِنَّهَا لَيْسَتْ كَمَا زَعَمَ الْجَاحِظُ . مَطْرُوحَةً فِي الطَّرِيقِ " .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَيُسْتَشَفُّ مِنْ أَمْثِلَةِ ابْنِ قُتَيْبَةَ أَنَّ الْمَعْنَى عِنْدَهُ قَدْ يُعْنَى الصُّورَةَ الشِّعْرِيَّةَ مِثْلَمَا يَعْنِي الْحِكْمَةَ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَلَكِنْ هَذِهِ الْأَمْثِلَةَ نَفْسَهَا تُشِيرُ إِلَى أَنَّهُ يَسْتَمِدُّ حُكْمَهُ مِنْ بَيْتٍ وَاحِدٍ أَوْ بَيْتَيْنِ أَوْ ثَلَاثَةٍ فِي الْأَكْثَرِ .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إِنَّ قَضِيَّةَ " اللَّفْظِ وَالْمَعْنَى" لَمْ تَتَنَاوَلِ الْعَمَلَ الْأَدَبِيَّ كُلَّهُ بِحَيْثُ تَتَطَوَّرُ</p></div><div class="ayat"><p class="ar" lang="ar">إِلَى مَا نُسَمِّيهِ "الشَّكْلَ" وَالْمَضْمُونَ" . وَلَعَلَّهَا كَانَتْ ذَاتَ أَثَرٍ بَعِيدٍ</p></div><div class="ayat"><p class="ar" lang="ar">فِي صَرْفِ النَّقْدِ عَنْ تَبَيُّنِ وَحْدَةِ الْأَثَرِ الْفَنِّيِّ فِي مَبْنَاهُ الْكُلِّيِّ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ج . عَبْدُ الْقَاهِرِ الْجُرْجَانِيُّ (أَبُو بَكْرٍ عَبْدُ الْقَاهِرِ بْنُ عَبْدِ الرَّحْمَنِ ت ٤٧١هـ)</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قَرَّرَ عَبْدُ الْقَاهِرِ فِي نَفْسِهِ مُنْذُ الْبِدَايَةِ أَنَّ الْقُرْآنَ مُعْجِزٌ، وَحَاوَلَ أَنْ يَسْتَكْشِفَ فِيهِ مَوَاطِنَ الْإِعْجَازِ</p></div><div class="ayat"><p class="ar" lang="ar">هَلْ هُوَ فِي الْأَلْفَاظِ ؟ فَرَدَّ هَذَا الْقَوْلَ رَدًّا حَاسِمًا ؛ لِأَنَّ الْأَلْفَاظَ الْمُفْرَدَةَ مَوْجُودَةٌ فِي</p></div><div class="ayat"><p class="ar" lang="ar">الِاسْتِعْمَالِ قَبْلَ نُزُولِ الْقُرْآنِ، وَلَا يَجُوزُ أَنْ يَكُونَ الْإِعْجَازُ فِي تَرْتِيبِ الْحَرَكَاتِ وَالسَّكَنَاتِ . وَفِي سَبِيلِ</p></div><div class="ayat"><p class="ar" lang="ar">ذَلِكَ جَاءَتْ حَمْلَتُهُ عَلَى الْمُنْحَازِينَ إِلَى اللَّفْظِ ، وَقَدْ أَزْعَجَهُ أَنْ يَرَى ذَلِكَ التَّقْدِيرَ لِلْأَلْفَاظِ ،</p></div><div class="ayat"><p class="ar" lang="ar">وَتَقْدِيمَهَا عَلَى الْمَعَانِي عِنْدَ مَنْ سَبَقَهُ مِنَ النُّقَّادِ, حَتَّى إِنَّهُمْ جَعَلُوا لِلَّفْظَةِ الْمُفْرَدَةِ مُمَيِّزَاتٍ وَصِفَاتٍ لَمْ</p></div><div class="ayat"><p class="ar" lang="ar">يَسْتَطِعْ أَنْ يَتَقَبَّلَهَا ذِهْنُهُ الْمُتَمَرِّسُ بِتَفَاوُتِ الدَّلَالَاتِ، وَقِيمَةِ التَّعْبِيرِ عَنْ ذَلِكَ التَّقَاوُتِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَكَانَ يُحِسُّ بِوَعْيٍ نَقْدِيٍّ فَذٍّ أَنَّ ثُنَائِيَّةَ اللَّفْظِ وَالْمَعْنَى الَّتِي تَبَلْوَرَتْ عِنْدَ ابْنِ قُتَيْبَةَ قَدْ أَصْبَحَتْ خَطَرًا عَلَى</p></div><div class="ayat"><p class="ar" lang="ar">النَّقْدِ وَالْبَلَاغَةِ مَعًا : أَمَّا عَلَى الْمُسْتَوَى النَّقْدِيِّ فَإِنَّ الِانْحِيَازَ إِلَى اللَّفْظِ قَتَلَ " الْفِكْرَ</p></div><div class="ayat"><p class="ar" lang="ar">" الَّذِي يَعْتَقِدُ الْجُرْجَانِيُّ أَنَّهُ وَرَاءَ عَمَلِيَّةٍ أَدَقَّ مِنَ الْوُقُوفِ عِنْدَ مِيزَةِ لَفْظَةٍ دُونَ أُخْرَى.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَأَمَّا عَلَى الْمُسْتَوَى الْبَلَاغِيِّ فَإِنَّ الْجُرْجَانِيَّ لَمْ يَسْتَطِعْ أَنْ يَتَصَوَّرَ الْفَصَاحَةَ فِي اللَّفْظَةِ</p></div><div class="ayat"><p class="ar" lang="ar">وَإِنَّمَا هِيَ فِي تِلْكَ الْعَمَلِيَّةِ الْفِكْرِيَّةِ الَّتِي تَصْنَعُ تَرْكِيبًا مِنْ عِدَّةِ أَلْفَاظٍ .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَمِنْ جِهَةٍ ثَانِيَةٍ نَجِدُ عَبْدَ الْقَاهِرِ قَدْ خَطَّأَ الْمُنْحَازِينَ إِلَى جَانِبِ الْمَعْنَى بِشِدَّةٍ لَا</p></div><div class="ayat"><p class="ar" lang="ar">تَقِلُّ عَنْ شِدَّتِهِ فِي تَخْطِئَتِهِ مَنْ ذَهَبُوا إِلَى إِبْرَازِ مُمَيِّزَاتِ اللَّفْظَةِ الْمُفْرَدَةِ .</p></div></div>
+<div class="hal" id="hal-18" data-kitab="18"><span><i class="hal__t">Hlm. </i>18</span><button type="button" class="hal__pdf" data-pdf="18" aria-label="Lihat PDF asli untuk Hlm. 18" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لِأَنَّ هَذَا الْأَمْرَ سَيَجْعَلُ الْإِعْجَازَ فِي احْتِوَاءِ الْكَلَامِ عَلَى حِكْمَةٍ وَأَدَبٍ, وَاسْتِخْرَاجِ مَعْنًى غَرِيبٍ لِذَلِكَ كَانَتْ</p></div><div class="ayat"><p class="ar" lang="ar">نَظَرِيَّةُ النَّظْمِ عِنْدَ عَبْدِ الْقَاهِرِ إِنْكَارًا لِتِلْكَ الثُّنَائِيَّةِ الْمُضَلِّلَةِ وَعَوْدَةً إِلَى الْوَحْدَةِ, وَقَدْ كَانَ عَبْدُ الْقَاهِرِ</p></div><div class="ayat"><p class="ar" lang="ar">يُحِسُّ أَنَّ أَخْذَهُ بِتِلْكَ النَّظَرِيَّةِ يَخْدُمُ فِكْرَةَ الْإِعْجَازِ وَيُقَلِّلُ مِنَ الِانْحِيَازِ إِلَى اللَّفْظَةِ الْمُفْرَدَةِ .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَيَمْنَحُ الْمَعْنَى - مِنْ دَاخِلِ الصُّورَةِ الْمُرَكَّبَةِ - قِيمَةً كُبْرَى .</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">غَيْرَ أَنَّ مُصْطَلَحَ " الْمَعْنَى" لَدَيْهِ لَمْ يَبْقَ كَمَا كَانَ عِنْدَ الْجَاحِظِ بَلْ أَصْبَحَ يَعْنِي "الدَّلَالَةَ"</p></div><div class="ayat"><p class="ar" lang="ar">الْكُلِّيَّةَ الْمُسْتَمَدَّةَ مِنَ الْوَحْدَةِ، لَا " الْمَادَّةَ الْأَوَّلِيَّةَ أَوِ الْحَقَائِقَ الْخَارِجِيَّةَ الَّتِي تَحَدَّثَ الْجَاحِظُ عَنْهَا.</p></div></div>
+<div class="hal" id="hal-19" data-kitab="19"><span><i class="hal__t">Hlm. </i>19</span><button type="button" class="hal__pdf" data-pdf="19" aria-label="Lihat PDF asli untuk Hlm. 19" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-20" lang="ar">مَقَايِيسُ نَقْدِ الْمَعْنَى</h3>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">الصِّحَّةُ وَالْخَطَأُ: صِحَّةُ الْمَعْنَى مِنْ حَيْثُ الْوَقَائِعُ التَّارِيخِيَّةُ وَالسِّيَاسِيَّةُ وَالِاجْتِمَاعِيَّةُ وَالدِّينِيَّةُ</p></div><div class="ayat"><p class="ar" lang="ar">وَعَدَمُ الْوُقُوعِ فِي الْأَخْطَاءِ اللُّغَوِيَّةِ وَالنَّحْوِيَّةِ وَالْعَرُوضِيَّةِ وَمَا إِلَى ذَلِكَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">الِابْتِكَارُ وَالتَّقْلِيدُ وَالسَّرِقَاتُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الطَّرَافَةُ: أَيِ الْغَرِيبُ النَّادِرُ كَأَنْ يَكُونَ اسْتِجَادَةُ الْمَعْنَى طَرَافَتَهُ فِي بَابِهِ</p></div><div class="ayat"><p class="ar" lang="ar">فَهُوَ مُبْتَكَرٌ مِنْ نَاحِيَةٍ وَغَرِيبٌ فِي مَعْنَاهُ مِنْ نَاحِيَةٍ أُخْرَى.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">4</span><div class="ayat"><p class="ar" lang="ar">إِتْمَامُ الْمَعْنَى: وَهُوَ أَنْ يَذْكُرَ الْمَعْنَى فَلَا يَدَعَ شَيْئًا تَتِمُّ بِهِ صِحَّتُهُ وَيَكُونُ فِيهِ تَمَامُهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">الدِّينُ وَالْخُلُقُ: وَهَذِهِ الْمَسْأَلَةُ فِيهَا خِلَافٌ فَيَرَى بَعْضٌ أَنْ يَتَقَيَّدَ الشِّعْرُ بِالدِّينِ وَقَوَاعِدِ الْخُلُقِ وَيَرَى بَعْضٌ آخَرُ ضَرُورَةَ الْفَصْلِ بَيْنَهُمَا.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">6</span><div class="ayat"><p class="ar" lang="ar">الْمِقْيَاسُ النَّفْسِيُّ: وَيَتَّضِحُ هَذَا مِنْ خِلَالِ مُوسِيقَى الشِّعْرِ أَيْ مَا تُحْدِثُ فِي النَّفْسِ مِنْ أَثَرٍ</p></div><div class="ayat"><p class="ar" lang="ar">وَمَا تُثِيرُهُ مِنِ انْفِعَالَاتٍ " لِأَنَّ الشِّعْرَ هُوَ مَا أَطْرَبَ وَهَزَّ النُّفُوسَ وَحَرَّكَ الطِّبَاعَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">7</span><div class="ayat"><p class="ar" lang="ar">التَّنَاقُضُ: أَيْ لَا يَتَنَاقَضُ الشَّاعِرُ فِي شِعْرِهِ كَأَنْ يَعْتَمِدَ مَبْدَأً مُعَيَّنًا ثُمَّ يَأْتِيَ وَيَنْقُضَ ذَلِكَ الْمَبْدَأَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">8</span><div class="ayat"><p class="ar" lang="ar">الصِّدْقُ وَالْكَذِبُ: أَيْ مُطَابَقَةُ الْكَلَامِ لِلْوَاقِعِ وَالْكَذِبُ عَكْسُ ذَلِكَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">9</span><div class="ayat"><p class="ar" lang="ar">الْإِحَالَةُ: أَنْ يُثْبِتَ الشَّاعِرُ مَعْنًى يَسْتَحِيلُ وُقُوعُهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">10</span><div class="ayat"><p class="ar" lang="ar">الْوُضُوحُ وَالْغُمُوضُ</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">11</span><div class="ayat"><p class="ar" lang="ar">الْمُحَسِّنَاتُ الْمَعْنَوِيَّةُ الْبَدِيعِيَّةُ: مِنْ طِبَاقٍ وَمُقَابَلَةٍ وَمُبَالَغَةٍ وَتَقْسِيمٍ وَالِالْتِفَاتِ وَتَوْرِيَةٍ وَغَيْرِهَا.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">12</span><div class="ayat"><p class="ar" lang="ar">تَنَوُّعُ الْأَغْرَاضِ وَالْمَوْضُوعَاتِ: أَيْ: أَنْ يُحْسِنَ الشَّاعِرُ التَّنْوِيعَ فِي الْمَوْضُوعَاتِ الشِّعْرِيَّةِ الْمَطْرُوقَةِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">13</span><div class="ayat"><p class="ar" lang="ar">طُولُ النَّفَسِ الشِّعْرِيِّ: أَيْ مِنْ حَيْثُ طُولُ الْقَصَائِدِ وَقِصَرُهَا</p></div></div>
+<h3 class="sub" id="sub-21" lang="ar">ب . مَقَايِيسُ نَقْدِ الْأُسْلُوبِ</h3>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">دِرَاسَةُ الْمُفْرَدَاتِ: مِنْ حَيْثُ الدِّقَّةُ فِي أَدَاءِ الْمَعْنَى وَالْإِيحَاءِ وَالسُّهُولَةِ وَالْأُلْفَةِ وَالْغَرَابَةِ وَالْحُوشِيِّ</p></div><div class="ayat"><p class="ar" lang="ar">وَالسُّوقِيِّ وَالِاسْتِعْمَالِ أَيْ مَسْمُوعَةٌ عَنِ الْعَرَبِ الْفُصَحَاءِ وَالتَّكْرَارِ فِي الْبَيْتِ الْوَاحِدِ وَغَيْرِ ذَلِكَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">النَّحْوُ: وَذَلِكَ عَنْ طَرِيقِ مُخَالَفَةِ الشُّعَرَاءِ الْقَوَاعِدَ الْمَرْسُومَةَ فِي عِلْمِ النَّحْوِ أَوْ سَلَامَةِ أَشْعَارِهِمْ مِنَ الْأَخْطَاءِ النَّحْوِيَّةِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">السُّهُولَةُ وَالِانْسِيَابُ: عَدَمُ ثِقَلِ الْكَلِمَاتِ فِي النُّطْقِ كَأَنْ يَخْتَارَ الشَّاعِرُ حُرُوفًا مُتَتَابِعَةً فِي</p></div><div class="ayat"><p class="ar" lang="ar">بَيْتٍ وَاحِدٍ يَنْفِرُ مِنْهَا الذَّوْقُ وَتَثْقُلُ فِي النُّطْقِ مِثَالُ ذَلِكَ قَوْلُ الشَّاعِرِ:</p></div></div>
+<div class="hal" id="hal-20" data-kitab="20"><span><i class="hal__t">Hlm. </i>20</span><button type="button" class="hal__pdf" data-pdf="20" aria-label="Lihat PDF asli untuk Hlm. 20" title="Lihat PDF asli"></button></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">وَقَبْرُ حَرْبٍ بِمَكَانٍ قَفْرٍ وَلَيْسَ قُرْبَ قَبْرِ حَرْبٍ قَبْرٌ</p></div></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">الْوُضُوحُ: أَيْ أَنْ يَكُونَ الْكَلَامُ ظَاهِرَ الدَّلَالَةِ عَلَى الْمَعْنَى الْمُرَادِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">قُوَّةُ الْأُسْلُوبِ</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الْمُحَسِّنَاتُ الْبَدِيعِيَّةُ وَالْأَسَالِيبُ الْبَلَاغِيَّةُ وَالصُّوَرُ الْبَيَانِيَّةُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">4</span><div class="ayat"><p class="ar" lang="ar">التَّلَاؤُمُ بَيْنَ اللَّفْظِ وَالْمَعْنَى.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">التَّكَلُّفُ وَالصَّنْعَةُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">6</span><div class="ayat"><p class="ar" lang="ar">وَحْدَةُ النَّسْجِ: تَقَارُبُ الْأُسْلُوبِ أَيْ: عَدَمُ التَّأَرْجُحِ فِي الْأَلْفَاظِ مَرَّةً غَرِيبَةً وَمَرَّةً سَهْلَةً وَمَرَّةً سُوقِيَّةً.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">7</span><div class="ayat"><p class="ar" lang="ar">الْإِيجَازُ وَالْإِطْنَابُ</p></div></div>
+<h3 class="sub" id="sub-22" lang="ar">ج. مَقَايِيسُ نَقْدِ الْعَاطِفَةِ</h3>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">الرَّغْبَةُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">الرَّهْبَةُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الطَّرَبُ.</p></div></div>
+<div class="blk blk-q"><div class="ayat"><p class="ar" lang="ar">الْغَضَبُ: ( حَكَى الْأَصْمَعِيُّ عَنْ أَبِي طَرَفَةَ : " كَفَاكَ مِنَ الشُّعَرَاءِ أَرْبَعَةٌ:</p></div><div class="ayat"><p class="ar" lang="ar">زُهَيْرٌ إِذَا رَغِبَ وَالنَّابِغَةُ إِذَا رَهِبَ وَالْأَعْشَى إِذَا طَرِبَ وَعَنْتَرَةُ إِذَا كَلِبَ وَزَادَ قَوْمٌ</p></div><div class="ayat"><p class="ar" lang="ar">وَجَرِيرٌ إِذَا غَضِبَ وَقِيلَ لِكُثَيِّرٍ . أَوْ لِنُصَيْبٍ . مَنْ أَشْعَرُ الْعَرَبِ ؟ فَقَالَ</p></div><div class="ayat"><p class="ar" lang="ar">:" امْرُؤُ الْقَيْسِ إِذَا رَكِبَ وَزُهَيْرٌ إِذَا رَغِبَ وَالنَّابِغَةُ إِذَا رَهِبَ وَالْأَعْشَى إِذَا طَرِبَ"</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">مِقْدَارُ تَأَثُّرِ عَاطِفَةِ الشَّاعِرِ فِي الْمُتَلَقِّي.</p></div></div>
+<h3 class="sub" id="sub-23" lang="ar">د. مَقَايِيسُ نَقْدِ الْخَيَالِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لَقَدْ حَصَرَ بَابَ الْخَيَالِ فِي أَبْوَابٍ كَثِيرَةٍ مِنْهَا:</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">بَابُ الْمَجَازِ الْمُرْسَلِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">التَّشْبِيهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الِاسْتِعَارَةُ الْمَبْنِيَّةُ عَلَى التَّشْبِيهِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">4</span><div class="ayat"><p class="ar" lang="ar">الْكِنَايَةُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">وَيَرَى النُّقَّادُ أَنَّ الْكَلَامَ الْمُشْتَمِلَ عَلَى الْخَيَالِ أَرْوَعُ وَأَشَدُّ تَأْثِيرًا فِي النَّفْسِ مِنَ الْكَلَامِ الَّذِي يَكُونُ حَقِيقَةً كُلَّهُ.</p></div></div>
+<header class="bab" id="bab-8"><h2 class="bab__ar" lang="ar">ثَانِيًا: عَمُودُ الشِّعْرِ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُعَرِّفُ هَذَا الْبَابُ عَمُودَ الشِّعْرِ لُغَةً وَاصْطِلَاحًا، وَيُتَابِعُ نَشْأَةَ الْمُصْطَلَحِ عِنْدَ الْآمِدِيِّ وَمَصْدَرَهُ، وَصِلَتَهُ بِالْبُحْتُرِيِّ وَأَبِي تَمَّامٍ وَالصَّنْعَةِ.</p></div>
+<div class="hal" id="hal-21" data-kitab="21"><span><i class="hal__t">Hlm. </i>21</span><button type="button" class="hal__pdf" data-pdf="21" aria-label="Lihat PDF asli untuk Hlm. 21" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">فِي اللُّغَةِ: الْعَمُودُ: عَمُودُ الْبَيْتِ وَهُوَ الْخَشَبَةُ الْقَائِمَةُ فِي وَسَطِ الْخِبَاءِ ،</p></div><div class="ayat"><p class="ar" lang="ar">وَالْجَمْعُ أَعْمِدَةٌ وَعُمُدٌ، وَعَمُودُ الْأَمْرِ : قِوَامُهُ الَّذِي لَا يَسْتَقِيمُ إِلَّا بِهِ ،</p></div><div class="ayat"><p class="ar" lang="ar">وَالْعَمِيدُ : السَّيِّدُ الْمُعْتَمَدُ عَلَيْهِ فِي الْأُمُورِ أَوِ الْمَعْمُودُ إِلَيْهِ.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">وَفِي الِاصْطِلَاحِ: هُوَ طَرِيقَةُ الْعَرَبِ فِي نَظْمِ الشِّعْرِ لَا مَا أَحْدَثَهُ الْمُوَلَّدُونَ وَالْمُتَأَخِّرُونَ،</p></div><div class="ayat"><p class="ar" lang="ar">أَوْ هِيَ الْقَوَاعِدُ الْكِلَاسِيكِيَّةُ لِلشِّعْرِ الْعَرَبِيِّ الَّتِي يَجِبُ عَلَى الشَّاعِرِ أَنْ يَأْخُذَ بِهَا، فَيُحْكَمَ لَهُ أَوْ عَلَيْهِ بِمُقْتَضَاهَا.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">وَيُعْرَفُ كَذَلِكَ بِأَنَّهُ هُوَ مَجْمُوعَةُ الْخَصَائِصِ الْفَنِّيَّةِ الْمُتَوَفِّرَةِ فِي قَصَائِدِ فُحُولِ الشُّعَرَاءِ، وَالَّتِي يَنْبَغِي أَنْ تَتَوَفَّرَ فِي الشِّعْرِ لِيَكُونَ جَيِّدًا.</p></div></div>
+<div class="blk blk-li"><div class="ayat"><p class="ar" lang="ar">وَيُعْرَفُ بِأَنَّهُ التَّقَالِيدُ الشِّعْرِيَّةُ الْمُتَوَارَثَةُ أَوِ السُّنَنُ الْمُتَّبَعَةُ عِنْدَ شُعَرَاءِ الْعَرَبِيَّةِ،</p></div><div class="ayat"><p class="ar" lang="ar">فَمَنْ سَارَ عَلَى هَذِهِ السُّنَنِ، وَرَاعَى تِلْكَ التَّقَالِيدَ، قِيلَ عَنْهُ:</p></div><div class="ayat"><p class="ar" lang="ar">إِنَّهُ الْتَزَمَ عَمُودَ الشِّعْرِ، وَاتَّبَعَ طَرِيقَةَ الْعَرَبِ، وَمَنْ حَادَ عَنْ تِلْكَ التَّقَالِيدِ، وَعَدَلَ عَنْ تِلْكَ السُّنَنِ قِيلَ عَنْهُ:</p></div><div class="ayat"><p class="ar" lang="ar">إِنَّهُ قَدْ خَرَجَ عَلَى عَمُودِ الشِّعْرِ، وَخَالَفَ طَرِيقَةَ الْعَرَبِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يُلَاحَظُ فِي الْمَعْنَى الْمُعْجَمِيِّ أَنَّهُ لَمْ يُذْكَرْ ارْتِبَاطُ كَلِمَةِ الْعَمُودِ بِالشِّعْرِ كَمَا هُوَ الْأَمْرُ فِي الْمَعْنَى الِاصْطِلَاحِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">إِلَّا أَنَّ هَذَا لَا يَنْفِي أَنْ يَكُونَ الْمَعْنَى الِاصْطِلَاحِيُّ مُسْتَوْحًى مِنَ الْمَعْنَى اللُّغَوِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">فَكَمَا أَنَّ خَشَبَةَ بَيْتِ الشِّعْرِ هِيَ الْأَسَاسُ الَّذِي يَقُومُ عَلَيْهِ ذَلِكَ الْبَيْتُ،</p></div><div class="ayat"><p class="ar" lang="ar">فَإِنَّ أُصُولَ الشِّعْرِ الْعَرَبِيِّ وَعَنَاصِرَهُ الَّتِي يُشِيرُ إِلَيْهَا الْمَعْنَى الِاصْطِلَاحِيُّ تُعَدُّ أَيْضًا</p></div><div class="ayat"><p class="ar" lang="ar">بِمَثَابَةِ الدِّعَامَةِ وَالرَّكِيزَةِ الْأَسَاسِيَّةِ الَّتِي لَا يَقُومُ نَظْمُ الشِّعْرِ الْجَيِّدِ الصَّحِيحِ إِلَّا عَلَيْهَا.</p></div></div>
+<h3 class="sub" id="sub-24" lang="ar">الْمُصْطَلَحُ عِنْدَ الْآمِدِيِّ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">نَشْأَةُ مُصْطَلَحِ عَمُودِ الشِّعْرِ عِنْدَ الْآمِدِيِّ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">عِنْدَ تَتَبُّعِ هَذَا الْمُصْطَلَحِ تَارِيخِيًّا، فَإِنَّنِي لَا أَجِدُ مِنَ النُّقَّادِ قَبْلَ الْأَمِدِيِّ مَنْ</p></div><div class="ayat"><p class="ar" lang="ar">تَحَدَّثَ عَنْ عَمُودِ الشِّعْرِ بِهَذَا اللَّفْظِ، وَإِنَّمَا نَحْنُ نُوَاجِهُ هَذَا الْمُصْطَلَحَ عِنْدَهُ لِأَوَّلِ مَرَّةٍ،</p></div><div class="ayat"><p class="ar" lang="ar">لِذَا فَإِنَّهُ يُنْسَبُ لَهُ فَضْلُ الْإِسْهَامِ فِي تَأْسِيسِ هَذَا الْمُصْطَلَحِ وَتَأْصِيلِهِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَلَكِنْ مِنْ أَيْنَ اسْتَمَدَّ الْآمِدِيُّ هَذَا الْمُصْطَلَحَ ؟ وَكَيْفَ اسْتَطَاعَ أَنْ يَقَعَ عَلَيْهِ ؟</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لَا يُمْكِنُ الْقَطْعُ بِرَأْيٍ مُحَدَّدٍ فِي مَصْدَرِ هَذَا الْمُصْطَلَحِ عَنِ الْآمِدِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">وَإِنَّمَا نَحْنُ نَفْتَرِضُ افْتِرَاضًا أَنْ يَكُونَ الْأَمِدِيُّ اسْتَفَادَ فِي وَضْعِهِ مِنْ</p></div><div class="ayat"><p class="ar" lang="ar">بَعْضِ الْمُصْطَلَحَاتِ الَّتِي تَرِدُ كَثِيرًا فِي كُتُبِ النَّقْدِ الْقَدِيمَةِ مِثْلَ :</p></div></div>
+<div class="hal" id="hal-22" data-kitab="22"><span><i class="hal__t">Hlm. </i>22</span><button type="button" class="hal__pdf" data-pdf="22" aria-label="Lihat PDF asli untuk Hlm. 22" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مَذْهَبُ الشِّعْرِ، وَطَرِيقَةُ الشِّعْرِ، وَمَذَاهِبُ الْعَرَبِ، وَمَسَالِكُ الْأَوَائِلِ، وَمَا شَاكَلَ ذَلِكَ مِنَ الْعِبَارَاتِ الَّتِي تَقْتَرِبُ مِنْ مَعْنَى عَمُودِ الشِّعْرِ.</p></div></div>
+<div class="blk blk-q"><div class="ayat"><p class="ar" lang="ar">أَوْ لَعَلَّهُ اسْتَفَادَ مِنْ مُصْطَلَحِ ( عَمُودِ الْخَطَابَةِ الَّذِي وَرَدَ عِنْدَ الْجَاحِظِ</p></div><div class="ayat"><p class="ar" lang="ar">فِي كِتَابِهِ الْبَيَانِ وَالتَّبْيِينِ فَقَدْ جَاءَ فِيهِ : " أَخْبَرَنِي مُحَمَّدُ بْنُ</p></div><div class="ayat"><p class="ar" lang="ar">عَبَّادِ بْنِ كَاسِبٍ ... قَالَ سَمِعْتُ أَبَا دَاوُدَ بْنَ جَرِيرٍ يَقُولُ:</p></div><div class="ayat"><p class="ar" lang="ar">" رَأْسُ الْخَطَابَةِ الطَّبْعُ، وَعَمُودُهَا الدُّرْبَةُ وَجَنَاحَاهَا رِوَايَةُ الْكَلَامِ، وَحُلِيُّهَا الْأَعْرَابُ.</p></div></div>
+<div class="blk blk-q"><div class="ayat"><p class="ar" lang="ar">أَوْ لَعَلَّهُ اسْتَفَادَ مِنْ بَعْضِ عِبَارَاتٍ أُخْرَى لِلْجَاحِظِ فِي قَوْلِهِ : " وَكُلُّ شَيْءٍ لِلْعَرَبِ</p></div><div class="ayat"><p class="ar" lang="ar">فَإِنَّمَا هُوَ بَدِيهَةٌ وَارْتِجَالٌ وَكَأَنَّهُ إِلْهَامٌ، وَلَيْسَ هُنَاكَ مُعَانَاةٌ وَلَا مُكَابَدَةٌ ... وَإِنَّمَا هُوَ</p></div><div class="ayat"><p class="ar" lang="ar">أَنْ يَصْرِفَ وَهْمَهُ إِلَى الْكَلَامِ وَإِلَى رَجَزِ يَوْمِ الْخِصَامِ، ... فَمَا هُوَ إِلَّا أَنْ</p></div><div class="ayat"><p class="ar" lang="ar">يَصْرِفَ وَهْمَهُ إِلَى جُمْلَةِ الْمَذْهَبِ، وَإِلَى الْعَمُودِ الَّذِي إِلَيْهِ يَقْصِدُ، فَتَأْتِيهِ الْمَعَانِي إِرْسَالًا ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كَمَا أَنَّ رَبْطَ الْآمِدِيِّ بَيْنَ الْجَانِبِ الشَّكْلِيِّ لِأَبْيَاتِ الْقَصِيدَةِ الْعَرَبِيَّةِ وَبَيْتِ الشِّعْرِ، مَسْكَنِ الْعَرَبِ قَدِيمًا قَدْ يَكُونُ وَارِدًا؛</p></div><div class="ayat"><p class="ar" lang="ar">لِأَنَّ الشُّعَرَاءَ أَحَبُّوا أَنْ يَجْعَلُوا الْأَقَاوِيلَ مُرَتَّبَةً تَرْتِيبَ أَحْوِيَتِهِمْ وَبُيُوتِهِمْ فِي الْبَصَرِ،</p></div><div class="ayat"><p class="ar" lang="ar">فَقَصَدُوا أَنْ يُحَاكُوا بُيُوتَ الشِّعْرِ الَّتِي كَانَتْ مَسَاكِنَهُمْ، وَلَمَّا قَصَدُوا أَنْ يَجْعَلُوا هَيْئَاتِ تَرْتِيبِ</p></div><div class="ayat"><p class="ar" lang="ar">الْأَقَاوِيلِ الشِّعْرِيَّةِ وَنِظَامَ أَوْزَانِهِمْ بِمَنْزِلَةِ وَضْعِ الْبُيُوتِ وَتَرْتِيبِهَا فَتَأَمَّلُوا الْبُيُوتَ فَوَجَدُوا لَهَا كُورًا</p></div><div class="ayat"><p class="ar" lang="ar">أَيْ جَوَانِبَ وَأَرْكَانًا وَأَقْطَارًا أَيْ نَوَاحِيَ وَأَعْمِدَةً وَأَسْبَابًا وَأَوْتَادًا، وَجَعَلُوا الْوَضْعَ الَّذِي يُبْنَى</p></div><div class="ayat"><p class="ar" lang="ar">عَلَيْهِ مُنْتَهَى شَطْرِ الْبَيْتِ وَيَنْقَسِمُ الْبَيْتُ عِنْدَهُ نِصْفَيْنِ بِمَنْزِلَةِ عَمُودِ الْبَيْتِ الْمَوْضُوعِ وَسَطَهُ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَ الْآمِدِيُّ لَمْ يُحَدِّدْ مَفْهُومَ عَمُودِ الشِّعْرِ وَعَنَاصِرَهُ بِالشَّكْلِ الدَّقِيقِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَإِنَّمَا هُوَ شَيْءٌ سَنُحَاوِلُ أَنْ نَسْتَنْبِطَهُ مِنْ ثَنَايَا كَلَامِهِ عَلَى كُلٍّ مِنْ</p></div><div class="ayat"><p class="ar" lang="ar">مَذْهَبَيْ أَبِي تَمَّامٍ وَالْبُحْتُرِيِّ، وَعَنْ تَصَوُّرِهِ الْخَاصِّ لِطَرِيقَةِ الشِّعْرِ عِنْدَ الْعَرَبِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَقَدْ صَرَّحَ الْأَمِدِيُّ بِلَفْظِ عَمُودِ الشِّعْرِ أَكْثَرَ مِنْ مَرَّةٍ بِوَصْفِهِ شَيْئًا مَعْرُوفًا وَمُتَدَاوَلًا بَيْنَ النَّاسِ،</p></div><div class="ayat"><p class="ar" lang="ar">ثُمَّ نَصَّ صَرَاحَةً عَلَى أَنَّ الْبُحْتُرِيَّ قَدِ الْتَزَمَ هَذَا الْعَمُودَ وَلَمْ يَخْرُجْ عَلَيْهِ ،</p></div><div class="ayat"><p class="ar" lang="ar">فَقَالَ : " أَنَّ الْبُحْتُرِيَّ كَانَ أَعْرَابِيَّ الشِّعْرِ مَطْبُوعٌ وَعَلَى مَذْهَبِ الْأَوَائِلِ، وَمَا فَارَقَ عَمُودَ الشِّعْرِ الْمَعْرُوفَ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَفِي حِينِ يَرَى الْأَمِدِيُّ أَنَّ أَبَا تَمَّامٍ خَرَجَ عَلَيْهِ ، وَلَمْ يَقُمْ بِهِ كَمَا قَالَ الْبُحْتُرِيُّ،</p></div><div class="ayat"><p class="ar" lang="ar">حِينَ قَالَ عَلَى لِسَانِ الْبُحْتُرِيِّ الَّذِي سُئِلَ عَنْ نَفْسِهِ وَعَنْ أَبِي تَمَّامٍ</p></div><div class="ayat"><p class="ar" lang="ar">فَأَجَابَ : " كَانَ أَغْوَصَ عَلَى الْمَعَانِي مِنِّي، وَأَنَا أَقُومُ بِعَمُودِ الشِّعْرِ مِنْهُ "</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَمِنَ الْوَاضِحِ أَنَّ الْأَمِدِيَّ قَدْ نَسَبَ هَذَا الْمُصْطَلَحَ إِلَى الْبُحْتُرِيِّ فِي قَوْلِهِ السَّابِقِ حِينَ</p></div><div class="ayat"><p class="ar" lang="ar">سُئِلَ عَنْ نَفْسِهِ وَعَنْ أَبِي تَمَّامٍ، فَكَانَ جَوَابُهُ بِأَنَّهُ أَقْوَمُ بِعَمُودِ الشِّعْرِ مِنْهُ،</p></div><div class="ayat"><p class="ar" lang="ar">وَ لَوْ ثَبَتَ أَنَّ الْبُحْتُرِيَّ قَدْ قَالَ ذَلِكَ حَقًّا لَكَانَ هُوَ أَقْدَمَ مَنِ اسْتَعْمَلَ هَذَا</p></div><div class="ayat"><p class="ar" lang="ar">الْمُصْطَلَحَ فِي حُدُودِ مَا وَصَلَ إِلَيْنَا، وَلَكِنَّنَا لَا نَجِدُ هَذَا الْخَبَرَ إِلَّا فِي</p></div></div>
+<div class="hal" id="hal-23" data-kitab="23"><span><i class="hal__t">Hlm. </i>23</span><button type="button" class="hal__pdf" data-pdf="23" aria-label="Lihat PDF asli untuk Hlm. 23" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كِتَابِ الْمُوَازَنَةِ، مِمَّا يَجْعَلُنَا نَعْتَقِدُ تَمَامًا أَنَّ الْآمِدِيَّ يَسُوقُ مَعَانِيَ الْبُحْتُرِيِّ بِأَلْفَاظِهِ وَمُصْطَلَحَاتِهِ الْخَاصَّةِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَهَذَا يُؤَكِّدُ بِأَنَّ الْمُصْطَلَحَ قَدْ جَاءَ مِنَ الْآمِدِيِّ خِدْمَةً لِلْبُحْتُرِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">أَيْ تَأْيِيدُ الْآمِدِيِّ لِشِعْرِ الْبُحْتُرِيِّ لِأَنَّهُ أَتْهَمَ أَبَا تَمَّامٍ بِالْخُرُوجِ عَلَيْهِ، بَيْدَ أَنَّ الْمَرْزُوقِيَّ وَالْجُرْجَانِيَّ كَمَا</p></div><div class="ayat"><p class="ar" lang="ar">سَنَرَى لَاحِقًا تَحَدَّثَا عَنْ عَمُودِ الشِّعْرِ وَلَكِنْ لَمْ يَتَّهِمَا أَبَا تَمَّامٍ بِذَلِكَ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَيَرِدُ مُصْطَلَحُ (عَمُودِ الشِّعْرِ) فِي مَوْضِعٍ آخَرَ مِنْ كِتَابِ الْمُوَازَنَةِ عَلَى لِسَانِ</p></div><div class="ayat"><p class="ar" lang="ar">الْبُحْتُرِيِّ يَقُولُ : " وَحَصَلَ لِلْبُحْتُرِيِّ أَنَّهُ مَا فَارَقَ عَمُودَ الشِّعْرِ وَطَرِيقَتَهُ الْمَعْرُوفَةَ،</p></div><div class="ayat"><p class="ar" lang="ar">مَعَ مَا نَجِدُهُ كَثِيرًا فِي شِعْرِهِ مِنَ الِاسْتِعَارَةِ وَالتَّجْنِيسِ وَالْمُطَابَقَةِ ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يَدُلُّ النَّصُّ السَّابِقُ عَلَى قَبُولِ الْآمِدِيِّ لِلصَّنْعَةِ فِي عَمُودِ الشِّعْرِ،</p></div><div class="ayat"><p class="ar" lang="ar">إِذْ لَمْ تَخْرُجْ إِلَى حَيِّزِ الْإِفْرَاطِ وَالْمُبَالَغَةِ، وَمَا نَجِدُهُ فِي طَرِيقَةِ الْبُحْتُرِيِّ الَّتِي هِيَ عَمُودُ الشِّعْرِ)،</p></div><div class="ayat"><p class="ar" lang="ar">إِنَّهَا لَمْ تَكُنْ خَالِيَةً مِنَ الصَّنْعَةِ بِاعْتِرَافِ الْآمِدِيِّ نَفْسِهِ.</p></div></div>
+<div class="blk blk-q"><div class="ayat"><p class="ar" lang="ar">وَيَقُولُ الْآمِدِيُّ فِي شَأْنِ ذَلِكَ : " وَلَيْسَ الشِّعْرُ عِنْدَ أَهْلِ الْعِلْمِ بِهِ إِلَّا حُسْنَ التَّأَتِّي،</p></div><div class="ayat"><p class="ar" lang="ar">وَقُرْبَ الْمَأْخَذِ، وَاخْتِيَارَ الْكَلَامِ، وَوَضْعَ الْأَلْفَاظِ فِي مَوْضِعِهَا، وَأَنْ يُورِدَ الْمَعَانِيَ بِاللَّفْظِ الْمُعْتَادِ فِيهِ الْمُسْتَعْمَلِ فِي مِثْلِهِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَأَنْ تَكُونَ الِاسْتِعَارَاتُ وَالتَّمْثِيلَاتُ لَائِقَةً بِمَا اسْتُعِيرَتْ لَهُ وَغَيْرَ مُنَافِرَةٍ لِمَعْنَاهُ،</p></div><div class="ayat"><p class="ar" lang="ar">فَإِنَّ الْكَلَامَ لَا يَكْتَسِي الْبَهَاءَ وَالرَّوْنَقَ إِلَّا إِذَا كَانَ بِهَذَا الْوَصْفِ، وَتِلْكَ طَرِيقَةُ الْبُحْتُرِيِّ ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فَطَرِيقَةُ الْبُحْتُرِيِّ هَذِهِ . كَمَا يَتَحَدَّثُ عَنْهَا الْآمِدِيُّ . لَمْ تَنْفِ أَنْ يَكُونَ فِيهَا صَنْعَةٌ،</p></div><div class="ayat"><p class="ar" lang="ar">كَمَا أَنَّ الْبُحْتُرِيَّ كَانَ يَأْخُذُ مِنْ فُنُونِ الْبَدِيعِ وَأَشْكَالِهِ، حَتَّى كَادَ بَعْضُ النُّقَّادِ أَنْ يُلْحِقَهُ</p></div><div class="ayat"><p class="ar" lang="ar">بِأَبِي تَمَّامٍ فِي ذَلِكَ، وَيَجْعَلَهَا طَبَقَةً وَاحِدَةً، كَمَا فَعَلَ ابْنُ رَشِيقٍ الْقَيْرَوَانِيُّ حِينَمَا قَالَ :</p></div><div class="ayat"><p class="ar" lang="ar">" وَلَيْسَ يَتَّجِهُ الْبَتَّةَ أَنْ يَتَأَتَّى مِنَ الشَّاعِرِ قَصِيدَةٌ كُلُّهَا أَوْ أَكْثَرُهَا مُتَصَنِّعٌ مِنْ غَيْرِ</p></div><div class="ayat"><p class="ar" lang="ar">قَصْدٍ كَالَّذِي يَأْتِي مِنْ أَشْعَارِ حَبِيبٍ وَالْبُحْتُرِيِّ وَغَيْرِهِمَا، فَقَدْ كَانَا يَطْلُبَانِ الصَّنْعَةَ، وَيُولَعَانِ بِهَا ".</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إِذَنْ يُمْكِنُ الْقَوْلُ بِأَنَّ عَمُودَ الشِّعْرِ عِنْدَ الْآمِدِيِّ لَا يَتَجَافَى مَعَ الصَّنْعَةِ،</p></div><div class="ayat"><p class="ar" lang="ar">مَا دَامَتْ فِي حُدُودٍ مَقْبُولَةٍ لَا تَبْلُغُ الْإِفْرَاطَ الزَّائِدَ، وَلَا تَصِلُ إِلَى التَّكَلُّفِ الْمَذْمُومِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَالشَّاعِرُ الَّذِي يُحْسِنُ تَنَاوُلَهَا بِهَذِهِ الصُّورَةِ شَاعِرٌ مَطْبُوعٌ عَلَى مَذْهَبِ الْعَرَبِ، وَلَمْ يُفَارِقْ عَمُودَ الشِّعْرِ الْعَرَبِيِّ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَنَوَدُّ أَنْ نُشِيرَ إِلَى أَنَّ مُصْطَلَحَ (عَمُودِ الشِّعْرِ ) الَّذِي وَرَدَ فِي كِتَابِ الْمُوَازَنَةِ لِلْأَمِدِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">وَذَكَرَهُ ثَلَاثَةَ مَرَّاتٍ تَصْرِيحًا، كَانَ بِمَعْنَى قِوَامِ الشِّعْرِ وَمِلَاكِهِ الَّذِي لَا يَنْهَضُ إِلَّا</p></div><div class="ayat"><p class="ar" lang="ar">بِهِ حَتَّى يُقَالَ عَنْهُ أَنَّهُ شِعْرٌ، وَالْمَرْجِعُ فِي ذَلِكَ أَشْعَارُ الْعَرَبِ الْقُدَمَاءِ فِي مَعَانِيهَا</p></div><div class="ayat"><p class="ar" lang="ar">وَصِيَاغَتِهَا وَصُوَرِهَا وَنَخْلُصُ مِمَّا سَبَقَ بِأَنَّ الْآمِدِيَّ هُوَ أَوَّلُ مَنْ حَامَ حَوْلَ مَا أَسْمَاهُ</p></div><div class="ayat"><p class="ar" lang="ar">( عَمُودَ الشِّعْرِ) وَحَدَّدَهُ بِالصِّفَاتِ السَّلْبِيَّةِ وَأَوْرَدَ مَا تَوَرَّطَ فِيهِ أَبُو تَمَّامٍ مِنْ</p></div></div>
+<div class="hal" id="hal-24" data-kitab="24"><span><i class="hal__t">Hlm. </i>24</span><button type="button" class="hal__pdf" data-pdf="24" aria-label="Lihat PDF asli untuk Hlm. 24" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَعْقِيدٍ، وَأَلْفَاظٍ مُسْتَكْرَهَةٍ، وَكَلَامٍ وَحْشِيٍّ، وَإِبْعَادٍ فِي الِاسْتِعَارَةِ، وَاسْتِكْرَاهٍ فِي الْمَعَانِي،</p></div><div class="ayat"><p class="ar" lang="ar">مِمَّا لَوْ عَكَسْنَا تِلْكَ الصِّفَاتِ لَأَصْبَحَتْ صِفَاتُ الْبُحْتُرِيِّ فِي شِعْرِهِ</p></div></div>
+<header class="bab" id="bab-9"><h2 class="bab__ar" lang="ar">ثَالِثًا: السَّرِقَاتُ الْأَدَبِيَّةُ</h2></header>
+<div class="ringkasan"><p class="ringkasan__judul" lang="ar">ملخص الباب</p><p class="ringkasan__ar" lang="ar">يُعَرِّفُ هَذَا الْبَابُ السَّرِقَةَ الْأَدَبِيَّةَ وَيُبَيِّنُ حُكْمَهَا وَانْتِشَارَهَا قَدِيمًا وَحَدِيثًا، ثُمَّ يَذْكُرُ قَوَاعِدَ تَمْيِيزِهَا: الْمُشْتَرَكَاتِ وَالشُّيُوعَ وَالْإِحْسَانَ وَالنَّقْضَ وَالتَّوْلِيدَ وَالتَّضْمِينَ.</p></div>
+<div class="hal" id="hal-25" data-kitab="25"><span><i class="hal__t">Hlm. </i>25</span><button type="button" class="hal__pdf" data-pdf="25" aria-label="Lihat PDF asli untuk Hlm. 25" title="Lihat PDF asli"></button></div>
+<h3 class="sub" id="sub-25" lang="ar">تَعْرِيفُ السَّرِقَةِ الْأَدَبِيَّةِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تَتَنَوَّعُ أَشْكَالُ الْمُؤَلَّفَاتِ، وَالنُّصُوصِ الْأَدَبِيَّةِ، كَمَا تَتَنَوَّعُ الْبُحُوثُ الْعِلْمِيَّةُ، وَالدِّرَاسَاتُ الْمُخْتَلِفَةُ فِي شَتَّى الْمَجَالَاتِ؛</p></div><div class="ayat"><p class="ar" lang="ar">وَلِذَلِكَ تَخْتَلِفُ أَشْكَالُ السَّرِقَاتِ الْأَدَبِيَّةِ وَالْفِكْرِيَّةِ، وَمِنَ الْجَدِيرِ بِالذِّكْرِ أَنَّ أَكْثَرَ أَنْوَاعِ السَّرِقَاتِ الْأَدَبِيَّةِ انْتِشَارًا</p></div><div class="ayat"><p class="ar" lang="ar">هُوَ مَا يُصِيبُ الْبُحُوثَ الْعِلْمِيَّةَ، وَأُطْرُوحَاتِ الدِّرَاسَاتِ الْعُلْيَا، عِلْمًا بِأَنَّهُ يُمْكِنُ تَعْرِيفُ السَّرِقَةِ الْأَدَبِيَّةِ عَلَى</p></div><div class="ayat"><p class="ar" lang="ar">أَنَّهَا عَمَلِيَّةُ التَّجَنِّي الْمُتَعَمَّدِ، وَذَلِكَ بِنِسْبَةِ الْأَفْكَارِ، وَالنُّصُوصِ، وَالِاخْتِرَاعَاتِ، إِلَى شَخْصٍ آخَرَ غَيْرِ كَاتِبِ النَّصِّ الْأَصْلِيِّ،</p></div><div class="ayat"><p class="ar" lang="ar">أَوِ الْمُخْتَرِعِ الْأَوَّلِ، وَهُوَ شَكْلٌ مِنْ أَشْكَالِ الِانْتِحَالِ عَنْ سَبْقِ الْإِصْرَارِ وَالتَّرَصُّدِ؛</p></div><div class="ayat"><p class="ar" lang="ar">وَلِذَلِكَ تُؤْخَذُ عَلَى مَحْمَلِ الْجِدِّ فِي كَافَّةِ الْحَالَاتِ؛</p></div><div class="ayat"><p class="ar" lang="ar">حَيْثُ تُعْتَبَرُ جَرِيمَةً يُحَاكَمُ عَلَيْهَا الْقَانُونُ فِي مُعْظَمِ الدُّوَلِ الْعَرَبِيَّةِ وَالْأَجْنَبِيَّةِ،</p></div><div class="ayat"><p class="ar" lang="ar">أَمَّا فِي حَالَاتِ السَّرِقَةِ الْأَدَبِيَّةِ لِلْأَطْرُوحَاتِ الْعِلْمِيَّةِ، وَأَبْحَاثِ الدِّرَاسَاتِ الْعُلْيَا، فَإِنَّ الْعُقُوبَةَ عَلَى الْجَانِي</p></div><div class="ayat"><p class="ar" lang="ar">قَدْ تَصِلُ إِلَى حِرْمَانِهِ مِنْ بَعْضِ الْمُقَرَّرَاتِ، أَوِ الْفَصْلِ النِّهَائِيِّ مِنَ الْجَامِعَةِ.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يَظُنُّ الْبَعْضُ بِأَنَّ السَّرِقَةَ الْأَدَبِيَّةَ ظَاهِرَةٌ حَدِيثَةُ النَّشْأَةِ، إِلَّا أَنَّ الْحَقِيقَةَ عَكْسُ ذَلِكَ؛</p></div><div class="ayat"><p class="ar" lang="ar">فَقَدْ عُرِفَتِ السَّرِقَةُ الْأَدَبِيَّةُ فِي الشِّعْرِ الْعَرَبِيِّ الْقَدِيمِ، حَيْثُ كَانَتِ الْمَدْرَسَةُ الْقَدِيمَةُ فِي نَقْدِ الْأَدَبِ</p></div><div class="ayat"><p class="ar" lang="ar">الْعَرَبِيِّ مُتَشَدِّدَةً فِي التَّمْحِيصِ وَالتَّحَرِّي عَنِ السَّرِقَةِ الْأَدَبِيَّةِ، حَتَّى شَمِلَتْ مَوْضُوعَ الْقَصِيدَةِ كُلَّهُ، أَوِ اللَّفْظَةَ فِيهَا،</p></div><div class="ayat"><p class="ar" lang="ar">أَوْ حَتَّى الْمَعْنَى وَالْفِقْرَةَ، وَالْعِبَارَةَ، أَمَّا مَدْرَسَةُ النَّقْدِ الْحَدِيثَةُ فَهِيَ أَقَلُّ تَشَدُّدًا مِنْ سَابِقَتِهَا،</p></div><div class="ayat"><p class="ar" lang="ar">وَيُخْشَى مِنْهَا فِي انْتِهَاجِهَا مَنْهَجًا مُتَسَاهِلًا فِي التَّعَاطِي مَعَ التَّشَابُهِ، وَالِاقْتِبَاسِ، وَالتَّكْرَارِ وَتَحْوِيرِ الْأَلْفَاظِ.</p></div></div>
+<h3 class="sub" id="sub-26" lang="ar">قَوَاعِدُ تَمْيِيزِ السَّرِقَةِ الْأَدَبِيَّةِ</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">صَاغَ النُّقَّادُ، وَالشُّعَرَاءُ قَدِيمًا مَجْمُوعَةً مِنَ الضَّوَابِطِ وَالْقَوَاعِدِ الَّتِي تُتِيحُ لَهُمُ التَّفْرِقَةَ بَيْنَ النَّصِّ الْمَسْرُوقِ مِنْ سِوَاهُ،</p></div><div class="ayat"><p class="ar" lang="ar">فَضَبَطُوا عَدَدًا مِنْ أَنْوَاعِ التَّكْرَارِ، وَالتَّشَابُهِ الَّتِي تَقِي صَاحِبَهَا مِنْ تُهْمَةِ السَّرِقَةِ الْأَدَبِيَّةِ،</p></div><div class="ayat"><p class="ar" lang="ar">إِذْ لَا يُعْتَبَرُ مَنْ يَسْتَخْدِمُ تِلْكَ الْأَنْمَاطَ سَارِقًا، أَوْ مُتَجَنِّيًا عَلَى نَصِّ غَيْرِهِ، وَمِنْهَا:</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">الْمُشْتَرَكَاتُ: وَهِيَ مَا يَشْتَرِكُ فِيهِ عَامَّةُ النَّاسِ مِنْ مَشَاعِرَ، وَهَوَاجِسَ، وَأَحْوَالٍ، مِثْلُ:</p></div><div class="ayat"><p class="ar" lang="ar">الْحُزْنِ وَالْخَوْفِ، وَالْفَرَحِ، وَالْخَيْبَةِ، وَالرَّجَاءِ، وَالْأَمَلِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">الْمَرْئِيَّاتُ: وَهِيَ كُلُّ مَا يَرَاهُ النَّاسُ مِنْ مَنَاظِرَ طَبِيعِيَّةٍ، كَغُرُوبِ الشَّمْسِ، وَشُرُوقِهَا، إِذْ إِنَّهُ مَنْظَرٌ لَا</p></div><div class="ayat"><p class="ar" lang="ar">يَخْفَى عَلَى النَّاسِ رَوْنَقُهُ، وَبَهَاؤُهُ، وَقَدْ يَتَشَابَهُ الْكُتَّابُ فِي وَصْفِ جَمَالِ شُرُوقِ الشَّمْسِ، وَدِفْءِ غُرُوبِهَا مَثَلًا.</p></div></div>
+<div class="hal" id="hal-26" data-kitab="26"><span><i class="hal__t">Hlm. </i>26</span><button type="button" class="hal__pdf" data-pdf="26" aria-label="Lihat PDF asli untuk Hlm. 26" title="Lihat PDF asli"></button></div>
+<div class="blk blk-li has-no"><span class="blk__no">1</span><div class="ayat"><p class="ar" lang="ar">اتِّحَادُ الْمَوْضُوعِ: فَالْمَدْحُ، وَالْهِجَاءُ، وَالرِّثَاءُ، وَالْفَخْرُ وَالِامْتِنَانُ وَالْغَزَلُ،</p></div><div class="ayat"><p class="ar" lang="ar">مَا هِيَ إِلَّا مَوَاضِيعُ عَامَّةٌ يَشْتَرِكُ فِي وَصْفِهَا، وَتَدْوِينِهَا، وَتَحْلِيلِهَا الْمُؤَلِّفُونَ، وَالشُّعَرَاءُ، قَدِيمًا، وَحَدِيثًا.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">2</span><div class="ayat"><p class="ar" lang="ar">الشُّيُوعُ: وَهُوَ التَّكْرَارُ، وَقَدْ عُرِفَ قَدِيمًا بِالتَّدَاوُلِ؛</p></div><div class="ayat"><p class="ar" lang="ar">أَيْ أَنْ يَتَدَاوَلَ الشُّعَرَاءُ مَعْنًى مِنَ الْمَعَانِي الدَّارِجَةِ، وَمَعَ تَكْرَارِهِ، وَكَثْرَةِ تَدَاوُلِهِ، يُصْبِحُ الْمَعْنَى شَائِعًا، وَمُنْتَشِرًا بَيْنَ عَامَّةِ النَّاسِ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">3</span><div class="ayat"><p class="ar" lang="ar">الْإِحْسَانُ: وَيُقْصَدُ بِهِ أَنْ يُحْسِنَ الشَّاعِرُ، أَوِ الْكَاتِبُ مِنْ صِيَاغَةِ إِحْدَى الْمَعَانِي الرَّدِيئَةِ الَّتِي اسْتَخْدَمَهَا شَاعِرٌ قَبْلَهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">4</span><div class="ayat"><p class="ar" lang="ar">الْإِضَافَةُ: وَهِيَ أَنْ تَتِمَّ إِضَافَةُ بُعْدٍ جَمَالِيٍّ مُعَيَّنٍ إِلَى مَعْنًى سَابِقٍ،</p></div><div class="ayat"><p class="ar" lang="ar">فَيُعْطِيَهُ رَوْنَقًا مُخْتَلِفًا، وَثِقَلًا، وَعُمْقًا أَكْبَرَ مِنَ الْمَعْنَى الْأَصْلِيِّ الَّذِي سَبَقَهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">5</span><div class="ayat"><p class="ar" lang="ar">النَّقْضُ: وَفِيهِ يَأْتِي الشَّاعِرُ بِمَعْنًى يُنَاقِضُ فِيهِ قَوْلَ شَاعِرٍ آخَرَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">6</span><div class="ayat"><p class="ar" lang="ar">التَّوْلِيدُ: وَهُوَ أَنْ يُنْشِئَ الشَّاعِرُ مَعَانٍ جَدِيدَةً مِنْ مُفْرَدَاتٍ، وَتَرَاكِيبَ سَابِقَةٍ، بِحَيْثُ يُوَلِّدَ الِاسْتِخْدَامُ الْجَدِيدُ لِلتَّرَاكِيبِ مَعْنًى آخَرَ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">7</span><div class="ayat"><p class="ar" lang="ar">تَوَارُدُ الْخَوَاطِرِ: حَيْثُ قَدْ يَرْوِي شَاعِرَانِ وَصْفَهُمَا الْمَنْظَرَ مَا ، أَوِ الشُّعُورَ مُعَيَّنٍ، فَيَتَشَابَهَ الْوَصْفَانِ دُونَ عِلْمٍ مِنْهُمَا، أَوْ تَعَمُّدٍ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">8</span><div class="ayat"><p class="ar" lang="ar">الِاسْتِبْطَانُ: وَيَنْشَأُ ذَلِكَ؛ بِسَبَبِ كَثْرَةِ مُطَالَعَةِ الشُّعَرَاءِ، وَالْكُتَّابِ، وَغَزَارَةِ مَعْرِفَتِهِمْ بِالشِّعْرِ،</p></div><div class="ayat"><p class="ar" lang="ar">إِذْ قَدْ يَبْنِي الشَّاعِرُ رُؤْيَةً جَدِيدَةً لِتَصَوُّرِ مَا قَدْ جَمَعَهُ مِنْ قِرَاءَاتِهِ، وَاسْتَوْدَعَهَا فِي عَقْلِهِ الْبَاطِنِ وَخَيَالِهِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَحِينَمَا يَسْتَدْعِيهَا بِتِلْقَائِيَّةٍ، قَدْ يَنْسَى أَصْلَ الْمَصَادِرِ الَّتِي كَوَّنَتْهَا فِيهِ، وَرَكَّبَتْ مَعْنَاهَا عِنْدَهُ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">9</span><div class="ayat"><p class="ar" lang="ar">الِالْتِقَاطُ: وَهُوَ كَالِاسْتِبْطَانِ، إِلَّا أَنَّهُ يُجْمَعُ مِمَّا تَتَنَاقَلُهُ أَفْوَاهُ النَّاسِ، وَمِمَّا يَشِيعُ عَلَى أَلْسِنَتِهِمْ مِنْ أَخْبَارٍ، وَأَوْصَافٍ، وَأَمْثَالٍ، وَحِكَايَاتٍ.</p></div></div>
+<div class="blk blk-li has-no"><span class="blk__no">10</span><div class="ayat"><p class="ar" lang="ar">التَّضْمِينُ وَالِاسْتِعَانَةُ: وَهُوَ أَنْ يُضَمِّنَ الشَّاعِرُ بَيْتًا لِغَيْرِهِ فِي قَصِيدَتِهِ، مُسْتَعِينًا بِتَرْكِيبِهِ عَلَى سَبِيلِ التَّمَثُّلِ،</p></div><div class="ayat"><p class="ar" lang="ar">وَيُشْتَرَطُ أَنْ يَمْتَدَّ لِهَذَا الِاقْتِبَاسِ عَلَى أَنَّهُ مَأْخُوذٌ مِنْ غَيْرِهِ؛</p></div><div class="ayat"><p class="ar" lang="ar">حَيْثُ يَكُونُ بَيْتُ التَّمْهِيدِ لِلِاقْتِبَاسِ بِمَثَابَةِ اعْتِرَافٍ خَطِّيٍّ بِأَنَّ الْبَيْتَ الْقَادِمَ فِي الْقَصِيدَةِ إِنَّمَا هُوَ مُقْتَبَسٌ مِنْ شَاعِرٍ آخَرَ.</p></div></div>
+
+  </div>
+</section>
+
+<button type="button" id="btn-legend" class="fab fab--legend" aria-haspopup="dialog" aria-controls="legend-modal" title="دليل الألوان">?</button>
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="الفهرس">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  var toc = document.getElementById('fihris');
+  var btn = document.getElementById('toc-toggle');
+  if (toc && btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('data-open') !== '1';
+      var ds = toc.querySelectorAll('details');
+      for (var i = 0; i < ds.length; i++) ds[i].open = open;
+      btn.setAttribute('data-open', open ? '1' : '0');
+      btn.textContent = open ? 'إغلاق الكل' : 'فتح الكل';
+    });
+  }
+
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-legend', 'legend-modal');
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = Array.prototype.slice.call(document.querySelectorAll('h2.bab__ar'));
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('bab__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      cur = all[i];
+    }
+    if (!cur) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = label(cur);
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script>window.PDFPANEL={src:"مقرر النقد الادبي2.  48.pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=7"></script>
+<script src="../../../../assets/halaman.js?v=31"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
