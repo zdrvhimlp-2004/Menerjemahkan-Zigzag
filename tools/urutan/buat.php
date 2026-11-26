@@ -8,9 +8,16 @@
  * - Folder yang sudah punya: urutan lama dipertahankan; nama yang sudah tidak ada dibuang;
  *   nama baru (file/folder baru) ditambahkan di bagian akhir.
  * Setelah itu urutan bisa diubah dengan menyunting berkas .urutan.json secara manual.
+ *
+ * Mode rapi:   php tools/urutan/buat.php --rapikan
+ *   Menyusun ulang SEMUA folder dengan aturan baku (urutan lama diabaikan):
+ *     1. maudhuat.html (paling atas)   2. subfolder   3. file .html   4. file .docx   5. file .pdf   6. lainnya
+ *   Di tiap kelompok: berkas "pokok" dulu, lalu berkas "Latihan"; "Daftar Isi" di depan, berkas bertanda ✏ setelah berkas biasa, lalu menurut halaman awal "(Hlm N-M)" bila ada;
+ *   selebihnya abjad alami (angka berurutan).
  * Nama yang tidak tercantum di berkas akan ditampilkan paling akhir oleh daftar.php.
  */
 const FILE = '.urutan.json';
+$RAPI = in_array('--rapikan', $argv ?? [], true);
 chdir(__DIR__ . '/../..');
 
 function kunci(string $s): string {
@@ -29,6 +36,33 @@ function bawaan(string $dir): array {
     return array_merge($folder, $file);
 }
 
+/* aturan "rapi": kelompok -> latihan belakangan -> abjad alami */
+function rapi(string $dir, array $now): array {
+    $kel = function (string $n) use ($dir): int {
+        if (mb_strtolower($n) === 'maudhuat.html') return 0;
+        if (is_dir($dir . '/' . $n)) return 1;
+        $e = strtolower(pathinfo($n, PATHINFO_EXTENSION));
+        return $e === 'html' || $e === 'htm' ? 2 : ($e === 'docx' || $e === 'doc' ? 3 : ($e === 'pdf' ? 4 : 5));
+    };
+    usort($now, function ($a, $b) use ($kel) {
+        $ka = $kel($a); $kb = $kel($b);
+        if ($ka !== $kb) return $ka <=> $kb;
+        $la = stripos($a, 'latihan') !== false ? 1 : 0; $lb = stripos($b, 'latihan') !== false ? 1 : 0;
+        if ($la !== $lb) return $la <=> $lb;
+        // "Daftar Isi" paling depan di dalam kelompoknya; berkas bertanda pensil (✏) setelah berkas biasa
+        $da = stripos($a, 'daftar') === 0 ? 0 : 1; $db = stripos($b, 'daftar') === 0 ? 0 : 1;
+        if ($da !== $db) return $da <=> $db;
+        $pa = strncmp($a, "\u{270F}", strlen("\u{270F}")) === 0 ? 1 : 0; $pb = strncmp($b, "\u{270F}", strlen("\u{270F}")) === 0 ? 1 : 0;
+        if ($pa !== $pb) return $pa <=> $pb;
+        // berkas kitab bertanda "(Hlm N-M)": urut menurut halaman awal; yang tanpa halaman setelahnya
+        $ha = preg_match('/\(Hlm\s*(\d+)/i', $a, $m) ? (int) $m[1] : PHP_INT_MAX;
+        $hb = preg_match('/\(Hlm\s*(\d+)/i', $b, $m) ? (int) $m[1] : PHP_INT_MAX;
+        if ($ha !== $hb) return $ha <=> $hb;
+        return strnatcasecmp($a, $b);
+    });
+    return $now;
+}
+
 $dibuat = $diubah = $tetap = 0;
 function proses(string $dir): void {
     global $dibuat, $diubah, $tetap;
@@ -41,7 +75,9 @@ function proses(string $dir): void {
     }
     $petaNow = [];
     foreach ($now as $n) $petaNow[kunci($n)] = $n;
+    global $RAPI;
     $hasil = []; $dipakai = [];
+    if ($RAPI) { $lama = rapi($dir, $now); }      // abaikan urutan lama, pakai aturan rapi
     foreach ($lama as $nm) {                       // pertahankan urutan lama untuk nama yang masih ada
         $k = kunci($nm);
         if (isset($petaNow[$k]) && !isset($dipakai[$k])) { $hasil[] = $petaNow[$k]; $dipakai[$k] = true; }
