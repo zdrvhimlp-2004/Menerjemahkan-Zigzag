@@ -62,7 +62,14 @@ function rapi(string $dir, array $now): array {
     });
     // HTML yang tertaut ke sebuah PDF (PDFPANEL src) ditaruh persis setelah PDF aslinya
     $nfc = function (string $s): string { return class_exists('Normalizer') ? mb_strtolower(Normalizer::normalize($s, Normalizer::FORM_C)) : mb_strtolower($s); };
-    foreach ($now as $h) {
+    // HTML yang tertaut ke PDF yang sama diurutkan menurut halaman kitab pertamanya (data-kitab)
+    $kitab = function (string $h) use ($dir): int {
+        $isi = (string) @file_get_contents($dir . '/' . $h);
+        return preg_match('/data-kitab="(\d+)"/', $isi, $m) ? (int) $m[1] : PHP_INT_MAX;
+    };
+    $htmls = array_values(array_filter($now, function ($x) { return preg_match('/\.html?$/i', $x) && mb_strtolower($x) !== 'الموضوعات.html'; }));
+    usort($htmls, function ($a, $b) use ($kitab) { return $kitab($a) <=> $kitab($b); });
+    foreach ($htmls as $h) {
         if (!preg_match('/\.html?$/i', $h) || mb_strtolower($h) === 'الموضوعات.html') continue;
         $isi = (string) @file_get_contents($dir . '/' . $h);
         if (!preg_match('/PDFPANEL\s*=\s*\{\s*src\s*:\s*"([^"]+)"/', $isi, $m)) continue;

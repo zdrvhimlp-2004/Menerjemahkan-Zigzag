@@ -1,0 +1,5271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>الإعلال والإبدال — النص العربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+  .ayat.list-item.bernomor .ar::before { content: none; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(560px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=30">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">الْإِعْلَالُ وَالْإِبْدَالُ</h1>
+    <p class="isi__ket" lang="ar">شَذَا الْعَرْفِ فِي فَنِّ الصَّرْفِ · الْجُزْءُ الْأَوَّلُ · النَّصُّ الْعَرَبِيُّ فَقَطْ</p>
+
+    <dialog id="fihris-modal" class="modal" aria-label="الفهرس">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="الفهرس">
+        <h2 class="daftar-isi__judul"><span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#pendahuluan">تَعْرِيفُ الْإِعْلَالِ وَالْإِبْدَالِ</a><span class="toc__meta">&middot; Hlm. 121</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-hamzah">أ) الْإِعْلَالُ فِي الْهَمْزَةِ</a><span class="toc__meta">&middot; Hlm. 124</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#ya-waw-jadi-hamzah-wajib">١ - تُقْلَبُ يَاءً وَوَاوًا هَمْزَةً وُجُوبًا</a><span class="toc__meta">&middot; Hlm. 124</span></li>
+              <li><a class="toc__ar" lang="ar" href="#waw-jadi-hamzah-jawaz">تُبْدَلُ الْوَاوُ هَمْزَةً جَوَازًا</a><span class="toc__meta">&middot; Hlm. 126</span></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#aks-ma-taqaddam">ب) فَصْلٌ فِي عَكْسِ مَا تَقَدَّمَ</a><span class="toc__meta">&middot; Hlm. 126</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#bab-jama-mafail">بَابُ الْجَمْعِ عَلَى زِنَةِ مَفَاعِلَ</a><span class="toc__meta">&middot; Hlm. 126</span></li>
+              <li><a class="toc__ar" lang="ar" href="#bab-dua-hamzah">بَابُ الْهَمْزَتَيْنِ الْمُلْتَقِيَتَيْنِ</a><span class="toc__meta">&middot; Hlm. 127</span></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-huruf-illah">الْإِعْلَالُ فِي حُرُوفِ الْعِلَّةِ</a><span class="toc__meta">&middot; Hlm. 129</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#alif-waw-jadi-ya">أ) قَلْبُ الْأَلِفِ وَالْوَاوِ يَاءً</a><span class="toc__meta">&middot; Hlm. 129</span></li>
+              <li><a class="toc__ar" lang="ar" href="#waw-jadi-ya-10">تُقْلَبُ الْوَاوُ يَاءً فِي عَشَرَةِ مَوَاضِعَ</a><span class="toc__meta">&middot; Hlm. 129</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#alif-ya-jadi-waw">ب) قَلْبُ الْأَلِفِ وَالْيَاءِ وَاوًا</a><span class="toc__meta">&middot; Hlm. 132</span></li>
+          <li><a class="toc__ar" lang="ar" href="#waw-ya-jadi-alif">ج) قَلْبُ الْوَاوِ وَالْيَاءِ أَلِفًا</a><span class="toc__meta">&middot; Hlm. 133</span></li>
+          <li><a class="toc__ar" lang="ar" href="#fa-iftial">فَصْلٌ فِي فَاءِ الِافْتِعَالِ وَتَائِهِ</a><span class="toc__meta">&middot; Hlm. 134</span></li>
+          <li><a class="toc__ar" lang="ar" href="#ibdal-mim">فَصْلُ إِبْدَالِ الْمِيمِ مِنَ الْوَاوِ وَالنُّونِ</a><span class="toc__meta">&middot; Hlm. 136</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#ilal-naql">الْإِعْلَالُ بِالنَّقْلِ</a><span class="toc__meta">&middot; Hlm. 137</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#naql-4-mawadhi">يَنْحَصِرُ فِي أَرْبَعَةِ مَوَاضِعَ</a><span class="toc__meta">&middot; Hlm. 137</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#ilal-hadzf">الْإِعْلَالُ بِالْحَذْفِ</a><span class="toc__meta">&middot; Hlm. 138</span></li>
+        </ol>
+      </nav>
+    </dialog>
+
+    <div class="hal" id="hal-121" data-kitab="121"><span><i class="hal__t">Hlm. </i>176</span><button type="button" class="hal__pdf" data-pdf="176" aria-label="Lihat PDF asli untuk Hlm. 176" title="Lihat PDF asli"></button></div>
+<div class="ayat" id="pendahuluan">
+      <p class="ar"><strong>الْإِعْلَالُ:</strong> هُوَ تَغْيِيرُ حَرْفِ الْعِلَّةِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِلتَّخْفِيفِ، بِقَلْبِهِ، أَوْ إِسْكَانِهِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ حَذْفِهِ؛ فَأَنْوَاعُهُ ثَلَاثَةٌ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْقَلْبُ، وَالْإِسْكَانُ، وَالْحَذْفُ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَمَّا <strong>الْإِبْدَالُ:</strong> فَهُوَ جَعْلُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مُطْلَقِ حَرْفٍ مَكَانَ آخَرَ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَخَرَجَ بِالْإِطْلَاقِ الْإِعْلَالُ بِالْقَلْبِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِاخْتِصَاصِهِ بِحُرُوفِ الْعِلَّةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَكُلُّ إِعْلَالٍ يُقَالُ لَهُ إِبْدَالٌ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَلَا عَكْسَ، إِذْ يَجْتَمِعَانِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي نَحْوِ قَالَ وَرَمَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَيَنْفَرِدُ الْإِبْدَالُ فِي نَحْوِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">اصْطَبَرَ وَادَّكَرَ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَخَرَجَ بِالْمَكَانِ الْعِوَضُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَقَدْ يَكُونُ فِي غَيْرِ مَكَانِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْمُعَوَّضِ مِنْهُ كَتَاءَيْ عِدَةٍ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَاسْتِقَامَةٍ وَهَمْزَتَيْ ابْنٍ وَاسْمٍ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ الْأَشْمُونِيُّ: قَدْ يُطْلَقُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْإِبْدَالُ عَلَى مَا يَعُمُّ الْقَلْبَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِلَّا أَنَّ الْإِبْدَالَ إِزَالَةٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْقَلْبَ إِحَالَةٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْإِحَالَةُ لَا تَكُونُ إِلَّا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بَيْنَ الْأَشْيَاءِ الْمُتَمَاثِلَةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمِنْ ثَمَّ اخْتَصَّ بِحُرُوفِ الْعِلَّةِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْهَمْزَةِ، لِأَنَّهَا تَقَارُبُهَا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِكَثْرَةِ التَّغْيِيرِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَاعْلَمْ أَنَّ الْحُرُوفَ الَّتِي تُبْدَلُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِنْ غَيْرِهَا ثَلَاثَةُ أَقْسَامٍ:</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. مَا يُبْدَلُ إِبْدَالًا شَائِعًا لِلْإِدْغَامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ جَمِيعُ الْحُرُوفِ إِلَّا الْأَلِفَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. مَا يُبْدَلُ إِبْدَالًا نَادِرًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ شِبْهُ أَحْرُفِ: الْحَاءِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْخَاءِ، وَالْعَيْنِ الْمُهْمَلَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْقَافِ، وَالضَّادِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالذَّالِ الْمُعْجَمَتَانِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَقَوْلِهِمْ فِي وُكْنَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهِيَ بَيْتُ الْقَطَا فِي الْجَبَلِ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وُقْنَةٌ؛ وَفِي أَغَنَّ أَخَنَّ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي رُبَعٍ رُبَحٌ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي خَطَرٍ غَطَرٌ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي جَلْدٍ جَضْدٌ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي تَلَعْثَمَ تَلَعْذَمَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. مَا يُبْدَلُ إِبْدَالًا شَائِعًا لِغَيْرِ إِدْغَامٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ اثْنَانِ وَعِشْرُونَ حَرْفًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">يَجْمَعُهَا قَوْلُكَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">(لَجَدَّ صِرْفٌ شَكْسٌ أَمِنَ طَيٌّ ثَوْبُ عِزَّتِهِ)،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالضَّرُورِيُّ مِنْهَا فِي التَّصْرِيفِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">تِسْعَةُ أَحْرُفٍ، يَجْمَعُهَا قَوْلُكَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">(هَدَأْتُ مُوَطِّيًا)،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمَا عَدَاهَا فَإِبْدَالُهُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">غَيْرُ ضَرُورِيٍّ فِيهِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَقَوْلِهِمْ فِي أَصْلَانَ بِالضَّمِّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلَى مَا ذَهَبَ إِلَيْهِ الْكُوفِيُّونَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">جَمْعُ أَصِيلٍ، أَوْ هُوَ تَصْغِيرُ أَصِيلٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ الْوَقْتُ بَعْدَ الْعَصْرِ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُصَيَلَّالٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي اضْطَجَعَ إِذَا نَامَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْطَجَعَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي نَحْوِ عَلِيٍّ عَلَمًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي الْوَقْفِ أَوْ مَا جَرَى مَجْرَاهُ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلِجْ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِإِبْدَالِ النُّونِ لَامًا فِي الْأَوَّلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالضَّادِ لَامًا فِي الثَّانِي،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْيَاءِ جِيمًا فِي الثَّالِثِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">قَالَ النَّابِغَةُ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَقَفْتُ فِيهَا أُصَيَلَّالًا أُسَائِلُهَا</span><span class="shatr">أَعْيَتْ جَوَابًا وَمَا بِالرَّبْعِ مِنْ أَحَدِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) ثَمَّ: يَعْنِي: هُنَاكَ. [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) أَوْ إِنْ شِئْتَ قُلْ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"جَلْدٌ شَكِسٌ ثَوَابُهُ مِنْ صِرْفِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">طَيٍّ قُعَرُّ". [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-122" data-kitab="122"><span><i class="hal__t">Hlm. </i>180</span><button type="button" class="hal__pdf" data-pdf="180" aria-label="Lihat PDF asli untuk Hlm. 180" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ مَنْظُورُ بْنُ حَبَّةَ الْأَسَدِيُّ فِي ذِئْبٍ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَمَّا رَأَى أَنْ لَا دَعَهْ لَا شِبَعْ</span><span class="shatr">مَالَ إِلَى أَرْطَاةِ حَقْفٍ فَالْطَجَعْ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَالَ آخَرُ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">خَالِيَ عُوَيْفٌ وَأَبُوا عَلِجّ</span><span class="shatr">الْمُطْعِمَانِ اللَّحْمَ بِالْعَشِجّ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يُرِيدُ أَبَا عَلِيٍّ وَالْعَشِيَّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَتُسَمَّى هَذِهِ اللُّغَةُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">عَجْعَجَةَ قُضَاعَةَ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَاشْتَرَطَ بَعْضُهُمْ فِيهَا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَنْ تَكُونَ الْجِيمُ مَسْبُوقَةً بِعَيْنٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَمَا فِي الْبَيْتِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَبَعْضُهُمْ يُطْلِقُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مُسْتَدِلًّا بِقَوْلِ بَعْضِ أَهْلِ الْيَمَنِ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَا هُمَّ إِنْ كُنْتَ قَبِلْتَ حِجَّتِجْ</span><span class="shatr">فَلَا يَزَالُ شَاحِجٌ يَأْتِيكَ بِجْ</span></p>
+        
+      </div>
+      <div class="bait">
+        <p class="ar"><span class="shatr">أَقْمَرُ نَهَّاتٌ يُنَزِّي وَفْرَتِجْ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) الشَّاحِجُ: الْبَغْلُ إِذَا صَوَّتَ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالْأَقْمَرُ: الْأَبْيَضُ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالنَّهَّاتُ: النَّهَّاقُ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">يُنَزِّي: يُحَرِّكُ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالْوَفْرَةُ: الشَّعْرُ إِلَى شَحْمَةِ الْأُذُنِ.</p>
+      
+    </div>
+
+    <div class="hal" id="hal-123" data-kitab="123"><span><i class="hal__t">Hlm. </i>181</span><button type="button" class="hal__pdf" data-pdf="181" aria-label="Lihat PDF asli untuk Hlm. 181" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="ilal-hamzah">أ) الْإِعْلَالُ فِي الْهَمْزَةِ</h2>
+    
+
+    <h3 class="bagian__judul" id="ya-waw-jadi-hamzah-wajib">١ - تُقْلَبُ الْيَاءُ وَالْوَاوُ هَمْزَةً وُجُوبًا فِي أَرْبَعَةِ مَوَاضِعَ</h3>
+    
+
+    <div class="ayat">
+      <p class="ar"><strong>الْأَوَّلُ:</strong> أَنْ تَتَطَرَّفَا بَعْدَ أَلِفٍ زَائِدَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَسَمَاءٍ وَبِنَاءٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَصْلُهُمَا سَمَاوٌ وَبِنَايٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِخِلَافِ نَحْوِ قَالَ، وَبَاعَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِدَاوَةٍ، وَهِيَ الْمِطْهَرَةُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهِدَايَةٍ، لِعَدَمِ التَّطَرُّفِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَنَحْوِ دَلْوٍ وَظَبْيٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِعَدَمِ تَقَدُّمِ الْأَلِفِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَنَحْوِ آيَةٍ وَرَايَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِعَدَمِ زِيَادَتِهَا.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُشَارِكُهُمَا فِي ذَلِكَ الْأَلِفُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّهَا إِذَا تَطَرَّفَتْ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بَعْدَ أَلِفٍ زَائِدَةٍ أُبْدِلَتْ هَمْزَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَحَمْرَاءَ إِذْ أَصْلُهَا حَمْرَى</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَسَكْرَى، زِيدَتْ أَلِفٌ قَبْلَ الْآخِرِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِلْمَدِّ، كَأَلِفِ كِتَابٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَقُلِبَتِ الْأَخِيرَةُ هَمْزَةً.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) وَهِيَ مَا يُحْمَلُ بِهَا الْمَاءُ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">لِلطَّهَارَةِ وَالْوُضُوءِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَمِنْهُ قَوْلُ الْمُغِيرَةِ بْنِ شُعْبَةَ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فِي صَحِيحِ مُسْلِمٍ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"بَيْنَا أَنَا مَعَ رَسُولِ اللَّهِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ذَاتَ لَيْلَةٍ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">إِذْ نَزَلَ فَقَضَى حَاجَتَهُ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">ثُمَّ جَاءَ فَصَبَبْتُ عَلَيْهِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">مِنْ إِدَاوَةٍ كَانَتْ مَعِي</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَتَوَضَّأَ وَمَسَحَ عَلَى خُفَّيْهِ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">شَرْحُ صَحِيحِ مُسْلِمٍ لِلنَّوَوِيِّ "٣/٥٠٩". [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-124" data-kitab="124"><span><i class="hal__t">Hlm. </i>182</span><button type="button" class="hal__pdf" data-pdf="182" aria-label="Lihat PDF asli untuk Hlm. 182" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الثَّانِي:</strong> أَنْ تَقَعَا عَيْنًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِاسْمِ فَاعِلِ فِعْلٍ أُعِلَّتَا فِيهِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ قَائِلٍ وَبَائِعٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَصْلُهُمَا قَاوِلٌ وَبَايِعٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِخِلَافِ نَحْوِ عَيِنَ فَهُوَ عَايِنٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَعَوِرَ فَهُوَ عَاوِرٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِأَنَّ الْعَيْنَ لَمَّا صَحَّتْ فِي الْفِعْلِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">خَوْفَ الْإِلْبَاسِ بِعَانَ وَعَارَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">صَحَّتْ فِي اسْمِ الْفَاعِلِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">تَبَعًا لِلْفِعْلِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الثَّالِثُ:</strong> أَنْ تَقَعَا بَعْدَ أَلِفِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مَفَاعِلَ وَشِبْهِهِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَدْ كَانَتْ مَدَّتَيْنِ زَائِدَتَيْنِ فِي الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَعَجُوزٍ وَعَجَائِزَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَصَحِيفَةٍ وَصَحَائِفَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِخِلَافِ نَحْوِ قَسْوَرٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهُوَ الْأَسَدُ، وَقَسَاوِرَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِأَنَّ الْوَاوَ لَيْسَتْ بِمَدَّةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمَعِيشَةٍ وَمَعَايِشَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِأَنَّ الْمَدَّةَ فِي الْمُفْرَدِ أَصْلِيَّةٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَشَذَّ فِي مُصِيبَةٍ مَصَائِبُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَفِي مَنَارَةٍ مَنَائِرُ بِالْقَلْبِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مَعَ أَصَالَةِ الْمَدَّةِ فِي الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَسَهَّلَهُ شَبَهُ الْأَصْلِيِّ بِالزَّائِدِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُشَارِكُهُمَا فِي ذَلِكَ الْحُكْمِ الْأَلِفُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَرِسَالَةٍ وَرَسَائِلَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقِلَادَةٍ وَقَلَائِدَ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الرَّابِعُ:</strong> أَنْ تَقَعَا ثَانِيَتَيْ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِينَيْنِ بَيْنَهُمَا أَلِفُ مَفَاعِلَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">سَوَاءٌ كَانَ اللِّينَانِ يَاءَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَنَيَائِفَ جَمْعِ نَيِّفٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهُوَ الزَّائِدُ عَلَى الْعِقْدِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ وَاوَيْنِ، كَأَوَائِلَ جَمْعِ أَوَّلٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ مُخْتَلِفَيْنِ، كَسَيَائِدَ جَمْعِ سَيِّدٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَصْلُهُ سَيَوِدٌ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَأَمَّا قَوْلُ جَنْدَلِ بْنِ الْمُثَنَّى الطُّهَوِيِّ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">"وَكَحَّلَ الْعَيْنَيْنِ بِالْعَوَاوِرِ"</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِنْ غَيْرِ قَلْبٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَلِأَنَّ أَصْلَهُ بِالْعَوَاوِيرِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَطَوَاوِيسَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَدْ تَقَدَّمَ جَوَازُ حَذْفِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يَاءِ مَفَاعِيلَ، وَلِذَا صُحِّحَ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَخْتَصُّ الْوَاوُ بِقَلْبِهَا هَمْزَةً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِذَا تَصَدَّرَتْ قَبْلَ وَاوٍ مُتَحَرِّكَةٍ مُطْلَقًا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ سَاكِنَةٍ مُتَأَصِّلَةِ الْوَاوِيَّةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ أَوَاصِلَ وَأَوَاقٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">جَمْعَيْ وَاصِلَةٍ وَوَاقِيَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمِنْهُ قَوْلُ مُهَلْهِلٍ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">ضَرَبَتْ صَدْرَهَا إِلَيَّ وَقَالَتْ</span><span class="shatr">يَا عَدِيًّا لَقَدْ وَقَتْكَ الْأَوَاقِي</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَنَحْوَ الْأُولَى مُؤَنَّثِ الْأَوَّلِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَذَا جَمْعُهَا وَهُوَ الْأُوَلُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِخِلَافِ نَحْوِ هَوَوِيٍّ وَنَوَوِيٍّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي النِّسْبَةِ إِلَى هَوًى وَنَوًى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِعَدَمِ التَّصَدُّرِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَوُفِيَ وَوُعِدَ مَجْهُولَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِعَدَمِ تَأَصُّلِ الثَّانِيَةِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) رَاجِعْ مَا كَتَبْتُهُ فِي هَامِشِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"ص ٩٤" عَنِ اللِّينِ وَمَدِّهِ. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-125" data-kitab="125"><span><i class="hal__t">Hlm. </i>184</span><button type="button" class="hal__pdf" data-pdf="184" aria-label="Lihat PDF asli untuk Hlm. 184" title="Lihat PDF asli"></button></div>
+
+    <h3 class="bagian__judul" id="waw-jadi-hamzah-jawaz">تُبْدَلُ الْوَاوُ هَمْزَةً جَوَازًا فِي مَوْضِعَيْنِ</h3>
+    
+
+    <div class="ayat">
+      <p class="ar">وَتُبْدَلُ الْهَمْزَةُ مِنَ الْوَاوِ جَوَازًا فِي مَوْضِعَيْنِ:</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>أَحَدُهُمَا:</strong> إِذَا كَانَتْ مَضْمُومَةً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">ضَمًّا لَازِمًا غَيْرَ مُشَدَّدَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَوُجُوهٍ وَأُجُوهٍ، وَوُقُوتٍ وَأُقُوتٍ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي جَمْعِ وَقْتٍ وَوَجْهٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَأَدْوُرٍ وَأَدْؤُرٍ، وَأَنْوُرٍ وَأَنْؤُرٍ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">جَمْعَيْ دَارٍ وَنَارٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَؤُولٍ وَصَؤُولٍ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مُبَالَغَةً فِي قَائِلٍ وَصَائِلٍ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَخَرَجَتْ ضَمَّةُ الْإِعْرَابِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ هَذَا دَلْوٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَضَمَّةُ التِقَاءِ السَّاكِنَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ ﴿وَلَا تَنسَوُا الْفَضْلَ بَيْنَكُم﴾ <span class="ref">[البقرة: ٢٣٧]</span>،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَخَرَجَ بِغَيْرِ مُشَدَّدَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ التَّعَوُّذِ وَالتَّحَوُّلِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) فِي الْأَصْلِ: "قُتُول" وَهُوَ تَصْحِيفٌ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالصَّحِيحُ مَا أَثْبَتْنَاهُ. [ن]</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ثَانِيهِمَا:</strong> إِذَا كَانَتْ مَكْسُورَةً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي أَوَّلِ الْكَلِمَةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَإِشَاحٍ وَإِفَادَةٍ وَإِسَادَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي وِشَاحٍ، وَوِفَادَةٍ، وَوِسَادَةٍ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتُبَدَّلُ الْهَمْزَةُ مِنَ الْيَاءِ جَوَازًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِذَا كَانَتِ الْيَاءُ بَعْدَ أَلِفٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَبْلَ يَاءٍ مُشَدَّدَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَغَنَائِيٍّ وَرَائِيٍّ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي النِّسْبَةِ لِغَايَةٍ وَرَايَةٍ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَجَاءَتِ الْهَمْزَةُ بَدَلًا مِنَ الْهَاءِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي مَاءٍ، بِدَلِيلِ تَصْغِيرِهِ عَلَى مُوَيْهٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَجَمْعِهِ عَلَى أَوَاهٍ.</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="aks-ma-taqaddam">ب) فَصْلٌ فِي عَكْسِ مَا تَقَدَّمَ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">وَهُوَ قَلْبُ الْهَمْزَةِ يَاءً أَوْ وَاوًا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَلَا يَكُونُ ذَلِكَ إِلَّا فِي بَابَيْنِ:</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="bab-jama-mafail">أَحَدُهُمَا: بَابُ الْجَمْعِ الَّذِي عَلَى زِنَةِ مَفَاعِلَ</h3>
+    
+
+    <div class="ayat">
+      <p class="ar">إِذَا وَقَعَتِ الْهَمْزَةُ بَعْدَ أَلِفٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ تِلْكَ الْهَمْزَةُ عَارِضَةً فِيهِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ لَامُهُ هَمْزَةً أَوْ وَاوًا أَوْ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَخَرَجَ بِاشْتِرَاطِ عُرُوضِ الْهَمْزَةِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْمَرَائِي: فِي جَمْعِ مِرْآةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّ الْهَمْزَةَ مَوْجُودَةٌ فِي الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَبِالْأَخِيرِ سَلَامَةُ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي نَحْوِ صَحَائِفَ وَعَجَائِزَ وَرَسَائِلَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَلَا تَتَغَيَّرُ الْهَمْزَةُ فِيمَا ذُكِرَ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالَّذِي اسْتَوْفَى الشُّرُوطَ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يَجِبُ فِيهِ عَمَلَانِ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">قَلْبُ كَسْرَةِ الْهَمْزَةِ فَتْحَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">ثُمَّ قَلْبُ الْهَمْزَةِ يَاءً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي ثَلَاثَةِ مَوَاضِعَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَوَاوًا فِي مَوْضِعٍ وَاحِدٍ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَالَّتِي تُقْلَبُ يَاءً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يُشْتَرَطُ فِيهَا أَنْ تَكُونَ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لَامُ الْوَاحِدِ هَمْزَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ يَاءً أَصْلِيَّةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ وَاوًا مُنْقَلِبَةً يَاءً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالَّتِي تُقْلَبُ وَاوًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يُشْتَرَطُ فِيهَا أَنْ تَكُونَ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لَامُ الْوَاحِدِ وَاوًا ظَاهِرَةً فِي اللَّفْظِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">سَالِمَةً مِنَ الْقَلْبِ يَاءً.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) يَعْنِي: أَنَّ الْهَمْزَةَ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">لَمْ تَكُنْ فِي الْمُفْرَدِ. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-126" data-kitab="126"><span><i class="hal__t">Hlm. </i>186</span><button type="button" class="hal__pdf" data-pdf="186" aria-label="Lihat PDF asli untuk Hlm. 186" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat">
+      <p class="ar">فَهَذِهِ أَرْبَعَةُ مَوَاضِعَ، تَحْتَاجُ إِلَى أَرْبَعَةِ أَمْثِلَةٍ:</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. <strong>مِثَالُ مَا لَامُهُ هَمْزَةٌ:</strong> خَطَايَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">جَمْعُ خَطِيئَةٍ، أَصْلُهَا خَطَايِيءُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِيَاءٍ مَكْسُورَةٍ، هِيَ يَاءُ الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهَمْزَةٍ بَعْدَهَا هِيَ لَامُهُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ أُبْدِلَتِ الْيَاءُ الْمَكْسُورَةُ هَمْزَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلَى حَدِّ مَا تَقَدَّمَ فِي صَحَائِفَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ خَطَائِيءُ بِهَمْزَتَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ الْهَمْزَةُ الثَّانِيَةُ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِأَنَّ الْهَمْزَةَ الْمُتَطَرِّفَةَ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِثْرَ هَمْزَةٍ تُقْلَبُ يَاءً مُطْلَقًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَبَعْدَ الْمَكْسُورَةِ أَوْلَى.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ قُلِبَتْ كَسْرَةُ الْهَمْزَةِ الْأُولَى</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَتْحَةً لِلتَّخْفِيفِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَا فِي الْمَذَارِي وَالْعَذَارِي.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ قُلِبَتِ الْيَاءُ أَلِفًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِتَحَرُّكِهَا وَانْفِتَاحِ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ خَطَاءَا بِأَلِفَيْنِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بَيْنَهُمَا هَمْزَةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْهَمْزَةُ تُشْبِهُ الْأَلِفَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَاجْتَمَعَ شَبَهُ ثَلَاثِ أَلِفَاتٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَذَلِكَ مُسْتَكْرَهٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَأُبْدِلَتِ الْهَمْزَةُ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ خَطَايَا، بَعْدَ خَمْسَةِ أَعْمَالٍ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. <strong>وَمِثَالُ مَا لَامُهُ يَاءٌ أَصْلِيَّةٌ:</strong> قَضَايَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">جَمْعُ قَضِيَّةٍ، أَصْلُهَا قَضَايِي بِيَاءَيْنِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُبْدِلَتِ الْيَاءُ الْأُولَى هَمْزَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلَى مَا تَقَدَّمَ فِي نَحْوِ صَحَائِفَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ قَضَائِيُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">قُلِبَتْ كَسْرَةُ الْهَمْزَةِ فَتْحَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ الْيَاءُ أَلِفًا، فَصَارَ قَضَاءًا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ قُلِبَتِ الْهَمْزَةُ الْمُتَوَسِّطَةُ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِمَا تَقَدَّمَ، فَصَارَ قَضَايَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بَعْدَ أَرْبَعَةِ أَعْمَالٍ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. <strong>وَمِثَالُ مَا لَامُهُ وَاوٌ</strong></p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar"><strong>قُلِبَتْ يَاءً فِي الْمُفْرَدِ:</strong> مَطِيَّةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِذْ أَصْلُهَا مَطِيْوَةٌ مِنَ الْمَطَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ الظَّهْرُ، أَوْ مِنَ الْمَطْوِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ الْمَدُّ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">اجْتَمَعَتِ الْوَاوُ وَالْيَاءُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَسُبِقَتْ إِحْدَاهُمَا بِالسُّكُونِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَقُلِبَتِ الْوَاوُ يَاءً وَأُدْغِمَتَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَا فِي سَيِّدٍ وَمَيِّتٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَجَمْعُهَا مَطَايَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَصْلُهَا: مَطَايُوٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَقُلِبَتِ الْوَاوُ لِتَطَرُّفِهَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِثْرَ كَسْرَةٍ، فَصَارَ مَطَايِيُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ الْيَاءُ الْأُولَى هَمْزَةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَا تَقَدَّمَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ أُبْدِلَتِ الْكَسْرَةُ فَتْحَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ مَطَاءَيُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ الْيَاءُ أَلِفًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ الْهَمْزَةُ الْمُتَوَسِّطَةُ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ مَطَايَا بَعْدَ خَمْسَةِ أَعْمَالٍ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٤. <strong>وَمِثَالُ مَا لَامُهُ وَاوٌ ظَاهِرَةٌ</strong></p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar"><strong>سَلِمَتْ فِي الْمُفْرَدِ:</strong> هِرَاوَةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهِيَ الْعَصَا، وَجَمْعُهَا هَرَاوَى،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَصْلُهَا هَرَائِوُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَذَلِكَ أَنَّ أَلِفَ الْمُفْرَدِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">قُلِبَتْ فِي الْجَمْعِ هَمْزَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَا فِي رِسَالَةٍ وَرَسَائِلَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ هَرَائُوُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ أُبْدِلَتِ الْوَاوُ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِتَطَرُّفِهَا إِثْرَ كَسْرَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ هَرَائِي.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ فُتِحَتْ كَسْرَةُ الْهَمْزَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ هَرَاءَيُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ قُلِبَتِ الْيَاءُ أَلِفًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِتَحَرُّكِهَا وَانْفِتَاحِ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ هَرَاءَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِهَمْزَةٍ بَيْنَ أَلِفَيْنِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثُمَّ قُلِبَتِ الْهَمْزَةُ وَاوًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِيَتَشَاكَلَ الْجَمْعُ مَعَ الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَصَارَ هَرَاوَى بَعْدَ خَمْسَةِ أَعْمَالٍ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَشَذَّ مِنْ هَذَا الْبَابِ قَوْلُهُ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">حَتَّى أُزِيرُوا الْمَنَائِيَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْقِيَاسُ الْمَنَايَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَ"اللَّهُمَّ اغْفِرْ لِي خَطَائِئِي"</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْقِيَاسُ خَطَايَايَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهَدَاوَى جَمْعُ هَدِيَّةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْقِيَاسُ هَدَايَا.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) هُنَا تَحْتَاجُ إِلَى خَمْسَةِ أَعْمَالٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَهِيَ كَمَا يَلِي:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"خَطَايِئُ = خَطَائِيُ = خَطَائَيُ = خَطَاءَا = خَطَايَا". [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) هَكَذَا:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"قَضَايِي = قَضَائِيُ = قَضَائَيُ = قَضَاءًا = قَضَايَا". [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٣) هَكَذَا:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"مَطِيْوَةٌ = مَطِيْيَةٌ = مَطِّيَةٌ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"مَطَايُوٌ = مَطَايِيُ = مَطَائِيُ = مَطَائَيُ = مَطَاءَا = مَطَايَا". [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(١) نَفْسُ سَابِقَتِهَا. [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) هُنَا جُزْءٌ مِنْ بَيْتِ شِعْرٍ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">لِعُبَيْدَةَ بْنِ الْحَارِثِ بْنِ عَبْدِ الْمُطَّلِبِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">قَالَهُ فِي غَزْوَةِ بَدْرٍ، وَهُوَ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"فَمَا بَرِحَتْ أَقْدَامُنَا فِي مُقَامِنَا ...</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">ثَلَاثَتِنَا حَتَّى أُزِيرُوا الْمَنَائِيَا". [ن]</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="bab-dua-hamzah">ثَانِيهِمَا: بَابُ الْهَمْزَتَيْنِ الْمُلْتَقِيَيْنِ فِي كَلِمَةٍ وَاحِدَةٍ</h3>
+    
+
+    <div class="ayat">
+      <p class="ar">وَالَّتِي تُعَلُّ هِيَ الثَّانِيَةُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِأَنَّ الثِّقَلَ لَا يَحْصُلُ إِلَّا بِهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَلَا تَخْلُو الْهَمْزَتَانِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِمَّا أَنْ تَكُونَ الْأُولَى مُتَحَرِّكَةً</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالثَّانِيَةُ سَاكِنَةً، أَوْ بِالْعَكْسِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ تَكُونَا مُتَحَرِّكَتَيْنِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">فَإِنْ كَانَتِ الْأُولَى مُتَحَرِّكَةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالثَّانِيَةُ سَاكِنَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُبْدِلَتِ الثَّانِيَةُ مِنْ جِنْسِ حَرَكَةِ الْأُولَى،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ آمَنْتُ أُومِنُ إِيمَانًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْأَصْلُ أَأْمَنْتُ أُؤْمِنُ إِئْمَانًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ قِرَاءَةُ بَعْضِهِمْ: إِئْلَافِهِمْ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِتَحْقِيقِ الْهَمْزَةِ الثَّانِيَةِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">فَإِنْ كَانَتِ الْأُولَى سَاكِنَةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالثَّانِيَةُ مُتَحَرِّكَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَا تَكُونَانِ إِلَّا فِي مَوْضِعِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْعَيْنِ أَوِ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ كَانَتَا فِي مَوْضِعِ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُدْغِمَتِ الْأُولَى فِي الثَّانِيَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ سَاءَلَ، مُبَالَغَةَ السُّؤَالِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلُآلٍ وَرُآسٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي النِّسْبَةِ لِبَائِعِ اللُّؤْلُؤِ وَالرُّؤُوسِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِنْ كَانَتَا فِي مَوْضِعِ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُبْدِلَتِ الثَّانِيَةُ يَاءً مُطْلَقًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَتَقُولُ فِي مِثَالِ قِمَطْرٍ مِنْ قَرَأَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">قَرَأْيٌ، وَفِي مِثَالِ سَفَرْجَلٍ مِنْهُ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">قَرَأْيَا.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٣) لَا يَعْنِي بِقَوْلِهِ: شَذَّ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">أَنَّ الْقِرَاءَةَ شَاذَّةٌ!!</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَإِنَّمَا: شَذَّ فِي اللُّغَةِ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَإِلَّا فَالْقِرَاءَةُ صَحِيحَةٌ. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-127" data-kitab="127"><span><i class="hal__t">Hlm. </i>188</span><button type="button" class="hal__pdf" data-pdf="188" aria-label="Lihat PDF asli untuk Hlm. 188" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat">
+      <p class="ar">وَإِنْ كَانَتَا مُتَحَرِّكَتَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنْ كَانَتَا فِي الطَّرَفِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَانَتِ الثَّانِيَةُ مَكْسُورَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أُبْدِلَتْ يَاءً مُطْلَقًا.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِنْ لَمْ تَكُنْ طَرَفًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ مَضْمُومَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أُبْدِلَتْ وَاوًا مُطْلَقًا.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِنْ كَانَتْ مَفْتُوحَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنِ انْفَتَحَ مَا قَبْلَهَا أَوِ انْضَمَّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أُبْدِلَتْ وَاوًا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِنِ انْكَسَرَ، أُبْدِلَتْ يَاءً.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيَجُوزُ فِي نَحْوِ رَأْسٍ وَلُؤْمٍ وَبِئْرٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِبْقَاؤُهَا وَقَبْلَهَا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِنْ جِنْسِ حَرَكَةِ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَفِي نَحْوِ وَضُوءٍ وَجِيءَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يَجُوزُ إِبْقَاؤُهَا وَقَبْلَهَا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِنْ جِنْسِ مَا قَبْلَهَا مَعَ الْإِدْغَامِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) كَأَنْ تَبْنِيَ مِنْ قَرَأَ مِثْلَ جَعْفَرٍ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">أَوْ زِبْرِجٍ أَوْ بُرْثُنٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">كَقَوْلِهِ تَعَالَى: ﴿أَئِنَّا لَمُخْرَجُونَ﴾ <span class="ref">[النمل: ٦٧]</span>،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَ﴿أَإِلَٰهٌ مَعَ اللَّهِ﴾ <span class="ref">[النمل: ٦٤]</span>. [ن]</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) كَأَنْ تَبْنِيَ مِنْ أَمَّ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">بِفَتْحِ الْهَمْزَةِ وَشَدِّ الْمِيمِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">مِثْلَ أُصْبُعٍ: بِفَتْحِ الْهَمْزَةِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">أَوْ كَسْرِهَا أَوْ ضَمِّهَا،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالْبَاءُ فِيهِنَّ مَكْسُورَةٌ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَتَقُولُ فِي الْأَوَّلِ أَأْمَمَ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">بِهَمْزَةٍ مَفْتُوحَةٍ فَسَاكِنَةٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">تَنْقُلُ حَرَكَةَ الْمِيمِ الْأُولَى</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">إِلَى وَاوٍ، الْهَمْزَةِ الثَّانِيَةِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">ثُمَّ تُدْغِمُ الْمِيمَ الْأُولَى</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فِي الْمِيمِ الثَّانِيَةِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">ثُمَّ تُبْدِلُ الْهَمْزَةَ يَاءً،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَكَذَا فِي الْبَاقِي. [ن]</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٣) كَأُوَبٍّ: جَمْعُ أَبٍّ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَهُوَ الْمَرْعَى، أَصْلُهُ أَأْبُبٌ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">بِوَزْنِ أَفْلُسٍ، فَنَقَلُوا وَأَبْدَلُوا الْهَمْزَةَ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَأَدْغَمُوا أَحَدَ الْمِثْلَيْنِ فِي الْآخَرِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">كَقَوْلِهِ تَعَالَى: ﴿أَأُنزِلَ عَلَيْهِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">الذِّكْرُ مِنْ بَيْنِنَا﴾ <span class="ref">[ص: ٨]</span>. [ن]</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٤) كَأَدْوَاهٍ وَأُوَيْدِمٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فِي جَمْعِ وَتَصْغِيرِ آدَمَ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">كَمَا فِي قَوْلِهِ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">﴿وَإِلَيْهِ النُّشُورُ، أَأَمِنتُمْ﴾ <span class="ref">[الملك: ١٥-١٦]</span>. [ن]</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٥) كَأَنْ تَبْنِيَ مِنْ أَمَّ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">عَلَى وَزْنِ إِصْبَعٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">بِكَسْرِ الْهَمْزَةِ، وَفَتْحِ الْبَاءِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">كَمَا فِي قَوْلِهِ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">﴿السَّمَاءِ أَنْ يَخْسِفَ﴾ <span class="ref">[الملك: ١٦]</span>. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-128" data-kitab="128"><span><i class="hal__t">Hlm. </i>189</span><button type="button" class="hal__pdf" data-pdf="189" aria-label="Lihat PDF asli untuk Hlm. 189" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="ilal-huruf-illah">الْإِعْلَالُ فِي حُرُوفِ الْعِلَّةِ</h2>
+    
+
+    <h3 class="bagian__judul" id="alif-waw-jadi-ya">أ) قَلْبُ الْأَلِفِ وَالْوَاوِ يَاءً</h3>
+    
+
+    <div class="ayat">
+      <p class="ar">تُقْلَبُ الْأَلِفُ يَاءً فِي مَسْأَلَتَيْنِ:</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْأُولَى:</strong> أَنْ يَنْكَسِرَ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَمَا فِي تَكْسِيرِ وَتَصْغِيرِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوِ مِصْبَاحٍ وَمِفْتَاحٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">تَقُولُ فِيهِمَا مَصَابِيحُ وَمَفَاتِيحُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمُصَيْبِيحٌ وَمُفَيْتِيحٌ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الثَّانِيَةُ:</strong> أَنْ تَقَعَ تَالِيَةً لِيَاءِ التَّصْغِيرِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَقَوْلِكَ فِي غُلَامٍ غُلَيِّمٌ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="waw-jadi-ya-10">وَتُقْلَبُ الْوَاوُ يَاءً فِي عَشَرَةِ مَوَاضِعَ</h3>
+    
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. أَنْ تَقَعَ بَعْدَ كَسْرَةٍ فِي الطَّرَفِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَرَضِيَ وَقَوِيَ وَعُفِيَ مَبْنِيًّا لِلْمَجْهُولِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْغَازِي وَالدَّاعِي؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ قَبْلَ تَاءِ التَّأْنِيثِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَشَجِيَةٍ وَأَكْسِيَةٍ وَغَازِيَةٍ وَعُرَيْقِيَةٍ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">تَصْغِيرِ عُرْقُوَةٍ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ سَوَاسِوَةٌ: جَمْعُ سَوَاءٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ قَبْلَ الْأَلِفِ وَالنُّونِ الزَّائِدَتَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَقَوْلِكَ فِي مِثْلِ قَطِرَانَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِفَتْحٍ فَكَسْرٍ، مِنَ الْغَزْوِ: غِزِيَانٌ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. أَنْ تَقَعَ عَيْنًا لِمَصْدَرِ فِعْلٍ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُعِلَّتْ فِيهِ، وَقَبْلَهَا كَسْرٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبَعْدَهَا أَلِفٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَصِيَامٍ وَقِيَامٍ وَانْقِيَادٍ وَاعْتِيَادٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَخَرَجَ نَحْوُ سِوَارٍ وَسِوَاكٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِكَسْرِ أَوَّلِهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِانْتِفَاءِ الْمَصْدَرِيَّةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلِوَاذٍ وَجِوَارٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِعَدَمِ إِعْلَالِ عَيْنِ الْفِعْلِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي لَاوَذَ وَجَاوَرَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَحَالَ حِوَلًا وَعَادَ الْمَرِيضَ عِوَدًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِعَدَمِ الْأَلِفِ فِيهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرَاحَ رَوْحًا لِعَدَمِ الْكَسْرِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَلَّ الْإِعْلَالُ فِيمَا عَدِمَ الْأَلِفَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَقِرَاءَةِ بَعْضِهِمْ: ﴿جَعَلَ اللَّهُ الْكَعْبَةَ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْبَيْتَ الْحَرَامَ قِيَامًا لِلنَّاسِ﴾ <span class="ref">[المائدة: ٩٧]</span>.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ التَّصْحِيحُ مَعَ اسْتِيفَاءِ الشُّرُوطِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي قَوْلِهِمْ: نَارَتِ الظِّبْيَةُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">تَنُورُ نِوَارًا، بِكَسْرِ النُّونِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَيْ نَفَرَتْ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَارَ الدَّابَّةَ شِوَارًا بِالْكَسْرِ: رَاضَهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَا ثَالِثَ لَهُمَا.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) قِرَاءَةُ "قِيَمًا" فِي قَوْلِهِ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">﴿دِينًا قِيَمًا مِّلَّةَ إِبْرَاهِيمَ حَنِيفًا﴾ <span class="ref">[الأنعام: ١٦١]</span>،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَهِيَ قِرَاءَةُ حَفْصٍ عَنْ عَاصِمٍ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">أَمَّا شُعْبَةُ عَنْ عَاصِمٍ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَقَدْ قَرَأَهَا: "قَيِّمًا". [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-129" data-kitab="129"><span><i class="hal__t">Hlm. </i>190</span><button type="button" class="hal__pdf" data-pdf="190" aria-label="Lihat PDF asli untuk Hlm. 190" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. أَنْ تَكُونَ عَيْنًا لِجَمْعٍ صَحِيحِ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَبْلَهَا كَسْرَةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهِيَ فِي مُفْرَدِهِ إِمَّا مُعْتَلَّةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَدَارٍ وَدِيَارٍ، وَحِيلَةٍ وَحِيَلٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَدِيمَةٍ وَدِيَمٍ، وَقِيمَةٍ وَقِيَمٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ حِوَجٌ بِالْوَاوِ فِي حَاجَةٍ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِمَّا شَبِيهَةٌ بِالْمُعْتَلَّةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهِيَ السَّاكِنَةُ بِشَرْطِ أَنْ يَلِيَهَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي الْجَمْعِ أَلِفٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَسَوْطٍ وَسِيَاطٍ، وَحَوْضٍ وَحِيَاضٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرَوْضٍ وَرِيَاضٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ عُدِمَتِ الْأَلِفُ صَحَّتِ الْوَاوُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ كُوزٍ وَكِوَزَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ ثِيَرَةٌ جَمْعُ ثَوْرٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَكَذَا إِنْ تَحَرَّكَتْ فِي مُفْرَدِهِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَطَوِيلٍ وَطِوَالٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ الْإِعْلَالُ فِي قَوْلِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَنَيْفِ بْنِ زَيَّانَ النَّبْهَانِيِّ الطَّائِيِّ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">تَبَيَّنَ لِي أَنَّ الْقَمَاءَةَ ذِلَّةٌ</span><span class="shatr">وَأَنَّ أَعِزَّاءَ الرِّجَالِ طِيَالُهَا</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَسْلَمُ الْوَاوُ أَيْضًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِنْ أُعِلَّتْ لَامُ الْمُفْرَدِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَجَمْعِ رَيَّانَ وَجَوٍّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَيُقَالُ فِيهِمَا رِوَاءٌ، وَجِوَاءٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِكَسْرِ الْفَاءِ وَتَصْحِيحِ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِئَلَّا يَتَوَالَى فِي الْجَمْعِ إِعْلَالَانِ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">قَلْبُ الْعَيْنِ يَاءً، وَقَلْبُ اللَّامِ هَمْزَةً.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٤. أَنْ تَقَعَ طَرَفًا، رَابِعَةً فَصَاعِدًا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بَعْدَ فَتْحٍ، نَحْوَ أَعْطَيْتُ وَزَكَّيْتُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمُعْطَيَانِ وَمُزَكَّيَانِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِصِيغَةِ اسْمِ الْمَفْعُولِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">حَمَلُوا الْمَاضِيَ الْمَزِيدَ عَلَى مُضَارِعِهِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَاسْمَ الْمَفْعُولِ عَلَى اسْمِ الْفَاعِلِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٥. أَنْ تَقَعَ مُتَوَسِّطَةً إِثْرَ كَسْرَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهِيَ سَاكِنَةٌ مُفْرَدَةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمِيزَانٍ، وَمِيقَاتٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَخَرَجَ نَحْوُ صِوَانٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ وِعَاءُ الشَّيْءِ، وَسِوَارٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِتَحَرُّكِ الْوَاوِ فِيهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنَحْوُ اجْلِوَّذَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ إِسْرَاعُ الْإِبِلِ فِي السَّيْرِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَاعْلِوَّاطٍ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ التَّعَلُّقُ بِعُنُقِ الْبَعِيرِ بِقَصْدِ الرُّكُوبِ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِأَنَّ الْوَاوَ فِيهِمَا مُكَرَّرَةٌ لَا مُفْرَدَةٌ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٦. أَنْ تَكُونَ الْوَاوُ لَامًا لِفُعْلَى</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِضَمٍّ فَسُكُونٍ وَصْفًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ الدُّنْيَا وَالْعُلْيَا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَوْلُ الْحِجَازِيِّينَ الْقُصْوَى</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">شَاذٌّ قِيَاسًا، فَصِيحٌ اسْتِعْمَالًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نُبِّهَ بِهِ عَلَى أَنَّ الْأَصْلَ الْوَاوُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَا اسْتَحْوَذَ وَالْقَوَدُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِذِ الْقِيَاسُ الْإِعْلَالُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَكِنَّهُ نُبِّهَ بِهِ عَلَى الْأَصْلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبَنُو تَمِيمٍ يَقُولُونَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْقُصْيَا عَلَى الْقِيَاسِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ كَانَتْ فُعْلَى اسْمًا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لَمْ تُغَيَّرْ كَحُزْوَى: لِمَوْضِعٍ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٧. أَنْ تَجْتَمِعَ هِيَ وَالْيَاءُ فِي كَلِمَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالسَّابِقُ مِنْهُمَا مُتَأَصِّلٌ ذَاتًا وَسُكُونًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ سَيِّدٍ وَمَيِّتٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَظَبْيٍّ وَلَيٍّ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مَصْدَرَيْ طَوَيْتُ وَلَوَيْتُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَخَرَجَ نَحْوُ يَدْعُو يَاسِرٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَرْمِي وَاقِدٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِكَوْنِ كُلٍّ مِنْهُمَا فِي كَلِمَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنَحْوُ طَوِيلٍ وَغَيُورٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِتَحَرُّكِ السَّابِقِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنَحْوُ دِيوَانٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِذْ أَصْلُهُ دِوَّانٌ بِشَدِّ الْوَاوِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبُويِعَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِذْ أَصْلُ الْوَاوِ أَلِفُ فَاعَلَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنَحْوُ قَوْيَ بِفَتْحٍ فَسُكُونٍ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مُخَفَّفُ قَوِيَ بِالْكَسْرِ لِلتَّخْفِيفِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ التَّصْحِيحُ مَعَ اسْتِيفَاءِ الشُّرُوطِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَضَيْوَنٍ لِلسِّنَّوْرِ الذَّكَرِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَوْمٍ أَيْوَمَ: حَصَلَتْ فِيهِ شِدَّةٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَعَوَى الْكَلْبُ عَوْيَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرَجَاءِ بْنِ حَيْوَةَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٨. أَنْ تَكُونَ الْوَاوُ لَامَ مَفْعُولٍ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الَّذِي مَاضِيهِ عَلَى فَعِلَ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِكَسْرِ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ مَرْضِيٍّ وَمَقْوِيٍّ عَلَيْهِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ كَانَتْ عَيْنُ الْفِعْلِ مَفْتُوحَةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">صَحَّتِ الْوَاوُ، كَمَدْعُوٍّ وَمَغْزُوٍّ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ الْإِعْلَالُ فِي قَوْلِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَبْدِ يَغُوثَ الْحَارِثِيِّ مِنَ الْجَاهِلِيِّينَ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَقَدْ عَلِمَتْ عِرْسِي مُلَيْكَةُ أَنَّنِي</span><span class="shatr">أَنَا اللَّيْثُ مَعْدِيًّا عَلَيَّ وَعَادِيَا</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) اقْرَأْ تَرْجَمَةَ عَبْدِ يَغُوثَ بْنِ وَقَّاصٍ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">الْحَارِثِيِّ فِي خِزَانَةِ الْأَدَبِ لِلْبَغْدَادِيِّ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"١: ٣١٣-٣١٧".</p>
+      
+    </div>
+
+    <div class="hal" id="hal-130" data-kitab="130"><span><i class="hal__t">Hlm. </i>191</span><button type="button" class="hal__pdf" data-pdf="191" aria-label="Lihat PDF asli untuk Hlm. 191" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٩. أَنْ تَكُونَ لَامَ فُعُولٍ بِضَمِّ الْفَاءِ جَمْعًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَعِصِيٍّ وَدِلِيٍّ وَقُفِيٍّ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَقِلُّ فِيهِ التَّصْحِيحُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ أَبُوٌّ وَأَخُوٌّ جَمْعَيْ أَبٍ وَأَخٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنُجُوٌّ جَمْعُ نَجْوٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ السَّحَابُ الَّذِي هَرَاقَ مَاءَهُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَمَّا الْمُفْرَدُ فَالْأَكْثَرُ فِيهِ التَّصْحِيحُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَعُلُوٍّ وَعُتُوٍّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَقِلُّ فِيهِ الْإِعْلَالُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ عَتَا الشَّيْخُ عِتِيًّا: إِذَا كَبِرَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَسَا قَلْبُهُ قِسِيًّا.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١٠. أَنْ تَكُونَ عَيْنًا لِفُعَّلَ بِضَمِّ الْفَاءِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَتَشْدِيدِ الْعَيْنِ، جَمْعًا صَحِيحَ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">غَيْرَ مَفْصُولَةٍ مِنْهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَصُيَّمٍ وَنُيَّمٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْأَكْثَرُ تَصْحِيحُهُ، كَصُوَّمٍ وَنُوَّمٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَجِبُ تَصْحِيحُهُ إِنْ أُعِلَّتِ اللَّامُ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِئَلَّا يَتَوَالَى إِعْلَالَانِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَشُوَّى، جَمْعَيْ شَاوٍ وَغَاوٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ فُصِلَتْ مِنَ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ صُوَّامٍ وَنُوَّامٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ قَوْلُ ذِي الرُّمَّةِ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">أَلَا طَرَقَتْنَا أُمَيَّةُ ابْنَةُ مُنْذِرٍ</span><span class="shatr">فَمَا أَرَّقَ النُّيَّامَ إِلَّا سَلَامُهَا</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) وَمِنْهُ قَوْلُ الرُّصَافِيِّ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">"نَامُوا وَلَا تَسْتَيْقِظُوا =</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">مَا فَازَ إِلَّا النُّوَمُ". [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-131" data-kitab="131"><span><i class="hal__t">Hlm. </i>193</span><button type="button" class="hal__pdf" data-pdf="193" aria-label="Lihat PDF asli untuk Hlm. 193" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="alif-ya-jadi-waw">ب) قَلْبُ الْأَلِفِ وَالْيَاءِ وَاوًا</h2>
+    
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. وَتُقْلَبُ الْأَلِفُ وَاوًا إِذَا انْضَمَّ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَبُويِعَ وَضُورِبَ وَضُوَيْرِبَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. وَتُقْلَبُ الْيَاءُ وَاوًا إِنْ كَانَتِ الْيَاءُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">سَاكِنَةً مُفْرَدَةً مَضْمُومًا مَا قَبْلَهَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي غَيْرِ جَمْعٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمُوقِنٍ وَمُوسِرٍ، وَيُوقِنُ وَيُوسِرُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَخَرَجَ بِسَاكِنَةٍ نَحْوُ هُيَامٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِمُفْرَدَةٍ نَحْوُ حُيَّضٍ جَمْعِ حَائِضٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِمَضْمُومًا مَا قَبْلَهَا:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مَا إِذَا كَانَ مَفْتُوحًا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ مَكْسُورًا أَوْ سَاكِنًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِغَيْرِ جَمْعٍ: الْحَالَةُ إِذَا كَانَتْ فِيهِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَبِيضٍ وَهِيمٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">جَمْعَيْ أَبْيَضَ وَبَيْضَاءَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَهْيَمَ وَهَيْمَاءَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَجِبُ فِي هَذِهِ الْحَالَةِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">قَلْبُ الضَّمَّةِ كَسْرَةً.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَكَذَا تُقْلَبُ الْيَاءُ وَاوًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِذَا انْضَمَّ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ لَامَ فَعُلَ بِفَتْحٍ فَضَمٍّ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَنَهُوَ الرَّجُلُ وَقَضُوَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ كَانَ مَا هِيَ فِيهِ مَخْتُومًا بِتَاءٍ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بُنِيَتِ الْكَلِمَةُ عَلَيْهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَأَنْ تَصُوغَ مِنَ الرَّمْيِ مِثْلَ مَقْدُرَةٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّكَ تَقُولُ مَرْمُوَةٌ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ كَانَتْ هِيَ لَامَ اسْمٍ خُتِمَ بِأَلِفٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّكَ تَصُوغُ مِنَ الرَّمْيِ أَيْضًا</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِثْلَ سَبُعَانَ، بِفَتْحٍ فَضَمٍّ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">اسْمَ مَوْضِعٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّكَ تَقُولُ رَمُوَانَ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَكَذَا تُقْلَبُ وَاوًا إِنْ كَانَتْ لَامًا لِفَعْلَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِفَتْحِ الْفَاءِ اسْمًا لَا صِفَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَتَقْوَى وَشَرْوَى، وَهُوَ الْمِثْلُ، فَتْوَى.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَشَذَّ التَّصْحِيحُ فِي سَعْيَا: لِمَكَانٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَرَيَّا: لِلرَّائِحَةِ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَذَا إِنْ كَانَتِ الْيَاءُ عَيْنًا لِفُعْلَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِضَمِّ الْفَاءِ اسْمًا كَطُوبَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ صِفَةً جَارِيَةً مَجْرَى الْأَسْمَاءِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ مُؤَنَّثَ أَفْعَلَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَطُوبَى وَكُوسَى وَخُورَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مُؤَنَّثَاتِ أَطْيَبَ وَأَكْيَسَ وَأَخْيَرَ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنْ كَانَتْ فُعْلَى صِفَةً مَحْضَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَجَبَ تَصْحِيحُ الْيَاءِ، وَقَلْبُ الضَّمَّةِ كَسْرَةً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَلَمْ يُسْمَعْ مِنْهُ إِلَّا ﴿قِسْمَةٌ ضِيزَى﴾ <span class="ref">[النجم: ٢٢]</span>،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَيْ: جَائِرَةٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمِشْيَةٌ حِيكَى:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَيْ يَتَحَرَّكُ فِيهَا الْمَنْكِبَانِ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَالَ بَعْضُهُمْ: إِنْ كَانَتْ فُعْلَى وَصْفًا:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنْ سَلِمَتِ الضَّمَّةُ قُلِبَتِ الْيَاءُ وَاوًا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِنْ قُلِبَتْ كَسْرَةً بَقِيَتَا يَاءً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَتَقُولُ: الطُّوبَى وَالطَّيَبَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالضُّوقَى وَالضِّيقَى،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَالْكُوسَى وَالْكِيسَى.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) وَفِي قِرَاءَةٍ: "ضِئْزَى" لِابْنِ كَثِيرٍ الْمَكِّيِّ.</p>
+      
+    </div>
+
+    <div class="hal" id="hal-132" data-kitab="132"><span><i class="hal__t">Hlm. </i>195</span><button type="button" class="hal__pdf" data-pdf="195" aria-label="Lihat PDF asli untuk Hlm. 195" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="waw-ya-jadi-alif">ج) قَلْبُ الْوَاوِ وَالْيَاءِ أَلِفًا</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">تُقْلَبُ الْوَاوُ وَالْيَاءُ أَلِفًا بِعَشَرَةِ شُرُوطٍ:</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. أَنْ يَتَحَرَّكَا.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. أَنْ تَكُونَ الْحَرَكَةُ أَصْلِيَّةً.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. أَنْ يَكُونَ مَا قَبْلَهَا مَفْتُوحًا.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٤. أَنْ تَكُونَ الْفَتْحَةُ مُتَّصِلَةً فِي كَلِمَتِيهِمَا.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٥. أَنْ يَتَحَرَّكَ مَا بَعْدَهُمَا إِنْ كَانَتَا عَيْنَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَلَّا يَقَعَ بَعْدَهُمَا أَلِفٌ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَا يَاءٌ مُشَدَّدَةٌ إِنْ كَانَتَا لَامَيْنِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَخَرَجَ بِالْأَوَّلِ الْقَوْلُ وَالْبَيْعُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِسُكُونِهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِالثَّانِي جَيَلٌ وَتَوَمٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِفَتْحِ أَوَّلِهِمَا وَثَانِيهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مُخَفَّفَيْ جَيْأَلٍ وَتَوْأَمٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِفَتْحٍ فَسُكُونٍ فَفَتْحٍ فِيهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْأَوَّلُ اسْمٌ لِلضَّبُعِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالثَّانِي لِلْوَلَدِ يُولَدُ مَعَهُ آخَرُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِالثَّالِثِ الْعِوَضُ وَالْحِيَلُ وَالسُّوَرُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِالْكَسْرِ فِي الْأَوَّلَيْنِ وَالضَّمِّ فِي الثَّالِثِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِالرَّابِعِ ضَرَبَ وَاقِدٌ، وَكَتَبَ يَاسِرٌ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبِالْخَامِسِ بَيَانٌ وَطَوِيلٌ وَخَوَرْنَقٌ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">اسْمُ قَصْرٍ بِالْعِرَاقِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِسُكُونِ مَا بَعْدَهُمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرَمَيَا وَغَزَوَا وَفَتَيَانِ وَعَصَوَانِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِوُجُودِ الْأَلِفِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَعَلَوِيٌّ وَفَتَوِيٌّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِوُجُودِ يَاءِ النِّسَبِ الْمُشَدَّدَةِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٦. أَلَّا تَكُونَا عَيْنًا لِفَعِلَ بِكَسْرِ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الَّذِي الْوَصْفُ مِنْهُ عَلَى أَفْعَلَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَهَيِفَ فَهُوَ أَهْيَفُ، وَعَوِرَ فَهُوَ أَعْوَرُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَمَّا إِذَا كَانَ الْوَصْفُ مِنْهُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلَى غَيْرِ أَفْعَلَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنَّهُ يُعَلُّ، كَخَافَ وَهَابَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٧. أَلَّا تَكُونَا عَيْنًا لِمَصْدَرِ هَذَا الْفِعْلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَالْهَيَفِ وَهُوَ ضُمُورُ الْبَطْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْعَوَرِ، وَهُوَ فَقْدُ إِحْدَى الْعَيْنَيْنِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٨. أَلَّا تَكُونَ الْوَاوُ عَيْنًا لِافْتَعَلَ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الدَّالِّ عَلَى التَّشَارُكِ فِي الْفِعْلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَاجْتَوَرُوا وَاشْتَوَرُوا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِمَعْنَى تَجَاوَرُوا وَتَشَاوَرُوا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ لَمْ يَدُلَّ عَلَى التَّشَارُكِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَجَبَ إِعْلَالُهُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَاخْتَانَ بِمَعْنَى خَانَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَاخْتَارَ بِمَعْنَى خَارَ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَمَّا الْيَاءُ فَلَا يُشْتَرَطُ فِيهَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَدَمُ الدَّلَالَةِ عَلَى ذَلِكَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلِذَلِكَ أُعِلَّتْ فِي اسْتَافُوا:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِمَعْنَى تَسَايَفُوا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَيْ تَضَارَبُوا بِالسُّيُوفِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِقُرْبِهَا مِنَ الْأَلِفِ فِي الْمَخْرَجِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) وَمِنْهُ قَوْلُهُ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">﴿وَلَا تُجَادِلْ عَنِ الَّذِينَ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">يَخْتَانُونَ أَنفُسَهُمْ﴾ <span class="ref">[النساء: ١٠٧]</span>. [ن]</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٩. أَلَّا تَكُونَ إِحْدَاهُمَا مَتْلُوَّةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِحَرْفٍ يَسْتَحِقُّ هَذَا الْإِعْلَالَ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ كَانَتْ كَذَلِكَ صَحَّتِ الْأُولَى،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأُعِلَّتِ الثَّانِيَةُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ الْحَيَا وَالْهَوَى،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرُبَّمَا عَكَسُوا بِتَصْحِيحِ الثَّانِيَةِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِعْلَالِ الْأُولَى،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَآيَةٍ أَصْلُهَا أَيَيَةٌ كَقَصَبَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">تَحَرَّكَتِ الْيَاءُ، وَانْفَتَحَ مَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَقُلِبَتْ أَلِفًا فَصَارَ آيَةً.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِلَى ذَلِكَ أَشَارَ ابْنُ مَالِكٍ بِقَوْلِهِ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَإِنْ لِحَرْفَيْنِ ذَا الْإِعْلَالُ اسْتُحِقّ</span><span class="shatr">صُحِّحَ أَوَّلٌ وَعَكْسٌ قَدْ يَحِقّ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) مَتْلُوَّةٌ: أَيْ يَأْتِي بَعْدَهَا،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">كَمَا قَالَ تَعَالَى: ﴿وَالْقَمَرِ إِذَا تَلَاهَا﴾. [ن]</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١٠. أَلَّا تَكُونَا عَيْنَيْنِ لِمَا آخِرُهُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">زِيَادَةٌ مُخْتَصَّةٌ بِالْأَسْمَاءِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَالْأَلِفِ وَالنُّونِ، وَأَلِفِ التَّأْنِيثِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ الْجَوَلَانِ وَالْهَيَمَانِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مَصْدَرَيْ جَالَ وَهَامَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالصَّوَرَى اسْمُ مَحَلٍّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْحَيَدَى: وَصْفٌ لِلْحِمَارِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْحَائِدِ عَنْ ظِلِّهِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ الْإِعْلَالُ فِي مَاهَانَ وَدَارَانَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْأَصْلُ: مَوَهَانُ وَدَوَرَانُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِفَتَحَاتٍ فِيهِمَا.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٣) هَذَا قَوْلُ سِيبَوَيْهِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَزَعَمَ الْمُبَرِّدُ أَنَّ الْقِيَاسَ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فِيمَا كَانَ مَخْتُومًا بِأَلِفٍ وَنُونٍ الْإِعْلَالُ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَشَذَّ عِنْدَهُ الْجَوَلَانُ وَالْهَيَمَانُ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالصَّحِيحُ الْأَوَّلُ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٤) وَقِيلَ: إِنَّهُمَا اسْمَانِ أَعْجَمِيَّانِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَلَا يَرِدَانِ عَلَى الْقَاعِدَةِ.</p>
+      
+    </div>
+
+    <div class="hal" id="hal-133" data-kitab="133"><span><i class="hal__t">Hlm. </i>197</span><button type="button" class="hal__pdf" data-pdf="197" aria-label="Lihat PDF asli untuk Hlm. 197" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="fa-iftial">فَصْلٌ فِي فَاءِ الِافْتِعَالِ وَتَائِهِ</h2>
+    
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. إِذَا كَانَتْ فَاءُ الِافْتِعَالِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَاوًا أَوْ يَاءً أَصْلِيَّةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُبْدِلَتْ تَاءً، وَأُدْغِمَتْ فِي تَاءِ الِافْتِعَالِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَكَذَا مَا تَصَرَّفَ مِنْهُ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ اتَّعَدَ وَاتَّصَلَ وَاتَّسَرَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مِنَ الْوَعْدِ وَالْوَصْلِ وَالْيُسْرِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِنْ كَانَتِ الْيَاءُ أَوِ الْوَاوُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بَدَلًا مِنْ هَمْزَةٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَلَا يَجُوزُ إِبْدَالُهَا تَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِدْغَامُهَا فِي تَاءِ الِافْتِعَالِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي نَحْوِ إِيتَزَرَ مِنْ إِزَارٍ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِأَنَّ الْيَاءَ لَيْسَتْ أَصْلِيَّةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَنَحْوَ أُوتُمِنَ مِنَ الْأَمْنِ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِأَنَّ الْوَاوَ لَيْسَتْ أَصْلِيَّةً.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَشَذَّ فِي افْتَعَلَ مِنَ الْأَكْلِ اتَّكَلَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. وَإِذَا كَانَتْ فَاؤُهُ صَادًا أَوْ ضَادًا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ طَاءً أَوْ ظَاءً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَتُسَمَّى أَحْرُفَ الْإِطْبَاقِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَجَبَ إِبْدَالُ تَائِهِ طَاءً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي جَمِيعِ التَّصَارِيفِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَتَقُولُ فِي افْتَعَلَ مِنَ الصَّبْرِ: اصْطَبَرَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَا يَجُوزُ فِي الْفَصِيحِ الْإِدْغَامُ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمِنَ الضَّرْبِ: اضْطَرَبَ، بِلَا إِدْغَامٍ أَيْضًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَجَاءَ قَلِيلًا اصَّلَحَ وَاضَّرَبَ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِقَلْبِ الثَّانِي إِلَى الْأَوَّلِ، ثُمَّ الْإِدْغَامِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَتَقُولُ مِنَ الطُّهْرِ بِالطَّاءِ الْمُهْمَلَةِ: أَطَّهَّرَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَفِي هَذِهِ الْحَالَةِ يَجِبُ الْإِدْغَامُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِاجْتِمَاعِ الْمِثْلَيْنِ وَسُكُونِ أَوَّلِهِمَا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمِنَ الظُّلْمِ بِالْمُعْجَمَةِ: اظْطَلَمَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِمُعْجَمَةٍ فَمُهْمَلَةٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَجُوزُ لَكَ فِيهِ ثَلَاثَةُ أَوْجُهٍ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِظْهَارُ كُلٍّ مِنْهُمَا عَلَى الْأَصْلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِبْدَالُ الظَّاءِ الْمُعْجَمَةِ طَاءً مُهْمَلَةً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مَعَ الْإِدْغَامِ فَتَقُولُ: أَطَّلَمَ بِالْمُهْمَلَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَإِبْدَالُ الطَّاءِ الْمُهْمَلَةِ ظَاءً</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالْإِدْغَامُ أَيْضًا فَتَقُولُ: أَظَّلَمَ بِالْمُعْجَمَةِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَدْ رُوِيَ قَوْلُ زُهَيْرٍ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">يَمْدَحُ هَرِمَ بْنَ سِنَانٍ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">هُوَ الْجَوَادُ الَّذِي يُعْطِيكَ نَائِلَهُ</span><span class="shatr">عَفْوًا، وَيُظْلَمُ أَحْيَانًا فَيَظَّلِمُ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَـ"يَظَّلِمُ" بِتَشْدِيدِ الْمُهْمَلَةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَ"يَظَّلِمُ" بِتَشْدِيدِ الْمُعْجَمَةِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَ"يَظْطَلِمُ" بِالْإِظْهَارِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. وَإِذَا كَانَتْ فَاؤُهُ دَالًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ ذَالًا، أَوْ زَايًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أُبْدِلَتْ تَاؤُهُ دَالًا مُهْمَلَةً،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَتَقُولُ فِي افْتَعَلَ مِنْ دَانَ: ادَّانَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِالْإِبْدَالِ وَالْإِدْغَامِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِوُجُودِ الْمِثْلَيْنِ وَسُكُونِ أَوَّلِهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمِنْ زَجَرَ: ازْدَجَرَ، بِلَا إِدْغَامٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمِنْ ذَكَرَ: اذْدَكَرَ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَلَكَ فِي هَذَا الْمِثَالِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">ثَلَاثَةُ الْأَوْجُهِ الْمُتَقَدِّمَةِ فِي اظْطَلَمَ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَتَقُولُ: اذْدَكَرَ، وَادَّكَرَ، وَاذَّكَرَ.</p>
+      
+    </div>
+
+    <div class="hal" id="hal-134" data-kitab="134"><span><i class="hal__t">Hlm. </i>198</span><button type="button" class="hal__pdf" data-pdf="198" aria-label="Lihat PDF asli untuk Hlm. 198" title="Lihat PDF asli"></button></div>
+
+    <div class="ayat quran">
+      <p class="ar">وَقُرِئَ شَاذًّا ﴿فَهَلْ مِن مُّدَّكِرٍ﴾ <span class="ref">[القمر: ١٥]</span></p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">بِالذَّالِ الْمُعْجَمَةِ وَالْإِدْغَامِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) سُورَةُ الْقَمَرِ وَتَكَرَّرَتْ كَثِيرًا. [ن]</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَسُمِعَ إِبْدَالُ تَاءِ الِافْتِعَالِ</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">صَادًا مَعَ الْإِدْغَامِ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَعَلَيْهِ قِرَاءَةُ ﴿وَهُمْ يَخِصِّمُونَ﴾ <span class="ref">[يس: ٤٩]</span>،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">أَيْ: يَخْتَصِمُونَ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(٢) وَقَرَأَهَا ابْنُ كَثِيرٍ الْمَكِّيُّ "يَخَصِّمُونَ"</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">بِفَتْحِ الْخَاءِ، وَكَذَلِكَ نَافِعٌ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَقَرَأَهَا عَاصِمٌ "يَخِصِّمُونَ". [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-135" data-kitab="135"><span><i class="hal__t">Hlm. </i>199</span><button type="button" class="hal__pdf" data-pdf="199" aria-label="Lihat PDF asli untuk Hlm. 199" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="ibdal-mim">فَصْلُ إِبْدَالِ الْمِيمِ مِنَ الْوَاوِ وَالنُّونِ</h2>
+    
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. تُبْدَلُ الْمِيمُ مِنَ الْوَاوِ وُجُوبًا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فِي "فَمٍ"، إِذَا لَمْ يُضَفْ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِلَى ظَاهِرٍ أَوْ مُضْمَرٍ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَدَلِيلُ ذَلِكَ تَكْسِيرُهُ عَلَى أَفْوَاهٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالتَّكْسِيرُ يَرُدُّ الْأَشْيَاءَ إِلَى أُصُولِهَا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَرُبَّمَا بَقِيَ الْإِبْدَالُ مَعَ الْإِضَافَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَقَوْلِهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">"لَخُلُوفُ فَمِ الصَّائِمِ أَطْيَبُ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عِنْدَ اللَّهِ مِنْ رِيحِ الْمِسْكِ"،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَوْلِ رُؤْبَةَ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">يُصْبِحُ ظَمْآنَ وَفِي الْبَحْرِ فَمُهُ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. وَمِنَ النُّونِ، بِشَرْطِ سُكُونِهَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَوُقُوعِهَا قَبْلَ بَاءٍ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مِنْ كَلِمَتِهَا أَوْ مِنْ غَيْرِهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ قَوْلِهِ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">﴿إِذِ انْبَعَثَ أَشْقَاهَا﴾ <span class="ref">[الشمس: ١٢]</span>،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَوْلِهِ: ﴿مَنْ بَعَثَنَا مِن مَّرْقَدِنَا﴾ <span class="ref">[يس: ٥٢]</span>.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأُبْدِلَتِ الْمِيمُ مِنَ النُّونِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">شُذُوذًا فِي قَوْلِ رُؤْبَةَ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">يَا هَالَ ذَاتَ الْمَنْطِقِ التَّمْتَامِ</span><span class="shatr">وَكَفِّكَ الْمُخَضَّبِ الْبَنَامِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَصْلُهُ الْبَنَانُ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَجَاءَ الْعَكْسُ كَقَوْلِهِمْ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَسْوَدُ قَاتِنٌ: أَيْ قَاتِمٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِإِبْدَالِ الْمِيمِ نُونًا.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) حَدِيثٌ رَوَاهُ الْبُخَارِيُّ وَمُسْلِمٌ. [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) وَيُسَمَّى الْإِقْلَابَ فِي اصْطِلَاحِ الْقُرَّاءِ. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-136" data-kitab="136"><span><i class="hal__t">Hlm. </i>200</span><button type="button" class="hal__pdf" data-pdf="200" aria-label="Lihat PDF asli untuk Hlm. 200" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="ilal-naql">الْإِعْلَالُ بِالنَّقْلِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">تُنْقَلُ حَرَكَةُ الْمُعْتَلِّ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">إِلَى السَّاكِنِ الصَّحِيحِ قَبْلَهُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مَعَ إِبْقَاءِ الْمُعْتَلِّ إِنْ جَانَسَ الْحَرَكَةَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَيَقُولُ وَيَبِيعُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَصْلُهُمَا يَقْوُلُ كَيَنْصُرُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَيَبْيِعُ كَيَضْرِبُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَإِلَّا قُلِبَ حَرْفًا يُجَانِسُهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَيَخَافُ وَيُخِيفُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَصْلُهُمَا يَخْوَفُ كَيَعْلَمُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَيُخْوِفُ كَيُكْرِمُ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَيَمْتَنِعُ النَّقْلُ إِنْ كَانَ السَّاكِنُ مُعْتَلًّا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَبَايَعَ، وَعَوَّقَ، وَبَيَّنَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">بِالتَّشْدِيدِ فِيهِمَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَمَا يَمْتَنِعُ أَيْضًا إِنْ كَانَ فِعْلَ تَعَجُّبٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ مَا أَبْيَنَهُ وَأَقْوَمَهُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ كَانَ مُضَعَّفًا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ ابْيَضَّ وَاسْوَدَّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ مُعْتَلَّ اللَّامِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ أَحْوَى وَأَهْوَى.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="naql-4-mawadhi">وَيَنْحَصِرُ الْإِعْلَالُ بِالنَّقْلِ فِي أَرْبَعَةِ مَوَاضِعَ</h3>
+    
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">الْأَوَّلُ: الْفِعْلُ الْمُعْتَلُّ عَيْنًا كَمَا مُثِّلَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">الثَّانِي: الِاسْمُ الْمُشَبَّهُ لِلْفِعْلِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْمُضَارِعِ وَزْنًا فَقَطْ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِشَرْطِ أَنْ يَكُونَ فِيهِ زِيَادَةٌ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">يَمْتَازُ بِهَا عَنِ الْفِعْلِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَالْمِيمِ فِي "مَفْعَلٍ"،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَوْ زِيَادَةٌ لَا يَمْتَازُ بِهَا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَالْأَوَّلُ كَمَقَامٍ وَمَعَاشٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَصْلُهُمَا مَقْوَمٌ وَمَعْيَشٌ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عَلَى زِنَةِ مَذْهَبٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَنُقِلَتْ حَرَكَةُ الْوَاوِ وَالْيَاءِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">إِلَى مَا قَبْلَهُمَا، ثُمَّ قُلِبَا أَلِفًا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَأَمَّا "مَدْيَنُ" وَ"مَرْيَمُ" (١)</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَشَاذَّانِ، وَالْقِيَاسُ: مَدَانُ وَمَرَامٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَعِنْدَ الْمُبَرِّدِ لَا شُذُوذَ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِأَنَّهُ يُشْتَرَطُ فِي "مَفْعَلٍ"</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">أَنْ يَكُونَ مِنَ الْأَسْمَاءِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الْمُتَّصِلَةِ بِالْأَفْعَالِ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَالثَّانِي كَأَنْ تَبْنِيَ مِنَ الْبَيْعِ أَوِ الْقَوْلِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">اسْمًا عَلَى زِنَةِ "تِحْلِئٍ"،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِكَسْرَتَيْنِ بَيْنَهُمَا سَاكِنٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَآخِرُهُ هَمْزَةٌ: اسْمٌ لِلْقِشْرَةِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الَّتِي عَلَى الْأَدِيمِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مِمَّا يَلِي مَنْبِتَ الشَّعْرِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنَّكَ تَقُولُ: تِبِيعٌ وَتَقِيلٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِكَسْرَتَيْنِ مُتَوَالِيَتَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بَعْدَهُمَا يَاءٌ فِيهِمَا.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَإِنْ أَشْبَهَهُ فِي الْوَزْنِ وَالزِّيَادَةِ</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ "أَبْيَضَ" وَ"أَسْوَدَ" أُعِلَّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَمَا خَالَفَهُ فِيهِمَا</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ "مِخْيَطٍ" وَجَبَ فِيهِ التَّصْحِيحُ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) قَالَ الرَّضِيُّ فِي شَرْحِ الشَّافِيَةِ:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَأَمَّا "مَرْيَمُ" وَ"مَدْيَنُ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَإِنْ جَعَلْتَهُمَا "فَعِيلًا" فَلَا شُذُوذَ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">إِذِ الْيَاءُ لِلْإِلْحَاقِ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَإِنْ جَعَلْتَهَا "مَفْعَلًا" فَشَاذَّانِ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَقَالَ الْأَشْمُونِيُّ: "مَدْيَنُ" وَ"مَرْيَمُ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">فَقَدْ تَقَدَّمَ فِي حُرُوفِ الزِّيَادَةِ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">أَنَّ وَزْنَهُمَا "فَعْلَلٌ" لَا "مَفْعَلٌ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَإِلَّا وَجَبَ الْإِعْلَالُ،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَلَا "فَعِيلٌ"، لِفَقْدِهِ فِي الْكَلَامِ.</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">انْتَهَى. [ن]</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">الثَّالِثُ: الْمَصْدَرُ الْمُوَازِنُ لِلْإِفْعَالِ وَالِاسْتِفْعَالِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ إِقْوَامٍ وَاسْتِقْوَامٍ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيَجِبُ حَذْفُ إِحْدَى الْأَلِفَيْنِ بَعْدَ الْقَلْبِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِالْتِقَاءِ السَّاكِنَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهَلِ الْمَحْذُوفُ الْأُولَى أَوِ الثَّانِيَةُ؟</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">خِلَافٌ، وَالصَّحِيحُ أَنَّهَا الثَّانِيَةُ؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِقُرْبِهَا مِنَ الْآخِرِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيُؤْتَى بِالتَّاءِ عِوَضًا عَنْهَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَيُقَالُ: إِقَامَةٌ وَاسْتِقَامَةٌ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَقَدْ تُحْذَفُ، كَأَجَابَ إِجَابًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَخُصُوصًا عِنْدَ الْإِضَافَةِ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ: ﴿وَإِقَامِ الصَّلَاةِ﴾ <span class="ref">[النور: ٣٧]</span>،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَيُقْتَصَرُ فِيهِ عَلَى مَا سُمِعَ.</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَوَرَدَ تَصْحِيحُ "إِفْعَالٍ" وَ"اسْتِفْعَالٍ" وَفُرُوعِهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">نَحْوَ أَعْوَلَ إِعْوَالًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَاسْتَحْوَذَ اسْتِحْوَاذًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَهُوَ إِذَنْ سَمَاعِيٌّ أَيْضًا.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">الرَّابِعُ: صِيغَةُ مَفْعُولٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">كَمَقُولٍ وَمَبِيعٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">بِحَذْفِ أَحَدِ الْمَدَّيْنِ فِيهِمَا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">مَعَ قَلْبِ الضَّمَّةِ كَسْرَةً فِي الثَّانِي؛</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">لِئَلَّا تَنْقَلِبَ الْيَاءُ وَاوًا،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَيَلْتَبِسَ الْوَاوِيُّ بِالْيَائِيِّ.</p>
+      
+    </div>
+
+<div class="hal" id="hal-137" data-kitab="137"><span><i class="hal__t">Hlm. </i>203</span><button type="button" class="hal__pdf" data-pdf="203" aria-label="Lihat PDF asli untuk Hlm. 203" title="Lihat PDF asli"></button></div>
+<div class="ayat list-item bernomor">
+      <p class="ar">وَبَنُو تَمِيمٍ تُصَحِّحُ الْيَائِيَّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">فَيَقُولُونَ: مَبْيُوعٌ وَمَدْيُونٌ وَمَخْيُوطٌ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">وَعَلَيْهِ قَوْلُ الْعَبَّاسِ بْنِ مِرْدَاسٍ السُّلَمِيِّ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">قَدْ كَانَ قَوْمُكَ يَحْسِبُونَكَ سَيِّدًا</span><span class="shatr">وَإِخَالُ أَنَّكَ لَسَيِّدٌ مَغْيُونُ (١)</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَعَلَى ذَلِكَ لُغَةُ عَامَّةِ الْمِصْرِيِّينَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي قَوْلِهِمْ: فُلَانٌ مَدْيُونٌ لِفُلَانٍ (٢).</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَرُبَّمَا صَحَّحَ بَعْضُ الْعَرَبِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">شَيْئًا مِنْ ذَوَاتِ الْوَاوِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَقَدْ سُمِعَ: ثَوْبٌ مَصْوُونٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَفَرَسٌ مَقْوُودٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَقَوْلٌ مَقْوُولٌ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَمِسْكٌ مَدْوُوفٌ، أَيْ مَبْلُولٌ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) تُرَاجَعُ، وَلَعَلَّهَا "مَدْيُونُ"</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">لِمُوَافَقَتِهِ لِلِاسْتِدْلَالِ! [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) وَكَذَلِكَ الْعِرَاقِيُّونَ. [ن]</p>
+      
+    </div>
+
+    <div class="hal" id="hal-138" data-kitab="138"><span><i class="hal__t">Hlm. </i>204</span><button type="button" class="hal__pdf" data-pdf="204" aria-label="Lihat PDF asli untuk Hlm. 204" title="Lihat PDF asli"></button></div>
+
+    <h2 class="pasal__judul" id="ilal-hadzf">الْإِعْلَالُ بِالْحَذْفِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">الْحَذْفُ قِسْمَانِ: قِيَاسِيٌّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهُوَ مَا كَانَ لِعِلَّةٍ تَصْرِيفِيَّةٍ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">سِوَى التَّخْفِيفِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَالِاسْتِثْقَالِ وَالتِقَاءِ السَّاكِنَيْنِ؛</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَغَيْرُ قِيَاسِيٍّ، وَهُوَ مَا لَيْسَ لَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَيُقَالُ لَهُ: الْحَذْفُ اعْتِبَاطًا.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَالْقِيَاسِيُّ يَدْخُلُ فِي ثَلَاثِ مَسَائِلَ:</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">١. تَتَعَلَّقُ بِالْحَرْفِ الزَّائِدِ فِي الْفِعْلِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٢. تَتَعَلَّقُ بِفَاءِ الْفِعْلِ الْمِثَالِ وَمَصْدَرِهِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item bernomor">
+      <p class="ar">٣. تَتَعَلَّقُ بِعَيْنِ الْفِعْلِ الثُّلَاثِيِّ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">الَّذِي عَيْنُهُ وَلَامُهُ مِنْ جِنْسٍ وَاحِدٍ،</p>
+      
+    </div>
+
+<div class="ayat list-item bernomor">
+      <p class="ar">عِنْدَ إِسْنَادِهِ لِضَمِيرِ الرَّفْعِ الْمُتَحَرِّكِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمَسْأَلَةُ الْأُولَى:</strong> إِذَا كَانَ الْمَاضِي</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">عَلَى وَزْنِ "أَفْعَلَ"</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنَّهُ يَجِبُ حَذْفُ الْهَمْزَةِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مِنْ مُضَارِعِهِ وَوَصْفَيْهِ، مَا لَمْ تُبْدَلْ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَرَاهَةَ اجْتِمَاعِ الْهَمْزَتَيْنِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي الْمَبْدُوءِ بِهَمْزَةِ الْمُتَكَلِّمِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَحُمِلَ غَيْرُهُ عَلَيْهِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ: أَكْرَمَ وَيُكْرِمُ وَنُكْرِمُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَتُكْرِمُ وَمُكْرِمٌ وَمُكْرَمٌ؛</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَشَذَّ قَوْلُهُ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">فَإِنَّهُ أَهْلٌ لِأَنْ يُؤَكْرَمَا</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَلَوْ أُبْدِلَتْ هَمْزَةُ "أَفْعَلَ" هَاءً،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَهَرَاقَ فِي أَرَاقَ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَوْ عَيْنًا كَعَنْهَلَ الْإِبِلَ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لُغَةٌ فِي أَنْهَلَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">أَيْ سَقَاهَا نَهَلًا، لَمْ تُحْذَفْ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَتُفْتَحُ الْهَاءُ وَالْعَيْنُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فِي جَمِيعِ تَصَارِيفِهِمَا.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَمَّا الْمَسْأَلَةُ الثَّانِيَةُ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَقَدْ تَقَدَّمَتْ فِي حُكْمِ الْمِثَالِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَارْجِعْ إِلَيْهَا إِنْ شِئْتَ (١).</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>وَالْمَسْأَلَةُ الثَّالِثَةُ:</strong> مَتَى كَانَ الْفِعْلُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْمَاضِي ثُلَاثِيًّا مَكْسُورَ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَكَانَتْ هِيَ وَلَامُهُ مِنْ جِنْسٍ وَاحِدٍ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">جَازَ لَكَ فِيهِ عِنْدَ إِسْنَادِهِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لِلضَّمِيرِ الْمُتَحَرِّكِ ثَلَاثَةُ أَوْجُهٍ:</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">الْإِتْمَامُ، وَحَذْفُ الْعَيْنِ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">مَنْقُولَةً حَرَكَتُهَا لِلْفَاءِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَغَيْرَ مَنْقُولَةٍ؛</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَ"ظَلِلْتُ" بِالْإِتْمَامِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَ"ظِلْتُ" بِحَذْفِ اللَّامِ الْأُولَى</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَنَقْلِ حَرَكَتِهَا لِمَا قَبْلَهَا،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَ"ظَلْتُ" مَحْذُوفَ اللَّامِ بِدُونِ نَقْلٍ.</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَإِنْ زَادَ عَلَى ثَلَاثَةٍ تَعَيَّنَ الْإِتْمَامُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ أَقْرَرْتُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَشَذَّ "أَحَسْتُ" فِي "أَحْسَسْتُ"،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">كَمَا يَتَعَيَّنُ الْإِتْمَامُ</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">لَوْ كَانَ ثُلَاثِيًّا مَفْتُوحَ الْعَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">نَحْوَ حَلَلْتُ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَشَذَّ "هَمْتُ" فِي "هَمَمْتُ".</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأَمَّا إِنْ كَانَ الْفِعْلُ الْمَكْسُورُ الْعَيْنِ</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">مُضَارِعًا أَوْ أَمْرًا اتَّصَلَ بِنُونِ نِسْوَةٍ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">فَيَجُوزُ فِيهِ الْوَجْهَانِ الْأَوَّلَانِ فَقَطْ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">نَحْوَ: يَقْرِرْنَ وَيَقِرْنَ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَاقْرِرْنَ وَقِرْنَ؛</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">لِأَنَّهُ لَمَّا اجْتَمَعَ مِثْلَانِ</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَأَوَّلُهُمَا مَكْسُورٌ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">حَسُنَ الْحَذْفُ كَالْمَاضِي.</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">قَالَ تَعَالَى: ﴿وَقِرْنَ فِي بُيُوتِكُنَّ﴾ <span class="ref">[الأحزاب: ٣٣]</span>.</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">فَإِنْ كَانَ أَوَّلُ الْمِثْلَيْنِ مَفْتُوحًا،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">كَمَا فِي لُغَةِ "قَرِرْتُ أَقَرُّ"</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">بِالْكَسْرِ فِي الْمَاضِي وَالْفَتْحِ فِي الْمُضَارِعِ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">قَلَّ النَّقْلُ،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">كَقِرَاءَةِ نَافِعٍ وَعَاصِمٍ:</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">﴿وَقَرْنَ فِي بُيُوتِكُنَّ﴾ <span class="ref">[الأحزاب: ٣٣]</span> (٢).</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَأَمَّا الْقِسْمُ الثَّانِي مِنَ الْقِيَاسِيِّ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">وَهُوَ الْحَذْفُ لِالْتِقَاءِ السَّاكِنَيْنِ،</p>
+      
+    </div>
+
+<div class="ayat">
+      <p class="ar">فَسَيَأْتِي لَهُ بَابٌ مُسْتَقِلٌّ إِنْ شَاءَ اللَّهُ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأَمَّا غَيْرُ الْقِيَاسِيِّ</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">فَحَذْفُ الْيَاءِ مِنْ نَحْوِ "يَدٍ" وَ"دَمٍ"،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">أَصْلُهُمَا "يَدَيٌ" وَ"دَمَيٌ"؛</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَالْوَاوُ مِنْ نَحْوِ "اسْمٍ" وَ"ابْنٍ" وَ"شَفَةٍ"،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">أَصْلُهَا: "سِمْوٌ" وَ"بَنَوٌ" وَ"شَفْوٌ"؛</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَالْهَاءُ مِنْ نَحْوِ "السِّتِّ"،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">أَصْلُهُ "سَتَةٌ"؛</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">وَالتَّاءُ مِنْ نَحْوِ "اسْطَاعَ" (٣)،</p>
+      
+    </div>
+
+<div class="ayat quran">
+      <p class="ar">أَصْلُهُ "اسْتَطَاعَ" فِي أَحَدِ وَجْهَيْنِ.</p>
+      
+    </div>
+
+    <div class="ayat footnote-row">
+      <p class="ar">(١) رَاجِعْ صَفْحَةَ "٢٦" مِنْ هَذَا الْكِتَابِ. [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٢) وَيَنْبَغِي أَنْ يُعْلَمَ أَنَّ عَاصِمًا</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">عِنْدَهُ قِرَاءَتَانِ: الْأُولَى "وَقَرْنَ"،</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَالثَّانِيَةُ بِرِوَايَةِ شُعْبَةَ عَنْهُ: "وَقِرْنَ". [ن]</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">(٣) نَحْوَ قَوْلِهِ تَعَالَى:</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">﴿فَمَا اسْطَاعُوا أَنْ يَظْهَرُوهُ</p>
+      
+    </div>
+
+<div class="ayat footnote-row">
+      <p class="ar">وَمَا اسْتَطَاعُوا لَهُ نَقْبًا﴾ <span class="ref">[الكهف: ٩٧]</span>. [ن]</p>
+      
+    </div>
+  </div>
+</section>
+
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="الفهرس">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script>window.PDFPANEL={src:"شذا العرف في فن الصرف لأحمد الحملاوي.pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=7"></script>
+<script src="../../../../assets/halaman.js?v=31"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
