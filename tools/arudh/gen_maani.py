@@ -12,7 +12,7 @@ def norm(t):
     t = re.sub('[ً-ٰٟـ]', '', unicodedata.normalize('NFKC', t))
     return re.sub('[^ء-ي]', '', re.sub('[إأآٱ]', 'ا', t).replace('ى', 'ي'))
 
-PATS = [r'^صفحة\s+([٠-٩0-9]+)\s*$', r'^--- الصفحة\s+([٠-٩0-9]+)', r'^\[الصفحة\s+([٠-٩0-9]+)\]']
+PATS = [r'^صفحة\s+([٠-٩0-9]+)\s*(?:\(Halaman[^)]*\))?\s*$', r'^--- الصفحة\s+([٠-٩0-9]+)', r'^\[الصفحة\s+([٠-٩0-9]+)\]', r'^\[صفحة\s+([٠-٩0-9]+)\]']
 def read_pages(fn):
     pages = []; cur = None
     raw = open(fn, encoding='utf-8-sig').read()
@@ -28,9 +28,17 @@ def read_pages(fn):
 
 def parse_page(lines):
     """-> daftar butir: ('p',t) ('li',t) ('verse',[h1,h2]) ('fn',t) ('chap',t) ('sub',t)"""
-    items = []; fn = []; i = 0; n = len(lines)
+    items = []; fn = []; i = 0; n = len(lines); foot = False
     while i < n:
         raw = lines[i]; s = raw.strip(); i += 1
+        if re.fullmatch(r'\[(?:الحواشي|الحاشية)\]\s*:?', s): foot = True; continue
+        m = re.match(r'^\[(?:الحاشية|الحواشي)\]\s*:\s*(.+)$', s)
+        if m: fn.append(m.group(1).replace(' *** ', ' … ')); continue
+        if foot: fn.append(s.replace(' *** ', ' … ')); continue
+        mh = re.match(r'^(#{1,3})\s+(.+)$', s)
+        if mh:
+            if len(mh.group(1)) >= 2: items.append(('sub', mh.group(2).strip())); continue
+            s = mh.group(2).strip()
         if not s or re.fullmatch(r'_{5,}', s) or re.fullmatch(r'[*\-_=\s]+', s) or s in ('علم المعاني', 'الهوامش:', 'الهوامش'): continue
         if s == 'الشطر الأول':                       # tabel syair (format 2)
             while i < n and lines[i].strip() in ('', 'الشطر الثاني'): i += 1
@@ -43,7 +51,13 @@ def parse_page(lines):
             continue
         m = re.match(r'^هامش صفحة\s+[٠-٩0-9]+:\s*(.*)$', s)
         if m: fn.append(m.group(1)); continue
-        if re.match(r'^\([٠-٩]+\)\s', s): fn.append(s); continue
+        if re.match(r'^\([٠-٩۰-۹]+\)\s', s): fn.append(s); continue
+        if re.search(r'\s\*\*\*\s', s) and len(s) < 170:
+            parts = [x.strip() for x in re.split(r'\s\*\*\*\s', s)]
+            if len(parts) == 2: items.append(('verse', parts)); continue
+        if len(s) < 170 and len(re.findall(r'\s\*\s', s)) == 1 and not s.startswith(('*', '﴿')):
+            parts = [x.strip() for x in re.split(r'\s\*\s', s)]
+            if len(parts) == 2: items.append(('verse', parts)); continue
         if re.search(r'\s{3,}\*\s{3,}', s):
             parts = [x.strip() for x in re.split(r'\s{3,}\*\s{3,}', s)]
             if len(parts) == 2: items.append(('verse', parts)); continue
@@ -81,7 +95,9 @@ for label, lines in allp:
             if kind(t) == 'chap':
                 key = chap_key(t)
                 if key in seen:
-                    # judul berjalan / pengulangan: dibuang; baris subjudul sendiri ikut dibuang di bawah
+                    t2 = re.sub(r'\s*/\s*', ': ', t)
+                    for c in chapters:
+                        if c['key'] == key and len(t2) > len(c['title']): c['title'] = t2
                     continue
                 seen.add(key)
                 title = re.sub(r'\s*/\s*', ': ', t)
