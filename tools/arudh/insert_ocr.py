@@ -27,7 +27,7 @@ def is_tafail(l):
     toks = [re.sub('[\u064b-\u0652\u0670]', '', t) for t in re.split(r'[\s/\-–]+', l) if t]
     return len(toks) >= 3 and all(t in TAF for t in toks)
 SYMB = re.compile(r'^[\s/٥\-–0٠5|]+$')
-HEAD = re.compile(r'^(نَظْ?م|أسئلة|إجابة|شرح\s|العلة$|العلل الجارية|الفرق بين|وبين \()')
+HEAD = re.compile(r'^(مُحْتَوَيَاتُ|نَظْ?م|أسئلة|إجابة|شرح\s|العلة$|العلل الجارية|الفرق بين|وبين \()')
 def ayat(t): return '<div class="ayat"><p class="ar" lang="ar">%s</p></div>' % esc(t)
 def blk(*lines): return '<div class="blk blk-p">%s</div>' % ''.join(ayat(l) for l in lines)
 def bait(h): return '<div class="bait"><div class="ayat">%s</div></div>' % ''.join('<p class="ar" lang="ar">%s</p>' % esc(x) for x in h)
