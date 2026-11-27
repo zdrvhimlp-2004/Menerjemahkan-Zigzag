@@ -5,14 +5,15 @@ pakai: gen_maani.py TEMPLAT.html OUT_DIR NAMA_PDF OFFSET FILE1.txt [FILE2.txt ..
 import re, sys, html, os, unicodedata
 tpl_f, outdir, pdfname, OFF = sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4])
 PDFMAP = {int(a.split('=')[0][4:]): int(a.split('=')[1]) for a in sys.argv[5:] if a.startswith('map:')}
-files = [a for a in sys.argv[5:] if not a.startswith('map:')]
+SPLIT = [(int(a[6:].split('=')[0]), a.split('=',1)[1]) for a in sys.argv[5:] if a.startswith('split:')]
+files = [a for a in sys.argv[5:] if not a.startswith(('map:', 'split:'))]
 AR = str.maketrans('٠١٢٣٤٥٦٧٨٩', '0123456789')
 esc = lambda t: html.escape(t, quote=False)
 def norm(t):
     t = re.sub('[ً-ٰٟـ]', '', unicodedata.normalize('NFKC', t))
     return re.sub('[^ء-ي]', '', re.sub('[إأآٱ]', 'ا', t).replace('ى', 'ي'))
 
-PATS = [r'^صفحة\s+([٠-٩0-9]+)\s*(?:\(Halaman[^)]*\))?\s*$', r'^--- الصفحة\s+([٠-٩0-9]+)', r'^\[الصفحة\s+([٠-٩0-9]+)\]', r'^\[صفحة\s+([٠-٩0-9]+)\]']
+PATS = [r'^صفحة\s+([٠-٩0-9]+)\s*(?:\(Halaman[^)]*\))?\s*$', r'^--- الصفحة\s+([٠-٩0-9]+)', r'^\[الصفحة\s+([٠-٩0-9]+)\]', r'^\[صفحة\s+([٠-٩0-9]+)\]', r'^=== HALAMAN\s+(\d+)\b', r'^\(صفحة\s+([٠-٩0-9]+)\s*-']
 def read_pages(fn):
     pages = []; cur = None
     raw = open(fn, encoding='utf-8-sig').read()
@@ -64,6 +65,12 @@ def parse_page(lines):
         if ' — ' in s and len(s) < 150 and not re.search(r'[.:؟]\s*$', s):
             parts = [x.strip() for x in s.split(' — ')]
             if len(parts) == 2: items.append(('verse', parts)); continue
+        if re.fullmatch(r'[٠-٩\s\-–]+', s) and raw.startswith('\t') and items and items[-1][0] == 'p':
+            items[-1] = ('li', items[-1][1] + ' … ' + s); continue
+        if s in ('الموضوع', 'الصفحة', 'المحتويات'): continue
+        mv = re.fullmatch(r'(\S.{10,70}?)\s{2,}(\S.{10,70})', s)
+        if mv and len(s) < 150 and not re.search(r'[.:؟]', mv.group(1)) and not re.search(r'[.؟]\s*$', mv.group(2)) and not raw.startswith('\t'):
+            items.append(('verse', [mv.group(1).strip(), mv.group(2).strip()])); continue
         if s.startswith('* '): items.append(('li', s[2:].strip())); continue
         items.append(('p', s))
     return items, fn
@@ -113,6 +120,13 @@ for label, lines in allp:
 
 if len(chapters) > 1 and chapters[0]['key'] == 'awal':
     chapters[1]['pages'] = chapters[0]['pages'] + chapters[1]['pages']; chapters.pop(0)
+
+for lab, ttl in SPLIT:
+    for c in list(chapters):
+        late = [pg for pg in c['pages'] if pg[0] >= lab]
+        if late and len(late) < len(c['pages']):
+            c['pages'] = [pg for pg in c['pages'] if pg[0] < lab]
+            chapters.insert(chapters.index(c) + 1, dict(key='x%d' % lab, title=ttl, pages=late)); break
 
 # --- HTML
 def hal(label):
