@@ -30,7 +30,7 @@ for a, b in [('aria-label="Kode Warna"', 'aria-label="دليل الألوان"')
 def hal(n):
     return ('<div class="hal" id="hal-%s" data-kitab="%s"><span><i class="hal__t">Hlm. </i>%s</span>'
             '<button type="button" class="hal__pdf" data-pdf="%s" aria-label="Lihat PDF asli untuk Hlm. %s" title="Lihat PDF asli"></button></div>') % (n, n, n, n, n)
-body, nh = re.subn(r'<div class="hal" id="hal-(\d+)"><span>Hlm\. \d+</span></div>', lambda m: hal(m.group(1)), body)
+body, nh = re.subn(r'<div class="hal"(?: id="hal-\d+")?><span>(?:Juz \d+ &middot; )?Hlm\. (\d+)</span>(?:<button[^>]*></button>)?</div>', lambda m: hal(m.group(1)), body)
 
 # 3. kepala dan skrip
 head = re.sub(r'<title>.*?</title>', '<title>%s — النص العربي</title>' % judul, head, count=1)
