@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>الفصل الثامن: الإيجاز والإطناب — النص العربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  a, a:link, a:visited, a:hover, a:focus, a:active { text-decoration: none; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+
+    --isi: #2f6b4f;      --isi-bg: #f1f6ee;
+    --nz: #6a3fa0;       --nz-ink: #4b2a80;   --nz-id: #6d5a8e;  --nz-bg: #f0eaf9;  --nz-line: #d9cbee;
+    --q: #9a6a00;        --q-bg: #fbf0cf;
+    --h: #0b6e6e;        --h-bg: #daf1ef;
+    --sy: #1f5fae;       --sy-ink: #164a8a;   --sy-id: #4f6f97;  --sy-bg: #e2edfb;  --sy-line: #bcd3f0;
+    --k: #b4531a;        --k-bg: #fbe4d2;
+    --c: #a8204f;        --c-bg: #fddce8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+
+      --isi: #7fc9a6;    --isi-bg: #1b2320;
+      --nz: #b99cee;     --nz-ink: #d6c4fa;   --nz-id: #a898c8;  --nz-bg: #2a2140;  --nz-line: #45375f;
+      --q: #e6b850;      --q-bg: #33280f;
+      --h: #63d2cc;      --h-bg: #12302f;
+      --sy: #7fb2f2;     --sy-ink: #b5d3fb;   --sy-id: #8fa9c9;  --sy-bg: #172a44;  --sy-line: #2c4a72;
+      --k: #f2a06b;      --k-bg: #3a2414;
+      --c: #ff9cbc;      --c-bg: #4a2132;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.25rem, 4vw, 2rem); }
+
+  /* ---------- baris Arab + Indonesia ---------- */
+  .ayat { display: flex; flex-direction: column; gap: 0.1rem; padding: clamp(0.5rem, 1.6vw, 0.75rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.35rem, 1rem + 2vw, 2rem); line-height: 2.05; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  /* ---------- jenis teks ---------- */
+  .blk { margin: 0.5rem 0; }
+  .blk-p { border-right: 3px solid var(--isi); padding: 0 clamp(0.6rem, 2vw, 1rem); margin: 0.9rem 0; }
+  .blk-p .ayat .ar { color: var(--ar-color); }
+
+  .blk-nz { background: var(--nz-bg); border-right: 5px solid var(--nz); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.4rem 0; }
+  .blk-nz .ayat .ar { color: var(--nz-ink); }
+  .blk-nz .ayat .id { color: var(--nz-id); }
+  .blk-nz .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-nz .bait + .bait { margin-top: 0.45rem; }
+
+  .blk-sy { background: var(--sy-bg); border-right: 5px solid var(--sy); border-radius: 12px; padding: 0.55rem clamp(0.75rem, 2.5vw, 1.4rem) 0.7rem; margin: 1.2rem 0; }
+  .blk-sy .ayat .ar { color: var(--sy-ink); }
+  .blk-sy .ayat .id { color: var(--sy-id); }
+  .blk-sy .bait { padding: 0.15rem 0 0.25rem; }
+  .blk-sy .bait + .bait { margin-top: 0.45rem; }
+
+  .tag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.8rem; padding: 0.2rem 0 0.35rem; direction: rtl; }
+  .tag__k { font-family: 'Amiri', serif; font-weight: 700; font-size: 1rem; }
+  .tag__t { direction: ltr; font-size: clamp(0.72rem, 0.66rem + 0.35vw, 0.85rem); font-weight: 500; }
+  .blk-nz .tag__k, .blk-nz .tag__t { color: var(--nz); }
+  .blk-sy .tag__k, .blk-sy .tag__t { color: var(--sy); }
+  .tag--cont .tag__t { font-style: italic; opacity: 0.8; }
+
+  /* ---------- span dalam baris ---------- */
+  .ayat .c, .legend .c { background: var(--c-bg); color: var(--c); border-radius: 0.45em; padding: 0.05em 0.3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .q, .legend .q { background: var(--q-bg); color: var(--q); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .h, .legend .h { background: var(--h-bg); color: var(--h); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .k, .legend .k { background: var(--k-bg); color: var(--k); border-radius: 0.4em; padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .ayat .ref { font-size: 0.85em; color: var(--q); opacity: 0.9; }
+  .ayat .id .c { font-weight: 500; }
+
+  /* baris yang hampir seluruhnya syahid */
+  .ayat.rq, .ayat.rh, .ayat.rk { border-radius: 10px; padding: clamp(0.5rem, 1.6vw, 0.75rem) clamp(0.6rem, 2vw, 0.9rem); margin: 0.15rem 0; }
+  .ayat.rq { background: var(--q-bg); border-right: 3px solid var(--q); }
+  .ayat.rh { background: var(--h-bg); border-right: 3px solid var(--h); }
+  .ayat.rk { background: var(--k-bg); border-right: 3px solid var(--k); }
+
+  /* ---------- judul bab & pembatas halaman ---------- */
+  .bab { background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2.5rem, 7vw, 4rem) 0 clamp(1.25rem, 4vw, 1.75rem); text-align: center; scroll-margin-top: 1rem; }
+  .bab__ar { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); line-height: 1.6; }
+  .bab__id { direction: ltr; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem); color: var(--id-color); font-weight: 500; }
+  .sub { font-family: 'Amiri', serif; font-size: 1.3rem; color: var(--heading); text-align: center; margin-top: 1.5rem; }
+  .sub__id { text-align: center; direction: ltr; font-size: 0.85rem; color: var(--muted); }
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+  [id^="nz-"], [id^="sy-"], [id^="qs-"], [id^="hd-"], [id^="kl-"] { scroll-margin-top: 1rem; }
+
+  /* ---------- ringkasan bab ---------- */
+  .ringkasan { background: var(--isi-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 3vw, 1.4rem); margin: 0 0 clamp(1.5rem, 4vw, 2.25rem); }
+  .ringkasan__judul { direction: ltr; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.6rem; }
+  .ringkasan__ar { direction: rtl; font-family: 'Amiri', serif; font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem); line-height: 2; color: var(--ar-color); margin-bottom: 0.7rem; }
+  .ringkasan__id { direction: ltr; font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem); color: var(--id-color); }
+
+  /* ---------- legenda ---------- */
+  .legend { direction: ltr; border: 1px solid var(--border); border-radius: 12px; padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1rem, 3vw, 1.5rem); margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+  .legend__judul { font-weight: 600; font-size: clamp(0.85rem, 0.8rem + 0.4vw, 1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+  .legend ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.5rem 1rem; }
+  .legend li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--id-color); }
+  .legend .sw { flex: 0 0 auto; min-width: 4.2rem; text-align: center; border-radius: 8px; padding: 0.2rem 0.5rem; font-family: 'Amiri', serif; font-weight: 700; font-size: 1.1rem; line-height: 1.6; direction: rtl; }
+  .sw--isi { border-right: 3px solid var(--isi); color: var(--ar-color); background: var(--isi-bg); }
+  .sw--nz { background: var(--nz-bg); border-right: 4px solid var(--nz); color: var(--nz-ink); }
+  .sw--sy { background: var(--sy-bg); border-right: 4px solid var(--sy); color: var(--sy-ink); }
+  .legend .sw.c, .legend .sw.q, .legend .sw.h, .legend .sw.k { padding: 0.2rem 0.5rem; border-radius: 8px; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; background: var(--pasal-bg); border: 1px solid var(--border); border-radius: 12px; padding: clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3.5vw, 1.75rem); margin-bottom: clamp(1.5rem, 5vw, 2.5rem); scroll-margin-top: 1rem; }
+  .daftar-isi__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.9rem; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc__btn { font: inherit; font-size: 0.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--id-color); cursor: pointer; }
+  .toc__btn:hover { color: var(--heading); border-color: var(--heading); }
+  .toc { list-style: none; }
+  .toc__bab { margin-bottom: 0.7rem; }
+  .toc__bab > details > summary { cursor: pointer; display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; row-gap: 0.05rem; align-items: baseline; list-style-position: inside; padding: 0.3rem 0; }
+  .toc__no { grid-row: 1 / span 3; font-weight: 600; color: var(--id-color); }
+  .toc__ar { direction: rtl; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sec { margin: 0.6rem 0 0.4rem 1.6rem; }
+  .toc__sec h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.3rem; }
+  .toc__sec h4 small { text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .toc__sec ol { list-style: decimal; padding-left: 1.4rem; }
+  .toc__sec ul { list-style: none; }
+  .toc__sec li { margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--muted); }
+  .toc__sec a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; text-decoration: none; color: var(--id-color); }
+  .toc__sec a:hover .toc__t { color: var(--heading); }
+  .toc__t { flex: 1 1 60%; }
+  .toc__a { direction: rtl; font-family: 'Amiri', serif; font-size: 1.05rem; color: var(--nz-ink); flex: 0 1 auto; }
+  .toc__sy .toc__a { color: var(--ar-color); }
+  .toc__ref { font-size: 0.72rem; color: var(--q); }
+  .chip { flex: 0 0 auto; font-size: 0.66rem; font-weight: 600; padding: 0.05rem 0.5rem; border-radius: 999px; letter-spacing: 0.02em; }
+  .chip--sy { background: var(--sy-bg); color: var(--sy); }
+  .chip--q { background: var(--q-bg); color: var(--q); }
+  .chip--h { background: var(--h-bg); color: var(--h); }
+  .chip--k { background: var(--k-bg); color: var(--k); }
+
+  /* ---------- tombol mengambang & popup ---------- */
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--legend { top: clamp(0.8rem, 2vw, 1.4rem); left: clamp(0.8rem, 2vw, 1.4rem); background: var(--card); color: var(--heading); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(720px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal.modal--wide { max-width: min(900px, 94vw); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.4rem); left: calc(clamp(0.8rem, 2vw, 1.4rem) + 3.1rem + 0.6rem); z-index: 25; max-width: min(60vw, 380px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 560px) { .crumb { display: none !important; } }
+  dialog.modal .legend, dialog.modal .daftar-isi { border: none; padding: 0; margin: 0; }
+
+  @media (max-width: 520px) {
+    .toc__sec { margin-left: 0.6rem; }
+    .toc__t { flex-basis: 100%; }
+  }
+
+  /* ---------- tambahan halaman naqd ---------- */
+  .sw--pt { border-right: 3px solid var(--h); color: var(--h); background: var(--h-bg); }
+  .sw--qt { border-right: 3px solid var(--q); color: var(--q); background: var(--q-bg); }
+  .blk-li { position: relative; border-right: 3px solid var(--h); background: var(--h-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li.has-no { padding-left: 2.6rem; }
+  .blk__no { position: absolute; left: 0.55rem; top: 0.75rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; background: var(--h); color: var(--card); font-size: 0.8rem; font-weight: 600; direction: ltr; }
+  .blk-q { border-right: 3px solid var(--q); background: var(--q-bg); border-radius: 10px; padding: 0.2rem clamp(0.6rem, 2vw, 1rem); margin: 0.6rem 0; }
+  .blk-li .ayat .ar, .blk-q .ayat .ar { color: var(--ar-color); }
+  .blk-sy .bait .ayat { gap: 0.1rem; }
+  .cover { margin: 0 0 1.5rem; text-align: center; }
+  .cover .ayat { align-items: center; padding: 0.2rem 0; }
+  .cover .ayat .ar { font-size: clamp(1.1rem, 0.95rem + 1vw, 1.5rem); line-height: 1.9; text-align: center; }
+  .cover .ayat .id { text-align: center; font-size: 0.8rem; }
+  .jadwal { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0 2rem; direction: rtl; }
+  .sat { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) 6rem; border-bottom: 1px solid var(--border); }
+  .sat:last-child { border-bottom: none; }
+  .sel { padding: 0.2rem 0.7rem; border-inline-start: 1px solid var(--border); min-width: 0; }
+  .sel:first-child { border-inline-start: none; }
+  .sel .ayat { padding: 0.3rem 0; }
+  .sel .ayat .ar { font-size: clamp(1.05rem, 0.9rem + 0.9vw, 1.4rem); line-height: 1.8; }
+  .sel .ayat .id { font-size: 0.82rem; }
+  .sel--kepala, .sel--grup, .sel--total { background: var(--pasal-bg); }
+  @media (max-width: 640px) {
+    .sat { grid-template-columns: 1fr auto; }
+    .sat .sel:nth-child(1) { order: 1; border-inline-start: none; }
+    .sat .sel:nth-child(3) { order: 2; }
+    .sat .sel:nth-child(2) { order: 3; grid-column: 1 / -1; border-inline-start: none; border-top: 1px dashed var(--border); }
+  }
+
+  .sub--3 { font-size: 1.1rem; margin-top: 1.1rem; }
+  .catatan { direction: ltr; text-align: left; margin: 0 0 1.4rem; padding: 0.8rem 1rem; border: 1px solid #d9a441; border-left-width: 5px; border-radius: 10px; background: color-mix(in srgb, #d9a441 14%, transparent); font-size: 0.85rem; line-height: 1.6; }
+  .catatan strong { display: block; margin-bottom: 0.25rem; }
+  .catatan ul { margin: 0.2rem 0 0 1.1rem; }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=30">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul" lang="ar">الفصل الثامن: الإيجاز والإطناب</h1>
+    <p class="isi__ket" lang="ar">عِلْمُ الْمَعَانِي · دِرَاسَةٌ بَلَاغِيَّةٌ وَنَقْدِيَّةٌ لِمَسَائِلِ الْمَعَانِي · الفصل الثامن: الإيجاز والإطناب · النَّصُّ الْعَرَبِيُّ فَقَطْ</p>
+    
+
+    <dialog id="legend-modal" class="modal" aria-label="دليل الألوان">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <section class="legend" aria-label="دليل الألوان">
+        <h2 class="legend__judul" lang="ar">دَلِيلُ الْأَلْوَانِ</h2>
+        <ul>
+          <li><span class="sw sw--isi" lang="ar">الشَّرْحُ</span></li>
+          <li><span class="sw sw--pt" lang="ar">نُقْطَةٌ</span></li>
+          <li><span class="sw sw--sy" lang="ar">شِعْرٌ</span></li>
+          <li><span class="sw sw--nz" lang="ar">نَصٌّ</span></li>
+          <li><span class="sw q" lang="ar">قُرْآنٌ</span></li>
+        </ul>
+      </section>
+    </dialog>
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="الفهرس">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="الفهرس">
+        <div class="daftar-isi__head">
+          <h2 class="daftar-isi__judul"><span lang="ar">الْفِهْرِسُ</span></h2>
+          <button type="button" class="toc__btn" id="toc-toggle" data-open="0">فتح الكل</button>
+        </div>
+<ol class="toc">
+<li class="toc__bab"><details><summary><span class="toc__no">1.</span><a class="toc__ar" lang="ar" href="#bab-1">الفصل الثامن: الإيجاز والإطناب</a><span class="toc__meta">Hlm. 489&ndash;505</span></summary>
+<div class="toc__sec"><ol><li><a href="#sub-109"><span class="toc__a" lang="ar">الإيجاز معناه وأنواعه</span><span class="toc__ref">Hlm. 490</span></a></li><li><a href="#sub-110"><span class="toc__a" lang="ar">١ - إيجاز قصر</span><span class="toc__ref">Hlm. 490</span></a></li><li><a href="#sub-111"><span class="toc__a" lang="ar">٢ - إيجاز حذف</span><span class="toc__ref">Hlm. 490</span></a></li><li><a href="#sub-112"><span class="toc__a" lang="ar">٤ - الآية الكريمة جعلت القصاص كالأصل للحياة وذلك بدخول</span><span class="toc__ref">Hlm. 492</span></a></li><li><a href="#sub-113"><span class="toc__a" lang="ar">إيجاز الحذف</span><span class="toc__ref">Hlm. 495</span></a></li><li><a href="#sub-114"><span class="toc__a" lang="ar">حذف جزء الكلمة</span><span class="toc__ref">Hlm. 495</span></a></li><li><a href="#sub-115"><span class="toc__a" lang="ar">حذف الجملة</span><span class="toc__ref">Hlm. 501</span></a></li><li><a href="#sub-116"><span class="toc__a" lang="ar">حذف أكثر من جملة</span><span class="toc__ref">Hlm. 502</span></a></li><li><a href="#sub-117"><span class="toc__a" lang="ar">قرائن الحذف</span><span class="toc__ref">Hlm. 502</span></a></li><li><a href="#sub-118"><span class="toc__a" lang="ar">الإطناب معناه وأنواعه</span><span class="toc__ref">Hlm. 505</span></a></li></ol></div>
+</details></li>
+</ol>
+      </nav>
+    </dialog>
+
+<div class="hal" id="hal-489" data-kitab="489"><span><i class="hal__t">Hlm. </i>490</span><button type="button" class="hal__pdf" data-pdf="490" aria-label="Lihat PDF asli untuk Hlm. 490" title="Lihat PDF asli"></button></div>
+<header class="bab" id="bab-1"><h2 class="bab__ar" lang="ar">الفصل الثامن: الإيجاز والإطناب</h2></header>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">لكل مقام مقال، والبلاغة كما عرفها البلاغيون مطابقة الكلام لمقتضى الحال، فالحال قد تقتضي الإيجاز في القول، وطي الكلمات وعندئذ تكون البلاغة في أن يوجز المتكلم ويختصر كلامه، وقد تقتضي الإطناب وإطالة القول وعندئذ تكون البلاغة في الإسهاب وإشباع القول وإطالة الكلام... ولذا قال الأعرابي عندما سئل عن البلاغة: «البلاغة الإيجاز في غير عجز والإطناب في غير خطل»، وسأل معاوية صحار العبدي ما تعدون البلاغة فيكم؟ فقال صحار الإيجاز. قال معاوية وما الإيجاز؟ فأجاب: أن تجيب فلا تبطئ وتقول فلا تخطئ (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقال عبد الله بن المقفع: «البلاغة اسم جامع لمعان تجري في وجوه كثيرة، فمنها ما يكون في السكوت، ومنها ما يكون في الاستماع ومنها ما يكون في الإشارة ومنها ما يكون في الاحتجاج، ومنها ما يكون جوابًا ومنها ما يكون شعرًا ومنها ما يكون سجعًا وخطبًا ومنها ما يكون رسائل، فعامة ما يكون من هذه الأبواب الوحي فيها والإشارة إلى المعنى والإيجاز هو البلاغة، فأما الخطب بين السماطين وفي إصلاح ذات البين، فالإكثار في غير خطل والإطالة في غير إملال، وليكن في صدر كلامك دليل على حاجتك، كما أن خير أبيات الشعر البيت الذي إذا سمعت صدره عرفت قافيته، فقيل له: فإن مل السامع الإطالة التي ذكرت أنها حق ذلك الموقف؟ قال: إذا أعطيت كل مقام حقه، وقمت بالذي يجب من سياسة ذلك المقام، وأرضيت من يعرف حقوق الكلام، فلا تهتم لما فاتك من رضا الحاسد والعدو، فإنه لا يرضيهما شيء، وأما الجاهل فلست منه وليس منك، ورضا جميع الناس شيء لا تناله، وقد كان يقال: رضا الناس شيء لا ينال» (٣).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) البيان والتبيين ١/ ٩٦.(٢) الخطل بفتح الخاء والطاء الكلام الفاسد الكثير المضطرب، والمنطق الهراء الفاسد.. انظر لسان العرب مادة: خطل.(٣) البيان والتبيين ١/ ١١٥.</p></div></div>
+<div class="hal" id="hal-490" data-kitab="490"><span><i class="hal__t">Hlm. </i>491</span><button type="button" class="hal__pdf" data-pdf="491" aria-label="Lihat PDF asli untuk Hlm. 491" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد امتدحوا الإيجاز كثيرًا فقالوا: البلاغة إجاعة اللفظ وإشباع المعنى.... والبلاغة لمحة دالة.. والبلاغة كلمة تكشف عن البقية... ولعل السبب في هذا يرجع إلى أمية العرب، وإلى أنهم أمة صافية الذهن، دقيقة الحس، سريعة الفهم، فالعربي تكفيه الإشارة وتغنيه اللمحة وغير العربي يحتاج إلى الإطالة وإشباع القول، وبهذا علل الجاحظ إيجاز القرآن الكريم عند خطاب العرب والأعراب، والبسط والإطالة عند خطاب بني إسرائيل (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وهذا ما يفسر لنا أيضًا سر السؤال الذي وجه إلى ابن المقفع في قوله المذكور والذي ندرك منه رائحة الاعتراض على مدح الإطناب في موضعه وفي مقامه الذي اقتضاه: «فإن مل السامع الإطالة التي ذكرت أنها حق ذلك الموقف...».</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وبهذا يتضح لك أن للإيجاز مقامات تقتضيه، ومواضع تلائمه، كالحكم والأمثال والرسائل، كما أن للإطناب مقامات تقتضيه، ومواضع تلائمه، كالمدح والفخر والوعظ، وما يحسن فيه الإيجاز لا يحسن فيه الإطناب، وكذلك ما يحسن فيه الإطناب لا يحسن فيه الإيجاز، ومن مقامات الإيجاز مقامات الحذف التي عرفتها في باب المسند إليه والمسند ومتعلقات الفعل، كما أن من مقامات الإطناب تلك المقامات التي وقفت عليها عند دراستك لذكر المسند والمسند إليه ومتعلقات الفعل (٢).</p></div></div>
+<h3 class="sub" id="sub-109" lang="ar">الإيجاز معناه وأنواعه</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد عرفوا الإيجاز بأنه اندراج المعاني المتكاثرة تحت اللفظ القليل... أو عرض المعاني الكثيرة في ألفاظ قليلة مع الإبانة والإفصاح ليسهل تعلقها بالذهن وتذكرها عند الحاجة إليها في المناسبات المختلفة... وهو نوعان:</p></div></div>
+<h3 class="sub" id="sub-110" lang="ar">١ - إيجاز قصر</h3>
+<h3 class="sub" id="sub-111" lang="ar">٢ - إيجاز حذف</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) انظر الحيوان ١/ ٩٣.(٢) ارجع إلى الجزء الأول من هذا الكتاب.</p></div></div>
+<div class="hal" id="hal-491" data-kitab="491"><span><i class="hal__t">Hlm. </i>492</span><button type="button" class="hal__pdf" data-pdf="492" aria-label="Lihat PDF asli untuk Hlm. 492" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فإيجاز القصر هو الدلالة على المعاني الكثيرة بألفاظ قليلة، أي: تضمين العبارات القليلة القصيرة معاني كثيرة غزيرة دون أن يكون في تراكيبها لفظ محذوف.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما في قوله تعالى: ﴿ خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ وَأَعْرِضْ عَنِ الْجَاهِلِينَ ﴾ [الأعراف: ١٩٩]، فقد جمع في هذه الآية الكريمة جميع مكارم الأخلاق، لأن في «العفو» الصفح والإغضاء ومسامحة من أساء والرفق في كل الأمور، وفي الأمر بالعرف: صلة الأرحام ومنع اللسان عن الكذب والغيبة، وغض الطرف عن كل محرم، والقيام بمتطلبات الدعوة إلى الله عز وجل، وفي الإعراض عن الجهال: الصبر والحلم وكظم الغيظ... فهذه ألفاظ قليلة وقد فاضت معانيها إلى الغاية، وزادت عن الحد إلى غير نهاية.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقوله عز وجل: ﴿ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ وَيَخْشَ اللَّهَ وَيَتَّقْهِ فَأُولَئِكَ هُمُ الْفَائِزُونَ ﴾ [النور: ٥٢] أي: من يطع الله في الفرائض، ورسوله في السنن، ويخش الله فيما مضى من عمره، ويتقه فيما بقي من عمره، فقد فاز، والفائز من نجا من النار وأدخل الجنة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ورد أن عمر رضي الله عنه بينما هو قائم في مسجد النبي ﷺ إذا برجل من دهاقين الروم قائم على رأسه وهو يقول: أشهد ألا إله إلا الله وأن محمدًا رسول الله، فقال له عمر: ما شأنك، قال: أسلمت، قال: هل لهذا سبب؟ قال: نعم، إني قرأت التوراة والزبور والإنجيل وكثيرًا من كتب الأنبياء، وإني سمعت أسيرًا يقرأ آية من القرآن جمع فيها كل ما في الكتب المتقدمة، فعلمت أنه من عند الله فأسلمت، قال عمر: ما هذه الآية؟ فذكر الرجل الآية الكريمة، فقال عمر: قال النبي ﷺ: «أُوتِيتُ جَوَامِعَ الْكَلِمِ» (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن ذلك قوله تعالى: ﴿ أَلَا لَهُ الْخَلْقُ وَالْأَمْرُ ﴾ [الأعراف: ٥٤]، فقد دلت هذه الجملة من الآية الكريمة على استقصاء جميع الأشياء والشئون، حتى روي أن ابن عمر رضي الله عنهما قرأها فقال: «من بقي له شيء فليطلبه».</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) انظر الجامع لأحكام القرآن للقرطبي جـ ٢ ص ١٩٤... والحديث رواه مسلم في المساجد برقم [٥٢٣/٨] ودهاقين» جمع «دهقان» بكسر الدال وبضمها وهم: التجار.. انظر لسان العرب مادة دهق.</p></div></div>
+<div class="hal" id="hal-492" data-kitab="492"><span><i class="hal__t">Hlm. </i>493</span><button type="button" class="hal__pdf" data-pdf="493" aria-label="Lihat PDF asli untuk Hlm. 493" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله عز وجل: ﴿ أُولَئِكَ لَهُمُ الْأَمْنُ ﴾ [الأنعام: ٨٢]، فهذه الجملة يدخل تحتها كل أمر محبوب وينتفي بها كل صنوف المكاره...</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقوله تعالى: ﴿ انفِرُوا خِفَافًا وَثِقَالًا ﴾ [التوبة: ٤١]، فتلك ثلاث كلمات حوت معاني غزيرة، إذ شملت الأمر بالنفير العام للجهاد، وقطعت جميع الحجج والذرائع المعوقة عن الجهاد.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقوله عز وجل: ﴿ أَخْرَجَ مِنْهَا مَاءَهَا وَمَرْعَاهَا ﴾ [النازعات: ٣١]، فقد دلت هذه الآية الكريمة على جميع ما أخرج من الأرض قوتًا ومتاعا للناس وللدواب، من عشب وشجر وحطب ولباس ونار وماء وغير ذلك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وانظر إلى قوله عز من قائل في وصف إنهاء الطوفان: ﴿ وَقِيلَ يَا أَرْضُ ابْلَعِي مَاءَكِ وَيَا سَمَاءُ أَقْلِعِي وَغِيضَ الْمَاءُ وَقُضِيَ الْأَمْرُ وَاسْتَوَتْ عَلَى الْجُودِيِّ وَقِيلَ بُعْدًا لِّلْقَوْمِ الظَّالِمِينَ ﴾ [هود: ٤٤]، فقد قُصَّت القصة مستوعبة جميع الأحداث، مصورة كيف انتهى الطوفان، بحيث لم يخل بشيء من ذلك في أوجز عبارة وأخصر قول.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن المشهور في هذا الباب قوله تعالى: ﴿ وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ ﴾ [البقرة: ١٧٩]، إذ المراد به أن الإنسان إذا علم أنه متى قَتَلَ قُتِلَ كان ذلك داعيا قويا له إلى أن يكف عن القتل ولا يقدم عليه، فأوجب ذلك حياة الناس، فانظر كيف اندرجت المعاني المتكاثرة تحت هذه الألفاظ القليلة، وقد كان أوجز كلام قيل في هذا المعنى، قول العرب: «القتل أنفى للقتل»، ولكن الآية الكريمة بنظمها الدقيق المعجز، وبلاغتها السامية، فاقت هذا القول من وجوه متعددة أهمها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١ - فيما قالوه تكرار، والنظم الكريم لا تكرار فيه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢ - ليس كل قتل نافيًا للقتل، إذ لا ينفي القتل القتل إلا إذا كان على حكم القصاص، وهذا ما تفيده الآية الكريمة دون القول المذكور.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣ - في الآية الكريمة طباق لطيف بين القصاص والحياة... والضد يظهر حسنه الضد.</p></div></div>
+<h3 class="sub" id="sub-112" lang="ar">٤ - الآية الكريمة جعلت القصاص كالأصل للحياة وذلك بدخول</h3>
+<div class="hal" id="hal-493" data-kitab="493"><span><i class="hal__t">Hlm. </i>494</span><button type="button" class="hal__pdf" data-pdf="494" aria-label="Lihat PDF asli untuk Hlm. 494" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حرف «في» عليه، وفي ذلك مالا يخفى من المبالغة الجميلة والتخييل العجيب، إذ جعل الفناء محلاً للحياة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٥ - الآية الكريمة أوجز من القول المذكور.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٦ - في تنكير كلمة «حياة» إفادة للتعظيم والتنويع فهي حياة عظيمة فريدة، تمتاز عن حياة البشر وكأنها حياة مستقلة خاصة، إذ إن من هم بالقتل عندما يعلم أنه سيقتص منه فإنه يرتدع وينزجر ويكف عن القتل فيسلم صاحبه ويسلم هو فيحيا ويحيا صاحبه. وتلك حياة عظيمة فريدة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٧ - خلو الآية الكريمة من لفظ «القتل» المشعر بالوحشة والذي جاء وتكرر في القول المذكور، وإشارتها إلى تحقيق العدل بلفظ القصاص.. وتلك الإشارة لا توجد في القول المأثور.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن شواهد إيجاز القصر أيضًا قوله تعالى: ﴿ مَا لِلظَّالِمِينَ مِنْ حَمِيمٍ وَلَا شَفِيعٍ يُطَاعُ ﴾ [غافر: ١٨]، أي: لا شفاعة ولا طاعة، فليس المراد نفي طاعة الشفيع بمعنى أن الشفيع يوجد، ولكن لا يطاع، بل المراد أنه لا شفاعة أصلاً.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قول امرئ القيس:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">عَلَى اللَّاحِبِ لَا يُهْتَدَى بِمَنَارِهِ</p><p class="ar" lang="ar">إِذَا سَافَهُ الْعَوْدُ النَّبَاطِيُّ جَرْجَرَا (١)</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أي: لا منارة ولا اهتداء.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقول أوس بن حجر:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">لَا يُفْزِعُ الْأَرْنَبَ أَهْوَالُهَا</p><p class="ar" lang="ar">وَلَا تَرَى الضَّبَّ بِهَا يَنْجَحِرْ (٢)</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أي: لا أرنب ولا فزع، ولا ضب ولا انجحار... ففي هذه الشواهد قد انتفى القيد والمقيد معا، والنفي موجه إلى القيد فقط، ولا يخفى عليك ما في هذا من إيجاز...</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) اللاحب الطريق، والمنار: العلامة تجعل على الطريق. وسافه شمه والعود: بفتح العين وسكون الواو: الجمل المسن، والنباطي: الضخم، وجرجر: ضج ورغا، وإنما يرغو الجمل لمعرفته ببعد الطريق ومشقة السير فيه.(٢) ينجحر: يدخل جحره... يصف مفازة بأنها غير مطروقة للناس.</p></div></div>
+<div class="hal" id="hal-494" data-kitab="494"><span><i class="hal__t">Hlm. </i>495</span><button type="button" class="hal__pdf" data-pdf="495" aria-label="Lihat PDF asli untuk Hlm. 495" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وانظر إلى قول الشريف الرضي:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">مَالُوا إِلَى شُعَبِ الرِّحَالِ وَأَسْنَدُوا</p><p class="ar" lang="ar">أَيْدِي الطِّعَانِ إِلَى قُلُوبٍ تَخْفِقُ (١)</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فإنه لما أراد أن يصف هؤلاء القوم بالشجاعة في أثناء وصفهم بالغرام، عبر عن ذلك بقوله: وأسندوا أيدي الطعان إلى قلوب تخفق.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقول أبي تمام:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">وَظَلَمْتَ نَفْسَكَ طَالِبًا إِنْصَافَهَا</p><p class="ar" lang="ar">فَعَجِبْتُ مِنْ مَظْلُومَةٍ لَمْ تُظْلَمِ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد أكرهتها على تحمل الصعاب والمشاق فأنصفتها بذلك، إذ أوجبت لها مجدا عريقا وذكرًا حسنًا، فصارت بهذا الصنيع مظلومة لم تظلم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقول السموأل بن غريض بن عاديا الأزدي:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">وَإِنْ هُوَ لَمْ يَحْمِلْ عَنِ النَّفْسِ ضَيْمَهَا</p><p class="ar" lang="ar">فَلَيْسَ إِلَى حُسْنِ الثَّنَاءِ سَبِيلُ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فقد جمع في البيت الصفات الحميدة من شجاعة وسماحة ومروءة ونجدة وإغاثة ملهوف وغير ذلك، لأن هذه الصفات من ضيم النفس، إذ تجد بحملها مشقة وعناء.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ورسول الله ﷺ قد أوتي جوامع الكلم، والكلام الجامع هو الذي تتكاثر معانيه وتقل ألفاظه، ومن جوامع كلمه عليه الصلاة والسلام قوله: «لَا ضَرَرَ وَلَا ضِرَارَ» (٢)، وقوله للأنصار: «إِنَّكُمْ لَتَكْثُرُونَ عِنْدَ الفَزَعِ وَتَقِلُّونَ عِنْدَ الطَّمَعِ» (٣)، وقوله: «إِنَّ اللَّهَ لَا يَمَلُّ حَتَّى تَمَلُّوا» (٤)، وقوله: «لَيْسَ الْوَاصِلُ بِالْمُكَافِئِ وَلَكِنَّ الْوَاصِلَ الَّذِي إِذَا قُطِعَتْ رَحِمُهُ وَصَلَهَا» (٥)، فتلك ألفاظ قليلة حوت معاني كثيرة يطول بك القول لوصفها والإحاطة بها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) شعب الرحال بضم الشين خشبها، وميلهم إليها إشارة إلى ركوبهم عليها ورحيلهم للقتال. وتخفق: تضطرب لفراق الأحبة.(٢) رواه ابن ماجة في الأحكام برقم (١٧ / ٢٣٤١).(٣) رواه العسكري في الأمثال... انظر كنز العمال رقم (٣٧٩٥١).(٤) رواه مسلم في كتاب صلاة المسافرين برقم (٢٢١/ ٧٨٥).(٥) رواه البخاري في كتاب الأدب برقم: [٥٩٩١].</p></div></div>
+<div class="hal" id="hal-495" data-kitab="495"><span><i class="hal__t">Hlm. </i>496</span><button type="button" class="hal__pdf" data-pdf="496" aria-label="Lihat PDF asli untuk Hlm. 496" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن إيجاز الكتاب ما كتبه عمرو بن مسعدة إلى المأمون بشأن رجل يهمه أمره إذ قال في كتابه: «كتابي إليك كتاب واثق بمن كتب إليه معني بمن كتب له، ولن يضيع بين الثقة والعناية حامله».</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وما كتبه إليه أيضًا يحثه على تعجيل أرزاق الجند: «كتابي إلى أمير المؤمنين، ومن قبلي من قواده وسائر أجناده في الانقياد والطاعة على أحسن ما يكون جند تأخرت أرزاقهم، وانقياد كافة تراخت أعطياتهم، فاختلت لذلك أحوالهم، والتاثت معه أمورهم» (١)، ولا يخفى عليك ما في الكتابين من معانٍ غزيرة صيغت في عبارات قليلة وألفاظ موجزة، وهذا هو شأن إيجاز القصر الذي يجري مجرى الأمثال في الجمع بين الإيجاز والجمال والقوة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">انظر إلى ما كتبه جعفر بن يحيى البرمكي إلى أحد عماله، ووقع به في كتاب رجل شكا إليه ذاك العامل من عماله: «قد كثر شاكوك وقل شاكروك فإما اعتدلت وإما اعتزلت».</p></div></div>
+<h3 class="sub" id="sub-113" lang="ar">إيجاز الحذف</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أما إيجاز الحذف، فقد عرفه البلاغيون بأنه: التعبير عن المعاني الكثيرة في عبارة قليلة، وذلك بحذف شيء من التركيب مع عدم الإخلال بتلك المعاني، ولابد في كل حذف من وجود أمرين: داع يدعو إليه، وقرينة تدل على المحذوف وترشد إليه وتعينه... والمحذوف إما أن يكون جزء كلمة، أو كلمة أو جملة أو أكثر من جملة.... وإليك بيان ذلك.</p></div></div>
+<h3 class="sub" id="sub-114" lang="ar">حذف جزء الكلمة</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما في قوله تعالى: ﴿ قَالَتْ أَنَّى يَكُونُ لِي غُلَامٌ وَلَمْ يَمْسَسْنِي بَشَرٌ وَلَمْ أَكُ بَغِيًّا ﴾ [مريم: ٢٠]، فالأصل: ولم أكن بغيا، وقد حذفت النون تخفيفًا... وقوله عز وجل: ﴿ وَنَادَوْا يَا مَالِكُ لِيَقْضِ عَلَيْنَا رَبُّكَ قَالَ إِنَّكُم مَّاكِثُونَ ﴾ [الزخرف: ٧٧]، في قراءة من قرأ بترخيم المنادى: «يا مال» والأصل: يا مالك، فحذفت الكاف من: «مالك» للدلالة على ما هم فيه من ألم وعذاب وضيق وحزن.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) التاثت معه أمورهم أي: اختلطت، يقال: التاث عليه الأمر أي: اختلط والتبس.</p></div></div>
+<div class="hal" id="hal-496" data-kitab="496"><span><i class="hal__t">Hlm. </i>497</span><button type="button" class="hal__pdf" data-pdf="497" aria-label="Lihat PDF asli untuk Hlm. 497" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قول لبيد:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">دَرَسَ الْمَنَا بِمُتَالِعٍ فَأَبَانِ</p><p class="ar" lang="ar">بِالْحِبْسِ بَيْنَ الْبِيدِ وَالسُّوبَانِ (١)</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد: درس المنازل..</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قول علقمة بن عبدة:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">كَأَنَّ إِبْرِيقَهُمْ ظَبْيٌ عَلَى شَرَفٍ</p><p class="ar" lang="ar">مُقَدَّمٌ بِسَبَا الْكَتَّانِ مَلْثُومُ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد بسبائب الكتان....</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقول الحارث الجرمي:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">قَوْمِي هُمُ قَتَلُوا أُمَيْمَ أَخِي</p><p class="ar" lang="ar">فَإِذَا رَمَيْتُ يُصِيبُنِي سَهْمِي</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد يا أميمة، فحذف حرف النداء، ورخم المنادى فحذف منه التاء...</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وارجع إلى باب المسند إليه في الجزء الأول من هذا الكتاب لتقف على الأسرار البلاغية الكامنة وراء الحذف في هذه الشواهد.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حذف الكلمة وله صور كثيرة أهمها:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١ - حذف الحروف، كحذف همزة الاستفهام في قوله تعالى: ﴿ مَّثَلُ الْجَنَّةِ الَّتِي وُعِدَ الْمُتَّقُونَ فِيهَا أَنْهَارٌ مِّن مَّاءٍ غَيْرِ آسِنٍ وَأَنْهَارٌ مِّن لَّبَنٍ لَّمْ يَتَغَيَّرْ طَعْمُهُ وَأَنْهَارٌ مِّنْ خَمْرٍ لَّذَّةٍ لِّلشَّارِبِينَ وَأَنْهَارٌ مِّنْ عَسَلٍ مُّصَفًّى وَلَهُمْ فِيهَا مِن كُلِّ الثَّمَرَاتِ وَمَغْفِرَةٌ مِّن رَّبِّهِمْ كَمَنْ هُوَ خَالِدٌ فِي النَّارِ ﴾ [محمد: ١٥]، إذ المراد: أمثل الجنة التي وعد المتقون كمن هو خالد في النار...؟ فحذفت الهمزة وفي حذفها زيادة تصوير لعناد المعاندين ومكابرة المكابرين الذين يسوون بين الحق والباطل وبين من يتمسك بالبينة ومن يتبع هواه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">يقول الزمخشري: «فإن قلت: ما معنى قوله تعالى: ﴿ مَّثَلُ الْجَنَّةِ الَّتِي وُعِدَ الْمُتَّقُونَ</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) متالع جبل بناحية البحرين بين السَّوْدَة والأحساء وفي سفح هذا الجبل عين يسيح ماؤها يقال لها: عين متالع، وأبان والحبس والبيد والسوبان أماكن.. انظر لسان العرب: مادة: تلع.</p></div></div>
+<div class="hal" id="hal-497" data-kitab="497"><span><i class="hal__t">Hlm. </i>498</span><button type="button" class="hal__pdf" data-pdf="498" aria-label="Lihat PDF asli untuk Hlm. 498" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فِيهَا أَنْهَارٌ مِّن مَّاءٍ غَيْرِ آسِنٍ وَأَنْهَارٌ مِّن لَّبَنٍ لَّمْ يَتَغَيَّرْ طَعْمُهُ وَأَنْهَارٌ مِّنْ خَمْرٍ لَّذَّةٍ لِّلشَّارِبِينَ وَأَنْهَارٌ مِّنْ عَسَلٍ مُّصَفًّى وَلَهُمْ فِيهَا مِن كُلِّ الثَّمَرَاتِ وَمَغْفِرَةٌ مِّن رَّبِّهِمْ كَمَنْ هُوَ خَالِدٌ فِي النَّارِ ﴾ [محمد: ١٥].</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">قلت: هو كلام في صورة الإثبات ومعنى النفي والإنكار، لانطوائه تحت حكم كلام مصدر بحرف الإنكار ودخوله في حيزه وانخراطه في سلكه، وهو قوله تعالى: ﴿ أَفَمَن كَانَ عَلَى بَيِّنَةٍ مِّن رَّبِّهِ كَمَن زُيِّنَ لَهُ سُوءُ عَمَلِهِ ﴾، فكأنه قيل: أمثل الجنة كمن هو خالد في النار؟ أي: كمثل جزاء من هو خالد في النار، فإن قلت: فلم عري من حرف الإنكار وما فائدة التعرية؟ قلت: تعريته من حرف الإنكار فيها زيادة تصوير لمكابرة من يسوي بين المتمسك بالبينة والتابع لهواه، وأنه بمنزلة من يثبت التسوية بين الجنة التي تجري فيها تلك الأنهار، وبين النار التي يُسقى أهلها الحميم...» (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله تعالى: ﴿ وَتِلْكَ نِعْمَةٌ تَمُنُّهَا عَلَيَّ أَنْ عَبَّدتَّ بَنِي إِسْرَائِيلَ ﴾ [الشعراء: ٢٢]، إذ المراد أو تلك نعمة..؟ وقوله عز وجل: ﴿ وَإِذِ ابْتَلَى إِبْرَاهِيمَ رَبُّهُ بِكَلِمَاتٍ فَأَتَمَّهُنَّ قَالَ إِنِّي جَاعِلُكَ لِلنَّاسِ إِمَامًا قَالَ وَمِن ذُرِّيَّتِي ﴾ [البقرة: ١٢٤]، أي: أو من ذريتي؟ فحذفت الهمزة في الموضعين (٢).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وكحذف «لا» النافية كما في قوله تعالى: ﴿ قَالُوا تَاللَّهِ تَفْتَأُ تَذْكُرُ يُوسُفَ حَتَّى تَكُونَ حَرَضًا أَوْ تَكُونَ مِنَ الْهَالِكِينَ ﴾ [يوسف: ٨٥]، أي: لا تفتأ... وكحذف حرف النداء كما في الآية الكريمة: ﴿ يُوسُفُ أَعْرِضْ عَنْ هَذَا ﴾ [يوسف: ٢٩]، وكما في بيت الحارث الجرمي:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">قَوْمِي هُمُ قَتَلُوا أُمَيْمَ أَخِي</p><p class="ar" lang="ar">فَإِذَا رَمَيْتُ يُصِيبُنِي سَهْمِي</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إذ المراد: يا يوسف أعرض... يا أميمة. فحذف حرف النداء (٣).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٢ - حذف المسند إليه أو المسند أو أحد متعلقات الفعل كالمفعول والحال والجار والمجرور على نحو ما مر بك في تلك الأبواب.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٣ - حذف المضاف، كما في قوله تعالى: ﴿ وَسْئَلِ الْقَرْيَةَ الَّتِي كُنَّا فِيهَا وَالْعِيرَ الَّتِي أَقْبَلْنَا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) الكشاف ٥٣٣/٣.(٢) ارجع إلى أسرار هذا الحذف في رسالتنا الحذف في ضوء أساليب القرآن.(٣) ارجع إلى باب المسند إليه في الجزء الأول من هذا الكتاب؛ لتقف على أسرار الحذف في هذه الشواهد.</p></div></div>
+<div class="hal" id="hal-498" data-kitab="498"><span><i class="hal__t">Hlm. </i>499</span><button type="button" class="hal__pdf" data-pdf="499" aria-label="Lihat PDF asli untuk Hlm. 499" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">فِيهَا ﴾ [يوسف: ٨٢]، أي أهل القرية وأصحاب العير، فحذف المضاف في الموضعين، وحذفه يشير إلى شهرة السرقة وذيوعها وكأنهم يريدون أن أمر سرقته قد اشتهر وذاع إلى حد أنك لو سألت الجمادات لأجابت، ولو سألت الحيوانات لنطقت وأخبرت.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله تعالى: ﴿ وَمَثَلُ الَّذِينَ كَفَرُوا كَمَثَلِ الَّذِي يَنْعِقُ بِمَا لَا يَسْمَعُ إِلَّا دُعَاءً وَنِدَاءً ﴾ [البقرة: ١٧١]، إذ المراد: ومثل داعي الذين كفروا كمثل الذي ينعق بما لا يسمع إلا دعاء ونداء، فحذف المضاف وهو «داعي» رفعا لشأنه وتنزيها له عن أن يقرن في اللفظ بهذا الذي ينعق بما لا يسمع، وأن يضاف إلى الذين كفروا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وحذف المضاف يقع كثيرًا في النظم الكريم على نحو ما ترى في الآيات الكريمة: ﴿ وَجَاهِدُوا فِي اللَّهِ حَقَّ جِهَادِهِ ﴾ [الحج: ٧٨] أي: في سبيل الله، ﴿ حَرَّمْنَا عَلَيْهِمْ طَيِّبَاتٍ أُحِلَّتْ لَهُمْ ﴾ [النساء: ١٦٠] أي: تناول طيبات ﴿ لِّمَن كَانَ يَرْجُو اللَّهَ وَالْيَوْمَ الْآخِرَ ﴾ [الأحزاب: ٢١] أي: رحمة الله ونعيم اليوم الآخر، ﴿ إِنَّا نَخَافُ مِن رَّبِّنَا يَوْمًا عَبُوسًا قَمْطَرِيرًا ﴾ [الإنسان: ١٠] أي: من عذابه، وقد ظهرت هذه المضافات في الآية الكريمة ﴿ وَيَرْجُونَ رَحْمَتَهُ وَتَخَافُونَ عَذَابَهُ إِنَّ عَذَابَ رَبِّكَ كَانَ مَحْذُورًا ﴾ [الإسراء: ٥٧]، ومنه قوله عز وجل: ﴿ فَذَلِكُنَّ الَّذِي لُمْتُنَّنِي فِيهِ ﴾ [يوسف: ٣٢] أي: في مراودته.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٤ - حذف المضاف إليه: كما في قوله تعالى: ﴿ وَوَاعَدْنَا مُوسَى ثَلَاثِينَ لَيْلَةً وَأَتْمَمْنَاهَا بِعَشْرٍ ﴾ [الأعراف: ١٤٢]، أي: بعشر ليال، وقوله تعالى: ﴿ لِلَّهِ الْأَمْرُ مِن قَبْلُ وَمِن بَعْدُ ﴾ [الروم: ٤]، أي: من قبل الغلب ومن بعده.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٥ - حذف الموصوف: كما في قوله تعالى: ﴿ وَعِندَهُمْ قَاصِرَاتُ الطَّرْفِ أَتْرَابٌ ﴾ [ص: ٥٢]، أي: حور قاصرات الطرف... وقوله عز وجل: ﴿ إِلَّا مَن تَابَ وَآمَنَ وَعَمِلَ صَالِحًا فَأُولَئِكَ يَدْخُلُونَ الْجَنَّةَ وَلَا يُظْلَمُونَ شَيْئًا ﴾ [مريم: ٦٠]، أي: وعمل عملاً صالحا فاكتفى بالصفة عن الموصوف في الآيتين لذيوع الصفة وشهرتها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قول سحيم بن وثيل:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">أَنَا ابْنُ جَلَا وَطَلَّاعُ الثَّنَايَا</p><p class="ar" lang="ar">مَتَى أَضَعِ الْعِمَامَةَ تَعْرِفُونِي (١)</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) الثنايا: مفردها ثنية، وهي الطريق في أعلى الجبل أو الطريق الصعب، والمراد بالعمامة عمامة الحرب أي: البيضة، وجلا: منكشف الأمر، أو كاشف الأمور... والمعنى: أنا ابن رجل معروف لا يخفى على أحد، أو أنا ابن رجل شجاع يكشف الكرب، ويبدد الخوف، ويقتحم الشدائد والأهوال.</p></div></div>
+<div class="hal" id="hal-499" data-kitab="499"><span><i class="hal__t">Hlm. </i>500</span><button type="button" class="hal__pdf" data-pdf="500" aria-label="Lihat PDF asli untuk Hlm. 500" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حذف الموصوف وتقديره: أنا ابن رجل جلا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٦ - حذف الصفة: كما في قوله تعالى: ﴿ أَمَّا السَّفِينَةُ فَكَانَتْ لِمَسَاكِينَ يَعْمَلُونَ فِي الْبَحْرِ فَأَرَدتُّ أَنْ أَعِيبَهَا وَكَانَ وَرَاءَهُم مَّلِكٌ يَأْخُذُ كُلَّ سَفِينَةٍ غَصْبًا ﴾ [الكهف: ٧٩]، أي: يأخذ كل سفينة صالحة، بدليل قوله: «فأردت أن أعيبها...»، والحذف هنا يوحي بجبروت هذا الملك وإفساده وشدة ظلمه، فغصبه ليس قاصرًا على الصالح من السفن، بل تجاوزه إلى غير الصالح، فغايته هي الغصب والاستيلاء، بهذا ينبئ الحذف فالحذف في الآية يصور مدى طغيان الملك وشدة ظلمه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٧ - حذف القسم كقوله تعالى: ﴿ لَئِن لَّمْ يَنتَهِ الْمُنَافِقُونَ وَالَّذِينَ فِي قُلُوبِهِم مَّرَضٌ وَالْمُرْجِفُونَ فِي الْمَدِينَةِ لَنُغْرِيَنَّكَ بِهِمْ ثُمَّ لَا يُجَاوِرُونَكَ فِيهَا إِلَّا قَلِيلًا ﴾ [الأحزاب: ٦٠]، أي تالله لئن لم ينته، وقوله عز وجل: ﴿ وَلَئِن لَّمْ يَفْعَلْ مَا آمُرُهُ لَيُسْجَنَنَّ وَلَيَكُونًا مِّنَ الصَّاغِرِينَ ﴾ [يوسف: ٣٢]، أي: والله لئن لم يفعل، فحذف القسم في الموضعين.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٨ - حذف جواب القسم كقوله تعالى: ﴿ وَالْفَجْرِ وَلَيَالٍ عَشْرٍ وَالشَّفْعِ وَالْوَتْرِ وَاللَّيْلِ إِذَا يَسْرِ هَلْ فِي ذَلِكَ قَسَمٌ لِّذِي حِجْرٍ ﴾ [الفجر: ١ - ٥]، فقد حذف جواب القسم لوضوحه وبيانه وتقديره لتبعثن.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">٩ - حذف الشرط: كقوله تعالى: ﴿ قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ ﴾ [آل عمران: ٣١]، وقوله عز وجل: ﴿ فَاتَّبِعْنِي أَهْدِكَ صِرَاطًا سَوِيًّا ﴾ [مريم: ٤٣]، والتقدير: فإن تتبعوني يحببكم الله، فإن تتبعني أهدك صراطا سويا.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١٠ - حذف جواب الشرط: كما في قوله تعالى: ﴿ وَإِذَا قِيلَ لَهُمُ اتَّقُوا مَا بَيْنَ أَيْدِيكُمْ وَمَا خَلْفَكُمْ لَعَلَّكُمْ تُرْحَمُونَ ﴾ [يس: ٤٥]، أي: أعرضوا بدليل قوله تعالى بعده: ﴿ وَمَا تَأْتِيهِم مِّنْ آيَةٍ مِّنْ آيَاتِ رَبِّهِمْ إِلَّا كَانُوا عَنْهَا مُعْرِضِينَ ﴾ [يس: ٤٦]، وهذا الحذف يشير إلى أنه كان ينبغي لهم أن يستجيبوا ويقبلوا النصح فيحققوا التقوى، وما كان ينبغي لهم الإعراض والتولي وكأن طيه من اللفظ ينبئ بضرورة التخلي عنه وإسقاطه من الأذهان والمسارعة إلى قبول الهداية والحق.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله تعالى: ﴿ وَسِيقَ الَّذِينَ اتَّقَوْا رَبَّهُمْ إِلَى الْجَنَّةِ زُمَرًا حَتَّى إِذَا جَاءُوهَا وَفُتِحَتْ أَبْوَابُهَا وَقَالَ لَهُمْ خَزَنَتُهَا سَلَامٌ عَلَيْكُمْ طِبْتُمْ فَادْخُلُوهَا خَالِدِينَ ﴾ [الزمر: ٧٣]، والتقدير:</p></div></div>
+<div class="hal" id="hal-500" data-kitab="500"><span><i class="hal__t">Hlm. </i>501</span><button type="button" class="hal__pdf" data-pdf="501" aria-label="Lihat PDF asli untuk Hlm. 501" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">حتى إذا جاءوها وقد فتحت أبوابها سعدوا وحصلوا على النعيم المقيم الذي لا يحيط به الوصف... وبلاغة حذف الجواب هنا تكمن في أن النفس تذهب في تقدير الجواب المحذوف كل مذهب، وفي الدلالة على أنه شيء لا يحيط به الوصف ولا تتسع له العبارة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وتأمل ما وراء هذه الواو ﴿ وَفُتِحَتْ ﴾ من تكريم وتشريف لهؤلاء الذين اتقوا فقد فتحت لهم أبواب الجنة قبل أن يأتوها تكريما لهم وتعظيما لشأنهم، ثم انظر إلى وصف الذين كفروا ﴿ وَسِيقَ الَّذِينَ كَفَرُوا إِلَى جَهَنَّمَ زُمَرًا حَتَّى إِذَا جَاءُوهَا فُتِحَتْ أَبْوَابُهَا ﴾ [الزمر: ٧١]، تجد أن «فتحت» قد جاءت بدون واو فهي جواب «إذا»، ومجيئها بدون الواو يشير إلى شدة مواجهتهم بالعذاب، فأبواب جهنم مغلقة لا تفتح إلا عند وصولهم إليها إذا جاءوها فتحت أبوابها حتى تواجههم بصنوف العذاب وألوان الآلام... أما أبواب الجنة فتفتح قبل مجيء الذين اتقوا وتجهز قبل وصولهم وتعد، تكريما لهم وتعظيمًا ﴿ جَنَّاتِ عَدْنٍ مُّفَتَّحَةً لَّهُمُ الْأَبْوَابُ ﴾ [ص: ٥٠].</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله تعالى: ﴿ وَلَوْ تَرَى إِذِ الْمُجْرِمُونَ نَاكِسُو رُءُوسِهِمْ عِندَ رَبِّهِمْ ﴾ [السجدة: ١٢]، وقوله جل وعلا: ﴿ وَلَوْ تَرَى إِذْ وُقِفُوا عَلَى النَّارِ ﴾ [الأنعام: ٢٧]، والتقدير: لرأيت أمرا عظيما وشيئا فظيعا لا يحيط به الوصف، فقد حذف الجواب هنا قصدًا إلى إفادة التهويل والتفظيع... ومنه قوله تعالى: ﴿ وَلَوْ أَنَّ قُرْآنًا سُيِّرَتْ بِهِ الْجِبَالُ أَوْ قُطِّعَتْ بِهِ الْأَرْضُ أَوْ كُلِّمَ بِهِ الْمَوْتَى بَل لِّلَّهِ الْأَمْرُ جَمِيعًا ﴾ [الرعد: ٣١]، والتقدير: لو أن قرآنا أوتي تلك القوة الخارقة لكان هذا القرآن، فحذف جواب «لو» هنا يشير إلى وضوحه وظهوره، وانصراف الأذهان إليه بمجرد التلفظ بجملة الشرط.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١١ - حذف جواب الاستفهام: كما في قوله تعالى: ﴿ وَإِذَا مَا أُنزِلَتْ سُورَةٌ نَّظَرَ بَعْضُهُمْ إِلَى بَعْضٍ هَلْ يَرَاكُم مِّنْ أَحَدٍ ثُمَّ انصَرَفُوا صَرَفَ اللَّهُ قُلُوبَهُمْ ﴾ [التوبة: ١٢٧]، فحذف جواب الاستفهام وتقديره لا يرانا من أحد بدليل قوله «ثم انصرفوا»، لأنهم لم ينصرفوا إلا بعد تأكدهم من أنه لا أحد يراهم والحذف هنا يشير إلى حذرهم ومبلغ حيطتهم وكأن الجواب كان همسًا في الآذان وليس أصواتا مسموعة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">١٢ - حذف المعطوف كما في الآية الكريمة: ﴿ لَا يَسْتَوِي مِنكُم مَّنْ أَنفَقَ مِن قَبْلِ</p></div></div>
+<div class="hal" id="hal-501" data-kitab="501"><span><i class="hal__t">Hlm. </i>502</span><button type="button" class="hal__pdf" data-pdf="502" aria-label="Lihat PDF asli untuk Hlm. 502" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">الْفَتْحِ وَقَاتَلَ أُولَئِكَ أَعْظَمُ دَرَجَةً مِّنَ الَّذِينَ أَنفَقُوا مِن بَعْدُ وَقَاتَلُوا ﴾ [الحديد: ١٠]، أي: لا يستوي منكم من أنفق من قبل الفتح وقاتل ومن أنفق من بعده وقاتل، فحذف المعطوف لدلالة ما بعده عليه.</p></div></div>
+<h3 class="sub" id="sub-115" lang="ar">حذف الجملة</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والمراد بالجملة الجملة التامة التي تفيد معنى مستقلاً، ولا تكون جزءا من كلام آخر ولهذا لا يدخل فيها حذف المعطوف وحذف الأجوبة: جواب القسم وجواب الشرط وجواب الاستفهام؛ لأنها وإن كانت جملاً فهي لا تستقل بالإفادة، بل هي جزء من كلام آخر ومن أجل هذا عددناها من قبيل حذف الكلمة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن حذف الجملة قوله تعالى: ﴿ وَإِذِ اسْتَسْقَى مُوسَى لِقَوْمِهِ فَقُلْنَا اضْرِب بِّعَصَاكَ الْحَجَرَ فَانفَجَرَتْ مِنْهُ اثْنَتَا عَشْرَةَ عَيْنًا ﴾ [البقرة: ٦٠]، والتقدير: فضرب فانفجرت، فحذفت جملة ضرب، وحذفها يشير إلى سرعة إجابة موسى عليه السلام وامتثاله لأمر ربه، كما ينبئ بأن الانفجار مسبب عن الأمر "اضْرِبْ" وما صنعه موسى إنما هو أخذ بالأسباب، ومنه قوله تعالى: ﴿ لِيُحِقَّ الْحَقَّ وَيُبْطِلَ الْبَاطِلَ وَلَوْ كَرِهَ الْمُجْرِمُونَ ﴾ [الأنفال: ٨]، والمعنى: فعل ما فعل من كسر قوة أهل الشرك، ليحق الحق ويبطل الباطل... وقوله جل وعلا ﴿ وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ ﴾ [البقرة: ١٢٧]، فحذفت جملة الحال والتقدير: وإذ يرفع إبراهيم القواعد من البيت وإسماعيل وهما يقولان ربنا تقبل منا... وهذا الحذف يصور لنا المشهد حيا بارزا، مشاهدًا، وكأنك تراه الآن، وتشاهد إبراهيم وإسماعيل وهما يدعوان بهذا الدعاء، فكم في الانتقال هنا من الخبر إلى الدعاء من إعجاز فني بارز يكمن وراء طي جملة الحال (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قول أبي الطيب:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">أَتَى الزَّمَانَ بَنُوهُ فِي شَبِيبَتِهِ</p><p class="ar" lang="ar">فَسَرَّهُمْ وَأَتَيْنَاهُ عَلَى الْهَرَمِ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) التصوير الفني في القرآن ص ٥٩.</p></div></div>
+<div class="hal" id="hal-502" data-kitab="502"><span><i class="hal__t">Hlm. </i>503</span><button type="button" class="hal__pdf" data-pdf="503" aria-label="Lihat PDF asli untuk Hlm. 503" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أي: وأتيناه على الهرم فساءنا، والحذف في البيت ينبئ بما في نفس الشاعر من ضيق وألم لإدبار الدهر عنه وعدم تحقيق ما يصبو إليه من مجد وآمال.</p></div></div>
+<h3 class="sub" id="sub-116" lang="ar">حذف أكثر من جملة</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">كما في قوله تعالى: ﴿ وَقَالَ الَّذِي نَجَا مِنْهُمَا وَادَّكَرَ بَعْدَ أُمَّةٍ أَنَا أُنَبِّئُكُم بِتَأْوِيلِهِ فَأَرْسِلُونِ يُوسُفُ أَيُّهَا الصِّدِّيقُ أَفْتِنَا فِي سَبْعِ بَقَرَاتٍ ﴾ [يوسف ٤٥، ٤٦]، والتقدير: فأرسلون إلى يوسف لأستعبره الرؤيا فأرسلوه إليه فأتاه وقال له: يوسف أيها الصديق أفتنا....</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومثله قوله تعالى: ﴿ فَقُلْنَا اذْهَبَا إِلَى الْقَوْمِ الَّذِينَ كَذَّبُوا بِآيَاتِنَا فَدَمَّرْنَاهُمْ تَدْمِيرًا ﴾ [الفرقان: ٣٦]، والتقدير: فأتياهم فأبلغاهم الرسالة فكذبوهما فدمرناهم. ويكثر هذا الحذف في النظم القرآني ولا سيما في ميدان القصص حيث يستغنى عن التفصيلات الجزئية التي تعرف من السياق وتفهم من قرائن الأحوال، ففي تخطيها وصول إلى العناصر الجوهرية في القصة وإبرازها جلية واضحة، وفي تخطيها أيضا حث للمخاطب وتحريك لمشاعره، وإثارة لذهنه، إذ يفهم تلك المشاهد المطوية ويقف عليها من خلال تأمله وتدبره أحداث القصة ووقوفه على سياقها وقرائن أحوالها.</p></div></div>
+<h3 class="sub" id="sub-117" lang="ar">قرائن الحذف</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ولابد في الحذف من قرينة تدل على المحذوف وترشد إليه وتعينه، وإلا كان الحذف عبثًا وضربا من الهذيان، إذ يؤدي عندئذ إلى اللبس والإشكال وعدم فهم المراد... وقرائن الحذف قد تكون لفظية، كما في قوله تعالى: ﴿ وَاللَّائِي يَئِسْنَ مِنَ الْمَحِيضِ مِن نِّسَائِكُمْ إِنِ ارْتَبْتُمْ فَعِدَّتُهُنَّ ثَلَاثَةُ أَشْهُرٍ وَاللَّائِي لَمْ يَحِضْنَ وَأُولَاتُ الْأَحْمَالِ أَجَلُهُنَّ أَن يَضَعْنَ حَمْلَهُنَّ ﴾ [الطلاق: ٤]، فقد حذف خبر «اللائي لم يحضن»، لدلالة خبر «اللائي يئسن» عليه وتعيينه له، والتقدير: واللائي لم يحضن فعدتهن ثلاثة أشهر كذلك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن ذلك قوله جل وعلا: ﴿ وَإِن يُكَذِّبُوكَ فَقَدْ كُذِّبَتْ رُسُلٌ مِّن قَبْلِكَ وَإِلَى اللَّهِ تُرْجَعُ الْأُمُورُ ﴾ [فاطر: ٤]، فقد حذف جواب الشرط وتقديره، وإن يكذبوك فاصبر، ودلت عليه القرينة اللفظية وهي: «فقد كذبت رسل من قبلك» فهذه الجملة ليست</p></div></div>
+<div class="hal" id="hal-503" data-kitab="503"><span><i class="hal__t">Hlm. </i>504</span><button type="button" class="hal__pdf" data-pdf="504" aria-label="Lihat PDF asli untuk Hlm. 504" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هي جواب الشرط وإنما هي علة لجواب الشرط المحذوف، وفيها تسلية لرسول الله كي لا يحزن لإعراضهم وتكذيبهم.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنها قوله تعالى: ﴿ لَا يَسْتَوِي مِنكُم مَّنْ أَنفَقَ مِن قَبْلِ الْفَتْحِ وَقَاتَلَ أُولَئِكَ أَعْظَمُ دَرَجَةً مِّنَ الَّذِينَ أَنفَقُوا مِن بَعْدُ وَقَاتَلُوا ﴾ [الحديد: ١٠]، فقد دل المذكور: «من الذين أنفقوا من بعد وقاتلوا» على المحذوف والتقدير: لا يستوي منكم من أنفق من قبل الفتح وقاتل ومن أنفق من بعده وقاتل».</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">هذا ولا يشترط في المحذوف أن يكون من جنس المذكور، بل الذي ينبغي مراعاته أن يدل المذكور على المحذوف دلالة واضحة بينة، ولذا لا أرى عيبا في بيت عروة بن الورد:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">عَجِبْتُ لَهُمْ إِذْ يَقْتُلُونَ نُفُوسَهُمْ</p><p class="ar" lang="ar">وَمَقْتَلُهُمْ عِنْدَ الوَغَى كَانَ أَعْذَرَا</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">إذ حذف الجار والمجرور من القتل الأول لدلالة عند الوغى عليه دلالة بينة ظاهرة، والتقدير: إذ يقتلون نفوسهم في السلم... ولا في قول الحارث بن حلزة:</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وَالْعَيْشُ خَيْرٌ فِي ظِلَالِ النَّوْكِ مِمَّنْ عَاشَ كَدَّا</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد والعيش الناعم في ظلال الحمق خير من العيش الشاق في ظلال العقل، فحذف «الناعم» لدلالة «كدا» عليه، وحذف العقل لدلالة «النوك» عليه... ولا في قول عبيد الله بن مسعود الهذلي:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">أَعَاذِلُ عَاجِلُ مَا أَشْتَهِي</p><p class="ar" lang="ar">أَحَبُّ مِنَ الْأَكْثَرِ الرَّيِّثِ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">أراد: عاجل ما أشتهي مع القلة أحب من الأكثر المبطئ، فحذف لفظ «القلة» لدلالة قوله: «الأكثر» عليه.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ويرى كثير من البلاغيين أن المحذوف ينبغي أن يكون من جنس المذكور ولذا عدوا الحذف في الأبيات المذكورة، مخلاً بالمعنى ومفسدا له، لأن المذكور ليس من جنس المحذوف، فهو غير واف في الدلالة عليه، ولا أرى كما بينت - إخلالا في الأبيات، بل أرى أن القرينة اللفظية فيها قد دلت على المحذوف دلالة واضحة وافية، وهذا هو ما ينبغي أن يعتد به ويعول عليه، ولا يشترط في القرينة اللفظية أن تكون من جنس ما حذف.</p></div></div>
+<div class="hal" id="hal-504" data-kitab="504"><span><i class="hal__t">Hlm. </i>505</span><button type="button" class="hal__pdf" data-pdf="505" aria-label="Lihat PDF asli untuk Hlm. 505" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">انظر إلى قول المتنبي السابق:</p></div></div>
+<div class="blk blk-sy"><div class="tag"><span class="tag__k" lang="ar">شَاهِدٌ شِعْرِيٌّ</span></div><div class="bait"><div class="ayat"><p class="ar" lang="ar">أَتَى الزَّمَانَ بَنُوهُ فِي شَبِيبَتِهِ</p><p class="ar" lang="ar">فَسَرَّهُمْ وَأَتَيْنَاهُ عَلَى الْهَرَمِ</p></div></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">تجد أن قوله: «فسرهم» قد دل على المحذوف وتقديره: فساءنا، دلالة واضحة بينة وهو ليس من جنسه كما ترى.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وخذ قوله تعالى: ﴿ وَإِذَا أَرَدْنَا أَن نُّهْلِكَ قَرْيَةً أَمَرْنَا مُتْرَفِيهَا فَفَسَقُوا فِيهَا ﴾ [الإسراء: ١٦]، إذ المعنى والله أعلم - أمرناهم بالطاعة ففسقوا، فقد حذفت «الطاعة» لدلالة قوله: «ففسقوا» عليها وهو ليس من جنسها.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وبهذا يتضح لك أن القرينة اللفظية لا يشترط فيها أن تكون من جنس المحذوف، بل يشترط أن تكون واضحة الدلالة عليه سواء أكانت من جنسه أم من غير جنسه (١).</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقد تكون القرينة معنوية، تفهم من السياق وقرائن الأحوال دون أن يصرح في العبارة بما يدل على المحذوف... كما في قوله جل وعلا ﴿ وَجَاءَ رَبُّكَ وَالْمَلَكُ صَفًّا صَفًّا ﴾ [الفجر: ٢٢]، فالمعنى والله أعلم - وجاء أمر ربك، لأن العقل لا يجوز مجيء الرب، بل الذي يأتي هو أمره أو عذابه أو بأسه ونحو ذلك.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومثله قوله تعالى: ﴿ هَلْ يَنظُرُونَ إِلَّا أَن يَأْتِيَهُمُ اللَّهُ فِي ظُلَلٍ مِّنَ الْغَمَامِ ﴾ [البقرة: ٢١٠]، أي: هل ينظرون إلا أن يأتيهم عذاب الله أو أمره.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن ذلك قوله تعالى: ﴿ حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ وَلَحْمُ الْخِنزِيرِ ﴾ [المائدة: ٣]، أي: حرم عليكم تناول هذه الأشياء؛ لأن التحريم يتعلق بالأفعال لا بالذوات وكذا القول في الآيات الكريمة: ﴿ حُرِّمَتْ عَلَيْكُمْ أُمَّهَاتُكُمْ ﴾ [النساء: ٢٣]، أي: نكاحهن، ﴿ فَذَلِكُنَّ الَّذِي لُمْتُنَّنِي فِيهِ ﴾ [يوسف: ٣٢]، أي: في حبه أو مراودته، وسياق الآيات الكريمة ينطق بالمحذوف: ﴿ وَقَالَ نِسْوَةٌ فِي الْمَدِينَةِ امْرَأَتُ الْعَزِيزِ تُرَاوِدُ فَتَاهَا عَن نَّفْسِهِ قَدْ شَغَفَهَا حُبًّا ﴾ [يوسف: ٣٠]، ولا يعد هذا من قبيل القرينة اللفظية، لأنه ليس</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">(١) ارجع إلى الحذف في ضوء أساليب القرآن.</p></div></div>
+<div class="hal" id="hal-505" data-kitab="505"><span><i class="hal__t">Hlm. </i>506</span><button type="button" class="hal__pdf" data-pdf="506" aria-label="Lihat PDF asli untuk Hlm. 506" title="Lihat PDF asli"></button></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">مذكورا في نفس الآية، والمخاطب يحتاج إلى مراجعة طويلة للسياق وتدبره حتى يقف على المحذوف.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومن ذلك قوله تعالى: ﴿ وَسْئَلِ الْقَرْيَةَ الَّتِي كُنَّا فِيهَا وَالْعِيرَ الَّتِي أَقْبَلْنَا فِيهَا وَإِنَّا لَصَادِقُونَ ﴾ [يوسف: ٨٢]، أي: سل أهل القرية التي كنا فيها وأصحاب العير... لأن السؤال لا يوجه إلا إلى ذوي العقول والتمييز.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">وقوله عز وجل: ﴿ قَالُوا لَوْ نَعْلَمُ قِتَالًا لَّاتَّبَعْنَاكُمْ ﴾ [آل عمران: ١٦٧]، أي: لو نعلم أن المكان مكان قتال، لأنهم كانوا أخبر الناس بالحرب وفنون القتال فكيف يقولون: إنهم لا يعرفونها؟ لابد إذا من حذف قدره المفسرون بقولهم مكان قتال... ومنها قولك لمن أعرس بالرفاء والبنين، فقد دلت الحال على المحذوف وتقديره بالرفاء والبنين أعرست، إلى غير ذلك من القرائن التي تدل على المحذوف وترشد إليه.</p></div></div>
+<h3 class="sub" id="sub-118" lang="ar">الإطناب معناه وأنواعه</h3>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">والإطناب في اللغة: مصدر أطنب، يقال: أطنب في كلامه، إذا بالغ فيه وطول ذيوله، وفي عرف البلاغيين معناه: زيادة اللفظ على المعنى لفائدة، أو عرض المعنى في عبارة زائدة بحيث تحقق الزيادة فائدة، كما في قوله تعالى: ﴿ قَالَ رَبِّ إِنِّي وَهَنَ الْعَظْمُ مِنِّي وَاشْتَعَلَ الرَّأْسُ شَيْبًا ﴾ [مريم: ٤]، فقد أراد زكريا عليه السلام - أن يخبر بكبره وتقدم سنه، فجعل الألفاظ زائدة على المعاني لفائدة وهي: إظهار ضعفه، وتأكيد الوهن، لأنك لو قلت: رب إني قد كبرت، أفاد ذلك الإخبار بتقدم العمر فقط دون ظهور الضعف، إذ قد تكون مع تقدم سنك قويا نشيطاً، أما الآيات فقد أخبرت عن هذا المعنى تقدم السن بوهن العظم واشتعال الشيب، لتظهر ضعفه بجانب تقدم سنه، فالزيادة في الألفاظ كما ترى - إنما هي لفائدة.</p></div></div>
+<div class="blk blk-p"><div class="ayat"><p class="ar" lang="ar">ومنه قوله عز وجل: ﴿ وَمَا تِلْكَ بِيَمِينِكَ يَا مُوسَى قَالَ هِيَ عَصَايَ أَتَوَكَّأُ عَلَيْهَا وَأَهُشُّ بِهَا عَلَى غَنَمِي وَلِيَ فِيهَا مَآرِبُ أُخْرَى ﴾ [طه: ١٧، ١٨]، فقد كان يكفي في الجواب أن يقول موسى عليه السلام: عصا، ولكنه أطنب وفصل فأضاف العصا إليه وذكر وظائفها بعضها مفصلا: «أتوكأ عليها وأهش بها على غنمي»، وبعضها مجملا:</p></div></div>
+  </div>
+</section>
+
+<button type="button" id="btn-legend" class="fab fab--legend" aria-haspopup="dialog" aria-controls="legend-modal" title="دليل الألوان">?</button>
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="الفهرس">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  var toc = document.getElementById('fihris');
+  var btn = document.getElementById('toc-toggle');
+  if (toc && btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('data-open') !== '1';
+      var ds = toc.querySelectorAll('details');
+      for (var i = 0; i < ds.length; i++) ds[i].open = open;
+      btn.setAttribute('data-open', open ? '1' : '0');
+      btn.textContent = open ? 'إغلاق الكل' : 'فتح الكل';
+    });
+  }
+
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-legend', 'legend-modal');
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = Array.prototype.slice.call(document.querySelectorAll('h2.bab__ar'));
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('bab__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      cur = all[i];
+    }
+    if (!cur) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = label(cur);
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script>window.PDFPANEL={src:"علم المعاني لبسيوني عبد الفتاح فيود.pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=7"></script>
+<script src="../../../../assets/halaman.js?v=31"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
