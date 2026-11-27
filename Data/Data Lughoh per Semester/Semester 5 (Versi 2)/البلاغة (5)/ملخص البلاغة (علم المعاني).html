@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>ملخص البلاغة (علم المعاني) — النص العربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #f4f1e9; --card: #fffdf7; --border: #e4ddcb;
+    --ar-color: #23331f; --id-color: #5a5343; --heading: #1f4d3a; --muted: #8a8270; --pasal-bg: #eef2ea;
+    --quran: #8a5a15; --quran-bg: #f7f0e0;
+    --sy: #1f5fae; --sy-bg: #e2edfb; --sy-line: #bcd3f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a; --card: #1f2124; --border: #33363a;
+      --ar-color: #e9e6dc; --id-color: #b9b3a4; --heading: #7fc9a6; --muted: #9a9384; --pasal-bg: #1c2420;
+      --quran: #d9a54a; --quran-bg: #2a2418;
+      --sy: #7fb2f2; --sy-bg: #172a44; --sy-line: #2c4a72;
+    }
+  }
+
+  body { background: var(--bg); color: var(--ar-color); font-family: 'Poppins', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+
+  .isi { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem); }
+  .isi__wrap { width: 100%; max-width: 880px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(1.25rem, 5vw, 3.25rem); box-shadow: 0 12px 44px rgba(70, 55, 20, 0.09); }
+  .isi__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.4rem); text-align: center; color: var(--heading); margin-bottom: 0.35rem; }
+  .isi__ket { direction: ltr; text-align: center; font-size: clamp(0.72rem, 0.62rem + 0.6vw, 0.9rem); color: var(--muted); margin-bottom: clamp(1.75rem, 6vw, 3rem); }
+
+  .ayat { display: flex; flex-direction: column; gap: 0.15rem; padding: clamp(0.6rem, 2vw, 0.9rem) 0; }
+  .ayat .ar { direction: rtl; font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif; font-weight: 700; font-size: clamp(1.2rem, 0.95rem + 1.3vw, 1.6rem); line-height: 1.95; color: var(--ar-color); }
+  .ayat .id { direction: ltr; text-align: left; font-size: clamp(0.85rem, 0.78rem + 0.5vw, 1rem); color: var(--id-color); }
+
+  .ayat.quran { background: var(--quran-bg); border-radius: 10px; padding: clamp(0.6rem, 2vw, 0.9rem); border-right: 3px solid var(--quran); }
+  .ayat.quran .ar, .ayat.quran .id { color: var(--quran); }
+  .ayat .ref { font-size: 0.85em; opacity: 0.85; }
+
+  .ayat.footnote-row { opacity: 0.78; }
+  .ayat.footnote-row .ar { font-size: clamp(0.95rem, 0.82rem + 0.9vw, 1.2rem); color: var(--muted); }
+  .ayat.footnote-row .id { font-size: clamp(0.7rem, 0.64rem + 0.35vw, 0.82rem); }
+
+  .ayat.list-item { padding-inline-end: 1.4rem; position: relative; }
+  .ayat.list-item .ar::before { content: "\2022"; color: var(--heading); margin-inline-end: 0.5em; }
+
+  /* ---------- syi'ir (bait sya'ir) ---------- */
+  .syiir { background: var(--sy-bg); border-right: 4px solid var(--sy); border-radius: 12px; padding: 0.6rem clamp(0.8rem, 2.5vw, 1.3rem) 0.75rem; margin: 1rem 0; }
+  .syiir .bait { padding: 0.2rem 0; }
+  .syiir .bait + .bait { border-top: 1px dashed var(--sy-line); margin-top: 0.3rem; padding-top: 0.5rem; }
+  .syiir .ar { direction: rtl; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.5rem); color: var(--sy); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .syiir .ar .shatr { flex: 1 1 auto; }
+  .syiir .ar .shatr:first-child { text-align: right; }
+  .syiir .ar .shatr:last-child { text-align: left; }
+  .syiir .id { direction: ltr; font-size: clamp(0.82rem, 0.76rem + 0.4vw, 0.95rem); color: var(--id-color); margin-top: 0.15rem; }
+
+  /* ---------- judul ---------- */
+  .pasal__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.1rem); color: var(--heading); text-align: center; background: var(--pasal-bg); border-radius: 12px; padding: clamp(0.9rem, 3vw, 1.3rem) clamp(0.75rem, 2vw, 1.25rem); margin: clamp(2rem, 6vw, 3.25rem) 0 clamp(1.5rem, 4vw, 2rem); scroll-margin-top: 1rem; }
+  .bagian__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); color: var(--heading); text-align: center; margin: clamp(1.5rem, 5vw, 2.5rem) 0 0.5rem; padding-top: clamp(1rem, 3vw, 1.5rem); border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
+  .pasal__judul + .bagian__judul { border-top: none; padding-top: 0; margin-top: 0; }
+  .sub__judul { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem); color: var(--heading); text-align: center; margin: clamp(1.1rem, 3.5vw, 1.6rem) 0 0.35rem; scroll-margin-top: 1rem; }
+  .judul__id { direction: ltr; text-align: center; font-size: clamp(0.75rem, 0.68rem + 0.4vw, 0.88rem); color: var(--muted); font-weight: 500; margin-top: 0.15rem; margin-bottom: 0.4rem; }
+
+  .hal { text-align: center; margin: 1.25rem 0; direction: ltr; }
+  .hal span { display: inline-block; background: var(--pasal-bg); padding: 0.1rem 0.9rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+
+  .catatan { margin: 0.75rem 0 0.25rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+  .catatan__judul { direction: ltr; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.25rem; }
+
+  /* ---------- Fihris ---------- */
+  .daftar-isi { direction: ltr; }
+  .daftar-isi__judul { font-weight: 600; font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem); color: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+  .daftar-isi__judul span { font-family: 'Amiri', serif; text-transform: none; letter-spacing: 0; margin-left: 0.5rem; font-size: 1.2em; }
+  .toc { list-style: none; }
+  .toc > li { margin-bottom: 0.6rem; }
+  .toc__ar { direction: rtl; display: block; text-align: right; font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--ar-color); text-decoration: none; }
+  .toc__ar:hover { color: var(--heading); }
+  .toc__id { font-size: 0.82rem; color: var(--id-color); }
+  .toc__meta { font-size: 0.72rem; color: var(--muted); }
+  .toc__sub { list-style: none; margin: 0.4rem 0 0 1.5rem; }
+  .toc__sub li { margin-bottom: 0.35rem; }
+  .toc__sub .toc__ar { font-size: 0.95rem; }
+
+  .fab { position: fixed; z-index: 30; width: 3.1rem; height: 3.1rem; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+  .fab--toc { bottom: clamp(0.8rem, 2vw, 1.4rem); right: clamp(0.8rem, 2vw, 1.4rem); background: var(--heading); color: var(--card); border-color: var(--heading); }
+  .fab--toc svg { width: 1.4rem; height: 1.4rem; }
+
+  dialog.modal { position: fixed; inset: 0; margin: auto; border: none; border-radius: 16px; padding: clamp(2.6rem, 5vw, 3.2rem) clamp(1.1rem, 3.5vw, 1.75rem) clamp(1.25rem, 4vw, 1.75rem); background: var(--card); color: var(--ar-color); max-width: min(640px, 92vw); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.32); }
+  dialog.modal::backdrop { background: rgba(15, 13, 8, 0.55); }
+  dialog.modal .modal__close { position: absolute; top: 0.85rem; right: 1rem; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--id-color); cursor: pointer; font-size: 1.2rem; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  dialog.modal .modal__close:hover { color: var(--heading); border-color: var(--heading); }
+
+  /* ---------- breadcrumb mengambang ---------- */
+  .crumb { position: fixed; top: clamp(0.8rem, 2vw, 1.2rem); left: clamp(0.8rem, 2vw, 1.2rem); z-index: 25; max-width: min(78vw, 420px); display: none; align-items: center; gap: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.95rem; box-shadow: 0 6px 18px rgba(0,0,0,0.18); font-size: 0.74rem; color: var(--id-color); }
+  .crumb.crumb--visible { display: flex; }
+  .crumb__path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb__page { flex: 0 0 auto; color: var(--muted); border-left: 1px solid var(--border); padding-left: 0.55rem; white-space: nowrap; }
+  @media (max-width: 480px) { .crumb { font-size: 0.68rem; max-width: 70vw; padding: 0.4rem 0.8rem; } }
+</style>
+<link rel="stylesheet" href="../../../../assets/halaman.css?v=30">
+<link rel="stylesheet" href="../../../../assets/pdfpanel.css?v=8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/pengaturan.css?v=10">
+</head>
+<body>
+
+<div id="crumb-bar" class="crumb" aria-hidden="true">
+  <span class="crumb__path"></span>
+  <span class="crumb__page"></span>
+</div>
+
+<section class="isi">
+  <div class="isi__wrap">
+    <h1 class="isi__judul">مُلَخَّصُ الْبَلَاغَةِ (عِلْمُ الْمَعَانِي)</h1>
+    <p class="isi__ket" lang="ar">مُلَخَّصُ الْبَلَاغَةِ (عِلْمُ الْمَعَانِي) · لِلْمُسْتَوَى الْخَامِسِ · النَّصُّ الْعَرَبِيُّ فَقَطْ</p>
+
+    <dialog id="fihris-modal" class="modal modal--wide" aria-label="الفهرس">
+      <button type="button" class="modal__close" data-close aria-label="إغلاق">&times;</button>
+      <nav class="daftar-isi" id="fihris" aria-label="الفهرس">
+        <h2 class="daftar-isi__judul"><span lang="ar">الْفِهْرِسُ</span></h2>
+        <ol class="toc">
+          <li><a class="toc__ar" lang="ar" href="#adhrab-khabar">أَضْرُبُ الْخَبَرِ</a><span class="toc__meta">&middot; Hlm. 3</span></li>
+          <li><a class="toc__ar" lang="ar" href="#ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</a><span class="toc__meta">&middot; Hlm. 3</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</a><span class="toc__meta">&middot; Hlm. 4</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#asrar-hadzf">الْأَسْرَارُ الْبَلَاغِيَّةُ عِنْدَ الْحَذْفِ</a><span class="toc__meta">&middot; Hlm. 4</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</a><span class="toc__meta">&middot; Hlm. 5</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#tarif-musnad-ilayh">تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ</a><span class="toc__meta">&middot; Hlm. 5</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#tarif-dhamair">التَّعْرِيفُ بِالضَّمَائِرِ</a><span class="toc__meta">&middot; Hlm. 5</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-ilmiyyah">التَّعْرِيفُ بِالْعَلَمِيَّةِ</a><span class="toc__meta">&middot; Hlm. 6</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-maushul">التَّعْرِيفُ بِأَسْمَاءِ الْمَوْصُولَةِ</a><span class="toc__meta">&middot; Hlm. 6</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-isyarah">التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ</a><span class="toc__meta">&middot; Hlm. 6</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-alif-lam">التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ</a><span class="toc__meta">&middot; Hlm. 7</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</a><span class="toc__meta">&middot; Hlm. 7</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#tankir-musnad-ilayh">تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ</a><span class="toc__meta">&middot; Hlm. 8</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#tawabi-musnad-ilayh">التَّوَابِعُ الْمُسْنَدَ إِلَيْهِ</a><span class="toc__meta">&middot; Hlm. 8</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#tawabi-wasf">الْوَصْفُ</a><span class="toc__meta">&middot; Hlm. 8</span></li>
+              <li><a class="toc__ar" lang="ar" href="#tawabi-taukid">التَّوْكِيدُ</a><span class="toc__meta">&middot; Hlm. 9</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-musnad-ilayh-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</a><span class="toc__meta">&middot; Hlm. 9</span></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-musnad-ilayh-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</a><span class="toc__meta">&middot; Hlm. 9</span></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</a><span class="toc__meta">&middot; Hlm. 10</span></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</a><span class="toc__meta">&middot; Hlm. 10</span></li>
+          <li><a class="toc__ar" lang="ar" href="#iirad-musnad-filan-isman">إِيرَادُ الْمُسْنَدِ فِعْلًا أَوِ اسْمًا</a><span class="toc__meta">&middot; Hlm. 10</span></li>
+          <li><a class="toc__ar" lang="ar" href="#tankir-tarif-musnad-ringkasan">تَنْكِيرُ مُسْنَدٍ وَتَعْرِيفُهُ</a><span class="toc__meta">&middot; Hlm. 10</span></li>
+          <li><a class="toc__ar" lang="ar" href="#taqdim-maful">تَقْدِيمُ الْمَفْعُولِ وَنَحْوِهِ مِنَ الْمُتَعَلِّقَاتِ عَلَى الْعَامِلِ</a><span class="toc__meta">&middot; Hlm. 11</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#khuruj-muqtadha-zhahir">خُرُوجُ الْكَلَامِ عَنِ الْمُقْتَضَى الظَّاهِرِ</a><span class="toc__meta">&middot; Hlm. 11</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#wadh-mudhmar">وَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ</a><span class="toc__meta">&middot; Hlm. 11</span></li>
+              <li><a class="toc__ar" lang="ar" href="#wadh-muzhhar">وَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ</a><span class="toc__meta">&middot; Hlm. 11</span></li>
+            </ul>
+          </li>
+          <li><a class="toc__ar" lang="ar" href="#shuwar-iltifat">صُوَرُ الِالْتِفَاتِ وَمَا يَتَمَكَّنُ وَرَاءَهَا مِنْ أَسْرَارٍ بَلَاغِيَّةٍ</a><span class="toc__meta">&middot; Hlm. 12</span></li>
+          <li><a class="toc__ar" lang="ar" href="#uslub-hakim">أُسْلُوبُ الْحَكِيمِ</a><span class="toc__meta">&middot; Hlm. 13</span></li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#asalib-qashr">أَسَالِيبُ الْقَصْرِ</a><span class="toc__meta">&middot; Hlm. 13</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-idhafi">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</a><span class="toc__meta">&middot; Hlm. 16</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-tahqiqi">الْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ</a><span class="toc__meta">&middot; Hlm. 16</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-haqiqi-iddiai">الْقَصْرُ الْحَقِيقِيُّ الِادِّعَائِيُّ</a><span class="toc__meta">&middot; Hlm. 17</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-idhafi">الْقَصْرُ الْإِضَافِيُّ</a><span class="toc__meta">&middot; Hlm. 18</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-qalb">قَصْرُ الْقَلْبِ</a><span class="toc__meta">&middot; Hlm. 18</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-ifrad">قَصْرُ الْإِفْرَادِ</a><span class="toc__meta">&middot; Hlm. 18</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-tayin">قَصْرُ التَّعْيِينِ</a><span class="toc__meta">&middot; Hlm. 19</span></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#qashr-sifah-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</a><span class="toc__meta">&middot; Hlm. 19</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#qashr-sifah-ala-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ</a><span class="toc__meta">&middot; Hlm. 20</span></li>
+              <li><a class="toc__ar" lang="ar" href="#qashr-mawshuf-ala-sifah">قَصْرُ الْمَوْصُوفِ عَلَى الصِّفَةِ</a><span class="toc__meta">&middot; Hlm. 21</span></li>
+            </ul>
+          </li>
+          <li>
+            <a class="toc__ar" lang="ar" href="#thuruq-qashr">طُرُقُ الْقَصْرِ</a><span class="toc__meta">&middot; Hlm. 22</span>
+            <ul class="toc__sub">
+              <li><a class="toc__ar" lang="ar" href="#athf-la-bal-lakin">١ - الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</a><span class="toc__meta">&middot; Hlm. 23</span></li>
+              <li><a class="toc__ar" lang="ar" href="#nafi-istitsna">٢ - النَّفْيُ وَالِاسْتِثْنَاءُ</a><span class="toc__meta">&middot; Hlm. 25</span></li>
+              <li><a class="toc__ar" lang="ar" href="#innama-qashr">٣ - إِنَّمَا</a><span class="toc__meta">&middot; Hlm. 26</span></li>
+              <li><a class="toc__ar" lang="ar" href="#taqdim-qashr">٤ - التَّقْدِيمُ</a><span class="toc__meta">&middot; Hlm. 27</span></li>
+              <li><a class="toc__ar" lang="ar" href="#dhamir-fashl">٥ - ضَمِيرُ الْفَصْلِ</a><span class="toc__meta">&middot; Hlm. 27</span></li>
+            </ul>
+          </li>
+        </ol>
+      </nav>
+    </dialog>
+
+<div class="hal" id="hal-2" data-kitab="2"><span><i class="hal__t">Hlm. </i>3</span><button type="button" class="hal__pdf" data-pdf="3" aria-label="Lihat PDF asli untuk Hlm. 3" title="Lihat PDF asli"></button></div>
+    <h2 class="pasal__judul" id="adhrab-khabar">أَضْرُبُ الْخَبَرِ</h2>
+    
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْخَالِيَ الذِّهْنِ لَمْ يَأْتِ بِالتَّأْكِيدِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ الْمُخَاطَبُ الْمُتَرَدِّدَ / الشَّاكَّ يُؤْتَى بِأَدَاةِ تَوْكِيدٍ اسْتِحْسَانًا.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِنْ كَانَ مُنْكِرًا يُؤْتَى بِأَدَاةِ التَّوْكِيدِ وُجُوبًا حَسَبَ إِنْكَارِهِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَأَضْرُبُ الْخَبَرِ: ابْتِدَائِيٌّ، طَلَبِيٌّ، إِنْكَارِيٌّ.</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="ikhraj-kalam">إِخْرَاجُ الْكَلَامِ عَلَى خِلَافِ مُقْتَضَى الظَّاهِرِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">أَيْ: خَرَجَ الْكَلَامُ عَنْ أَضْرُبِ الْخَبَرِ وَحُكْمِهِ كَمَا سَبَقَ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مِثَالُهُ لِلْخَالِي الذِّهْنِ: لَكِنْ تَأْتِي جُمْلَةٌ خَبَرِيَّةٌ بِمُؤَكِّدَةٍ كَمَنْزِلَةِ مُتَرَدِّدٍ أَوِ السَّائِلِ، يَكُونُ غَالِبًا فِي: النَّصَائِحِ، إِرْشَادٍ، تَوْجِيهٍ، نَهْيٍ، أَمْرِ حَدَثٍ غَرِيبٍ يَسْتَدْعِي وُقُوفَ النَّفْسِ وَتَأَمُّلَهَا.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأُوحِيَ إِلَى نُوحٍ أَنَّهُ لَن يُؤْمِنَ مِن قَوْمِكَ إِلَّا مَن قَدْ آمَنَ فَلَا تَبْتَئِسْ بِمَا كَانُوا يَفْعَلُونَ وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا وَلَا تُخَاطِبْنِي فِي الَّذِينَ ظَلَمُوا إِنَّهُم مُّغْرَقُونَ <span class="ref">[هود: ٣٦-٣٧]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا <span class="ref">[التوبة: ٤٠]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">سَيَحْلِفُونَ بِاللَّهِ لَكُمْ إِذَا انقَلَبْتُمْ إِلَيْهِمْ لِتُعْرِضُوا عَنْهُمْ فَأَعْرِضُوا عَنْهُمْ إِنَّهُمْ رِجْسٌ <span class="ref">[التوبة: ٩٥]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا أُبَرِّئُ نَفْسِي إِنَّ النَّفْسَ لَأَمَّارَةٌ بِالسُّوءِ إِلَّا مَا رَحِمَ رَبِّي إِنَّ رَبِّي غَفُورٌ رَّحِيمٌ <span class="ref">[يوسف: ٥٣]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">يُنَزَّلُ الْمُنْكِرُ مَنْزِلَةَ غَيْرِ الْمُنْكِرِ لِعَدَمِ الِاعْتِدَادِ بِإِنْكَارِهِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ لَّا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ <span class="ref">[البقرة: ١٦٣]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَذَلِكَ أَرْسَلْنَاكَ فِي أُمَّةٍ قَدْ خَلَتْ مِن قَبْلِهَا أُمَمٌ لِّتَتْلُوَ عَلَيْهِمُ الَّذِي أَوْحَيْنَا إِلَيْكَ وَهُمْ يَكْفُرُونَ بِالرَّحْمَٰنِ قُلْ هُوَ رَبِّي لَا إِلَٰهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ مَتَابِ <span class="ref">[الرعد: ٣٠]</span></p>
+      
+    </div>
+
+
+<div class="hal" id="hal-3" data-kitab="3"><span><i class="hal__t">Hlm. </i>4</span><button type="button" class="hal__pdf" data-pdf="4" aria-label="Lihat PDF asli untuk Hlm. 4" title="Lihat PDF asli"></button></div>
+    <h2 class="pasal__judul" id="hadzf-musnad-ilayh">حَذْفُ الْمُسْنَدِ إِلَيْهِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar"><strong>شُرُوطُ الْحَذْفِ:</strong> وُجُودُ الْقَرِينَةِ، وَوُجُودُ سِرٍّ بَلَاغِيٍّ.<br>قَالَ عَبْدُ الْقَاهِرِ الْجُرْجَانِيُّ: "التَّرْكُ أَفْصَحُ مِنَ الذِّكْرِ".<br>مَزَايَا عِنْدَ الْحَذْفِ: الْإِيجَازُ، الْإِثَارَةُ وَتَحْرِيكُ خَيَالِ الْمُخَاطَبِ، الِاحْتِرَازُ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="asrar-hadzf">الْأَسْرَارُ الْبَلَاغِيَّةُ عِنْدَ الْحَذْفِ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْمِثَالُ:</strong><br>ضِيقُ الْمَقَامِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَأَقْبَلَتِ امْرَأَتُهُ فِي صَرَّةٍ فَصَكَّتْ وَجْهَهَا وَقَالَتْ عَجُوزٌ عَقِيمٌ <span class="ref">[الذاريات: ٢٩]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يُوسُفُ أَعْرِضْ عَنْ هَذَا وَاسْتَغْفِرِي لِذَنبِكِ إِنَّكِ كُنتِ مِنَ الْخَاطِئِينَ <span class="ref">[يوسف: ٢٩]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْيِينُهُ لِلْمُسْنَدِ الْمَذْكُورِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ <span class="ref">[الرعد: ٩]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِلَى فِرْعَوْنَ وَهَامَانَ وَقَارُونَ فَقَالُوا سَاحِرٌ كَذَّابٌ <span class="ref">[غافر: ٢٤]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ظُهُورُهُ ظُهُورًا لَا لَبْسَ فِيهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">كَلَّا إِذَا بَلَغَتِ التَّرَاقِيَ <span class="ref">[القيامة: ٢٦]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَلَوْلَا إِذَا بَلَغَتِ الْحُلْقُومَ <span class="ref">[الواقعة: ٨٣]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَقَالَ إِنِّي أَحْبَبْتُ حُبَّ الْخَيْرِ عَن ذِكْرِ رَبِّي حَتَّى تَوَارَتْ بِالْحِجَابِ <span class="ref">[ص: ٣٢]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَحْقِيرُ الْمُسْنَدِ إِلَيْهِ وَتَعْظِيمُهُ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا وَإِنَّ اللَّهَ عَلَى نَصْرِهِمْ لَقَدِيرٌ <span class="ref">[الحج: ٣٩]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">أَمَّا حَذْفُ الْمُسْنَدِ إِلَيْهِ بِبِنَاءِ الْفِعْلِ لِلْمَفْعُولِ فَلِأَغْرَاضٍ مِنْهَا:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْخَوْفُ عَلَى الْفَاعِلِ الْحَقِيقِيِّ (سُرِقَ الْمَتَاعُ)</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">احْتِقَارُهُ</p>
+      
+    </div>
+
+
+    <div class="ayat list-item">
+      <p class="ar">الْجَهْلُ بِهِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْعِلْمُ بِالْفَاعِلِ</p>
+      
+    </div>
+
+<div class="hal" id="hal-4" data-kitab="4"><span><i class="hal__t">Hlm. </i>5</span><button type="button" class="hal__pdf" data-pdf="5" aria-label="Lihat PDF asli untuk Hlm. 5" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">فَإِذَا قُضِيَتِ الصَّلَاةُ فَانتَشِرُوا فِي الْأَرْضِ <span class="ref">[الجمعة: ١٠]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَقِيلَ يَا أَرْضُ ابْلَعِي مَاءَكِ وَيَا سَمَاءُ أَقْلِعِي وَغِيضَ الْمَاءُ وَقُضِيَ الْأَمْرُ وَاسْتَوَتْ عَلَى الْجُودِيِّ وَقِيلَ بُعْدًا لِّلْقَوْمِ الظَّالِمِينَ <span class="ref">[هود: ٤٤]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَغُلِبُوا هُنَالِكَ وَانقَلَبُوا صَاغِرِينَ * وَأُلْقِيَ السَّحَرَةُ سَاجِدِينَ <span class="ref">[الأعراف: ١١٩-١٢٠]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="dzikr-musnad-ilayh">ذِكْرُ الْمُسْنَدِ إِلَيْهِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar"><strong>غَرَضُهُ:</strong></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّقْرِيرِ وَالْإِيضَاحِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ <span class="ref">[البقرة: ٥]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الرَّغْبَةُ فِي إِطَالَةِ الْكَلَامِ وَامْتِدَادِ الْحَدِيثِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَا تِلْكَ بِيَمِينِكَ يَا مُوسَىٰ * قَالَ هِيَ عَصَايَ <span class="ref">[طه: ١٧-١٨]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَلَذُّذًا بِذِكْرِهِ وَتَرَدُّدِهِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّسْجِيلُ عَلَى السَّامِعِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">ضَعْفُ التَّعْوِيلِ عَلَى الْقَرِينَةِ</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="tarif-musnad-ilayh">تَعْرِيفُ الْمُسْنَدِ إِلَيْهِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">بِالْعَلَمِيَّةِ، وَالضَّمَائِرِ، وَاسْمِ الْإِشَارَةِ، وَالِاسْمِ الْمَوْصُولِ، وَأَلْ، وَالْإِضَافَةِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-dhamair">التَّعْرِيفُ بِالضَّمَائِرِ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْمُتَكَلِّمِ:</strong></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنِّي أَنَا رَبُّكَ فَاخْلَعْ نَعْلَيْكَ إِنَّكَ بِالْوَادِ الْمُقَدَّسِ طُوًى * وَأَنَا اخْتَرْتُكَ فَاسْتَمِعْ لِمَا يُوحَىٰ * إِنَّنِي أَنَا اللَّهُ لَا إِلَٰهَ إِلَّا أَنَا فَاعْبُدْنِي وَأَقِمِ الصَّلَاةَ لِذِكْرِي <span class="ref">[طه: ١٢-١٤]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْغَيْبَةِ:</strong></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَاصْبِرُوا حَتَّىٰ يَحْكُمَ اللَّهُ بَيْنَنَا وَهُوَ خَيْرُ الْحَاكِمِينَ <span class="ref">[الأعراف: ٨٧]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>ضَمِيرُ الْمُخَاطَبِ:</strong></p>
+      
+    </div>
+
+<div class="hal" id="hal-5" data-kitab="5"><span><i class="hal__t">Hlm. </i>6</span><button type="button" class="hal__pdf" data-pdf="6" aria-label="Lihat PDF asli untuk Hlm. 6" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ <span class="ref">[القلم: ٤]</span></p>
+      
+    </div>
+
+
+    <div class="ayat">
+      <p class="ar">يَكْثُرُ الْعِتَابُ بِضَمِيرِ الْخِطَابِ فِي مَقَامِ الْعِتَابِ وَاللَّوْمِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-ilmiyyah">التَّعْرِيفُ بِالْعَلَمِيَّةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يَقْتَضِيَ الْمَقَامُ إِحْضَارَ مَدْلُولٍ بِعَيْنِهِ وَشَخْصِهِ فِي ذِهْنِ السَّامِعِ ابْتِدَاءً بِاسْمِهِ الْمُخْتَصِّ بِهِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ <span class="ref">[الإخلاص: ١-٢]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ إِلَى تَعْظِيمِهِ أَوْ إِلَى إِهَانَتِهِ وَتَحْقِيرِهِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ إِلَى التَّفَاؤُلِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-maushul">التَّعْرِيفُ بِأَسْمَاءِ الْمَوْصُولَةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّقْرِيرِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَرَاوَدَتْهُ الَّتِي هُوَ فِي بَيْتِهَا عَن نَّفْسِهِ <span class="ref">[يوسف: ٢٣]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لِتَنْبِيهِ الْمُخَاطَبِ إِلَى خَطَئِهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الَّذِينَ تَدْعُونَ مِن دُونِ اللَّهِ عِبَادٌ أَمْثَالُكُمْ <span class="ref">[الأعراف: ١٩٤]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِيمَاءٌ إِلَى وَجْهِ بِنَاءِ الْخَبَرِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الَّذِينَ يَسْتَكْبِرُونَ عَنْ عِبَادَتِي سَيَدْخُلُونَ جَهَنَّمَ دَاخِرِينَ <span class="ref">[غافر: ٦٠]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّفْخِيمُ وَالتَّهْوِيلُ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَغَشِيَهُم مِّنَ الْيَمِّ مَا غَشِيَهُمْ <span class="ref">[طه: ٧٨]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِذَا رَأَوْكَ إِن يَتَّخِذُونَكَ إِلَّا هُزُوًا أَهَٰذَا الَّذِي بَعَثَ اللَّهُ رَسُولًا <span class="ref">[الفرقان: ٤١]</span></p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-isyarah">التَّعْرِيفُ بِأَسْمَاءِ الْإِشَارَةِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يُقْصَدَ تَمْيِيزُ مُسْنَدٍ إِلَيْهِ أَكْمَلَ التَّمْيِيزِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَلَوْلَا إِذْ سَمِعْتُمُوهُ قُلْتُم مَّا يَكُونُ لَنَا أَن نَّتَكَلَّمَ بِهَٰذَا سُبْحَانَكَ هَٰذَا بُهْتَانٌ عَظِيمٌ <span class="ref">[النور: ١٦]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَعْظِيمِ مُسْنَدٍ إِلَيْهِ أَوْ إِلَى تَحْقِيرِهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ وَيُبَشِّرُ الْمُؤْمِنِينَ الَّذِينَ يَعْمَلُونَ الصَّالِحَاتِ أَنَّ لَهُمْ أَجْرًا كَبِيرًا <span class="ref">[الإسراء: ٩]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِذَا رَأَوْكَ إِن يَتَّخِذُونَكَ إِلَّا هُزُوًا أَهَٰذَا الَّذِي بَعَثَ اللَّهُ رَسُولًا <span class="ref">[الفرقان: ٤١]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">التَّنْبِيهُ عَلَى أَنَّ الْمُشَارَ إِلَيْهِ مَذْكُورٌ بَعْدَ أَوْصَافٍ عَدِيدَةٍ لِشَيْءٍ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ <span class="ref">[البقرة: ٥]</span></p>
+      
+    </div>
+
+
+    <div class="ayat list-item">
+      <p class="ar">تَجْسِيدُ الْمَعْنَوِيَّاتِ وَإِبْرَازُهَا فِي صُورَةٍ مَحْسُوسَةٍ مُشَاهَدَةٍ</p>
+      
+    </div>
+
+<div class="hal" id="hal-6" data-kitab="6"><span><i class="hal__t">Hlm. </i>7</span><button type="button" class="hal__pdf" data-pdf="7" aria-label="Lihat PDF asli untuk Hlm. 7" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">يُقَلِّبُ اللَّهُ اللَّيْلَ وَالنَّهَارَ إِنَّ فِي ذَٰلِكَ لَعِبْرَةً لِّأُولِي الْأَبْصَارِ <span class="ref">[النور: ٤٤]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">يُخَلِّصُ الْكَلَامَ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ذَٰلِكَ مِمَّا أَوْحَىٰ إِلَيْكَ رَبُّكَ مِنَ الْحِكْمَةِ <span class="ref">[الإسراء: ٣٩]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">أَنْ يَقُومَ مَقَامَ أَدَوَاتِ الرَّبْطِ، فَيَصِلَ بَيْنَ الْجُمَلِ الْمُسْتَأْنَفَةِ وَالْجُمَلِ الْمُتَقَدِّمَةِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاذْكُرْ إِسْمَاعِيلَ وَالْيَسَعَ وَذَا الْكِفْلِ وَكُلٌّ مِّنَ الْأَخْيَارِ * هَٰذَا ذِكْرٌ وَإِنَّ لِلْمُتَّقِينَ لَحُسْنَ مَآبٍ <span class="ref">[ص: ٤٨-٤٩]</span></p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-alif-lam">التَّعْرِيفُ بِالْأَلِفِ وَاللَّامِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الصَّرِيحِيُّ، وَهِيَ الَّتِي يَتَقَدَّمُ لِمَدْخُولِهَا ذِكْرٌ صَرِيحٌ فِي الْكَلَامِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">مَثَلُ نُورِهِ كَمِشْكَاةٍ فِيهَا مِصْبَاحٌ الْمِصْبَاحُ فِي زُجَاجَةٍ الزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّيٌّ <span class="ref">[النور: ٣٥]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الْكِنَائِيُّ، وَهِيَ الَّتِي يَتَقَدَّمُ لِمَدْخُولِهَا ذِكْرٌ كِنَائِيٌّ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِذْ قَالَتِ امْرَأَتُ عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّرًا فَتَقَبَّلْ مِنِّي إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ * فَلَمَّا وَضَعَتْهَا قَالَتْ رَبِّ إِنِّي وَضَعْتُهَا أُنثَىٰ وَاللَّهُ أَعْلَمُ بِمَا وَضَعَتْ وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ <span class="ref">[آل عمران: ٣٥-٣٦]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَامُ الْعَهْدِ الْخَارِجِيِّ الْعِلْمِيُّ، مَا لَمْ يَتَقَدَّمْ لِمَدْخُولِهَا ذِكْرٌ لَا صَرِيحًا وَلَا كِنَائِيًّا.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">لَقَدْ رَضِيَ اللَّهُ عَنِ الْمُؤْمِنِينَ إِذْ يُبَايِعُونَكَ تَحْتَ الشَّجَرَةِ <span class="ref">[الفتح: ١٨]</span></p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tarif-idhafah">التَّعْرِيفُ بِالْإِضَافَةِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ الْإِيجَازِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مُغْنٍ عَنْ تَفْصِيلٍ يَتَعَذَّرُ أَوْ عَنْ تَفْصِيلٍ تُرِكَ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْظِيمُ الْمُضَافِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ كَادُوا يَكُونُونَ عَلَيْهِ لِبَدًا <span class="ref">[الجن: ١٩]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَحْقِيرُ شَأْنِ الْمُضَافِ أَوِ الْمُضَافِ إِلَيْهِ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-7" data-kitab="7"><span><i class="hal__t">Hlm. </i>8</span><button type="button" class="hal__pdf" data-pdf="8" aria-label="Lihat PDF asli untuk Hlm. 8" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">يَا أَيُّهَا النَّاسُ كُلُوا مِمَّا فِي الْأَرْضِ حَلَالًا طَيِّبًا وَلَا تَتَّبِعُوا خُطُوَاتِ الشَّيْطَانِ إِنَّهُ لَكُمْ عَدُوٌّ مُّبِينٌ <span class="ref">[البقرة: ١٦٨]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="tankir-musnad-ilayh">تَنْكِيرُ الْمُسْنَدِ إِلَيْهِ</h2>
+    
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى أَنَّ الْمُسْنَدَ إِلَيْهِ فَرْدٌ غَيْرُ مُعَيَّنٍ مِنْ أَفْرَادِ حَقِيقَتِهِ، حَيْثُ لَا يَتَعَلَّقُ بِتَعْيِينِهِ غَرَضٌ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ رَجُلٌ مِّنْ أَقْصَى الْمَدِينَةِ يَسْعَىٰ <span class="ref">[القصص: ٢٠]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَعْظِيمِ الْمُسْنَدِ إِلَيْهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ يَا أُولِي الْأَلْبَابِ لَعَلَّكُمْ تَتَّقُونَ <span class="ref">[البقرة: ١٧٩]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَحْقِيرِهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَا أَبَتِ إِنِّي أَخَافُ أَن يَمَسَّكَ عَذَابٌ مِّنَ الرَّحْمَٰنِ فَتَكُونَ لِلشَّيْطَانِ وَلِيًّا <span class="ref">[مريم: ٤٥]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى تَكْثِيرِهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ السَّحَرَةُ فِرْعَوْنَ قَالُوا إِنَّ لَنَا لَأَجْرًا إِن كُنَّا نَحْنُ الْغَالِبِينَ <span class="ref">[الأعراف: ١١٣]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى إِفَادَةِ التَّقْلِيلِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَرِضْوَانٌ مِّنَ اللَّهِ أَكْبَرُ ذَٰلِكَ هُوَ الْفَوْزُ الْعَظِيمُ <span class="ref">[التوبة: ٧٢]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى إِفَادَةِ مُسْنَدٍ إِلَيْهِ مِنْ نَوْعٍ خَاصٍّ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">خَتَمَ اللَّهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ وَعَلَىٰ أَبْصَارِهِمْ غِشَاوَةٌ وَلَهُمْ عَذَابٌ عَظِيمٌ <span class="ref">[البقرة: ٧]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْقَصْدُ إِلَى كَرَاهَةِ أَنْ يُنْسَبَ الْفِعْلُ إِلَيْهِ مُعَرَّفًا</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="tawabi-musnad-ilayh">التَّوَابِعُ الْمُسْنَدَ إِلَيْهِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">الْوَصْفُ، وَالْبَدَلُ، وَالتَّوْكِيدُ، وَالْعَطْفُ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tawabi-wasf">الْوَصْفُ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مُفَسِّرًا وَكَاشِفًا لِلْمَوْصُوفِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّ الْإِنسَانَ خُلِقَ هَلُوعًا * إِذَا مَسَّهُ الشَّرُّ جَزُوعًا <span class="ref">[المعارج: ١٩-٢٠]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَخْصِيصُهُ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-8" data-kitab="8"><span><i class="hal__t">Hlm. </i>9</span><button type="button" class="hal__pdf" data-pdf="9" aria-label="Lihat PDF asli untuk Hlm. 9" title="Lihat PDF asli"></button></div>
+    <div class="ayat list-item">
+      <p class="ar">مَدْحٌ أَوْ ذَمٌّ أَوْ تَأْكِيدُ إِظْهَارِ الْفَرَحِ وَإِظْهَارِ التَّأَسُّفِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="ref">[الفاتحة: ١]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">بَيَانٌ لِلْمَوْصُوفِ بِالتَّرَحُّمِ وَطَلَبِ الْمَغْفِرَةِ</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="tawabi-taukid">التَّوْكِيدُ</h3>
+
+    <div class="ayat">
+      <p class="ar">مِنْ أَغْرَاضِ الْبَلَاغَةِ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِبْرَازُ الْمُؤَكَّدِ وَزِيَادَةُ تَقْرِيرِ الْمَعْنَى</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">دَفْعُ تَوَهُّمِ التَّجَوُّزِ وَالسَّهْوِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدُ الْعُمُومِ</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-musnad-ilayh-nafi">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي النَّفْيِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">يُفِيدُ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الِاخْتِصَاصَ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ يَا قَوْمِ أَرَهْطِي أَعَزُّ عَلَيْكُم مِّنَ اللَّهِ وَاتَّخَذْتُمُوهُ وَرَاءَكُمْ ظِهْرِيًّا إِنَّ رَبِّي بِمَا تَعْمَلُونَ مُحِيطٌ <span class="ref">[هود: ٩٢]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدَ وَتَقْوِيَةَ الْحُكْمِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَمْ يَقُولُونَ شَاعِرٌ نَّتَرَبَّصُ بِهِ رَيْبَ الْمَنُونِ <span class="ref">[الطور: ٣٠]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-musnad-ilayh-itsbat">تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ فِي الْإِثْبَاتِ</h2>
+    
+
+    <div class="ayat list-item">
+      <p class="ar">الِاخْتِصَاصُ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَالِحًا قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُ هُوَ أَنشَأَكُم <span class="ref">[هود: ٦١]</span></p>
+      
+    </div>
+
+
+    <div class="ayat list-item">
+      <p class="ar">تَأْكِيدُ وَتَقْوِيَةُ الْحُكْمِ</p>
+      
+    </div>
+
+<div class="hal" id="hal-9" data-kitab="9"><span><i class="hal__t">Hlm. </i>10</span><button type="button" class="hal__pdf" data-pdf="10" aria-label="Lihat PDF asli untuk Hlm. 10" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">وَالَّذِينَ يَدْعُونَ مِن دُونِ اللَّهِ لَا يَخْلُقُونَ شَيْئًا وَهُمْ يُخْلَقُونَ <span class="ref">[النحل: ٢٠]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-nakirah">تَقْدِيمُ النَّكِرَةِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">تُفِيدُ الِاخْتِصَاصَ أَوْ تَأْكِيدَ الْجِنْسِ وَالْعَدَدِ.</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-mitsl-ghair">تَقْدِيمُ مِثْلَ وَغَيْرَ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">لَا يُقَدَّمُ "مِثْلَ" وَ"غَيْرَ" إِلَّا إِذَا أُرِيدَ بِهِمَا الْكِنَايَةُ.</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="iirad-musnad-filan-isman">إِيرَادُ الْمُسْنَدِ فِعْلًا أَوِ اسْمًا</h2>
+    
+
+    <div class="ayat list-item">
+      <p class="ar">الْمُسْنَدُ فِعْلٌ يُفِيدُ الْحُدُوثَ وَالتَّجَدُّدَ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَمْحُو اللَّهُ مَا يَشَاءُ وَيُثْبِتُ وَعِندَهُ أُمُّ الْكِتَابِ <span class="ref">[الرعد: ٣٩]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْمُسْنَدُ اسْمٌ يُفِيدُ الثُّبُوتَ وَالدَّوَامَ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَكَلْبُهُم بَاسِطٌ ذِرَاعَيْهِ بِالْوَصِيدِ لَوِ اطَّلَعْتَ عَلَيْهِمْ لَوَلَّيْتَ مِنْهُمْ فِرَارًا وَلَمُلِئْتَ مِنْهُمْ رُعْبًا <span class="ref">[الكهف: ١٨]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="tankir-tarif-musnad-ringkasan">تَنْكِيرُ مُسْنَدٍ وَتَعْرِيفُهُ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar"><strong>أَغْرَاضُ تَنْكِيرِ الْمُسْنَدِ:</strong></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">عَدَمُ إِرَادَةِ الْقَصْرِ وَالْعَهْدِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ التَّفْخِيمِ وَالتَّعْظِيمِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ <span class="ref">[البقرة: ٢]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِفَادَةُ التَّحْقِيرِ وَالتَّهْوِينِ</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>أَمَّا تَعْرِيفُ الْمُسْنَدِ فَأَغْرَاضُهُ:</strong></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِرَادَةُ الْعَهْدِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">إِفَادَةُ قَصْرٍ عَلَى مُسْنَدٍ إِلَيْهِ</p>
+      
+    </div>
+
+<div class="hal" id="hal-10" data-kitab="10"><span><i class="hal__t">Hlm. </i>11</span><button type="button" class="hal__pdf" data-pdf="11" aria-label="Lihat PDF asli untuk Hlm. 11" title="Lihat PDF asli"></button></div>
+    <div class="ayat quran">
+      <p class="ar">قُلْنَا لَا تَخَفْ إِنَّكَ أَنتَ الْأَعْلَىٰ <span class="ref">[طه: ٦٨]</span></p>
+      
+    </div>
+
+
+    <div class="ayat list-item">
+      <p class="ar">تَعْظِيمُ الْمُسْنَدِ إِلَيْهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ إِنِّي عَبْدُ اللَّهِ آتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا <span class="ref">[مريم: ٣٠]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="taqdim-maful">تَقْدِيمُ الْمَفْعُولِ وَنَحْوِهِ مِنَ الْمُتَعَلِّقَاتِ عَلَى الْعَامِلِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">غَالِبًا لِلِاخْتِصَاصِ، أَيْ: قَصْرِ الْعَامِلِ الْمُؤَخَّرِ عَلَى مَعْمُولِهِ الْمُقَدَّمِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="khuruj-muqtadha-zhahir">خُرُوجُ الْكَلَامِ عَنِ الْمُقْتَضَى الظَّاهِرِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">مِنْهَا: تَنْزِيلُ الْمُنْكِرِ مَنْزِلَةَ غَيْرِ الْمُنْكِرِ، وَتَنْزِيلُ غَيْرِ الْمُنْكِرِ مَنْزِلَةَ الْمُنْكِرِ، وَوَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ، وَوَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ، وَالِالْتِفَاتُ، وَأُسْلُوبُ الْحَكِيمِ، وَالْقَلْبُ، وَالتَّغْلِيبُ، وَالتَّعْبِيرُ عَنِ الْمُسْتَقْبَلِ بِلَفْظِ الْمَاضِي، وَعَنِ الْمَاضِي بِلَفْظِ الْمُضَارِعِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="wadh-mudhmar">وَضْعُ الْمُضْمَرِ مَوْضِعَ الْمُظْهَرِ</h3>
+
+    <div class="ayat">
+      <p class="ar">الْأَصْلُ فِي الضَّمِيرِ أَنْ يَعُودَ إِلَى مُتَقَدِّمٍ لَفْظًا وَرُتْبَةً، لَا أَنْ يَعُودَ إِلَى الْمُتَأَخِّرِ، وَإِذَا كَانَ كَذَلِكَ فَالْمَوْضِعُ مَوْضِعُ مُظْهَرٍ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَمَن يَدْعُ مَعَ اللَّهِ إِلَٰهًا آخَرَ لَا بُرْهَانَ لَهُ بِهِ فَإِنَّمَا حِسَابُهُ عِندَ رَبِّهِ إِنَّهُ لَا يُفْلِحُ الْكَافِرُونَ <span class="ref">[المؤمنون: ١١٧]</span></p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="wadh-muzhhar">وَضْعُ الْمُظْهَرِ مَوْضِعَ الْمُضْمَرِ</h3>
+
+    <div class="ayat list-item">
+      <p class="ar">تَنْبِيهٌ إِلَى غَبَاوَةِ الْمُخَاطَبِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زِيَادَةُ التَّثْبِيتِ وَالتَّقْرِيرِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">أَوَلَمْ يَرَوْا كَيْفَ يُبْدِئُ اللَّهُ الْخَلْقَ ثُمَّ يُعِيدُهُ إِنَّ ذَٰلِكَ عَلَى اللَّهِ يَسِيرٌ * قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ثُمَّ اللَّهُ يُنشِئُ النَّشْأَةَ الْآخِرَةَ إِنَّ اللَّهَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ <span class="ref">[العنكبوت: ١٩-٢٠]</span></p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">تَقْوِيَةُ دَاعِي الْمَأْمُورِ عَلَى امْتِثَالِ وَتَحْقِيقِ الْأَمْرِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ إِنَّ اللَّهَ يُحِبُّ الْمُتَوَكِّلِينَ <span class="ref">[آل عمران: ١٥٩]</span></p>
+      
+    </div>
+
+
+    <h2 class="pasal__judul" id="shuwar-iltifat">صُوَرُ الِالْتِفَاتِ وَمَا يَتَمَكَّنُ وَرَاءَهَا مِنْ أَسْرَارٍ بَلَاغِيَّةٍ</h2>
+    
+
+<div class="hal" id="hal-11" data-kitab="11"><span><i class="hal__t">Hlm. </i>12</span><button type="button" class="hal__pdf" data-pdf="12" aria-label="Lihat PDF asli untuk Hlm. 12" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الْأُولَى:</strong> الِالْتِفَاتُ مِنَ التَّكَلُّمِ إِلَى الْخِطَابِ.<br>فَائِدَةٌ: تَحْرِيكُ وَإِثَارَةُ وَإِيقَاظُ مَشَاعِرِ السَّامِعِ وَتَنْبِيهُ ذِهْنِهِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَىٰ قَالَ يَا قَوْمِ اتَّبِعُوا الْمُرْسَلِينَ * اتَّبِعُوا مَن لَّا يَسْأَلُكُمْ أَجْرًا وَهُم مُّهْتَدُونَ * وَمَا لِيَ لَا أَعْبُدُ الَّذِي فَطَرَنِي وَإِلَيْهِ تُرْجَعُونَ <span class="ref">[يس: ٢٠-٢٢]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الثَّانِيَةُ:</strong> الِالْتِفَاتُ مِنَ التَّكَلُّمِ إِلَى الْغَيْبَةِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">الْحَثُّ عَلَى فِعْلِ الْمَأْمُورِ بِهِ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ * فَصَلِّ لِرَبِّكَ وَانْحَرْ <span class="ref">[الكوثر: ١-٢]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الثَّالِثَةُ:</strong> الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى التَّكَلُّمِ.</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">دَلَالَةٌ عَلَى عَظَمَةِ اللَّهِ وَاخْتِصَاصِهِ بِتِلْكَ الصِّفَاتِ وَدَفْعُ التَّوَهُّمِ وَانْصِرَافِهَا إِلَى آلِهَتِهِمْ</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ إِنَّ رَبِّي رَحِيمٌ وَدُودٌ <span class="ref">[هود: ٩٠]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الرَّابِعَةُ:</strong> الِالْتِفَاتُ مِنَ الْخِطَابِ إِلَى الْغَيْبَةِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَذَٰلِكُمْ ظَنُّكُمُ الَّذِي ظَنَنتُم بِرَبِّكُمْ أَرْدَاكُمْ فَأَصْبَحْتُم مِّنَ الْخَاسِرِينَ * فَإِن يَصْبِرُوا فَالنَّارُ مَثْوًى لَّهُمْ وَإِن يَسْتَعْتِبُوا فَمَا هُم مِّنَ الْمُعْتَبِينَ <span class="ref">[فصلت: ٢٣]</span></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ الْخَامِسَةُ:</strong> الِالْتِفَاتُ مِنَ الْغَيْبَةِ إِلَى التَّكَلُّمِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">وَاللَّهُ الَّذِي أَرْسَلَ الرِّيَاحَ فَتُثِيرُ سَحَابًا فَسُقْنَاهُ إِلَىٰ بَلَدٍ مَّيِّتٍ فَأَحْيَيْنَا بِهِ الْأَرْضَ بَعْدَ مَوْتِهَا كَذَٰلِكَ النُّشُورُ <span class="ref">[فاطر: ٩]</span></p>
+      
+    </div>
+
+<div class="hal" id="hal-12" data-kitab="12"><span><i class="hal__t">Hlm. </i>13</span><button type="button" class="hal__pdf" data-pdf="13" aria-label="Lihat PDF asli untuk Hlm. 13" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar"><strong>الصُّورَةُ السَّادِسَةُ:</strong> الِالْتِفَاتُ مِنَ الْغَيْبَةِ إِلَى الْخِطَابِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">عَالِيَهُمْ ثِيَابُ سُندُسٍ خُضْرٌ وَإِسْتَبْرَقٌ وَحُلُّوا أَسَاوِرَ مِن فِضَّةٍ وَسَقَاهُمْ رَبُّهُمْ شَرَابًا طَهُورًا * إِنَّ هَٰذَا كَانَ لَكُمْ جَزَاءً وَكَانَ سَعْيُكُم مَّشْكُورًا <span class="ref">[الإنسان: ٢١-٢٢]</span></p>
+      
+    </div>
+
+
+    <h2 class="pasal__judul" id="uslub-hakim">أُسْلُوبُ الْحَكِيمِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">هُوَ أَنْ تُلَقِّيَ الْمُخَاطَبَ بِغَيْرِ مَا يَتَرَقَّبُ، بِحَمْلِ كَلَامِهِ عَلَى خِلَافِ مُرَادِهِ، تَنْبِيهًا عَلَى أَنَّهُ أَوْلَى بِالْقَصْدِ.</p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَسْأَلُونَكَ عَنِ الْأَهِلَّةِ قُلْ هِيَ مَوَاقِيتُ لِلنَّاسِ وَالْحَجِّ <span class="ref">[البقرة: ١٨٩]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">يَسْأَلُونَكَ مَاذَا يُنفِقُونَ قُلْ مَا أَنفَقْتُم مِّنْ خَيْرٍ فَلِلْوَالِدَيْنِ وَالْأَقْرَبِينَ وَالْيَتَامَىٰ وَالْمَسَاكِينِ وَابْنِ السَّبِيلِ <span class="ref">[البقرة: ٢١٥]</span></p>
+      
+    </div>
+
+    <div class="ayat quran">
+      <p class="ar">قَالَ فِرْعَوْنُ وَمَا رَبُّ الْعَالَمِينَ * قَالَ رَبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا إِن كُنتُم مُّوقِنِينَ * قَالَ لِمَنْ حَوْلَهُ أَلَا تَسْتَمِعُونَ * قَالَ رَبُّكُمْ وَرَبُّ آبَائِكُمُ الْأَوَّلِينَ * قَالَ إِنَّ رَسُولَكُمُ الَّذِي أُرْسِلَ إِلَيْكُمْ لَمَجْنُونٌ <span class="ref">[الشعراء: ٢٣-٢٧]</span></p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="asalib-qashr">أَسَالِيبُ الْقَصْرِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">أَسَالِيبُ الْقَصْرِ أَسَالِيبُ ثَرِيَّةٌ، فَهِيَ مِنَ الْأَسَالِيبِ الْغَنِيَّةِ بِالِاعْتِبَارَاتِ الدَّقِيقَةِ وَالْمُلَاحَظَاتِ اللَّطِيفَةِ، وَلِذَا قَالُوا: إِنَّ الْقَصْرَ فَنٌّ دَقِيقُ الْمَجْرَى، لَطِيفُ الْمَغْزَى، جَلِيلُ الْمِقْدَارِ، كَثِيرُ الْفَوَائِدِ، غَزِيرُ الْأَسْرَارِ.<br>انْظُرْ إِلَى قَوْلِ عَبْدِ اللَّهِ بْنِ قَيْسٍ الرُّقَيَّاتِ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">إِنَّمَا مُصْعَبٌ شِهَابٌ مِنَ اللهِ</span><span class="shatr">تَجَلَّتْ عَنْ وَجْهِهِ الظُّلْمَاءُ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">تَجِدْهُ يُفِيدُ الْمُبَالَغَةَ فِي وَصْفِ مُصْعَبٍ بِالشَّجَاعَةِ وَالْإِقْدَامِ بِعِبَارَةٍ مُخْتَصَرَةٍ وَأُسْلُوبٍ مُوجَزٍ، وَقَدْ آثَرَ الشَّاعِرُ التَّعْبِيرَ بِـ"إِنَّمَا" لِيَدُلَّ عَلَى أَنَّ اتِّصَافَ مُصْعَبٍ بِصِفَةِ الشَّجَاعَةِ أَمْرٌ ظَاهِرٌ بَيِّنٌ، فَتِلْكَ خُصُوصِيَّةٌ مِنْ خُصُوصِيَّاتِ "إِنَّمَا" - كَمَا سَنَرَى - وَبِهَذَا يَتَّضِحُ لَكَ أَنَّ أُسْلُوبَ الْقَصْرِ فِي الْبَيْتِ قَدْ حَقَّقَ ثَلَاثَ مَزَايَا: الْإِيجَازَ وَالْمُبَالَغَةَ وَالدَّلَالَةَ عَلَى شُهْرَةِ مُصْعَبٍ وَذُيُوعِ شَجَاعَتِهِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذَا، وَالْقَصْرُ فِي اللُّغَةِ مَعْنَاهُ الْحَبْسُ، يُقَالُ: قَصَرْتُهُ أَيْ: حَبَسْتُهُ، وَهُوَ مَقْصُورٌ أَيْ مَحْبُوسٌ، قَالَ تَعَالَى: حُورٌ مَّقْصُورَاتٌ فِي الْخِيَامِ <span class="ref">[الرحمن: ٧٢]</span>، أَيْ: مَحْبُوسَاتٌ قَدْ قَصَرْنَ نَظَرَهُنَّ عَلَى أَزْوَاجِهِنَّ، فَالْمَرْأَةُ قَاصِرَةُ الطَّرْفِ هِيَ الَّتِي تَحْبِسُ طَرْفَهَا عَلَى بَعْلِهَا وَتَخُصُّهُ بِهِ فَلَا تَمُدُّهُ إِلَى غَيْرِهِ. وَفِي اصْطِلَاحِ الْبَلَاغِيِّينَ: هُوَ تَخْصِيصُ شَيْءٍ بِشَيْءٍ بِطَرِيقٍ مَخْصُوصٍ. فَعِنْدَمَا نَقُولُ: زُهَيْرٌ شَاعِرٌ لَا كَاتِبٌ، فَإِنَّنَا نَخُصُّ زُهَيْرًا بِصِفَةِ الشِّعْرِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الْكِتَابَةِ، فَزُهَيْرٌ مَقْصُورٌ وَالشِّعْرُ مَقْصُورٌ عَلَيْهِ، وَقَدْ قَيَّدَ الْبَلَاغِيُّونَ التَّخْصِيصَ بِالطَّرِيقِ الْمَخْصُوصِ، لِيَخْرُجَ كُلُّ مَا أَفَادَ الْقَصْرَ بِغَيْرِ تِلْكَ الطُّرُقِ الْمَخْصُوصَةِ، كَقَوْلِنَا: زَيْدٌ مَقْصُورٌ عَلَى الْعِلْمِ، وَجَاءَ مُحَمَّدٌ وَحْدَهُ... وَعَلِيٌّ يَخْتَصُّ بِالشِّعْرِ... وَخَالِدٌ يَنْفَرِدُ بِالشَّجَاعَةِ.<br>وَقَالَ أَبُو ذُؤَيْبٍ:</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-13" data-kitab="13"><span><i class="hal__t">Hlm. </i>14</span><button type="button" class="hal__pdf" data-pdf="14" aria-label="Lihat PDF asli untuk Hlm. 14" title="Lihat PDF asli"></button></div>
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَإِذَا الْمَنِيَّةُ أَنْشَبَتْ أَظْفَارَهَا</span><span class="shatr">أَلْفَيْتَ كُلَّ تَمِيمَةٍ لَا تَنْفَعُ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">هَذِهِ الْأَقْوَالُ وَإِنْ أَفَادَتِ اخْتِصَاصَ شَيْءٍ بِشَيْءٍ إِلَّا أَنَّهَا لَا تَدْخُلُ فِي نِطَاقِ دِرَاسَةِ الْبَلَاغِيِّينَ وَمَيْدَانِ بَحْثِهِمْ لِأَنَّ التَّخْصِيصَ فِيهَا لَمْ يَتِمَّ عَنِ الطُّرُقِ الْمَعْهُودَةِ الَّتِي حَدَّدُوهَا.<br>وَعِنْدَ التَّأَمُّلِ نَجِدُ أَنَّ إِفَادَةَ الْقَصْرِ بِغَيْرِ الطُّرُقِ الَّتِي حَدَّدَهَا الْبَلَاغِيُّونَ لَيْسَ وَرَاءَهَا اعْتِبَارَاتٌ بَلَاغِيَّةٌ تَسْتَدْعِي الدِّرَاسَةَ وَالْبَحْثَ، وَلِذَا حَصَرَ الْبَلَاغِيُّونَ دِرَاسَةَ الْقَصْرِ فِي تِلْكَ الطُّرُقِ الْغَنِيَّةِ بِالِاعْتِبَارَاتِ وَالْمُلَاحَظَاتِ الدَّقِيقَةِ... وَهِيَ ((التَّقْدِيمُ)) كَقَوْلِهِ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، وَالْعَطْفُ نَحْوَ: مُحَمَّدٌ كَاتِبٌ لَا شَاعِرٌ، وَ"إِنَّمَا" كَقَوْلِهِ تَعَالَى: إِنَّمَا أَنتَ مُنذِرُ مَن يَخْشَاهَا <span class="ref">[النازعات: ٤٥]</span>، وَالنَّفْيُ وَالِاسْتِثْنَاءُ كَقَوْلِهِ عَزَّ وَجَلَّ: إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٣]</span>، وَأَضَافَ بَعْضُهُمْ: ((تَعْرِيفُ الْمُسْنَدِ أَوِ الْمُسْنَدِ إِلَيْهِ بِأَلْ))، وَ((تَوَسُّطُ ضَمِيرِ الْفَصْلِ بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ)) نَحْوَ: مُحَمَّدٌ الْجَوَادُ... وَالشُّجَاعُ عَمْرٌو... وَعَلِيٌّ هُوَ الْعَالِمُ... وَزَادَ بَعْضُهُمْ طُرُقًا أُخْرَى حَتَّى وَصَلَتْ طُرُقُ الْقَصْرِ عِنْدَهُمْ إِلَى أَرْبَعَةَ عَشَرَ طَرِيقًا.<br>وَلَكِنَّ مَا عَلَيْهِ جُمْهُورُ الْبَلَاغِيِّينَ هُوَ الطُّرُقُ الْأَرْبَعَةُ الْأُولَى: النَّفْيُ وَالِاسْتِثْنَاءُ، وَ((إِنَّمَا))، وَالتَّقْدِيمُ، وَالْعَطْفُ بِـ((لَا)) وَ((بَلْ)) وَ((لَكِنْ))؛ لِأَنَّهَا هِيَ الْغَنِيَّةُ بِالِاعْتِبَارَاتِ وَالْمُلَاحَظَاتِ دُونَ غَيْرِهَا. وَالْبَلَاغِيُّونَ فِي دِرَاسَتِهِمْ لِأُسْلُوبِ الْقَصْرِ يَنْظُرُونَ إِلَى غَرَضِ الْمُتَكَلِّمِ مِنَ الِاخْتِصَاصِ... وَإِلَى حَالِ الْمُخَاطَبِ الَّتِي وَقَفَ عَلَيْهَا الْمُتَكَلِّمُ فَأَحْدَثَ هَذَا التَّخْصِيصَ... وَإِلَى طَرَفَيِ الْقَصْرِ أَيِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ... ثُمَّ إِلَى طُرُقِ الْقَصْرِ الْمَشْهُورَةِ وَمَا بَيْنَهَا مِنْ فُرُوقٍ وَاعْتِبَارَاتٍ... فَالْقَصْرُ كَمَا عَرَّفُوهُ: ((تَخْصِيصُ شَيْءٍ بِشَيْءٍ بِطَرِيقٍ مَخْصُوصٍ))، الشَّيْءُ الْأَوَّلُ هُوَ الْمَقْصُورُ عَلَيْهِ، وَالثَّانِي هُوَ الْمَقْصُورُ.</p>
+      
+    </div>
+
+
+    <div class="ayat">
+      <p class="ar">وَمَعْنَى اخْتِصَاصِ الْمَقْصُورِ بِالْمَقْصُورِ عَلَيْهِ أَلَّا يَتَجَاوَزَهُ وَيَتَعَدَّاهُ إِلَى غَيْرِهِ، فَفِي قَوْلِنَا: ((مَا شَاعِرٌ إِلَّا زُهَيْرٌ))، قَصْرٌ لِلشَّاعِرِيَّةِ عَلَى زُهَيْرٍ بِحَيْثُ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ. وَهَذَا الْغَيْرُ الَّذِي انْتَفَتْ عَنْهُ صِفَةُ الشِّعْرِ إِنْ كَانَ عَامًّا فَالْقَصْرُ حَقِيقِيٌّ، وَإِنْ كَانَ مُعَيَّنًا فَالْقَصْرُ إِضَافِيٌّ... وَالْعَامُّ إِنْ كَانَ مُطَابِقًا لِلْوَاقِعِ الْخَارِجِيِّ فَالْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ، وَإِنْ كَانَ مَبْنِيًّا عَلَى الِادِّعَاءِ وَالْمُبَالَغَةِ فَهُوَ حَقِيقِيٌّ ادِّعَائِيٌّ.<br>ثُمَّ الْقَصْرُ الْإِضَافِيُّ يُنْظَرُ فِيهِ إِلَى حَالِ الْمُخَاطَبِ، فَهُوَ إِمَّا أَنْ يَكُونَ مُتَرَدِّدًا فِي إِثْبَاتِ الْمَقْصُورِ لِلْمَقْصُورِ عَلَيْهِ وَنَفْيِهِ عَنِ الْمَنْفِيِّ عَنْهُ، وَإِمَّا أَنْ يَكُونَ مُعْتَقِدًا الشَّرِكَةَ، أَيِ: اشْتِرَاكَ الْمَنْفِيِّ عَنْهُ وَالْمَقْصُورِ عَلَيْهِ فِي الْمَقْصُورِ... وَإِمَّا أَنْ يَعْتَقِدَ الْعَكْسَ، أَيْ: إِثْبَاتَ الْمَقْصُورِ لِلْمَنْفِيِّ عَنْهُ وَنَفْيَهُ عَنِ الْمَقْصُورِ عَلَيْهِ... فَالْأَوَّلُ قَصْرُ التَّعْيِينِ، وَالثَّانِي قَصْرُ الْإِفْرَادِ، وَالثَّالِثُ قَصْرُ الْقَلْبِ.<br>ثُمَّ يَنْظُرُونَ إِلَى طَرَفَيِ الْقَصْرِ، أَيِ: الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ، لِأَنَّهُ لَا بُدَّ أَنْ يَكُونَ أَحَدُهُمَا مَوْصُوفًا وَالْآخَرُ صِفَةً، وَلِذَا فَالْقَصْرُ إِمَّا أَنْ يَكُونَ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ أَوْ قَصْرَ مَوْصُوفٍ عَلَى صِفَةٍ.<br>هَذَا، وَلَيْسَتْ طُرُقُ الْقَصْرِ سَوَاءً فِي الدَّلَالَةِ عَلَيْهِ، بَلْ بَيْنَهَا فُرُوقٌ دَقِيقَةٌ - كَمَا قُلْتُ - تَحْتَاجُ مِنَ الدَّارِسِ لِكَيْ يَقِفَ عَلَيْهَا إِلَى تَأَمُّلٍ وَاعٍ وَنَظَرٍ دَقِيقٍ؛ ثُمَّ إِنَّ تَحْدِيدَ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ لَيْسَ بِالشَّيْءِ الْهَيِّنِ، بَلْ يَحْتَاجُ مِنَ الدَّارِسِ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-14" data-kitab="14"><span><i class="hal__t">Hlm. </i>15</span><button type="button" class="hal__pdf" data-pdf="15" aria-label="Lihat PDF asli untuk Hlm. 15" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">أَيْضًا إِلَى نَظَرٍ وَتَأَمُّلٍ فِي أُسْلُوبِ الْقَصْرِ، فَمَثَلًا قَوْلُكَ: إِنَّمَا ضَرَبَ مُحَمَّدٌ زَيْدًا، يُفِيدُ قَصْرَ الضَّرْبِ الْوَاقِعِ مِنْ مُحَمَّدٍ عَلَى الْمَفْعُولِ: زَيْدٍ، وَقَوْلُكَ: إِنَّمَا ضَرَبَ زَيْدًا مُحَمَّدٌ، يُفِيدُ قَصْرَ الضَّرْبِ الْوَاقِعِ عَلَى زَيْدٍ عَلَى فَاعِلِهِ مُحَمَّدٍ، وَبَيْنَهُمَا فَرْقٌ كَبِيرٌ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-idhafi">الْقَصْرُ الْحَقِيقِيُّ وَالْقَصْرُ الْإِضَافِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar"><strong>الْقَصْرُ الْحَقِيقِيُّ</strong></p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">مَا كَانَ غَرَضُ الْمُتَكَلِّمِ مِنْهُ أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِحَيْثُ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ أَصْلًا... وَهَذَا يَعْنِي أَنَّ الْمَنْفِيَّ عَنْهُ يَكُونُ عَامًّا، فَالْمَقْصُورُ مُخْتَصٌّ بِالْمَقْصُورِ عَلَيْهِ مَنْفِيٌّ عَنْ كُلِّ مَا عَدَاهُ... كَمَا فِي قَوْلِهِ تَعَالَى: وَعِندَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، فَفِي الْآيَةِ طَرِيقَانِ مِنْ طُرُقِ الْقَصْرِ: الْأَوَّلُ التَّقْدِيمُ ((وَعِنْدَهُ مَفَاتِحُ الْغَيْبِ))، وَالثَّانِي: النَّفْيُ وَالِاسْتِثْنَاءُ ((لَا يَعْلَمُهَا إِلَّا هُوَ))، فَمَفَاتِحُ الْغَيْبِ عِنْدَهُ وَلَيْسَتْ عِنْدَ غَيْرِهِ، وَعِلْمُهَا مَقْصُورٌ عَلَيْهِ تَعَالَى، مَنْفِيٌّ عَنْ كُلِّ مَا عَدَاهُ، وَتَكْرَارُ الْقَصْرِ أَفَادَ تَأْكِيدَ هَذِهِ الْحَقِيقَةِ وَتَقْرِيرَهَا، وَهِيَ أَنَّ الْعِلْمَ بِالْغَيْبِ مُخْتَصٌّ بِهِ تَعَالَى، لَا يَتَعَدَّاهُ إِلَى أَحَدٍ مِنْ خَلْقِهِ. وَمِنْهُ قَوْلُنَا: ((مَا خَاتَمُ الْأَنْبِيَاءِ إِلَّا مُحَمَّدٌ)) فَالْمُرَادُ أَنَّ خَتْمَ النُّبُوَّةِ مَقْصُورٌ عَلَى مُحَمَّدٍ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ مِنَ الرُّسُلِ... وَقَوْلُهُ عَزَّ وَجَلَّ: قُلْ يَا أَهْلَ الْكِتَابِ تَعَالَوْا إِلَىٰ كَلِمَةٍ سَوَاءٍ بَيْنَنَا وَبَيْنَكُمْ أَلَّا نَعْبُدَ إِلَّا اللَّهَ وَلَا نُشْرِكَ بِهِ شَيْئًا <span class="ref">[آل عمران: ٦٤]</span>، فَالْمُرَادُ قَصْرُ الْعِبَادَةِ عَلَى اللَّهِ تَعَالَى بِحَيْثُ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ مُطْلَقًا.<br>وَيَنْقَسِمُ الْقَصْرُ الْحَقِيقِيُّ إِلَى قِسْمَيْنِ: حَقِيقِيٍّ تَحْقِيقِيٍّ وَحَقِيقِيٍّ ادِّعَائِيٍّ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-tahqiqi">الْقَصْرُ حَقِيقِيٌّ تَحْقِيقِيٌّ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَا كَانَ الْمَنْفِيُّ فِيهِ عَامًّا يَتَنَاوَلُ كُلَّ مَا عَدَا الْمَقْصُورَ عَلَيْهِ مِنْ حَيْثُ وَاقِعُ الْحَالِ وَحَقِيقَةُ الْأَمْرِ، فَالْمَقْصُورُ يَخْتَصُّ بِالْمَقْصُورِ عَلَيْهِ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَةِ الْحَالِ، كَمَا فِي الشَّوَاهِدِ الَّتِي مَرَّتْ بِنَا، وَكَمَا فِي قَوْلِكَ: مَا أَكْرَمْتُ إِلَّا زَيْدًا، إِذَا كَانَ الْإِكْرَامُ لَمْ يَقَعْ مِنْكَ إِلَّا عَلَى زَيْدٍ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَتِهِ... وَمِنْهُ قَوْلُنَا: ((لَا يَحُجُّ إِلَى مَكَّةَ إِلَّا الْمُسْلِمُونَ))، فَالْوَاقِعُ يُطَابِقُ هَذَا، لِأَنَّ الْحَجَّ إِلَى مَكَّةَ مَقْصُورٌ عَلَى الْمُسْلِمِينَ، وَمَنْفِيٌّ عَنْ كُلِّ مَنْ عَدَاهُمْ مِنْ أَصْحَابِ الْمِلَلِ الْأُخْرَى.</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-15" data-kitab="15"><span><i class="hal__t">Hlm. </i>16</span><button type="button" class="hal__pdf" data-pdf="16" aria-label="Lihat PDF asli untuk Hlm. 16" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">وَمِنْهُ قَوْلُهُ تَعَالَى: تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ <span class="ref">[الملك: ١]</span>، فَالْمُلْكُ مُخْتَصٌّ بِاللَّهِ فِي الْحَقِيقَةِ وَالْوَاقِعِ، وَقَوْلُهُ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، فَالْعِبَادَةُ وَطَلَبُ الْعَوْنِ مُخْتَصَّانِ بِاللَّهِ وَمَنْفِيَّانِ عَنْ كُلِّ مَا عَدَاهُ فِي وَاقِعِ الْأَمْرِ وَحَقِيقَتِهِ.<br>وَقَوْلُهُ عَزَّ وَجَلَّ: وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ <span class="ref">[آل عمران: ١٣٥]</span>، فَغُفْرَانُ الذُّنُوبِ مُخْتَصٌّ بِاللَّهِ تَعَالَى، مَنْفِيٌّ عَمَّا عَدَاهُ فِي الْوَاقِعِ وَالْحَقِيقَةِ.<br>وَنُلَاحِظُ أَنَّ الْمَقْصُورَ فِي جُلِّ الشَّوَاهِدِ الْمَذْكُورَةِ صِفَةٌ وَالْمَقْصُورَ عَلَيْهِ مَوْصُوفٌ، فَالْقَصْرُ الْحَقِيقِيُّ التَّحْقِيقِيُّ يَقَعُ كَثِيرًا فِي الْكَلَامِ إِذَا كَانَ الْمَقْصُورُ صِفَةً، وَيَقِلُّ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ، لِأَنَّ الْغَالِبَ فِي الْمَوْصُوفِ أَنْ يَتَّصِفَ بِعِدَّةِ صِفَاتٍ وَلَا يُوقَفُ عَلَى صِفَةٍ وَاحِدَةٍ، أَمَّا الصِّفَةُ فَيَجُوزُ وَقْفُهَا عَلَى مَوْصُوفٍ وَاحِدٍ وَحَصْرُهَا فِيهِ.<br>وَقَدْ غَالَى بَعْضُ الْبَلَاغِيِّينَ فَقَالُوا: إِنَّ قَصْرَ الْمَوْصُوفِ عَلَى الصِّفَةِ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا لَا يَتَأَتَّى لِأَنَّهُ مَا مِنْ مَوْصُوفٍ إِلَّا وَلَهُ صِفَاتٌ كَثِيرَةٌ تَتَعَذَّرُ الْإِحَاطَةُ بِهَا أَوْ تَتَعَسَّرُ، فَإِذَا قُلْنَا: مَا زُهَيْرٌ إِلَّا شَاعِرٌ... وَمَا زِيَادٌ إِلَّا كَاتِبٌ... لَا يَتَأَتَّى أَنْ يَكُونَ زُهَيْرٌ مَقْصُورًا عَلَى صِفَةِ الشِّعْرِ لَا يَتَجَاوَزُهَا إِلَى غَيْرِهَا... وَلَا أَنْ يَكُونَ زِيَادٌ مَوْقُوفًا عَلَى الْكِتَابَةِ لَا يَتَعَدَّاهَا إِلَى غَيْرِهَا... كَيْفَ وَهُمَا يَأْكُلَانِ وَيَتَكَلَّمَانِ وَيَمْشِيَانِ وَيَتَّصِفَانِ بِالْحَيَاةِ، وَبِالْبَيَاضِ أَوِ السَّوَادِ وَبِالْقِصَرِ أَوِ الطُّولِ وَبِالذَّكَاءِ أَوِ الْغَبَاءِ.<br>وَخُلَاصَةُ الْقَوْلِ أَنَّ الْمَنْفِيَّ عَنْهُ فِي الْقَصْرِ الْحَقِيقِيِّ التَّحْقِيقِيِّ، مَا هُوَ بِسَبِيلٍ مِنَ الْمَقْصُورِ عَلَيْهِ، وَوَاقِعٌ فِي دَائِرَتِهِ، وَيَتَبَادَرُ إِلَى الذِّهْنِ عِنْدَ سَمَاعِ أُسْلُوبِ الْقَصْرِ، فَإِذَا قُلْتَ: مَا شَاعِرٌ إِلَّا زَيْدٌ؛ فَإِنَّكَ لَا تَعْنِي نَفْيَ الشَّاعِرِيَّةِ عَنْ كُلِّ مَنْ وَلَدَتْهُ حَوَّاءُ فِي كُلِّ الْعُصُورِ وَكُلِّ الْأُمَمِ، وَإِنَّمَا تَعْنِي نَفْيَ الشَّاعِرِيَّةِ فِي حُدُودِ مَا يُشِيرُ إِلَيْهِ السِّيَاقُ وَالْقَرَائِنُ، وَكَذَا إِنْ قُلْتَ: مَا زُهَيْرٌ إِلَّا شَاعِرٌ، لَا يَعْنِي أَنَّكَ تَنْفِي عَنْ زُهَيْرٍ كُلَّ صِفَةٍ غَيْرَ الشِّعْرِ، وَإِنَّمَا يَعْنِي أَنَّكَ تَنْفِي عَنْهُ كُلَّ مَا هُوَ بِسَبِيلٍ مِنْ صِفَةِ الشِّعْرِ كَالْخَطَابَةِ وَالْكِتَابَةِ، وَكُلَّ مَا هُوَ فِي نِطَاقِ الْقَوْلِ وَالْإِبْدَاعِ مِمَّا يُحَدِّدُهُ السِّيَاقُ وَتُشِيرُ إِلَيْهِ الْقَرَائِنُ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-haqiqi-iddiai">الْقَصْرُ الْحَقِيقِيُّ الِادِّعَائِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar">فَهُوَ أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِحَيْثُ لَا يَتَعَدَّاهُ إِلَى غَيْرِهِ، ادِّعَاءً وَمُبَالَغَةً، فَالْمَقْصُورُ يَخْتَصُّ بِالْمَقْصُورِ عَلَيْهِ وَيُنْفَى عَنْ كُلِّ مَا عَدَاهُ مِمَّا هُوَ بِسَبِيلٍ مِنْهُ نَفْيًا يَقُومُ عَلَى الْمُبَالَغَةِ وَالتَّجَوُّزِ، وَلَا يَقُومُ عَلَى الْمُطَابَقَةِ الْحَقِيقِيَّةِ لِلْوَاقِعِ، كَمَا فِي قَوْلِهِ تَعَالَى: إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٨]</span>، فَقَدْ قُصِرَتْ خَشْيَةُ اللَّهِ عَلَى الْعُلَمَاءِ وَنُفِيَتْ عَنْ كُلِّ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-16" data-kitab="16"><span><i class="hal__t">Hlm. </i>17</span><button type="button" class="hal__pdf" data-pdf="17" aria-label="Lihat PDF asli untuk Hlm. 17" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">مَنْ عَدَاهُمْ... وَلَا يَعْنِي هَذَا أَنَّ غَيْرَ الْعَالِمِ لَا يَخْشَى اللَّهَ تَعَالَى، بَلْ قَدْ يَكُونُ غَيْرُ الْعَالِمِ أَشَدَّ خَشْيَةً لِلَّهِ مِنَ الْعَالِمِ، وَلَكِنَّ سِيَاقَ الْآيَاتِ فِي التَّنْوِيهِ بِشَأْنِ الْعُلَمَاءِ وَتَعْظِيمِ مَنْزِلَتِهِمْ، وَالْحَثِّ عَلَى النَّظَرِ وَالتَّأَمُّلِ.<br>اقْرَأْ: أَلَمْ تَرَ أَنَّ اللَّهَ أَنزَلَ مِنَ السَّمَاءِ مَاءً فَأَخْرَجْنَا بِهِ ثَمَرَاتٍ مُّخْتَلِفًا أَلْوَانُهَا وَمِنَ الْجِبَالِ جُدَدٌ بِيضٌ وَحُمْرٌ مُّخْتَلِفٌ أَلْوَانُهَا وَغَرَابِيبُ سُودٌ * وَمِنَ النَّاسِ وَالدَّوَابِّ وَالْأَنْعَامِ مُخْتَلِفٌ أَلْوَانُهُ كَذَٰلِكَ إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٧-٢٨]</span>، وَلِذَا كَانَتْ خَشْيَةُ اللَّهِ مَقْصُورَةً عَلَى الْعُلَمَاءِ دُونَ غَيْرِهِمْ، لِأَنَّ خَشْيَةَ غَيْرِهِمْ لَا يُعْتَدُّ بِهَا فِي هَذَا الْمَقَامِ.<br>الْقَصْرُ الِادِّعَائِيُّ كَثِيرٌ فِي كَلَامِ الْعَرَبِ، وَيَرِدُ فِي مَقَامَاتِ الْمُبَالَغَةِ وَالْمَدْحِ وَالتَّعْظِيمِ، نَحْوَ قَوْلِهِمْ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا مُؤَدِّبٌ إِلَّا فُلَانٌ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا عَالِمٌ إِلَّا فُلَانٌ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا شَاعِرٌ إِلَّا امْرُؤُ الْقَيْسِ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا خَطِيبٌ إِلَّا صُحَارٌ الْعَبْدِيُّ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">مَا كَاتِبٌ إِلَّا فُلَانٌ</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">يَبْنُونَ الْكَلَامَ فِي ذَلِكَ عَلَى الْمُبَالَغَةِ وَعَدَمِ الِاعْتِدَادِ بِغَيْرِ الْمَذْكُورِ فِي تِلْكَ الصِّفَاتِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-idhafi">الْقَصْرُ الْإِضَافِيُّ</h3>
+
+    <div class="ayat">
+      <p class="ar">أَنْ يَخْتَصَّ الْمَقْصُورُ بِالْمَقْصُورِ عَلَيْهِ بِالنِّسْبَةِ إِلَى شَيْءٍ مُعَيَّنٍ، أَيْ بِالْإِضَافَةِ إِلَيْهِ، بِحَيْثُ لَا يَتَجَاوَزُهُ إِلَى ذَلِكَ الْمُعَيَّنِ... كَمَا فِي قَوْلِنَا: زُهَيْرٌ شَاعِرٌ لَا كَاتِبٌ، فَالْمُرَادُ قَصْرُ زُهَيْرٍ عَلَى صِفَةِ الشِّعْرِ، بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةٍ مُعَيَّنَةٍ مُحَدَّدَةٍ، وَهِيَ صِفَةُ الْكِتَابَةِ. وَهَذَا لَا يُنَافِي أَنْ يَكُونَ لِزُهَيْرٍ صِفَاتٌ أُخْرَى كَالْخَطَابَةِ مَثَلًا. فَفِي الْقَصْرِ الْإِضَافِيِّ يَكُونُ الْمَنْفِيُّ مُعَيَّنًا مُحَدَّدًا، وَالْمُرَادُ أَلَّا يَتَجَاوَزَ الْمَقْصُورُ الْمَقْصُورَ عَلَيْهِ إِلَى هَذَا الْمَنْفِيِّ الْمُعَيَّنِ، وَإِنْ أَمْكَنَ أَنْ يَتَجَاوَزَهُ إِلَى غَيْرِهِ... وَمِنْهُ قَوْلُنَا: الشَّاعِرُ ذُو الرُّمَّةِ لَا زِيَادٌ، فَصِفَةُ الشِّعْرِ مَقْصُورَةٌ عَلَى ذِي الرُّمَّةِ، لَا تَتَعَدَّاهُ إِلَى زِيَادٍ، وَإِنْ صَحَّ أَنْ تَتَعَدَّاهُ إِلَى نُصَيْبٍ وَالْكُمَيْتِ وَجَرِيرٍ وَالْفَرَزْدَقِ وَغَيْرِهِمْ مِنَ الشُّعَرَاءِ.<br>وَيَنْقَسِمُ الْقَصْرُ الْإِضَافِيُّ بِاعْتِبَارِ حَالِ الْمُخَاطَبِ إِلَى ثَلَاثَةِ أَقْسَامٍ: قَصْرِ الْقَلْبِ وَالْإِفْرَادِ وَالتَّعْيِينِ.</p>
+      
+    </div>
+
+<div class="hal" id="hal-17" data-kitab="17"><span><i class="hal__t">Hlm. </i>18</span><button type="button" class="hal__pdf" data-pdf="18" aria-label="Lihat PDF asli untuk Hlm. 18" title="Lihat PDF asli"></button></div>
+    <h3 class="bagian__judul" id="qashr-qalb">قَصْرُ الْقَلْبِ</h3>
+
+    <div class="ayat">
+      <p class="ar">هُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ مَكَانَ آخَرَ... وَيُخَاطَبُ بِهِ مَنْ يَعْتَقِدُ الْعَكْسَ، كَقَوْلِكَ: جَاءَنِي زَيْدٌ لَا عَمْرٌو، مُخَاطِبًا مَنْ يَعْتَقِدُ أَنَّ عَمْرًا هُوَ الَّذِي جَاءَكَ دُونَ زَيْدٍ، فَأَنْتَ تَعْكِسُ وَتَقْلِبُ مَا يَعْتَقِدُهُ، وَلِذَا سُمِّيَ قَصْرَ قَلْبٍ. وَمِنْهُ قَوْلُهُ تَعَالَى: وَإِذَا قِيلَ لَهُمْ آمِنُوا كَمَا آمَنَ النَّاسُ قَالُوا أَنُؤْمِنُ كَمَا آمَنَ السُّفَهَاءُ أَلَا إِنَّهُمْ هُمُ السُّفَهَاءُ وَلَٰكِن لَّا يَعْلَمُونَ <span class="ref">[البقرة: ١٣]</span>، لِأَنَّ الْمُنَافِقِينَ يَعْتَقِدُونَ أَنَّ الْمُؤْمِنِينَ هُمُ السُّفَهَاءُ دُونَهُمْ، فَقَلَبَ اللَّهُ عَزَّ وَجَلَّ اعْتِقَادَهُمْ وَبَيَّنَ أَنَّ الْمُنَافِقِينَ هُمُ السُّفَهَاءُ وَلَكِنْ لَا يَعْلَمُونَ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ تَعَالَى: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ وَأُمُّهُ صِدِّيقَةٌ كَانَا يَأْكُلَانِ الطَّعَامَ انظُرْ كَيْفَ نُبَيِّنُ لَهُمُ الْآيَاتِ ثُمَّ انظُرْ أَنَّىٰ يُؤْفَكُونَ <span class="ref">[المائدة: ٧٥]</span>، فَالنَّصَارَى يَعْتَقِدُونَ أَنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ: لَّقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ وَإِن لَّمْ يَنتَهُوا عَمَّا يَقُولُونَ لَيَمَسَّنَّ الَّذِينَ كَفَرُوا مِنْهُمْ عَذَابٌ أَلِيمٌ <span class="ref">[المائدة: ٧٣]</span>، فَقَلَبَ اللَّهُ تَعَالَى اعْتِقَادَهُمْ: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[المائدة: ٧٥]</span>، فَالْمَسِيحُ مَقْصُورٌ عَلَى كَوْنِهِ رَسُولًا يَخْلُو كَمَا خَلَتِ الرُّسُلُ مِنْ قَبْلِهِ، وَلَا يَتَجَاوَزُ ذَلِكَ إِلَى كَوْنِهِ إِلَٰهًا كَمَا اعْتَقَدَ الْكَفَرَةُ، وَلِذَا فَالْقَصْرُ فِي الْآيَةِ الْكَرِيمَةِ قَصْرُ قَلْبٍ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-ifrad">قَصْرُ الْإِفْرَادِ</h3>
+
+    <div class="ayat">
+      <p class="ar">هُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ دُونَ آخَرَ، وَيُخَاطَبُ بِهِ مَنْ يَعْتَقِدُ الشَّرِكَةَ، كَقَوْلِكَ: مُحَمَّدٌ الْجَوَادُ لَا عَلِيٌّ، لِمَنِ اعْتَقَدَ أَنَّهُمَا يَشْتَرِكَانِ فِي صِفَةِ الْجُودِ. وَمِنْهُ قَوْلُهُ تَعَالَى: لَّقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ <span class="ref">[المائدة: ٧٣]</span>، فَهُمْ يَعْتَقِدُونَ الشَّرِكَةَ، وَأَنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ، وَأَفَادَ أُسْلُوبُ الْقَصْرِ أَنَّ الْإِلَٰهَ وَاحِدٌ، ((وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ))، فَهُوَ قَصْرُ إِفْرَادٍ، حَيْثُ اعْتَقَدُوا أَنَّ صِفَةَ الْأُلُوهِيَّةِ يَشْتَرِكُ فِيهَا ثَلَاثَةٌ، وَأُفْرِدَ لَهَا الْقَصْرُ وَاحِدًا يَخْتَصُّ بِهَا دُونَ الْآخَرِينَ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَتَأَمَّلْ قَوْلَهُ تَعَالَى: وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ <span class="ref">[آل عمران: ١٤٤]</span>، فَالصَّحَابَةُ رِضْوَانُ اللَّهِ عَلَيْهِمْ لِشِدَّةِ تَعَلُّقِهِمْ وَحُبِّهِمْ لِلنَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نُزِّلُوا مَنْزِلَةَ مَنْ يَعْتَقِدُ أَنَّ مُحَمَّدًا عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ يَجْمَعُ بَيْنَ صِفَتَيِ الرِّسَالَةِ وَالْخُلْدِ، فَجَاءَ أُسْلُوبُ الْقَصْرِ مُفِيدًا أَنَّهُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مَقْصُورٌ عَلَى صِفَةِ الرِّسَالَةِ، فَهُوَ رَسُولٌ يَخْلُو كَمَا خَلَتِ الرُّسُلُ مِنْ قَبْلِهِ، لَا يَتَجَاوَزُ صِفَةَ الرِّسَالَةِ إِلَى التَّخْلِيدِ فِي الدُّنْيَا.<br>وَقَوْلُهُ تَعَالَى: وَمَا يَسْتَوِي الْأَحْيَاءُ وَلَا الْأَمْوَاتُ إِنَّ اللَّهَ يُسْمِعُ مَن يَشَاءُ وَمَا أَنتَ بِمُسْمِعٍ مَّن فِي الْقُبُورِ * إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٢-٢٣]</span>، فَلَمَّا كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتَمَنَّى هِدَايَةَ قَوْمِهِ، حَرِيصًا بَلْ شَدِيدَ الْحِرْصِ عَلَى قَبُولِهِمِ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-18" data-kitab="18"><span><i class="hal__t">Hlm. </i>19</span><button type="button" class="hal__pdf" data-pdf="19" aria-label="Lihat PDF asli untuk Hlm. 19" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">الْهِدَايَةَ، نُزِّلَ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مَنْزِلَةَ مَنْ يَعْتَقِدُ أَنَّهُ يَجْمَعُ بَيْنَ صِفَتَيِ الْإِنْذَارِ وَالْقُدْرَةِ عَلَى خَلْقِ الْهِدَايَةِ فِي النُّفُوسِ الَّتِي أَصَرَّتْ عَلَى الضَّلَالِ وَالْمُكَابَرَةِ، فَجَاءَ أُسْلُوبُ الْقَصْرِ: ((إِنْ أَنْتَ إِلَّا نَذِيرٌ)) مُحَدِّدًا مَهَمَّةَ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَقَاصِرًا لَهُ عَلَى صِفَةِ الْإِنْذَارِ، لَا يَتَعَدَّاهَا إِلَى الْقُدْرَةِ عَلَى إِسْمَاعِ مَنْ فِي الْقُبُورِ.<br>وَيُشْتَرَطُ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ إِفْرَادًا، عَدَمُ تَنَافِي الْوَصْفَيْنِ حَتَّى يُتَصَوَّرَ اجْتِمَاعُهُمَا لِمَوْصُوفٍ وَاحِدٍ فِي ذِهْنِ الْمُخَاطَبِ، فَلَا يُقَالُ فِي قَوْلِكَ: مُحَمَّدٌ أَبْيَضُ لَا أَسْوَدُ، إِنَّهُ قَصْرُ إِفْرَادٍ، إِذْ لَا يُتَصَوَّرُ أَنْ يَعْتَقِدَ مُعْتَقِدٌ أَنَّ مُحَمَّدًا يَتَّصِفُ بِالْبَيَاضِ وَالسَّوَادِ مَعًا. كَمَا اشْتَرَطَ الْخَطِيبُ الْقَزْوِينِيُّ فِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ قَلْبًا، تَنَافِيَ الصِّفَتَيْنِ حَتَّى يَكُونَ إِثْبَاتُ إِحْدَاهُمَا مُشْعِرًا بِانْتِفَاءِ الْأُخْرَى، كَقَوْلِكَ: مُحَمَّدٌ طَوِيلٌ لَا قَصِيرٌ، زَيْدٌ ذَكِيٌّ لَا غَبِيٌّ، عَمْرٌو شُجَاعٌ لَا جَبَانٌ، حَاتِمٌ كَرِيمٌ لَا بَخِيلٌ. وَرُدَّ عَلَيْهِ بِأَنَّ قَصْرَ الْقَلْبِ يَرِدُ كَثِيرًا فِي الصِّفَاتِ غَيْرِ الْمُتَنَافِيَةِ - كَمَا مَرَّ بِكَ - فَلَا وَجْهَ لِهَذَا الِاشْتِرَاطِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-tayin">قَصْرُ التَّعْيِينِ</h3>
+
+    <div class="ayat">
+      <p class="ar">وَهُوَ تَخْصِيصُ أَمْرٍ بِأَمْرٍ دُونَ آخَرَ، وَيُخَاطَبُ بِهِ الْمُتَرَدِّدُ بَيْنَ شَيْئَيْنِ، كَقَوْلِكَ لِمَنْ يَتَرَدَّدُ شَاكًّا فِي النَّاجِحِ: أَعَمْرٌو أَمْ بَكْرٌ؟ إِنَّمَا النَّاجِحُ عَمْرٌو، وَقَوْلِكَ: لِمَنْ يَشُكُّ فِي أَمْرِ زَيْدٍ: أَمُقِيمٌ أَمْ مُسَافِرٌ؟ زَيْدٌ مُقِيمٌ لَا مُسَافِرٌ.<br>تَأَمَّلْ قَوْلَهُ تَعَالَى: وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[آل عمران: ١٤٤]</span>، وَقَوْلَهُ عَزَّ وَجَلَّ: مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ <span class="ref">[المائدة: ٧٥]</span>، فَالْعِبَارَاتُ وَاحِدَةٌ وَالْبِنَاءُ هُوَ الْبِنَاءُ، وَعَلَى الرَّغْمِ مِنْ ذَلِكَ نَقُولُ: إِنَّ الْقَصْرَ فِي الْآيَةِ الْأُولَى قَصْرُ إِفْرَادٍ، وَفِي الثَّانِيَةِ قَصْرُ قَلْبٍ، وَالَّذِي جَعَلَنَا نَقُولُ هَذَا الْقَوْلَ الْوُقُوفُ عَلَى أَحْوَالِ الْمُخَاطَبِينَ مِنْ خِلَالِ تَأَمُّلِ سِيَاقِ الْآيَتَيْنِ.</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="qashr-sifah-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ وَالْمَوْصُوفِ عَلَى الصِّفَةِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">وَيَنْقَسِمُ الْقَصْرُ بِاعْتِبَارِ طَرَفَيْهِ الْمَقْصُورِ وَالْمَقْصُورِ عَلَيْهِ إِلَى قَصْرِ صِفَةٍ عَلَى مَوْصُوفٍ، وَقَصْرِ مَوْصُوفٍ عَلَى صِفَةٍ، وَالْمُرَادُ بِالصِّفَةِ هُنَا الصِّفَةُ الْمَعْنَوِيَّةُ الَّتِي هِيَ مَعْنًى قَائِمٌ بِالْغَيْرِ سَوَاءٌ كَانَ فِعْلًا أَوْ مَصْدَرًا أَوْ مُشْتَقًّا أَوْ ظَرْفًا أَوْ جَارًّا وَمَجْرُورًا أَوْ غَيْرَ ذَلِكَ، وَلَيْسَ الْمُرَادُ بِهَا النَّعْتَ النَّحْوِيَّ؛ لِأَنَّهُ لَا يَقَعُ قَصْرٌ بَيْنَ نَعْتٍ وَمَنْعُوتِهِ، كَقَوْلِكَ: جَاءَ رَجُلٌ فَاضِلٌ، فَفَاضِلٌ نَعْتٌ نَحْوِيٌّ لِلرَّجُلِ، لَا يُفْصَلُ بَيْنَهُمَا وَلَا يُتَصَوَّرُ بَيْنَهُمَا قَصْرٌ.</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-19" data-kitab="19"><span><i class="hal__t">Hlm. </i>20</span><button type="button" class="hal__pdf" data-pdf="20" aria-label="Lihat PDF asli untuk Hlm. 20" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">كَمَا أَنَّ الْمُرَادَ بِالْمَوْصُوفِ هُنَا كُلُّ مَا قَامَ بِهِ غَيْرُهُ، وَإِنْ كَانَ هُوَ فِي نَفْسِهِ صِفَةً. تَقُولُ فِي قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ: مَا شَاعِرٌ إِلَّا زُهَيْرٌ، مَا كَتَبَ فُلَانٌ إِلَّا الشِّعْرَ، مَا أَكْرَمْتُ إِلَّا زَيْدًا.<br>وَفِي قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ: مَا شَوْقِي إِلَّا شَاعِرٌ، إِنَّمَا أَنْتَ وَالِدُ مُحَمَّدٍ، فَارِسٌ لَا عَالِمٌ، مَا حَاتِمٌ بَخِيلًا بَلْ جَوَادٌ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-sifah-ala-mawshuf">قَصْرُ الصِّفَةِ عَلَى الْمَوْصُوفِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَعْنَاهُ: أَلَّا تَتَجَاوَزَ الصِّفَةُ ذَلِكَ الْمَوْصُوفَ إِلَى مَوْصُوفٍ آخَرَ أَصْلًا، إِذَا كَانَ الْقَصْرُ حَقِيقِيًّا، أَوْ إِلَى مَوْصُوفٍ آخَرَ مُعَيَّنٍ إِذَا كَانَ الْقَصْرُ إِضَافِيًّا، وَلَا يَمْنَعُ هَذَا أَنْ يَتَّصِفَ الْمَوْصُوفُ الْمَقْصُورُ عَلَيْهِ بِصِفَاتٍ أُخْرَى غَيْرَ تِلْكَ الصِّفَةِ الْمَقْصُورَةِ. تَقُولُ: الْخَالِقُ هُوَ اللَّهُ، فَتَقْصُرُ صِفَةَ الْخَلْقِ عَلَى اللَّهِ سُبْحَانَهُ وَتَعَالَى قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا، وَمِنْهُ قَوْلُهُ تَعَالَى: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ref">[الفاتحة: ٥]</span>، حَيْثُ قُصِرَتْ صِفَةُ الْعِبَادَةِ وَكَذَلِكَ صِفَةُ الِاسْتِعَانَةِ عَلَى اللَّهِ تَعَالَى، قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا فِي الْأَوَّلِ وَهُوَ قَصْرُ الْعِبَادَةِ، وَقَصْرًا حَقِيقِيًّا غَيْرَ تَحْقِيقِيٍّ فِي الثَّانِي وَهُوَ قَصْرُ الِاسْتِعَانَةِ، وَمِنْهُ قَوْلُهُ تَعَالَى: وَعِندَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، حَيْثُ قُصِرَ الْعِلْمُ بِمَفَاتِيحِ الْغَيْبِ عَلَى اللَّهِ تَعَالَى قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا، فَهُوَ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ.<br>وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَا يَطْرُدُ الْهُمَّ إِلَّا الْهُمُّ مِنْ رَجُلٍ</span><span class="shatr">مُقَلْقِلِ بَنَاتِ الْقَفْرَةِ النُّعْبِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ الشَّاعِرُ طَرْدَ الْهَمِّ وَهُوَ صِفَةٌ عَلَى الْهَمِّ مِنْ رَجُلٍ مُقَلْقِلٍ لِبَنَاتِ الْقَفْرَةِ وَهُوَ مَوْصُوفٌ، قَصْرًا حَقِيقِيًّا ادِّعَائِيًّا؛ لِأَنَّ النَّاسَ يَطْرُدُونَ هُمُومَهُمْ بِأُمُورٍ كَثِيرَةٍ، وَلَكِنَّ الشَّاعِرَ لَمْ يَعْتَدَّ بِشَيْءٍ مِنْهَا إِلَّا بِالرِّحْلَةِ الَّتِي غَيَّرَتْهُ وَأَضْنَتْهُ وَالَّتِي كَانَتْ سَبَبًا فِي حُزْنِ صَاحِبَتِهِ وَانْسِكَابِ عَبَرَاتِهَا، فَأَرَادَ أَنْ يُبَيِّنَ لَهَا أَنَّ تِلْكَ الرِّحْلَةَ هِيَ الْوَسِيلَةُ الْوَحِيدَةُ لِطَرْدِ الْهُمُومِ وَالْأَحْزَانِ.<br>وَقَوْلُ الْمُتَنَبِّي فِي رِثَاءِ جَدَّتِهِ:</p>
+      
+    </div>
+
+<div class="hal" id="hal-20" data-kitab="20"><span><i class="hal__t">Hlm. </i>21</span><button type="button" class="hal__pdf" data-pdf="21" aria-label="Lihat PDF asli untuk Hlm. 21" title="Lihat PDF asli"></button></div>
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَلَمْ يُسْلِهَا إِلَّا الْمَنَايَا وَإِنَّمَا</span><span class="shatr">أَشَدُّ مِنَ السُّقْمِ الَّذِي أَذْهَبَ السُّقْمَا</span></p>
+        
+      </div>
+    </div>
+
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ سُلُوَّهَا عَلَى الْمَنَايَا قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا؛ لِأَنَّ جَدَّتَهُ كَانَتْ قَدِ اشْتَاقَتْ إِلَيْهِ فِي غَيْبَتِهِ، فَلَمَّا وَصَلَهَا كِتَابُهُ قَبَّلَتْهُ وَفَرِحَتْ، ثُمَّ أُخْبِرَتْ كَذِبًا أَنَّهُ قَدْ مَاتَ فَحَمَّتْ وَمَاتَتْ، فَرَثَاهَا بِتِلْكَ الْقَصِيدَةِ.<br>أَمَّا قَوْلُهُ: ((وَإِنَّمَا أَشَدُّ مِنَ السُّقْمِ الَّذِي أَذْهَبَ السُّقْمَا)) فَلَكَ أَنْ تَجْعَلَهُ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ، أَيْ: قَصْرَ ((أَشَدَّ مِنَ السُّقْمِ)) عَلَى ((الَّذِي أَذْهَبَ السُّقْمَ))، وَالْمُرَادُ بِأَشَدَّ مِنَ السُّقْمِ صِفَاتُ الْكَآبَةِ وَالْأَلَمِ وَالْفُقْدَانِ وَالْوَجَعِ الَّتِي تَغْلِبُ السُّقْمَ وَتَقْهَرُهُ وَتَعْلُوهُ، لِأَنَّهُ لَا يَقْهَرُ الشَّيْءَ إِلَّا مَا هُوَ أَشَدُّ مِنْهُ وَأَقْوَى، فَهُوَ يَتَخَيَّلُ صِفَاتِ كَآبَةٍ أَقْوَى مِنَ السُّقْمِ، وَيَقْصُرُهَا عَلَى مَا أَذْهَبَ السُّقْمَ، وَهَذَا إِغْرَابٌ فِي الْخَيَالِ.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="qashr-mawshuf-ala-sifah">قَصْرُ الْمَوْصُوفِ عَلَى الصِّفَةِ</h3>
+
+    <div class="ayat">
+      <p class="ar">مَعْنَاهُ: أَلَّا يَتَجَاوَزَ الْمَوْصُوفُ تِلْكَ الصِّفَةَ إِلَى صِفَةٍ أُخْرَى أَصْلًا، إِذَا كَانَ الْقَصْرُ حَقِيقِيًّا، أَوْ إِلَى صِفَةٍ أُخْرَى مُعَيَّنَةٍ إِذَا كَانَ الْقَصْرُ إِضَافِيًّا، وَهَذَا لَا يَمْنَعُ أَنْ تَكُونَ تِلْكَ الصِّفَةُ الْمَقْصُورُ عَلَيْهَا وَصْفًا لِمَوْصُوفٍ آخَرَ غَيْرِ الْمَقْصُورِ، فَقَوْلُكَ: مَا عَمْرٌو إِلَّا شُجَاعٌ، قَصْرٌ لِعَمْرٍو عَلَى صِفَةِ الشَّجَاعَةِ بِحَيْثُ لَا يَتَعَدَّاهَا إِلَى صِفَةٍ أُخْرَى، أَمَّا الشَّجَاعَةُ فَلَيْسَ هُنَالِكَ مَا يَمْنَعُ مِنْ أَنْ يَتَّصِفَ بِهَا غَيْرُ عَمْرٍو. وَتَقُولُ: زَيْدٌ كَاتِبٌ لَا شَاعِرٌ، فَتَقْصُرُ زَيْدًا عَلَى صِفَةِ الْكِتَابَةِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الشِّعْرِ، فَهُوَ قَصْرٌ إِضَافِيٌّ. وَتَقُولُ: مَا شَوْقِي إِلَّا شَاعِرٌ، فَتَقْصُرُ شَوْقِيًّا عَلَى صِفَةِ الشِّعْرِ بِحَيْثُ لَا يَتَجَاوَزُهَا إِلَى صِفَةِ الْكِتَابَةِ، فَيَكُونُ قَصْرًا إِضَافِيًّا، أَوْ لَا يَتَجَاوَزُهَا إِلَى أَيَّةِ صِفَةٍ أُخْرَى، فَيَكُونُ قَصْرًا حَقِيقِيًّا.<br>وَمِنْ شَوَاهِدِ قَصْرِ الْمَوْصُوفِ عَلَى الصِّفَةِ قَوْلُهُ تَعَالَى: إِنَّ اللَّهَ يُسْمِعُ مَن يَشَاءُ وَمَا أَنتَ بِمُسْمِعٍ مَّن فِي الْقُبُورِ * إِنْ أَنتَ إِلَّا نَذِيرٌ <span class="ref">[فاطر: ٢٢-٢٣]</span>، حَيْثُ قُصِرَ الرَّسُولُ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عَلَى صِفَةِ الْإِنْذَارِ، لَا يَتَجَاوَزُهَا إِلَى أَنْ يَمْلِكَ تَحْوِيلَ الْقُلُوبِ الْمُشْرِكَةِ عَمَّا هِيَ عَلَيْهِ مِنَ الْعِنَادِ وَالْمُكَابَرَةِ، وَقَوْلُهُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ: "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ، وَإِنَّمَا أَنَا قَاسِمٌ وَاللَّهُ عَزَّ وَجَلَّ يُعْطِي".<br>وَمِنْهُ قَوْلُ دُرَيْدِ بْنِ الصِّمَّةِ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَهَلْ أَنَا إِلَّا مِن غَزِيَّةَ إِنْ غَوَتْ</span><span class="shatr">غَوَيْتُ وَإِنْ تَرْشُدْ غَزِيَّةُ أَرْشُدِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حَيْثُ قَصَرَ الشَّاعِرُ نَفْسَهُ عَلَى كَوْنِهِ مِنْ تِلْكَ الْقَبِيلَةِ، لَا يَتَعَدَّاهَا إِلَى أَنْ يَكُونَ مِنْ غَيْرِهَا مِنَ الْقَبَائِلِ، فَهُوَ قَصْرٌ حَقِيقِيٌّ تَحْقِيقِيٌّ.</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-21" data-kitab="21"><span><i class="hal__t">Hlm. </i>22</span><button type="button" class="hal__pdf" data-pdf="22" aria-label="Lihat PDF asli untuk Hlm. 22" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ تَعَالَى: وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا مَتَاعُ الْغُرُورِ <span class="ref">[الحديد: ٢٠]</span>، وَقَوْلُكَ: إِنَّمَا زَيْدٌ فِي الدَّارِ، وَمَا الْجُودُ إِلَّا أَنْ تَجُودَ بِالنَّفْسِ، إِلَّا إِذَا كَانَ الْخَبَرُ اسْمًا جَامِدًا وَالْمُبْتَدَأُ مُشْتَقًّا، فَإِنَّ الْقَصْرَ عِنْدَئِذٍ يَكُونُ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِكَ: مَا الْكَاتِبُ إِلَّا زَيْدٌ، وَمَا الْقَائِمُ إِلَّا عَمْرٌو، لِأَنَّكَ أَرَدْتَ الْحُكْمَ عَلَى الْكَاتِبِ بِأَنَّهُ زَيْدٌ، وَعَلَى الْقَائِمِ بِأَنَّهُ عَمْرٌو، فَالْكَاتِبُ مُبْتَدَأٌ خَبَرُهُ زَيْدٌ، وَالْقَائِمُ مُبْتَدَأٌ خَبَرُهُ عَمْرٌو، وَالْقَصْرُ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ.<br>قَصْرُ الْخَبَرِ عَلَى الْمُبْتَدَأِ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِهِ تَعَالَى: مَّا عَلَى الرَّسُولِ إِلَّا الْبَلَاغُ <span class="ref">[المائدة: ٩٩]</span>، وَقَوْلِهِ عَزَّ وَجَلَّ: فَإِنَّمَا عَلَيْكَ الْبَلَاغُ وَعَلَيْنَا الْحِسَابُ <span class="ref">[الرعد: ٤٠]</span>، فَقَدْ قُصِرَتْ مَهَمَّةُ الرَّسُولِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عَلَى الْبَلَاغِ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ، أَمَّا قَوْلُهُ ((وَعَلَيْنَا الْحِسَابُ)) فَهُوَ قَصْرٌ لِلْمُبْتَدَأِ ((الْحِسَابِ)) عَلَى الْخَبَرِ ((عَلَيْنَا))، قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا حَقِيقِيًّا تَحْقِيقِيًّا.<br>وَإِذَا وَقَعَ الْقَصْرُ بَيْنَ أَجْزَاءِ الْجُمْلَةِ الْفِعْلِيَّةِ، فَإِنَّ قَصْرَ الْفِعْلِ عَلَى الْفَاعِلِ يَكُونُ مِنْ قَصْرِ الصِّفَةِ عَلَى الْمَوْصُوفِ، كَقَوْلِكَ: مَا كَتَبَ إِلَّا مُحَمَّدٌ، لَا يَنَالُ الْعُلَا إِلَّا الْمَجِدُّ، وَمِنْهُ قَوْلُ أَبِي تَمَّامٍ وَقَدْ تَقَدَّمَ: ((لَا يَطْرُدُ الْهَمَّ إِلَّا الْهَمُّ مِنْ رَجُلٍ))، وَقَوْلُهُ جَلَّ وَعَلَا: لَا يَعْلَمُهَا إِلَّا هُوَ <span class="ref">[الأنعام: ٥٩]</span>، وَقَوْلُهُ تَعَالَى: هَلْ يُهْلَكُ إِلَّا الْقَوْمُ الظَّالِمُونَ <span class="ref">[الأنعام: ٤٧]</span>، وَقَوْلُهُ عَزَّ قَائِلًا: وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ <span class="ref">[آل عمران: ١٣٥]</span>، وَقَوْلُهُ تَعَالَى: إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ <span class="ref">[فاطر: ٢٨]</span>.<br>وَقَصْرُ الْفِعْلِ عَلَى الْمَفْعُولِ كَقَوْلِكَ: مَا ضَرَبَ مُحَمَّدٌ إِلَّا زَيْدًا، وَإِنَّمَا أَكْرَمَ زَيْدٌ عَمْرًا، وَكَمَا فِي الْآيَاتِ الْكَرِيمَةِ: مَا قُلْتُ لَهُمْ إِلَّا مَا أَمَرْتَنِي بِهِ <span class="ref">[المائدة: ١١٧]</span>، وَإِن يُهْلِكُونَ إِلَّا أَنفُسَهُمْ <span class="ref">[الأنعام: ٢٦]</span>، إِن يَتَّبِعُونَ إِلَّا الظَّنَّ <span class="ref">[النجم: ٢٨]</span>.<br>وَكَقَوْلِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: "فَعَلَيْكُمْ بِالْجَمَاعَةِ فَإِنَّمَا يَأْكُلُ الذِّئْبُ الْقَاصِيَةَ".</p>
+      
+    </div>
+
+    <h2 class="pasal__judul" id="thuruq-qashr">طُرُقُ الْقَصْرِ</h2>
+    
+
+    <div class="ayat">
+      <p class="ar">طُرُقُ الْقَصْرِ الَّتِي اصْطُلِحَ عَلَيْهَا عِنْدَ الْبَلَاغِيِّينَ أَرْبَعَةٌ: الْعَطْفُ بِـ"لَا" وَ"بَلْ" وَ"لَكِنْ"، وَالنَّفْيُ وَالِاسْتِثْنَاءُ، وَ"إِنَّمَا"، وَالتَّقْدِيمُ. وَأَضَافَ بَعْضُهُمْ طَرِيقَيْنِ آخَرَيْنِ، وَهُمَا: تَوَسُّطُ ضَمِيرِ الْفَصْلِ، وَتَعْرِيفُ أَحَدِ رُكْنَيِ الْإِسْنَادِ بِأَلْ. وَقَدِ اشْتُهِرَتْ هَذِهِ الطُّرُقُ عِنْدَ الْبَلَاغِيِّينَ، وَلَكِنَّ إِفَادَةَ الْقَصْرِ لَيْسَتْ مَقْصُورَةً عَلَيْهَا، فَهُنَاكَ طُرُقٌ كَثِيرَةٌ غَيْرُهَا.</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-22" data-kitab="22"><span><i class="hal__t">Hlm. </i>23</span><button type="button" class="hal__pdf" data-pdf="23" aria-label="Lihat PDF asli untuk Hlm. 23" title="Lihat PDF asli"></button></div>
+    <h3 class="bagian__judul" id="athf-la-bal-lakin">١ - الْعَطْفُ بِلَا وَبَلْ وَلَكِنْ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ:</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">زَيْدٌ كَرِيمٌ لَا عَمْرٌو</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">فُلَانٌ جَوَادٌ لَا بَخِيلٌ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">وَهُوَ يَدْعُوكَ إِلَى الْخَيْرِ لَا إِلَى الشَّرِّ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">خَالِدٌ يَنْصَحُكَ مُخْلِصًا لَا مُرَائِيًا</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">جَاءَ خَالِدٌ لَا عَمْرٌو</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَيْسَ حَاتِمٌ بَخِيلًا بَلْ جَوَادٌ</p>
+      
+    </div>
+
+    <div class="ayat list-item">
+      <p class="ar">لَمْ يَنْصَحْنِي عَمْرٌو وَلَكِنْ صَدِيقُهُ</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَنَجِدُ أَنَّ الْقَصْرَ قَدْ أُفِيدَ بِأَحَدِ الْحُرُوفِ الْمَذْكُورَةِ، وَوَاضِحٌ أَنَّ طَرِيقَ الْعَطْفِ يُصَرَّحُ فِيهِ بِكُلٍّ مِنَ الْمُثْبَتِ وَالْمَنْفِيِّ، أَيِ: الْمَقْصُورِ عَلَيْهِ وَالْمَنْفِيِّ عَنْهُ، وَلِذَا كَانَ أَقْوَى طُرُقِ الْقَصْرِ وَأَكَّدَهَا، لِأَنَّ غَيْرَهُ مِنَ الطُّرُقِ لَا يُصَرَّحُ فِيهَا بِالنَّفْيِ بَلْ يُفْهَمُ ضِمْنًا كَمَا سَتَرَى.<br>وَعَلَى الرَّغْمِ مِنْ أَنَّ فَائِدَةَ التَّأْكِيدِ أَقْوَى فِي هَذَا الطَّرِيقِ، فَإِنَّ مَزِيَّةَ الْإِيجَازِ فِيهِ تَتَضَاءَلُ لِلتَّصْرِيحِ فِيهِ بِالْإِثْبَاتِ وَالنَّفْيِ كَمَا قُلْتُ.<br>وَ"لَا" صَالِحَةٌ لِكُلِّ أَنْوَاعِ الْقَصْرِ، وَالْمَقْصُورُ عَلَيْهِ بِهَا هُوَ الْمُقَابِلُ لِمَا بَعْدَهَا، وَيُشْتَرَطُ لِدَلَالَتِهَا عَلَى الْقَصْرِ أَنْ يَكُونَ الْمَعْطُوفُ بِهَا مُفْرَدًا وَأَلَّا يَتَقَدَّمَهَا نَفْيٌ أَوْ نَهْيٌ وَأَلَّا يَكُونَ مَا بَعْدَهَا دَاخِلًا فِي عُمُومِ مَا قَبْلَهَا، تَقُولُ: زَيْدٌ شَاعِرٌ لَا غَيْرُ، فَتُفِيدُ قَصْرَ زَيْدٍ عَلَى صِفَةِ الشِّعْرِ قَصْرًا حَقِيقِيًّا، وَتَقُولُ: زَيْدٌ شَاعِرٌ لَا كَاتِبٌ، فَتُفِيدُ قَصْرَهُ عَلَى الشِّعْرِ قَصْرًا إِضَافِيًّا.<br>وَتَأَمَّلْ قَوْلَ أَبِي تَمَّامٍ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">بِيضُ الصَّفَائِحِ لَا سُودُ الصَّحَائِفِ</span><span class="shatr">فِي مُتُونِهِنَّ جَلَاءُ الشَّكِّ وَالرِّيَبِ</span></p>
+        
+      </div>
+    </div>
+
+
+<div class="hal" id="hal-23" data-kitab="23"><span><i class="hal__t">Hlm. </i>24</span><button type="button" class="hal__pdf" data-pdf="24" aria-label="Lihat PDF asli untuk Hlm. 24" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">تَجِدْهُ قَدْ قَصَرَ السُّيُوفَ الَّتِي حَقَّقَتِ النَّصْرَ وَفَتَحَتْ عَمُّورِيَّةَ عَلَى كَوْنِهَا بِيضَ الصَّفَائِحِ مُشْرِقَةً لَامِعَةً، وَنَفَاهَا عَنْ كَوْنِهَا سُودَ الصَّحَائِفِ سَوْدَاءَ مُظْلِمَةً، فَالْمَقْصُورُ عَلَيْهِ - كَمَا تَرَى - هُوَ الْمُقَابِلُ لِمَا بَعْدَ "لَا"، ثُمَّ قَصَرَ ((جَلَاءَ الشَّكِّ وَالرِّيَبِ)) عَلَى كَوْنِهِ فِي مُتُونِ هَذِهِ السُّيُوفِ أَيْ جَوَانِبِهِنَّ، وَنَفَاهُ عَنْ كُتُبِ الْمُنَجِّمِينَ، وَطَرِيقُ هَذَا الْقَصْرِ هُوَ التَّقْدِيمُ الْآتِي بَيَانُهُ.<br>وَلَا يَخْفَى عَلَيْكَ مَا وَرَاءَ أُسْلُوبَيِ الْقَصْرِ فِي الْبَيْتِ مِنْ تَوْبِيخٍ وَتَحْقِيرٍ لِهَؤُلَاءِ الْمُنَجِّمِينَ، وَتَفْنِيدٍ لِقَوْلِهِمْ وَمَا تُخْبِرُ بِهِ صُحُفُهُمْ.<br>وَمِثْلُهُ قَوْلُهُ فِي هَذِهِ الْقَصِيدَةِ أَيْضًا، مُحَقِّرًا كُتُبَ الْمُنَجِّمِينَ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَالْعِلْمُ فِي شُهُبِ الْأَرْمَاحِ لَامِعَةً</span><span class="shatr">بَيْنَ الْخَمِيسَيْنِ لَا فِي السَّبْعَةِ الشُّهُبِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">حَيْثُ قَصَرَ الْعِلْمَ عَلَى كَوْنِهِ فِي شُهُبِ الْأَرْمَاحِ، وَنَفَاهُ عَنِ النُّجُومِ الَّتِي يَسْتَنْبِئُهَا الْمُنَجِّمُونَ، أَيْ: عَنِ ((السَّبْعَةِ الشُّهُبِ)).<br>فَإِذَا سُبِقَتْ ((لَا)) بِنَفْيٍ، نَحْوَ: مَا جَاءَ زَيْدٌ وَلَا عَمْرٌو، أَوْ نَهْيٍ، نَحْوَ: لَا تَفْعَلْ هَذَا وَلَا ذَاكَ، أَوْ كَانَ الْمَعْطُوفُ بِهَا جُمْلَةً، نَحْوَ: زَيْدٌ مُقْدَامٌ لَا أَبُوهُ كَرِيمٌ، وَالْفَقِيرُ يُعْطَى مِنَ الصَّدَقَةِ لَا أَحَدَ يُنْكِرُ هَذَا، أَوْ كَانَ مَا بَعْدَهَا دَاخِلًا فِي عُمُومِ مَا قَبْلَهَا، نَحْوَ: عَادَ الْحُجَّاجُ لَا إِبْرَاهِيمُ، وَنَجَحَ الطُّلَّابُ لَا خَالِدٌ، فَعِنْدَئِذٍ لَا تَدُلُّ عَلَى الْقَصْرِ، لِأَنَّهَا لَا تُفِيدُ إِثْبَاتَ أَمْرِ الْآخَرِ وَنَفْيَهُ عَنْ غَيْرِهِ، كَمَا هُوَ وَاضِحٌ فِي الْأَمْثِلَةِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَ"بَلْ" تُفِيدُ الْقَصْرَ إِذَا وَلِيَهَا مُفْرَدٌ، وَتَقَدَّمَهَا نَفْيٌ أَوْ نَهْيٌ؛ لِأَنَّهَا فِي هَذِهِ الْحَالِ تُقَرِّرُ حُكْمَ مَا قَبْلَهَا وَتُثْبِتُ ضِدَّهُ لِمَا بَعْدَهَا، فَتَتَضَمَّنُ النَّفْيَ وَالْإِثْبَاتَ، وَذَلِكَ عِمَادُ الْقَصْرِ، فَقَوْلُكَ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، يُفِيدُ نَفْيَ الْمَجِيءِ عَنْ زَيْدٍ وَإِثْبَاتَهُ لِعَمْرٍو، فَالْمَقْصُورُ عَلَيْهِ (بِبَلْ) هُوَ مَا بَعْدَهَا.<br>وَيَرَى الْبَلَاغِيُّونَ أَنَّهَا صَالِحَةٌ لِلْقَصْرِ الْإِضَافِيِّ إِفْرَادًا وَقَلْبًا وَتَعْيِينًا، وَلَا تَصْلُحُ لِلْقَصْرِ الْحَقِيقِيِّ، لِأَنَّ الْمَنْفِيَّ مَعَهَا يَكُونُ أَمْرًا مُحَدَّدًا دَائِمًا، فَإِنْ جَاءَ عَامًّا لَا يَكُونُ مَنْفِيًّا بَلْ يَكُونُ مَسْكُوتًا عَنْهُ، نَحْوَ: مَا جَاءَنِي أَحَدٌ بَلْ زَيْدٌ، فَلَا تُفِيدُ هَذِهِ الْجُمْلَةُ سِوَى إِثْبَاتِ الْمَجِيءِ لِزَيْدٍ، أَمَّا مَا قَبْلَ ((بَلْ)) وَهُوَ "أَحَدٌ" فَمَسْكُوتٌ عَنْهُ، وَالْمَسْكُوتُ عَنْهُ لَا يُوصَفُ بِنَفْيٍ وَلَا إِثْبَاتٍ، بَلْ يَرَى الْجُمْهُورُ أَنَّ مَا قَبْلَ ((بَلْ)) مَسْكُوتٌ عَنْهُ حَتَّى وَلَوْ كَانَ مُحَدَّدًا، نَحْوَ: مَا جَاءَنِي زَيْدٌ بَلْ عَمْرٌو، مَا زَيْدٌ قَائِمًا بَلْ قَاعِدٌ. وَلِذَا فَهِيَ لَا تُفِيدُ قَصْرًا. وَيَرَى بَعْضٌ أَنَّ النَّفْيَ لِمَا قَبْلَ ((بَلْ)) وَلِمَا بَعْدَهَا،</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-24" data-kitab="24"><span><i class="hal__t">Hlm. </i>25</span><button type="button" class="hal__pdf" data-pdf="25" aria-label="Lihat PDF asli untuk Hlm. 25" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">فَقَوْلُكَ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، يُفِيدُ نَفْيَ الْمَجِيءِ عَنْهُمَا مَعًا، وَلِذَا فَهِيَ لَا تُفِيدُ الْقَصْرَ، لِأَنَّ النَّفْيَ وَالْإِثْبَاتَ غَيْرُ مُحَقَّقٍ. وَالَّذِي أَرَاهُ أَنَّ ((بَلْ)) تُفِيدُ الْقَصْرَ بِأَنْوَاعِهِ: الْإِضَافِيَّ قَلْبًا وَإِفْرَادًا وَتَعْيِينًا، وَالْحَقِيقِيَّ تَحْقِيقِيًّا وَادِّعَائِيًّا، فَهَذَا مَا يُفْهَمُ مِنَ الْأَسَالِيبِ وَالتَّعْبِيرَاتِ، وَلَا يُمْكِنُ دَفْعُهُ وَلَا إِنْكَارُهُ، تَقُولُ: مَا جَاءَ زَيْدٌ بَلْ عَمْرٌو، فَيَكُونُ قَصْرَ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا إِضَافِيًّا، وَتَقُولُ: مَا زَيْدٌ قَائِمًا بَلْ قَاعِدٌ، فَيَكُونُ قَصْرَ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَتَقُولُ: مَا جَاءَنِي أَحَدٌ بَلْ عَمْرٌو، فَيَكُونُ قَصْرًا حَقِيقِيًّا، وَلَا أَرَى مَعْنًى لِكَوْنِ مَا قَبْلَهَا مَسْكُوتًا عَنْهُ، وَلَا لِتَوَجُّهِ النَّفْيِ لِمَا بَعْدَهَا.<br>أَمَّا إِذَا وَقَعَتْ ((بَلْ)) بَعْدَ الْإِثْبَاتِ، نَحْوَ: جَاءَ زَيْدٌ بَلْ عَمْرٌو، فَلَا تُفِيدُ الْقَصْرَ؛ لِأَنَّ الْمَعْنَى عَلَى أَنَّكَ نَقَلْتَ الْمَجِيءَ إِلَى التَّابِعِ ((عَمْرٍو)) وَجَعَلْتَ الْمَتْبُوعَ ((زَيْدًا)) فِي حُكْمِ الْمَسْكُوتِ عَنْهُ، فَالْجُمْلَةُ لَا تُفِيدُ سِوَى مُجَرَّدِ إِثْبَاتِ الْمَجِيءِ لِعَمْرٍو، وَعِنْدَئِذٍ فَلَا قَصْرَ، لِأَنَّ الْقَصْرَ نَفْيٌ وَإِثْبَاتٌ كَمَا عَلِمْتَ.<br>وَمِنْ شَوَاهِدِ الْقَصْرِ بِبَلْ قَوْلُ الْإِمَامِ عَلِيٍّ كَرَّمَ اللَّهُ وَجْهَهُ:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">لَيْسَ الْيَتِيمُ الَّذِي قَدْ مَاتَ وَالِدُهُ</span><span class="shatr">بَلِ الْيَتِيمُ يَتِيمُ الْعِلْمِ وَالْأَدَبِ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَقَدْ قَصَرَ الشَّاعِرُ الْيَتِيمَ عَلَى صِفَةِ الْحِرْمَانِ مِنَ الْعِلْمِ وَالْأَدَبِ، وَنَفَاهُ عَنْ فَقْدَانِ الْوَالِدِ قَبْلَ بُلُوغِ مَبْلَغِ الرِّجَالِ، فَهُوَ قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَأَرَاهُ قَصْرَ قَلْبٍ، لِأَنَّهُ قَلَبَ مَا هُوَ رَاسِخٌ فِي الْأَذْهَانِ مِنْ أَنَّ الْيَتِيمَ هُوَ الَّذِي قَدْ مَاتَ وَالِدُهُ قَبْلَ بُلُوغِ سِنِّ الرِّجَالِ، وَفِيهِ حَثٌّ عَلَى التَّزَوُّدِ بِالْعِلْمِ وَالتَّحَلِّي بِالْأَخْلَاقِ وَالْآدَابِ الرَّفِيعَةِ، فَفَاقِدُهُمَا هُوَ الْيَتِيمُ.<br>وَ"لَكِنْ" تُفِيدُ الْقَصْرَ إِذَا سَبَقَهَا نَفْيٌ أَوْ نَهْيٌ وَوَلِيَهَا مُفْرَدٌ ((كَبَلْ))، مِثْلَ: مَا أَكْرَمَنِي زَيْدٌ لَكِنْ عَمْرٌو، فَقَدْ قَصَرَ الْإِكْرَامَ عَلَى عَمْرٍو وَنَفَاهُ عَنْ زَيْدٍ، فَالْمَقْصُورُ عَلَيْهِ (بِلَكِنْ) هُوَ الْوَاقِعُ بَعْدَهَا مِثْلَ ((بَلْ)) تَمَامًا، وَهِيَ صَالِحَةٌ لِلْقَصْرِ الْإِضَافِيِّ قَلْبًا وَإِفْرَادًا وَتَعْيِينًا حَسَبَ اعْتِقَادِ الْمُخَاطَبِ، وَلِلْقَصْرِ الْحَقِيقِيِّ بِنَوْعَيْهِ، وَيَرَى بَعْضُ الْبَلَاغِيِّينَ أَنَّهَا لَا تَصْلُحُ لِلْقَصْرِ الْحَقِيقِيِّ، لِأَنَّ الْمَنْفِيَّ مَعَهَا دَائِمًا يَكُونُ أَمْرًا خَاصًّا.<br>وَيَشْتَرِطُ بَعْضُهُمْ لِلْقَصْرِ بِلَكِنْ بِالْإِضَافَةِ إِلَى مَا ذُكِرَ أَلَّا تَقْتَرِنَ بِالْوَاوِ، وَهَذَا لَيْسَ بِشَيْءٍ لِأَنَّا نَرَاهَا فِي الْأَسَالِيبِ الْجَيِّدَةِ وَالتَّرَاكِيبِ الْمُمْتَازَةِ قَدِ اقْتَرَنَتْ بِالْوَاوِ وَأَفَادَتِ الْقَصْرَ، انْظُرْ إِلَى قَوْلِهِ تَعَالَى: مَّا كَانَ مُحَمَّدٌ أَبَا أَحَدٍ مِّن رِّجَالِكُمْ وَلَٰكِن رَّسُولَ اللَّهِ وَخَاتَمَ النَّبِيِّينَ <span class="ref">[الأحزاب: ٤٠]</span>، فَقَدْ قُصِرَ النَّبِيُّ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ عَلَى الرِّسَالَةِ وَالْخَتْمِ لَا يَتَجَاوَزُهُمَا إِلَى أُبُوَّةِ زَيْدٍ، قَصْرُ مَوْصُوفٍ عَلَى صِفَةٍ قَصْرًا إِضَافِيًّا، وَ"لَكِنْ" مَقْرُونَةٌ بِالْوَاوِ كَمَا تَرَى.</p>
+      
+    </div>
+
+<div class="hal" id="hal-25" data-kitab="25"><span><i class="hal__t">Hlm. </i>26</span><button type="button" class="hal__pdf" data-pdf="26" aria-label="Lihat PDF asli untuk Hlm. 26" title="Lihat PDF asli"></button></div>
+    <h3 class="bagian__judul" id="nafi-istitsna">٢ - النَّفْيُ وَالِاسْتِثْنَاءُ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ: مَا الْقَادِمُ إِلَّا زَيْدٌ، وَمَا أَنْتَ إِلَّا مُصِيبٌ، فَتُفِيدُ قَصْرَ الصِّفَةِ عَلَى الْمَوْصُوفِ فِي الْأَوَّلِ، وَالْمَوْصُوفِ عَلَى الصِّفَةِ فِي الثَّانِي، وَيُسْتَخْدَمُ هَذَا الطَّرِيقُ فِيمَا يُنْكِرُهُ الْمُخَاطَبُ وَيَدْفَعُهُ، أَوْ فِيمَا يَجْهَلُهُ وَلَا يَعْرِفُهُ، أَوْ فِيمَا يَشُكُّ فِيهِ وَيَرْتَابُ.<br>تَأَمَّلْ قَوْلَهُ تَعَالَى: وَهُوَ الَّذِي يَتَوَفَّاكُم بِاللَّيْلِ وَيَعْلَمُ مَا جَرَحْتُم بِالنَّهَارِ ثُمَّ يَبْعَثُكُمْ فِيهِ لِيُقْضَىٰ أَجَلٌ مُّسَمًّى ثُمَّ إِلَيْهِ مَرْجِعُكُمْ ثُمَّ يُنَبِّئُكُم بِمَا كُنتُمْ تَعْمَلُونَ <span class="ref">[الأنعام: ٦٠]</span>، تَجِدْهُ قَدْ قَصَرَ الِاتِّبَاعَ عَلَى الْوَحْيِ لَا يَتَجَاوَزُهُ إِلَى غَيْرِهِ، فَهُوَ قَصْرٌ حَقِيقِيٌّ، وَقَدْ أُوثِرَ التَّعْبِيرُ بِالنَّفْيِ وَالِاسْتِثْنَاءِ، إِذِ الْمُخَاطَبُونَ وَهُمُ الْكَفَرَةُ الْمُشْرِكُونَ يُنْكِرُونَ ذَلِكَ وَيَدْفَعُونَهُ، فَهُمْ يَعْتَقِدُونَ أَنَّهُ شَاعِرٌ أَوْ سَاحِرٌ أَوْ كَاهِنٌ، لَا يُقِرُّونَ بِالْوَحْيِ، بَلْ يَقُولُونَ: وَقَالُوا أَسَاطِيرُ الْأَوَّلِينَ اكْتَتَبَهَا فَهِيَ تُتْلَىٰ عَلَيْهِ بُكْرَةً وَأَصِيلًا <span class="ref">[الفرقان: ٥]</span>، فَلَمَّا كَانَ الْمُشْرِكُونَ مُنْكِرِينَ أَنْ يَكُونَ الرَّسُولُ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مُتَّبِعًا لِوَحْيٍ يُوحَى إِلَيْهِ وَيَجْحَدُونَ ذَلِكَ وَيَدْفَعُونَهُ، جَاءَ الْقَصْرُ ((بِإِنَّ وَإِلَّا)) لِيُبَدِّدَ هَذَا الْإِنْكَارَ وَيَدْفَعَ ذَلِكَ الْجُحُودَ.</p>
+      
+    </div>
+
+
+    <h3 class="bagian__judul" id="innama-qashr">٣ - إِنَّمَا</h3>
+
+    <div class="ayat">
+      <p class="ar">وَدَلَالَةُ "إِنَّمَا" عَلَى الْقَصْرِ دَلَالَةٌ وَضْعِيَّةٌ، وَعَلَى الرَّغْمِ مِنْ ذَلِكَ لَمْ يَفُتِ الْبَلَاغِيِّينَ أَنْ يَتَحَدَّثُوا عَنْ وَجْهِ دَلَالَتِهَا عَلَى الْقَصْرِ، فَقَدْ ذَكَرُوا أَنَّهَا تَدُلُّ عَلَى الْقَصْرِ لِتَضَمُّنِهَا مَعْنَى ((مَا وَإِلَّا)) وَاسْتَدَلُّوا عَلَى ذَلِكَ بِوُجُوهٍ.<br>قَوْلُهُ تَعَالَى: قَالَ إِنَّمَا الْعِلْمُ عِندَ اللَّهِ <span class="ref">[الأحقاف: ٢٣]</span>، وَقَوْلُهُ عَزَّ وَجَلَّ: قَالَ إِنَّمَا يَأْتِيكُم بِهِ اللَّهُ إِن شَاءَ <span class="ref">[هود: ٣٣]</span>، وَقَوْلُهُ جَلَّ وَعَلَا: إِنَّمَا عِلْمُهَا عِندَ رَبِّي <span class="ref">[الأعراف: ١٨٧]</span>، فَإِنَّهُ إِنَّمَا يَحْصُلُ مُطَابَقَةُ الْجَوَابِ إِذَا كَانَتْ "إِنَّمَا" لِلْحَصْرِ لِيَكُونَ مَعْنَاهُ: لَا آتِيكُمْ بِهِ، إِنَّمَا يَأْتِي بِهِ اللَّهُ، وَلَا أَعْلَمُهَا، إِنَّمَا يَعْلَمُهَا اللَّهُ.<br>الْمَقْصُورُ عَلَيْهِ ((بِإِنَّمَا)) هُوَ الْمُؤَخَّرُ دَائِمًا، تَقُولُ فِي قَصْرِ الْعِلْمِ عَلَى مُحَمَّدٍ: إِنَّمَا الْعَالِمُ مُحَمَّدٌ، وَفِي قَصْرِهِ عَلَى الْعِلْمِ: إِنَّمَا مُحَمَّدٌ عَالِمٌ، وَتَأْتِي "إِنَّمَا" لِإِفَادَةِ كُلِّ أَنْوَاعِ الْقَصْرِ؛ فَهِيَ تُفِيدُ الْقَصْرَ الْحَقِيقِيَّ بِقِسْمَيْهِ التَّحْقِيقِيِّ وَالِادِّعَائِيِّ، كَمَا تُفِيدُ الْقَصْرَ الْإِضَافِيَّ بِأَنْوَاعِهِ الثَّلَاثَةِ: الْقَلْبِ وَالْإِفْرَادِ وَالتَّعْيِينِ. قَوْلُهُ تَعَالَى: إِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاءَ فِي الْخَمْرِ وَالْمَيْسِرِ وَيَصُدَّكُمْ عَن ذِكْرِ اللَّهِ وَعَنِ الصَّلَاةِ فَهَلْ أَنتُم مُّنتَهُونَ <span class="ref">[المائدة: ٩١]</span>، تَجِدْ إِرَادَةَ الشَّيْطَانِ قَدْ</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-26" data-kitab="26"><span><i class="hal__t">Hlm. </i>27</span><button type="button" class="hal__pdf" data-pdf="27" aria-label="Lihat PDF asli untuk Hlm. 27" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">قُصِرَتْ ((بِإِنَّمَا)) عَلَى إِيقَاعِ الْعَدَاوَةِ وَالْبَغْضَاءِ بَيْنَ الْمُسْلِمِينَ فِي الْخَمْرِ وَالْمَيْسِرِ وَصَدِّهِمْ عَنِ الذِّكْرِ وَالصَّلَاةِ، فَهُوَ قَصْرُ صِفَةٍ عَلَى مَوْصُوفٍ قَصْرًا حَقِيقِيًّا غَيْرَ تَحْقِيقِيٍّ، لِأَنَّهُ مَبْنِيٌّ عَلَى الْمُبَالَغَةِ، إِذِ الشَّيْطَانُ يَسْلُكُ كُلَّ طَرِيقٍ لِكَيْ يُبْعِدَ الْعَبْدَ عَنْ طَاعَةِ رَبِّهِ، وَلَكِنْ لَمَّا كَانَتْ هَذِهِ الْأُمُورُ، وَهِيَ الْخَمْرُ وَالْمَيْسِرُ وَالصَّلَاةُ وَالذِّكْرُ، مِنَ الْخُطُورَةِ بِمَكَانٍ، فَقَدْ قُصِرَتْ إِرَادَةُ الشَّيْطَانِ عَلَيْهَا، أَيْ عَلَى مَا يَكُونُ فِيهَا مِنْ إِيقَاعِ الْعَدَاوَةِ بَيْنَهُمْ فِي الْخَمْرِ وَالْمَيْسِرِ، وَالصَّدِّ عَنِ الذِّكْرِ وَالصَّلَاةِ، وَكَأَنَّ مَا عَدَاهَا لَا يُعْتَدُّ بِهِ إِذَا مَا قُورِنَ بِهَا.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="taqdim-qashr">٤ - التَّقْدِيمُ</h3>
+
+    <div class="ayat">
+      <p class="ar">نَحْوَ: مَا أَنَا قُلْتُ هَذَا الشِّعْرَ، فَقَدْ دَلَّ تَقْدِيمُ الْمُسْنَدِ إِلَيْهِ وَإِيلَاؤُهُ أَدَاةَ النَّفْيِ عَلَى الْقَصْرِ، أَيْ: نَفْيِ الشِّعْرِ عَنِ الْمُسْنَدِ إِلَيْهِ الْمُقَدَّمِ وَإِثْبَاتِهِ لِغَيْرِهِ.<br>وَمِنْ ذَلِكَ قَوْلُ الْمُتَنَبِّي:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمَا أَنَا أَسْقَمْتُ جِسْمِي بِهِ</span><span class="shatr">وَلَا أَنَا أَضْرَمْتُ فِي الْقَلْبِ نَارًا</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَقَوْلُهُ أَيْضًا:</p>
+      
+    </div>
+
+    <div class="syiir">
+      <div class="bait">
+        <p class="ar"><span class="shatr">وَمَا أَنَا وَحْدِي قُلْتُ ذَا الشِّعْرَ كُلَّهُ</span><span class="shatr">وَلَكِنْ لِشِعْرِي فِيكَ مِنْ نَفْسِهِ شِعْرُ</span></p>
+        
+      </div>
+    </div>
+
+    <div class="ayat">
+      <p class="ar">فَتَقْدِيمُ الْمُسْنَدِ إِلَيْهِ عَلَى الْخَبَرِ الْفِعْلِيِّ بَعْدَ أَدَاةِ النَّفْيِ، يُفِيدُ غَالِبًا الِاخْتِصَاصَ، وَلِذَا كَانَ مِنَ الْخَطَإِ أَنْ نَقُولَ: مَا أَنَا قُلْتُ هَذَا وَلَا قَالَهُ أَحَدٌ غَيْرِي، أَوْ تَقُولَ: مَا أَنَا قُلْتُ شِعْرًا، أَوْ مَا أَنَا أَكْرَمْتُ إِلَّا زَيْدًا.<br>وَمِنْ تَقْدِيمِ الْمُسْنَدِ الَّذِي أَفَادَ تَقْدِيمُهُ الْقَصْرَ قَوْلُهُ جَلَّ وَعَلَا: لَكُمْ دِينُكُمْ وَلِيَ دِينِ <span class="ref">[الكافرون: ٦]</span>، وَقَوْلُهُ تَعَالَى: لَا فِيهَا غَوْلٌ وَلَا هُمْ عَنْهَا يُنزَفُونَ <span class="ref">[الصافات: ٤٧]</span>، وَقَوْلُهُ عَزَّ وَجَلَّ: وَلِلَّهِ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ <span class="ref">[آل عمران: ١٨٩]</span>.</p>
+      
+    </div>
+
+    <h3 class="bagian__judul" id="dhamir-fashl">٥ - ضَمِيرُ الْفَصْلِ</h3>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْ طُرُقِ الْقَصْرِ الَّتِي أَقَرَّهَا بَعْضُ الْبَلَاغِيِّينَ ضَمِيرُ الْفَصْلِ، وَهُوَ أَنْ يُعَقَّبَ الْمُسْنَدُ إِلَيْهِ بِضَمِيرٍ يُسَمَّى ضَمِيرَ الْفَصْلِ لِتَخْصِيصِهِ بِالْمُسْنَدِ، بِمَعْنَى جَعْلِ الْمُسْنَدِ مَقْصُورًا عَلَى الْمُسْنَدِ إِلَيْهِ، كَقَوْلِكَ: زُهَيْرٌ هُوَ الشَّاعِرُ، فَفِيهِ قَصْرٌ لِصِفَةِ الشِّعْرِ عَلَى زُهَيْرٍ لَا تَتَعَدَّاهُ إِلَى غَيْرِهِ، وَطَرِيقُ الْقَصْرِ هُوَ الْفَصْلُ بِالضَّمِيرِ، وَهَذَا الضَّمِيرُ حَرْفٌ بِاتِّفَاقِ جُمْهُورِ النُّحَاةِ وَلَيْسَ اسْمًا، وَالْقَائِلُونَ بِأَنَّهُ اسْمٌ أَكْثَرُهُمْ عَلَى أَنَّهُ لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ، وَهُوَ يَقَعُ إِمَّا بَيْنَ الْمُبْتَدَأِ وَالْخَبَرِ كَمَا فِي الْمِثَالِ الْمَذْكُورِ أَوْ بَيْنَ مَا أَصْلُهُمَا الْمُبْتَدَأُ وَالْخَبَرُ، كَقَوْلِكَ: صَارَ امْرُؤُ الْقَيْسِ هُوَ الشَّاعِرَ،</p>
+      
+    </div>
+
+
+<div class="hal" id="hal-27" data-kitab="27"><span><i class="hal__t">Hlm. </i>28</span><button type="button" class="hal__pdf" data-pdf="28" aria-label="Lihat PDF asli untuk Hlm. 28" title="Lihat PDF asli"></button></div>
+    <div class="ayat">
+      <p class="ar">وَعَلِمْتُ أَنَّ حَاتِمًا هُوَ الْكَرِيمَ. وَالْمَقْصُورُ عَلَيْهِ بِهَذَا الطَّرِيقِ هُوَ الْمُبْتَدَأُ وَالْمَقْصُورُ هُوَ الْخَبَرُ. وَتُلَاحِظُ فِي الْأَمْثِلَةِ الْمَذْكُورَةِ أَنَّ ضَمِيرَ الْفَصْلِ قَدْ أَفَادَ بِالْإِضَافَةِ إِلَى الْقَصْرِ: تَأْكِيدَ نِسْبَةِ الْخَبَرِ إِلَى الْمُبْتَدَأِ، وَتِلْكَ الْإِفَادَةُ تَرَاهَا وَرَاءَ كُلِّ أُسْلُوبٍ مِنْ أَسَالِيبِ الْقَصْرِ، كَمَا أَفَادَ أَيْضًا الدَّلَالَةَ عَلَى أَنَّ مَا بَعْدَ الْمُبْتَدَإِ خَبَرٌ لَهُ وَلَيْسَ صِفَةً، لِأَنَّ قَوْلَكَ: زُهَيْرٌ الشَّاعِرُ، فِيهِ إِيهَامٌ أَنَّ "الشَّاعِرَ" صِفَةٌ لِزُهَيْرٍ، فَإِذَا قُلْتَ: زُهَيْرٌ هُوَ الشَّاعِرُ، انْدَفَعَ هَذَا التَّوَهُّمُ، وَأَصْبَحَتِ الْجُمْلَةُ دَالَّةً دَلَالَةً بَيِّنَةً عَلَى أَنَّ "الشَّاعِرَ" خَبَرٌ لِزُهَيْرٍ لَا صِفَةٌ.<br>وَمِنْ شَوَاهِدِ الْقَصْرِ بِضَمِيرِ الْفَصْلِ قَوْلُهُ: فَلَمَّا تَوَفَّيْتَنِي كُنتَ أَنتَ الرَّقِيبَ عَلَيْهِمْ وَأَنتَ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ <span class="ref">[المائدة: ١١٧]</span>، التَّوَفِّيَةُ فِي الْآيَةِ بِمَعْنَى الرَّفْعِ، فَقَدْ جَاءَتِ التَّوَفِّيَةُ فِي كِتَابِ اللَّهِ عَلَى ثَلَاثَةِ أَوْجُهٍ: بِمَعْنَى الْمَوْتِ، كَمَا فِي قَوْلِهِ عَزَّ وَجَلَّ: اللَّهُ يَتَوَفَّى الْأَنفُسَ حِينَ مَوْتِهَا وَالَّتِي لَمْ تَمُتْ فِي مَنَامِهَا فَيُمْسِكُ الَّتِي قَضَىٰ عَلَيْهَا الْمَوْتَ وَيُرْسِلُ الْأُخْرَىٰ إِلَىٰ أَجَلٍ مُّسَمًّى إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ <span class="ref">[الزمر: ٤٢]</span>، وَبِمَعْنَى النَّوْمِ كَمَا فِي قَوْلِهِ تَعَالَى: وَهُوَ الَّذِي يَتَوَفَّاكُم بِاللَّيْلِ وَيَعْلَمُ مَا جَرَحْتُم بِالنَّهَارِ <span class="ref">[الأنعام: ٦٠]</span>، وَبِمَعْنَى الرَّفْعِ كَمَا فِي قَوْلِهِ جَلَّ وَعَلَا: فَلَمَّا تَوَفَّيْتَنِي. وَفِي الْآيَةِ الْكَرِيمَةِ قَصْرٌ لِصِفَةِ الْمُرَاقَبَةِ بِمَعْنَى: الْمُرَاعَاةِ وَالْحِفْظِ وَالْعِلْمِ عَلَى مَوْصُوفٍ وَهُوَ اللَّهُ تَعَالَى، وَطَرِيقُ الْقَصْرِ هُوَ ضَمِيرُ الْفَصْلِ: ((أَنْتَ))، وَلَوْ لَمْ يَكُنْ ضَمِيرُ الْفَصْلِ فِي الْآيَةِ الْكَرِيمَةِ لِلدَّلَالَةِ عَلَى الْقَصْرِ لَمَا حَسُنَ، لِأَنَّ اللَّهَ لَمْ يَزَلْ رَقِيبًا عَلَيْهِمْ فِي جَمِيعِ الْأَحْوَالِ، وَإِنَّمَا الَّذِي حَصَلَ بِتَوَفِّيهِ عِيسَى عَلَيْهِ السَّلَامُ - وَقَدْ كَانَ شَهِيدًا عَلَيْهِمْ يُرَاقِبُهُمْ وَيَأْمُرُهُمْ بِعِبَادَةِ اللَّهِ - أَنَّهُ لَمْ يَبْقَ لَهُمْ رَقِيبٌ غَيْرُ اللَّهِ تَعَالَى، وَلِذَا يَنْبَغِي أَنْ يَتَعَيَّنَ إِعْرَابُهُ فَصْلًا دَالًّا عَلَى الْقَصْرِ.</p>
+      
+    </div>
+
+    <div class="ayat">
+      <p class="ar">وَمِنْ ذَلِكَ قَوْلُهُ تَعَالَى: لَا يَسْتَوِي أَصْحَابُ النَّارِ وَأَصْحَابُ الْجَنَّةِ أَصْحَابُ الْجَنَّةِ هُمُ الْفَائِزُونَ <span class="ref">[الحشر: ٢٠]</span>، فَقَدْ قُصِرَتْ صِفَةُ الْفَوْزِ عَلَى أَصْحَابِ الْجَنَّةِ قَصْرًا إِضَافِيًّا، فَهِيَ لَا تَتَعَدَّاهُمْ إِلَى أَصْحَابِ النَّارِ، وَطَرِيقُ الْقَصْرِ هُوَ ضَمِيرُ الْفَصْلِ، وَذَلِكَ لِأَنَّ الْآيَةَ الْكَرِيمَةَ تُقَرِّرُ عَدَمَ الِاسْتِوَاءِ بَيْنَ أَهْلِ الْجَنَّةِ وَأَهْلِ النَّارِ، فَأَهْلُ الْجَنَّةِ هُمُ الْفَائِزُونَ بِكُلِّ مَطْلُوبٍ، النَّاجُونَ مِنْ كُلِّ مَكْرُوهٍ، وَهَذَا لَا يَحْسُنُ إِلَّا بِأَنْ يَكُونَ ضَمِيرُ الْفَصْلِ ((هُمْ)) لِلِاخْتِصَاصِ، وَلَا يَتَأَتَّى إِعْرَابُهُ مُبْتَدَأً ثَانِيًا وَلَا تَأْكِيدًا لِلْجُمْلَةِ. وَمِثْلُهُ قَوْلُهُ تَعَالَى: إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ <span class="ref">[الذاريات: ٥٨]</span>، حَيْثُ قُصِرَتْ صِفَةُ الرِّزْقِ عَلَى اللَّهِ تَعَالَى قَصْرًا حَقِيقِيًّا، وَقَوْلُهُ تَعَالَى: إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ <span class="ref">[الكوثر: ٣]</span>، قُصِرَتْ صِفَةُ ((الْأَبْتَرِ)) عَلَى ((شَانِئِكَ))، وَالْمَعْنَى: إِنَّ عَدُوَّ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ هُوَ الْمَحْرُومُ مِنْ رَحْمَةِ اللَّهِ، الْمَقْطُوعُ مِنْ كُلِّ خَيْرٍ. وَيُمْكِنُ أَنْ يَكُونَ طَرِيقُ الْقَصْرِ فِي الْآيَاتِ الْكَرِيمَةِ تَعْرِيفَ الْمُسْنَدِ بِأَلِ الِاسْتِغْرَاقِيَّةِ، وَعِنْدَئِذٍ يَكُونُ ضَمِيرُ الْفَصْلِ لِتَأْكِيدِ الْقَصْرِ.</p>
+      
+    </div>
+
+  </div>
+</section>
+
+<button type="button" id="btn-toc" class="fab fab--toc" aria-haspopup="dialog" aria-controls="fihris-modal" title="الفهرس">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+</button>
+<script>
+(function () {
+  function wireModal(openBtnId, dialogId) {
+    var openBtn = document.getElementById(openBtnId);
+    var dlg = document.getElementById(dialogId);
+    if (!openBtn || !dlg) return;
+    openBtn.addEventListener('click', function () { dlg.showModal(); });
+    var closers = dlg.querySelectorAll('[data-close]');
+    for (var i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () { dlg.close(); });
+    }
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dlg.close();
+    });
+  }
+  wireModal('btn-toc', 'fihris-modal');
+
+  var jumpLinks = document.querySelectorAll('#fihris a[href^="#"]');
+  var fihrisDlg = document.getElementById('fihris-modal');
+  for (var j = 0; j < jumpLinks.length; j++) {
+    jumpLinks[j].addEventListener('click', function () {
+      if (fihrisDlg) fihrisDlg.close();
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  var crumb = document.getElementById('crumb-bar');
+  if (!crumb) return;
+  var pathEl = crumb.querySelector('.crumb__path');
+  var pageEl = crumb.querySelector('.crumb__page');
+
+  var all = [];
+  document.querySelectorAll('h2.pasal__judul, h3.bagian__judul, h4.sub__judul').forEach(function (el) {
+    var level = el.tagName === 'H2' ? 2 : (el.tagName === 'H3' ? 3 : 4);
+    all.push({ el: el, level: level });
+  });
+  var hals = Array.prototype.slice.call(document.querySelectorAll('.hal'));
+
+  function label(el) {
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('judul__id')) return next.textContent.trim();
+    return el.textContent.trim();
+  }
+  function pageOf(el) {
+    var span = el.querySelector('span');
+    if (!span) return null;
+    var m = span.textContent.match(/Hlm\.\s*(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function update() {
+    var y = window.scrollY + 96;
+    var cur2 = null, cur3 = null, cur4 = null;
+    for (var i = 0; i < all.length; i++) {
+      var top = all[i].el.getBoundingClientRect().top + window.scrollY;
+      if (top > y) break;
+      if (all[i].level === 2) { cur2 = all[i].el; cur3 = null; cur4 = null; }
+      else if (all[i].level === 3) { cur3 = all[i].el; cur4 = null; }
+      else { cur4 = all[i].el; }
+    }
+    var parts = [];
+    if (cur2) parts.push(label(cur2));
+    if (cur3) parts.push(label(cur3));
+    if (cur4) parts.push(label(cur4));
+    if (!parts.length) { crumb.classList.remove('crumb--visible'); return; }
+    crumb.classList.add('crumb--visible');
+    pathEl.textContent = parts.join(' › ');
+
+    var curPage = null;
+    for (var j = 0; j < hals.length; j++) {
+      var htop = hals[j].getBoundingClientRect().top + window.scrollY;
+      if (htop >= y) { curPage = pageOf(hals[j]); break; }
+    }
+    if (curPage === null && hals.length) curPage = pageOf(hals[hals.length - 1]);
+    pageEl.textContent = curPage ? ('Hlm. ' + curPage) : '';
+    pageEl.style.display = curPage ? '' : 'none';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+<script>window.PDFPANEL={src:"ملخص البلاغة (علم المعاني).pdf"};</script>
+<script src="../../../../assets/pdfpanel.js?v=7"></script>
+<script src="../../../../assets/halaman.js?v=31"></script>
+<script>window.PENGATURAN={collapse:true};</script>
+<script src="../../../../assets/pengaturan.js?v=10"></script>
+</body>
+</html>
